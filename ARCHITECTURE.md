@@ -164,7 +164,7 @@ without it keep their bytes (every earlier test vector is unchanged).
   fp32 flip at none of 4712.
 - **Across machines (phase B, 26.09, 512 sealed texts, 201,565 positions, four architectures).** Against the
   sealer's fp16 batch-1 pass, at the record margin of the phase A records (0.84): fp16 and fp32 on every card flip
-  at most 1 position in 144,871 (two positions in all, at tokens 11 and 16), bf16 about 2 in 10,000. The rule
+  at most 1 position in 144,871 (two positions in all, positions 11 and 16 counting from 0), bf16 about 2 in 10,000. The rule
   c·max does not converge on a larger corpus — 0.42 on 64 texts, 7.8 on 512, set by a few positions near the start
   of texts — so its phase B table is not adopted; next format version: first checkpoint at token 32 and a quantile
   tolerance with an explicit `INDETERMINATE` budget, the verifier dropping its own low-margin entries.

@@ -41,9 +41,9 @@ the reference (L40S, fp16, batch 1), over all usable positions (`bench/diag_flip
 | fp32, L40S and H100 (4 configurations) | 1 flip each | 0 | 0 |
 | bf16, any card (8 configurations) | 28–39 flips each | 6–10 | 2–3 |
 
-- **fp16 and fp32:** two positions in the whole corpus, at tokens 11 and 16 of their texts, where the classes genuinely
+- **fp16 and fp32:** two positions in the whole corpus, positions 11 and 16 of their texts (counting from 0), where the classes genuinely
   disagree by up to 2.5 logits (at one, fp32 and the Ada cards' fp16 batch-1 pass agree against every other fp16 pass
-  and bf16; at the other, fp32 and bf16 agree against fp16). After token 32, fp16 on every card stays within 1.6
+  and bf16; at the other, fp32 and bf16 agree against fp16). From position 32 on, fp16 on every card stays within 1.6
   logits of the reference (0.8–0.9 at batch 32), and no position flips at margin ≥ 0.84.
 - **bf16** disagrees everywhere in a text, occasionally by 10+ logits. It verified all 1,024 phase A records here, but
   at a rate of about 2 × 10⁻⁴ per entry an occasional record will come out `INDETERMINATE` under a bf16 verifier.
