@@ -1,0 +1,73 @@
+{
+ "model": "Qwen/Qwen2.5-0.5B-Instruct",
+ "code": "e66e0e2801d79d45",
+ "n": 20,
+ "contexts": {
+  "2": {
+   "clean": {
+    "detected_at_1e-2": 1.0,
+    "detected_at_1e-4": 1.0,
+    "median_p": 1.4551915228366852e-09
+   },
+   "replace_10": {
+    "detected_at_1e-2": 0.7,
+    "detected_at_1e-4": 0.25,
+    "median_p": 0.000606616260483861
+   },
+   "replace_25": {
+    "detected_at_1e-2": 0.25,
+    "detected_at_1e-4": 0.05,
+    "median_p": 0.08695632842136547
+   },
+   "embed": {
+    "detected_at_1e-2": 0.9,
+    "detected_at_1e-4": 0.55,
+    "median_p": 5.487157812930751e-05
+   }
+  },
+  "3": {
+   "clean": {
+    "detected_at_1e-2": 1.0,
+    "detected_at_1e-4": 1.0,
+    "median_p": 1.1175870895385742e-08
+   },
+   "replace_10": {
+    "detected_at_1e-2": 0.6,
+    "detected_at_1e-4": 0.25,
+    "median_p": 0.0018596580266603269
+   },
+   "replace_25": {
+    "detected_at_1e-2": 0.1,
+    "detected_at_1e-4": 0.0,
+    "median_p": 0.17600629257503897
+   },
+   "embed": {
+    "detected_at_1e-2": 0.7,
+    "detected_at_1e-4": 0.15,
+    "median_p": 0.001755879832025714
+   }
+  },
+  "4": {
+   "clean": {
+    "detected_at_1e-2": 1.0,
+    "detected_at_1e-4": 1.0,
+    "median_p": 1.4551915228366852e-09
+   },
+   "replace_10": {
+    "detected_at_1e-2": 0.6,
+    "detected_at_1e-4": 0.25,
+    "median_p": 0.001676185191172408
+   },
+   "replace_25": {
+    "detected_at_1e-2": 0.15,
+    "detected_at_1e-4": 0.0,
+    "median_p": 0.1801888264678837
+   },
+   "embed": {
+    "detected_at_1e-2": 0.95,
+    "detected_at_1e-4": 0.4,
+    "median_p": 0.0005110646291558895
+   }
+  }
+ }
+}

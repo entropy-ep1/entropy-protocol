@@ -1,0 +1,14 @@
+{
+ "prose_sealed": {
+  "distinct_1": 0.5647,
+  "distinct_2": 0.8764,
+  "distinct_3": 0.9406,
+  "self_bleu4": 0.0849
+ },
+ "prose_plain": {
+  "distinct_1": 0.5582,
+  "distinct_2": 0.8675,
+  "distinct_3": 0.9339,
+  "self_bleu4": 0.1005
+ }
+}

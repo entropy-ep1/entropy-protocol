@@ -1,0 +1,4 @@
+A <repo>/bench/results/runs_batch4/Qwen_Qwen2.5-1.5B-Instruct/gsm_quality.jsonl: 16 rows, batch [4]
+B <repo>/bench/results/runs/Qwen_Qwen2.5-1.5B-Instruct/gsm_quality.jsonl: 100 rows, batch [4, 16]
+common ids 16; identical text 15; identical text and record fields (tokens, enforced, entries, dropped) 15
+  differs: gsm8k-0014: first difference at character 1396 of 1405/1404: ' enrolled in hip-hop dance is \\(60\\%\\).' vs ' enrolled in hip-hop dance is **60%**.'

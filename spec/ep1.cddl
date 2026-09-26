@@ -1,0 +1,157 @@
+; Entropy Protocol ep1 — data formats (CDDL, RFC 8610). Reference implementation: entropy_protocol.
+; PRIVATE until the covering provisional application is filed.
+; All CBOR uses deterministic encoding (RFC 8949 section 4.2.1). No floating point anywhere: tolerances are
+; integer micro-units of their space, fractions are per-mille, p-values follow exactly from the counts.
+
+; ------------------------------------------------------------------ the record (encrypted, never logged)
+ep1-record = {
+  "h": ep1-header,
+  "e": [* ep1-entry],                  ; model layer
+  "b": [* ep1-block],                  ; content layer
+  ? "p": [* ep1-block],                ; visible-text layer: blocks of the visible text (absent without the layer)
+}
+ep1-entry = [char-offset: uint, prop: ep1-prop]       ; canonical character offset, expected predicate
+ep1-prop = &(low: 0, high: 1)          ; LOW: the model's first choice; HIGH: outside its top-k
+ep1-block = [start: uint, end: uint, digest64: tstr]  ; sentence-like block of canonical text, SHA-256/64 hex
+
+ep1-header = {
+  "model": tstr,                       ; repository id @ revision
+  "weights_digest": hex64,             ; SHA-256 over the checkpoint files as distributed
+  "tokenizer_digest": hex64,           ; SHA-256 of the serialized tokenizer
+  "canon": tstr,                       ; canonicalization id: "ep1-canon/v4:..." (reference), "ep1-canon/v3:..."
+  "context": "bos+text",               ; verification context: start token + canonical text, no prompt
+  "k": uint,                           ; HIGH holds iff rank >= k (0-based); reference k = 1
+  "interval": uint,                    ; checkpoint density 1/interval
+  "tol_u": uint,                       ; tolerance without a calibration table, micro-units (0 = exact process)
+  "min_entries": uint,
+  "indet_pm": uint,                    ; share of indeterminate checkpoints that makes the verdict INDETERMINATE, per-mille
+  "text_digest": hex64,                ; SHA-256 of the canonical text
+  "engine": tstr,
+  "extra": { * tstr => any },
+  "tol_space": "prob" / "logit",       ; logit: margins are log-probability ratios
+  "cal_u": { * config-class => uint }, ; calibration table: tolerance per numeric-precision class, micro-units
+  "components": { * tstr => hex64 },   ; measured model components (weights, tokenizer, chat_template, ...)
+  "env": { * tstr => any },            ; sealing environment (determinism envelope)
+  "selection": "interval" / "content", ; content: checkpoints chosen by a PRF of the preceding tokens
+  "wm_context": uint,                  ; content selection: preceding token ids the PRF reads
+  "salt": hex32,                       ; salt of the public commitment
+  ? "wm_gate_pm": uint,                ; confidence gate, per-mille: checkpoints only where the verifier's first
+                                       ; choice has probability below it (absent = no gate; records keep their bytes)
+  ? "plain": tstr,                     ; visible-text layer: "ep1-plain/v1:..." (both keys absent without the layer)
+  ? "plain_digest": hex64,             ; SHA-256 of the visible text
+}
+; Visible text (plain.py). Sealer: the canonical text rendered as Markdown (CommonMark + GFM tables and
+; strikethrough, raw HTML as text): one line per paragraph, heading, list item, table row, line of code; image alt
+; texts not visible. Verifier: the candidate taken literally, never rendered. Both then: canonical form v4; per line
+; one marker at its start removed (bullets - * + U+2022 U+25E6 U+25AA U+2023 U+25CF U+00B7, an ordinal of 1-9
+; digits with "." or ")", a task box "[ ]"/"[x]"/"[X]" or U+2610-U+2612; each followed by spaces or tabs); runs of
+; whitespace one space; empty lines dropped; lines joined by one space. Blocks: canonical v4 segmentation inside each
+; line, as code-point spans of the joined text. Digest equal -> VERIFIED_TEXT: the visible text is the sealed one;
+; formatting (markup, line breaks, list numbering) is not covered, the model layer is not evaluated on it.
+config-class = "fp32" / "fp16" / "bf16" / tstr
+hex64 = tstr .regexp "[0-9a-f]{64}"
+hex32 = tstr .regexp "[0-9a-f]{32}"
+
+; ------------------------------------------------------------------ the log token (custody or verifier copy)
+; "ep1." || base64url-nopad(CBOR(ep1-token-envelope))
+ep1-token-envelope = {
+  "v": 1,
+  "doc": tstr,                         ; document id
+  "n": bstr .size 12,                  ; ChaCha20-Poly1305 nonce
+  "ct": bstr,                          ; ciphertext of CBOR(ep1-record); AAD = CBOR({"v": 1, "doc": doc})
+}
+; Keys (HKDF-SHA256, no salt): K_bits = HKDF(K, "ep1/bits"); K_doc = HKDF(K, "ep1/doc|" doc);
+; K_log = HKDF(K_doc, "ep1/log"); K_ver = HKDF(K_doc, "ep1/verifier|" verifier-id); K_wm = HKDF(K, "ep1/wm")
+; Content selection: d = HMAC-SHA256(K_wm, "ep1/wm|" || context token ids as uint32 big-endian);
+; checkpoint iff uint32be(d[0..4]) mod interval == 0; predicate = d[4] & 1 (0 LOW, 1 HIGH)
+
+; ------------------------------------------------------------------ record delivered by public key (COSE-HPKE)
+; COSE-HPKE integrated encryption (draft-ietf-cose-hpke-27; code points are the draft's suggestions, not IANA):
+; the issuer encrypts CBOR(ep1-record) to one verifier's X25519 public key; no secret is shared with the verifier.
+ep1-delivered-record = #6.16([                   ; COSE_Encrypt0
+  protected: bstr .cbor ep1-delivered-protected,
+  unprotected: { -4 => bstr .size 32 },          ; "ek": the HPKE encapsulated key (raw X25519)
+  ciphertext: bstr,                              ; HPKE SealBase(pk_verifier, info = h'', aad, CBOR(ep1-record))
+])
+ep1-delivered-protected = {
+  1 => 42 / 41,                                  ; alg: HPKE-4 (X25519, HKDF-SHA256, ChaCha20-Poly1305) / HPKE-3 (AES-128-GCM)
+  3 => "application/ep1-record+cbor",            ; content type
+  15 => { 2 => tstr },                           ; CWT claims: sub = document id (authenticated with the record)
+}
+; aad = CBOR(["Encrypt0", protected, h'']) (RFC 9052 Enc_structure)
+; verifier key: COSE_Key { 1 (kty) => 1 (OKP), -1 (crv) => 4 (X25519), -2 (x) => bstr, ? -4 (d) => bstr }
+
+; ------------------------------------------------------------------ generation statement (logged)
+; COSE Hash Envelope (RFC 9995): COSE_Sign1 whose payload is SHA-256(CBOR(ep1-commitment))
+ep1-commitment = {
+  "v": 1,
+  "doc": tstr,
+  "rec": bstr .size 32,                ; SHA-256 of the record plaintext (CBOR(ep1-record))
+  "txt": bstr .size 32,                ; SHA-256(salt || SHA-256(canonical text))
+  "canon": tstr,
+  "wts": bstr .size 32,
+  "tok": bstr .size 32,
+}
+ep1-generation-protected = {
+  1 => -19,                            ; alg: Ed25519 (RFC 9864)
+  4 => bstr,                           ; kid: SHA-256(raw public key)[0..16]
+  15 => { 1 => tstr, 2 => tstr, 6 => int },   ; CWT claims (RFC 9597): iss, sub = doc id, iat
+  16 => "application/ep1-generation-statement+cose",   ; typ (RFC 9596)
+  258 => -16,                          ; payload-hash-alg: SHA-256
+  259 => "application/ep1-commitment+cbor",            ; preimage-content-type
+}
+
+; ------------------------------------------------------------------ verification statement (issued by a verifier)
+; COSE_Sign1 (payload = CBOR(ep1-verification)) or Hash Envelope over it (258/259) for public registration
+ep1-verification = {
+  "v": 1,
+  "verdict": "VERIFIED" / "VERIFIED_TEXT" / "MODIFIED" / "INDETERMINATE" / "NOT_VERIFIABLE",
+  "doc": tstr,
+  "cand": bstr .size 32,               ; SHA-256 of the canonical candidate text (content hash)
+  "gen": bstr .size 32 / null,         ; SHA-256 of the generation statement's logged form
+  "counts": [matched: uint, divergent: uint, indeterminate: uint, entries: uint],
+  "ranges": {
+    "changed": [* [uint, uint]],       ; candidate blocks absent from the sealed text
+    "deleted": [* uint],               ; candidate offsets where sealed blocks went missing
+    "divergent": [* [uint, uint]],     ; ranges of diverging checkpoints
+  },
+  "wts": bstr, "tok": bstr,
+  "dec": { "class": tstr, "dtype": tstr, "space": tstr, "tol_u": uint, "canon": tstr, "calibrated": bool / null },
+  "nonce": tstr,
+  "engine": tstr,
+}
+; protected header as ep1-generation-protected, with typ "application/ep1-verification-statement+cose",
+; CWT iss = verifier id, sub = doc id; 258/259 present only for the envelope form
+
+; ------------------------------------------------------------------ detection statement (record-free mode)
+ep1-detection = {
+  "v": 1,
+  "detected": bool,
+  "alpha_exp": uint,                   ; detected iff P(X >= matched) <= 10^-alpha_exp, X ~ Binomial(checkpoints, 1/2)
+  "counts": [matched: uint, checkpoints: uint, excluded: uint, tokens: uint],
+  "technique": tstr,                   ; "ep1-wm/k<k>-i<interval>-c<context>"
+  "cand": bstr .size 32,
+  "wts": bstr .size 32, "tok": bstr .size 32,
+  "engine": tstr,
+}
+
+; ------------------------------------------------------------------ transparency (local log / SCITT)
+; Entry: the Signed Statement with an empty unprotected header. RFC 9162 SHA-256 Merkle tree.
+; Receipt: RFC 9942 Receipt_For_Inclusion, vds 1 (RFC9162_SHA256), detached payload = tree root.
+
+; ------------------------------------------------------------------ evidence package (`entropy evidence`)
+; One file a third party checks without any secret: the disclosed text, the statements about it, their receipts,
+; the public keys they verify under, RFC 3161 tokens over the statements' logged forms, and a provenance note.
+; The record is never inside: the statements speak about it in digests.
+ep1-pack = {
+  "v": "ep1-pack/v1",
+  "doc": tstr,                         ; document id (same as the statements' CWT sub)
+  "token": tstr,                       ; custody token, so a key holder can re-verify from scratch ("" if withheld)
+  "st": { * part => bstr },            ; signed statements (COSE_Sign1)
+  "rc": { * part => bstr },            ; transparency-log receipts (RFC 9942)
+  "ts": { * part => bstr },            ; RFC 3161 TimeStampToken over SHA-256 of the statement's logged form
+  "keys": { * ("issuer" / "verifier" / "detector" / "log") => bstr .size 32 },   ; raw Ed25519 public keys
+  "note": tstr,                        ; one line on how the text was obtained
+  ? "text": tstr,                      ; the text this package is about (absent when only digests are disclosed)
+}
+part = "gen" / "ver" / "det"

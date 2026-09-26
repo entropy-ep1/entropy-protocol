@@ -1,0 +1,42 @@
+18:12:44 part 8; code 73eee0d50e518249
+18:12:44 START tests_73eee0d50e518249 (swap used 3591.38M)
+18:17:25 END tests_73eee0d50e518249 rc=0
+18:17:25 START js_vectors_73eee0d50e518249 (swap used 3407.38M)
+18:17:25 END js_vectors_73eee0d50e518249 rc=0
+18:17:25 START gsm_Qwen_Qwen2.5-1.5B-Instruct_plain (swap used 3407.38M)
+18:25:30 END gsm_Qwen_Qwen2.5-1.5B-Instruct_plain rc=0
+18:25:30 START gsm_Qwen_Qwen2.5-1.5B-Instruct_quality (swap used 3446.88M)
+18:36:52 END gsm_Qwen_Qwen2.5-1.5B-Instruct_quality rc=0
+18:36:52 START gsm_Qwen_Qwen2.5-1.5B-Instruct_strong (swap used 3172.06M)
+18:49:12 END gsm_Qwen_Qwen2.5-1.5B-Instruct_strong rc=0
+18:49:12 START q_Qwen_Qwen2.5-1.5B-Instruct_gsm_quality (swap used 3997.12M)
+18:49:16 END q_Qwen_Qwen2.5-1.5B-Instruct_gsm_quality rc=0
+18:49:16 START q_Qwen_Qwen2.5-1.5B-Instruct_gsm_strong (swap used 3997.12M)
+18:49:19 END q_Qwen_Qwen2.5-1.5B-Instruct_gsm_strong rc=0
+18:49:19 START gsm_Qwen_Qwen2.5-1.5B-Instruct_quality_b4 (swap used 3997.12M)
+18:54:33 END gsm_Qwen_Qwen2.5-1.5B-Instruct_quality_b4 rc=0
+18:54:33 START batchinv_Qwen_Qwen2.5-1.5B-Instruct_gsm_quality (swap used 3733.12M)
+18:54:33 END batchinv_Qwen_Qwen2.5-1.5B-Instruct_gsm_quality rc=0
+18:54:33 START prose_Qwen_Qwen2.5-1.5B-Instruct_plain (swap used 3733.12M)
+18:57:33 END prose_Qwen_Qwen2.5-1.5B-Instruct_plain rc=0
+18:57:33 START prose_Qwen_Qwen2.5-1.5B-Instruct_quality (swap used 3685.12M)
+19:01:58 END prose_Qwen_Qwen2.5-1.5B-Instruct_quality rc=0
+19:01:58 START prose_Qwen_Qwen2.5-1.5B-Instruct_strong (swap used 3621.06M)
+19:06:19 END prose_Qwen_Qwen2.5-1.5B-Instruct_strong rc=0
+19:06:19 START detp_Qwen_Qwen2.5-1.5B-Instruct_quality (swap used 3565.06M)
+19:06:51 END detp_Qwen_Qwen2.5-1.5B-Instruct_quality rc=0
+19:06:51 START detp_Qwen_Qwen2.5-1.5B-Instruct_strong (swap used 3565.06M)
+19:07:23 END detp_Qwen_Qwen2.5-1.5B-Instruct_strong rc=0
+19:07:23 START qp_Qwen_Qwen2.5-1.5B-Instruct_quality (swap used 3557.06M)
+19:07:37 END qp_Qwen_Qwen2.5-1.5B-Instruct_quality rc=0
+19:07:37 START qd_Qwen_Qwen2.5-1.5B-Instruct_quality (swap used 3557.06M)
+19:07:42 END qd_Qwen_Qwen2.5-1.5B-Instruct_quality rc=0
+19:07:42 START qp_Qwen_Qwen2.5-1.5B-Instruct_strong (swap used 3557.06M)
+19:07:55 END qp_Qwen_Qwen2.5-1.5B-Instruct_strong rc=0
+19:07:55 START qd_Qwen_Qwen2.5-1.5B-Instruct_strong (swap used 3541.06M)
+19:08:00 END qd_Qwen_Qwen2.5-1.5B-Instruct_strong rc=0
+19:08:00 START det_Qwen_Qwen2.5-1.5B-Instruct_gsm_quality (swap used 3541.06M)
+19:08:49 END det_Qwen_Qwen2.5-1.5B-Instruct_gsm_quality rc=0
+19:08:49 START det_Qwen_Qwen2.5-1.5B-Instruct_gsm_strong (swap used 3541.06M)
+19:09:42 END det_Qwen_Qwen2.5-1.5B-Instruct_gsm_strong rc=0
+19:09:42 BRIDGE PART 8 DONE

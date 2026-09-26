@@ -1,0 +1,7 @@
+08:29:00 code 2d2866250eda5363
+08:29:00 START cal_qwen_qwen2.5-1.5b-instruct
+09:00:41 END cal_qwen_qwen2.5-1.5b-instruct rc=0
+09:00:41 START gates_qwen_qwen2.5-1.5b-instruct
+10:08:09 END gates_qwen_qwen2.5-1.5b-instruct rc=0
+10:08:09 START g4_qwen_qwen2.5-1.5b-instruct
+10:08:24 part 1 stopped before G4 (reordered: bench/run_bridge_part2.sh)

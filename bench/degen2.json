@@ -1,0 +1,82 @@
+[
+ {
+  "key": 0,
+  "trap_decisions": {
+   "nl4": null,
+   "nn4": 1,
+   "nl_nn": 1
+  },
+  "tail_blank_%": 50.0,
+  "mean_entries": 17.4
+ },
+ {
+  "key": 1,
+  "trap_decisions": {
+   "nl4": null,
+   "nn4": null,
+   "nl_nn": null
+  },
+  "tail_blank_%": 50.0,
+  "mean_entries": 16.9
+ },
+ {
+  "key": 2,
+  "trap_decisions": {
+   "nl4": null,
+   "nn4": 1,
+   "nl_nn": null
+  },
+  "tail_blank_%": 50.0,
+  "mean_entries": 15.8
+ },
+ {
+  "key": 3,
+  "trap_decisions": {
+   "nl4": 0,
+   "nn4": null,
+   "nl_nn": 0
+  },
+  "tail_blank_%": 6.2,
+  "mean_entries": 30.4
+ },
+ {
+  "key": 4,
+  "trap_decisions": {
+   "nl4": null,
+   "nn4": null,
+   "nl_nn": null
+  },
+  "tail_blank_%": 6.2,
+  "mean_entries": 37
+ },
+ {
+  "key": 5,
+  "trap_decisions": {
+   "nl4": 1,
+   "nn4": null,
+   "nl_nn": null
+  },
+  "tail_blank_%": 0.0,
+  "mean_entries": 34.6
+ },
+ {
+  "key": 6,
+  "trap_decisions": {
+   "nl4": 0,
+   "nn4": null,
+   "nl_nn": null
+  },
+  "tail_blank_%": 56.2,
+  "mean_entries": 14.9
+ },
+ {
+  "key": 7,
+  "trap_decisions": {
+   "nl4": null,
+   "nn4": null,
+   "nl_nn": 0
+  },
+  "tail_blank_%": 50.0,
+  "mean_entries": 20.7
+ }
+]

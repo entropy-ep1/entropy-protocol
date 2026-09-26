@@ -1,0 +1,26 @@
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files:  25%|██▌       | 1/4 [01:22<04:06, 82.31s/it]Fetching 4 files: 100%|██████████| 4/4 [01:22<00:00, 20.58s/it]
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:05,  1.92s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:03<00:03,  1.84s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:05<00:01,  1.99s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:07<00:00,  1.96s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:07<00:00,  1.94s/it]
+Fetching 14 files:   0%|          | 0/14 [00:00<?, ?it/s]Fetching 14 files: 100%|██████████| 14/14 [00:00<00:00, 147.07it/s]
+13:26:49 Qwen/Qwen2.5-7B-Instruct sealed A_cal: 64 of 64 to do, batch 32
+Traceback (most recent call last):
+  File "/home/ubuntu/ep/bench/gpu/seal_corpus.py", line 175, in <module>
+    main()
+  File "/home/ubuntu/ep/bench/gpu/seal_corpus.py", line 147, in main
+    res = seal_batch(backend, inputs, [masters[k] for k in keys], params,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/ep/src/entropy_protocol/batch.py", line 421, in seal_batch
+    outs = generate_batch(backend, prompts, [decider(params, m, d) for m, d in zip(masters, doc_ids)],
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/pytorch/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/ep/src/entropy_protocol/batch.py", line 186, in generate_batch
+    samp = nucleus_batch(scores, temperature, top_p, g)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/ep/src/entropy_protocol/batch.py", line 61, in nucleus_batch
+    return si.gather(1, _multinomial(sp, g)[:, None]).squeeze(1)
+                        ^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/ep/src/entropy_protocol/batch.py", line 50, in _multinomial
+    return torch.multinomial(p.cpu(), 1, generator=g).squeeze(1).to(p.device)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected a 'cpu' device type for generator but found 'cuda'

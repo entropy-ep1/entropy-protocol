@@ -1,0 +1,106 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+  10/200  207s
+  20/200  392s
+  30/200  574s
+  40/200  773s
+  50/200  1050s
+  60/200  1307s
+  70/200  1527s
+  80/200  1742s
+  90/200  1934s
+  100/200  2142s
+  110/200  2388s
+  120/200  2621s
+  130/200  2835s
+  140/200  3000s
+  150/200  3193s
+  160/200  3385s
+  170/200  3609s
+  180/200  3808s
+  190/200  3997s
+  200/200  4184s
+{
+ "model": "gpt2-medium",
+ "device": "cpu",
+ "dtype": "float32",
+ "n": 200,
+ "minutes": 69.7,
+ "code": "23ecd270bd10bef6",
+ "operating_point": {
+  "interval": 5,
+  "k": 1,
+  "window": 3,
+  "tol_space": "logit",
+  "cal": {
+   "fp32": 0.000275,
+   "fp16": 0.736359
+  }
+ },
+ "texts_below_8_entries": 25,
+ "mean_tokens": 178.7,
+ "mean_entries": 13.4,
+ "survival_%": 38.51,
+ "mean_seal_s": 15.97,
+ "mean_verify_s": 0.403,
+ "G1": {
+  "decisive_texts": 200,
+  "indeterminate_texts": 0,
+  "same_VERIFIED_%": 100.0,
+  "same_wrong_MODIFIED": 0,
+  "crlf_VERIFIED_%": 100.0,
+  "crlf_wrong_MODIFIED": 0,
+  "email_VERIFIED_%": 100.0,
+  "email_wrong_MODIFIED": 0,
+  "nbsp_VERIFIED_%": 100.0,
+  "nbsp_wrong_MODIFIED": 0,
+  "combined_VERIFIED_%": 100.0,
+  "combined_wrong_MODIFIED": 0,
+  "bom_nnbsp_VERIFIED_%": 100.0,
+  "bom_nnbsp_wrong_MODIFIED": 0
+ },
+ "G2": {
+  "checks": 399,
+  "false_VERIFIED": 0,
+  "MODIFIED_%": 100.0
+ },
+ "G3": {
+  "replace_word": {
+   "n": 200,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 76.5
+  },
+  "one_char": {
+   "n": 200,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 8.0
+  },
+  "delete_sentence": {
+   "n": 185,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 97.84,
+   "model_layer_alone_%": 98.38
+  },
+  "insert_sentence": {
+   "n": 185,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 94.59
+  },
+  "truncate_tail": {
+   "n": 200,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 95.0
+  }
+ },
+ "G6_privacy_leaks": 0
+}
+written <repo>/bench/results/gates_gpt2-medium_cpu_float32_N200_final.json

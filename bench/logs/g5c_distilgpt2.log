@@ -1,0 +1,137 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+  10/100  232s
+  20/100  445s
+  30/100  643s
+  40/100  843s
+  50/100  1062s
+  60/100  1274s
+  70/100  1484s
+  80/100  1735s
+  90/100  2017s
+  100/100  2278s
+{
+ "model": "distilgpt2",
+ "oracle": "gpt2-medium",
+ "n": 100,
+ "usable_for_ppl": 51,
+ "space": "logit",
+ "min_new_tokens": 120,
+ "max_new_tokens": 160,
+ "cal": {
+  "fp32": 0.00024,
+  "fp16": 0.338013
+ },
+ "minutes": 38.0,
+ "variants": {
+  "unsealed": {
+   "median_ppl_prefix": 16.83,
+   "mean_distinct2": 0.871,
+   "mean_rep3": 0.113,
+   "mean_words": 61.4
+  },
+  "i5_k10_w40": {
+   "median_ppl_prefix": 24.23,
+   "median_ppl_ratio": 1.661,
+   "geo_mean_ppl_ratio": 1.832,
+   "ci95": [
+    1.506,
+    2.242
+   ],
+   "share_ratio_gt_1.25": 0.706,
+   "mean_distinct2": 0.929,
+   "mean_rep3": 0.059,
+   "mean_words": 114.3,
+   "mean_entries": 16.4,
+   "entries_per_100_tokens": 10.47,
+   "survival_%": 54.0,
+   "texts_below_8_entries_%": 2.0
+  },
+  "i5_k3_w5": {
+   "median_ppl_prefix": 20.01,
+   "median_ppl_ratio": 1.333,
+   "geo_mean_ppl_ratio": 1.398,
+   "ci95": [
+    1.169,
+    1.714
+   ],
+   "share_ratio_gt_1.25": 0.569,
+   "mean_distinct2": 0.906,
+   "mean_rep3": 0.077,
+   "mean_words": 119.5,
+   "mean_entries": 16.4,
+   "entries_per_100_tokens": 10.37,
+   "survival_%": 53.5,
+   "texts_below_8_entries_%": 0.0
+  },
+  "i10_k10_w40": {
+   "median_ppl_prefix": 22.07,
+   "median_ppl_ratio": 1.727,
+   "geo_mean_ppl_ratio": 1.642,
+   "ci95": [
+    1.344,
+    2.008
+   ],
+   "share_ratio_gt_1.25": 0.647,
+   "mean_distinct2": 0.893,
+   "mean_rep3": 0.089,
+   "mean_words": 103.5,
+   "mean_entries": 8.1,
+   "entries_per_100_tokens": 5.11,
+   "survival_%": 54.4,
+   "texts_below_8_entries_%": 40.0
+  },
+  "i10_k3_w5": {
+   "median_ppl_prefix": 17.59,
+   "median_ppl_ratio": 1.065,
+   "geo_mean_ppl_ratio": 1.24,
+   "ci95": [
+    1.016,
+    1.518
+   ],
+   "share_ratio_gt_1.25": 0.431,
+   "mean_distinct2": 0.893,
+   "mean_rep3": 0.088,
+   "mean_words": 109.0,
+   "mean_entries": 7.8,
+   "entries_per_100_tokens": 4.96,
+   "survival_%": 52.8,
+   "texts_below_8_entries_%": 41.0
+  },
+  "i5_k10_w40_L75": {
+   "median_ppl_prefix": 20.12,
+   "median_ppl_ratio": 1.587,
+   "geo_mean_ppl_ratio": 1.537,
+   "ci95": [
+    1.26,
+    1.862
+   ],
+   "share_ratio_gt_1.25": 0.627,
+   "mean_distinct2": 0.898,
+   "mean_rep3": 0.087,
+   "mean_words": 100.5,
+   "mean_entries": 15.1,
+   "entries_per_100_tokens": 9.52,
+   "survival_%": 49.1,
+   "texts_below_8_entries_%": 12.0
+  },
+  "i5_k3_w5_L75": {
+   "median_ppl_prefix": 17.25,
+   "median_ppl_ratio": 1.301,
+   "geo_mean_ppl_ratio": 1.32,
+   "ci95": [
+    1.05,
+    1.64
+   ],
+   "share_ratio_gt_1.25": 0.529,
+   "mean_distinct2": 0.876,
+   "mean_rep3": 0.102,
+   "mean_words": 93.9,
+   "mean_entries": 14.3,
+   "entries_per_100_tokens": 9.04,
+   "survival_%": 46.6,
+   "texts_below_8_entries_%": 17.0
+  }
+ }
+}
+written <repo>/bench/results/g5b_distilgpt2_logit_min120_N100.json

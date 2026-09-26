@@ -1,0 +1,15 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:04<00:04,  4.04s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:07<00:00,  3.49s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:07<00:00,  3.57s/it]
+20:28:56 microsoft/Phi-3-mini-4k-instruct plain prose_plain: 40 of 40 to do, batch 4
+20:30:28   batch 1: 4 texts, 1356 tokens, 92.3s (15 tok/s)
+20:32:00   batch 2: 4 texts, 1545 tokens, 92.0s (17 tok/s)
+20:33:16   batch 3: 4 texts, 1282 tokens, 75.6s (17 tok/s)
+20:34:26   batch 4: 4 texts, 1240 tokens, 70.3s (18 tok/s)
+20:35:38   batch 5: 4 texts, 1256 tokens, 71.9s (17 tok/s)
+20:36:35   batch 6: 4 texts, 1058 tokens, 57.2s (18 tok/s)
+20:37:54   batch 7: 4 texts, 1398 tokens, 78.7s (18 tok/s)
+20:39:11   batch 8: 4 texts, 1389 tokens, 77.1s (18 tok/s)
+20:40:22   batch 9: 4 texts, 1251 tokens, 71.0s (18 tok/s)
+20:41:37   batch 10: 4 texts, 1356 tokens, 75.0s (18 tok/s)
+20:41:37 done: 13131 tokens in 761s

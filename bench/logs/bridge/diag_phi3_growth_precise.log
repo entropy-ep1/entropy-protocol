@@ -1,0 +1,33 @@
+=== E1: Phi-3 sealed GSM8K, the same batch 8 times (same shapes), precise phys_footprint
+[23:45:21] start                                    live   0.00 GB | driver   0.00 GB | footprint   0.27 GB
+[23:45:33] model loaded (slack 1073741824)          live   7.12 GB | driver   8.01 GB | footprint   9.14 GB
+[23:47:31] batch 1: 934 tok, 118s, 10 shapes, 34ca1a1220fd1451 live   7.12 GB | driver   8.27 GB | footprint  11.65 GB
+[23:49:13] batch 2: 934 tok, 102s, 10 shapes, 34ca1a1220fd1451 live   7.12 GB | driver   8.27 GB | footprint  11.71 GB
+[23:50:40] model call 1000 (2, 1)                   live   7.54 GB | driver   8.31 GB | footprint  11.69 GB
+[23:50:54] batch 3: 934 tok, 101s, 10 shapes, 34ca1a1220fd1451 live   7.12 GB | driver   8.27 GB | footprint  11.70 GB
+[23:52:36] batch 4: 934 tok, 102s, 10 shapes, 34ca1a1220fd1451 live   7.12 GB | driver   8.27 GB | footprint  11.71 GB
+[23:54:17] batch 5: 934 tok, 101s, 10 shapes, 34ca1a1220fd1451 live   7.12 GB | driver   8.27 GB | footprint  11.73 GB
+[23:55:27] model call 2000 (6, 1)                   live   7.82 GB | driver   9.17 GB | footprint  12.61 GB
+[23:55:58] batch 6: 934 tok, 101s, 10 shapes, 34ca1a1220fd1451 live   7.12 GB | driver   8.17 GB | footprint  12.59 GB
+[23:57:42] batch 7: 934 tok, 103s, 10 shapes, 34ca1a1220fd1451 live   7.12 GB | driver   8.27 GB | footprint  11.77 GB
+[23:59:23] batch 8: 934 tok, 102s, 10 shapes, 34ca1a1220fd1451 live   7.12 GB | driver   8.27 GB | footprint  11.78 GB
+[23:59:23] done: 2897 calls, 10 distinct input shapes, 830s live   7.12 GB | driver   8.27 GB | footprint  11.78 GB
+[23:59:23] after empty_cache                        live   7.12 GB | driver   8.27 GB | footprint  11.78 GB
+=== E2: Phi-3 sealed GSM8K, 10 different batches, precise phys_footprint
+[23:59:29] start                                    live   0.00 GB | driver   0.00 GB | footprint   0.27 GB
+[23:59:39] model loaded (slack 1073741824)          live   7.12 GB | driver   8.01 GB | footprint   9.13 GB
+[00:01:39] batch 1: 934 tok, 119s, 10 shapes, 34ca1a1220fd1451 live   7.12 GB | driver   8.27 GB | footprint  11.63 GB
+[00:04:09] batch 2: 1182 tok, 151s, 13 shapes, 5671711113e82293 live   7.12 GB | driver   8.27 GB | footprint  12.68 GB
+[00:06:00] model call 1000 (6, 1)                   live   8.14 GB | driver  10.20 GB | footprint  13.70 GB
+[00:06:32] batch 3: 1241 tok, 143s, 16 shapes, f155e227c488f80a live   7.12 GB | driver   8.30 GB | footprint  12.12 GB
+[00:08:32] batch 4: 1047 tok, 120s, 20 shapes, 918edc88bd30c2af live   7.12 GB | driver   8.24 GB | footprint  12.41 GB
+[00:10:28] batch 5: 1009 tok, 115s, 21 shapes, 575e57e75480b7eb live   7.12 GB | driver   8.26 GB | footprint  12.67 GB
+[00:11:45] model call 2000 (4, 1)                   live   7.81 GB | driver   9.15 GB | footprint  13.66 GB
+[00:12:12] batch 6: 909 tok, 105s, 25 shapes, 0a20024b857db7b3 live   7.12 GB | driver   8.27 GB | footprint  12.92 GB
+[00:14:05] batch 7: 996 tok, 113s, 27 shapes, de96d46290076e3d live   7.12 GB | driver   8.22 GB | footprint  13.04 GB
+[00:16:02] batch 8: 1028 tok, 116s, 29 shapes, b769540b09e43694 live   7.12 GB | driver   8.17 GB | footprint  13.71 GB
+[00:17:16] model call 3000 (6, 1)                   live   7.79 GB | driver   9.13 GB | footprint  14.18 GB
+[00:17:46] batch 9: 890 tok, 105s, 31 shapes, a937903686e30ed7 live   7.12 GB | driver   8.24 GB | footprint  13.36 GB
+[00:20:04] batch 10: 1105 tok, 137s, 32 shapes, 4b011d7635b562d7 live   7.12 GB | driver   8.26 GB | footprint  13.43 GB
+[00:20:04] done: 3459 calls, 32 distinct input shapes, 1224s live   7.12 GB | driver   8.26 GB | footprint  13.43 GB
+[00:20:04] after empty_cache                        live   7.12 GB | driver   8.26 GB | footprint  13.43 GB

@@ -1,0 +1,30 @@
+== data
+07:50:31 tiny data written to $TMPDIR/smoke_b/data
+== sealed
+07:50:50 done: 960 tokens in 12s
+== plain
+07:50:59 done: 960 tokens in 6s
+== kgw
+07:51:06 done: 480 tokens in 3s
+== synthid
+07:51:18 done: 480 tokens in 9s
+== verify
+07:51:26 {'corpus': 'c4_sealed', 'config': 'fp32_default_b8', 'texts': 8, 'decisive': 8, 'same_VERIFIED_%': 100.0, 'same_wrong_MODIFIED': 0, 'same_INDETERMINATE': 0, 'calibrated': ['None'], 'transport_wrong_MODIFIED': {'crlf': 0, 'email': 0, 'nbsp': 0, 'combined': 0, 'bom_nnbsp': 0, 'c2pa_manifest': 0, 'invisible': 0}, 'transport_VERIFIED_%': {'crlf': 100.0, 'email': 100.0, 'nbsp': 100.0, 'combined': 100.0, 'bom_nnbsp': 100.0, 'c2pa_manifest': 100.0, 'invisible': 100.0}, 'unrelated_false_VERIFIED': 0, 'edits': {'replace_word': {'n': 8, 'noop_skipped': 0, 'MODIFIED_%': 100.0, 'false_VERIFIED': 0, 'localized_%': 100.0, 'model_layer_%': 87.5}, 'one_char': {'n': 8, 'noop_skipped': 0, 'MODIFIED_%': 100.0, 'false_VERIFIED': 0, 'localized_%': 100.0, 'model_layer_%': 50.0}, 'delete_sentence': {'n': 7, 'noop_skipped': 0, 'MODIFIED_%': 100.0, 'false_VERIFIED': 0, 'localized_%': 100.0, 'model_layer_%': 100.0}, 'insert_sentence': {'n': 7, 'noop_skipped': 0, 'MODIFIED_%': 100.0, 'false_VERIFIED': 0, 'localized_%': 100.0, 'model_layer_%': 100.0}, 'truncate_tail': {'n': 8, 'noop_skipped': 0, 'MODIFIED_%': 100.0, 'false_VERIFIED': 0, 'localized_%': 100.0, 'model_layer_%': 100.0}}, 'noop_edits_not_VERIFIED': 0, 'privacy_leaks': 0}
+== attacks
+07:51:30 attacks for 8 texts -> $TMPDIR/smoke_b/runs/distilgpt2/attacks_c4_sealed.jsonl
+== detect
+07:54:04 written detect_smoke.summary.json
+== calib
+07:54:18 arm64_float32_default_b1: 8 texts, 960 positions -> c4_sealed__arm64_float32_default_b1.npz
+07:54:22 arm64_float32_default_b4: 8 texts, 960 positions -> c4_sealed__arm64_float32_default_b4.npz
+07:54:27 table {'fp32': 0.0}; kept share 1.000; flips at kept positions: 0 -> $TMPDIR/smoke_b/runs/distilgpt2/calibration_c4_sealed.json
+== baselines
+07:54:34 written baseline_kgw_smoke.summary.json
+07:54:37 written baseline_synthid_smoke.summary.json
+== quality
+07:54:46 {'pairs': 5, 'oracle': 'gpt2-medium', 'geo_mean_ppl_ratio': 2.402, 'ci95': [1.019, 6.6], 'median_ppl_a': 19.99, 'median_ppl_b': 17.01, 'conditioned_on_prompt': True}
+07:54:50 {'c4_sealed': {'distinct_1': 0.6409, 'distinct_2': 0.9128, 'distinct_3': 0.9582, 'self_bleu4': 0.0001}, 'c4_plain': {'distinct_1': 0.523, 'distinct_2': 0.6352, 'distinct_3': 0.663, 'self_bleu4': 0.0001}}
+== speed
+07:55:01   verify batch 1: {'tok_s': 2414.4, 'seconds_per_text': 0.0828, 'peak_gb': None}
+07:55:03   verify batch 32: {'tok_s': 3272.4, 'seconds_per_text': 0.0611, 'peak_gb': None}
+SMOKE OK

@@ -1,0 +1,11 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+13:04:37 Qwen/Qwen2.5-0.5B-Instruct sealed gsm_gate90_guard90: 100 of 100 to do, batch 16
+13:06:01   batch 1: 16 texts, 4845 tokens, 84.2s (58 tok/s)
+13:07:10   batch 2: 16 texts, 4805 tokens, 69.1s (70 tok/s)
+13:08:22   batch 3: 16 texts, 4763 tokens, 72.0s (66 tok/s)
+13:09:40   batch 4: 16 texts, 4406 tokens, 77.9s (57 tok/s)
+13:11:26   batch 5: 16 texts, 4850 tokens, 106.1s (46 tok/s)
+13:13:11   batch 6: 16 texts, 4853 tokens, 105.3s (46 tok/s)
+13:14:27   batch 7: 4 texts, 1077 tokens, 75.7s (14 tok/s)
+13:14:27 done: 29599 tokens in 590s

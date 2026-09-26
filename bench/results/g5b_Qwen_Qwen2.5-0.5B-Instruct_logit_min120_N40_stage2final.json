@@ -1,0 +1,1963 @@
+{
+ "summary": {
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "code": "aa2dddc19298c239",
+  "variant_params": {
+   "c5_free_hm0": {
+    "interval": 5,
+    "k": 1,
+    "high_window": 3,
+    "selection": "content",
+    "align": "free",
+    "high_margin": 0.0
+   },
+   "c5_record_strength": {
+    "interval": 5,
+    "k": 1,
+    "high_window": 3,
+    "selection": "content",
+    "align": "free",
+    "high_margin": null
+   }
+  },
+  "oracle": "gpt2-medium",
+  "n": 40,
+  "usable_for_ppl": 40,
+  "space": "logit",
+  "min_new_tokens": 120,
+  "max_new_tokens": 160,
+  "cal": {
+   "fp32": 0.000898,
+   "fp16": 0.79434
+  },
+  "minutes": 35.3,
+  "variants": {
+   "unsealed": {
+    "median_ppl_prefix": 9.22,
+    "mean_distinct2": 0.825,
+    "mean_rep3": 0.109,
+    "mean_words": 126.9
+   },
+   "c5_free_hm0": {
+    "self_geo_mean_ppl_ratio": 1.263,
+    "self_pairs": 40,
+    "median_ppl_prefix": 11.02,
+    "median_ppl_ratio": 1.182,
+    "geo_mean_ppl_ratio": 1.155,
+    "ci95": [
+     1.024,
+     1.309
+    ],
+    "share_ratio_gt_1.25": 0.45,
+    "mean_distinct2": 0.862,
+    "mean_rep3": 0.072,
+    "mean_words": 130.8,
+    "mean_entries": 14.6,
+    "entries_per_100_tokens": 9.18,
+    "survival_%": 47.0,
+    "texts_below_8_entries_%": 2.5
+   },
+   "c5_record_strength": {
+    "self_geo_mean_ppl_ratio": 1.339,
+    "self_pairs": 40,
+    "median_ppl_prefix": 12.93,
+    "median_ppl_ratio": 1.403,
+    "geo_mean_ppl_ratio": 1.327,
+    "ci95": [
+     1.179,
+     1.502
+    ],
+    "share_ratio_gt_1.25": 0.6,
+    "mean_distinct2": 0.86,
+    "mean_rep3": 0.067,
+    "mean_words": 129.2,
+    "mean_entries": 21.2,
+    "entries_per_100_tokens": 13.26,
+    "survival_%": 68.4,
+    "texts_below_8_entries_%": 0.0
+   }
+  }
+ },
+ "rows": [
+  {
+   "i": 0,
+   "prompt": "The city council met on Tuesday to discuss",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 33,
+     "entries": 14,
+     "dropped_margin": 18,
+     "dropped_rank": 1
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 28,
+     "entries": 19,
+     "dropped_margin": 9,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 159,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 7.2798640693855985,
+     "self_ppl_prefix": 3.0295679372341144,
+     "distinct2": 0.6016260162601627,
+     "rep3": 0.3278688524590164,
+     "words": 130,
+     "text": " the need for more parking spaces. The city councilor who suggested parking lots can be made of plastic or glass. The city councilor who suggested parking lots can be made of concrete can be made of glass. The city councilor who suggested parking lots can be made of wood can be made of plastic. The city councilor who suggested parking lots can be made of metal can be made of glass. How many different combinations of materials can be used for parking lots?\nAnswer Choices: (A) 5 (B) 6 (C) 7 (D) 8 "
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 7.666021426183727,
+     "self_ppl_prefix": 4.079014022430449,
+     "distinct2": 0.7073170731707317,
+     "rep3": 0.19672131147540983,
+     "words": 127,
+     "text": " the need for more parking spaces. The city councilor who suggested the parking issue asked, \"Is there more than one way to find out how much people need more parking spaces?\"\n\na) Yes, there are multiple methods.\nb) No, there is only one way to find out.\nc) No, there are no ways to find out.\nd) No way to find out is available.\ne) No way to find out is feasible.\nf) Yes, there are no ways to find out.\ng) No way to find out is not available.\nh) Yes, there are many ways.\ni) No way to find out is pos"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 15.577538844340356,
+     "self_ppl_prefix": 4.116236047611129,
+     "distinct2": 0.8373983739837398,
+     "rep3": 0.06557377049180324,
+     "words": 124,
+     "text": " the need for more parking spaces. The city councilor who suggested the first idea got 100 votes, while the councilors who suggested different ideas had a ratio of 3:4. If the councilors had a total of 500 votes and the mayor decided not to reward councilors who suggested different ideas because it's not their idea, how many more votes did the mayor have than the first councilor?\nTo find out how many more votes the mayor had than the first councilor, we need to follow a step-by-step approach to "
+    }
+   }
+  },
+  {
+   "i": 1,
+   "prompt": "In the early morning, the research team",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 32,
+     "entries": 18,
+     "dropped_margin": 13,
+     "dropped_rank": 1
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 23,
+     "dropped_margin": 7,
+     "dropped_rank": 1
+    }
+   },
+   "prefix_tokens": 160,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 7.604947763682282,
+     "self_ppl_prefix": 2.737373534407624,
+     "distinct2": 0.847457627118644,
+     "rep3": 0.07692307692307687,
+     "words": 119,
+     "text": " used a drone to survey the terrain in the Poyang Lake region. They identified four data points (A, B, C, D) as landmarks, with coordinates (2, 3) for landmark A, (4, 6) for landmark B, (6, 9) for landmark C, and (8, 12) for landmark D. If the drone flies directly from landmark A to landmark C and back, what is the total distance flown by the drone?\n\nTo determine the total distance flown by the drone, we first need to calculate the distance from landmark A to landmark C and then from landmark C "
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 10.207546194485476,
+     "self_ppl_prefix": 3.555280800786905,
+     "distinct2": 0.7457627118644068,
+     "rep3": 0.1367521367521367,
+     "words": 120,
+     "text": " used a drone to survey the terrain in the Pampanga region of the Philippines. They took 50 photographs and found 35% of them were taken at the same time. What is the total number of photographs taken during their survey? To determine the total number of photographs taken by the research team during their survey, let’s break down the problem step-by-step:\n\n1. The research team took a total of 50 photographs.\n   \n2. They found that 35% of the photographs were taken at the same time. \n\n3. To find "
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 14.66188451023438,
+     "self_ppl_prefix": 6.276252319348971,
+     "distinct2": 0.940677966101695,
+     "rep3": 0.0,
+     "words": 119,
+     "text": " used a drone to survey the terrain in the Pampanga region of the Philippines. They took 80 photos during their survey.\n\na. How many photos were they able to identify as being from the Pampanga region?\n\nb. The team then used this information to estimate the total area of the region. The survey revealed that 40% were in Luzan, and 20% were in Leyte, with 20% in the town of Zamboanga del Sur. Calculate how many photos from each of these areas were identified.\n\nc. How many more photos were identifi"
+    }
+   }
+  },
+  {
+   "i": 2,
+   "prompt": "A new study on sleep and memory suggests that",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 35,
+     "entries": 16,
+     "dropped_margin": 18,
+     "dropped_rank": 1
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 34,
+     "entries": 25,
+     "dropped_margin": 9,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 156,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 5.8781180907916015,
+     "self_ppl_prefix": 4.108431613915331,
+     "distinct2": 0.8823529411764706,
+     "rep3": 0.0444444444444444,
+     "words": 138,
+     "text": " the quality of sleep directly impacts your ability to retain memory and concentration.\n\nThe study, which appeared in the journal Sleep, looked at 10, 000 people from the U.S. to see how much sleep they got and how well they performed on memory and concentration tests.\n\nThe researchers found that people who got less than 7 hours of sleep a night had a 15% lower chance of remembering a word they had learned earlier in the day compared to those who slept eight hours.\n\nThe study also found that peo"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 10.620021003045697,
+     "self_ppl_prefix": 7.214055698963749,
+     "distinct2": 0.9558823529411765,
+     "rep3": 0.022222222222222254,
+     "words": 137,
+     "text": " the quality of sleep directly impacts your ability to retain memory and concentration.\n\nSleep deprivation can affect cognitive function in several ways, including memory consolidation, which is the process of reorganizing and organizing memories to create a new, integrated representation of the information. A study published this week, in the journal PLOS One, found that sleep deprivation affects memory consolidation by impairments in the formation of new memories, even though sleep itself is n"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 8.77902983030519,
+     "self_ppl_prefix": 5.238210182446733,
+     "distinct2": 0.8897058823529411,
+     "rep3": 0.06666666666666665,
+     "words": 140,
+     "text": " the quality of sleep directly impacts your memory. This could be good news for those who need better sleep. But it also could be a concern for those who are worried about their memory.\nA new study published in the British Journal of Sports Medicine suggests that the quality of sleep directly impacts your ability to remember and retain information. Specifically, the study found that people who sleep poorly, particularly during sleep time, have a diminished ability to remember and retain informat"
+    }
+   }
+  },
+  {
+   "i": 3,
+   "prompt": "The history of the printing press shows",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 26,
+     "entries": 10,
+     "dropped_margin": 13,
+     "dropped_rank": 0
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 29,
+     "entries": 22,
+     "dropped_margin": 6,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 158,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 11.395553637591819,
+     "self_ppl_prefix": 3.2151782522979966,
+     "distinct2": 0.9782608695652174,
+     "rep3": 0.0,
+     "words": 93,
+     "text": " that printing has played a significant role in the development of history and civilization. The following are some major events in the history of printing: ① Gutenberg invented the printing press in 1440, marking the beginning of modern printing; ② The first book printed in China is recorded in the \"Qianlong Emperor's Records\" in 1760; ③ The world's first paper currency, the \"Jiaozi,\" was issued in 1906. Which of the following statements are correct? \nA. ①②③\nB. ①②\nC. ①③\nD. ②③\nAnswer:\nB\n\nThe Min"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 11.89355023202035,
+     "self_ppl_prefix": 5.1357563770617,
+     "distinct2": 0.8695652173913043,
+     "rep3": 0.07692307692307687,
+     "words": 103,
+     "text": " that printing has played a significant role in the development of history and civilization. The following are some major achievements of the printing press: ① The emergence of information exchange, making the dissemination of information more rapid ③ The dissemination of news, making people's understanding of events more thorough ④ The spread of culture, making people's understanding of events more profound ⑤ The development and improvement of human civilization ⑥ The creation of new types of w"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 13.873420871209609,
+     "self_ppl_prefix": 8.457639244181184,
+     "distinct2": 0.9565217391304348,
+     "rep3": 0.0,
+     "words": 129,
+     "text": " that printing has played a significant role in the development of history and civilization. The following are some major achievements of the printing press: ① The emergence of information exchange, making the dissemination of culture and knowledge more extensive than previously.  \n② The appearance of the concept of 'people' and 'subject', marking the beginning to understand society and the human world.  \n③ The rise of the modern printing industry, leading to the spread and dissemination of West"
+    }
+   }
+  },
+  {
+   "i": 4,
+   "prompt": "When the engineers opened the server room,",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 42,
+     "entries": 26,
+     "dropped_margin": 13,
+     "dropped_rank": 3
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 23,
+     "dropped_margin": 8,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 165,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 20.741117485648317,
+     "self_ppl_prefix": 6.210533104734469,
+     "distinct2": 0.9326923076923077,
+     "rep3": 0.01941747572815533,
+     "words": 105,
+     "text": " they found that the server had become _______.\ncertainly\nadmirable\nregular\nawful\nAnswer:\nawful\n\nWhen you meet someone new, you should smile at them, and after a while, you can ask them to ______.\noffer a smile\nput on a smile\nsmile back\nsmile at you\nAnswer:\nsmile at you\n\nWhich of the following sentences has the correct pronunciation of the highlighted characters?\nA. Can't we go to the gym now? (kāng)\nB. What's your name? (jiào)\nC. I want to go to the bookshop (pèi)\nD. What are you going to do? ("
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 19.53751631260466,
+     "self_ppl_prefix": 4.989518350563539,
+     "distinct2": 0.9519230769230769,
+     "rep3": 0.0,
+     "words": 127,
+     "text": " they found that the server had become a ______.\nA. Anomaly\nB.\nC. Eccentricity\nD. Impurity D. Impurity\n\nTo determine the appropriate word to fill in the blank, let's analyze the context and the meaning of each option:\n\nA. Anomaly - This typically refers to a deviation from the norm or standard. While an anomaly can occur, it usually means something unusual or concerning, which does not fit the context of a server room.\n\nC. Eccentric - This word means being different from others, especially in a "
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 12.499193111068587,
+     "self_ppl_prefix": 6.119724746236631,
+     "distinct2": 0.8365384615384616,
+     "rep3": 0.029126213592232997,
+     "words": 139,
+     "text": " they found that the server had become a mess. They were unable to make it work and the server room had been left as a mess. When they tried to restart the server, it started over. The reason is that the server had been left for a long time without being turned on. The software had been corrupted, and no software would be able access the hard drive. When they put the server back on, it started working again.\n\nWhat is the main point of this story?\n\na) The server was damaged\nb) The software was da"
+    }
+   }
+  },
+  {
+   "i": 5,
+   "prompt": "Our quarterly report highlights three trends:",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 36,
+     "entries": 17,
+     "dropped_margin": 18,
+     "dropped_rank": 1
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 29,
+     "entries": 16,
+     "dropped_margin": 13,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 158,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 6.9225638566216166,
+     "self_ppl_prefix": 4.670007616890988,
+     "distinct2": 0.696,
+     "rep3": 0.217741935483871,
+     "words": 133,
+     "text": " the most recent survey data shows that there has been a decrease in the number of service interruptions, the average time between service interruptions has decreased and the average number of service interruptions has decreased as well.\nThe service interruption rate decreased by 10% over the last quarter, compared to the previous quarter, and the average time between service interruptions decreased by 12% over the last quarter, compared to the previous quarter. Furthermore, the average number o"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 8.245825869374235,
+     "self_ppl_prefix": 4.50290164586801,
+     "distinct2": 0.936,
+     "rep3": 0.024193548387096753,
+     "words": 126,
+     "text": " the most recent survey data from the National Center for Education Statistics (NCES), the U.S.\n  Census Bureau, and the Department of Education.\n  The 21st century is characterized by the rapid growth of the global economy and the increasing demand for skilled workers. In the United States, there is an urgent need to continue to develop programs that prepare students for the demands of a rapidly changing world.\n    As a nation, we must address the educational needs of all students, regardless o"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 14.1858440270812,
+     "self_ppl_prefix": 8.504854850653626,
+     "distinct2": 0.936,
+     "rep3": 0.016129032258064502,
+     "words": 140,
+     "text": " the most recent survey data; a full report with the results; a statistical summary table; a list of the most common forms of corporate debt; a table of how companies have structured their assets; and a report on the impact of capital market conditions on capital market pricing.\nThese reports are based on information from the most recent survey of companies. The latest survey data is from the Financial Institutions Survey of Companies conducted by the Center for Capital Market Studies at the Uni"
+    }
+   }
+  },
+  {
+   "i": 6,
+   "prompt": "The old lighthouse keeper wrote in his journal",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 29,
+     "entries": 23,
+     "dropped_margin": 6,
+     "dropped_rank": 0
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 30,
+     "entries": 24,
+     "dropped_margin": 6,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 146,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 8.594336987648518,
+     "self_ppl_prefix": 1.809027182812961,
+     "distinct2": 0.7479674796747967,
+     "rep3": 0.139344262295082,
+     "words": 124,
+     "text": ": \"I am 4 times older than my daughter. In 3 years, I will be twice as old as my daughter.\" How old is the daughter? To solve the problem, let's define the variables and set up the equations based on the information given.\n\nLet \\( x \\) be the current age of the daughter. Then, the current age of the old lighthouse keeper is \\( 4x \\) because he is 4 times older than his daughter.\n\nIn 3 years, the daughter's age will be \\( x + 3 \\) and the old lighthouse keeper's age will be \\( 4x + 3 \\). Accordin"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 11.25750269880196,
+     "self_ppl_prefix": 2.8377728397342437,
+     "distinct2": 0.7967479674796748,
+     "rep3": 0.0901639344262295,
+     "words": 130,
+     "text": ": \"I am 4 times older as my grandson. After 10 years, I'll be 3 times as young as my grandson. If my grandson is currently 5 years old, what will be the sum of our ages 10 years from now?\" Let's start by defining the current ages of the person and their grandson. Let the current age of the person be \\( x \\) and the current age and age of the grandson be \\( y \\). We are given that the current age of the grandson is 5 years, so \\( y = x = 5 \\). The person is currently 5 years old, and we need to f"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 11.223999994048336,
+     "self_ppl_prefix": 2.784538592853546,
+     "distinct2": 0.7967479674796748,
+     "rep3": 0.0901639344262295,
+     "words": 131,
+     "text": ": \"I am 4 times older as my grandson. After 10 years, I'll be 3 times as young as my grandson. If my grandson is currently 5 years old, what will be the sum of our ages 10 years from now?\" Let's start by defining the current ages of the person and their grandson. Let the current age of the person be \\( x \\) and the current age and age of the grandson be \\( y \\). We are given that the current age of the grandson is 5 years, so \\( y = x = 5 \\). The person is currently 5 years old, and we need to f"
+    }
+   }
+  },
+  {
+   "i": 7,
+   "prompt": "Scientists have long debated whether",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 29,
+     "entries": 12,
+     "dropped_margin": 17,
+     "dropped_rank": 0
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 30,
+     "entries": 16,
+     "dropped_margin": 14,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 158,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 9.117462112902777,
+     "self_ppl_prefix": 6.727572339874477,
+     "distinct2": 0.928,
+     "rep3": 0.048387096774193505,
+     "words": 126,
+     "text": " the natural world has a soul. But the answer is apparently yes. Now, researchers have used a form of artificial intelligence to create an AI that can recognize a variety of emotions. Their research is published in the journal Cell.\nThe study's lead author, graduate student Zulfa Al-Rasoul, and her co-authors report that they were able to train the AI to recognize emotions like happiness, anger, sadness, and fear, as well as to recognize emotions in images.\n\"Emotions are a fundamental aspect of "
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 10.700566849891938,
+     "self_ppl_prefix": 5.632102636192006,
+     "distinct2": 0.96,
+     "rep3": 0.0,
+     "words": 139,
+     "text": " the natural world has a soul. But the soul, as we understand it, is a complex entity that arises in the course of our existence, giving meaning to our lives. The question of whether the soul exists is a philosophical one, not a scientific one. It’s a question that is worth exploring deeply. The answer to this question, however, is not always clear-cut.\nThe Bible says that God created human beings in His image, but this is not enough. We must be careful not to interpret this statement too litera"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 10.17536794658968,
+     "self_ppl_prefix": 6.158352825547533,
+     "distinct2": 0.952,
+     "rep3": 0.0,
+     "words": 138,
+     "text": " the natural world has a soul. But the soul, as we understand it, is a complex entity that arises in the course of our existence, giving meaning to our lives. The question of whether the soul exists is a philosophical one, not a scientific one. It has been a hot topic among philosophers since ancient times, and it has always been debated. As we know, Plato proposed the idea of soul in his philosophical works, and even during the Renaissance, the soul was also proposed by scientists. However, it "
+    }
+   }
+  },
+  {
+   "i": 8,
+   "prompt": "The recipe calls for fresh tomatoes and",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 26,
+     "entries": 19,
+     "dropped_margin": 7,
+     "dropped_rank": 0
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 35,
+     "entries": 23,
+     "dropped_margin": 12,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 157,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 6.720466461707274,
+     "self_ppl_prefix": 2.6316549903879096,
+     "distinct2": 0.7131147540983607,
+     "rep3": 0.18181818181818177,
+     "words": 132,
+     "text": " a spice blend. If the spice blend is a mixture of cayenne pepper and cumin, and the recipe requires 4 cups of fresh tomatoes, how many cups of spice blend does the recipe call for?\nTo determine how many cups of spice blend the recipe calls for, we need to understand the ratio of the spice blend to the fresh tomatoes. The problem states that the spice blend is a mixture of cayenne pepper and cumin. However, the problem does not specify the quantities of cayenne pepper and cumin relative to each "
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 11.03354239150839,
+     "self_ppl_prefix": 2.878583069836573,
+     "distinct2": 0.7868852459016393,
+     "rep3": 0.09090909090909094,
+     "words": 123,
+     "text": " a spice blend. If the spice blend is 60% of the total ingredients, how much of the total ingredients does the spice blend represent? Express your answer as a decimal rounded to the nearest hundredth.\n\nTo determine the amount of the spice blend that represents 60% when the total ingredients amount is expressed as a decimal, we can follow the following steps:\n\n1. Identify the total number of ingredients. Let's assume we have a total of \\( T \\) units of the ingredients.\n2. The amount of the spice "
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 11.498215382749201,
+     "self_ppl_prefix": 3.7607201628155105,
+     "distinct2": 0.7459016393442623,
+     "rep3": 0.12396694214876036,
+     "words": 129,
+     "text": " a spice blend. If the spice blend is 60% fresh tomatoes, how much spice blend is needed if 150 grams of fresh tomatoes are used?\n\nTo determine how many grams of the fresh tomato spice need to be used, we need to follow a step-by-step approach:\n\n1, **Identify the total weight of the mixture**: Since the recipe calls for fresh tomatoes and a spice blend, we need the total weight of the mixture. We are given that 150 grams of fresh tomatoes are used.\n\n2, **Determine the proportion of fresh tomatoe"
+    }
+   }
+  },
+  {
+   "i": 9,
+   "prompt": "Before the election, voters in the district",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 34,
+     "entries": 23,
+     "dropped_margin": 10,
+     "dropped_rank": 1
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 30,
+     "entries": 21,
+     "dropped_margin": 8,
+     "dropped_rank": 1
+    }
+   },
+   "prefix_tokens": 154,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 10.097535495681507,
+     "self_ppl_prefix": 6.122397590968955,
+     "distinct2": 0.8407079646017699,
+     "rep3": 0.0625,
+     "words": 114,
+     "text": " of A propose a bill that would change the state’s constitutional ban on same-sex marriage. The bill has been approved by the two-thirds majority threshold of a majority of the state’s voters and the governor has signed it into law.\nThe bill would change the state’s constitutional ban on same-sex marriage to permit same-sex couples to marry. The bill’s sponsors are Sarah Lewis and Robert W. F. Stovall. The bill was introduced in the 104th legislature. According to the official record of the 104t"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 9.599432364695753,
+     "self_ppl_prefix": 4.1313722641813415,
+     "distinct2": 0.7345132743362832,
+     "rep3": 0.1517857142857143,
+     "words": 130,
+     "text": " of A propose a new bill, and they want to know what percentage of the population voted for the bill. After the election, it turns out that 75% of the voters in district X supported the bill. If the total number of voters in the district of X is 1000, what is the percentage of the population that voted for the bill?\n\nTo determine the percentage of a population that voted for the bill, let's follow these steps:\n\n1. Calculate the number that voted for the bill in the entire district of X.\n2. Calcu"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 8.987149956388302,
+     "self_ppl_prefix": 4.147767462210808,
+     "distinct2": 0.6902654867256637,
+     "rep3": 0.1696428571428571,
+     "words": 133,
+     "text": " of A propose a new bill, and they want to know what percentage of the population voted for the bill. After the election, it turns out that 75% of the voters in district X supported the bill. If the total number of voters in the district of X is 1000, what is the percentage of the population that voted for the bill?\n\nTo determine the percentage of a population that voted for the bill, let's follow these steps:\n\n1. Determine the number of voters who supported the bill in the entire district. We k"
+    }
+   }
+  },
+  {
+   "i": 10,
+   "prompt": "Dear customer, we are writing to inform you that",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 33,
+     "entries": 12,
+     "dropped_margin": 20,
+     "dropped_rank": 1
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 33,
+     "entries": 24,
+     "dropped_margin": 9,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 154,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 4.551855704626142,
+     "self_ppl_prefix": 3.079629033083321,
+     "distinct2": 0.6761904761904762,
+     "rep3": 0.29807692307692313,
+     "words": 106,
+     "text": " there has been a change in the operating hours for our store located in the 1st Floor of the Kewaard Mall. The store will now open at 10:00 AM and will close at 06:00 PM. This change will be effective for a one-month period. We apologize for any inconvenience this may cause and appreciate your understanding. Regards, [Your Name] [Your Contact Information] Customer Service Team Thank you for your cooperation. [Your Name] [Your Contact Information] [Your Name] [Your Contact Information] [Your Nam"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 6.5069978744395955,
+     "self_ppl_prefix": 4.382499792000486,
+     "distinct2": 0.7428571428571429,
+     "rep3": 0.1923076923076923,
+     "words": 128,
+     "text": " there has been a change in our operating policies. Our service and prices have been recalculated and the following changes are reflected:\n\n1. The number of available service hours per day has been increased from 24 hours to 36 hours.\n2. The price of the service per call has been increased by 20%.\n3.\nThe price of the service per hour has been increased by 10%.\n4.\nThe price of the service per call has been increased for a 5% discount for calls made during peak hours (9 AM to 4 PM).\n5.\nThe price o"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 7.507868721733855,
+     "self_ppl_prefix": 4.255300646336188,
+     "distinct2": 0.7904761904761904,
+     "rep3": 0.13461538461538458,
+     "words": 149,
+     "text": " there has been a change in our operating policies. Our service and prices have been recalculated for the past few years and we have decided to change our pricing to reflect the current market rates. We apologize for any inconvenience caused and thank our customers for their understanding.\nWhat is the reason for the change in operating policies and pricing? The reason for the change in the operating policies and pricing is that our service and prices for the past few years have not been consiste"
+    }
+   }
+  },
+  {
+   "i": 11,
+   "prompt": "The court found that the defendant",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 27,
+     "entries": 14,
+     "dropped_margin": 12,
+     "dropped_rank": 1
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 32,
+     "entries": 24,
+     "dropped_margin": 8,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 160,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 15.771972948986987,
+     "self_ppl_prefix": 7.6528621692442895,
+     "distinct2": 0.9507042253521126,
+     "rep3": 0.007092198581560294,
+     "words": 146,
+     "text": " had acted in bad faith in a number of ways. First, he had paid a windfall on the defendants’ behalf which was not properly accounted for and the windfall was not returned. Secondly, he had provided false evidence of the defendants’ loss and had failed to disclose to the court his conflict of interest and his personal relationship with the defendants. Finally, he had deliberately misled the court about the full extent of his losses and misallocated them.\nIt was held that these were grounds for a"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 11.31984682013803,
+     "self_ppl_prefix": 7.797280913585464,
+     "distinct2": 0.8732394366197183,
+     "rep3": 0.021276595744680882,
+     "words": 150,
+     "text": " had acted in bad faith in a number of ways. He repeatedly made phone calls to a large number of phone numbers throughout the duration of his investigation, without a reasonable basis to contact the telephone number owners and without informing them of the purpose of his investigation or of what the telephone numbers belonged to. He also repeated his phone calls to certain phone numbers many times and without giving any explanation. He also called certain telephone numbers without the permission"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 13.88492313693115,
+     "self_ppl_prefix": 7.099782663078617,
+     "distinct2": 0.8380281690140845,
+     "rep3": 0.08510638297872342,
+     "words": 143,
+     "text": " had acted in bad faith in a number of ways. He repeatedly made phone calls to victims and solicitors to extort money from them. The court also found that the defendant had taken steps which caused significant harm to the victims, including the closure of several schools and businesses. The court ruled that the defendant was responsible for the harm caused to victims and ordered him to pay damages. He has appealed this ruling, claiming that he acted in self-defense and not to seek a judgment.\nTh"
+    }
+   }
+  },
+  {
+   "i": 12,
+   "prompt": "In a statement released on Monday, the ministry",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 30,
+     "entries": 10,
+     "dropped_margin": 20,
+     "dropped_rank": 0
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 29,
+     "entries": 20,
+     "dropped_margin": 8,
+     "dropped_rank": 1
+    }
+   },
+   "prefix_tokens": 145,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 11.397471938699567,
+     "self_ppl_prefix": 6.670980352663833,
+     "distinct2": 0.8823529411764706,
+     "rep3": 0.03389830508474578,
+     "words": 120,
+     "text": " said the drugs have been used to treat 252 people in the UK, with 126 of those having been taken as a form of palliative care, in 28 different countries.\nThe new drugs, the first to be approved for use in the UK, are being used in the United States, Australia and New Zealand.\nThe medicines are part of the National Health Service, which has the authority to prescribe them, and are currently being used by 40,000 doctors in the UK.\nThe 2021 figures represent the first use of the drugs in the UK si"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 8.414976113226853,
+     "self_ppl_prefix": 5.851199152737352,
+     "distinct2": 0.9159663865546218,
+     "rep3": 0.03389830508474578,
+     "words": 135,
+     "text": " said the drugs have been tested on over 40,000 people and a total of 322 were found to be safe for use in the treatment of the disease.\nHowever, there were no cases of people dying as a direct result of taking the drug.\nThe Ministry said the number of patients who took the drug was much smaller than the number of people who died from the disease.\nThe drugs are used to treat serious illnesses like Alzheimer's disease.\nThe minister, who is also the minister for health, said: \"We must not be compl"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 10.874042495282408,
+     "self_ppl_prefix": 6.8016130396232155,
+     "distinct2": 0.8823529411764706,
+     "rep3": 0.05084745762711862,
+     "words": 136,
+     "text": " said the drugs have been distributed to a total of 160 communities across the country. It added that this was the largest number of communities the government has distributed such drugs to in the history of the country. The health minister added that the number of drugs distributed is the largest in the history of the country.\nThe World Health Organization (WHO) has said the drugs are not yet universally available in Africa, as only 23 countries have them. The WHO said the distribution of these"
+    }
+   }
+  },
+  {
+   "i": 13,
+   "prompt": "The insurance policy covers damage caused by",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 21,
+     "entries": 9,
+     "dropped_margin": 12,
+     "dropped_rank": 0
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 27,
+     "entries": 22,
+     "dropped_margin": 5,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 149,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 5.294624908416431,
+     "self_ppl_prefix": 3.252066150841311,
+     "distinct2": 0.6120689655172413,
+     "rep3": 0.27826086956521734,
+     "words": 128,
+     "text": " a large tree falling on a property. The policy states that the insurance company will compensate for a maximum of $500 in damages for a single tree falling. If a tree falls on a property and damages are not compensated for, the insurance company will pay $0. If the tree is a large one, the company will compensate for $250 in damages. If the tree is small, the company will compensate for $100 in damages. If the tree is a small one, the company will compensate for $50 in damages. If the tree is a"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 6.377100869421031,
+     "self_ppl_prefix": 3.595452173326947,
+     "distinct2": 0.6120689655172413,
+     "rep3": 0.31304347826086953,
+     "words": 126,
+     "text": " a large tree falling on a property. The policy states that the insurance company will compensate for a maximum of $500,000 in damages. The tree fell on the property when it was being repaired, and it was not the owner's fault for the tree. The property was damaged by the tree. What is the maximum amount that the insurance company will compensate for the damage?\n\nTo determine the maximum amount that the insurance company will compensate for the damage, we need to consider the policy's coverage l"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 13.437558962313632,
+     "self_ppl_prefix": 4.808578114522745,
+     "distinct2": 0.8362068965517241,
+     "rep3": 0.11304347826086958,
+     "words": 117,
+     "text": " a large tree falling on a property. The policy states that the insurance company will compensate for a maximum of $500,000 in damages. The tree fell on an area of 100 square meters, and the insurance company determined that each centimeter of the tree's spread would increase the claim amount to $200. How much is one square centimeter of the tree's spread worth in dollars? To determine the value of each square centimeter of the tree's spread in dollars, we can break down a few key points from th"
+    }
+   }
+  },
+  {
+   "i": 14,
+   "prompt": "Students returning to campus this fall will notice",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 12,
+     "dropped_margin": 18,
+     "dropped_rank": 1
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 33,
+     "entries": 22,
+     "dropped_margin": 11,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 149,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 6.166672494946457,
+     "self_ppl_prefix": 3.6727370553505505,
+     "distinct2": 0.853448275862069,
+     "rep3": 0.04347826086956519,
+     "words": 117,
+     "text": " that some of the classrooms will have two windows instead of one. These classrooms are: General Education (G), Mathematics (M), Science (S), and Social Studies (S). They will be split up into three groups, A, B, and C, with each group having two windows. The students in each group will be assigned to one of these classrooms.\n\nIn a given year, there were 200 students in the General Education classroom. 40% of them are male, and 20% of the male students are enrolled in Social Studies. In the Math"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 9.797545648936246,
+     "self_ppl_prefix": 5.180277357252488,
+     "distinct2": 0.8879310344827587,
+     "rep3": 0.04347826086956519,
+     "words": 140,
+     "text": " that some of the classrooms in the Learning Commons are temporarily closed to the public. The reason for this is that there is a risk of transmission of the coronavirus, which is the cause of the flu. What are the consequences of this risk? There are several consequences of the risk of transmission of the virus, which can include:\n\n1) Health concerns: Students and faculty may be concerned about their health, as they may be exposed to the virus through direct contact with infected individuals, a"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 12.511417248173043,
+     "self_ppl_prefix": 6.180893681329603,
+     "distinct2": 0.8879310344827587,
+     "rep3": 0.04347826086956519,
+     "words": 141,
+     "text": " that some of the classrooms in the Learning Commons are temporarily closed to the public. The reason for this is that there is a limited capacity for classrooms to be used in the new school year. The only way to get the classrooms back online is to use the computers in the library. The library is the only other place in campus that does not have its own computer.\n\nThe library is located in the building which is:\n- A. the Science building\n- B. a second building on campus\n- C. a third building on"
+    }
+   }
+  },
+  {
+   "i": 15,
+   "prompt": "The museum's new exhibition explores",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 18,
+     "entries": 7,
+     "dropped_margin": 11,
+     "dropped_rank": 0
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 27,
+     "entries": 19,
+     "dropped_margin": 7,
+     "dropped_rank": 1
+    }
+   },
+   "prefix_tokens": 155,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 10.164435004833978,
+     "self_ppl_prefix": 4.767759157444666,
+     "distinct2": 0.907563025210084,
+     "rep3": 0.016949152542372836,
+     "words": 120,
+     "text": " the long-standing mystery of the ancient Indian civilization of Indus Valley Civilization. The presentation delves into the origins of Indus Valley Civilization, the most important period in the region’s history, and how it managed to survive in this remote part of the world for over 4000 years.\nThe Indus Valley Civilization had a profound impact on the region and beyond. The ancient cities of Mohenjo-Daro, Harappa and Chauhama are known for their architecture, sculpture, and pottery. The artif"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 9.402408155308468,
+     "self_ppl_prefix": 5.484806323604745,
+     "distinct2": 0.907563025210084,
+     "rep3": 0.025423728813559365,
+     "words": 125,
+     "text": " the long-standing mystery of the ancient city of Herculaneum.\nThe city, which existed from about 900 B.C. until it was buried under layers of ash from an eruption of Mount Vesuvius, was discovered by an amateur archaeologist in 1796. The city was buried by the volcanic ash for more than two years, so archaeologists believe the city was completely hidden from the world until it was rediscovered in the 19th century.\nThat discovery was a complete surprise to the scientific community, which had tho"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 17.44978064121828,
+     "self_ppl_prefix": 6.094790803234441,
+     "distinct2": 0.8151260504201681,
+     "rep3": 0.10169491525423724,
+     "words": 130,
+     "text": " the long-standing mystery of the ancient artifacts inside it, from the time of the founding of the city by the Phoenicians to the modern-day. The display aims to provide visitors with a deeper understanding of the city's past, its people, and its place in history, as well as its current relevance.\n\nDoes it follow that \"The display was planned to educate people about the artifacts.\"?\nPick from:\ni. yes\nii.\nno\ni. yes\n\nThis statement does indeed imply a plan to educate people about the artifacts. T"
+    }
+   }
+  },
+  {
+   "i": 16,
+   "prompt": "According to the latest figures from the bureau,",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 38,
+     "entries": 17,
+     "dropped_margin": 17,
+     "dropped_rank": 4
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 32,
+     "entries": 22,
+     "dropped_margin": 9,
+     "dropped_rank": 1
+    }
+   },
+   "prefix_tokens": 153,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 6.4665036025930265,
+     "self_ppl_prefix": 2.0798169743406407,
+     "distinct2": 0.6869565217391305,
+     "rep3": 0.2192982456140351,
+     "words": 131,
+     "text": " the number of tourists visiting the city has grown by 18% in the past year, compared to last year. If the number of tourists last year was 3 million, what was the number of tourists this year?\nTo find the number of tourists this year, we need to calculate the growth factor for the number of tourists last year and apply it to this year's total.\n\nThe number of tourists last year was 3 million, and the number of tourists this year is 18% more than last year. This can be calculated by multiplying t"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 12.144272301579115,
+     "self_ppl_prefix": 3.6635070758702923,
+     "distinct2": 0.9043478260869565,
+     "rep3": 0.01754385964912286,
+     "words": 131,
+     "text": " the number of tourists visiting the city is expected to rise by 50% compared to last year, and the number of hotel rooms available will decrease to 70% of the previous year's capacity. If the city plans to host a cultural festival, it will require at least 20,000 square meters of space, and the cost of each square meter of space is $20,000. Calculate the minimum number and the maximum number of square meters required for the cultural festivals to be held, considering both the growth in tourists"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 12.082165643752347,
+     "self_ppl_prefix": 3.632465099463209,
+     "distinct2": 0.8608695652173913,
+     "rep3": 0.06140350877192979,
+     "words": 116,
+     "text": " the number of tourists visiting the city is expected to rise by 40% from last year's level. To maintain an average growth rate for the next six years, what should the city's tourism growth rate be? Let the growth rate of the city's tourism be \\( x \\) percent per year. If the current level of tourism is \\( 10 \\) (or \\( 1 \\) in decimal form), the growth rate \\( x \\) can be calculated using the formula for the future value of a growth rate compounded annually:\n\n\\[ 50 = (1.04)^6 \\times 10 \\]\n\nTo fi"
+    }
+   }
+  },
+  {
+   "i": 17,
+   "prompt": "The startup announced that it had raised",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 25,
+     "entries": 14,
+     "dropped_margin": 10,
+     "dropped_rank": 1
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 26,
+     "entries": 21,
+     "dropped_margin": 4,
+     "dropped_rank": 1
+    }
+   },
+   "prefix_tokens": 164,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 7.656981364708224,
+     "self_ppl_prefix": 5.253667308845553,
+     "distinct2": 0.7543859649122807,
+     "rep3": 0.18584070796460173,
+     "words": 123,
+     "text": " $1.4 million from a series A round, with the funding coming from KeyLever, a privately held venture capital firm focused on underappreciated startups. The funding round was led by Silicon Valley investment firm L1 Innovations and will be used to accelerate product development and ramp up operations.\nThe company announced that it had raised $1.4 million in a series A round led by KeyLever, a privately held venture capital firm focused on underappreciated startups. The funding was led by L1 Innov"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 15.045369947054567,
+     "self_ppl_prefix": 3.7018767366752034,
+     "distinct2": 0.8333333333333334,
+     "rep3": 0.09734513274336287,
+     "words": 133,
+     "text": " $1.4 million in Series A funding, and a company spokesman told the New York Times that the funds will be used to expand the company's product line.\nDoes this next sentence follow, given the preceding text?\nThe startup is a for-profit organization.\n\nOPTIONS:\n * yes.\n * no.\nYes, the sentence \"The startup is a for-profit organization\" does follow from the preceding text.\n\nThe text explicitly states that the startup has raised $1 million in Series A funding, which is typically considered the point "
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 16.18378691648609,
+     "self_ppl_prefix": 5.743022280258733,
+     "distinct2": 0.8508771929824561,
+     "rep3": 0.06194690265486724,
+     "words": 115,
+     "text": " $1.4 million in Series A funding, and a company spokesman explained that they plan to use the funds to \"support growth and expansion.\" \n\nWrite an appropriate headline for this announcement.\n\n1. **Question with a Twist**: What is the most accurate title for the announcement about the startup's Series A funding?\n2. **Option 2**: What is the best title for this announcement regarding the startup's investment in growth and expansion?\n   - A. \"Startup Funds Successfully Invest in New Venture\"\n   - B"
+    }
+   }
+  },
+  {
+   "i": 18,
+   "prompt": "Doctors recommend that patients with high blood pressure",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 27,
+     "entries": 12,
+     "dropped_margin": 15,
+     "dropped_rank": 0
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 27,
+     "entries": 18,
+     "dropped_margin": 8,
+     "dropped_rank": 1
+    }
+   },
+   "prefix_tokens": 161,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 6.7892957569659345,
+     "self_ppl_prefix": 3.3065396789748576,
+     "distinct2": 0.7603305785123967,
+     "rep3": 0.15833333333333333,
+     "words": 140,
+     "text": " should reduce their sodium intake. This statement is based on the following hypothesis: the effects of a reduction in sodium intake on blood pressure are significant. We can use a hypothesis test to evaluate the strength of the evidence supporting this statement. Which of the following steps is most appropriate in conducting the hypothesis test?\nA. First, find a sample of patients with high blood pressure, then calculate the mean sodium intake for each patient and the average reduction in sodiu"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 9.633408343782726,
+     "self_ppl_prefix": 4.4089292048724165,
+     "distinct2": 0.9008264462809917,
+     "rep3": 0.050000000000000044,
+     "words": 124,
+     "text": " should reduce their sodium intake. This statement is based on the following hypothesis: the effects of reducing sodium intake are beneficial to the health of the patient.\n\nWhich of the following, if true, would most weaken the argument?\n\nA. The study was funded by a pharmaceutical company that manufactures sodium-reduced food products.\n\nB. Patients with hypertension who have consumed a high-sodium diet are more likely to have high levels of blood pressure.\n\nC. The number and types of sodium-red"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 14.858341578170148,
+     "self_ppl_prefix": 5.051223322197749,
+     "distinct2": 0.8347107438016529,
+     "rep3": 0.08333333333333337,
+     "words": 122,
+     "text": " should reduce their sodium intake. This statement is based on the following hypothesis: the effects of reducing sodium intake are ________.\nA. beneficial\nB. harmful\nAnswer:\n\nA\n\nWhich type of government organization typically has the right to appoint judges?\nA. Judicial Review Court \nB. Legislative Council \nAnswer:\n\nJudicial Review\n\nA doctor is evaluating a patient's medical history to assess whether the patient has hypertension. Which of the following tests would be most relevant?\nA. Urinalysis"
+    }
+   }
+  },
+  {
+   "i": 19,
+   "prompt": "The train was delayed for two hours because",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 29,
+     "entries": 12,
+     "dropped_margin": 16,
+     "dropped_rank": 1
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 35,
+     "entries": 26,
+     "dropped_margin": 8,
+     "dropped_rank": 1
+    }
+   },
+   "prefix_tokens": 149,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 13.43702394442451,
+     "self_ppl_prefix": 3.646006676079119,
+     "distinct2": 0.8571428571428571,
+     "rep3": 0.07692307692307687,
+     "words": 123,
+     "text": " of the snow, ______ the train had been delayed for only one hour because of rain.\nA. because\nB. but\nC. so\nD. or\nAnswer: B\n\nIn the process of reducing the load on a transformer, which of the following is correct?\nA. Increasing the transformer's capacity\nB. Decreasing the transformer's capacity\nC. Increasing the transformer's turns ratio\nD. Decreasing the transformer's turns ratio\nAnswer: C\n\nAccording to the provisions of the \"Urban Gas Management Regulations\", which of the following statements i"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 32.444929097276386,
+     "self_ppl_prefix": 6.140095628871026,
+     "distinct2": 0.9523809523809523,
+     "rep3": 0.0,
+     "words": 130,
+     "text": " of the snow, ______ the train had been delayed for only one hour because of a leaky pipe. A. and B.\nAnswer:\n\nA\n\nThe connection point between the branch circuit and each branch of the main distribution box should be the main electrical device.\nA. Correct\nB. Incorrect\nAnswer:\n\nA\n\nAn accident occurred in the power supply system. After the investigation, it was found out that the company's production plant had a serious safety accident. According to the regulations of the \"People's Republic of Chin"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 16.073866242333303,
+     "self_ppl_prefix": 4.671030402004569,
+     "distinct2": 0.9047619047619048,
+     "rep3": 0.028846153846153855,
+     "words": 106,
+     "text": " of the snow, ______ the train had been delayed for only one hour because of traffic jams, the train would not be late any more.\nA. while\nB. because\nC.\nB. because\nD. when\nE.\nA. while\nF. because\nG. when\nH. since.\nAnswer: E\n\nIn a certain place, the number of houses with each type is represented by the following:\nType A: 3000 houses\nType B: 1000 houses\nType C: 50 houses\nType D: 150 houses.\nA certain survey was conducted to understand the types of houses in the area. According to the data, the total"
+    }
+   }
+  },
+  {
+   "i": 20,
+   "prompt": "Our team reviewed the contract and found",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 30,
+     "entries": 9,
+     "dropped_margin": 18,
+     "dropped_rank": 3
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 36,
+     "entries": 22,
+     "dropped_margin": 11,
+     "dropped_rank": 3
+    }
+   },
+   "prefix_tokens": 169,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 13.08548862471347,
+     "self_ppl_prefix": 4.422009364474994,
+     "distinct2": 0.8421052631578947,
+     "rep3": 0.11363636363636365,
+     "words": 135,
+     "text": " a few potential issues. What should we do next? \n\nA. Report the issues to the purchasing manager\nB. Take corrective action based on the review\nC. Implement the corrective action\nD. Issue a change order\nE. Submit a formal objection\n\nTo determine the next appropriate action, let's analyze each option step by step:\n\nA. Report the issues to the purchasing manager:\n- This is a good initial step to address the issues. It is the first step in the formal process of resolving issues within the organizat"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 12.311086435548003,
+     "self_ppl_prefix": 6.971736767641188,
+     "distinct2": 0.8646616541353384,
+     "rep3": 0.0757575757575758,
+     "words": 135,
+     "text": " a few potential issues. What should I do?\nA. I should try to discuss the issue with the person in a respectful and professional way. If they do not want me to talk to them, I should probably go to a different company. They may have an interest in working for a company like mine.\nB. I should talk to them about my concerns in person, as they may not understand how to handle my concerns in a respectful manner.\nAnswer:\n\nA\n\nWhat is the purpose of this passage?\nA. To give an example of a person's pri"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 17.58324917173689,
+     "self_ppl_prefix": 8.134004509553217,
+     "distinct2": 0.9398496240601504,
+     "rep3": 0.007575757575757569,
+     "words": 134,
+     "text": " a few potential issues. What should I do?\nA. I should try to discuss the issue with both parties involved and try negotiating a solution.\nI. t's best to avoid negotiating a solution as the outcome may not be in your favor.\nC. I should consider the issue and decide to use a different team to resolve the contract.\nD. I should contact your supervisor and ask for an extension of the contract.\n答案:\nA\n\nThe author thinks that people tend not to be good at math because __________.\nA. they are lazy and n"
+    }
+   }
+  },
+  {
+   "i": 21,
+   "prompt": "The mayor's office confirmed that the bridge",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 32,
+     "entries": 20,
+     "dropped_margin": 12,
+     "dropped_rank": 0
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 34,
+     "entries": 30,
+     "dropped_margin": 4,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 154,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 16.362524670680916,
+     "self_ppl_prefix": 3.6404323646532615,
+     "distinct2": 0.8230088495575221,
+     "rep3": 0.1339285714285714,
+     "words": 136,
+     "text": ", which was said to have been built in 1876, was indeed the most extensive bridge in the country. This makes it the largest bridge in the world.\n\nThe mayor also confirmed that the bridge was built with granite from the nearby mountain.\n\nCan we conclude that the bridge was built with granite from the nearby mountain? \n\nPick your answer from:\nA). yes\nB). it is not possible to tell\nC). no\nA). yes\nYou are an AI assistant that helps people find information. The general suggestion is to provide the mo"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 15.005484186098435,
+     "self_ppl_prefix": 5.176298241586028,
+     "distinct2": 0.8407079646017699,
+     "rep3": 0.0625,
+     "words": 128,
+     "text": ", which was said to have been built in 1876, was indeed the most extensive bridge in the world at that time, spanning a total of approximately 1,107 feet from one end to another. How many feet did the actual length (measured from one end of one span to the other) of the bridge span, excluding any special or detailed measurements, represent?\n\nTo determine the actual length of the bridge in feet, we need the most precise measurement available, which is typically the length from one end of the span"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 18.63461168421583,
+     "self_ppl_prefix": 4.4154249640199055,
+     "distinct2": 0.8938053097345132,
+     "rep3": 0.0267857142857143,
+     "words": 114,
+     "text": ", which was said to have been built in 162, has been demolished. If the bridge was originally designed with 10800 steps and was cut down, leaving behind a span that was 8/9 of its original length, how many total steps are there on the remaining bridge? To determine the total number of steps on the remaining bridge, we need to follow a step-by-step approach:\n\n1 **Step 1:** Calculate the original length of the bridge.\nThe original design of the bridge is 108 steps, and it's given that the bridge w"
+    }
+   }
+  },
+  {
+   "i": 22,
+   "prompt": "Farmers in the region are worried that",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 22,
+     "entries": 14,
+     "dropped_margin": 7,
+     "dropped_rank": 1
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 25,
+     "entries": 21,
+     "dropped_margin": 4,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 165,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 21.637039198382855,
+     "self_ppl_prefix": 4.9630241216104425,
+     "distinct2": 0.8828125,
+     "rep3": 0.055118110236220486,
+     "words": 129,
+     "text": " the rain is coming too soon. Which of the following is the best title for this passage? ____ A. The Return of Rain B. The Rainstorm of the Past C. The Rainstorm of the Future D. The Rainstorm of the Past and the Future\nAnswer:\n\nD\n\nWhich of the following sentences uses the idiom correctly?\nA. When the poet penned 'The Spring River Moonlit Night', he clearly depicted the beautiful scene of the spring river with a single line of verse.\nB. We should develop a good habit of saving money, and start f"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 16.46046581137161,
+     "self_ppl_prefix": 6.470642942533838,
+     "distinct2": 0.859375,
+     "rep3": 0.07874015748031493,
+     "words": 135,
+     "text": " the rain is coming too soon. Which of the following is the best title for this passage? ____ A. The Return of Rain B. The Rainstorm of the Past C. The Arrival Time and Amount of Rain D. The Problem Caused by Rain\nA:\nC\n\nThe Arrival Time and Amount of Rain is the best title for this passage. This passage describes farmers' concern about the coming rain and the reason why they worry. The first sentence, \"Farmers in the region are worried that\" suggests the main idea of the text is to warn farmers."
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 15.19335402555812,
+     "self_ppl_prefix": 4.911722705489699,
+     "distinct2": 0.8046875,
+     "rep3": 0.10236220472440949,
+     "words": 135,
+     "text": " the rain is coming too soon. Which of the following is the best title for this passage? ____ A. The Return of Rain B. The Rainstorm of the Past C. The Arrival Time and Amount of Rain D. The Problem Caused by Rain\nA:\nC\n\nThe Arrival Time and Amount of Rain is the best title for this passage. This passage describes farmers' anxiety about the rain and mentions the past, arrival time, and amount of rain. The passage concludes by stating that rain is coming too soon, which is the main point of the pa"
+    }
+   }
+  },
+  {
+   "i": 23,
+   "prompt": "The new software update changes the way",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 32,
+     "entries": 8,
+     "dropped_margin": 22,
+     "dropped_rank": 2
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 26,
+     "entries": 17,
+     "dropped_margin": 8,
+     "dropped_rank": 1
+    }
+   },
+   "prefix_tokens": 163,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 6.078161600713754,
+     "self_ppl_prefix": 3.648134414404972,
+     "distinct2": 0.916083916083916,
+     "rep3": 0.035211267605633756,
+     "words": 146,
+     "text": " users can interact with their accounts and the services they use. It's important to understand how it works so that you can use it effectively. One of the key features of this update is the introduction of a new interface for managing and updating your data. This interface is designed to be intuitive and user-friendly, making it easy for users to navigate and interact with their accounts and services.\n\nHowever, there are some challenges that users may face when using this new interface. One of "
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 9.560092917708486,
+     "self_ppl_prefix": 5.909398058495486,
+     "distinct2": 0.958041958041958,
+     "rep3": 0.007042253521126751,
+     "words": 146,
+     "text": " users can interact with their accounts and devices.\nIn a world where the internet is everywhere, the ability to access and control all of your digital information is a critical skill that you need to develop. However, with so much information at your fingertips, it can be easy to become overwhelmed when trying to remember everything. To help you navigate through the information, we have created a comprehensive overview of how to access your digital accounts and devices in the new software updat"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 11.099437656066463,
+     "self_ppl_prefix": 5.560330075572047,
+     "distinct2": 0.9300699300699301,
+     "rep3": 0.028169014084507005,
+     "words": 144,
+     "text": " users can interact with their accounts and devices.\nIn a world where the internet is everywhere, the ability to access and manage personal information and devices is crucial. The security of one’s online presence is becoming increasingly critical, and with it comes a need for a robust system for managing these accounts.\nThis new software update brings several improvements to the user experience. Firstly, it allows users to easily update and manage their accounts, making it easier to keep track "
+    }
+   }
+  },
+  {
+   "i": 24,
+   "prompt": "It was the coldest winter anyone could remember,",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 27,
+     "entries": 8,
+     "dropped_margin": 18,
+     "dropped_rank": 1
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 39,
+     "entries": 18,
+     "dropped_margin": 20,
+     "dropped_rank": 1
+    }
+   },
+   "prefix_tokens": 160,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 14.486411870998088,
+     "self_ppl_prefix": 3.7173313931984104,
+     "distinct2": 0.9186991869918699,
+     "rep3": 0.024590163934426257,
+     "words": 124,
+     "text": " and we were all bundled up in layers, trying to stay warm. Among the following four figures, who would you choose to represent this scenario?\n\nA: Figure A  \nB: Figure B  \nC: Figure C  \nD: Figure D\n\nTo determine which figure represents the scenario of a coldest winter, we need to understand the characteristics of each figure. The coldest winter scenario involves a situation where people are significantly exposed to cold temperatures, often due to their physical or mental health needs.\n\nLet's ana"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 10.11088393630328,
+     "self_ppl_prefix": 6.002932680183959,
+     "distinct2": 0.926829268292683,
+     "rep3": 0.016393442622950838,
+     "words": 145,
+     "text": " and we were all bundled up in our coats and scarves. We knew that we were going to have to stay inside for a long time. We decided to stay at home and do nothing. We read books, listened to music, and watched TV. We didn't have any plans to go out. We were happy that we were safe at home and we thought that this was the best way to keep us warm. It was just the right way. Our plans of staying inside changed when we heard about a school play being held at the local theater. The play was going to"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 9.077470064253184,
+     "self_ppl_prefix": 6.275509413053569,
+     "distinct2": 0.8861788617886179,
+     "rep3": 0.032786885245901676,
+     "words": 146,
+     "text": " and we were all bundled up in our coats and scarves. We knew that if we didn’t start getting out of the house, we were going to be freezing to death. We had to get out and we were going to get out.\nIt had started raining, and we had a plan to get to the hospital early and get out before it was too late.\nI had always thought about my future and how I might be able to help others. I had always felt like there was something I could do to contribute to the world. I wanted to be a doctor and help th"
+    }
+   }
+  },
+  {
+   "i": 25,
+   "prompt": "The committee will vote next week on",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 34,
+     "entries": 10,
+     "dropped_margin": 24,
+     "dropped_rank": 0
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 39,
+     "entries": 26,
+     "dropped_margin": 12,
+     "dropped_rank": 1
+    }
+   },
+   "prefix_tokens": 157,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 13.688498150892045,
+     "self_ppl_prefix": 4.58746611718467,
+     "distinct2": 0.8636363636363636,
+     "rep3": 0.06106870229007633,
+     "words": 134,
+     "text": " whether to allow a grant from a federal agency to improve the condition of the damaged forest. The proposal will be judged by the committee members who will attend the meeting on Monday. Which of the following is the most likely reason for the committee to hold a meeting next week?\nA: To vote on whether to allow a grant from a federal agency\nB: To study the proposal and make a decision\nC: To discuss the proposal before the meeting\nD: To inform the committee members of the proposal\nAnswer:\nB\n\nIn"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 12.875459354488578,
+     "self_ppl_prefix": 9.435000675897479,
+     "distinct2": 0.8863636363636364,
+     "rep3": 0.03816793893129766,
+     "words": 141,
+     "text": " whether to allow a grant from a federal agency to improve a community-based education program. For now, I believe the grant should be funded by private-sector contributions.\nThat is my view, which may not be the view of all members of the committee.\nThe committee will have to decide next week.\nThat is the fundamental problem with the proposal.\nAnd, again and again, I have argued that we should fund the grant by private-sector contributions.\nNow I am a member of the committee and I will vote for"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 9.503236758618947,
+     "self_ppl_prefix": 5.19771315490417,
+     "distinct2": 0.8484848484848485,
+     "rep3": 0.09160305343511455,
+     "words": 133,
+     "text": " whether to allow a grant from a federal agency to improve public education. If the vote goes in favor, the committee would benefit financially. If the vote fails, no benefit would come to the committee. If the committee has 5 members and each member has a 2/3 chance of voting \"yes\" or \"no,\" calculate the expected number of votes needed to achieve a majority. To determine the number of votes needed to achieve a majority in a committee where each member has a 1/3 chance of voting \"yes\" or \"no,\" l"
+    }
+   }
+  },
+  {
+   "i": 26,
+   "prompt": "Researchers at the university discovered that",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 30,
+     "entries": 15,
+     "dropped_margin": 14,
+     "dropped_rank": 1
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 34,
+     "entries": 20,
+     "dropped_margin": 12,
+     "dropped_rank": 2
+    }
+   },
+   "prefix_tokens": 159,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 6.722620276550169,
+     "self_ppl_prefix": 5.206433497776912,
+     "distinct2": 0.808,
+     "rep3": 0.09677419354838712,
+     "words": 142,
+     "text": " the skin cells in a layer of the immune system called the thymus, which is located in the upper part of the human body, are not the only cells that carry out the immune response.\nThis discovery, which was made by researchers at the University of Geneva, was made possible by a technique called the high-field electron microscope. The technique, which has been used to study the structure of human cells for over a decade, allowed the researchers to observe the immune cells in a fresh layer of skin."
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 7.428687238782671,
+     "self_ppl_prefix": 5.418818205924817,
+     "distinct2": 0.912,
+     "rep3": 0.032258064516129004,
+     "words": 126,
+     "text": " the skin cells in a layer of the immune system called the thymus, which is located in the chest, are producing an anti-inflammatory protein that produces a protective effect on the skin.\nThe study, which was published in the journal Nature Immunobiology, shows that the anti-inflammatory protein, known as IL-10, is produced by the immune cells and found in the thymus.\nThis has important implications for the treatment of skin conditions.\nThe study found that IL-10 is produced by T-cells, a group "
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 9.294553000869216,
+     "self_ppl_prefix": 6.2617751522053435,
+     "distinct2": 0.904,
+     "rep3": 0.016129032258064502,
+     "words": 134,
+     "text": " the skin cells in a layer of the immune system called the Th17 cell line. The cells were observed in the human body and were shown to play important roles in the development of diseases, such as autoimmune disorders, allergies, and cancer.\nThe researchers also discovered a unique type of immune response called \"Thy17-primed\" cells.\nIt is important to understand that Th17 cells are immune cells that are involved in a wide range of processes, from fighting off infections to helping regulate the i"
+    }
+   }
+  },
+  {
+   "i": 27,
+   "prompt": "The company's chief executive said that",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 35,
+     "entries": 19,
+     "dropped_margin": 15,
+     "dropped_rank": 1
+    },
+    "c5_record_strength": {
+     "tokens": 153,
+     "enforced": 30,
+     "entries": 20,
+     "dropped_margin": 10,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 158,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 13.696192599649269,
+     "self_ppl_prefix": 3.350262612099614,
+     "distinct2": 0.816,
+     "rep3": 0.10483870967741937,
+     "words": 129,
+     "text": " the decision to appoint Jack is a major step forward for the company and is a reflection of the board of directors' belief in the company's future.\nDoes this next sentence follow, given the preceding text?\nThe company's chief executive said that the decision to appoint Jack was a step forward.\n\nOPTIONS:\n(a). yes\n(b). no\n(a). yes\n\nThe sentence \"The company's chief executive said that the decision to appoint Jack is a step forward\" does indeed follow from the preceding text. The original statemen"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 13.288709670499719,
+     "self_ppl_prefix": 3.964162698372804,
+     "distinct2": 0.68,
+     "rep3": 0.19354838709677424,
+     "words": 128,
+     "text": " the decision to appoint the consultant was based on the need to implement a long-term strategy that would help to achieve the organization's goals.\n\nDoes it follow that if \"The chief executive said that the decision to appoint consultant was based on the need to implement a short-term plan.\"?\nOPTIONS: 1. yes. 2. it is not possible to tell. 3. no. 3. no. \n\nThe sentence states that the company's chief executive said the decision was made based on a long term strategy. This means that the decision"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 22.167718390018738,
+     "self_ppl_prefix": 5.84437235151281,
+     "distinct2": 0.88,
+     "rep3": 0.016129032258064502,
+     "words": 126,
+     "text": " the decision to appoint Mr. Obama would not be viewed as a political move, but a business one.\nCan we conclude from this premise that the hypothesis \"The CEO is a political executive. \"?\nOPTIONS: -yes -it is not possible to tell -no\nIt cannot be concluded that the CEO is a \"political executive\" just from the statement given. The statement doesn't specify the type of executive role, only that the company's chief executive said he would not view the decision as a political move. We cannot make a "
+    }
+   }
+  },
+  {
+   "i": 28,
+   "prompt": "Residents were asked to leave their homes after",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 34,
+     "entries": 11,
+     "dropped_margin": 22,
+     "dropped_rank": 1
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 18,
+     "dropped_margin": 10,
+     "dropped_rank": 3
+    }
+   },
+   "prefix_tokens": 153,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 7.458845221257191,
+     "self_ppl_prefix": 4.689731014968005,
+     "distinct2": 0.8173076923076923,
+     "rep3": 0.12621359223300976,
+     "words": 120,
+     "text": " the 129-year-old man was found dead in his house in New Forest, East Sussex, last week.\nA council spokesman said that \"they are determined to find out what happened and do everything to prevent this from happening again\".\nThe 113-year-old man was pronounced dead at a house in Fawton, East Sussex, after the incident.\nA spokeswoman for East Sussex Police said that she was \"devastated\" by the news.\nA spokesman said: \"We are still investigating and we will continue to provide information as we do s"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 11.000937006546383,
+     "self_ppl_prefix": 7.605324910488472,
+     "distinct2": 0.9807692307692307,
+     "rep3": 0.0,
+     "words": 130,
+     "text": " the 129,000th vehicle was delivered.\nThe announcement comes as the UK government faces a new £3.2 billion cut in public spending, but also as a new report on climate change and the future of Britain's coast was released.\nThe government said it was making progress on reducing greenhouse gas emissions but it would not be a quick fix, adding: \"We will keep working to help Britain's coast be resilient to the effects of climate change.\"\nThe coast is vulnerable to extreme weather events, such as stor"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 13.4275733391139,
+     "self_ppl_prefix": 7.305937663109782,
+     "distinct2": 0.9326923076923077,
+     "rep3": 0.01941747572815533,
+     "words": 105,
+     "text": " the 129,000th vehicle passed over the 100-meter-wide crosswalk in Taipei on Friday, May 24, 2100.\nThe crosswalk, a 2012 project of the Taipei Crosswalks Group (TCAG) under the Taipei Municipal Government, has been in place for more than a decade. This crossing has been an important part of the city’s transit system since it was built in 1882.\nThere are currently two crosswalks on Taipei’s main thoroughfare, the Taipei West Highway.\nThe crosswalks are the result of a joint effort between the gov"
+    }
+   }
+  },
+  {
+   "i": 29,
+   "prompt": "The article argues that modern cities",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 135,
+     "enforced": 34,
+     "entries": 18,
+     "dropped_margin": 15,
+     "dropped_rank": 1
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 35,
+     "entries": 23,
+     "dropped_margin": 11,
+     "dropped_rank": 1
+    }
+   },
+   "prefix_tokens": 143,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 8.397895896107062,
+     "self_ppl_prefix": 5.196763370835727,
+     "distinct2": 0.6991150442477876,
+     "rep3": 0.2410714285714286,
+     "words": 147,
+     "text": " are unique because of their unprecedented rise in density. However, it also argues that there are many ways to reduce urban density, and that this argument is not based on scientific evidence. The author's conclusion is that urban density is highly dependent on specific circumstances and that it is not possible to generalize the reduction of urban density across all cities.\nWhat is the author's conclusion? The author's conclusion is that urban density is highly dependent on specific circumstanc"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 29.710470309267954,
+     "self_ppl_prefix": 10.726393290830277,
+     "distinct2": 0.9823008849557522,
+     "rep3": 0.0,
+     "words": 114,
+     "text": " are unique because of their unique characteristics, such a lack of density, high specific density, lack of mass transit, lack and shortage of public spaces, lack of facilities and services, and an increasing trend towards a decentralized and diverse social structure. The article concludes that the quest for innovation and transformation should be focused on the building of a more sustainable and livable urban landscape that is responsive, adaptive, and connected to the natural environment.\nIs t"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 12.231192585691469,
+     "self_ppl_prefix": 7.804009737494702,
+     "distinct2": 0.9734513274336283,
+     "rep3": 0.0,
+     "words": 147,
+     "text": " are unique because of a combination of historical and technological developments that have created a complex and dynamic system, where humans are becoming more and more dependent on technological advancements. This dependence is not only affecting the quality of life but also causing various problems, such as pollution, traffic congestion, and economic inequality. The article suggests that a shift in the urban development paradigm to include sustainable and inclusive urban development is crucia"
+    }
+   }
+  },
+  {
+   "i": 30,
+   "prompt": "Please find attached the minutes of",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 41,
+     "entries": 21,
+     "dropped_margin": 18,
+     "dropped_rank": 2
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 29,
+     "entries": 16,
+     "dropped_margin": 10,
+     "dropped_rank": 2
+    }
+   },
+   "prefix_tokens": 166,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 15.001585123779194,
+     "self_ppl_prefix": 6.231071072100193,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 136,
+     "text": " the meeting to which I have attached. The meeting took place on 25th July 2020.\n\nWhat are the likely reasons for the absence of the meeting? Could the next meeting be rescheduled to a date in the future? If so, what is the earliest date possible?\n\nCould there be any issues with the confidentiality of the meeting and the information shared in the minutes?\nIt is important to note that the meeting is for administrative purposes and no business is being conducted.\nThank you in advance for your resp"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 11.539159465482822,
+     "self_ppl_prefix": 5.933880547337357,
+     "distinct2": 0.9807692307692307,
+     "rep3": 0.0,
+     "words": 145,
+     "text": " the meeting to which the respective name of the person is written. I have a question that I would like to ask in English. Please answer the question and provide the answer in the English language.\n\nQuestion: Is there any information about the financial performance of the company for last quarter?\nPlease provide the answer in the English language.\nThe minutes of the meeting are attached to this email.\nThe person responsible for this meeting is [Name of the person].\nThe person responsible for thi"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 19.202380504956842,
+     "self_ppl_prefix": 9.497401983187746,
+     "distinct2": 0.9807692307692307,
+     "rep3": 0.0,
+     "words": 53,
+     "text": " the meeting to which the respective name of the person is written. I have a question that I would like to ask in English. Please answer the question and provide the answer in both English and Chinese, and also provide an alternative question in Chinese. The question in Chinese is:\n我是谁？\nAnswer: 截止到目前，我已在我所在公司的所有会议上发言，并在公司内部多次被授予管理职务，包括销售经理、市场部经理和计划部经理。我曾在多个国际公司工作，包括VLOOKINGHAM公司、GE公司和Cisco公司，担任过销售代表、市场专员、计划经理和项目经理。我在销售方面有20年经验，曾在VLOOKINGHAM公司的销售部门工作了15年，在GE公司和Cisco公司也积累了"
+    }
+   }
+  },
+  {
+   "i": 31,
+   "prompt": "The spacecraft entered orbit around",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 30,
+     "entries": 18,
+     "dropped_margin": 11,
+     "dropped_rank": 1
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 30,
+     "entries": 20,
+     "dropped_margin": 8,
+     "dropped_rank": 2
+    }
+   },
+   "prefix_tokens": 161,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 9.316803797234705,
+     "self_ppl_prefix": 3.077121887680556,
+     "distinct2": 0.9494949494949495,
+     "rep3": 0.010204081632653073,
+     "words": 122,
+     "text": " the Moon in the early morning hours. What time was this?  \nA. 4 AM  \nB. 6 AM  \nC. 8 AM  \nD. 10 AM\n\nTo determine the time the spacecraft entered orbit around the Moon, we need to understand the concept of time zones and the Earth's rotation.\n\n1. **Earth's Rotation**: The Earth rotates on its axis, causing the same time to be experienced at different locations around the planet. This means that the time of day in different regions of the Earth is different.\n\n2. **Moon's Orbit**: The Moon complete"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 12.929162715248255,
+     "self_ppl_prefix": 3.25995717217394,
+     "distinct2": 0.8888888888888888,
+     "rep3": 0.05102040816326525,
+     "words": 100,
+     "text": " the Moon in the early morning hours. What can be concluded about the spacecraft?\n\nTo determine what can be concluded about the spacecraft based on the information that it entered the Moon's orbit in the early hours of the morning, we need to consider the characteristics of lunar orbits and the time of day.\n\n1. **Orbital Characteristics of the Moon:**\n   - The Moon has a relatively elliptical orbit around the Earth.\n   \\[\n    \\text{Perigee} = 357 \\text{ km}\n   \\]\n   \\(\n    \\text{Apogee} = 367 \\t"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 9.483927304561577,
+     "self_ppl_prefix": 4.349587838872713,
+     "distinct2": 0.7373737373737373,
+     "rep3": 0.18367346938775508,
+     "words": 132,
+     "text": " the Moon in the early morning hours. What happened next?\na. The spacecraft was sent back to Earth.\nb. The Moon would have an increase in temperature.\nc. The spacecraft would have been sent back to the Moon.\nd. The spacecraft would have become a comet.\ne. The spacecraft would have been sent to Mars or Jupiter. The spacecraft would have become a comet. \n\nThe process of entering orbit around the Moon can be divided into two main phases: the periapsis phase and the apses phase.\n\na. The spacecraft w"
+    }
+   }
+  },
+  {
+   "i": 32,
+   "prompt": "Local businesses have struggled since",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 32,
+     "entries": 12,
+     "dropped_margin": 20,
+     "dropped_rank": 0
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 35,
+     "entries": 26,
+     "dropped_margin": 8,
+     "dropped_rank": 1
+    }
+   },
+   "prefix_tokens": 166,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 10.853515746644344,
+     "self_ppl_prefix": 5.7761649155326635,
+     "distinct2": 0.9411764705882353,
+     "rep3": 0.029629629629629672,
+     "words": 137,
+     "text": " the pandemic began, but it’s important to remember that people are still coming into your shop to make purchases and spend. That means you need to be able to meet their needs. This includes providing good customer service, offering value-added products, and having a responsive team to help them.\n\nHere’s how to do this:\n\n1. Be visible\n\nLook to your website and social media to make sure your business is clearly visible. Use high-quality images and videos to showcase your products, and ensure that"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 13.777894660402858,
+     "self_ppl_prefix": 7.856541767356873,
+     "distinct2": 0.8897058823529411,
+     "rep3": 0.029629629629629672,
+     "words": 146,
+     "text": " the pandemic began, but they can overcome the challenges of reopening and growing in the new normal with the right support and resources.\nTo help businesses in the hospitality sector, we have produced this guide on opening their doors safely and successfully. It covers the different steps they need to take to ensure the health and wellbeing of their employees, customers, guests, and the broader community. It also covers the considerations of reopening and reopening slowly, and the different str"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 11.278462737897708,
+     "self_ppl_prefix": 6.5470050257832595,
+     "distinct2": 0.8676470588235294,
+     "rep3": 0.06666666666666665,
+     "words": 145,
+     "text": " the pandemic began, with many being forced to cut their supplies and shut doors altogether. The lack of access to local businesses is particularly problematic for vulnerable people, who often rely on the support of their employer. At this time, we want you to explore how you can support local businesses during the pandemic.\nHow to Support Local Businesses During the Pandemic\nThe pandemic has had an incredible impact on the economy and local businesses, especially those that rely on a significan"
+    }
+   }
+  },
+  {
+   "i": 33,
+   "prompt": "The treaty was signed in",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 39,
+     "entries": 21,
+     "dropped_margin": 18,
+     "dropped_rank": 0
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 24,
+     "entries": 18,
+     "dropped_margin": 6,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 147,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 11.884907497203832,
+     "self_ppl_prefix": 2.89352902590331,
+     "distinct2": 0.912621359223301,
+     "rep3": 0.019607843137254943,
+     "words": 104,
+     "text": " the 19th century, and we are told it was a book with the words \"A Century ago\". The English words for \"A Century ago\" are _____. (Fill in the blank with the correct word)\n\nA. Centuries  \nB. Centuries ago  \nC. Centuries ago  \nD. Centuries ago\n\nTo determine the correct word for \"A Century ago,\" we need to understand the context of the sentence. The sentence is likely referring to the 19th century, which typically includes the years 1801 to 1900. In this context, \"century\" refers to a period of 10"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 4.862844497402011,
+     "self_ppl_prefix": 3.4108689958711462,
+     "distinct2": 0.5728155339805825,
+     "rep3": 0.33333333333333337,
+     "words": 133,
+     "text": " the 19th century, and we are now about 150 years into the 20th century. What would the political situation look like if the treaty had been signed in the early 21st century? Would the people of the United States be inclined to support the treaty? Would they be inclined to oppose it? Would the people of India be inclined to support the treaty? Would the people of the United Kingdom be inclined to support the treaty? Would they be inclined to support it? Would they be inclined to support it? Woul"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 10.050294411081069,
+     "self_ppl_prefix": 3.2755745131005374,
+     "distinct2": 0.883495145631068,
+     "rep3": 0.08823529411764708,
+     "words": 123,
+     "text": " the 19th century, and we are now about 150 years into the 20th century. What would happen to the treaty if it were signed again?\n\nTo determine what would happen to the treaty if it were signed again, we need to consider the historical context and the current situation. The treaty mentioned is likely the Treaty of Versailles, signed in 1919. Let's break this down step by step to understand the implications.\n\n**Step 1:** Understand the Treaty of Versailles\nThe Treaty of Versailles was a significa"
+    }
+   }
+  },
+  {
+   "i": 34,
+   "prompt": "Our records indicate that your account",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 27,
+     "entries": 14,
+     "dropped_margin": 13,
+     "dropped_rank": 0
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 34,
+     "entries": 21,
+     "dropped_margin": 13,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 158,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 5.614301826980121,
+     "self_ppl_prefix": 4.414042959843604,
+     "distinct2": 0.671875,
+     "rep3": 0.26771653543307083,
+     "words": 143,
+     "text": " has been closed for at least 6 months. Your account is now a fully dormant account. This means that your account will not be used to process payments or receive funds. All of your transactions will be cancelled and your balance will be permanently closed.\nThis means that your account will not be used to process payments or receive funds. All of your transactions will be cancelled and your balance will be permanently closed. After the balance is closed, your account will no longer be used to pro"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 7.52831342338837,
+     "self_ppl_prefix": 5.192371097028791,
+     "distinct2": 0.96875,
+     "rep3": 0.015748031496062964,
+     "words": 129,
+     "text": " has been closed for at least 6 months. Your account is now a private account, meaning that it is not accessible to the public or the general public. This can be due to a variety of reasons, such a security breach or a breach of your privacy settings.\n\nTo regain access to your account, please contact us at 1-801-885-3400. You will need to provide us with your account number, PIN, and any additional information required by our system. Once we receive this, we will attempt to open your account.\n\nP"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 16.3572940917116,
+     "self_ppl_prefix": 6.316997123550243,
+     "distinct2": 0.9921875,
+     "rep3": 0.0,
+     "words": 138,
+     "text": " has been closed for at least 6 months. Your account is now a private account, meaning that it is not accessible to the public, and you must use a personal account to log in to your account.\nI'm sorry, but I don’t have any records of your account being opened or closed. It seems like you're missing important information or have made an error in providing this data. Could you please provide more details so I can help further? If you meant to ask about closing an account, I'd be happy to help guid"
+    }
+   }
+  },
+  {
+   "i": 35,
+   "prompt": "The festival returns this summer with",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 37,
+     "entries": 14,
+     "dropped_margin": 23,
+     "dropped_rank": 0
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 32,
+     "entries": 23,
+     "dropped_margin": 9,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 146,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 18.263536138266343,
+     "self_ppl_prefix": 6.732643623517654,
+     "distinct2": 0.9174311926605505,
+     "rep3": 0.0092592592592593,
+     "words": 110,
+     "text": " a lineup that includes the Dalai Lama, five-time Olympic champion Tom Brady, a “Madonna of the Bouchon” and a Bouchon Cognac.\nWhat is a summary of this text? The Bouchon Cognac Festival returns in 2018, featuring events such as a Dalai Lama, Tom Brady and an Olympic champion.\nThe festival will also feature a Bouchon Cognac.\nIt's the first time a Bouchon Cognac has been part of a festival since the 1980s, when the region produced its first cognac.\nThe festival is being held at the Royal Estate o"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 19.63135492076829,
+     "self_ppl_prefix": 8.126409888493447,
+     "distinct2": 0.908256880733945,
+     "rep3": 0.01851851851851849,
+     "words": 118,
+     "text": " a lineup that includes the Dalai Lama, five-time Olympic champion Tom Brady, a former NFL quarterback who broke the record with 125 passing attempts in 2012, and a former Olympic swimmer who broke the 100m breaststroke world record.\nThis summer’s festival marks the first time the Dalai Lama has appeared in the festival’s inaugural program. The Dalai Lama has visited China several time in recent years, particularly to witness the opening ceremonies of the 2008 Beijing Olympics and the opening of"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 13.345145263021003,
+     "self_ppl_prefix": 5.1703618014373625,
+     "distinct2": 0.6422018348623854,
+     "rep3": 0.2407407407407407,
+     "words": 129,
+     "text": " a lineup that includes the Dalai Lama, five-time Olympic champion Tom Brady, a former NFL linebacker and linebacker coach, a former NFL tackle, the late NFL player and former coach and the late NFL player and former coach. This summer’s lineup includes Tom Brady, the Dalai Lama, and former NFL linebacker and linebacker coaches, the late NFL player and former coach, the NFL player and former coach, and the late former NFL player and former coach. What is the total number of athletes on the festi"
+    }
+   }
+  },
+  {
+   "i": 36,
+   "prompt": "The hospital announced a new policy on",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 32,
+     "entries": 14,
+     "dropped_margin": 18,
+     "dropped_rank": 0
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 25,
+     "entries": 15,
+     "dropped_margin": 10,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 155,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 7.872652329254473,
+     "self_ppl_prefix": 2.619871858731369,
+     "distinct2": 0.7142857142857143,
+     "rep3": 0.21212121212121215,
+     "words": 134,
+     "text": " Wednesday that includes mandatory vaccinations for all patients. This policy was implemented on Thursday, and the hospital has received 200 patient registrations. If the policy is implemented daily, how many patients will be vaccinated by the end of the week? To determine how many patients will be vaccinated by the end of the week, we need to follow these steps:\n\n1. Identify the number of patients registered on Thursday.\n2. Determine the number of days the policy is implemented (which is one we"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 11.249139785503957,
+     "self_ppl_prefix": 5.311867412579767,
+     "distinct2": 0.9699248120300752,
+     "rep3": 0.007575757575757569,
+     "words": 141,
+     "text": " Wednesday that includes mandatory and optional screenings, as well as a variety of patient education materials. The policy also includes an emphasis on prevention and early detection of certain health conditions. The hospital will be following the policy with all new patients and existing patients, and the new policy is designed to improve patient care, reduce costs, and enhance the quality of healthcare. What are the potential benefits of implementing this policy for the hospital? Implementing"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 11.198363702960343,
+     "self_ppl_prefix": 4.940627449617659,
+     "distinct2": 0.6766917293233082,
+     "rep3": 0.24242424242424243,
+     "words": 141,
+     "text": " Wednesday that includes mandatory and optional screenings, as well as a variety of patient education materials. The policy also includes an emphasis on prevention and early detection of certain health conditions. The hospital will begin to implement the new policy from September 2023.\nWhat is the primary purpose of the new hospital policy? The primary purpose of the new hospital policy is to include mandatory and optional screenings, as well as a variety of patient education materials to emphas"
+    }
+   }
+  },
+  {
+   "i": 37,
+   "prompt": "Investigators said the fire started in",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 38,
+     "entries": 15,
+     "dropped_margin": 22,
+     "dropped_rank": 1
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 25,
+     "entries": 15,
+     "dropped_margin": 10,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 154,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 10.057833213516032,
+     "self_ppl_prefix": 6.07125744279553,
+     "distinct2": 0.8455882352941176,
+     "rep3": 0.08148148148148149,
+     "words": 137,
+     "text": " the backyard of the home and was quickly brought under control.\nThe man's body was recovered from the debris at the home, and his family was notified.\nPolice believe he was killed in a fire in the backyard of the home in the UK.\nThe incident took place on Monday, 29 June 2019, and was captured on CCTV footage.\nThe fire started in the backyard of the home and quickly spread to the rest of the property.\nA woman and her 2-year-old son were also taken to hospital after being in the fire.\nPolice hav"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 7.052282048235973,
+     "self_ppl_prefix": 5.896602120052377,
+     "distinct2": 0.6176470588235294,
+     "rep3": 0.2666666666666667,
+     "words": 139,
+     "text": " the backyard of the home and was quickly brought under control by firefighters. The blaze was extinguished within a few minutes and was deemed safe to proceed with. The fire department was called to the area and was notified of the warning before the fire reached the home, said the department in a news release.\nA fire department spokesman told the paper that the fire department was called to the home around 2 p.m. Sunday, said the fire department in a news release.\nThe fire department was notif"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 14.838095799722568,
+     "self_ppl_prefix": 10.927080668452593,
+     "distinct2": 0.9191176470588235,
+     "rep3": 0.007407407407407418,
+     "words": 141,
+     "text": " the backyard of the home and was quickly brought under controlled conditions. The firefighters worked to remove the blaze to prevent the flames from spreading to other areas of the house. The home is a single story, brick and timber, and has a home security camera installed, according the a source from the police department. It is not known if the house will be occupied by the occupants, as the fire service has not entered the home. The couple who had the fire at their home in 2011 is the only "
+    }
+   }
+  },
+  {
+   "i": 38,
+   "prompt": "The school board approved a plan to",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 27,
+     "entries": 15,
+     "dropped_margin": 11,
+     "dropped_rank": 1
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 33,
+     "entries": 24,
+     "dropped_margin": 9,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 146,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 6.066956271641029,
+     "self_ppl_prefix": 2.0002947108845714,
+     "distinct2": 0.6370967741935484,
+     "rep3": 0.2682926829268293,
+     "words": 125,
+     "text": " build a new high school. There were 300 students in the first grade, 400 in the second grade, and 500 in the third grade. If 50% of the students in the first grade, 60% of the students in the second grade, and 70% of the students in the third grade decide to transfer to a different school, how many students will be in the third grade after this transfer?\nTo determine how many students will be in the third grade after some decide to transfer, we need to calculate the number of students in each g"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 9.854508419930218,
+     "self_ppl_prefix": 3.367538757254039,
+     "distinct2": 0.8790322580645161,
+     "rep3": 0.03252032520325199,
+     "words": 137,
+     "text": " build a new high-speed train station on a piece of land that is part of a military reserve. The land is a rectangle with dimensions 100 meters in length and 80 meters in width. The school board wants to ensure that the new station is not only accessible but also within the limits of the reserve's boundaries. The reserve is a rectangular area with dimensions 250 meters in length and 200 meters in width. Determine if the station can be built on the given land without exceeding the reserve's bound"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 8.88967939649293,
+     "self_ppl_prefix": 3.115529587709312,
+     "distinct2": 0.7419354838709677,
+     "rep3": 0.16260162601626016,
+     "words": 131,
+     "text": " build a new high-speed train station on land that is 3 km away from the original station. If the station was originally 2 km away from the school, what was the difference in distance between the new station and the original station? Express your answer as a decimal to the nearest tenth.\nLet's break down the problem step by step:\n\n1) The original distance from the school to the new station is 2 km.\n2) The new station is 3 km away from the original station.\n3) The difference in distance between t"
+    }
+   }
+  },
+  {
+   "i": 39,
+   "prompt": "Historians disagree about why",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 30,
+     "entries": 12,
+     "dropped_margin": 18,
+     "dropped_rank": 0
+    },
+    "c5_record_strength": {
+     "tokens": 160,
+     "enforced": 36,
+     "entries": 25,
+     "dropped_margin": 11,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 144,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 28.55264054212925,
+     "self_ppl_prefix": 9.044902744859563,
+     "distinct2": 0.8974358974358975,
+     "rep3": 0.03448275862068961,
+     "words": 119,
+     "text": " the Islamic Golden Age began, but one theory is that the Byzantine Empire's economic policies and increasing trade made the land available for learning, while the Muslim world's intellectual leadership provided the intellectual and financial resources to sustain the learning. Despite the interest in the subject, the origin of the theory is unknown. In 1967, a major reconstruction was begun in the Hagia Sophia's courtyard, on the plan of 1962. The new interior, with its new decoration, was compl"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 15.430480619975084,
+     "self_ppl_prefix": 8.808638176882015,
+     "distinct2": 0.9316239316239316,
+     "rep3": 0.03448275862068961,
+     "words": 133,
+     "text": " the Islamic Golden Age began, but the prevailing view is the following: the Islamic empire was able to maintain a flourishing culture for centuries because it was able to keep money flowing into its treasury, so that it could continue to invest in education and research and keep its intellectual capital growing. This is a large part, but not the only part of the story. In the 10th and the 11^th centuries the Islamic empire was at the peak in its economic power, and it had a very good network of"
+    },
+    "c5_record_strength": {
+     "ppl_prefix": 24.0052540263039,
+     "self_ppl_prefix": 5.345434480061322,
+     "distinct2": 0.8717948717948718,
+     "rep3": 0.025862068965517238,
+     "words": 118,
+     "text": " the Islamic Golden Age began, but the prevailing view is the following: the Islamic conquest of the Middle East in 834 and the subsequent expansion of the Islamic Empire in Europe and the Near and Far East in the 10th century helped to create a favorable environment for the flourishing and rapid growth in science of the Islamic world. The passage is an example of a/an:\nA. Argumentation\nB. Explanation\nC. Interpretation\n\nTo determine the best option, let's analyze the content of the passage step-"
+    }
+   }
+  }
+ ]
+}

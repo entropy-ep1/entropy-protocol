@@ -1,0 +1,43 @@
+12:35:12 part 4; GSM8K code 00a100caabf1bdf8
+12:35:12 START gsm_Qwen_Qwen2.5-0.5B-Instruct_plain (swap used 5515.62M)
+12:41:03 END gsm_Qwen_Qwen2.5-0.5B-Instruct_plain rc=0
+12:41:03 START gsm_Qwen_Qwen2.5-0.5B-Instruct_sealed (swap used 5772.00M)
+12:53:06 END gsm_Qwen_Qwen2.5-0.5B-Instruct_sealed rc=0
+12:53:06 START gsm_Qwen_Qwen2.5-0.5B-Instruct_gate90 (swap used 5680.06M)
+13:04:31 END gsm_Qwen_Qwen2.5-0.5B-Instruct_gate90 rc=0
+13:04:31 START gsm_Qwen_Qwen2.5-0.5B-Instruct_g90u90 (swap used 5406.00M)
+13:14:45 END gsm_Qwen_Qwen2.5-0.5B-Instruct_g90u90 rc=0
+13:14:45 START q_Qwen_Qwen2.5-0.5B-Instruct_gsm_sealed (swap used 5655.31M)
+13:14:49 END q_Qwen_Qwen2.5-0.5B-Instruct_gsm_sealed rc=0
+13:14:49 START q_Qwen_Qwen2.5-0.5B-Instruct_gsm_gate90 (swap used 5647.38M)
+13:14:52 END q_Qwen_Qwen2.5-0.5B-Instruct_gsm_gate90 rc=0
+13:14:52 START q_Qwen_Qwen2.5-0.5B-Instruct_gsm_gate90_guard90 (swap used 5647.38M)
+13:14:56 END q_Qwen_Qwen2.5-0.5B-Instruct_gsm_gate90_guard90 rc=0
+13:14:56 START det_Qwen_Qwen2.5-0.5B-Instruct_sealed (swap used 5631.38M)
+13:16:01 END det_Qwen_Qwen2.5-0.5B-Instruct_sealed rc=0
+13:16:01 START det_Qwen_Qwen2.5-0.5B-Instruct_gate90 (swap used 8502.25M)
+13:17:03 END det_Qwen_Qwen2.5-0.5B-Instruct_gate90 rc=0
+13:17:03 START det_Qwen_Qwen2.5-0.5B-Instruct_g90u90 (swap used 4781.81M)
+13:18:04 END det_Qwen_Qwen2.5-0.5B-Instruct_g90u90 rc=0
+13:18:04 START gsm_Qwen_Qwen2.5-1.5B-Instruct_plain (swap used 4953.38M)
+13:29:22 END gsm_Qwen_Qwen2.5-1.5B-Instruct_plain rc=0
+13:29:22 START gsm_Qwen_Qwen2.5-1.5B-Instruct_sealed (swap used 10680.44M)
+13:56:44 END gsm_Qwen_Qwen2.5-1.5B-Instruct_sealed rc=0
+13:56:44 START gsm_Qwen_Qwen2.5-1.5B-Instruct_gate90 (swap used 10494.00M)
+14:15:32 END gsm_Qwen_Qwen2.5-1.5B-Instruct_gate90 rc=0
+14:15:32 START gsm_Qwen_Qwen2.5-1.5B-Instruct_g90u90 (swap used 5461.88M)
+14:29:53 END gsm_Qwen_Qwen2.5-1.5B-Instruct_g90u90 rc=0
+14:29:53 START q_Qwen_Qwen2.5-1.5B-Instruct_gsm_sealed (swap used 8973.62M)
+14:29:57 END q_Qwen_Qwen2.5-1.5B-Instruct_gsm_sealed rc=0
+14:29:57 START q_Qwen_Qwen2.5-1.5B-Instruct_gsm_gate90 (swap used 4418.44M)
+14:30:00 END q_Qwen_Qwen2.5-1.5B-Instruct_gsm_gate90 rc=0
+14:30:00 START q_Qwen_Qwen2.5-1.5B-Instruct_gsm_gate90_guard90 (swap used 4390.50M)
+14:30:03 END q_Qwen_Qwen2.5-1.5B-Instruct_gsm_gate90_guard90 rc=0
+14:30:03 START det_Qwen_Qwen2.5-1.5B-Instruct_sealed (swap used 4380.00M)
+14:33:32 END det_Qwen_Qwen2.5-1.5B-Instruct_sealed rc=0
+14:33:32 START det_Qwen_Qwen2.5-1.5B-Instruct_gate90 (swap used 4716.31M)
+14:36:17 END det_Qwen_Qwen2.5-1.5B-Instruct_gate90 rc=0
+14:36:17 START det_Qwen_Qwen2.5-1.5B-Instruct_g90u90 (swap used 4780.81M)
+14:38:29 END det_Qwen_Qwen2.5-1.5B-Instruct_g90u90 rc=0
+14:38:29 START g10_qwen_qwen2.5-1.5b-instruct (swap used 4846.81M)
+14:38:39 part 4 stopped after GSM8K (reordered: operating-point study first, bench/run_bridge_part5.sh)

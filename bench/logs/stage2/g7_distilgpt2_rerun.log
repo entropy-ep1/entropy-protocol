@@ -1,0 +1,90 @@
+{
+ "model": "distilgpt2",
+ "code": "aa2dddc19298c239",
+ "verify": {
+  "cpu:float32": {
+   "128": {
+    "seconds": 0.0444,
+    "tokens_per_s": 2883.7
+   },
+   "512": {
+    "seconds": 0.1143,
+    "tokens_per_s": 4478.2
+   },
+   "1000": {
+    "seconds": 0.207,
+    "tokens_per_s": 4831.9
+   },
+   "record_entries": 24
+  },
+  "mps:float32": {
+   "128": {
+    "seconds": 0.0208,
+    "tokens_per_s": 6145.5
+   },
+   "512": {
+    "seconds": 0.0485,
+    "tokens_per_s": 10559.6
+   },
+   "1000": {
+    "seconds": 0.0884,
+    "tokens_per_s": 11309.9
+   },
+   "record_entries": 24
+  },
+  "mps:float16": {
+   "128": {
+    "seconds": 0.0175,
+    "tokens_per_s": 7321.0
+   },
+   "512": {
+    "seconds": 0.0411,
+    "tokens_per_s": 12462.5
+   },
+   "1000": {
+    "seconds": 0.0746,
+    "tokens_per_s": 13398.3
+   },
+   "record_entries": 11
+  }
+ },
+ "seal": {
+  "cpu:float32": {
+   "align": "free",
+   "free_after": 0,
+   "tokens": [
+    160,
+    160,
+    160
+   ],
+   "generate_s": 3.038,
+   "seal_s": 5.393,
+   "overhead_%": 77.5
+  },
+  "mps:float32": {
+   "align": "free",
+   "free_after": 0,
+   "tokens": [
+    160,
+    160,
+    160
+   ],
+   "generate_s": 2.973,
+   "seal_s": 4.432,
+   "overhead_%": 49.1
+  },
+  "mps:float16": {
+   "align": "free",
+   "free_after": 0,
+   "tokens": [
+    160,
+    160,
+    160
+   ],
+   "generate_s": 2.674,
+   "seal_s": 4.11,
+   "overhead_%": 53.7
+  }
+ }
+}
+written <repo>/bench/results/g7_distilgpt2.json

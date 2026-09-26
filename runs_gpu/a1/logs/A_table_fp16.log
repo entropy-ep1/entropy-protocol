@@ -1,0 +1,1 @@
+15:15:14 table {'fp16': 0.421875}; kept share 0.711; flips at kept positions: 2 -> /home/ubuntu/ep/runs/Qwen_Qwen2.5-7B-Instruct/calibration_A_cal_fp16only.json

@@ -1,0 +1,2 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:05,  1.93s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:03<00:03,  1.77s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:05<00:01,  1.61s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:06<00:00,  1.48s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:06<00:00,  1.57s/it]
+13:45:59 NVIDIA-L40S_float16_default_b32: 64 texts, 25176 positions -> A_cal__NVIDIA-L40S_float16_default_b32.npz

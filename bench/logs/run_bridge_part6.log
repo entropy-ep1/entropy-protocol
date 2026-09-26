@@ -1,0 +1,12 @@
+17:20:38 START gsm_Qwen_Qwen2.5-1.5B-Instruct_guard90 (swap used 1892.19M)
+17:28:51 STOPPED gsm_Qwen_Qwen2.5-1.5B-Instruct_guard90 (batch 16 on the frozen code: 19 GB footprint on the 16 GB Mac, swap full); restarting part 6 with batch 4
+17:32:05 START gsm_Qwen_Qwen2.5-1.5B-Instruct_guard90 (swap used 3146.62M)
+bench/run_bridge_part6.sh: line 17: 27806 Terminated: 15          "$@" > "$L/$name.log" 2>&1
+17:34:25 END gsm_Qwen_Qwen2.5-1.5B-Instruct_guard90 rc=143
+17:34:25 START q_Qwen_Qwen2.5-1.5B-Instruct_gsm_guard90 (swap used 4710.81M)
+17:34:30 END q_Qwen_Qwen2.5-1.5B-Instruct_gsm_guard90 rc=0
+17:34:30 START det_Qwen_Qwen2.5-1.5B-Instruct_gsm_guard90_d0.9 (swap used 4574.81M)
+17:34:48 END det_Qwen_Qwen2.5-1.5B-Instruct_gsm_guard90_d0.9 rc=0
+17:34:48 START detp_Qwen_Qwen2.5-1.5B-Instruct_guard90_d0.9 (swap used 3047.56M)
+17:35:21 STOPPED part 6: the batch-4 job reached a 14 GB footprint (watchdog); memory cause to be found before a restart
+18:12:44 part 6 replaced by part 8 (reference code with the MPS cache fix; bench/run_bridge_part8.sh): the frozen copy's batch path fills the 16 GB Mac

@@ -1,0 +1,17 @@
+== data
+08:21:04 tiny data written to $TMPDIR/smoke_b2/data
+== cal_seal
+08:21:18 done: 960 tokens in 11s
+== dumps
+08:21:22 arm64_float32_default_b1: 8 texts, 960 positions -> B_cal__arm64_float32_default_b1.npz
+08:21:25 arm64_float32_default_b4: 8 texts, 960 positions -> B_cal__arm64_float32_default_b4.npz
+08:21:29 arm64_float32_eager_b4: 8 texts, 960 positions -> B_cal__arm64_float32_eager_b4.npz
+08:22:00 arm64_bfloat16_default_b1: 8 texts, 960 positions -> B_cal__arm64_bfloat16_default_b1.npz
+== table
+08:22:03 table {'fp32': 0.000183}; kept share 1.000; flips at kept positions: 33 -> $TMPDIR/smoke_b2/runs/distilgpt2/calibration_B_cal.json
+== speed
+08:22:15   verify batch 32: {'tok_s': 4053.7, 'seconds_per_text': 0.0493, 'peak_gb': None}
+== verify
+08:22:22 {'corpus': 'B_cal', 'config': 'fp32_default_b4', 'texts': 8, 'decisive': 8, 'same_VERIFIED_%': 100.0, 'same_wrong_MODIFIED': 0, 'same_INDETERMINATE': 0, 'calibrated': ['None'], 'transport_wrong_MODIFIED': {'crlf': 0, 'email': 0, 'nbsp': 0, 'combined': 0, 'bom_nnbsp': 0, 'c2pa_manifest': 0, 'invisible': 0}, 'transport_VERIFIED_%': {'crlf': 100.0, 'email': 100.0, 'nbsp': 100.0, 'combined': 100.0, 'bom_nnbsp': 100.0, 'c2pa_manifest': 100.0, 'invisible': 100.0}, 'unrelated_false_VERIFIED': 0, 'edits': {'replace_word': {'n': 8, 'noop_skipped': 0, 'MODIFIED_%': 100.0, 'false_VERIFIED': 0, 'localized_%': 100.0, 'model_layer_%': 87.5}, 'one_char': {'n': 8, 'noop_skipped': 0, 'MODIFIED_%': 100.0, 'false_VERIFIED': 0, 'localized_%': 100.0, 'model_layer_%': 50.0}, 'delete_sentence': {'n': 7, 'noop_skipped': 0, 'MODIFIED_%': 100.0, 'false_VERIFIED': 0, 'localized_%': 100.0, 'model_layer_%': 100.0}, 'insert_sentence': {'n': 7, 'noop_skipped': 0, 'MODIFIED_%': 100.0, 'false_VERIFIED': 0, 'localized_%': 100.0, 'model_layer_%': 100.0}, 'truncate_tail': {'n': 8, 'noop_skipped': 0, 'MODIFIED_%': 100.0, 'false_VERIFIED': 0, 'localized_%': 100.0, 'model_layer_%': 100.0}}, 'noop_edits_not_VERIFIED': 0, 'privacy_leaks': 0}
+08:26:07 {'corpus': 'B_cal', 'config': 'bf16_default_b4', 'texts': 8, 'decisive': 2, 'same_VERIFIED_%': 100.0, 'same_wrong_MODIFIED': 0, 'same_INDETERMINATE': 6, 'calibrated': ['None'], 'transport_wrong_MODIFIED': {'crlf': 0, 'email': 0, 'nbsp': 0, 'combined': 0, 'bom_nnbsp': 0, 'c2pa_manifest': 0, 'invisible': 0}, 'transport_VERIFIED_%': {'crlf': 100.0, 'email': 100.0, 'nbsp': 100.0, 'combined': 100.0, 'bom_nnbsp': 100.0, 'c2pa_manifest': 100.0, 'invisible': 100.0}}
+SMOKE B OK

@@ -1,0 +1,1 @@
+15:02:44 {'A_c4_quality': {'distinct_1': 0.5066, 'distinct_2': 0.8277, 'distinct_3': 0.9132, 'self_bleu4': 0.1188}, 'A_c4_plain': {'distinct_1': 0.5091, 'distinct_2': 0.8291, 'distinct_3': 0.9165, 'self_bleu4': 0.1175}}

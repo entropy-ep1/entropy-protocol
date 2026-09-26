@@ -1,0 +1,141 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+  10/200  79s
+  20/200  158s
+  30/200  226s
+  40/200  304s
+  50/200  387s
+  60/200  462s
+  70/200  545s
+  80/200  613s
+  90/200  697s
+  100/200  772s
+  110/200  844s
+  120/200  929s
+  130/200  1028s
+  140/200  1119s
+  150/200  1208s
+  160/200  1295s
+  170/200  1378s
+  180/200  1446s
+  190/200  1514s
+  200/200  1590s
+{
+ "model": "distilgpt2",
+ "device": "cpu",
+ "dtype": "float32",
+ "n": 200,
+ "minutes": 26.5,
+ "code": "aa2dddc19298c239",
+ "operating_point": {
+  "interval": 5,
+  "k": 1,
+  "window": 3,
+  "tol_space": "logit",
+  "cal": {
+   "fp32": 0.000206,
+   "fp16": 0.306839
+  }
+ },
+ "texts_below_8_entries": 126,
+ "mean_tokens": 180.9,
+ "mean_entries": 10.4,
+ "survival_%": 68.21,
+ "mean_seal_s": 7.19,
+ "mean_verify_s": 0.05,
+ "G1": {
+  "decisive_texts": 200,
+  "indeterminate_texts": 0,
+  "same_VERIFIED_%": 100.0,
+  "same_wrong_MODIFIED": 0,
+  "crlf_VERIFIED_%": 100.0,
+  "crlf_wrong_MODIFIED": 0,
+  "email_VERIFIED_%": 100.0,
+  "email_wrong_MODIFIED": 0,
+  "nbsp_VERIFIED_%": 100.0,
+  "nbsp_wrong_MODIFIED": 0,
+  "combined_VERIFIED_%": 100.0,
+  "combined_wrong_MODIFIED": 0,
+  "bom_nnbsp_VERIFIED_%": 100.0,
+  "bom_nnbsp_wrong_MODIFIED": 0,
+  "c2pa_manifest_VERIFIED_%": 100.0,
+  "c2pa_manifest_wrong_MODIFIED": 0,
+  "invisible_VERIFIED_%": 100.0,
+  "invisible_wrong_MODIFIED": 0
+ },
+ "G2": {
+  "checks": 399,
+  "false_VERIFIED": 0,
+  "MODIFIED_%": 100.0
+ },
+ "G3": {
+  "replace_word": {
+   "n": 193,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 53.89
+  },
+  "one_char": {
+   "n": 193,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 12.44
+  },
+  "delete_sentence": {
+   "n": 75,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 98.67,
+   "model_layer_alone_%": 100.0
+  },
+  "insert_sentence": {
+   "n": 75,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 97.33
+  },
+  "truncate_tail": {
+   "n": 200,
+   "MODIFIED_%": 43.5,
+   "false_VERIFIED": 113,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 38.5
+  }
+ },
+ "G6_privacy_leaks": 0,
+ "G10_lite": {
+  "texts": 200,
+  "detected_at_0.01": 0.405,
+  "detected_at_0.001": 0.36,
+  "detected_at_0.0001": 0.305,
+  "detected_at_1e-06": 0.245,
+  "median_p": 0.03515625,
+  "null_min_p": 0.0625
+ },
+ "localization_misses": [
+  {
+   "i": 23,
+   "edit": "delete_sentence",
+   "edit_at": 415,
+   "changed": [],
+   "deleted": [
+    729
+   ],
+   "divergent": [
+    [
+     898,
+     899
+    ],
+    [
+     931,
+     932
+    ]
+   ],
+   "original_around": "ng the software. The changes are based on our experience of using the software. The changes are based on our experience of using the software. The changes are b"
+  }
+ ]
+}
+written <repo>/bench/results/gates_distilgpt2_cpu_float32_N200_stage2.json

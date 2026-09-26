@@ -1,0 +1,8 @@
+2026-09-13 17:32:05 start (pid 27783): footprint > 13 GB, swap > 12 GB, free disk < 5 GB
+2026-09-13 17:34:25 STOPPED pid 27806 (footprint 14336 MB): /Library/Frameworks/Python.framework/Versions/3.12/Resources/Python.app/Contents/MacOS/Python bench/gpu/seal_corpus.py --model Qwen/Qwen2.5-1.5B-Instruct --device mps --dtype float16 --data gsm8k --field question --chat 
+2026-09-13 17:35:03 restart with footprint limit 15 GB (the batch-4 job holds 13 GB steadily; swap and disk limits unchanged)
+2026-09-13 17:35:03 start (pid 28466): footprint > 15 GB, swap > 12 GB, free disk < 5 GB
+2026-09-13 17:59:34 STOPPED pid 31432 (footprint 16384 MB): /Library/Frameworks/Python.framework/Versions/3.12/Resources/Python.app/Contents/MacOS/Python -W ignore bench/diag_mps_memory.py --model microsoft/Phi-3-mini-4k-instruct --batch 4 --every 50
+2026-09-13 20:06:29 STOPPED pid 47297 (footprint 16384 MB): /Library/Frameworks/Python.framework/Versions/3.12/Resources/Python.app/Contents/MacOS/Python bench/gpu/seal_corpus.py --model microsoft/Phi-3-mini-4k-instruct --device mps --dtype float16 --data gsm8k --field question -
+2026-09-13 20:28:41 STOPPED pid 50647 (footprint 16384 MB): /Library/Frameworks/Python.framework/Versions/3.12/Resources/Python.app/Contents/MacOS/Python bench/gpu/seal_corpus.py --model microsoft/Phi-3-mini-4k-instruct --device mps --dtype float16 --data gsm8k --field question -
+2026-09-14 00:22:21 stopped by hand: the bridge is done, no heavy jobs left

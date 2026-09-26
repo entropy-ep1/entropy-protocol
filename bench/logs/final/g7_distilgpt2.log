@@ -1,0 +1,83 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+{
+ "model": "distilgpt2",
+ "code": "23ecd270bd10bef6",
+ "verify": {
+  "cpu:float32": {
+   "128": {
+    "seconds": 0.0475,
+    "tokens_per_s": 2694.3
+   },
+   "512": {
+    "seconds": 0.1297,
+    "tokens_per_s": 3948.5
+   },
+   "1000": {
+    "seconds": 0.2177,
+    "tokens_per_s": 4593.5
+   }
+  },
+  "mps:float32": {
+   "128": {
+    "seconds": 0.0208,
+    "tokens_per_s": 6143.3
+   },
+   "512": {
+    "seconds": 0.0464,
+    "tokens_per_s": 11037.3
+   },
+   "1000": {
+    "seconds": 0.0852,
+    "tokens_per_s": 11739.6
+   }
+  },
+  "mps:float16": {
+   "128": {
+    "seconds": 0.019,
+    "tokens_per_s": 6724.6
+   },
+   "512": {
+    "seconds": 0.0428,
+    "tokens_per_s": 11953.0
+   },
+   "1000": {
+    "seconds": 0.0744,
+    "tokens_per_s": 13436.6
+   }
+  }
+ },
+ "seal": {
+  "cpu:float32": {
+   "tokens": [
+    160,
+    160,
+    160
+   ],
+   "generate_s": 2.99,
+   "seal_s": 3.051,
+   "overhead_%": 2.0
+  },
+  "mps:float32": {
+   "tokens": [
+    160,
+    160,
+    160
+   ],
+   "generate_s": 2.855,
+   "seal_s": 2.842,
+   "overhead_%": -0.5
+  },
+  "mps:float16": {
+   "tokens": [
+    160,
+    160,
+    160
+   ],
+   "generate_s": 2.5,
+   "seal_s": 2.6,
+   "overhead_%": 4.0
+  }
+ }
+}
+written <repo>/bench/results/g7_distilgpt2.json

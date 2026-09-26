@@ -1,0 +1,7 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:04,  1.46s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:02<00:02,  1.43s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:04<00:01,  1.42s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:05<00:00,  1.37s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:05<00:00,  1.39s/it]
+13:55:21 Qwen/Qwen2.5-7B-Instruct sealed A_c4_sealed: 128 of 128 to do, batch 32
+13:56:10   batch 1: 32 texts, 12800 tokens, 48.5s (264 tok/s)
+13:56:45   batch 2: 32 texts, 12800 tokens, 34.6s (370 tok/s)
+13:57:19   batch 3: 32 texts, 12800 tokens, 34.5s (371 tok/s)
+13:57:54   batch 4: 32 texts, 12800 tokens, 34.3s (373 tok/s)
+13:57:54 done: 51200 tokens in 152s

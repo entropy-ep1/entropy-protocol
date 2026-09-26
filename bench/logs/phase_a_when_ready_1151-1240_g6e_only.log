@@ -1,0 +1,51 @@
+
+aws: [ERROR]: An error occurred (InsufficientInstanceCapacity) when calling the RunInstances operation (reached max retries: 2): We currently do not have sufficient g6e.2xlarge capacity in the Availability Zone you requested (us-east-2a). Our system will be working on provisioning additional capacity. You can currently get g6e.2xlarge capacity by not specifying an Availability Zone in your request or choosing us-east-2b, us-east-2c.
+
+aws: [ERROR]: An error occurred (InsufficientInstanceCapacity) when calling the RunInstances operation (reached max retries: 2): We currently do not have sufficient g6e.2xlarge capacity in the Availability Zone you requested (us-east-2c). Our system will be working on provisioning additional capacity. You can currently get g6e.2xlarge capacity by not specifying an Availability Zone in your request or choosing us-east-2a, us-east-2b.
+
+aws: [ERROR]: An error occurred (InsufficientInstanceCapacity) when calling the RunInstances operation (reached max retries: 2): We currently do not have sufficient g6e.2xlarge capacity in the Availability Zone you requested (us-east-2b). Our system will be working on provisioning additional capacity. You can currently get g6e.2xlarge capacity by not specifying an Availability Zone in your request or choosing us-east-2a, us-east-2c.
+
+aws: [ERROR]: An error occurred (InsufficientInstanceCapacity) when calling the RunInstances operation (reached max retries: 2): We currently do not have sufficient g6e.xlarge capacity in the Availability Zone you requested (us-east-2a). Our system will be working on provisioning additional capacity. You can currently get g6e.xlarge capacity by not specifying an Availability Zone in your request or choosing us-east-2b, us-east-2c.
+
+aws: [ERROR]: An error occurred (InsufficientInstanceCapacity) when calling the RunInstances operation (reached max retries: 2): We currently do not have sufficient g6e.xlarge capacity in the Availability Zone you requested (us-east-2c). Our system will be working on provisioning additional capacity. You can currently get g6e.xlarge capacity by not specifying an Availability Zone in your request or choosing us-east-2a, us-east-2b.
+
+aws: [ERROR]: An error occurred (InsufficientInstanceCapacity) when calling the RunInstances operation (reached max retries: 2): We currently do not have sufficient g6e.xlarge capacity in the Availability Zone you requested (us-east-2b). Our system will be working on provisioning additional capacity. You can currently get g6e.xlarge capacity by not specifying an Availability Zone in your request or choosing us-east-2a, us-east-2c.
+
+aws: [ERROR]: An error occurred (VcpuLimitExceeded) when calling the RunInstances operation: You have requested more vCPU capacity than your current vCPU limit of 0 allows for the instance bucket that the specified instance type belongs to. Please visit http://aws.amazon.com/contact-us/ec2-request to request an adjustment to this limit.
+
+aws: [ERROR]: An error occurred (VcpuLimitExceeded) when calling the RunInstances operation: You have requested more vCPU capacity than your current vCPU limit of 0 allows for the instance bucket that the specified instance type belongs to. Please visit http://aws.amazon.com/contact-us/ec2-request to request an adjustment to this limit.
+11:53:07 try 1: no capacity or limit for g6e.2xlarge g6e.xlarge; next in 15 min
+
+aws: [ERROR]: An error occurred (InsufficientInstanceCapacity) when calling the RunInstances operation (reached max retries: 2): We currently do not have sufficient g6e.2xlarge capacity in the Availability Zone you requested (us-east-2a). Our system will be working on provisioning additional capacity. You can currently get g6e.2xlarge capacity by not specifying an Availability Zone in your request or choosing us-east-2b, us-east-2c.
+
+aws: [ERROR]: An error occurred (InsufficientInstanceCapacity) when calling the RunInstances operation (reached max retries: 2): We currently do not have sufficient g6e.2xlarge capacity in the Availability Zone you requested (us-east-2c). Our system will be working on provisioning additional capacity. You can currently get g6e.2xlarge capacity by not specifying an Availability Zone in your request or choosing us-east-2a, us-east-2b.
+
+aws: [ERROR]: An error occurred (InsufficientInstanceCapacity) when calling the RunInstances operation (reached max retries: 2): We currently do not have sufficient g6e.2xlarge capacity in the Availability Zone you requested (us-east-2b). Our system will be working on provisioning additional capacity. You can currently get g6e.2xlarge capacity by not specifying an Availability Zone in your request or choosing us-east-2a, us-east-2c.
+
+aws: [ERROR]: An error occurred (InsufficientInstanceCapacity) when calling the RunInstances operation (reached max retries: 2): We currently do not have sufficient g6e.xlarge capacity in the Availability Zone you requested (us-east-2a). Our system will be working on provisioning additional capacity. You can currently get g6e.xlarge capacity by not specifying an Availability Zone in your request or choosing us-east-2b, us-east-2c.
+
+aws: [ERROR]: An error occurred (InsufficientInstanceCapacity) when calling the RunInstances operation (reached max retries: 2): We currently do not have sufficient g6e.xlarge capacity in the Availability Zone you requested (us-east-2c). Our system will be working on provisioning additional capacity. You can currently get g6e.xlarge capacity by not specifying an Availability Zone in your request or choosing us-east-2a, us-east-2b.
+
+aws: [ERROR]: An error occurred (InsufficientInstanceCapacity) when calling the RunInstances operation (reached max retries: 2): We currently do not have sufficient g6e.xlarge capacity in the Availability Zone you requested (us-east-2b). Our system will be working on provisioning additional capacity. You can currently get g6e.xlarge capacity by not specifying an Availability Zone in your request or choosing us-east-2a, us-east-2c.
+
+aws: [ERROR]: An error occurred (VcpuLimitExceeded) when calling the RunInstances operation: You have requested more vCPU capacity than your current vCPU limit of 0 allows for the instance bucket that the specified instance type belongs to. Please visit http://aws.amazon.com/contact-us/ec2-request to request an adjustment to this limit.
+
+aws: [ERROR]: An error occurred (VcpuLimitExceeded) when calling the RunInstances operation: You have requested more vCPU capacity than your current vCPU limit of 0 allows for the instance bucket that the specified instance type belongs to. Please visit http://aws.amazon.com/contact-us/ec2-request to request an adjustment to this limit.
+12:09:13 try 2: no capacity or limit for g6e.2xlarge g6e.xlarge; next in 15 min
+
+aws: [ERROR]: An error occurred (InsufficientInstanceCapacity) when calling the RunInstances operation (reached max retries: 2): We currently do not have sufficient g6e.2xlarge capacity in the Availability Zone you requested (us-east-2a). Our system will be working on provisioning additional capacity. You can currently get g6e.2xlarge capacity by not specifying an Availability Zone in your request or choosing us-east-2b, us-east-2c.
+
+aws: [ERROR]: An error occurred (InsufficientInstanceCapacity) when calling the RunInstances operation (reached max retries: 2): We currently do not have sufficient g6e.2xlarge capacity in the Availability Zone you requested (us-east-2c). Our system will be working on provisioning additional capacity. You can currently get g6e.2xlarge capacity by not specifying an Availability Zone in your request or choosing us-east-2a, us-east-2b.
+
+aws: [ERROR]: An error occurred (InsufficientInstanceCapacity) when calling the RunInstances operation (reached max retries: 2): We currently do not have sufficient g6e.2xlarge capacity in the Availability Zone you requested (us-east-2b). Our system will be working on provisioning additional capacity. You can currently get g6e.2xlarge capacity by not specifying an Availability Zone in your request or choosing us-east-2a, us-east-2c.
+
+aws: [ERROR]: An error occurred (InsufficientInstanceCapacity) when calling the RunInstances operation (reached max retries: 2): We currently do not have sufficient g6e.xlarge capacity in the Availability Zone you requested (us-east-2a). Our system will be working on provisioning additional capacity. You can currently get g6e.xlarge capacity by not specifying an Availability Zone in your request or choosing us-east-2b, us-east-2c.
+
+aws: [ERROR]: An error occurred (InsufficientInstanceCapacity) when calling the RunInstances operation (reached max retries: 2): We currently do not have sufficient g6e.xlarge capacity in the Availability Zone you requested (us-east-2c). Our system will be working on provisioning additional capacity. You can currently get g6e.xlarge capacity by not specifying an Availability Zone in your request or choosing us-east-2a, us-east-2b.
+
+aws: [ERROR]: An error occurred (InsufficientInstanceCapacity) when calling the RunInstances operation (reached max retries: 2): We currently do not have sufficient g6e.xlarge capacity in the Availability Zone you requested (us-east-2b). Our system will be working on provisioning additional capacity. You can currently get g6e.xlarge capacity by not specifying an Availability Zone in your request or choosing us-east-2a, us-east-2c.
+
+aws: [ERROR]: An error occurred (VcpuLimitExceeded) when calling the RunInstances operation: You have requested more vCPU capacity than your current vCPU limit of 0 allows for the instance bucket that the specified instance type belongs to. Please visit http://aws.amazon.com/contact-us/ec2-request to request an adjustment to this limit.
+
+aws: [ERROR]: An error occurred (VcpuLimitExceeded) when calling the RunInstances operation: You have requested more vCPU capacity than your current vCPU limit of 0 allows for the instance bucket that the specified instance type belongs to. Please visit http://aws.amazon.com/contact-us/ec2-request to request an adjustment to this limit.
+12:25:18 try 3: no capacity or limit for g6e.2xlarge g6e.xlarge; next in 15 min

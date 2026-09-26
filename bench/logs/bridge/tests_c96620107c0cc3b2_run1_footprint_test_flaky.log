@@ -1,0 +1,25 @@
+...................................................................F.... [ 78%]
+....................                                                     [100%]
+=================================== FAILURES ===================================
+____________________ test_phys_footprint_reads_this_process ____________________
+
+    def test_phys_footprint_reads_this_process():
+        """The gateway's memory budget reads the process footprint from the kernel (macOS); elsewhere there is none."""
+        import sys
+    
+        from entropy_protocol.gateway import phys_footprint
+        before = phys_footprint()
+        if sys.platform != "darwin":
+            assert before is None
+            return
+        block = bytearray(64 << 20)
+        for i in range(0, len(block), 4096):
+            block[i] = 1
+>       assert before > 0 and phys_footprint() >= before + (48 << 20)
+E       assert (5101948840 > 0 and 5101948840 >= (5101948840 + (48 << 20)))
+E        +  where 5101948840 = <function phys_footprint at 0x12d498220>()
+
+tests/test_gateway.py:174: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_gateway.py::test_phys_footprint_reads_this_process - assert...
+1 failed, 91 passed in 303.09s (0:05:03)

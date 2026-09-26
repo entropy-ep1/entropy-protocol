@@ -1,0 +1,21 @@
+{
+ "model": "gpt2-medium@6dcaa7a952f72f9298047fd5137cd6e4f05f41da",
+ "weights_digest": "3b3236a49fb074d3462d816e462551c5d37ab62760e00fea047f67c98784533a",
+ "tokenizer_digest": "11e818f948f43497f364722def50c13f419158554961ee4bb095fbd3350895c3",
+ "space": "logit",
+ "c": 3.0,
+ "k": 1,
+ "reference": "cpu:float32",
+ "texts": 16,
+ "positions": 3032,
+ "delta": {
+  "mps:float32": 0.000213623046875,
+  "mps:float16": 0.214935302734375,
+  "mps:bfloat16": 1.855010986328125
+ },
+ "errors": {},
+ "table": {
+  "fp32": 0.000641,
+  "fp16": 0.644806
+ }
+}

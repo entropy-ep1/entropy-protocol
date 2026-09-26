@@ -1,0 +1,124 @@
+{
+ "model": "Qwen/Qwen2.5-7B-Instruct",
+ "reference": "NVIDIA-L40S_float16_default_b1",
+ "texts": 64,
+ "positions_used": 24920,
+ "growth": {
+  "NVIDIA-L40S_bfloat16_default_b32": {
+   "4": {
+    "median": 3.2812,
+    "min": 0.8438,
+    "max": 25.0312
+   },
+   "8": {
+    "median": 4.125,
+    "min": 1.0781,
+    "max": 25.0312
+   },
+   "16": {
+    "median": 5.666,
+    "min": 2.7891,
+    "max": 25.0312
+   },
+   "32": {
+    "median": 25.0312,
+    "min": 3.2812,
+    "max": 25.0312
+   },
+   "48": {
+    "median": 25.0312,
+    "min": 5.0977,
+    "max": 25.0312
+   },
+   "64": {
+    "median": 25.0312,
+    "min": 25.0312,
+    "max": 25.0312
+   }
+  },
+  "NVIDIA-L40S_float16_default_b32": {
+   "4": {
+    "median": 0.2227,
+    "min": 0.0938,
+    "max": 0.4219
+   },
+   "8": {
+    "median": 0.3281,
+    "min": 0.1406,
+    "max": 0.4219
+   },
+   "16": {
+    "median": 0.3281,
+    "min": 0.1641,
+    "max": 0.4219
+   },
+   "32": {
+    "median": 0.4219,
+    "min": 0.2344,
+    "max": 0.4219
+   },
+   "48": {
+    "median": 0.4219,
+    "min": 0.3281,
+    "max": 0.4219
+   },
+   "64": {
+    "median": 0.4219,
+    "min": 0.4219,
+    "max": 0.4219
+   }
+  },
+  "NVIDIA-L40S_float32_default_b1": {
+   "4": {
+    "median": 0.3038,
+    "min": 0.1212,
+    "max": 2.0449
+   },
+   "8": {
+    "median": 0.3929,
+    "min": 0.1168,
+    "max": 2.0449
+   },
+   "16": {
+    "median": 0.8321,
+    "min": 0.1764,
+    "max": 2.0449
+   },
+   "32": {
+    "median": 2.0449,
+    "min": 0.3696,
+    "max": 2.0449
+   },
+   "48": {
+    "median": 2.0449,
+    "min": 0.3929,
+    "max": 2.0449
+   },
+   "64": {
+    "median": 2.0449,
+    "min": 2.0449,
+    "max": 2.0449
+   }
+  }
+ },
+ "classes": {
+  "NVIDIA-L40S_bfloat16_default_b32": {
+   "own_tolerance": 25.0312,
+   "judged": 4,
+   "judged_share_of_kept": 0.0002,
+   "sign_flips_among_judged": 0
+  },
+  "NVIDIA-L40S_float16_default_b32": {
+   "own_tolerance": 0.4219,
+   "judged": 17721,
+   "judged_share_of_kept": 1.0,
+   "sign_flips_among_judged": 0
+  },
+  "NVIDIA-L40S_float32_default_b1": {
+   "own_tolerance": 2.0449,
+   "judged": 10320,
+   "judged_share_of_kept": 0.5824,
+   "sign_flips_among_judged": 0
+  }
+ }
+}

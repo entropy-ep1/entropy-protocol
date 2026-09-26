@@ -1,0 +1,5 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:04,  1.46s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:02<00:02,  1.44s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:04<00:01,  1.43s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:05<00:00,  1.37s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:05<00:00,  1.40s/it]
+14:47:12   kgw L=100: {'score': {'tpr': 0.7344, 'threshold': 3.117691453623979, 'null_n': 1128, 'resolvable': True}}
+14:47:14   kgw L=200: {'score': {'tpr': 0.9375, 'threshold': 3.117691453623979, 'null_n': 1128, 'resolvable': True}}
+14:47:19   kgw L=400: {'score': {'tpr': 0.9688, 'threshold': 3.117691453623979, 'null_n': 1128, 'resolvable': True}}
+14:47:19 written baseline_kgw_A.summary.json

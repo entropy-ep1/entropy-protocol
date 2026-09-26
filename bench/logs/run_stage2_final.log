@@ -1,0 +1,29 @@
+21:18:09 START cal_distilgpt2
+21:20:04 END cal_distilgpt2 rc=0
+21:20:04 START cal_gpt2-medium
+21:27:36 END cal_gpt2-medium rc=0
+21:27:36 START cal_qwen_qwen2.5-0.5b-instruct
+21:36:14 END cal_qwen_qwen2.5-0.5b-instruct rc=0
+21:36:14 START g4_distilgpt2
+21:36:14 START gates_distilgpt2
+21:38:58 END g4_distilgpt2 rc=0
+21:38:58 START g4_qwen
+22:02:48 END gates_distilgpt2 rc=0
+22:02:48 START gates_gpt2-medium
+22:38:23 END g4_qwen rc=0
+22:38:23 START g10_qwen
+00:05:40 END gates_gpt2-medium rc=0
+00:05:40 START gates_qwen_qwen2.5-0.5b-instruct
+00:26:19 END g10_qwen rc=0
+00:26:19 START g10_gpt2-medium
+01:11:13 END g10_gpt2-medium rc=0
+02:21:16 END gates_qwen_qwen2.5-0.5b-instruct rc=0
+02:21:16 START gates_distilgpt2_N1000
+04:08:48 END gates_distilgpt2_N1000 rc=0
+04:08:48 START g7_distilgpt2
+04:10:30 END g7_distilgpt2 rc=0
+04:10:30 START g7_gpt2-medium
+04:15:31 END g7_gpt2-medium rc=0
+04:15:31 START g7_qwen_qwen2.5-0.5b-instruct
+04:21:57 END g7_qwen_qwen2.5-0.5b-instruct rc=0
+04:21:57 ALL DONE

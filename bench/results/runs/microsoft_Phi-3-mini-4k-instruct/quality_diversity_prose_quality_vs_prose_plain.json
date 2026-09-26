@@ -1,0 +1,14 @@
+{
+ "prose_quality": {
+  "distinct_1": 0.6422,
+  "distinct_2": 0.9394,
+  "distinct_3": 0.9797,
+  "self_bleu4": 0.0795
+ },
+ "prose_plain": {
+  "distinct_1": 0.649,
+  "distinct_2": 0.9468,
+  "distinct_3": 0.9892,
+  "self_bleu4": 0.0837
+ }
+}

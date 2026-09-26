@@ -1,0 +1,77 @@
+{
+ "model": "Qwen/Qwen2.5-7B-Instruct@a09a35458c702b33eeacc393d103063234e8bc28",
+ "weights_digest": "fd024e4fed1dfb65cc679af8aa2d7b542971a1b74ab8cb4d703ac082afc3922c",
+ "space": "logit",
+ "c": 3.0,
+ "k": 1,
+ "reference": "NVIDIA-L40S_float16_default_b1",
+ "reference_env": {
+  "device": "cuda",
+  "hardware": "NVIDIA L40S",
+  "dtype": "float16",
+  "class": "fp16",
+  "torch": "2.7.0+cu128",
+  "transformers": "4.53.2",
+  "attn": "sdpa",
+  "batch": 1
+ },
+ "texts": 64,
+ "from_position": 4,
+ "positions": 24920,
+ "positions_incl_unused": 25176,
+ "delta": {
+  "NVIDIA-L40S_bfloat16_default_b32": 8.34375,
+  "NVIDIA-L40S_float16_default_b32": 0.140625,
+  "NVIDIA-L40S_float32_default_b1": 0.6816205978393555
+ },
+ "per_config": {
+  "NVIDIA-L40S_bfloat16_default_b32": {
+   "delta": 8.34375,
+   "p99.9": 1.09375,
+   "p99.99": 2.25,
+   "mean": 0.07416405528783798,
+   "flips_all": 315,
+   "positions": 24920,
+   "delta_incl_unused_positions": 12.4375,
+   "flips_unused_positions": 1,
+   "flips_at_kept_positions": 1,
+   "kept_positions": 4712
+  },
+  "NVIDIA-L40S_float16_default_b32": {
+   "delta": 0.140625,
+   "p99.9": 0.078125,
+   "p99.99": 0.109375,
+   "mean": 0.007780948653817177,
+   "flips_all": 31,
+   "positions": 24920,
+   "delta_incl_unused_positions": 1.98760986328125,
+   "flips_unused_positions": 0,
+   "flips_at_kept_positions": 0,
+   "kept_positions": 4712
+  },
+  "NVIDIA-L40S_float32_default_b1": {
+   "delta": 0.6816205978393555,
+   "p99.9": 0.18789032101631165,
+   "p99.99": 0.5252742767333984,
+   "mean": 0.009361988864839077,
+   "flips_all": 34,
+   "positions": 24920,
+   "delta_incl_unused_positions": 0.7936067581176758,
+   "flips_unused_positions": 1,
+   "flips_at_kept_positions": 0,
+   "kept_positions": 4712
+  }
+ },
+ "by_class": {
+  "bf16": 8.34375,
+  "fp16": 0.140625,
+  "fp32": 0.6816205978393555
+ },
+ "errors": {},
+ "table": {
+  "fp32": 2.044862,
+  "fp16": 0.421875
+ },
+ "record_margin_needed": 4.089724,
+ "kept_share": 0.18908507223113966
+}

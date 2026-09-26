@@ -1,0 +1,86 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+  10/40  549s
+  20/40  1084s
+  30/40  1605s
+  40/40  2116s
+{
+ "model": "Qwen/Qwen2.5-0.5B-Instruct",
+ "code": "aa2dddc19298c239",
+ "variant_params": {
+  "c5_free_hm0": {
+   "interval": 5,
+   "k": 1,
+   "high_window": 3,
+   "selection": "content",
+   "align": "free",
+   "high_margin": 0.0
+  },
+  "c5_record_strength": {
+   "interval": 5,
+   "k": 1,
+   "high_window": 3,
+   "selection": "content",
+   "align": "free",
+   "high_margin": null
+  }
+ },
+ "oracle": "gpt2-medium",
+ "n": 40,
+ "usable_for_ppl": 40,
+ "space": "logit",
+ "min_new_tokens": 120,
+ "max_new_tokens": 160,
+ "cal": {
+  "fp32": 0.000898,
+  "fp16": 0.79434
+ },
+ "minutes": 35.3,
+ "variants": {
+  "unsealed": {
+   "median_ppl_prefix": 9.22,
+   "mean_distinct2": 0.825,
+   "mean_rep3": 0.109,
+   "mean_words": 126.9
+  },
+  "c5_free_hm0": {
+   "self_geo_mean_ppl_ratio": 1.263,
+   "self_pairs": 40,
+   "median_ppl_prefix": 11.02,
+   "median_ppl_ratio": 1.182,
+   "geo_mean_ppl_ratio": 1.155,
+   "ci95": [
+    1.024,
+    1.309
+   ],
+   "share_ratio_gt_1.25": 0.45,
+   "mean_distinct2": 0.862,
+   "mean_rep3": 0.072,
+   "mean_words": 130.8,
+   "mean_entries": 14.6,
+   "entries_per_100_tokens": 9.18,
+   "survival_%": 47.0,
+   "texts_below_8_entries_%": 2.5
+  },
+  "c5_record_strength": {
+   "self_geo_mean_ppl_ratio": 1.339,
+   "self_pairs": 40,
+   "median_ppl_prefix": 12.93,
+   "median_ppl_ratio": 1.403,
+   "geo_mean_ppl_ratio": 1.327,
+   "ci95": [
+    1.179,
+    1.502
+   ],
+   "share_ratio_gt_1.25": 0.6,
+   "mean_distinct2": 0.86,
+   "mean_rep3": 0.067,
+   "mean_words": 129.2,
+   "mean_entries": 21.2,
+   "entries_per_100_tokens": 13.26,
+   "survival_%": 68.4,
+   "texts_below_8_entries_%": 0.0
+  }
+ }
+}
+written <repo>/bench/results/g5b_Qwen_Qwen2.5-0.5B-Instruct_logit_min120_N40_stage2final.json

@@ -1,0 +1,6 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:05<00:05,  5.31s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:08<00:00,  4.30s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:08<00:00,  4.45s/it]
+22:56:09   positives L=100: {'0.01': {'rate': 1.0, 'count': 40}, '0.001': {'rate': 1.0, 'count': 40}, '0.0001': {'rate': 0.95, 'count': 38}, '1e-05': {'rate': 0.675, 'count': 27}, '1e-06': {'rate': 0.375, 'count': 15}}
+22:56:09   positives L=200: {'0.01': {'rate': 1.0, 'count': 40}, '0.001': {'rate': 1.0, 'count': 40}, '0.0001': {'rate': 1.0, 'count': 40}, '1e-05': {'rate': 1.0, 'count': 40}, '1e-06': {'rate': 1.0, 'count': 40}}
+22:56:09 written detect_prose_strong.summary.json

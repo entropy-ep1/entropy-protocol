@@ -1,0 +1,3 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+15:42:37 {'prose_sealed': {'distinct_1': 0.5647, 'distinct_2': 0.8764, 'distinct_3': 0.9406, 'self_bleu4': 0.0849}, 'prose_plain': {'distinct_1': 0.5582, 'distinct_2': 0.8675, 'distinct_3': 0.9339, 'self_bleu4': 0.1005}}

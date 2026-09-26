@@ -1,0 +1,21 @@
+{
+ "model": "Qwen/Qwen2.5-1.5B-Instruct@989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+ "weights_digest": "61386c3acd8784979ce35a59cad00a6b2ff26d05522133d557816a4e80e5cef4",
+ "tokenizer_digest": "f884026e05f6dfffe68b72d580b588006d98b3bc0a128bb1ac425c76f7fc438c",
+ "space": "logit",
+ "c": 3.0,
+ "k": 1,
+ "reference": "cpu:float32",
+ "texts": 16,
+ "positions": 3195,
+ "delta": {
+  "mps:float32": 0.0007457733154296875,
+  "mps:float16": 1.1992359161376953,
+  "mps:bfloat16": 3.841970443725586
+ },
+ "errors": {},
+ "table": {
+  "fp32": 0.002237,
+  "fp16": 3.597708
+ }
+}

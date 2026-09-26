@@ -1,0 +1,16 @@
+[17:46:56] start                              live   0.00 GB | driver   0.00 GB | footprint   0.27 GB
+[17:47:00] model loaded                       live   2.88 GB | driver   3.05 GB | footprint   3.37 GB
+[17:47:14] model call 25 (8, 1)               live   2.92 GB | driver   3.56 GB | footprint   4.18 GB
+[17:47:19] model call 50 (8, 1)               live   2.92 GB | driver   3.84 GB | footprint   4.57 GB
+[17:47:25] model call 75 (8, 1)               live   2.93 GB | driver   4.03 GB | footprint   4.88 GB
+[17:47:30] model call 100 (8, 1)              live   2.94 GB | driver   4.19 GB | footprint   5.15 GB
+[17:47:36] model call 125 (8, 1)              live   2.94 GB | driver   4.36 GB | footprint   5.42 GB
+[17:47:41] model call 150 (8, 1)              live   2.95 GB | driver   4.54 GB | footprint   5.71 GB
+[17:47:47] model call 175 (8, 1)              live   3.22 GB | driver   3.51 GB | footprint   4.80 GB
+[17:47:52] model call 200 (4, 1)              live   2.94 GB | driver   3.73 GB | footprint   5.17 GB
+[17:47:56] model call 225 (4, 1)              live   2.94 GB | driver   3.15 GB | footprint   4.70 GB
+[17:48:00] model call 250 (4, 1)              live   2.94 GB | driver   3.17 GB | footprint   4.83 GB
+[17:48:04] model call 275 (4, 1)              live   2.94 GB | driver   3.19 GB | footprint   4.96 GB
+[17:48:08] model call 300 (1, 8)              live   2.88 GB | driver   3.14 GB | footprint   5.07 GB
+[17:48:11] done: 910 tokens, 300 calls, 71s   live   2.88 GB | driver   5.11 GB | footprint   6.82 GB
+[17:48:11] after empty_cache                  live   2.88 GB | driver   4.09 GB | footprint   5.77 GB

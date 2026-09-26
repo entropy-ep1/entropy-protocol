@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use the Entropy Protocol, please cite it as below."
+title: "Entropy Protocol (ep1): sealing machine-generated text at generation, verifiable without revealing it"
+authors:
+  - family-names: Oliinyk
+    given-names: Roman
+  - family-names: Nikolaichuk
+    given-names: Serhii
+version: 0.1.0
+license: Apache-2.0
+type: software

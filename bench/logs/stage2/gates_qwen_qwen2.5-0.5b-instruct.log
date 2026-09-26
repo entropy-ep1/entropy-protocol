@@ -1,0 +1,185 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+  10/200  391s
+  20/200  789s
+  30/200  1234s
+  40/200  1663s
+  50/200  2115s
+  60/200  2515s
+  70/200  2901s
+  80/200  3326s
+  90/200  3743s
+  100/200  4155s
+  110/200  4576s
+  120/200  4945s
+  130/200  5333s
+  140/200  5718s
+  150/200  6116s
+  160/200  6516s
+  170/200  6913s
+  180/200  7312s
+  190/200  7697s
+  200/200  8092s
+{
+ "model": "Qwen/Qwen2.5-0.5B-Instruct",
+ "device": "cpu",
+ "dtype": "float32",
+ "n": 200,
+ "minutes": 134.9,
+ "code": "aa2dddc19298c239",
+ "operating_point": {
+  "interval": 5,
+  "k": 1,
+  "window": 3,
+  "tol_space": "logit",
+  "cal": {
+   "fp32": 0.000898,
+   "fp16": 0.79434
+  }
+ },
+ "texts_below_8_entries": 1,
+ "mean_tokens": 196.2,
+ "mean_entries": 18.8,
+ "survival_%": 49.15,
+ "mean_seal_s": 34.68,
+ "mean_verify_s": 0.422,
+ "G1": {
+  "decisive_texts": 200,
+  "indeterminate_texts": 0,
+  "same_VERIFIED_%": 100.0,
+  "same_wrong_MODIFIED": 0,
+  "crlf_VERIFIED_%": 100.0,
+  "crlf_wrong_MODIFIED": 0,
+  "email_VERIFIED_%": 100.0,
+  "email_wrong_MODIFIED": 0,
+  "nbsp_VERIFIED_%": 100.0,
+  "nbsp_wrong_MODIFIED": 0,
+  "combined_VERIFIED_%": 100.0,
+  "combined_wrong_MODIFIED": 0,
+  "bom_nnbsp_VERIFIED_%": 100.0,
+  "bom_nnbsp_wrong_MODIFIED": 0,
+  "c2pa_manifest_VERIFIED_%": 100.0,
+  "c2pa_manifest_wrong_MODIFIED": 0,
+  "invisible_VERIFIED_%": 100.0,
+  "invisible_wrong_MODIFIED": 0
+ },
+ "G2": {
+  "checks": 399,
+  "false_VERIFIED": 0,
+  "MODIFIED_%": 100.0
+ },
+ "G3": {
+  "replace_word": {
+   "n": 200,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 82.0
+  },
+  "one_char": {
+   "n": 200,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 9.5
+  },
+  "delete_sentence": {
+   "n": 199,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 99.5,
+   "model_layer_alone_%": 99.5
+  },
+  "insert_sentence": {
+   "n": 199,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 97.99
+  },
+  "truncate_tail": {
+   "n": 200,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 99.5,
+   "model_layer_alone_%": 97.5
+  }
+ },
+ "G6_privacy_leaks": 0,
+ "G10_lite": {
+  "texts": 200,
+  "detected_at_0.01": 0.995,
+  "detected_at_0.001": 0.985,
+  "detected_at_0.0001": 0.975,
+  "detected_at_1e-06": 0.895,
+  "median_p": 2.699380274862051e-09,
+  "null_min_p": 0.0078125
+ },
+ "localization_misses": [
+  {
+   "i": 116,
+   "edit": "truncate_tail",
+   "edit_at": 611,
+   "changed": [],
+   "deleted": [
+    607
+   ],
+   "divergent": [
+    [
+     636,
+     637
+    ],
+    [
+     645,
+     646
+    ],
+    [
+     687,
+     688
+    ],
+    [
+     731,
+     732
+    ],
+    [
+     760,
+     761
+    ]
+   ],
+   "original_around": " - Hobbies/Personal time (4 hours)\n\n2. Identify the time available in a day:\n    - 2 hours for work\n    - 3 hours for school\n    - 4 hours for social media\n    "
+  },
+  {
+   "i": 143,
+   "edit": "delete_sentence",
+   "edit_at": 348,
+   "changed": [],
+   "deleted": [
+    340
+   ],
+   "divergent": [
+    [
+     352,
+     362
+    ],
+    [
+     400,
+     410
+    ],
+    [
+     648,
+     652
+    ],
+    [
+     671,
+     675
+    ],
+    [
+     688,
+     692
+    ]
+   ],
+   "original_around": "ent within the application.\nIs this statement correct?\nOPTIONS: a). yes. b) no. b) no. This statement is incorrect because software updates generally do not inc"
+  }
+ ]
+}
+written <repo>/bench/results/gates_Qwen_Qwen2.5-0.5B-Instruct_cpu_float32_N200_stage2.json

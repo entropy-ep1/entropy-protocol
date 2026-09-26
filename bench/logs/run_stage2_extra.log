@@ -1,0 +1,7 @@
+01:11:24 START g4_distilgpt2_rerun
+01:31:26 END g4_distilgpt2_rerun rc=0
+01:31:26 START g5_qwen_final
+02:06:47 END g5_qwen_final rc=0
+02:06:47 EXTRA DONE
+02:06:48 START g4_distilgpt2_rerun2
+02:29:33 END g4_distilgpt2_rerun2 rc=0

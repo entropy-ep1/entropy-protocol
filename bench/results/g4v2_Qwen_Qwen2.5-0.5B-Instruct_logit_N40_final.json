@@ -1,0 +1,145 @@
+{
+ "model": "Qwen/Qwen2.5-0.5B-Instruct",
+ "code": "23ecd270bd10bef6",
+ "n": 40,
+ "calib_texts": 30,
+ "calib_positions": 4687,
+ "space": "logit",
+ "c": 3.0,
+ "reference": "cpu:float32",
+ "delta": {
+  "mps:float32": 0.00019931793212890625,
+  "mps:float16": 0.3557310104370117,
+  "mps:bfloat16": 1.9494810104370117
+ },
+ "calibration_errors": {},
+ "certified": [
+  "fp32",
+  "fp16"
+ ],
+ "table": {
+  "fp32": 0.000598,
+  "fp16": 1.067193
+ },
+ "calibrated_flag_by_config": {
+  "cpu:float32": true,
+  "mps:float32": true,
+  "mps:float16": true,
+  "mps:bfloat16": false
+ },
+ "survival_%": {
+  "calibrated": 40.39,
+  "uncalibrated": 90.73
+ },
+ "mean_entries": {
+  "calibrated": 12.5,
+  "uncalibrated": 28.1
+ },
+ "texts_below_8_entries": {
+  "calibrated": 6,
+  "uncalibrated": 0
+ },
+ "verdicts": {
+  "cpu:float32|calibrated": {
+   "unchanged": {
+    "VERIFIED": 40
+   },
+   "transported": {
+    "VERIFIED": 40
+   },
+   "edited": {
+    "MODIFIED": 40
+   }
+  },
+  "cpu:float32|uncalibrated": {
+   "unchanged": {
+    "VERIFIED": 40
+   },
+   "transported": {
+    "VERIFIED": 40
+   },
+   "edited": {
+    "MODIFIED": 40
+   }
+  },
+  "mps:float32|calibrated": {
+   "unchanged": {
+    "VERIFIED": 40
+   },
+   "transported": {
+    "VERIFIED": 40
+   },
+   "edited": {
+    "MODIFIED": 40
+   }
+  },
+  "mps:float32|uncalibrated": {
+   "unchanged": {
+    "VERIFIED": 40
+   },
+   "transported": {
+    "VERIFIED": 40
+   },
+   "edited": {
+    "MODIFIED": 40
+   }
+  },
+  "mps:float16|calibrated": {
+   "unchanged": {
+    "VERIFIED": 40
+   },
+   "transported": {
+    "VERIFIED": 40
+   },
+   "edited": {
+    "MODIFIED": 40
+   }
+  },
+  "mps:float16|uncalibrated": {
+   "unchanged": {
+    "VERIFIED": 37,
+    "INDETERMINATE": 3
+   },
+   "transported": {
+    "VERIFIED": 37,
+    "INDETERMINATE": 3
+   },
+   "edited": {
+    "MODIFIED": 40
+   }
+  },
+  "mps:bfloat16|calibrated": {
+   "unchanged": {
+    "VERIFIED": 40
+   },
+   "transported": {
+    "VERIFIED": 40
+   },
+   "edited": {
+    "MODIFIED": 40
+   }
+  },
+  "mps:bfloat16|uncalibrated": {
+   "unchanged": {
+    "VERIFIED": 26,
+    "INDETERMINATE": 14
+   },
+   "transported": {
+    "VERIFIED": 26,
+    "INDETERMINATE": 14
+   },
+   "edited": {
+    "MODIFIED": 40
+   }
+  }
+ },
+ "wrong_MODIFIED_on_unchanged_any_config": 0,
+ "edited_reported_VERIFIED_any_config": 0,
+ "certified_configs_all_VERIFIED": true,
+ "minutes": 36.4,
+ "operating_point": {
+  "interval": 5,
+  "k": 1,
+  "window": 3
+ }
+}

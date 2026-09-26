@@ -1,0 +1,12 @@
+#4: reproduced the audit text: enforced 37, entries 36, dropped [0, 1, 0, 0]
+   tol 0.00 logits: checkpoints 37, matched 36, excluded 0, p 2.8e-10
+   tol 0.05 logits: checkpoints 36, matched 36, excluded 1, p 1.5e-11
+   tol 0.10 logits: checkpoints 34, matched 34, excluded 3, p 5.8e-11
+   tol 0.25 logits: checkpoints 29, matched 29, excluded 8, p 1.9e-09
+   tol 0.50 logits: checkpoints 26, matched 26, excluded 11, p 1.5e-08
+#6: reproduced the audit text: enforced 39, entries 38, dropped [0, 1, 0, 0]
+   tol 0.00 logits: checkpoints 39, matched 38, excluded 0, p 7.3e-11
+   tol 0.05 logits: checkpoints 37, matched 37, excluded 2, p 7.3e-12
+   tol 0.10 logits: checkpoints 36, matched 36, excluded 3, p 1.5e-11
+   tol 0.25 logits: checkpoints 34, matched 34, excluded 5, p 5.8e-11
+   tol 0.50 logits: checkpoints 28, matched 28, excluded 11, p 3.7e-09

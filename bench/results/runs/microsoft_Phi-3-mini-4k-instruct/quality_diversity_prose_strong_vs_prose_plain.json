@@ -1,0 +1,14 @@
+{
+ "prose_strong": {
+  "distinct_1": 0.6444,
+  "distinct_2": 0.9496,
+  "distinct_3": 0.9902,
+  "self_bleu4": 0.0673
+ },
+ "prose_plain": {
+  "distinct_1": 0.649,
+  "distinct_2": 0.9468,
+  "distinct_3": 0.9892,
+  "self_bleu4": 0.0837
+ }
+}

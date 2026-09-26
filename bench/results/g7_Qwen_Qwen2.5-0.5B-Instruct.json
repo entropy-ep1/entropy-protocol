@@ -1,0 +1,86 @@
+{
+ "model": "Qwen/Qwen2.5-0.5B-Instruct",
+ "code": "aa2dddc19298c239",
+ "verify": {
+  "cpu:float32": {
+   "128": {
+    "seconds": 0.2079,
+    "tokens_per_s": 615.8
+   },
+   "512": {
+    "seconds": 0.4994,
+    "tokens_per_s": 1025.2
+   },
+   "1000": {
+    "seconds": 0.8784,
+    "tokens_per_s": 1138.5
+   }
+  },
+  "mps:float32": {
+   "128": {
+    "seconds": 0.0875,
+    "tokens_per_s": 1463.6
+   },
+   "512": {
+    "seconds": 0.2252,
+    "tokens_per_s": 2273.5
+   },
+   "1000": {
+    "seconds": 0.4124,
+    "tokens_per_s": 2425.0
+   }
+  },
+  "mps:float16": {
+   "128": {
+    "seconds": 0.0779,
+    "tokens_per_s": 1642.5
+   },
+   "512": {
+    "seconds": 0.1965,
+    "tokens_per_s": 2606.2
+   },
+   "1000": {
+    "seconds": 0.3712,
+    "tokens_per_s": 2694.1
+   }
+  }
+ },
+ "seal": {
+  "cpu:float32": {
+   "align": "free",
+   "free_after": 0,
+   "tokens": [
+    160,
+    160,
+    160
+   ],
+   "generate_s": 13.309,
+   "seal_s": 24.674,
+   "overhead_%": 85.4
+  },
+  "mps:float32": {
+   "align": "free",
+   "free_after": 0,
+   "tokens": [
+    160,
+    160,
+    160
+   ],
+   "generate_s": 10.773,
+   "seal_s": 18.46,
+   "overhead_%": 71.3
+  },
+  "mps:float16": {
+   "align": "free",
+   "free_after": 0,
+   "tokens": [
+    160,
+    160,
+    160
+   ],
+   "generate_s": 10.698,
+   "seal_s": 18.439,
+   "overhead_%": 72.4
+  }
+ }
+}

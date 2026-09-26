@@ -1,0 +1,18 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+12:07:31 Qwen/Qwen2.5-1.5B-Instruct sealed gsm_gate90: 100 of 100 to do, batch 16
+Traceback (most recent call last):
+  File "<repo>-next/bench/gpu/seal_corpus.py", line 175, in <module>
+    main()
+  File "<repo>-next/bench/gpu/seal_corpus.py", line 147, in main
+    res = seal_batch(backend, inputs, [masters[k] for k in keys], params,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>-next/src/entropy_protocol/batch.py", line 383, in seal_batch
+    outs = generate_batch(backend, prompts, [decider(params, m, d) for m, d in zip(masters, doc_ids)],
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>-next/src/entropy_protocol/batch.py", line 127, in generate_batch
+    raise FloatingPointError(f"non-finite logits after the prompt pass ({backend.environment['class']}, "
+FloatingPointError: non-finite logits after the prompt pass (fp16, attention sdpa): precision overflow or a padding problem

@@ -1,0 +1,12 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+Traceback (most recent call last):
+  File "<repo>/bench/g4_backends.py", line 125, in <module>
+    main()
+  File "<repo>/bench/g4_backends.py", line 69, in main
+    cal = calibrate(ref, {f"{d}:{t}": (lambda d=d, t=t: load(a.model, d, t)) for d, t in configs[1:]},
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/src/entropy_protocol/calibrate.py", line 85, in calibrate
+    d = max(d, float((m - rm).abs().max()))
+                     ^^^^^^^^^^^^^^^^^^^^
+RuntimeError: max(): Expected reduction dim to be specified for input.numel() == 0. Specify the reduction dim with the 'dim' argument.

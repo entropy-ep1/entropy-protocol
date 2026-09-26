@@ -1,0 +1,13 @@
+15:14:55 START base_sid
+15:15:10 END base_sid rc=0
+15:15:10 START table_fp16
+15:15:14 END table_fp16 rc=0
+15:15:14 START quality_16
+15:17:58 END quality_16 rc=0
+15:17:58 START sealed_16
+15:20:43 END sealed_16 rc=0
+15:20:43 START verify_q16
+15:22:22 END verify_q16 rc=0
+15:22:22 START verify_s16
+15:24:03 END verify_s16 rc=0
+15:24:03 PHASE A EXTRA DONE

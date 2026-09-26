@@ -1,0 +1,14 @@
+# Build and cache output only. Evidence (logs, results, runs) is tracked on purpose: a clean clone must hold every
+# file a number in this repository stands on (see bench/logs, bench/results, runs_gpu). Never add a blanket *.log.
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+.venv/
+.DS_Store
+# operational, per operator: the machine ledger carries live IPs; the Azure cap watchers' own output
+bench/gpu/infra/instances.tsv
+bench/gpu/infra/azure_cap_*.log
+node_modules/

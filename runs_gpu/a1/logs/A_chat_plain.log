@@ -1,0 +1,5 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:04,  1.46s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:02<00:02,  1.43s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:04<00:01,  1.42s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:05<00:00,  1.37s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:05<00:00,  1.39s/it]
+14:04:52 Qwen/Qwen2.5-7B-Instruct plain A_dolly_plain: 64 of 64 to do, batch 32
+14:05:10   batch 1: 32 texts, 8338 tokens, 18.1s (461 tok/s)
+14:05:29   batch 2: 32 texts, 10580 tokens, 19.1s (554 tok/s)
+14:05:29 done: 18918 tokens in 37s

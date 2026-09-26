@@ -1,0 +1,4 @@
+tests/test_batch.py::test_sampling_draws_where_the_generator_lives PASSED [100%]
+PASSED tests/test_batch.py::test_sampling_draws_where_the_generator_lives
+======================= 1 passed, 8 deselected in 4.46s ========================
+cuda available: True

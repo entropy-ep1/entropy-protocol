@@ -1,0 +1,162 @@
+{
+ "model": "distilgpt2",
+ "n": 30,
+ "calib_texts": 20,
+ "c": 3.0,
+ "tol": 0.434406,
+ "calibration": {
+  "mps:float32": {
+   "delta_max": 7.891654968261719e-05,
+   "argmax_flip_%": 0.0,
+   "positions": 2383,
+   "nan": false
+  },
+  "mps:float16": {
+   "delta_max": 0.012835144996643066,
+   "argmax_flip_%": 1.049,
+   "positions": 2383,
+   "nan": false
+  },
+  "mps:bfloat16": {
+   "delta_max": 0.1448020190000534,
+   "argmax_flip_%": 6.63,
+   "positions": 2383,
+   "nan": false
+  },
+  "cpu:bfloat16": {
+   "delta_max": 0.08636114001274109,
+   "argmax_flip_%": 7.008,
+   "positions": 2383,
+   "nan": false
+  }
+ },
+ "survival_%": {
+  "calibrated": 4.29,
+  "uncalibrated": 86.09
+ },
+ "mean_entries": {
+  "calibrated": 1.1,
+  "uncalibrated": 21.9
+ },
+ "verdicts": {
+  "cpu:float32|calibrated": {
+   "unchanged": {
+    "VERIFIED": 30
+   },
+   "transported": {
+    "VERIFIED": 30
+   },
+   "edited": {
+    "MODIFIED": 30
+   }
+  },
+  "cpu:float32|uncalibrated": {
+   "unchanged": {
+    "VERIFIED": 30
+   },
+   "transported": {
+    "VERIFIED": 30
+   },
+   "edited": {
+    "MODIFIED": 30
+   }
+  },
+  "mps:float32|calibrated": {
+   "unchanged": {
+    "VERIFIED": 30
+   },
+   "transported": {
+    "VERIFIED": 30
+   },
+   "edited": {
+    "MODIFIED": 30
+   }
+  },
+  "mps:float32|uncalibrated": {
+   "unchanged": {
+    "VERIFIED": 30
+   },
+   "transported": {
+    "VERIFIED": 30
+   },
+   "edited": {
+    "MODIFIED": 30
+   }
+  },
+  "mps:float16|calibrated": {
+   "unchanged": {
+    "VERIFIED": 30
+   },
+   "transported": {
+    "VERIFIED": 30
+   },
+   "edited": {
+    "MODIFIED": 30
+   }
+  },
+  "mps:float16|uncalibrated": {
+   "unchanged": {
+    "VERIFIED": 27,
+    "INDETERMINATE": 3
+   },
+   "transported": {
+    "VERIFIED": 27,
+    "INDETERMINATE": 3
+   },
+   "edited": {
+    "MODIFIED": 30
+   }
+  },
+  "mps:bfloat16|calibrated": {
+   "unchanged": {
+    "VERIFIED": 30
+   },
+   "transported": {
+    "VERIFIED": 30
+   },
+   "edited": {
+    "MODIFIED": 30
+   }
+  },
+  "mps:bfloat16|uncalibrated": {
+   "unchanged": {
+    "INDETERMINATE": 19,
+    "VERIFIED": 11
+   },
+   "transported": {
+    "INDETERMINATE": 19,
+    "VERIFIED": 11
+   },
+   "edited": {
+    "MODIFIED": 30
+   }
+  },
+  "cpu:bfloat16|calibrated": {
+   "unchanged": {
+    "VERIFIED": 30
+   },
+   "transported": {
+    "VERIFIED": 30
+   },
+   "edited": {
+    "MODIFIED": 30
+   }
+  },
+  "cpu:bfloat16|uncalibrated": {
+   "unchanged": {
+    "INDETERMINATE": 16,
+    "VERIFIED": 14
+   },
+   "transported": {
+    "INDETERMINATE": 16,
+    "VERIFIED": 14
+   },
+   "edited": {
+    "MODIFIED": 30
+   }
+  }
+ },
+ "wrong_MODIFIED_on_unchanged_any_config": 0,
+ "edited_reported_VERIFIED_any_config": 0,
+ "minutes": 14.7
+}

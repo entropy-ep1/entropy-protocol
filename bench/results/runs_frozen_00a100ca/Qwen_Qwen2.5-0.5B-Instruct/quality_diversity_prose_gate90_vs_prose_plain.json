@@ -1,0 +1,14 @@
+{
+ "prose_gate90": {
+  "distinct_1": 0.498,
+  "distinct_2": 0.8088,
+  "distinct_3": 0.8917,
+  "self_bleu4": 0.1195
+ },
+ "prose_plain": {
+  "distinct_1": 0.4927,
+  "distinct_2": 0.7932,
+  "distinct_3": 0.8782,
+  "self_bleu4": 0.113
+ }
+}

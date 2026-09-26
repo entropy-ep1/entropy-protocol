@@ -1,0 +1,5 @@
+15:24:44Z marker seen in ep/logs/phase_a_extra.log
+results <- a1 (3.22.250.26):  18M
+15:24:50Z every remote file is here ( 18M); terminating a1
+shutting-down
+15:24:51Z a1 terminated

@@ -1,0 +1,111 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+  10/60  945s
+  20/60  1788s
+  30/60  2569s
+  40/60  3343s
+  50/60  4170s
+  60/60  4964s
+{
+ "model": "Qwen/Qwen2.5-0.5B-Instruct",
+ "code": "7fb3f22a40bae710",
+ "variant_params": {
+  "i5_k1_w3": {
+   "interval": 5,
+   "k": 1,
+   "high_window": 3,
+   "selection": "interval"
+  },
+  "c5_k1_w3_prompt": {
+   "interval": 5,
+   "k": 1,
+   "high_window": 3,
+   "selection": "content",
+   "align": "prompt"
+  },
+  "c5_k1_w3_free": {
+   "interval": 5,
+   "k": 1,
+   "high_window": 3,
+   "selection": "content",
+   "align": "free"
+  }
+ },
+ "oracle": "gpt2-medium",
+ "n": 60,
+ "usable_for_ppl": 60,
+ "space": "logit",
+ "min_new_tokens": 120,
+ "max_new_tokens": 160,
+ "cal": {
+  "fp32": 0.001551,
+  "fp16": 0.577415
+ },
+ "minutes": 82.7,
+ "variants": {
+  "unsealed": {
+   "median_ppl_prefix": 9.98,
+   "mean_distinct2": 0.825,
+   "mean_rep3": 0.106,
+   "mean_words": 125.7
+  },
+  "i5_k1_w3": {
+   "self_geo_mean_ppl_ratio": 1.231,
+   "self_pairs": 60,
+   "median_ppl_prefix": 11.54,
+   "median_ppl_ratio": 1.126,
+   "geo_mean_ppl_ratio": 1.146,
+   "ci95": [
+    1.027,
+    1.28
+   ],
+   "share_ratio_gt_1.25": 0.433,
+   "mean_distinct2": 0.851,
+   "mean_rep3": 0.074,
+   "mean_words": 127.9,
+   "mean_entries": 17.9,
+   "entries_per_100_tokens": 11.17,
+   "survival_%": 57.6,
+   "texts_below_8_entries_%": 0.0
+  },
+  "c5_k1_w3_prompt": {
+   "self_geo_mean_ppl_ratio": 1.228,
+   "self_pairs": 60,
+   "median_ppl_prefix": 10.38,
+   "median_ppl_ratio": 1.155,
+   "geo_mean_ppl_ratio": 1.115,
+   "ci95": [
+    1.017,
+    1.215
+   ],
+   "share_ratio_gt_1.25": 0.383,
+   "mean_distinct2": 0.849,
+   "mean_rep3": 0.077,
+   "mean_words": 129.8,
+   "mean_entries": 18.1,
+   "entries_per_100_tokens": 11.3,
+   "survival_%": 58.9,
+   "texts_below_8_entries_%": 0.0
+  },
+  "c5_k1_w3_free": {
+   "self_geo_mean_ppl_ratio": 1.314,
+   "self_pairs": 60,
+   "median_ppl_prefix": 12.0,
+   "median_ppl_ratio": 1.267,
+   "geo_mean_ppl_ratio": 1.249,
+   "ci95": [
+    1.134,
+    1.37
+   ],
+   "share_ratio_gt_1.25": 0.517,
+   "mean_distinct2": 0.867,
+   "mean_rep3": 0.064,
+   "mean_words": 125.0,
+   "mean_entries": 23.3,
+   "entries_per_100_tokens": 14.66,
+   "survival_%": 75.0,
+   "texts_below_8_entries_%": 0.0
+  }
+ }
+}
+written <repo>/bench/results/g5b_Qwen_Qwen2.5-0.5B-Instruct_logit_min120_N60_stage2.json

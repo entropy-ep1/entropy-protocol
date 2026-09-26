@@ -1,0 +1,110 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+  10/100  324s
+  20/100  633s
+  30/100  994s
+  40/100  1366s
+  50/100  1754s
+  60/100  2122s
+  70/100  2752s
+  80/100  3155s
+  90/100  3563s
+  100/100  3997s
+{
+ "model": "Qwen/Qwen2.5-1.5B-Instruct",
+ "device": "mps",
+ "dtype": "float32",
+ "n": 100,
+ "minutes": 66.6,
+ "code": "2d2866250eda5363",
+ "operating_point": {
+  "interval": 5,
+  "k": 1,
+  "window": 3,
+  "tol_space": "logit",
+  "cal": {
+   "fp32": 0.002237,
+   "fp16": 3.597708
+  }
+ },
+ "texts_below_8_entries": 85,
+ "mean_tokens": 197.2,
+ "mean_entries": 3.6,
+ "survival_%": 9.33,
+ "mean_seal_s": 32.45,
+ "mean_verify_s": 0.701,
+ "G1": {
+  "decisive_texts": 100,
+  "indeterminate_texts": 0,
+  "same_VERIFIED_%": 100.0,
+  "same_wrong_MODIFIED": 0,
+  "crlf_VERIFIED_%": 100.0,
+  "crlf_wrong_MODIFIED": 0,
+  "email_VERIFIED_%": 100.0,
+  "email_wrong_MODIFIED": 0,
+  "nbsp_VERIFIED_%": 100.0,
+  "nbsp_wrong_MODIFIED": 0,
+  "combined_VERIFIED_%": 100.0,
+  "combined_wrong_MODIFIED": 0,
+  "bom_nnbsp_VERIFIED_%": 100.0,
+  "bom_nnbsp_wrong_MODIFIED": 0,
+  "c2pa_manifest_VERIFIED_%": 100.0,
+  "c2pa_manifest_wrong_MODIFIED": 0,
+  "invisible_VERIFIED_%": 100.0,
+  "invisible_wrong_MODIFIED": 0
+ },
+ "G2": {
+  "checks": 199,
+  "false_VERIFIED": 0,
+  "MODIFIED_%": 100.0
+ },
+ "G3": {
+  "replace_word": {
+   "n": 100,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 45.0
+  },
+  "one_char": {
+   "n": 100,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 0.0
+  },
+  "delete_sentence": {
+   "n": 98,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 64.29
+  },
+  "insert_sentence": {
+   "n": 98,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 52.04
+  },
+  "truncate_tail": {
+   "n": 100,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 59.0
+  }
+ },
+ "G6_privacy_leaks": 0,
+ "G10_lite": {
+  "texts": 100,
+  "detected_at_0.01": 1.0,
+  "detected_at_0.001": 0.98,
+  "detected_at_0.0001": 0.96,
+  "detected_at_1e-06": 0.88,
+  "median_p": 9.313225746154785e-10,
+  "null_min_p": 0.65625
+ },
+ "localization_misses": []
+}
+written <repo>/bench/results/gates_Qwen_Qwen2.5-1.5B-Instruct_mps_float32_N100_bridge.json

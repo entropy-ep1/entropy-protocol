@@ -1,0 +1,102 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:05<00:05,  5.31s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:09<00:00,  4.63s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:09<00:00,  4.73s/it]
+  10/30  381s
+  20/30  725s
+  30/30  1084s
+{
+ "model": "microsoft/Phi-3-mini-4k-instruct",
+ "device": "mps",
+ "dtype": "float16",
+ "n": 30,
+ "minutes": 18.1,
+ "code": "73eee0d50e518249",
+ "operating_point": {
+  "interval": 5,
+  "k": 1,
+  "window": 3,
+  "guard": 0.9
+ },
+ "texts_below_8_entries": 1,
+ "mean_tokens": 188.9,
+ "mean_entries": 21.1,
+ "survival_%": 100.0,
+ "mean_seal_s": 28.22,
+ "mean_verify_s": 0.523,
+ "G1": {
+  "decisive_texts": 30,
+  "indeterminate_texts": 0,
+  "same_VERIFIED_%": 100.0,
+  "same_wrong_MODIFIED": 0,
+  "crlf_VERIFIED_%": 100.0,
+  "crlf_wrong_MODIFIED": 0,
+  "email_VERIFIED_%": 100.0,
+  "email_wrong_MODIFIED": 0,
+  "nbsp_VERIFIED_%": 100.0,
+  "nbsp_wrong_MODIFIED": 0,
+  "combined_VERIFIED_%": 100.0,
+  "combined_wrong_MODIFIED": 0,
+  "bom_nnbsp_VERIFIED_%": 100.0,
+  "bom_nnbsp_wrong_MODIFIED": 0,
+  "c2pa_manifest_VERIFIED_%": 100.0,
+  "c2pa_manifest_wrong_MODIFIED": 0,
+  "invisible_VERIFIED_%": 100.0,
+  "invisible_wrong_MODIFIED": 0
+ },
+ "G2": {
+  "checks": 59,
+  "false_VERIFIED": 0,
+  "MODIFIED_%": 100.0
+ },
+ "G3": {
+  "replace_word": {
+   "n": 30,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 76.67
+  },
+  "one_char": {
+   "n": 30,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 40.0
+  },
+  "delete_sentence": {
+   "n": 29,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 100.0
+  },
+  "insert_sentence": {
+   "n": 29,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 93.1
+  },
+  "truncate_tail": {
+   "n": 30,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 100.0
+  }
+ },
+ "G6_privacy_leaks": 0,
+ "G10_lite": {
+  "texts": 30,
+  "detected_at_0.01": 0.9667,
+  "detected_at_0.001": 0.9333,
+  "detected_at_0.0001": 0.7,
+  "detected_at_1e-06": 0.3667,
+  "median_p": 4.849396646022797e-06,
+  "null_min_p": 0.2265625
+ },
+ "localization_misses": [],
+ "profile": "quality",
+ "detect_gate": 0.9
+}
+written <repo>/bench/results/gates_microsoft_Phi-3-mini-4k-instruct_mps_float16_N30_p7quality.json

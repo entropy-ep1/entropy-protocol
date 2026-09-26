@@ -1,0 +1,10 @@
+[18:04:37] start                              live   0.00 GB | driver   0.00 GB | footprint   0.27 GB
+[18:04:43] model loaded (slack 1073741824)    live   2.88 GB | driver   3.05 GB | footprint   4.02 GB
+[18:05:02] model call 50 (8, 1)               live   2.92 GB | driver   3.47 GB | footprint   4.74 GB
+[18:05:13] model call 100 (8, 1)              live   2.94 GB | driver   3.78 GB | footprint   5.31 GB
+[18:05:24] model call 150 (8, 1)              live   2.95 GB | driver   3.92 GB | footprint   5.67 GB
+[18:05:35] model call 200 (4, 1)              live   2.95 GB | driver   3.45 GB | footprint   5.47 GB
+[18:05:43] model call 250 (4, 1)              live   2.95 GB | driver   3.45 GB | footprint   5.69 GB
+[18:05:52] model call 300 (1, 8)              live   2.88 GB | driver   3.45 GB | footprint   5.96 GB
+[18:05:55] done: 910 tokens, 300 calls, 71s, outputs fdf42d7546a16d79 live   2.88 GB | driver   4.01 GB | footprint   6.33 GB
+[18:05:55] after empty_cache                  live   2.88 GB | driver   4.01 GB | footprint   6.27 GB

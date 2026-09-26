@@ -1,0 +1,8 @@
+13:24:42 c4: 1200 items
+13:24:45 wiki en: 300 items
+13:24:48 wiki uk: 300 items
+Generating train split:   0%|          | 0/15011 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 15011/15011 [00:00<00:00, 316437.89 examples/s]
+13:24:50 dolly: 100 items
+Generating train split:   0%|          | 0/7473 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 7473/7473 [00:00<00:00, 1037641.40 examples/s]
+Generating test split:   0%|          | 0/1319 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 1319/1319 [00:00<00:00, 505185.55 examples/s]
+13:24:54 gsm8k: 1319 items

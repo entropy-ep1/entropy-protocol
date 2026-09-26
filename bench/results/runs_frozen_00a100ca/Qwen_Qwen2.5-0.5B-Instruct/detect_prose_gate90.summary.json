@@ -1,0 +1,117 @@
+{
+ "code": "00a100caabf1bdf8",
+ "model": "Qwen/Qwen2.5-0.5B-Instruct@7ae557604adf67be50417f59c2c2f167def9a775",
+ "weights": "f0a62a4d86e57dd5ac645484981288c15febea408def1de858997925056a74aa",
+ "env": {
+  "device": "mps",
+  "hardware": "arm64",
+  "dtype": "float16",
+  "class": "fp16",
+  "torch": "2.7.1",
+  "transformers": "4.53.2",
+  "attn": "sdpa",
+  "batch": 1
+ },
+ "time": "2026-09-13T14:53:52",
+ "name": "prose_gate90",
+ "tol": 0.0,
+ "interval": 5,
+ "context": 4,
+ "alphas": [
+  0.01,
+  0.001,
+  0.0001,
+  1e-05,
+  1e-06
+ ],
+ "positives": {
+  "100": {
+   "texts": 40,
+   "texts_reaching_L": 40,
+   "detected_at": {
+    "0.01": {
+     "rate": 0.975,
+     "count": 39
+    },
+    "0.001": {
+     "rate": 0.975,
+     "count": 39
+    },
+    "0.0001": {
+     "rate": 0.675,
+     "count": 27
+    },
+    "1e-05": {
+     "rate": 0.3,
+     "count": 12
+    },
+    "1e-06": {
+     "rate": 0.15,
+     "count": 6
+    }
+   },
+   "median_p": 3.0517578125e-05,
+   "mean_checkpoints": 15.6,
+   "match_rate": 0.9968
+  },
+  "200": {
+   "texts": 40,
+   "texts_reaching_L": 40,
+   "detected_at": {
+    "0.01": {
+     "rate": 1.0,
+     "count": 40
+    },
+    "0.001": {
+     "rate": 1.0,
+     "count": 40
+    },
+    "0.0001": {
+     "rate": 1.0,
+     "count": 40
+    },
+    "1e-05": {
+     "rate": 0.95,
+     "count": 38
+    },
+    "1e-06": {
+     "rate": 0.95,
+     "count": 38
+    }
+   },
+   "median_p": 4.656612873077393e-10,
+   "mean_checkpoints": 30.5,
+   "match_rate": 0.9967
+  }
+ },
+ "nulls": {
+  "same_model_other_key": {
+   "pairs": 40,
+   "false_positive_at": {
+    "0.01": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "0.001": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "0.0001": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "1e-05": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "1e-06": {
+     "rate": 0.0,
+     "count": 0
+    }
+   },
+   "min_p": 0.09387077949941158
+  }
+ },
+ "attacks": {},
+ "minutes": 0.4
+}

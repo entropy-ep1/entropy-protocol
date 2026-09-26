@@ -1,0 +1,1 @@
+run 1 (13:24-13:32Z, code c96620107c0cc3b2): every sampled step failed in batch._multinomial (generator on cuda, tensors on cuda:0). The four calibration dumps ran on 0 texts. Kept as valid: data, tiny_model, kgw, synthid (no _multinomial on their path).

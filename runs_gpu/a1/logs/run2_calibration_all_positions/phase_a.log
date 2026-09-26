@@ -1,0 +1,21 @@
+13:39:03 SKIP data (done earlier)
+13:39:03 START unit_tests
+13:39:38 END unit_tests rc=0
+13:39:38 SKIP tiny_model (done earlier)
+13:39:38 START model_tests
+13:43:35 END model_tests rc=0
+13:43:35 START cal_seal
+13:45:12 END cal_seal rc=0
+13:45:12 START dump_float16_b1
+13:45:44 END dump_float16_b1 rc=0
+13:45:44 START dump_float16_b32
+13:46:00 END dump_float16_b32 rc=0
+13:46:00 START dump_bfloat16_b32
+13:46:13 END dump_bfloat16_b32 rc=0
+13:46:13 START dump_float32_b1
+13:47:00 END dump_float32_b1 rc=0
+13:47:00 START table
+13:47:05 END table rc=0
+13:47:05 START sealed
+13:49:49 END sealed rc=0
+13:49:49 START quality

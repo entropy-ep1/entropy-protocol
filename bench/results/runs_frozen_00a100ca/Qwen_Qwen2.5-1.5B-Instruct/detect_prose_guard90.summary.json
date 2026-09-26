@@ -1,0 +1,117 @@
+{
+ "code": "00a100caabf1bdf8",
+ "model": "Qwen/Qwen2.5-1.5B-Instruct@989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+ "weights": "61386c3acd8784979ce35a59cad00a6b2ff26d05522133d557816a4e80e5cef4",
+ "env": {
+  "device": "mps",
+  "hardware": "arm64",
+  "dtype": "float16",
+  "class": "fp16",
+  "torch": "2.7.1",
+  "transformers": "4.53.2",
+  "attn": "sdpa",
+  "batch": 1
+ },
+ "time": "2026-09-13T15:41:48",
+ "name": "prose_guard90",
+ "tol": 0.0,
+ "interval": 5,
+ "context": 4,
+ "alphas": [
+  0.01,
+  0.001,
+  0.0001,
+  1e-05,
+  1e-06
+ ],
+ "positives": {
+  "100": {
+   "texts": 40,
+   "texts_reaching_L": 40,
+   "detected_at": {
+    "0.01": {
+     "rate": 0.75,
+     "count": 30
+    },
+    "0.001": {
+     "rate": 0.475,
+     "count": 19
+    },
+    "0.0001": {
+     "rate": 0.125,
+     "count": 5
+    },
+    "1e-05": {
+     "rate": 0.05,
+     "count": 2
+    },
+    "1e-06": {
+     "rate": 0.0,
+     "count": 0
+    }
+   },
+   "median_p": 0.0012469589710235596,
+   "mean_checkpoints": 18.8,
+   "match_rate": 0.8415
+  },
+  "200": {
+   "texts": 40,
+   "texts_reaching_L": 40,
+   "detected_at": {
+    "0.01": {
+     "rate": 1.0,
+     "count": 40
+    },
+    "0.001": {
+     "rate": 0.875,
+     "count": 35
+    },
+    "0.0001": {
+     "rate": 0.75,
+     "count": 30
+    },
+    "1e-05": {
+     "rate": 0.575,
+     "count": 23
+    },
+    "1e-06": {
+     "rate": 0.35,
+     "count": 14
+    }
+   },
+   "median_p": 7.14963061909657e-06,
+   "mean_checkpoints": 37.4,
+   "match_rate": 0.8521
+  }
+ },
+ "nulls": {
+  "same_model_other_key": {
+   "pairs": 40,
+   "false_positive_at": {
+    "0.01": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "0.001": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "0.0001": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "1e-05": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "1e-06": {
+     "rate": 0.0,
+     "count": 0
+    }
+   },
+   "min_p": 0.08038980090599424
+  }
+ },
+ "attacks": {},
+ "minutes": 0.5
+}

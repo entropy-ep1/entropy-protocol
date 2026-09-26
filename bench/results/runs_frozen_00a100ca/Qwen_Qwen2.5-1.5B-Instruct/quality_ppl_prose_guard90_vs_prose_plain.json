@@ -1,0 +1,12 @@
+{
+ "pairs": 40,
+ "oracle": "gpt2-medium",
+ "geo_mean_ppl_ratio": 0.941,
+ "ci95": [
+  0.847,
+  1.035
+ ],
+ "median_ppl_a": 7.49,
+ "median_ppl_b": 7.95,
+ "conditioned_on_prompt": true
+}

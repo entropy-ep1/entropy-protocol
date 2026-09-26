@@ -1,0 +1,63 @@
+13:55:07 SKIP data (done earlier)
+13:55:07 SKIP unit_tests (done earlier)
+13:55:07 SKIP tiny_model (done earlier)
+13:55:07 SKIP model_tests (done earlier)
+13:55:07 SKIP cal_seal (done earlier)
+13:55:07 SKIP dump_float16_b1 (done earlier)
+13:55:07 SKIP dump_float16_b32 (done earlier)
+13:55:07 SKIP dump_bfloat16_b32 (done earlier)
+13:55:07 SKIP dump_float32_b1 (done earlier)
+13:55:07 START table
+13:55:11 END table rc=0
+13:55:11 START sealed
+13:57:55 END sealed rc=0
+13:57:55 START quality
+14:00:38 END quality rc=0
+14:00:38 START sealed_bf
+14:01:44 END sealed_bf rc=0
+14:01:44 START plain
+14:03:12 END plain rc=0
+14:03:12 SKIP kgw (done earlier)
+14:03:12 SKIP synthid (done earlier)
+14:03:12 START chat_seal
+14:04:41 END chat_seal rc=0
+14:04:41 START chat_plain
+14:05:30 END chat_plain rc=0
+14:05:30 START gsm_seal
+14:08:08 END gsm_seal rc=0
+14:08:08 START gsm_plain
+14:09:28 END gsm_plain rc=0
+14:09:28 START gsm_qual
+14:11:47 END gsm_qual rc=0
+14:11:47 START verify_fp16
+14:13:26 END verify_fp16 rc=0
+14:13:26 START verify_bf16
+14:14:22 END verify_bf16 rc=0
+14:14:22 START verify_fp32
+14:15:41 END verify_fp32 rc=0
+14:15:41 START verify_bfg
+14:16:15 END verify_bfg rc=0
+14:16:15 START verify_q
+14:17:42 END verify_q rc=0
+14:17:42 START attacks
+14:17:55 END attacks rc=0
+14:17:55 START detect
+14:44:08 END detect rc=0
+14:44:08 START detect_q
+14:45:48 END detect_q rc=0
+14:45:48 START base_kgw
+14:47:19 END base_kgw rc=0
+14:47:19 START base_sid
+Terminated
+15:00:48 END base_sid rc=143
+15:00:48 START q_div
+15:01:47 END q_div rc=0
+15:01:47 START q_div_q
+15:02:45 END q_div_q rc=0
+15:02:45 START q_gsm
+15:02:49 END q_gsm rc=0
+15:02:49 START q_gsm_q
+15:02:54 END q_gsm_q rc=0
+15:02:54 START speed
+15:05:21 END speed rc=0
+15:05:21 PHASE A DONE (GPU 44 GB, fp32 steps: run)

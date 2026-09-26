@@ -1,0 +1,6 @@
+2026-09-13 17:38:15 code ceef30ae09f2c720
+17:41:12 q15_gsm_b4 rc=0 peak footprint 16384 MB; swap used 3911.12M
+17:39:39   batch 1: 4 texts, 1004 tokens, 74.7s (13 tok/s)
+17:41:06   batch 2: 4 texts, 1319 tokens, 86.4s (15 tok/s)
+17:41:06 done: 2323 tokens in 161s
+17:42:13 probe stopped by hand after q15_gsm_b4 (peak 16 GB at batch 4 on the reference code: the cause is common to both codes; b16 and Phi-3 not probed)

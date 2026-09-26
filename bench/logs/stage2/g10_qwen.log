@@ -1,0 +1,157 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+  L=100: {'n_texts': 30, 'detected_at': {'0.01': 0.9333, '0.001': 0.8, '0.0001': 0.6333, '1e-06': 0.2667}, 'median_p': 1.7642974853515625e-05, 'mean_checkpoints': 19.5, 'match_rate': 0.945}  482s
+  L=200: {'n_texts': 30, 'detected_at': {'0.01': 1.0, '0.001': 1.0, '0.0001': 1.0, '1e-06': 0.9667}, 'median_p': 6.061782187316567e-10, 'mean_checkpoints': 36.0, 'match_rate': 0.97}  1457s
+  L=400: {'n_texts': 30, 'detected_at': {'0.01': 1.0, '0.001': 1.0, '0.0001': 1.0, '1e-06': 1.0}, 'median_p': 6.4810419902336146e-18, 'mean_checkpoints': 64.1, 'match_rate': 0.975}  3052s
+  null human_docstrings: {'n_texts': 200, 'false_positive_at': {'0.01': 0.0, '0.001': 0.0, '0.0001': 0.0, '1e-06': 0.0}, 'mean_checkpoints': 12.5, 'match_rate': 0.491, 'min_p': 0.0317840576171875}
+  null same_model_no_key: {'n_texts': 120, 'false_positive_at': {'0.01': 0.0083, '0.001': 0.0, '0.0001': 0.0, '1e-06': 0.0}, 'mean_checkpoints': 34.6, 'match_rate': 0.496, 'min_p': 0.0067654934246093035}
+  null same_model_other_key: {'n_texts': 60, 'false_positive_at': {'0.01': 0.0, '0.001': 0.0, '0.0001': 0.0, '1e-06': 0.0}, 'mean_checkpoints': 36.0, 'match_rate': 0.508, 'min_p': 0.011314420602957398}
+  attack replace_10pct_words: {'n_texts': 30, 'detected_at': {'0.01': 0.7, '0.001': 0.5, '0.0001': 0.2667, '1e-06': 0.1}, 'median_p': 0.0008406088473691398}
+  attack replace_25pct_words: {'n_texts': 30, 'detected_at': {'0.01': 0.0667, '0.001': 0.0667, '0.0001': 0.0, '1e-06': 0.0}, 'median_p': 0.2282368380039692}
+  attack delete_sentence: {'n_texts': 30, 'detected_at': {'0.01': 1.0, '0.001': 0.9333, '0.0001': 0.9, '1e-06': 0.7}, 'median_p': 3.6796154745388776e-07}
+  attack embed_in_human_text: {'n_texts': 30, 'detected_at': {'0.01': 0.8667, '0.001': 0.6333, '0.0001': 0.4333, '1e-06': 0.0667}, 'median_p': 0.00013756279953982522}
+  attack truncate_half: {'n_texts': 30, 'detected_at': {'0.01': 1.0, '0.001': 0.9, '0.0001': 0.6667, '1e-06': 0.2}, 'median_p': 3.0517578125e-05}
+{
+ "model": "Qwen/Qwen2.5-0.5B-Instruct",
+ "code": "aa2dddc19298c239",
+ "align": "free",
+ "interval": 5,
+ "k": 1,
+ "context": 4,
+ "alphas": [
+  0.01,
+  0.001,
+  0.0001,
+  1e-06
+ ],
+ "positives": {
+  "100": {
+   "n_texts": 30,
+   "detected_at": {
+    "0.01": 0.9333,
+    "0.001": 0.8,
+    "0.0001": 0.6333,
+    "1e-06": 0.2667
+   },
+   "median_p": 1.7642974853515625e-05,
+   "mean_checkpoints": 19.5,
+   "match_rate": 0.945
+  },
+  "200": {
+   "n_texts": 30,
+   "detected_at": {
+    "0.01": 1.0,
+    "0.001": 1.0,
+    "0.0001": 1.0,
+    "1e-06": 0.9667
+   },
+   "median_p": 6.061782187316567e-10,
+   "mean_checkpoints": 36.0,
+   "match_rate": 0.97
+  },
+  "400": {
+   "n_texts": 30,
+   "detected_at": {
+    "0.01": 1.0,
+    "0.001": 1.0,
+    "0.0001": 1.0,
+    "1e-06": 1.0
+   },
+   "median_p": 6.4810419902336146e-18,
+   "mean_checkpoints": 64.1,
+   "match_rate": 0.975
+  }
+ },
+ "nulls": {
+  "human_docstrings": {
+   "n_texts": 200,
+   "false_positive_at": {
+    "0.01": 0.0,
+    "0.001": 0.0,
+    "0.0001": 0.0,
+    "1e-06": 0.0
+   },
+   "mean_checkpoints": 12.5,
+   "match_rate": 0.491,
+   "min_p": 0.0317840576171875
+  },
+  "same_model_no_key": {
+   "n_texts": 120,
+   "false_positive_at": {
+    "0.01": 0.0083,
+    "0.001": 0.0,
+    "0.0001": 0.0,
+    "1e-06": 0.0
+   },
+   "mean_checkpoints": 34.6,
+   "match_rate": 0.496,
+   "min_p": 0.0067654934246093035
+  },
+  "same_model_other_key": {
+   "n_texts": 60,
+   "false_positive_at": {
+    "0.01": 0.0,
+    "0.001": 0.0,
+    "0.0001": 0.0,
+    "1e-06": 0.0
+   },
+   "mean_checkpoints": 36.0,
+   "match_rate": 0.508,
+   "min_p": 0.011314420602957398
+  }
+ },
+ "attacks": {
+  "replace_10pct_words": {
+   "n_texts": 30,
+   "detected_at": {
+    "0.01": 0.7,
+    "0.001": 0.5,
+    "0.0001": 0.2667,
+    "1e-06": 0.1
+   },
+   "median_p": 0.0008406088473691398
+  },
+  "replace_25pct_words": {
+   "n_texts": 30,
+   "detected_at": {
+    "0.01": 0.0667,
+    "0.001": 0.0667,
+    "0.0001": 0.0,
+    "1e-06": 0.0
+   },
+   "median_p": 0.2282368380039692
+  },
+  "delete_sentence": {
+   "n_texts": 30,
+   "detected_at": {
+    "0.01": 1.0,
+    "0.001": 0.9333,
+    "0.0001": 0.9,
+    "1e-06": 0.7
+   },
+   "median_p": 3.6796154745388776e-07
+  },
+  "embed_in_human_text": {
+   "n_texts": 30,
+   "detected_at": {
+    "0.01": 0.8667,
+    "0.001": 0.6333,
+    "0.0001": 0.4333,
+    "1e-06": 0.0667
+   },
+   "median_p": 0.00013756279953982522
+  },
+  "truncate_half": {
+   "n_texts": 30,
+   "detected_at": {
+    "0.01": 1.0,
+    "0.001": 0.9,
+    "0.0001": 0.6667,
+    "1e-06": 0.2
+   },
+   "median_p": 3.0517578125e-05
+  }
+ },
+ "minutes": 107.7
+}
+written <repo>/bench/results/g10_Qwen_Qwen2.5-0.5B-Instruct_free_stage2.json

@@ -1,0 +1,35 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+  10/60  101s
+  20/60  185s
+  30/60  268s
+  40/60  368s
+  50/60  470s
+  60/60  583s
+{
+ "model": "distilgpt2",
+ "oracle": "gpt2-medium",
+ "n": 60,
+ "minutes": 9.7,
+ "unsealed": {
+  "median_ppl": 21.15,
+  "mean_distinct2": 0.817,
+  "mean_rep3": 0.152,
+  "mean_words": 57.5
+ },
+ "sealed_every_5": {
+  "median_ppl": 25.51,
+  "mean_distinct2": 0.864,
+  "mean_rep3": 0.075,
+  "mean_words": 101.3,
+  "median_ppl_ratio_vs_unsealed": 1.323
+ },
+ "sealed_every_10": {
+  "median_ppl": 22.49,
+  "mean_distinct2": 0.83,
+  "mean_rep3": 0.113,
+  "mean_words": 88.4,
+  "median_ppl_ratio_vs_unsealed": 1.031
+ }
+}
+written <repo>/bench/results/g5_distilgpt2_N60.json

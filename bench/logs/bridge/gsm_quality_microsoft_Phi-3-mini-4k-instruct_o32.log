@@ -1,0 +1,8 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:05<00:05,  5.30s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:08<00:00,  4.31s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:08<00:00,  4.46s/it]
+21:06:15 microsoft/Phi-3-mini-4k-instruct sealed gsm_quality: 12 of 16 to do, batch 4
+21:09:13   batch 1: 4 texts, 1284 tokens, 177.9s (7 tok/s)
+21:11:06   batch 2: 4 texts, 873 tokens, 112.9s (8 tok/s)
+21:13:51   batch 3: 4 texts, 1160 tokens, 165.1s (7 tok/s)
+21:13:51 done: 3317 tokens in 456s

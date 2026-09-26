@@ -1,0 +1,86 @@
+14:38:39 part 5; code 00a100caabf1bdf8
+14:38:40 START prose_Qwen_Qwen2.5-0.5B-Instruct_plain (swap used 4290.31M)
+14:40:22 END prose_Qwen_Qwen2.5-0.5B-Instruct_plain rc=0
+14:40:22 START prose_Qwen_Qwen2.5-0.5B-Instruct_sealed (swap used 3522.06M)
+14:42:58 END prose_Qwen_Qwen2.5-0.5B-Instruct_sealed rc=0
+14:42:58 START prose_Qwen_Qwen2.5-0.5B-Instruct_gate90 (swap used 5523.31M)
+14:45:34 END prose_Qwen_Qwen2.5-0.5B-Instruct_gate90 rc=0
+14:45:34 START prose_Qwen_Qwen2.5-0.5B-Instruct_g90u90 (swap used 4164.75M)
+14:48:12 END prose_Qwen_Qwen2.5-0.5B-Instruct_g90u90 rc=0
+14:48:12 START prose_Qwen_Qwen2.5-0.5B-Instruct_guard90 (swap used 4601.62M)
+14:50:49 END prose_Qwen_Qwen2.5-0.5B-Instruct_guard90 rc=0
+14:50:49 START prose_Qwen_Qwen2.5-0.5B-Instruct_guard95 (swap used 4759.25M)
+14:53:22 END prose_Qwen_Qwen2.5-0.5B-Instruct_guard95 rc=0
+14:53:22 START detp_Qwen_Qwen2.5-0.5B-Instruct_sealed (swap used 5720.75M)
+14:53:47 END detp_Qwen_Qwen2.5-0.5B-Instruct_sealed rc=0
+14:53:47 START detp_Qwen_Qwen2.5-0.5B-Instruct_gate90 (swap used 5664.75M)
+14:54:14 END detp_Qwen_Qwen2.5-0.5B-Instruct_gate90 rc=0
+14:54:14 START detp_Qwen_Qwen2.5-0.5B-Instruct_g90u90 (swap used 6218.31M)
+14:54:39 END detp_Qwen_Qwen2.5-0.5B-Instruct_g90u90 rc=0
+14:54:39 START detp_Qwen_Qwen2.5-0.5B-Instruct_guard90 (swap used 4450.44M)
+14:55:05 END detp_Qwen_Qwen2.5-0.5B-Instruct_guard90 rc=0
+14:55:05 START detp_Qwen_Qwen2.5-0.5B-Instruct_guard95 (swap used 4289.31M)
+14:55:33 END detp_Qwen_Qwen2.5-0.5B-Instruct_guard95 rc=0
+14:55:33 START qp_Qwen_Qwen2.5-0.5B-Instruct_sealed (swap used 4249.31M)
+14:55:50 END qp_Qwen_Qwen2.5-0.5B-Instruct_sealed rc=0
+14:55:50 START qd_Qwen_Qwen2.5-0.5B-Instruct_sealed (swap used 4169.31M)
+14:55:55 END qd_Qwen_Qwen2.5-0.5B-Instruct_sealed rc=0
+14:55:55 START qp_Qwen_Qwen2.5-0.5B-Instruct_gate90 (swap used 4145.31M)
+14:56:10 END qp_Qwen_Qwen2.5-0.5B-Instruct_gate90 rc=0
+14:56:10 START qd_Qwen_Qwen2.5-0.5B-Instruct_gate90 (swap used 4175.94M)
+14:56:16 END qd_Qwen_Qwen2.5-0.5B-Instruct_gate90 rc=0
+14:56:16 START qp_Qwen_Qwen2.5-0.5B-Instruct_g90u90 (swap used 4167.88M)
+14:56:32 END qp_Qwen_Qwen2.5-0.5B-Instruct_g90u90 rc=0
+14:56:32 START qd_Qwen_Qwen2.5-0.5B-Instruct_g90u90 (swap used 4504.00M)
+14:56:37 END qd_Qwen_Qwen2.5-0.5B-Instruct_g90u90 rc=0
+14:56:37 START qp_Qwen_Qwen2.5-0.5B-Instruct_guard90 (swap used 4496.00M)
+14:56:52 END qp_Qwen_Qwen2.5-0.5B-Instruct_guard90 rc=0
+14:56:52 START qd_Qwen_Qwen2.5-0.5B-Instruct_guard90 (swap used 4488.00M)
+14:56:58 END qd_Qwen_Qwen2.5-0.5B-Instruct_guard90 rc=0
+14:56:58 START qp_Qwen_Qwen2.5-0.5B-Instruct_guard95 (swap used 4272.00M)
+14:57:11 END qp_Qwen_Qwen2.5-0.5B-Instruct_guard95 rc=0
+14:57:11 START qd_Qwen_Qwen2.5-0.5B-Instruct_guard95 (swap used 4103.94M)
+14:57:17 END qd_Qwen_Qwen2.5-0.5B-Instruct_guard95 rc=0
+14:57:17 START gsm_Qwen_Qwen2.5-0.5B-Instruct_guard90 (swap used 4103.94M)
+15:10:30 END gsm_Qwen_Qwen2.5-0.5B-Instruct_guard90 rc=0
+15:10:30 START gsm_Qwen_Qwen2.5-0.5B-Instruct_guard95 (swap used 5787.00M)
+15:21:14 END gsm_Qwen_Qwen2.5-0.5B-Instruct_guard95 rc=0
+15:21:14 START q_Qwen_Qwen2.5-0.5B-Instruct_gsm_guard90 (swap used 5106.94M)
+15:21:19 END q_Qwen_Qwen2.5-0.5B-Instruct_gsm_guard90 rc=0
+15:21:19 START det_Qwen_Qwen2.5-0.5B-Instruct_gsm_guard90 (swap used 4083.12M)
+15:22:27 END det_Qwen_Qwen2.5-0.5B-Instruct_gsm_guard90 rc=0
+15:22:27 START q_Qwen_Qwen2.5-0.5B-Instruct_gsm_guard95 (swap used 4841.69M)
+15:22:32 END q_Qwen_Qwen2.5-0.5B-Instruct_gsm_guard95 rc=0
+15:22:32 START det_Qwen_Qwen2.5-0.5B-Instruct_gsm_guard95 (swap used 4564.44M)
+15:23:42 END det_Qwen_Qwen2.5-0.5B-Instruct_gsm_guard95 rc=0
+15:23:42 START prose_Qwen_Qwen2.5-1.5B-Instruct_plain (swap used 4403.56M)
+15:25:49 END prose_Qwen_Qwen2.5-1.5B-Instruct_plain rc=0
+15:25:49 START prose_Qwen_Qwen2.5-1.5B-Instruct_sealed (swap used 3936.81M)
+15:30:48 END prose_Qwen_Qwen2.5-1.5B-Instruct_sealed rc=0
+15:30:48 START prose_Qwen_Qwen2.5-1.5B-Instruct_g90u90 (swap used 4783.25M)
+15:35:39 END prose_Qwen_Qwen2.5-1.5B-Instruct_g90u90 rc=0
+15:35:39 START prose_Qwen_Qwen2.5-1.5B-Instruct_guard90 (swap used 5047.44M)
+15:40:26 END prose_Qwen_Qwen2.5-1.5B-Instruct_guard90 rc=0
+15:40:26 START detp_Qwen_Qwen2.5-1.5B-Instruct_sealed (swap used 5033.94M)
+15:41:03 END detp_Qwen_Qwen2.5-1.5B-Instruct_sealed rc=0
+15:41:03 START detp_Qwen_Qwen2.5-1.5B-Instruct_g90u90 (swap used 5086.94M)
+15:41:40 END detp_Qwen_Qwen2.5-1.5B-Instruct_g90u90 rc=0
+15:41:40 START detp_Qwen_Qwen2.5-1.5B-Instruct_guard90 (swap used 5413.44M)
+15:42:17 END detp_Qwen_Qwen2.5-1.5B-Instruct_guard90 rc=0
+15:42:17 START qp_Qwen_Qwen2.5-1.5B-Instruct_sealed (swap used 5670.06M)
+15:42:32 END qp_Qwen_Qwen2.5-1.5B-Instruct_sealed rc=0
+15:42:32 START qd_Qwen_Qwen2.5-1.5B-Instruct_sealed (swap used 5478.06M)
+15:42:37 END qd_Qwen_Qwen2.5-1.5B-Instruct_sealed rc=0
+15:42:37 START qp_Qwen_Qwen2.5-1.5B-Instruct_g90u90 (swap used 5438.06M)
+15:42:50 END qp_Qwen_Qwen2.5-1.5B-Instruct_g90u90 rc=0
+15:42:50 START qd_Qwen_Qwen2.5-1.5B-Instruct_g90u90 (swap used 4434.00M)
+15:42:56 END qd_Qwen_Qwen2.5-1.5B-Instruct_g90u90 rc=0
+15:42:56 START qp_Qwen_Qwen2.5-1.5B-Instruct_guard90 (swap used 4426.00M)
+15:43:09 END qp_Qwen_Qwen2.5-1.5B-Instruct_guard90 rc=0
+15:43:09 START qd_Qwen_Qwen2.5-1.5B-Instruct_guard90 (swap used 4390.56M)
+15:43:14 END qd_Qwen_Qwen2.5-1.5B-Instruct_guard90 rc=0
+15:43:14 START g10_qwen_qwen2.5-1.5b-instruct (swap used 4358.56M)
+bench/run_bridge_part5.sh: line 18: 19386 Terminated: 15          "$@" > "$L/$name.log" 2>&1
+17:20:28 END g10_qwen_qwen2.5-1.5b-instruct rc=143
+17:20:28 START g4_qwen_qwen2.5-1.5b-instruct (swap used 3146.94M)
+17:20:38 part 5 stopped after G10 (Serhii 17:10: old-code tail dropped; part 6, merge, Phi-3 on new code)

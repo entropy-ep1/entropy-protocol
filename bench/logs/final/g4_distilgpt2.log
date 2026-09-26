@@ -1,0 +1,174 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+{
+ "model": "distilgpt2",
+ "code": "23ecd270bd10bef6",
+ "n": 40,
+ "calib_texts": 30,
+ "calib_positions": 3886,
+ "space": "logit",
+ "c": 3.0,
+ "reference": "cpu:float32",
+ "delta": {
+  "mps:float32": 0.00011444091796875,
+  "mps:float16": 0.12799072265625,
+  "mps:bfloat16": 0.877166748046875,
+  "cpu:bfloat16": 0.6638336181640625
+ },
+ "calibration_errors": {},
+ "certified": [
+  "fp32",
+  "fp16"
+ ],
+ "table": {
+  "fp32": 0.000343,
+  "fp16": 0.383972
+ },
+ "calibrated_flag_by_config": {
+  "cpu:float32": true,
+  "mps:float32": true,
+  "mps:float16": true,
+  "mps:bfloat16": false,
+  "cpu:bfloat16": false
+ },
+ "survival_%": {
+  "calibrated": 57.69,
+  "uncalibrated": 86.79
+ },
+ "mean_entries": {
+  "calibrated": 15.4,
+  "uncalibrated": 22.0
+ },
+ "texts_below_8_entries": {
+  "calibrated": 5,
+  "uncalibrated": 4
+ },
+ "verdicts": {
+  "cpu:float32|calibrated": {
+   "unchanged": {
+    "VERIFIED": 40
+   },
+   "transported": {
+    "VERIFIED": 40
+   },
+   "edited": {
+    "MODIFIED": 40
+   }
+  },
+  "cpu:float32|uncalibrated": {
+   "unchanged": {
+    "VERIFIED": 40
+   },
+   "transported": {
+    "VERIFIED": 40
+   },
+   "edited": {
+    "MODIFIED": 40
+   }
+  },
+  "mps:float32|calibrated": {
+   "unchanged": {
+    "VERIFIED": 40
+   },
+   "transported": {
+    "VERIFIED": 40
+   },
+   "edited": {
+    "MODIFIED": 40
+   }
+  },
+  "mps:float32|uncalibrated": {
+   "unchanged": {
+    "VERIFIED": 40
+   },
+   "transported": {
+    "VERIFIED": 40
+   },
+   "edited": {
+    "MODIFIED": 40
+   }
+  },
+  "mps:float16|calibrated": {
+   "unchanged": {
+    "VERIFIED": 40
+   },
+   "transported": {
+    "VERIFIED": 40
+   },
+   "edited": {
+    "MODIFIED": 40
+   }
+  },
+  "mps:float16|uncalibrated": {
+   "unchanged": {
+    "VERIFIED": 37,
+    "INDETERMINATE": 3
+   },
+   "transported": {
+    "VERIFIED": 37,
+    "INDETERMINATE": 3
+   },
+   "edited": {
+    "MODIFIED": 40
+   }
+  },
+  "mps:bfloat16|calibrated": {
+   "unchanged": {
+    "VERIFIED": 40
+   },
+   "transported": {
+    "VERIFIED": 40
+   },
+   "edited": {
+    "MODIFIED": 40
+   }
+  },
+  "mps:bfloat16|uncalibrated": {
+   "unchanged": {
+    "VERIFIED": 28,
+    "INDETERMINATE": 12
+   },
+   "transported": {
+    "VERIFIED": 28,
+    "INDETERMINATE": 12
+   },
+   "edited": {
+    "MODIFIED": 40
+   }
+  },
+  "cpu:bfloat16|calibrated": {
+   "unchanged": {
+    "VERIFIED": 40
+   },
+   "transported": {
+    "VERIFIED": 40
+   },
+   "edited": {
+    "MODIFIED": 40
+   }
+  },
+  "cpu:bfloat16|uncalibrated": {
+   "unchanged": {
+    "INDETERMINATE": 17,
+    "VERIFIED": 23
+   },
+   "transported": {
+    "INDETERMINATE": 17,
+    "VERIFIED": 23
+   },
+   "edited": {
+    "MODIFIED": 40
+   }
+  }
+ },
+ "wrong_MODIFIED_on_unchanged_any_config": 0,
+ "edited_reported_VERIFIED_any_config": 0,
+ "certified_configs_all_VERIFIED": true,
+ "minutes": 25.6,
+ "operating_point": {
+  "interval": 5,
+  "k": 1,
+  "window": 3
+ }
+}
+written <repo>/bench/results/g4v2_distilgpt2_logit_N40_final.json

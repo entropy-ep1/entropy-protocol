@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/ubuntu/ep/bench/gpu/calib_table.py", line 88, in <module>
+    main()
+  File "/home/ubuntu/ep/bench/gpu/calib_table.py", line 59, in main
+    per_cfg[cfg] = {"delta": float(diff.max()), "p99.9": float(np.quantile(diff, 0.999)),
+                                   ^^^^^^^^^^
+  File "/opt/pytorch/lib/python3.12/site-packages/numpy/_core/_methods.py", line 41, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: zero-size array to reduction operation maximum which has no identity

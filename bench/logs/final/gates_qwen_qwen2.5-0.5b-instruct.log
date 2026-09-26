@@ -1,0 +1,106 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+  10/200  226s
+  20/200  448s
+  30/200  671s
+  40/200  912s
+  50/200  1143s
+  60/200  1361s
+  70/200  1573s
+  80/200  1798s
+  90/200  2022s
+  100/200  2248s
+  110/200  2453s
+  120/200  2665s
+  130/200  2867s
+  140/200  3080s
+  150/200  3285s
+  160/200  3500s
+  170/200  3702s
+  180/200  3918s
+  190/200  4119s
+  200/200  4332s
+{
+ "model": "Qwen/Qwen2.5-0.5B-Instruct",
+ "device": "cpu",
+ "dtype": "float32",
+ "n": 200,
+ "minutes": 72.2,
+ "code": "23ecd270bd10bef6",
+ "operating_point": {
+  "interval": 5,
+  "k": 1,
+  "window": 3,
+  "tol_space": "logit",
+  "cal": {
+   "fp32": 0.001551,
+   "fp16": 0.577415
+  }
+ },
+ "texts_below_8_entries": 2,
+ "mean_tokens": 195.5,
+ "mean_entries": 23.2,
+ "survival_%": 61.0,
+ "mean_seal_s": 17.41,
+ "mean_verify_s": 0.351,
+ "G1": {
+  "decisive_texts": 200,
+  "indeterminate_texts": 0,
+  "same_VERIFIED_%": 100.0,
+  "same_wrong_MODIFIED": 0,
+  "crlf_VERIFIED_%": 100.0,
+  "crlf_wrong_MODIFIED": 0,
+  "email_VERIFIED_%": 100.0,
+  "email_wrong_MODIFIED": 0,
+  "nbsp_VERIFIED_%": 100.0,
+  "nbsp_wrong_MODIFIED": 0,
+  "combined_VERIFIED_%": 100.0,
+  "combined_wrong_MODIFIED": 0,
+  "bom_nnbsp_VERIFIED_%": 100.0,
+  "bom_nnbsp_wrong_MODIFIED": 0
+ },
+ "G2": {
+  "checks": 399,
+  "false_VERIFIED": 0,
+  "MODIFIED_%": 100.0
+ },
+ "G3": {
+  "replace_word": {
+   "n": 200,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 81.0
+  },
+  "one_char": {
+   "n": 200,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 10.5
+  },
+  "delete_sentence": {
+   "n": 200,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 96.5,
+   "model_layer_alone_%": 99.5
+  },
+  "insert_sentence": {
+   "n": 200,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 99.0
+  },
+  "truncate_tail": {
+   "n": 200,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 100.0
+  }
+ },
+ "G6_privacy_leaks": 0
+}
+written <repo>/bench/results/gates_Qwen_Qwen2.5-0.5B-Instruct_cpu_float32_N200_final.json

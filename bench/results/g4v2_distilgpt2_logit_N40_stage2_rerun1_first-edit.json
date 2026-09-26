@@ -1,0 +1,181 @@
+{
+ "model": "distilgpt2",
+ "code": "aa2dddc19298c239",
+ "n": 40,
+ "calib_texts": 30,
+ "calib_positions": 2139,
+ "space": "logit",
+ "c": 3.0,
+ "reference": "cpu:float32",
+ "delta": {
+  "mps:float32": 6.866455078125e-05,
+  "mps:float16": 0.09505462646484375,
+  "mps:bfloat16": 0.66748046875,
+  "cpu:bfloat16": 0.6472015380859375
+ },
+ "calibration_errors": {},
+ "certified": [
+  "fp32",
+  "fp16"
+ ],
+ "table": {
+  "fp32": 0.000206,
+  "fp16": 0.285164
+ },
+ "calibrated_flag_by_config": {
+  "cpu:float32": true,
+  "mps:float32": true,
+  "mps:float16": true,
+  "mps:bfloat16": false,
+  "cpu:bfloat16": false
+ },
+ "survival_%": {
+  "calibrated": 69.75,
+  "uncalibrated": 94.03
+ },
+ "mean_entries": {
+  "calibrated": 9.1,
+  "uncalibrated": 12.2
+ },
+ "texts_below_8_entries": {
+  "calibrated": 22,
+  "uncalibrated": 20
+ },
+ "verdicts": {
+  "cpu:float32|calibrated": {
+   "unchanged": {
+    "VERIFIED": 40
+   },
+   "transported": {
+    "VERIFIED": 40
+   },
+   "edited": {
+    "MODIFIED": 38,
+    "VERIFIED": 2
+   }
+  },
+  "cpu:float32|uncalibrated": {
+   "unchanged": {
+    "VERIFIED": 40
+   },
+   "transported": {
+    "VERIFIED": 40
+   },
+   "edited": {
+    "MODIFIED": 38,
+    "VERIFIED": 2
+   }
+  },
+  "mps:float32|calibrated": {
+   "unchanged": {
+    "VERIFIED": 40
+   },
+   "transported": {
+    "VERIFIED": 40
+   },
+   "edited": {
+    "MODIFIED": 38,
+    "VERIFIED": 2
+   }
+  },
+  "mps:float32|uncalibrated": {
+   "unchanged": {
+    "VERIFIED": 40
+   },
+   "transported": {
+    "VERIFIED": 40
+   },
+   "edited": {
+    "MODIFIED": 38,
+    "VERIFIED": 2
+   }
+  },
+  "mps:float16|calibrated": {
+   "unchanged": {
+    "VERIFIED": 40
+   },
+   "transported": {
+    "VERIFIED": 40
+   },
+   "edited": {
+    "MODIFIED": 38,
+    "VERIFIED": 2
+   }
+  },
+  "mps:float16|uncalibrated": {
+   "unchanged": {
+    "VERIFIED": 38,
+    "INDETERMINATE": 2
+   },
+   "transported": {
+    "VERIFIED": 38,
+    "INDETERMINATE": 2
+   },
+   "edited": {
+    "MODIFIED": 38,
+    "VERIFIED": 2
+   }
+  },
+  "mps:bfloat16|calibrated": {
+   "unchanged": {
+    "VERIFIED": 40
+   },
+   "transported": {
+    "VERIFIED": 40
+   },
+   "edited": {
+    "MODIFIED": 38,
+    "VERIFIED": 2
+   }
+  },
+  "mps:bfloat16|uncalibrated": {
+   "unchanged": {
+    "VERIFIED": 23,
+    "INDETERMINATE": 17
+   },
+   "transported": {
+    "VERIFIED": 23,
+    "INDETERMINATE": 17
+   },
+   "edited": {
+    "MODIFIED": 38,
+    "VERIFIED": 2
+   }
+  },
+  "cpu:bfloat16|calibrated": {
+   "unchanged": {
+    "VERIFIED": 40
+   },
+   "transported": {
+    "VERIFIED": 40
+   },
+   "edited": {
+    "MODIFIED": 38,
+    "VERIFIED": 2
+   }
+  },
+  "cpu:bfloat16|uncalibrated": {
+   "unchanged": {
+    "VERIFIED": 28,
+    "INDETERMINATE": 12
+   },
+   "transported": {
+    "VERIFIED": 28,
+    "INDETERMINATE": 12
+   },
+   "edited": {
+    "MODIFIED": 38,
+    "VERIFIED": 2
+   }
+  }
+ },
+ "wrong_MODIFIED_on_unchanged_any_config": 0,
+ "edited_reported_VERIFIED_any_config": 20,
+ "certified_configs_all_VERIFIED": true,
+ "minutes": 19.9,
+ "operating_point": {
+  "interval": 5,
+  "k": 1,
+  "window": 3
+ }
+}

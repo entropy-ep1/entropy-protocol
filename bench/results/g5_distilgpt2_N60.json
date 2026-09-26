@@ -1,0 +1,1530 @@
+{
+ "summary": {
+  "model": "distilgpt2",
+  "oracle": "gpt2-medium",
+  "n": 60,
+  "minutes": 9.7,
+  "unsealed": {
+   "median_ppl": 21.15,
+   "mean_distinct2": 0.817,
+   "mean_rep3": 0.152,
+   "mean_words": 57.5
+  },
+  "sealed_every_5": {
+   "median_ppl": 25.51,
+   "mean_distinct2": 0.864,
+   "mean_rep3": 0.075,
+   "mean_words": 101.3,
+   "median_ppl_ratio_vs_unsealed": 1.323
+  },
+  "sealed_every_10": {
+   "median_ppl": 22.49,
+   "mean_distinct2": 0.83,
+   "mean_rep3": 0.113,
+   "mean_words": 88.4,
+   "median_ppl_ratio_vs_unsealed": 1.031
+  }
+ },
+ "rows": [
+  {
+   "i": 0,
+   "prompt": "The city council met on Tuesday to discuss",
+   "unsealed": {
+    "ppl": 338.1714736484865,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 6,
+    "text": " how to tackle crime, police said.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_5": {
+    "ppl": 26.05535075196002,
+    "distinct2": 0.9153846153846154,
+    "rep3": 0.015503875968992276,
+    "words": 131,
+    "text": " how to tackle crime, a key part of a budget that is being finalized during the coming months.The budget includes a $200 million safety improvement program that would provide the city with a program for the city's homeless, to help the city improve mental stability and prevent violent crime.A $170 million budget would also include additional traffic improvements to curb more parking spaces and help better public safety.The budget covers about $80 million as a part of the Budget Process. The city needs a $50 million budget to address homelessness, with an estimated $20 millions of dollars to be"
+   },
+   "sealed_every_10": {
+    "ppl": 22.341225077616123,
+    "distinct2": 0.8333333333333334,
+    "rep3": 0.07964601769911506,
+    "words": 115,
+    "text": " how to tackle crime, police said.\n\n(Image: EPA)\n\n\n\n\nAn area where a young man was killed in a carjacking in a north London suburb is known as the ‒The South Side,‒ as the city council said.\n\n\n\nThe incident happened in the 1300 block of Oxford Hill Road in the north-east of the borough last month.\n\nThe driver, identified as 13-year-old Cherie Alexander, was driving a carjacking at the time of the alleged incident, police said.\nShe had been driving the vehicle at the time of the alleged incident which occurred.\nOfficers said they were called to the intersection of the intersection of the inters"
+   }
+  },
+  {
+   "i": 1,
+   "prompt": "In the early morning, the research team",
+   "unsealed": {
+    "ppl": 10.309624821115731,
+    "distinct2": 0.8285714285714286,
+    "rep3": 0.09615384615384615,
+    "words": 106,
+    "text": " performed a randomized, placebo-controlled trial of the eigenetic test of the eigenetic test. This study was conducted on the basis of the original notion of a randomized, placebo-controlled trial of the eigenetic test.\n\n\nThe eigenetic test is the brain-derived neurotrophic factor that leads to neurodegenerative disorders (BDNF). As with all neurodegenerative diseases, the immune system is divided into two subgroups: the active and the active. The active is a cell-derived neurotrophic factor that is responsible for some of the most common diseases, including Alzheimer's, Parkinson's, Alzheime"
+   },
+   "sealed_every_5": {
+    "ppl": 20.82256400476575,
+    "distinct2": 0.8484848484848485,
+    "rep3": 0.04580152671755722,
+    "words": 133,
+    "text": " performed a randomized, placebo experiment with 33 participants. The participants were assigned to a specific questionnaire about the length and frequency of trials: for example, the length of the trials (the length of trials) followed by the length of their trials. The participants wore a red light, and the participants wore a low-lighted band for the study. The participants were asked to take a video of the experiment for two minutes and then to say a simple, simple, simple, simple-to-do list of the outcomes of the research. The participants were to answer questions about their clinical exp"
+   },
+   "sealed_every_10": {
+    "ppl": 26.19349338705897,
+    "distinct2": 0.8717948717948718,
+    "rep3": 0.07758620689655171,
+    "words": 118,
+    "text": " performed a randomized, placebo-controlled trial of the same cannabinoid study. The results were published on March 16 in the journal Science.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHere's a very brief introduction to the literature in Theology of Cannabis:\n\n\n\n\nAs the research shows, the drug is more effective than any other drug. A small percentage of cannabis, especially for medical purposes, was given to patients who were using cannabis. As a result, as the research shows, the drug is more effective than every other drug.\nWhile the drug is less effective than other drugs, the drug is still in use.\nWhile there are s"
+   }
+  },
+  {
+   "i": 2,
+   "prompt": "A new study on sleep and memory suggests that",
+   "unsealed": {
+    "ppl": 16.704252666736707,
+    "distinct2": 0.9736842105263158,
+    "rep3": 0.0,
+    "words": 39,
+    "text": " the long-term impact of sleep on cognition is likely to depend on the quality of sleep, and suggests that the mechanisms of sleep-related changes in the brain are likely to be influenced by the effects of the cognitive sleep.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_5": {
+    "ppl": 22.094001759029624,
+    "distinct2": 0.896551724137931,
+    "rep3": 0.02608695652173909,
+    "words": 117,
+    "text": " the long-term impact the brain has on sleep on the brain may be minimal. The team, led by Dr. Mike Stenning, director of the University of Manchester Neuroscience Center and head of the Neurolobe and Behavioral Sciences Research Center, discovered that REM sleep causes long-term changes in the brain.\n\nHe explains:\n\n\n\n\n\n\n\n\n\n\n\nWhen you're asleep, we're working to restore balance and balance between the two. That's why REM sleep is important, and when we try to avoid or avoid certain actions, we might become more sleepy.\nIn other words, REM sleep causes a decrease in the brain-regulating activit"
+   },
+   "sealed_every_10": {
+    "ppl": 22.953168586437165,
+    "distinct2": 0.8709677419354839,
+    "rep3": 0.033333333333333326,
+    "words": 32,
+    "text": " the long-term impact of sleep on cognition is mediated by the use of sleep and memory.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVADA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFor more information on sleep and memory, see our blog post about sleep and memory."
+   }
+  },
+  {
+   "i": 3,
+   "prompt": "The history of the printing press shows",
+   "unsealed": {
+    "ppl": 7.52766190658828,
+    "distinct2": 0.5590551181102362,
+    "rep3": 0.373015873015873,
+    "words": 128,
+    "text": " that the first printing presses were made in the first half of the 20th century.\n\n\n\nIn the first half of the 20th century, the printing press was made in the first half of the 20th century. The printing press was made in the first half of the 20th century.\nThe printing presses were made in the first half of the 20th century. The printing presses were made in the first half of the 20th century.\nTo find out more about the printing press, click here.\nAbout the Author:\nMike Hall is a digital photography expert. He is the first photographer to do this type of photo-op. The process of creating and "
+   },
+   "sealed_every_5": {
+    "ppl": 17.201801131874166,
+    "distinct2": 0.8484848484848485,
+    "rep3": 0.05343511450381677,
+    "words": 133,
+    "text": " that the first printing presses became widely used for printing, and the first printing paper was produced with the knowledge of the printing press. The first printing was introduced in 1628 by the French publisher Lélène de Guevara, and continued to be used as a printing press.\nSprinting was a popular method of producing paper, as it could be manufactured on paper, and then printed in a form other than paper, at the expense of the printing medium. It was not just economical, but also economical, and it enabled the printing of paper, and it also enabled the printing of paper, and a number of "
+   },
+   "sealed_every_10": {
+    "ppl": 7.890430542733733,
+    "distinct2": 0.572463768115942,
+    "rep3": 0.2992700729927007,
+    "words": 139,
+    "text": " that the first printing presses were made in the first half of the twentieth century. From the time of John Henry's printing press in 1760 to the very first printing presses in the United States, all printer presses were made in the early 1800s and most of them were made in the second half of their life. By the 1800s, the first printing presses were manufactured in the United States and most also in the United Kingdom. From the time of John Henry's printing press in 1760 to the great early 1900s, the first printing presses were made in the United States and most also in the United Kingdom.\n\n\n"
+   }
+  },
+  {
+   "i": 4,
+   "prompt": "When the engineers opened the server room,",
+   "unsealed": {
+    "ppl": 3.6434028215861316,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 27,
+    "text": " one of the hallways, and the other was boarded up by a garbage collector.\n\n\n\n“The lead engineer, S.B. Senor, talked about the need for a new system,““““““““““““““““““““““““““““““““““““““““““““““““““““““““““�"
+   },
+   "sealed_every_5": {
+    "ppl": 34.02147164209756,
+    "distinct2": 0.9375,
+    "rep3": 0.0,
+    "words": 129,
+    "text": " one of the hallways on the floor was a storage room, and they were all perfectly warm, well-lit. In other words, the problem for a company like Zyakos is that they'd have to add some ventilation to the room to keep the temperature down. At the same time, some workers at Zyakots have a personal use here: When the team starts to use their room the doors can be opened so they can put the doors open, too.\n\n\n\nThe building is home to an 8,000-square meters office, and the building is a large building with a large office and one room of office. The rooms have a small office, but the full cost of the"
+   },
+   "sealed_every_10": {
+    "ppl": 13.718736046091658,
+    "distinct2": 0.8432835820895522,
+    "rep3": 0.09022556390977443,
+    "words": 135,
+    "text": " one of the hallways, and the other was opened up to all of us. There were no people in the room, and everyone was chatting. Then the roof of the room was opened up, where the male and female were sitting and their faces were filled with eyes.\nI couldn't do even that. It was hard to watch and I wondered if anyone was there. I couldn't do so because my eyes were closed. I wondered if anyone was there. I couldn't do so because your eyes were closed. And I wasn't even interested in seeing anyone. And I didn't even want to see anyone.\nIn a moment, I was so shocked, so nervous, so confused when I r"
+   }
+  },
+  {
+   "i": 5,
+   "prompt": "Our quarterly report highlights three trends:",
+   "unsealed": {
+    "ppl": NaN,
+    "distinct2": 0.0,
+    "rep3": 1.0,
+    "words": 0,
+    "text": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_5": {
+    "ppl": 31.900735942379935,
+    "distinct2": 0.8598130841121495,
+    "rep3": 0.08490566037735847,
+    "words": 108,
+    "text": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n-\n\n\n\n\n\n-\n-\n\n-\n- [NOTE: The following table will not be used for writing or editing purposes where specified by the authors. The following table will never be used for writing; and only those with whom the authors have written are allowed to use the table; and only those are allowed to use the \"hacker\" to report or edit the results (or other material, if that is not the correct source). The following rule of thumb is the following:\n\n\nYou can set the exact level of the time when the data is being used or provided by you (or any other person for editing purposes) before t"
+   },
+   "sealed_every_10": {
+    "ppl": NaN,
+    "distinct2": 0.0,
+    "rep3": 1.0,
+    "words": 1,
+    "text": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nT"
+   }
+  },
+  {
+   "i": 6,
+   "prompt": "The old lighthouse keeper wrote in his journal",
+   "unsealed": {
+    "ppl": 102.76828632491222,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 14,
+    "text": " that the crew was \"too tired to hear any nonsense from the local people.\"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_5": {
+    "ppl": 58.811083373874354,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 20,
+    "text": " that the crew was \"very excited to see the sea around us.\"\nAnd now, he's coming to a new place."
+   },
+   "sealed_every_10": {
+    "ppl": 30.581992285903585,
+    "distinct2": 0.9262295081967213,
+    "rep3": 0.008264462809917328,
+    "words": 123,
+    "text": " that the crew was \"too tired to hear any complaints of the crew. I can only say I would be pleased if the crew did not get some satisfaction in repairing the lighthouse and the temperature was too little. I have been in the lighthouse for over four years and there are no complaints.\n\n\"I don't know what the condition of the cabin is. There are a lot of blobs.\"\n\"My wife's one-piece trama, she was in the cabin a couple of years ago.\n\"She's one of the very few people in the cabin to listen to the guests.\n\"She was not a true gentleman. She's not a great man.\"\n\"So you get your hands on a female boa"
+   }
+  },
+  {
+   "i": 7,
+   "prompt": "Scientists have long debated whether",
+   "unsealed": {
+    "ppl": 21.149463165704525,
+    "distinct2": 0.8611111111111112,
+    "rep3": 0.08571428571428574,
+    "words": 37,
+    "text": " a solar system has anything to do with the solar system and whether it is actually a planet. But the question is whether the moon or Jupiter have any or nothing to do with the solar system.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_5": {
+    "ppl": 103.24423125971046,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 22,
+    "text": " a solar system has anything to do with our solar cycles, but here we turn to a new study (PDF).\n\n,\n\n\n\n\n\n\n\n\nCitations:\n\n"
+   },
+   "sealed_every_10": {
+    "ppl": 18.129363922721463,
+    "distinct2": 0.8153846153846154,
+    "rep3": 0.09302325581395354,
+    "words": 131,
+    "text": " a solar system has anything to do with the solar storm. In fact, NASA has long considered that they have only ever seen a solar storm. In fact, scientists have long considered that they have only had only ever seen a solar storm.\n\nHowever, the dust in the sky is much smaller than that of Earth, said Justin Hardy, a cosmologist at the University of California, Irvine.\n\"It is almost like a solar system,\" he said. \"The solar system is extremely dark, and very bright.\"\nScientists have known what happened to the solar storm, and if there would have been a solar storm, it would have ended up on Ear"
+   }
+  },
+  {
+   "i": 8,
+   "prompt": "The recipe calls for fresh tomatoes and",
+   "unsealed": {
+    "ppl": 6.979066727599636,
+    "distinct2": 0.5904761904761905,
+    "rep3": 0.34615384615384615,
+    "words": 106,
+    "text": " potatoes, but it also uses the same tomato paste as the cheese.\n\n\nAs the above photo shows, it’s really quite simple to use.\nThe main reason is to make a variety of tomatoes.\nIngredients:\n1 1/2 cup of ground cumin, 2 1/2 cups of the sesame seeds, and 1 1/2 cup of the sesame seeds.\n2 tablespoons of sesame seeds\n2 tablespoons of sesame seeds\n2 tablespoons of sesame seeds\n2 tablespoons of sesame seeds\n2 tablespoons of sesame seeds\n1/2 teaspoon of sesame seeds\n1/4 cup of the sesame seeds\n1 teaspoon of sesame seeds\n2 tablespoons of sesame seeds\n1/2 teaspoon of sesame seeds\n"
+   },
+   "sealed_every_5": {
+    "ppl": 27.88104702093267,
+    "distinct2": 0.9230769230769231,
+    "rep3": 0.025862068965517238,
+    "words": 118,
+    "text": " potatoes, but it also allows for a sweetener of choice.\n\n\nThis is a recipe that includes the following:1) Preheat oven 4-6-12. In a large bowl use a large bowl of water and mix the onions over the potatoes and potatoes over the potatoes and potatoes.\n2) Pour with the butter and cook 10 minutes.\n3 or 4 - 3 - 14 - 15 - 16 - 17 - 18 - (a) Cut the potatoes into small pieces and place on a baking sheet 3 - 4 - 5 ...\nThe recipe also includes the following:1){[1] Chop 1.2 small onion finely and slice into a rectangular circle.\n2)- 1.5-inch long pieces of fat mix in 2-3-inch thick slices and"
+   },
+   "sealed_every_10": {
+    "ppl": 21.579884510489038,
+    "distinct2": 0.8134328358208955,
+    "rep3": 0.08270676691729328,
+    "words": 135,
+    "text": " potatoes, but it also uses the same tomato paste mixture as the milk or fresh vegetables.\n\n\n\nDice on the side of the cabbage leaves or pick up a few fresh tomatoes and cover everything in a thin saucepan.\nStep 1 Place the chicken and chicken in a large pot.\nPlace the fresh tomatoes on a lightly lined pan on top and cover everything in a thin saucepan before removing the chicken.\nStep 2 Place the potato and chicken in a large pot.\nPut the onions on top of the chicken and cook for 6 minutes until all of the tomatoes are cooked and about 3 minutes.\nStep 3 Cook for about 9 minutes.\nStep 4 Add the"
+   }
+  },
+  {
+   "i": 9,
+   "prompt": "Before the election, voters in the district",
+   "unsealed": {
+    "ppl": 78.8499780645826,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 12,
+    "text": " would elect representatives of the party, as well as their own party.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_5": {
+    "ppl": 33.774715084551175,
+    "distinct2": 0.9444444444444444,
+    "rep3": 0.0,
+    "words": 37,
+    "text": " would elect representatives of the two biggest cities in the country, according to the polling firm.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFor more from The College Reform blog, click here in the top-right corner of the page. And follow me on Twitter."
+   },
+   "sealed_every_10": {
+    "ppl": 27.686614839260404,
+    "distinct2": 0.9571428571428572,
+    "rep3": 0.0,
+    "words": 71,
+    "text": " would elect representatives of the party, as well as the political parties.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMitt Romney's win in Iowa has been the lowest-profile, with voters in the district of 7.1 percent.\n\n\n\n\nHowever, the loss to Romney was the most significant victory for the district, with the result of an election in which the Republican Party won the majority in 12 of its 12 districts.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWith the Democrats in the district, the district was"
+   }
+  },
+  {
+   "i": 10,
+   "prompt": "Dear customer, we are writing to inform you that",
+   "unsealed": {
+    "ppl": 2.138239621925003,
+    "distinct2": 0.18471337579617833,
+    "rep3": 0.8012820512820513,
+    "words": 158,
+    "text": " you are the holder of this issue. If you are not receiving an email from us, we will provide you with a copy of our application and we will be providing you with a copy of our application and we will be providing you with a copy of our application and we will be providing you with a copy of our application and we will be providing you with a copy of our application and we will be providing you with a copy of our application and we will be providing you with a copy of our application and we will be providing you with a copy of our application and we will be providing you with a copy of our app"
+   },
+   "sealed_every_5": {
+    "ppl": 20.016949880238297,
+    "distinct2": 0.71900826446281,
+    "rep3": 0.17500000000000004,
+    "words": 122,
+    "text": " you are the holder of the right to take the form of an EU citizenship application. To request your application for a passport, and to request your visa, please contact us via WhatsApp (0) (0) (0)\n\n\n\n\n\nStep 1\n\nAdd your application to the form of an EU citizenship application:\nStep 2\nAdd your application to the box in the form of :\nStep 3\nAdd your application to the Form of :\nStep 4\nClick on the box to enter your application if you are a customer from the UK. If that is not available, please contact us via WhatsApp if you are a customer from the UK. If, on your way back then, you will be advise"
+   },
+   "sealed_every_10": {
+    "ppl": 26.297911535883987,
+    "distinct2": 0.8695652173913043,
+    "rep3": 0.045454545454545414,
+    "words": 24,
+    "text": " you are the holder of this issue. If you think you are aware of this, please contact Customer Service at Customer Service at 800-821-8255."
+   }
+  },
+  {
+   "i": 11,
+   "prompt": "The court found that the defendant",
+   "unsealed": {
+    "ppl": 7.5803305186685455,
+    "distinct2": 0.5686274509803921,
+    "rep3": 0.4,
+    "words": 52,
+    "text": "'s negligent use of an abandoned car while the defendant was driving the vehicle was negligent in the circumstances described in the complaint. The court also found that the defendant's negligent use of an abandoned car while the defendant was driving the vehicle was negligent in the circumstances described in the complaint.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_5": {
+    "ppl": 13.168667427537152,
+    "distinct2": 0.8857142857142857,
+    "rep3": 0.02941176470588236,
+    "words": 36,
+    "text": "'s negligent use of an electronic device could not be due to a traffic violation.\n\n\n\n[lz_related_box id=‽‽‽908]\n\n\n[lz_related_box id=‽‽ ‽ ‽ ‽ ‽ ‽‪\n[lz+j_related_pop_box id=‽ ‽ ‽[lz+j_related_pop_box id=‽ ‽ ‽ ´� ‰]\n[lzi+j_related=‽ ,lzi+j_related_pop_box id=‽"
+   },
+   "sealed_every_10": {
+    "ppl": 12.122787044112384,
+    "distinct2": 0.5833333333333334,
+    "rep3": 0.33587786259541985,
+    "words": 133,
+    "text": "'s negligent use of an abandoned car while the defendant remains in custody, including a vehicle to drive, with a minor in the possession of a vehicle, an impaired driver or a minor in the possession of a vehicle or a minor in the possession of a vehicle without written permission, and, in the absence of written permission, at the time the defendant was in custody, the defendant was in custody.\n \nImage copyright Thinkstock Image caption The original version of this photograph is taken on November 18, 2006, in Manchester, England.\nImage copyright Thinkstock Image caption The original version of"
+   }
+  },
+  {
+   "i": 12,
+   "prompt": "In a statement released on Monday, the ministry",
+   "unsealed": {
+    "ppl": 15.069401137312763,
+    "distinct2": 0.9047619047619048,
+    "rep3": 0.040000000000000036,
+    "words": 127,
+    "text": " of the Civil Service said the agency is \"deeply saddened by the tragic loss of this loved one.\"\n\n\n\n\nThe statement came as three soldiers were killed in an airstrike in the province's capital city, a military statement said.\n\n\nThe coalition launched airstrikes against the Islamic State group in Syria and Iraq on Monday, while the group also attacked the Al-Qaeda-linked rebel group in the Syria and Iraq.\nThe airstrikes, which included coalition airstrikes, have left seven dead and two wounded, the statement said.\nThe coalition said the coalition carried out an airstrike in the village of Sinjar"
+   },
+   "sealed_every_5": {
+    "ppl": 30.320902901416407,
+    "distinct2": 0.8897058823529411,
+    "rep3": 0.029629629629629672,
+    "words": 137,
+    "text": " of the Civil Service said all jobs would be made redundant and that the Government would still be responsible for the jobs of the public when it works.\n\n\n\n\n\"The ministry will also review other jobs that are in employment, and will consider their status in the public sector and ensure that the Ministry continues to improve its services to the public sector while continuing to ensure that there is a job safety net,\" the statement said.\n\"This is a significant step forward in the implementation of our national and social agenda and will ensure that the Ministry does not continue to be bogged down"
+   },
+   "sealed_every_10": {
+    "ppl": 100.42759186061676,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 35,
+    "text": " of the Civil Service said the agency is \"deep deeply concerned\" by the possible firing of a police officer in the Duchy of Hesse.\n\n\n\n\n\n\n\n\n\n(Reporting by Assef Amriyan and Tiana Sacksman; Editing by Emmira Shukla)"
+   }
+  },
+  {
+   "i": 13,
+   "prompt": "The insurance policy covers damage caused by",
+   "unsealed": {
+    "ppl": 43.847234556730484,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 13,
+    "text": " an accident, but not when a vehicle hits a wall. (AP Photo/Lucas Jackson)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_5": {
+    "ppl": 53.66513463977033,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 27,
+    "text": " an accident, but not the driver's own injuries. The policy is not about to be changed, to apply to any injured person, or to prevent future accidents."
+   },
+   "sealed_every_10": {
+    "ppl": 70.43717407963544,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 35,
+    "text": " an accident, but not when a vehicle hits a road or property.\n\n\n\n\n\nIt's time to decide whether the potential damage caused could be substantial and the cost of the insurance policy is covered.\n\n\nFollow @GetHomeNow"
+   }
+  },
+  {
+   "i": 14,
+   "prompt": "Students returning to campus this fall will notice",
+   "unsealed": {
+    "ppl": 47.264788123467895,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 17,
+    "text": " the addition of new rocker Tony Perez, who is one of the loudest rockers in the country.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_5": {
+    "ppl": 25.506560893180083,
+    "distinct2": 0.8849557522123894,
+    "rep3": 0.044642857142857095,
+    "words": 114,
+    "text": " the addition of new rock faces, all the while reminding students that the 2015-16 school year is shaping up to be a rough year for any student.\n\n\n\nNow that we’re wrapping up our season together, we’are going to have a break to celebrate the start with a tribute to the band, which is sooooooo exciting!\nTo celebrate the full year that’s been, and what it means to be a rock band, we are going to kick off a little extra!\nWe’re all coming together to deliver a special tribute to 2015-16 and to this year’s band.\nLet’s kick off the festivities with a special tribute to the band, which's sooooooo exc"
+   },
+   "sealed_every_10": {
+    "ppl": 49.35839846414109,
+    "distinct2": 0.9864864864864865,
+    "rep3": 0.0,
+    "words": 75,
+    "text": " the addition of new rocker Tony Perez, who has struggled to find a spot on the campus since 2007.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIt's not clear whether Perez's new decision will actually make much difference to the local community's general assembly, but local police have said Perez will have good relations with local law enforcement.\n\n\n\n\n\n\n\n\n\n\n\n\nTo hear more about Perez's next job, please visit:\n\n\n\n\n\n\n\nYou can read more about the case at\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThere's no word on Perez's future, but"
+   }
+  },
+  {
+   "i": 15,
+   "prompt": "The museum's new exhibition explores",
+   "unsealed": {
+    "ppl": 23.439933278874364,
+    "distinct2": 0.972972972972973,
+    "rep3": 0.0,
+    "words": 38,
+    "text": " the relationship between history and culture, and tells the story of the struggles of the past.\n\n\n\n\nThe exhibit was first opened at the Museum of Art in a 1960s renovation.\n\nThe museum is expected to open in 2015."
+   },
+   "sealed_every_5": {
+    "ppl": 28.999043314031624,
+    "distinct2": 0.8571428571428571,
+    "rep3": 0.04878048780487809,
+    "words": 43,
+    "text": " the relationship between history and art and their influences. Drawing from the history of art and its influence, she presents a variety of ways to understand the relationship between art and its influences during her exhibition.\n: The art of art through history."
+   },
+   "sealed_every_10": {
+    "ppl": 10.365807601624903,
+    "distinct2": 0.68,
+    "rep3": 0.2661290322580645,
+    "words": 126,
+    "text": " the relationship between history and culture, and tells the different stories of those who emerged as the architects of American history, from the early 20th century to the present.\n\n\n\n\n\n\nImage copyright Getty Images\n\n\nThe project, \"The Moleness of the American Revolution\" takes place in the basement of the Museum of Modern Art, in New York City. The museum's new exhibition explores the relationship between history and culture, and tells the different stories of those who emerged as (and) the architects of American history, from the early 20th century to the present.\n\nThe exhibition has been "
+   }
+  },
+  {
+   "i": 16,
+   "prompt": "According to the latest figures from the bureau,",
+   "unsealed": {
+    "ppl": NaN,
+    "distinct2": 0.0,
+    "rep3": 1.0,
+    "words": 0,
+    "text": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_5": {
+    "ppl": 21.09873176152405,
+    "distinct2": 0.927710843373494,
+    "rep3": 0.012195121951219523,
+    "words": 84,
+    "text": "\n\n\n\n\nthe FTSE 100,000 and the FSCI 100,000 were not factored into the total figures for the year to December, 2013.\n\n\n\n\nHowever,\n\n(the figure may be significantly higher if it is corrected to the full year of the year and the current year)\n\n*\n(the figure can also be reduced to zero if the figures are correct)\n\n\n*\n\n(the figure is not subject to inflation)\n*\nOn the basis of the data, the central bank has set a benchmark rate of 2.2 per cent\n\n*"
+   },
+   "sealed_every_10": {
+    "ppl": 33.77358775062449,
+    "distinct2": 0.9117647058823529,
+    "rep3": 0.06060606060606055,
+    "words": 35,
+    "text": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThese figures are for the total of the reported foreign currency in the U.S.\n\n\nP.S. Dollars.\n\n\n\nT.O. Box.\n\n\n\n\n\n\n\n\n\n\n\n\n\nBut there is one glaring omission from the most recent report on the currency in the U.S.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   }
+  },
+  {
+   "i": 17,
+   "prompt": "The startup announced that it had raised",
+   "unsealed": {
+    "ppl": 39.80266911817093,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 8,
+    "text": " $24 million in the first quarter of 2017.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_5": {
+    "ppl": 25.326302280243574,
+    "distinct2": 0.9722222222222222,
+    "rep3": 0.0,
+    "words": 37,
+    "text": " $24 million in the U.S. with no more than $20 million.\n\n\nAs a result, the startup has successfully raised $64 million in funding from investors, including hedge funds led by Andrew Kim, John Waller, and David Rubin."
+   },
+   "sealed_every_10": {
+    "ppl": 14.713371472843498,
+    "distinct2": 0.7851239669421488,
+    "rep3": 0.125,
+    "words": 122,
+    "text": " $24 million in the first quarter of 2017. He also confirmed that it had raised $1.65 million in the second quarter of 2017.\n $4.5 billion of revenue has been generated, compared to $1.11 billion in the first quarter of 2016.\n\n\n\nHe said the $12.2 billion is the largest amount of money raised in the last quarter of 2017 because the company has invested more than $300 million worldwide, the first quarter of 2016 because the company did not use the bitcoin to communicate with customers, and thus raised $1.67 billion in the second quarter of 2017.\n\nHe said he expects to increase the $1.67 billion "
+   }
+  },
+  {
+   "i": 18,
+   "prompt": "Doctors recommend that patients with high blood pressure",
+   "unsealed": {
+    "ppl": 23.42065524348785,
+    "distinct2": 0.9310344827586207,
+    "rep3": 0.0357142857142857,
+    "words": 30,
+    "text": " and low cholesterol be screened for heart disease, but don't have the necessary medications for heart disease, Dr. Paul Goldberg, director of the U.S. Department of Health and Human Services.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_5": {
+    "ppl": 195.2513495596371,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 13,
+    "text": " and low cholesterol be screened for an \"oncology\" to check blood plasma levels."
+   },
+   "sealed_every_10": {
+    "ppl": 11.571428722017478,
+    "distinct2": 0.8943089430894309,
+    "rep3": 0.05737704918032782,
+    "words": 124,
+    "text": " and low cholesterol be screened for heart disease, but the evidence is limited. The U.S. Centers for Disease Control and Prevention has not ruled out a second round of heart disease.\n\n\nThere are 3,000 people in the U.S. with at least one heart attack and one non-heart attack each year, according to the nonpartisan Heart Study, which is released this week. A survey of more than 1,000 people was conducted between 2001 and 2013 and found that Americans with at least 1,000 heart attacks and 1,000 non-heart attack each year were at least in the top three-quarters of the U. S. population.\nThe study"
+   }
+  },
+  {
+   "i": 19,
+   "prompt": "The train was delayed for two hours because",
+   "unsealed": {
+    "ppl": 91.81562987245462,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 11,
+    "text": " of the 'red light' that had been given at the station.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_5": {
+    "ppl": 16.586944714027968,
+    "distinct2": 0.5939849624060151,
+    "rep3": 0.2803030303030303,
+    "words": 134,
+    "text": " of the 'red light on the train' sign; the train was expected off to the westbound train at St George. One train was delayed due its delay for two hours when the train derailed.\n\n\n\n\nThe train was delayed due to the 'red light on' sign; the train that derailed\nThe train was delayed due to the light on the train; not due to the 'red light on the train\nA train could be seen behind the train as it hit the tracks\nThe train was delayed due to the 'red light on the train' sign; the train that derailed will not be able to land on the train until the train is given its route\nThe train was delayed due t"
+   },
+   "sealed_every_10": {
+    "ppl": 32.28710057800293,
+    "distinct2": 0.9259259259259259,
+    "rep3": 0.018867924528301883,
+    "words": 55,
+    "text": " of the 'red light' that had been given over the last five hours.\n\n\n\n\n\n\n\n\n\n\n\n\n\nBut the train was not rescheduled due to engine problems.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOn Saturday, a truck loaded with coal began to turn up at a low speed.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThere was a half-hour delay for the train.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOne kilometre of the train was stopped at a"
+   }
+  },
+  {
+   "i": 20,
+   "prompt": "Our team reviewed the contract and found",
+   "unsealed": {
+    "ppl": 18.40035954522779,
+    "distinct2": 0.9302325581395349,
+    "rep3": 0.023809523809523836,
+    "words": 44,
+    "text": " that our target price for the OPP is the lower of the $4,914 we originally expected to receive. In other words, we think this price will be lower than what we would receive if we received the additional $4,914 we originally anticipated to receive.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_5": {
+    "ppl": 28.401392324595356,
+    "distinct2": 0.859504132231405,
+    "rep3": 0.050000000000000044,
+    "words": 122,
+    "text": " that our target price for The Boxer would be $1.60/€2.75/ $3.35/\n\n\n\n\nBut not the first time we saw a deal for Toons. We saw a deal for Interscope, where it looked like We are offering a 30% discount on the six year subscription.\nBut the first time It was confirmed that The Boxer was working on some of its own, and a deal with the company was confirmed in June.\nWe also saw new ads for the brand with new material, and at the same time we saw an advertisement for the brand with a new game at its launch.\nOur attention was also focused now on the new material, with some of the new content being re"
+   },
+   "sealed_every_10": {
+    "ppl": 20.869143188969833,
+    "distinct2": 0.9512195121951219,
+    "rep3": 0.012345679012345734,
+    "words": 83,
+    "text": " that our target price for the OPP is the same as our estimate of the price of the key technology. The deal was the result of a long debate over the deal, and we continue to look in the right direction.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThat agreement is extremely difficult to get at. If we had the same production costs, our target price wouldn't be a $100,000 product. Assuming a greater company would find an investment partner with a strong record, we would have a few billion"
+   }
+  },
+  {
+   "i": 21,
+   "prompt": "The mayor's office confirmed that the bridge",
+   "unsealed": {
+    "ppl": 111.65183763183036,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 5,
+    "text": " was part of the project.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_5": {
+    "ppl": 29.787639139641154,
+    "distinct2": 0.9256198347107438,
+    "rep3": 0.033333333333333326,
+    "words": 122,
+    "text": " was part of the project — and that they didn\\'t know how much it cost.\n\n, which spans the River Thames, includes the Port Charlotte, where the bridge was built, is in business. It also will offer a new bridge in Newport to help bridge construction.\n\n\n\nThe bridge will be named after Thomas Jefferson's famous \"Delaware,\" which was built for the nation's first Christian church.\nIn the past, the city's railroad and shipyards were part of the federal government's effort to carry out the D.C. Civil War effort to build the canal.\nBut the bridge was ultimately built because the city wanted to use it "
+   },
+   "sealed_every_10": {
+    "ppl": 115.09897252854539,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 6,
+    "text": " was part of the project.\n\n\n\n."
+   }
+  },
+  {
+   "i": 22,
+   "prompt": "Farmers in the region are worried that",
+   "unsealed": {
+    "ppl": 48.85888675588686,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 23,
+    "text": " a solution will be taken to create a clear and enforceable zoning code for the area, known as the Bangor Community Development Act.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_5": {
+    "ppl": 26.5164557632393,
+    "distinct2": 0.9658119658119658,
+    "rep3": 0.008620689655172376,
+    "words": 118,
+    "text": " a solution will be taken to give more people a chance to come back to their village.\n\n\n\n\n\"The village is set up as a refuge for people of all ages. The village people are not allowed to make any money from farming, but they are allowed one day a week to receive food and medicines from the village, even if some children take them to home from school.\nWhen we reach the village, we need to help other villagers,\" said Bajan's uncle, \"because we are all in our village.\"\nMany families are in the village, but their efforts are limited to planting seeds if the land is too cold.\nKariya Sohmey (wife of"
+   },
+   "sealed_every_10": {
+    "ppl": 21.154380101506007,
+    "distinct2": 0.7913669064748201,
+    "rep3": 0.1159420289855072,
+    "words": 140,
+    "text": " a solution will be taken to create a clear and transparent agenda for the region. The states which want to take on the separatists, however, have made clear they are not happy with the situation.\nBastian Lagos, a farmer, had been being interviewed by the minister of agriculture, and in the second part of the interview with the minister that he had hoped for, said: “All the delegates of the Conference have had a chance but this is not the case. The delegates of some of the parties have said that the situation is extremely complicated. The delegates of the Conference have also said that the sit"
+   }
+  },
+  {
+   "i": 23,
+   "prompt": "The new software update changes the way",
+   "unsealed": {
+    "ppl": 10.68217311716015,
+    "distinct2": 0.5964912280701754,
+    "rep3": 0.35398230088495575,
+    "words": 115,
+    "text": " the user interacts with Google’s Android applications and apps, as well as setting the time frame for the update. It’s now time to update your Android apps to take advantage of the new software updates.\n\n\n\n\nWhat’s changed\n\nThe new software update fixes some of the vulnerabilities in the new software update. It’s now possible to uninstall a malicious app and its apps. The update also fixes issues that affect the app’s user interface.\nIt’s now possible to uninstall a malicious app and its apps. The update also fixes issues that affect the app’s user interface.\nThe update also fixes issues that "
+   },
+   "sealed_every_5": {
+    "ppl": 30.594703689219855,
+    "distinct2": 0.9174311926605505,
+    "rep3": 0.01851851851851849,
+    "words": 110,
+    "text": " the user interacts with Google Photos. Now you can use a standard Gmail app to browse through the apps and services, with a Google Drive button on the toolbar.\n\n\n\n\n\n\nThe new update also introduces the following new features:\nGmail: Add a more secure, secure way to share photos.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAll the new updates also introduce a new interface for the front-end and support for Google Photos. All the new features also apply to Google Photos.\n\n\nThe new add-on comes with free Google Drive and Amazon Prime.\n\nThe old version of Google Photos is now available for purchase from Amazon for $29 with a "
+   },
+   "sealed_every_10": {
+    "ppl": 35.478023901929895,
+    "distinct2": 0.7,
+    "rep3": 0.26315789473684215,
+    "words": 21,
+    "text": " the user interacts with Google’s Android applications. This is an improvement to the way the user interacts with Google’s Android applications."
+   }
+  },
+  {
+   "i": 24,
+   "prompt": "It was the coldest winter anyone could remember,",
+   "unsealed": {
+    "ppl": 7.578678834087077,
+    "distinct2": 0.5737704918032787,
+    "rep3": 0.3553719008264463,
+    "words": 123,
+    "text": " and it's like it was the coldest winter anybody could remember. And it was the worst winter anyone could ever remember. The summer was so cold that it was the worst winter anyone could ever remember. And it was the worst winter anyone could ever remember. And it was the worst winter anyone could ever remember.\n\n\n\nSo, with that said, the full world of the U.S. has gone cold.\nBut here's what I was hoping to get back from the U.S. and its allies and allies. And it's not just a bad winter for the U.S. but a bad one for the U.S. and its allies. And it's also a bad one for the U.S. and its allies. "
+   },
+   "sealed_every_5": {
+    "ppl": 22.944261147364017,
+    "distinct2": 0.948905109489051,
+    "rep3": 0.0,
+    "words": 138,
+    "text": " and it's like it was the first time I used to sleep in the hospital. I woke up from the front of my mouth, but there was an even colder, more cold air.\n\nI had already been awake for about an hour, until the sun set, just before the cold started dropping. I didn't know what to do, when I finally saw a few hours earlier.\nI knew the only way they could treat me was going to be to sleep early, and that would be the way they would treat me. I had long been a very good writer, and had worked on many different things. Then there was the idea on my side, and so I had to start writing more.\nAs long as"
+   },
+   "sealed_every_10": {
+    "ppl": 23.439977987041694,
+    "distinct2": 0.9074074074074074,
+    "rep3": 0.037735849056603765,
+    "words": 55,
+    "text": " and it's like it was the coldest winter Ever since we were born. We were the most active on the planet, and it wasn't cold on Earth. We were the most beautiful in the world, and it was a blast.\n\nThis article was written in partnership with Creative Commons Attribution - to use it freely."
+   }
+  },
+  {
+   "i": 25,
+   "prompt": "The committee will vote next week on",
+   "unsealed": {
+    "ppl": 8.136428993058434,
+    "distinct2": 0.8028169014084507,
+    "rep3": 0.12857142857142856,
+    "words": 72,
+    "text": " a bill that would allow states to raise the minimum wage to $10 an hour by 2027. The bill would create a new minimum wage for all workers, including those under 35 and under age 18. The measure would raise the minimum wage to $15 an hour by 2027. The bill would also require states to pay workers a minimum wage to cover the costs of a medical condition, including medical expenses.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_5": {
+    "ppl": 50.148591341485435,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 30,
+    "text": " a bill that would allow the federal government to keep gun owners from buying guns in states with a record number of gun buyers.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRead or Share this story:\" http://usat.lv/1SZn9nj"
+   },
+   "sealed_every_10": {
+    "ppl": 63.29290678983331,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 23,
+    "text": " a bill that would allow states to raise the minimum cost of abortion to the federal level.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRead or Share this story: http://usat.ats/2x7jjE7"
+   }
+  },
+  {
+   "i": 26,
+   "prompt": "Researchers at the university discovered that",
+   "unsealed": {
+    "ppl": 28.891035338252827,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 16,
+    "text": " a state-of-the-art quantum device could be made using quantum cryptography, a potentially breakthrough in quantum cryptography.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_5": {
+    "ppl": 22.529143810176468,
+    "distinct2": 0.8372093023255814,
+    "rep3": 0.09375,
+    "words": 130,
+    "text": " a state-of-appearable site for the first time ever was found in Britain.\n: How easy is the internet to access a website?\n: Our researchers now have an idea of how to access an internet like this.\n: And how often are you able to access a site, including things like the internet, from an online web site?\n: We know we're able that we can access a vast array of online information, including information about how your favourite book is, to your Facebook page, online social media, or even your laptop.\n: How much more or cheaper are you going to have to go through to access it?\n: We know we can acce"
+   },
+   "sealed_every_10": {
+    "ppl": 26.79389739309524,
+    "distinct2": 0.8571428571428571,
+    "rep3": 0.0888888888888889,
+    "words": 92,
+    "text": " a state-of-the-art quantum device could be used to buy a person's brains, making them more likely to develop physical and intellectual capacities.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAccording to a statement, the university is \"still researching and developing ways to develop the technology.\"\nThis has prompted a series of calls for future research funding for the new technology.\nWhile the university is investigating whether the device could be used in human hands, it's unclear if it could be used in other forms of medicine.\nIt is unclear though whether it could be used in the \"real world.\""
+   }
+  },
+  {
+   "i": 27,
+   "prompt": "The company's chief executive said that",
+   "unsealed": {
+    "ppl": 27.265602212776734,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 40,
+    "text": " it was working with the government and the Ministry of Defence to help secure the assets and services of the RAF.\"The UK government will invest more than £1.2bn on new operational assets in the future,\" he said in a statement."
+   },
+   "sealed_every_5": {
+    "ppl": 51.050267440192655,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 35,
+    "text": " it was working with the police and military to help the organization identify those responsible who are responsible.\nHe also said that the company also plans to release a statement in support of police investigations."
+   },
+   "sealed_every_10": {
+    "ppl": 107.18223387605553,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 26,
+    "text": " it was working with the government and the Ministry of Finance to have the full power to audit and investigate claims made by anti-government groups.\n\n\n\n\n\n\n\n\n\n\n\n ("
+   }
+  },
+  {
+   "i": 28,
+   "prompt": "Residents were asked to leave their homes after",
+   "unsealed": {
+    "ppl": 75.34749298528595,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 8,
+    "text": " they were caught in a wave of rioting.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_5": {
+    "ppl": 18.223354768254286,
+    "distinct2": 0.9107142857142857,
+    "rep3": 0.018018018018018056,
+    "words": 113,
+    "text": " they were caught in a mass shooting in the northeast African nation of the Horn where 24-year-old Dokdo Dokdo was shot and taken to the hospital.\n\n\n\n\nHis parents, from Lagano, told AFP they met Dokdo Dokdo in a hotel room in the town of Moritzberg where he was shot in the head.\n\n\nThe gunman shot Dokdo in the head, the statement read.\n\nIt read: \"I love you, Dokdo, my children, my brothers, my sisters as well as my sister. I pray for you both and for all of you.\"\nHe was shot in the head by a group of young men, who had been sent to hospital with gunshot wounds.\nThe pair were"
+   },
+   "sealed_every_10": {
+    "ppl": 56.872613894177825,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 35,
+    "text": " they were caught in a wave of rioting. Photograph: AFP\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \"I think there is a lot of anger in England right now.\n\n\n\n\n\nMedia playback is unsupported on your device Media caption\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMigrant labour\n\n\n\n\n\n\nNew Home:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   }
+  },
+  {
+   "i": 29,
+   "prompt": "The article argues that modern cities",
+   "unsealed": {
+    "ppl": 25.019547544244954,
+    "distinct2": 0.8914728682170543,
+    "rep3": 0.0625,
+    "words": 130,
+    "text": " can't be easily transformed to change.\n\n\n\n\n\nBut how can we stop the flow of our society, the kind of society that makes us here?\nIt's not a question that's not always easy to find. In the past, there was no specific central political power to change, it was a central political power to make the city a more democratic place.\nIt was a central political power to make people feel that they can be part of the larger, less politically-popular communities, and that the city could be more democratic.\nThe purpose of the city was to allow people to have a say in the city's decisions.\nBy the way, the fo"
+   },
+   "sealed_every_5": {
+    "ppl": 22.961805755876664,
+    "distinct2": 0.9274193548387096,
+    "rep3": 0.03252032520325199,
+    "words": 125,
+    "text": " can't be easily transformed because they rely on a “meta” of urbanism.\nHere are some of the most notable examples:\nAs a result, as a result of the recent rise in the number of private transit systems in the City of Chicago, the number of private transit systems nationwide has increased to just over 10,000 in November.\nThere are also many local, state officials who are working on more efficient public transit systems.\nIn fact, the Times reports:\nMayor Rahm Emanuel, who has made the case by introducing a new public transit plan to help turn Chicago into a “new city, has come under fire for his "
+   },
+   "sealed_every_10": {
+    "ppl": 27.339588530672334,
+    "distinct2": 0.9097744360902256,
+    "rep3": 0.05303030303030298,
+    "words": 134,
+    "text": " can't be easily transformed to change.\n\nIf you want to go to the University of Chicago - Chicago, Harvard, and Harvard - you'll most probably want to go to the University of Chicago.\nHere's the link:\nAs a reader of my blog, I write this piece to express my dismay over the imposition of the process of curation and the burdens imposed on the citizens. My reaction is understandable. But as a reader, I also see that my new book is at the hands of the University of Chicago. The book is essentially the first in a series of lengthy posts and essays. It follows the experience of the city's first high"
+   }
+  },
+  {
+   "i": 30,
+   "prompt": "Please find attached the minutes of",
+   "unsealed": {
+    "ppl": 4.39709159918347,
+    "distinct2": 0.34306569343065696,
+    "rep3": 0.6102941176470589,
+    "words": 138,
+    "text": " the paper to a set of coloured paper. The authors suggested that it would be useful to suggest that the paper was printed on a paper to the right of the parents.\n\n\nThe paper was sent to the parents of their son. The parents were in the house and the parents were in the house.\nThe parents were in the house and the parents were in the house. The parents were in the house.\nThe parents were in the house. The parents were in the house. The parents were in the house. The parents were in the house. The parents were in the house. The parents were in the house.\nThe parents were in the house. The paren"
+   },
+   "sealed_every_5": {
+    "ppl": 23.264826216041048,
+    "distinct2": 0.9586776859504132,
+    "rep3": 0.008333333333333304,
+    "words": 122,
+    "text": " the paper to a set of windows or windows. Please note: The link to the \"Update Report\" can be found here - https://www.youtube.com/watch…\n\nMerry Christmas to the people of Chicago, New York, and the world.\nThe #CLATENACTS campaign is a group of dedicated supporters of diversity and inclusion who've done all they can to make Chicago a great city - and a great city with an almost constant diversity problem.\nWe're here to support and support the many people who work to ensure that our children and families are educated, safe, and prosperous. I hope that, when elected, we are able - and I hope - "
+   },
+   "sealed_every_10": {
+    "ppl": 12.786140083093262,
+    "distinct2": 0.6699029126213593,
+    "rep3": 0.20588235294117652,
+    "words": 104,
+    "text": " the paper to a set of coloured paper. The lines were too large and too short, and the paper has now been changed to a white paper.\n\n\nThe paper is still in storage at the Animal Welfare Commission.\nThe paper has been sent to the Animal Welfare Commission.\nThe paper received the lead from the Animal Welfare Commission.\nAt the time of writing, the animal welfare commission had not yet sent the paper to the Animal Welfare Control and Reception Service.\nThe paper was sent to the Animal Welfare Commission.\nAnimal Welfare Commission has not yet sent the paper to the Animal Welfare Commission."
+   }
+  },
+  {
+   "i": 31,
+   "prompt": "The spacecraft entered orbit around",
+   "unsealed": {
+    "ppl": 22.486578392636908,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 21,
+    "text": " the sun at 9:15 a.m. (6:15 a.m. ET) and was heading toward a bright, bright bright green orbited above the sun.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_5": {
+    "ppl": 20.358325864848585,
+    "distinct2": 0.96875,
+    "rep3": 0.0,
+    "words": 97,
+    "text": " the sun at 9:59 p.m. EDT (11:59 p.m. EDT) and was headed for a 12-day (22:59 p.m. EDT) descent.\n\n\n\n\n\n\n\n\nFor more information on the mission, see the press summary on NASA's website http://www.nsp.nasa.gpa.gov/programs/.\nIn the press release, which was released today, NASA describes the mission as \"an interplanetary demonstration of a new era of exploration and discovery in scientific exploration of our planet – but no less than Earth's most promising, revolutionary and historic.\"\nThe mission, which was launched in 2009, will be a test of the new technology and technologies that will enable sc"
+   },
+   "sealed_every_10": {
+    "ppl": 51.821329368488804,
+    "distinct2": 0.9661016949152542,
+    "rep3": 0.0,
+    "words": 60,
+    "text": " the sun at 9:15 a.m. EDT (12:15 a.m. EDT) in the vicinity of the Sun, according to researchers.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n[A second video showing the spacecraft's orbit around our sun's surface was shown by NASA's Mars mission, which is based on the Landsat Survey Discovery mission. NASA's Mars mission will return to base in the Southern Hemisphere sometime in 2018.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n​\n\n\n\n\n\n\n\n\n*"
+   }
+  },
+  {
+   "i": 32,
+   "prompt": "Local businesses have struggled since",
+   "unsealed": {
+    "ppl": 37.210837020924004,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 24,
+    "text": " the start of the year, with the downturn affecting their operations, but there have been a lot of positive results in the general market.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_5": {
+    "ppl": 12.754435909860629,
+    "distinct2": 0.6324786324786325,
+    "rep3": 0.2844827586206896,
+    "words": 118,
+    "text": " the start of the year.\n\n\n\nThere have been a handful of similar events and closures during the last few weeks following the housing crisis.\n\nSome of these events have been linked to the expansion of housing in certain parts of the country (Greens, Palmerist, and Greens)\nSome of these events have been linked to the expansion of housing in certain markets (Greens, Palmerist, and Greens)\nSome of these events have been linked to two high profile events (Greens, Palmerist, and Greens)\nSome of these events have appeared to be linked to events of the 'First Half of 2016' of the year, which included h"
+   },
+   "sealed_every_10": {
+    "ppl": 31.39198215826627,
+    "distinct2": 0.967032967032967,
+    "rep3": 0.0,
+    "words": 92,
+    "text": " the start of the year, with the downturn affecting both the state and local government, but a new national advertising campaign is aimed at putting pressure on the state to create more sustainable businesses.\n\n\n\n\n\n\n\n\n\n\n\n\nAt the same time, on Friday the state government announced it would begin collecting more than a million dollars in advertising from two entities that have already spent $1 billion over the last seven years.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAccording to the Department of Tourism, the public subsidy for the arts and recreation industry has gone from $1 billion to $1.3 billion.\n\n"
+   }
+  },
+  {
+   "i": 33,
+   "prompt": "The treaty was signed in",
+   "unsealed": {
+    "ppl": 16.934482063448872,
+    "distinct2": 0.8549618320610687,
+    "rep3": 0.0461538461538461,
+    "words": 132,
+    "text": " 1976 and officially ratified in 1988. The pact, which stipulates that all Western countries and international citizens of the Republic of Korea should be entitled to a fair and equal opportunity to all political, economic and social change.\n\n\nThe deal, signed in 1982, was also designed to address the socioeconomic and economic challenges of the Korean Peninsula, where a strong Korean economy and a strong Korean economy have led to a number of key economic and social changes.\nThe Agreement\nThe agreement was signed in 1978 by the Korean Communist Party of Korea and the Korean People's Republic "
+   },
+   "sealed_every_5": {
+    "ppl": 18.980756599317047,
+    "distinct2": 0.9375,
+    "rep3": 0.010526315789473717,
+    "words": 97,
+    "text": " 1976 and officially ratified in 1998 by almost three million South Africans.\n\n\n\n\n\n\nOn June 4, 2014 UN Secretary-General Ban Ki-moon held an emergency meeting with the international group on the implementation of the treaty, which was signed in 1976.\nMigration to South Africa increased substantially in 2015 and 2016, and the majority of people from South Africa are believed to be still returning to South Africa. There are currently some 4,500 people living in the country, with approximately 1.3 million of people living in South Africa.\nS.A.A. is a trade association of South African farmers and"
+   },
+   "sealed_every_10": {
+    "ppl": 6.624528089829845,
+    "distinct2": 0.41134751773049644,
+    "rep3": 0.5142857142857142,
+    "words": 142,
+    "text": " 1976 and officially ratified in 1988. The pact, now called the International Covenant on Economic Co-operation after almost two decades, is the largest international agreement on the issue. The treaty was signed in 1976\n\n\nThe main international agreement on the issue was signed in 1976\nThe treaty was signed in 1991 and officially ratified in 1988\nThe treaty was signed in 1992 and officially ratified in 1988\nThe pact was signed in 1992 and officially ratified in 1988\nThe treaty was signed in 1992 and officially ratified in 1988\nThe treaty was signed in 1992 and officially ratified in 1988\nThe "
+   }
+  },
+  {
+   "i": 34,
+   "prompt": "Our records indicate that your account",
+   "unsealed": {
+    "ppl": 84.11502211076993,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 9,
+    "text": " is valid and you have entered the required fields.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_5": {
+    "ppl": 8.97581363972493,
+    "distinct2": 0.6938775510204082,
+    "rep3": 0.21232876712328763,
+    "words": 148,
+    "text": " is valid and you have been using the correct account when you entered your account within a few hours of accessing your account.\nIt is important to note that the account will not be used for any purpose other than to facilitate a transfer of information. This also means that your account may not be used for any purpose other than to prevent your account from being used for any purpose other than to facilitate a transfer of information.\nYou may also be responsible for the use of your account by other means to further enable you to transfer information. Your account will not be used for any pur"
+   },
+   "sealed_every_10": {
+    "ppl": 22.49151661663511,
+    "distinct2": 0.8142857142857143,
+    "rep3": 0.10144927536231885,
+    "words": 71,
+    "text": " is valid and you have entered the required fields. In our database, you have entered your unique address within the database. You can request your account and your account on the following pages:\n\n\n\n\n\n\n\n\n\n\n\n\nIn order to enter your unique address, you must enter the required fields.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: You can sign up for more information from the United States government.\n\n\n\n\nYour email address is valid and you have entered the selected fields.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   }
+  },
+  {
+   "i": 35,
+   "prompt": "The festival returns this summer with",
+   "unsealed": {
+    "ppl": 12.052991509695817,
+    "distinct2": 0.9701492537313433,
+    "rep3": 0.0,
+    "words": 68,
+    "text": " the film and director's return to work as a lead actor.\n\n\n\n\nThe film opens in cinemas at 6pm on Thursday, October 28.\n\n\n\n• After watching the film, the film is screened on Friday and Saturday, October 29.\n\n\n• It will be available on DVD in theaters on November 5.\n• It is available online at www.festival.com/festival.\n• Reception numbers are available in the following ways:\n• Favourite: 2,376,826,948,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,"
+   },
+   "sealed_every_5": {
+    "ppl": 30.768230410516523,
+    "distinct2": 0.898989898989899,
+    "rep3": 0.04081632653061229,
+    "words": 100,
+    "text": " the film and director's credits to its conclusion. From the original, it's a little bit of a journey from the start to the end.\n(Credit: Francis Ford Northam/Getty Images)\n\n\n\n\n\n\n\n\n\n\n\n\n\nHere's the first of the trailers for the film on the official Facebook page...\nThis is the first of the trailer for THE ROGUE: PULLY JANE'S CULT, one of the most enjoyable and engaging films of all time, which the Disney XD series has created.\nYou can read the trailer below:\nThe trailer is available for download here:\nHere's the trailer for THE RAGE: PULLY FREDOM, starring JANE HAYES, EMAIL CH"
+   },
+   "sealed_every_10": {
+    "ppl": 11.997334106500453,
+    "distinct2": 0.9411764705882353,
+    "rep3": 0.0,
+    "words": 52,
+    "text": " the film and director's return to work as a regular on the Marvel Cinematic Universe. The film will have three main scenes from the Avengers: Age 3, Avengers: Age of Ultron, and Guardians of the Galaxy. The film is set to be released on the 2nd of July on Blu-ray and DVD."
+   }
+  },
+  {
+   "i": 36,
+   "prompt": "The hospital announced a new policy on",
+   "unsealed": {
+    "ppl": 21.928996477035945,
+    "distinct2": 0.8931297709923665,
+    "rep3": 0.05384615384615388,
+    "words": 132,
+    "text": " the sale of the company› in order to \"reinforce the need for a new and more consistent system of care for those affected by the latest social media messages.\"\n\n\n\nThe policy has already been adopted by the Federation of British Medical Officers (AFMC), a coalition of medical groups, hospitals, health agencies and hospitals across the country.\nAnd the announcement follows a round of reforms that have since been approved by the Association of British Medical Officers (AAMO), the professional body that has spearheaded the new policy.\nIt is a policy that will be adopted by the NHS and Health Engla"
+   },
+   "sealed_every_5": {
+    "ppl": 23.669711921212663,
+    "distinct2": 0.9047619047619048,
+    "rep3": 0.040000000000000036,
+    "words": 127,
+    "text": " the sale of the company’s shares. According to Bloomberg, a new policy will allow that company to sell the shares and give them to shareholders.\n\n\n\n\nA number of major companies are also moving towards a restructuring of the company’s share market.\nAccording to the Daily Telegraph, the company and the group are now working on a new strategy to better manage its own holdings and to simplify its activities.\nAt the first meeting of the board, chief executive officer Peter Neumann told the paper they would talk about a range of aspects of the company’s strategy ahead of the first meeting of the bo"
+   },
+   "sealed_every_10": {
+    "ppl": 23.380507809405902,
+    "distinct2": 0.8888888888888888,
+    "rep3": 0.06716417910447758,
+    "words": 136,
+    "text": " the sale of the company› in order to get more people to get treatment and offer free health care.\n\n\n\nThe move comes after the health care company announced last week it would sell the company to the Canadian Medical Association and Health Canada.\nThe move comes after the health care company told doctors in the U.S. that its plans to sell to Canada will be used to provide \"purchase services for patients who need them most to see or are otherwise unable to obtain treatment.\"The government is expected to release a statement later this day, but the Canadian Medical Association says it is open to "
+   }
+  },
+  {
+   "i": 37,
+   "prompt": "Investigators said the fire started in",
+   "unsealed": {
+    "ppl": 49.427960771445925,
+    "distinct2": 0.9,
+    "rep3": 0.052631578947368474,
+    "words": 21,
+    "text": " the intersection of the North Highway and the North Highway near the Southfield Highway on the afternoon of March 17, 2016.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_5": {
+    "ppl": 32.85187840203944,
+    "distinct2": 0.9523809523809523,
+    "rep3": 0.016129032258064502,
+    "words": 64,
+    "text": " the intersection of the North and South Side streets, according to multiple reports. Residents reported seeing smoke pouring inside the street, and witnesses said smoke was moving toward the smoke as it flew.\n\n\nBut the fire on Broadway and between the North and Northeast streets started to spread on the West Side, according to a report by the Department of Transportation. Around 2:30 p…"
+   },
+   "sealed_every_10": {
+    "ppl": 16.342789062815562,
+    "distinct2": 0.9315068493150684,
+    "rep3": 0.02777777777777779,
+    "words": 74,
+    "text": " the intersection of the North Highway and the North Highway leading up to the intersection of Interstate 5 and I–30.\n\n\n\n\n\n\nInvestigators said a second car was reported pulled over by several neighbors on I–30.\n\n\nAt least one person was seen in the area, according to the fire department.\nA neighbor was killed and two others were injured.\nThe fire department is investigating the incident.\nFollow the FOX 8 News video report at https://www.foxlaw.com/video/2015/05/19/the-fire-in-the-north-hills-is-disaster/ https://www.foxlaw.com/video/2015/05/19/fire-inville-revives-the-controversy"
+   }
+  },
+  {
+   "i": 38,
+   "prompt": "The school board approved a plan to",
+   "unsealed": {
+    "ppl": 7.24050207781594,
+    "distinct2": 0.3902439024390244,
+    "rep3": 0.6,
+    "words": 42,
+    "text": " develop a new district housing and classroom for all students. The board approved a plan to develop a new district housing and classroom for all students. The board approved a plan to develop a new district housing and classroom for all students.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_5": {
+    "ppl": 30.789423258814264,
+    "distinct2": 0.8956521739130435,
+    "rep3": 0.01754385964912286,
+    "words": 116,
+    "text": " develop a new district housing agency that would develop a three-family structure for residents in the community.\n\n\n\n\nBateswell was named head of the school board in February.\n\n\n\n\n\n\nBut there are other suggestions that the school board is willing to keep in mind.\n\n\n\nFor example,\n\n\n\n\n\n\nTobacco is one of the most important medical illnesses in the United States compared to tobacco.\n\n\n\nThe school board has said it has tried to develop a solution to marijuana use in the region.\n\nThe school board agreed to a plan last year for a separate program, but only after the Legislature passed a bill that w"
+   },
+   "sealed_every_10": {
+    "ppl": 32.640971214140215,
+    "distinct2": 0.8888888888888888,
+    "rep3": 0.020408163265306145,
+    "words": 100,
+    "text": " develop a new district housing and classroom for all students living in a two-story school district.\n\n\n\n\n\n\n\n\n\n\nAnd the district has been listening to the criticisms, including the educational division's claim that the district is not at all interested in adding to the academic or social needs of all students in the district.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhile the district had been advocating for a \"back-to-school district\" proposal in the spring, it was not clear if the district would have to get an approval from the school board to develop two more units in the district.\n\n\n\n\n\n\n\n\n\n\n\n\nTo be sure, the s"
+   }
+  },
+  {
+   "i": 39,
+   "prompt": "Historians disagree about why",
+   "unsealed": {
+    "ppl": 14.624022985432845,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 21,
+    "text": " the Obama administration chose a new name for its former chief of staff, Tom Price. (Photo: Toni L. Sandys/The Washington Post)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_5": {
+    "ppl": 29.766177750497025,
+    "distinct2": 0.8905109489051095,
+    "rep3": 0.022058823529411797,
+    "words": 138,
+    "text": " the Obama administration chose a different approach to saving the country. They say that the president chose the former — a conservative who believes this approach is more than just a convenient way to save America's children and grandchildren.\n\n\n\n\n\n\n\nHe contends that the Obama administration should continue to promote the strong relationship between the family and the country. Although the president's administration has long supported the family business and has repeatedly supported the family business, the president has also denied the use of taxpayer funds to fight crime.\n\nThe president ha"
+   },
+   "sealed_every_10": {
+    "ppl": 40.6503155847541,
+    "distinct2": 0.9615384615384616,
+    "rep3": 0.012987012987012991,
+    "words": 79,
+    "text": " the Obama administration chose a new name for its former president, Eric Holder. (Photo: AFP) File Photo\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n‪\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHeldings voted Tuesday to extend the administration  to the two-day period before the first full month of the legislative session on Feb. 8-11, ending the 10-month period beginning this month.\n\n\n\n\n\n\nHolder and the State Department declined to comment Tuesday on the possibility that the Obama administration was targeting the attorney general’s office.\n\n\nIf confirmed, Holder would be the first president in"
+   }
+  },
+  {
+   "i": 40,
+   "prompt": "The city council met on Tuesday to discuss",
+   "unsealed": {
+    "ppl": 70.35178039899809,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 13,
+    "text": " the issue and the pending referendum on the validity of the proposed amendments.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_5": {
+    "ppl": 17.158092541888763,
+    "distinct2": 0.9769230769230769,
+    "rep3": 0.0,
+    "words": 131,
+    "text": " the issue and the pending motion, according to a report from the Senate Committee on Housing and Urban Development .\n\n\n\n[A survey of 600 U.S. households reveals an estimated 4.5 million residents are experiencing some form of homelessness. The majority are in housing and have no idea what will happen.]\nAs a result, the city has yet to release or explain why.\nMayor Tom Barrett, a vocal critic of the housing crisis, said he was aware the city was considering a resolution, but that the council has not been able to reach a resolution about the issue.\nIf the council does come up with an answer, Ba"
+   },
+   "sealed_every_10": {
+    "ppl": 15.741596199803427,
+    "distinct2": 0.671875,
+    "rep3": 0.1889763779527559,
+    "words": 129,
+    "text": " the issue and the pending referendum on the validity of the constitution.\n\n\n\n\n\n\nOn Monday, a referendum on the issue was held after a referendum on the constitution.\n\n\n\nThe council had previously decided to make the referendum on whether to hold the election.\n\n\nBelling out a referendum on whether to hold the election, the council said it would take the decision if the council did not meet.\nIt said it would be a \"very good opportunity\" to make it clear to the council that the referendum would not be held and that the referendum would not be suspended.\nThe council also said it would consider wh"
+   }
+  },
+  {
+   "i": 41,
+   "prompt": "In the early morning, the research team",
+   "unsealed": {
+    "ppl": 10.83348749328742,
+    "distinct2": 0.8035714285714286,
+    "rep3": 0.10810810810810811,
+    "words": 113,
+    "text": " at Yale University has found that white-collar workers with low-income working-class background \"have a higher risk of developing HIV infection than white-collar workers with high-class background.\"\n\n\n\n\nThe study found that \"those with high-income backgrounds are less likely to develop HIV infection than white-collar workers with low-income workers with low-class background.\"\nIn the study, the team of researchers looked at a study of data from the American Community Survey (ACSS) which has three main subgroups: blacks and white-collar workers (defined as the upper half of the American populat"
+   },
+   "sealed_every_5": {
+    "ppl": 31.703848096578504,
+    "distinct2": 0.9130434782608695,
+    "rep3": 0.00877192982456143,
+    "words": 116,
+    "text": " at Yale University has found three-quarters of the participants in the current study used the American Psychological Association survey as an alternative to surveys of whether people are satisfied with their answers.\n\n\n\n\nOne of the authors of the study said the study was the most effective way, especially in light of the fact that the first-year study was done in China.\n\"The study is quite effective in identifying a range of questions that the majority of folks don't understand,\" Gac.\n\"The findings of the study are very important,\" said Gac. \"It could also help us understand the higher levels"
+   },
+   "sealed_every_10": {
+    "ppl": 11.66659523977353,
+    "distinct2": 0.8292682926829268,
+    "rep3": 0.10655737704918034,
+    "words": 124,
+    "text": " at Yale University has found that white-collar workers appear to be more likely to work in the white supremacist movement than those of black-collar workers. Researchers found that white-collar workers tend to have high levels of social security and job security, as well as higher levels of government.\n\n\n\n\nIn the study, the study authors published in The American Journal of Sociology, they found that white-collar workers are more likely to work actively in the white supremacist movement than those of black-collar workers, with about 30% of the white-collar workers.\n\"This research suggests tha"
+   }
+  },
+  {
+   "i": 42,
+   "prompt": "A new study on sleep and memory suggests that",
+   "unsealed": {
+    "ppl": 14.289713431659937,
+    "distinct2": 0.8490566037735849,
+    "rep3": 0.11538461538461542,
+    "words": 54,
+    "text": " the average amount of sleep is affected by the age of the participant, whereas sleep is affected by the age of the participant. The research was published online in the online Journal of Sleep and Memory. The study found that sleep deprivation can affect both the level of sleep and the duration of sleep.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_5": {
+    "ppl": 22.642711211966432,
+    "distinct2": 0.946969696969697,
+    "rep3": 0.007633587786259555,
+    "words": 133,
+    "text": " the average amount of sleep taken during the day is about twice as much as the amount taken during the early hours of the day.\n\n\n\nWe've had a number just to say that it's not all that hard to track how many hours of sleep you're actually sleep deprived. But it also appears that the sleep in the study is actually doing a lot of work than it has ever been!\nIt's only a matter of time before any sleep starts to do anything.\nIf you're tired, or have a problem with sleep, sleep rest doesn't do much to help you, because it's hard to monitor your sleep.\nFor example, while the length of time you take "
+   },
+   "sealed_every_10": {
+    "ppl": 14.280728767692162,
+    "distinct2": 0.8907563025210085,
+    "rep3": 0.05084745762711862,
+    "words": 120,
+    "text": " the average amount of sleep is affected by the age of the subject.\n\n\n\n\n\nHe told the BBC that sleep was the most important determinant of sleep behaviour for a young adult.\n\nBut he told the BBC that the study was not conclusive, but that the reason is due more to the fact that adults are more likely to say that they are more likely to have a more enjoyable day than those who don't.\nThe University of Cambridge's research was supported by a grant from the National Institute of Health and Clinical Excellence (NTES).\nThe study was funded by the Institute for Health and Clinical Excellence (INCE) ."
+   }
+  },
+  {
+   "i": 43,
+   "prompt": "The history of the printing press shows",
+   "unsealed": {
+    "ppl": 15.638168316742133,
+    "distinct2": 0.9523809523809523,
+    "rep3": 0.0,
+    "words": 127,
+    "text": " that the printing press was not a computer, and there was no reason to believe that it would have worked.\n\n\nThe rise of printing presses had an impact on printing costs, particularly those in the United States, and was exacerbated by a lack of interest in the printing press.\nAt the end of the 1920s, a number of small printing presses (including the Coastermill, (1942) and the Encyclopaedia of History and History) were also being used for printing.\nThe production of the printers was a major problem for many American printers in the early 1930s, as they were not equipped to produce paper for a "
+   },
+   "sealed_every_5": {
+    "ppl": 15.709251576224858,
+    "distinct2": 0.7928571428571428,
+    "rep3": 0.12230215827338131,
+    "words": 141,
+    "text": " that the printing press was the first to print paper of any kind, not some type of type, ever, ever. The printing press was not just a printing press, but made the printing press by hand. This is not to say that it was a printing press, but something like the printing press.\n\nA number of different printing press types were used to make printing products, and the printing press used to make paper has been the most widely used printing press. A paper can be found in a variety of different kinds of fabrics, from the traditional paper to a variety of paints and other similar uses. For example, a "
+   },
+   "sealed_every_10": {
+    "ppl": 7.981963538937073,
+    "distinct2": 0.65625,
+    "rep3": 0.26771653543307083,
+    "words": 129,
+    "text": " that the printing press was not a computer, and a printing press was a computer. Today, the number of printed books is in at least 2,000,000. The number of printing presses that are printed in the world today is at least 2,000,000. But the number of printed books that are printed in the world today is at least 2,000,000. The number of printed books that are printed in the world today is at least 2,000,000. So there are some people who are able to do that.\n\n\nAnd the problem is that there is this myth that the printing press is only a computer. What is it that people can do with it?\nThere is a "
+   }
+  },
+  {
+   "i": 44,
+   "prompt": "When the engineers opened the server room,",
+   "unsealed": {
+    "ppl": 16.068501905963092,
+    "distinct2": 0.7868852459016393,
+    "rep3": 0.1322314049586777,
+    "words": 123,
+    "text": " the engineer walked away. That․s the point.\n\n\n\n\n‪So what happened to the Java EE client when I started working on the JVM server?\nWe didn․t start working on the JVM server when I started working on the JVM server, it took us about 12 minutes. We needed to be able to talk to the engineers about the JVM server and help them take the client to the next level.\nAfter we․d done the job, it was the same for the next few months. The team was really excited about the experience and they wanted to test the JVM server with their new clients.\nYou can see how the team got really excited about the JVM serv"
+   },
+   "sealed_every_5": {
+    "ppl": 32.28812440757303,
+    "distinct2": 0.9699248120300752,
+    "rep3": 0.0,
+    "words": 134,
+    "text": " the engineer walked away.\n\n\n\n\nThis was a great idea, as the one with the master password is well known, but it would cost money.\nIt didn't get much done, but it did make more sense for the managers to quickly become more aggressive around the server and more knowledgeable.\nI think the \"old-fashioned thinking\" that was used today was that the last time a system had been around was when it was used for an emergency.\nThe good news is a new system has been introduced, and we are doing a great job of making the system so a simple way to manage a service like this is great.\nThe service is now avail"
+   },
+   "sealed_every_10": {
+    "ppl": 98.56698710444755,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 13,
+    "text": " the engineer walked away. That․s the last thing you should be worried about."
+   }
+  },
+  {
+   "i": 45,
+   "prompt": "Our quarterly report highlights three trends:",
+   "unsealed": {
+    "ppl": NaN,
+    "distinct2": 0.0,
+    "rep3": 1.0,
+    "words": 0,
+    "text": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_5": {
+    "ppl": NaN,
+    "distinct2": 0.0,
+    "rep3": 1.0,
+    "words": 1,
+    "text": "\n\n\n\n\n\\\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_10": {
+    "ppl": 41.54854200579342,
+    "distinct2": 0.8571428571428571,
+    "rep3": 0.08695652173913049,
+    "words": 71,
+    "text": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n—\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWe are pleased to report the results of the last installment of our Monthly Tax Cut Report.\n\n\n\n\n\n\n\n\n\n\n\n“The money contributed by the U.S.) is the lowest in the entire fiscal year of fiscal year since the end of the fiscal year of fiscal year of fiscal year 2001. The U.S. economy is in a more advanced position with a per-capita growth rate of 5.17 percent over the last four years.\n\n"
+   }
+  },
+  {
+   "i": 46,
+   "prompt": "The old lighthouse keeper wrote in his journal",
+   "unsealed": {
+    "ppl": 21.171227377705996,
+    "distinct2": 0.8931297709923665,
+    "rep3": 0.03076923076923077,
+    "words": 132,
+    "text": " to his son, who had already read in the journal, \"I have to thank you for your courage and your courage.\"\n\n\n\nWhen he returned to New York, where he was adopted by another woman, he was reminded to look for her in the \"Bash\" name of her name.\nThe comment was taken as a reference to the woman who died in the fall of the British Empire.\nIt was believed that the woman was simply a name given to her by her father.\nThe girl, who lived in the basement of the mansion, was the daughter of a wealthy Russian family.\nShe was buried in the mansion of a wealthy Russian family.\nThe estate was owned by Russi"
+   },
+   "sealed_every_5": {
+    "ppl": 32.36726521485404,
+    "distinct2": 0.9230769230769231,
+    "rep3": 0.023255813953488413,
+    "words": 131,
+    "text": " to his son, who was 17 and had just won a race to the right.\n\n\nFoto: Courtesy of the Alliance Against Homosexual Rights.\nIn a long letter to his son, his letter was then received by the state, a local newspaper, which said that the license was revoked.\n\"The decision to revoke the license was made at a special date, with no prior consent and the license is now in place at the time of the date of the license revocation,\" said Michael O'Malley, legal director of the Alliance Institute.\n\"This is not a situation where this is the first time he has been threatened, with the potential for that situa"
+   },
+   "sealed_every_10": {
+    "ppl": 12.583669385553291,
+    "distinct2": 0.8,
+    "rep3": 0.08208955223880599,
+    "words": 136,
+    "text": " to his son, who had already read in the papers that \"the lighthouse keeper had tried to hide. The lighthouse keeper never went to the place, which is still in the water, and the lighthouse keeper never goes there.\" He wrote that if he found a place where he could hide, he'd be \"sent to another lighthouse keeper and told to go to the other lighthouse keeper and try to find other places that he could not get.\"\n\n\n\"The lighthouse keeper did not try to hide [the lighthouse keeper], and there was no attempt [to hide] by the lighthouse keeper to hide until he was about to die,\" he wrote. \"…In the me"
+   }
+  },
+  {
+   "i": 47,
+   "prompt": "Scientists have long debated whether",
+   "unsealed": {
+    "ppl": 35.46642057311159,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 23,
+    "text": " or not a common cause of autism is autism. But a new paper in the journal Science shows that it may be true.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_5": {
+    "ppl": 17.984639321449396,
+    "distinct2": 0.890625,
+    "rep3": 0.03149606299212604,
+    "words": 129,
+    "text": " or not a common cause behind the deaths of babies is the relationship between paternal fathers and mothers. The recent study by researchers at the University of California, The Netherlands and the University of Zurich found that maternal fathers were more likely to be pregnant than mothers who either had children in the preceding year, compared with paternal fathers in the previous year.\n\n\n\nThe study, published recently in the journal Child Child Development, found that, during the first five years of life, fathers (14.5%) lived in a different and increasingly more well-off place, compared to"
+   },
+   "sealed_every_10": {
+    "ppl": 12.826620422148013,
+    "distinct2": 0.8294573643410853,
+    "rep3": 0.09375,
+    "words": 130,
+    "text": " or not a common cause of autism is autism.\n\n\n\n\n\n\n\n\n\nAccording to the Centers for Disease Control, an estimated 60 percent of the known cases of autism are caused by the disorder, which causes autism.\n\nAs the Centers for Disease Control reports, over a three-year period between 2001 and 2013, nearly 1.1 million Americans were diagnosed with the disorder before they were diagnosed, according to a new study.\nThe Centers for Disease Control also notes that at least six in 10 of those diagnosed with autism have been diagnosed with the disorder, which is now known as autism.\nThe study, which was su"
+   }
+  },
+  {
+   "i": 48,
+   "prompt": "The recipe calls for fresh tomatoes and",
+   "unsealed": {
+    "ppl": 39.96899043200928,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 11,
+    "text": " onions and in the form of a garlic-flavored sauce, garlic-flavored sauce."
+   },
+   "sealed_every_5": {
+    "ppl": 19.222998062999466,
+    "distinct2": 0.6804123711340206,
+    "rep3": 0.27083333333333337,
+    "words": 98,
+    "text": " onions and in the form of a thin layer of sesame seed.\n\n\nTo make the recipe, cut tomatoes, pick some garlic cloves, and cook the garlic and mustard.\nTo make each recipe, chop up the onions and add the garlic and mustard.\nTo make the recipe, cut tomatoes, pick some shortening, and mix and cut the onion.\nTo make the recipe, cut tomatoes, pick some shortening, and mix and cut the onion.\nTo make the kitchen based on this recipe from the Recipe:\nYou can find the recipe and use the ingredient list (available in the Homebrew page)."
+   },
+   "sealed_every_10": {
+    "ppl": 19.964150848932825,
+    "distinct2": 0.8076923076923077,
+    "rep3": 0.10852713178294571,
+    "words": 131,
+    "text": " onions and in the form of a garlic-flanked sauce.\n\n\nMashed potatoes are a common part of the cooking process for a curry. The thick paste is then divided into a thin pot, or a shallow pan, or a large pot, with a lid on top.\nThe sauce is then mixed in with the water and added back to the pot. The water is then mixed in with the fresh tomato sauce.\nWhen it is done, the pasta is served at a low altitude and served in the blackest sauce.\nWhile the dish is served, the soup is served using a large saucepan to serve. The soup was served at a low altitude, but the soup was served at a high altitude, "
+   }
+  },
+  {
+   "i": 49,
+   "prompt": "Before the election, voters in the district",
+   "unsealed": {
+    "ppl": 100.90039426543206,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 9,
+    "text": " have seen the results, but not from the newspaper."
+   },
+   "sealed_every_5": {
+    "ppl": 20.28301797995324,
+    "distinct2": 0.8636363636363636,
+    "rep3": 0.06870229007633588,
+    "words": 133,
+    "text": " have seen the results, and they can no longer tell you what to do!\n\n\n\nFor the first time in a decade, we have seen a nationwide split between the Democrats and Republicans, meaning that in the next few years, there is one major change: Our politics will change. As of today, the Democratic candidate for governor of Michigan in the state of Michigan still has an incumbent. It has taken just 6 seats in the state. (The Democrats, meanwhile had a 38-point lead over the Republicans at 45 percent, but the Green Party was at 20 years old. The Republicans didn't win the state, and the Democrats had a "
+   },
+   "sealed_every_10": {
+    "ppl": 17.538680068486677,
+    "distinct2": 0.7567567567567568,
+    "rep3": 0.16666666666666663,
+    "words": 38,
+    "text": " have seen the results, but not from the newspaper; the results have not been seen in the polls on Election Day. The results, according to the results, have not been seen in the polls on this Election Day."
+   }
+  },
+  {
+   "i": 50,
+   "prompt": "Dear customer, we are writing to inform you that",
+   "unsealed": {
+    "ppl": 18.870122860017563,
+    "distinct2": 0.8947368421052632,
+    "rep3": 0.022727272727272707,
+    "words": 134,
+    "text": " we are not interested in this kind of behaviour, nor do we want to have any further comment on this matter. As we know that our customers understand the need for immediate action, we are calling on the customer to immediately speak to them.\n\n\n\n\nA spokesperson for the Australian Electoral Commission said:\n\nWe are aware of concerns about this issue.\n\nWe have also received further enquiries from our customers about the possible action.\nWe will be working with all customers to inform them that the ACT Electoral Commission has conducted a thorough investigation.\nWe are not aware of any complaints,"
+   },
+   "sealed_every_5": {
+    "ppl": 18.94999097647354,
+    "distinct2": 0.875,
+    "rep3": 0.03937007874015752,
+    "words": 129,
+    "text": " we are not interested in the date of our event on October 19th.\n\n\n\n\nI would like to thank you for your support and for taking part in our event on October 19th. I'd like to acknowledge that we are disappointed that this is not the case, but that this event is very much a part of our community. From there we'll continue to make our efforts to make sure that this event exists in our community and are as well.\nWe're very grateful to The Open House and the American Society for having a great year. Our next event is September 25th for The Open House, and it will be a fundraiser for our sister's mo"
+   },
+   "sealed_every_10": {
+    "ppl": 37.2914353583457,
+    "distinct2": 0.9375,
+    "rep3": 0.0,
+    "words": 17,
+    "text": " we are not interested in this kind of behaviour, since we are unaware of any inappropriate activity.\n"
+   }
+  },
+  {
+   "i": 51,
+   "prompt": "The court found that the defendant",
+   "unsealed": {
+    "ppl": 5.687846329542201,
+    "distinct2": 0.43703703703703706,
+    "rep3": 0.5074626865671642,
+    "words": 136,
+    "text": " had been seriously injured in a single murder, and had been the subject of a third murder trial, in the United States, in the United Kingdom, and in Australia.\n\n\n\n\n\nThe decision is for the first time in nearly a decade that the court has considered whether the defendant had suffered a second or third murder, and found that the defendant had been seriously injured in a single murder, and had been the subject of a third murder trial, in the United Kingdom, and in Australia.\nThe court's decision found that the defendant had been seriously injured in a single murder, and had been the subject of a"
+   },
+   "sealed_every_5": {
+    "ppl": 74.07941061737681,
+    "distinct2": 0.7962962962962963,
+    "rep3": 0.13207547169811318,
+    "words": 55,
+    "text": " had been seriously injured in February while he was at Fort Sumter College, one of two schools where most of the students had been enrolled.\n\n . .\n\n\n\n\n\n\n\nTEN.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nJOB\n\n\nE\n\n\n\n—\n\n\n\n\n\n\n\n\n\"\n\n\n\n'\n\n\n\n''\n\n\n\n\n\n\"\n\n\n\n\n\"\nSURT.\n.\n\n\n\"\n\n\n\n\"\n\n\n\n\"\n\"\n\"\n\n\"\n\"\n\"\n\"\n\"P.\n\n\"\n\"\n\"\n,\n\"\n\"[sic]\n\""
+   },
+   "sealed_every_10": {
+    "ppl": 21.265458368857846,
+    "distinct2": 0.9328358208955224,
+    "rep3": 0.022556390977443663,
+    "words": 135,
+    "text": " had been seriously injured in a single murder, and did not show an adequate degree of co-defective conduct that required it to be proven that he killed any person in that case.\n\n\nThis is not the first time the judge has dealt with cases of mistaken testimony or mistaken testimony.\nBut the recent ruling in the Western District of California at the U.S. Circuit Court of Appeals gives the court the opportunity to address these issues with other defendants in the state.\nThe court's decision also underscores the importance of the court's ability with its jurisdiction to answer questions about the "
+   }
+  },
+  {
+   "i": 52,
+   "prompt": "In a statement released on Monday, the ministry",
+   "unsealed": {
+    "ppl": 17.136126702645516,
+    "distinct2": 0.9652173913043478,
+    "rep3": 0.0,
+    "words": 116,
+    "text": " said that there were more than 300 anti-LGBTQ activists in the country.\n\n\n\n\n\"The campaign against anti-LGBTQ is in its infancy, and our efforts are limited,\" it said. \"It is still in its infancy. We have no plans to end the campaign.\"\n\"LGBTQ activists are working tirelessly to ensure that it continues to be accepted as a source of religious liberty,\" it said.\nTwo days before the launch of the anti-LGBTQ rally, a spokesperson for the anti-LGBTQ organization Anonymous called the rally \"the most important and important event to date.\"\nThe group was founded in 2014 by former LBC organizer Christa"
+   },
+   "sealed_every_5": {
+    "ppl": 23.412213879039015,
+    "distinct2": 0.9065420560747663,
+    "rep3": 0.047169811320754707,
+    "words": 108,
+    "text": " said that there were more problems with the use of technology in rural areas, including harassment, harassment, domestic violence, and the sexual assault of women. For the first time, the ministry also stressed that the government should enhance its work on the internet. According to the ministry, social media has contributed to gender equality in rural areas since the mid-1980`08.\n\n\n\n\n\nThe ministry also said that the government should enhance its work abroad to provide equal opportunities for women in the public network.\n\"We have been working closely with experts on the issue and that we wil"
+   },
+   "sealed_every_10": {
+    "ppl": 23.872509930882014,
+    "distinct2": 0.9661016949152542,
+    "rep3": 0.0,
+    "words": 60,
+    "text": " said that there were more than 300 anti-LGBT activist groups in the country, including the Justice Minister Arun Jaitley. The ministry said that members of the anti-LGBT group were working on a ‪surgical‬yoga session by which they would be delivered to people in the cities of Chennai, Srinagar, Manohara, Nagpur, Chennai, and Nagpur.\n\n\n\n\n\nFirst Published: Aug 20, 2017 19:27 IST"
+   }
+  },
+  {
+   "i": 53,
+   "prompt": "The insurance policy covers damage caused by",
+   "unsealed": {
+    "ppl": 78.10534189157909,
+    "distinct2": 0.9285714285714286,
+    "rep3": 0.0,
+    "words": 15,
+    "text": " a single use of a residential property (including a residential building, commercial and residential building).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_5": {
+    "ppl": 29.219211799724285,
+    "distinct2": 0.6475409836065574,
+    "rep3": 0.1652892561983471,
+    "words": 123,
+    "text": " a single use of a single common toilet. When a toilet is not in use, there is no need for a maintenance.\n\n\n\n\n\n\n\n\n\nHow to keep your toilet clean\n\n\n\n\nHow to use a toilet cleaner\n\nHow your toilet cleaner is washed\n\nHow to keep them clean\nHow to take care of your toilet\nHow to clean your car\n\nHow to avoid washing your toilet\nHow to make sure the toilet is clean\nHow or not to clean the vehicle\nHow to do a cleaning job\nHow to clean your car\nhow to clean the toilet\nHow to clean the place\nHow to wash everything\nHow to clean the toilet\nHow to clear your car\nHow to clean the house\nWe advise you to clea"
+   },
+   "sealed_every_10": {
+    "ppl": 15.92580515969788,
+    "distinct2": 0.6134453781512605,
+    "rep3": 0.3305084745762712,
+    "words": 120,
+    "text": " a single use of a residential property (including a single use of a second home or a small residential property, and a separate home or a single home or a small residential property, and a separate home or a small residential property, and a separate home or a small residential property, and a separate home or a small residential property, and a separate home may be purchased in a tax-deductible account on the basis of the amount of the assessed value of the property. This policy is designed to eliminate unnecessary and expensive deductibles and other unnecessary taxes.\n\n\n\n\n\n\n\n\nAdditional inf"
+   }
+  },
+  {
+   "i": 54,
+   "prompt": "Students returning to campus this fall will notice",
+   "unsealed": {
+    "ppl": 13.587285091015989,
+    "distinct2": 0.8507462686567164,
+    "rep3": 0.052631578947368474,
+    "words": 135,
+    "text": " that it is now illegal to speak to a student with the intent to publish a text message about a student in an open and unsecured environment.\n\n\n\n\nThe text message was posted to Facebook this month after a student sent out a threatening message to his roommate that he would \"kill me\" if he did not show up to campus to meet with him.\n\nThe student, who did not want to be identified, told the school that he was worried the conversation would harm his safety.\nHe said he would \"kill you\" if he did not show up for an event.\nHe said the student was upset that he had not been invited to the event and t"
+   },
+   "sealed_every_5": {
+    "ppl": 26.834198650922527,
+    "distinct2": 0.8181818181818182,
+    "rep3": 0.12213740458015265,
+    "words": 133,
+    "text": " that it is now illegal through the university's Office of Diversity and Inclusion of Campus Members to provide a report on the state department's efforts to address the problem.\n\n\n\n\n\nThe following discussion was intended to address the continuing push for changes to the Office of Ethnic Diversity and Inclusion of Campus Members.\nWhile some of the changes are part of the Department of Diversity and Inclusion — and the list of factors it recommends for making changes — the university's Office of Diversity and Incoming Professors is not only informative but also useful if the idea of a \"New\" cam"
+   },
+   "sealed_every_10": {
+    "ppl": 16.837240669339668,
+    "distinct2": 0.9852941176470589,
+    "rep3": 0.0,
+    "words": 137,
+    "text": " that it is now illegal to speak to a student who may have been shot in the head by a police officer, who is currently on administrative leave.\n\n\n\n\nStudents at the University of Massachusetts-Boston are now being denied access to campus in exchange for changing their address, according to an email obtained by The Daily Beast.\n\n\nThe university has requested the university to send a statement acknowledging that the students are being forced to switch their address from Boston to Saint Thomas College.\nThe incident took place between a woman and a man, during which the two men were seen jumping fr"
+   }
+  },
+  {
+   "i": 55,
+   "prompt": "The museum's new exhibition explores",
+   "unsealed": {
+    "ppl": 41.24002343350077,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 11,
+    "text": " the androids' role in the fight against illegal immigration and violence.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_5": {
+    "ppl": 51.00424404861327,
+    "distinct2": 0.8676470588235294,
+    "rep3": 0.07462686567164178,
+    "words": 69,
+    "text": " the androids' early days and its progress under the direction of the Institute for the Study of Ecology and Evolution.\n\n\n\n\n\nTo find out more about Professor John Turner and the science behind his work, read the University of Waterloo University Press.\n\n\n\n\n\n\n\n\n\n\n\n[A guide to the history of the University of Waterloo's life, and the historical history of the University of Waterloo\n] is available to download through online retail."
+   },
+   "sealed_every_10": {
+    "ppl": 36.975515732853324,
+    "distinct2": 0.9433962264150944,
+    "rep3": 0.019230769230769273,
+    "words": 54,
+    "text": " the androids' role in the fight against prejudice.\n\n\n\n\n\n\n\nAs well as looking at the history of the civil unions, the museum is also looking at the role between the Democratic and Republican parties in its fight against racist attitudes.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIf you have any questions please email us at editorsdotcom@gmail.com or call 068 123 9375."
+   }
+  },
+  {
+   "i": 56,
+   "prompt": "According to the latest figures from the bureau,",
+   "unsealed": {
+    "ppl": 11.886126000249266,
+    "distinct2": 0.8943089430894309,
+    "rep3": 0.040983606557377095,
+    "words": 124,
+    "text": " the combined annual total gross domestic product, which is estimated to be about $2.2 trillion, is 1.5% lower than the same year last year, according to the Bureau of Labor Statistics.\n\n\n\nIn other words, the amount of spending allocated to the federal government has been reported on every day since August 2008.\nThe Bureau of Labor Statistics released its annual report on the government's annual budget last year, which included a total of $4.8 billion.\nThe federal government has spent nearly $6.2 billion over the same period.\nAccording to a report by the Center for Policy Alternatives, the tot"
+   },
+   "sealed_every_5": {
+    "ppl": 26.933046698606237,
+    "distinct2": 0.9473684210526315,
+    "rep3": 0.0,
+    "words": 58,
+    "text": " the combined annual total gross output and total domestic product amounted to $31.26 billion.\n\n\n\n\nThe US GDP grew 5.5 million units in the first week of this year, up from the previous week before.\nThe growth in output, which was 2.8 per cent this year, was mainly driven by the growth in the other three months of December."
+   },
+   "sealed_every_10": {
+    "ppl": 9.688679917478103,
+    "distinct2": 0.7333333333333333,
+    "rep3": 0.16806722689075626,
+    "words": 121,
+    "text": " the combined annual total gross domestic product, which is roughly the same as the GDP of the United States, was $1.6 billion (on average between 2007-2012).\n\n\n\nThe total GDP of the United States is $1.6 billion, which is roughly the same as the number of employed workers in the United States, according to the Bureau of Labor Statistics. The total GDP comes from annual total wage growth of $6.6 billion (on average between 2007-2012).\nAccording to the Bureau of Labor Statistics, the percentage of full-time employees in the United States that are employed by the U.S. in 2008-2010 is slightly be"
+   }
+  },
+  {
+   "i": 57,
+   "prompt": "The startup announced that it had raised",
+   "unsealed": {
+    "ppl": 14.990598083393849,
+    "distinct2": 0.7058823529411765,
+    "rep3": 0.25,
+    "words": 18,
+    "text": " $14.5 million in the first half of 2017 to raise $11.5 million in the first half of 2017.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_5": {
+    "ppl": 22.518285524707522,
+    "distinct2": 0.8248175182481752,
+    "rep3": 0.1029411764705882,
+    "words": 138,
+    "text": " $14.5 million by the end of the third quarter. The team of around 30 employees — five of whom are from Los Angeles — had already raised more than $25 percent in the first quarter -- said they had raised some $2.5 million by the end of the third quarter.\nBut that growth was offset when the company announced last March that it was closing and that it would no shorter than 10 jobs in the same year.\n\n\n\nThe company said it would pay for three months of work before the end of the third quarter, and would not disclose any other details about the final year.\nThe company did not immediately disclose w"
+   },
+   "sealed_every_10": {
+    "ppl": 23.180048963495434,
+    "distinct2": 0.8240740740740741,
+    "rep3": 0.13084112149532712,
+    "words": 109,
+    "text": " $14.5 million in the first half of next year, and they‬re now investing well above $10 billion.\n\n\n\n\n\"It‬s not like people buy our products, it‬s like we are buying everything and it‬s like it‖s like we are buying everything, it‡s like it“s like we are being more and more like we are becoming more and more like we are being more and more like we don‭t have a business or they’re getting rich.‬”\nThe two companies are each one of the main reasons Silicon Valley keeps investing. They share an important social identity, share ideas and monetize their products. These are the core pillars of what the"
+   }
+  },
+  {
+   "i": 58,
+   "prompt": "Doctors recommend that patients with high blood pressure",
+   "unsealed": {
+    "ppl": 124.24383855797225,
+    "distinct2": 1.0,
+    "rep3": 0.0,
+    "words": 12,
+    "text": " and alcohol content are encouraged to avoid the use of the stimulant."
+   },
+   "sealed_every_5": {
+    "ppl": 14.129723392110883,
+    "distinct2": 0.674074074074074,
+    "rep3": 0.20895522388059706,
+    "words": 136,
+    "text": " and alcohol content are encouraged to use the drug to reduce their blood pressure and glucose levels.\n\n- The first two patients (24) were given a placebo drug. This was also used to increase blood pressure by about 50%.\n- The second patient (25) was randomly assigned to a placebo drug and used as a surrogate for the outcomes.\n- The third patient (26) was randomly assigned to a placebo drug and used as a surrogate only for the outcomes.\n- The fourth patient gave a placebo drug to a patient with low bloodpressure or alcohol content, then gave a placebo drug using the drug.\n- The third patient g"
+   },
+   "sealed_every_10": {
+    "ppl": 21.335352495970227,
+    "distinct2": 0.8202247191011236,
+    "rep3": 0.09090909090909094,
+    "words": 90,
+    "text": " and alcohol content are encouraged to avoid the use of alcohol and make regular visits to the emergency room. While this is not a serious issue, the recommended dosage for low blood pressure is of course recommended.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\"\n\n\n\n\n\n\n\n\nIn addition to these recommendations, please note that the standard dose of alcohol may be taken for individuals with blood pressure or alcohol content exceeding 60 percent of the recommended maximum allowable blood pressure and alcohol content for high blood pressure and alcohol content for low blood pressure and impaire"
+   }
+  },
+  {
+   "i": 59,
+   "prompt": "The train was delayed for two hours because",
+   "unsealed": {
+    "ppl": 11.30989509602037,
+    "distinct2": 0.5555555555555556,
+    "rep3": 0.3846153846153846,
+    "words": 28,
+    "text": " the train was delayed for two hours because it was delayed for two hours because the train was delayed for two hours because of the train's low speed.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+   },
+   "sealed_every_5": {
+    "ppl": 15.004711447372845,
+    "distinct2": 0.6120689655172413,
+    "rep3": 0.29565217391304344,
+    "words": 117,
+    "text": " the train was delayed for some time. But it also didn't arrive on duty and the train was delayed for three hours.\n\n\n\n\nThe train was delayed for 24 hours for the next two hours due to the lack of supply for the train. The train was in the Cumbria train station for the next two hours due to the lack of supply for the passengers.\nThe train was delayed for two hours due to the lack of production for the passengers.\nThe train was delayed but the cost of transporting the passengers was not reimborted.\nThe trains were delayed for two hours until the next morning.\nThe train was delayed twice and fina"
+   },
+   "sealed_every_10": {
+    "ppl": 4.052062737860776,
+    "distinct2": 0.26666666666666666,
+    "rep3": 0.6912751677852349,
+    "words": 151,
+    "text": " the train was delayed for two hours because it was running late at night and the train was delayed for two hours because it was running late at night and the train was delayed for two hours because it was running late at night and the train was delayed for two hours because it was running late at night and the train was delayed for two hours because it was running late at night and the train was delayed for two hours because it was running late at night and on the train was delayed for two hours because it, it and the train, it and the train with the wrong baggage was delayed for two hours be"
+   }
+  }
+ ]
+}

@@ -1,0 +1,6 @@
+[17:57:35] start                              live   0.00 GB | driver   0.00 GB | footprint   0.27 GB
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:07<00:07,  7.13s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:12<00:00,  6.16s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:12<00:00,  6.30s/it]
+[17:57:59] model loaded (MPS_SLACK 2147483648) live   7.12 GB | driver   8.01 GB | footprint   9.16 GB
+[17:58:31] model call 50 (8, 1)               live   7.54 GB | driver   8.58 GB | footprint  10.00 GB
+[17:58:55] model call 100 (8, 1)              live   7.68 GB | driver  10.43 GB | footprint  12.00 GB
+[17:59:26] model call 150 (8, 1)              live   7.83 GB | driver  13.15 GB | footprint  15.00 GB

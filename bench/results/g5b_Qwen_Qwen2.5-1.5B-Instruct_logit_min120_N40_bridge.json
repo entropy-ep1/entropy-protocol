@@ -1,0 +1,1336 @@
+{
+ "summary": {
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "code": "2d2866250eda5363",
+  "variant_params": {
+   "c5_free_hm0": {
+    "interval": 5,
+    "k": 1,
+    "high_window": 3,
+    "selection": "content",
+    "align": "free",
+    "high_margin": 0.0
+   }
+  },
+  "oracle": "gpt2-medium",
+  "n": 40,
+  "usable_for_ppl": 40,
+  "space": "logit",
+  "min_new_tokens": 120,
+  "max_new_tokens": 160,
+  "cal": {
+   "fp32": 0.002237,
+   "fp16": 3.597708
+  },
+  "minutes": 25.7,
+  "variants": {
+   "unsealed": {
+    "median_ppl_prefix": 8.76,
+    "mean_distinct2": 0.838,
+    "mean_rep3": 0.098,
+    "mean_words": 127.0
+   },
+   "c5_free_hm0": {
+    "self_geo_mean_ppl_ratio": 1.284,
+    "self_pairs": 40,
+    "median_ppl_prefix": 10.99,
+    "median_ppl_ratio": 1.235,
+    "geo_mean_ppl_ratio": 1.335,
+    "ci95": [
+     1.148,
+     1.561
+    ],
+    "share_ratio_gt_1.25": 0.5,
+    "mean_distinct2": 0.867,
+    "mean_rep3": 0.074,
+    "mean_words": 123.7,
+    "mean_entries": 2.4,
+    "entries_per_100_tokens": 1.49,
+    "survival_%": 7.5,
+    "texts_below_8_entries_%": 95.0
+   }
+  }
+ },
+ "rows": [
+  {
+   "i": 0,
+   "prompt": "The city council met on Tuesday to discuss",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 36,
+     "entries": 0,
+     "dropped_margin": 33,
+     "dropped_rank": 3
+    }
+   },
+   "prefix_tokens": 164,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 12.661478628164847,
+     "self_ppl_prefix": 3.4885754756705607,
+     "distinct2": 0.8260869565217391,
+     "rep3": 0.10948905109489049,
+     "words": 139,
+     "text": " the proposed city budget. The budget was a result of the council’s long discussion about how to balance the budget and increase the city’s revenue. At the end of the meeting, the council agreed to pass the budget.  Given the paragraph above, please answer correctly the following question: suppose the council is not able to meet to discuss the proposed city budget happens, how will it affect the city's budget?  Hint: If a budget is not passed by the end of the meeting, the budget will not be imp"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 8.889545871217718,
+     "self_ppl_prefix": 4.4741372783526625,
+     "distinct2": 0.5507246376811594,
+     "rep3": 0.4014598540145985,
+     "words": 142,
+     "text": " the proposed city budget. The budget will be voted on at the next meeting. Councilmember Brown suggested that they look into the budget in more detail, and to do so they should request more information from a few departments. The council voted to approve Brown's suggestion. Which of the follow best captures the main idea of this paragraph?\n\nThe city council voted to approve a request for more detailed budget information from a few departments. \nThe city council voted to approve a suggestion to "
+    }
+   }
+  },
+  {
+   "i": 1,
+   "prompt": "In the early morning, the research team",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 42,
+     "entries": 3,
+     "dropped_margin": 38,
+     "dropped_rank": 1
+    }
+   },
+   "prefix_tokens": 147,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 9.759053137950675,
+     "self_ppl_prefix": 2.8495928449829515,
+     "distinct2": 0.7984496124031008,
+     "rep3": 0.1328125,
+     "words": 133,
+     "text": " from the Planetarium Institute was preparing to conduct an experiment involving a special light bulb that emits light in a pattern that repeats every 10 seconds. They noticed that the light bulb starts emitting light at a specific moment and continues to emit light for 10 seconds before turning off. If the experiment starts at 9:00 AM, and the light bulb turns off at exactly 9:01 AM, what time will it be when the light bulb turns on for the 5th time after it was last turned off? To determine th"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 13.114325684190998,
+     "self_ppl_prefix": 3.715895009492224,
+     "distinct2": 0.8372093023255814,
+     "rep3": 0.0703125,
+     "words": 130,
+     "text": " from the Planetarium Institute was preparing to conduct an experiment involving the motion of a projectile under gravitational force. They fired a projectile from a cannon at an angle $\\theta$ to the horizontal, with an initial velocity of $v_0$. They noted that the projectile reaches its maximum height at a certain time after the initial launch and that the time taken to reach maximum height is $t_0$. They observed that the horizontal distance covered by the projectile at the time of maximum h"
+    }
+   }
+  },
+  {
+   "i": 2,
+   "prompt": "A new study on sleep and memory suggests that",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 28,
+     "entries": 0,
+     "dropped_margin": 27,
+     "dropped_rank": 1
+    }
+   },
+   "prefix_tokens": 156,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 5.975906607718543,
+     "self_ppl_prefix": 4.087619613644963,
+     "distinct2": 0.8705035971223022,
+     "rep3": 0.09420289855072461,
+     "words": 140,
+     "text": " getting enough sleep may be more important than you think. The study found that people who got a full night's sleep were more likely to remember words and phrases presented to them in a study.\nThe study, published in the journal \"Sleep\" by researchers at Brigham and Women's Hospital in Boston, is the first to examine how getting enough sleep relates to memory. The researchers recruited 168 healthy young adults and had them complete a memory test after being awake for two hours. The participants"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 6.988937532800237,
+     "self_ppl_prefix": 4.0026487685866465,
+     "distinct2": 0.920863309352518,
+     "rep3": 0.02898550724637683,
+     "words": 141,
+     "text": " getting enough sleep may be more important than exercising for your mental health. The study, conducted by the University of California, San Diego, found that getting adequate sleep can help improve memory, while exercise has been found to improve physical health.\nThe study involved 48 healthy young adults who were divided into two groups: one group was asked to exercise for 45 minutes on a treadmill, while the other was asked to rest and relax for 45 minutes. After the exercise and rest period"
+    }
+   }
+  },
+  {
+   "i": 3,
+   "prompt": "The history of the printing press shows",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 39,
+     "entries": 0,
+     "dropped_margin": 39,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 158,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 6.449844301234219,
+     "self_ppl_prefix": 2.9309027127702896,
+     "distinct2": 0.6993006993006993,
+     "rep3": 0.21830985915492962,
+     "words": 145,
+     "text": " the development of technology that allows us to produce the vast amount of information that we use today. This invention has allowed for the spread of ideas and the dissemination of information to people around the world. It was a major factor in the Renaissance and the Enlightenment. The printing press allowed for the mass production of books, which in turn allowed for the widespread dissemination of knowledge and ideas.\nThe printing press was invented by Johannes Gutenberg in the 15th century"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 10.140491075675788,
+     "self_ppl_prefix": 3.892368530084151,
+     "distinct2": 0.9090909090909091,
+     "rep3": 0.021126760563380254,
+     "words": 144,
+     "text": " the development of technology that allows us to print books and other documents. The first printing press was invented in 1440 by Johannes Gutenberg, a German inventor. He created a movable type printing press that allowed for the mass printing of books. He used metal blocks, called type, that were carved with the text that was to be reproduced. These type blocks would be placed in a printing press and ink would be applied to the type, which would then print the text on paper.\nThe printing pres"
+    }
+   }
+  },
+  {
+   "i": 4,
+   "prompt": "When the engineers opened the server room,",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 41,
+     "entries": 5,
+     "dropped_margin": 35,
+     "dropped_rank": 1
+    }
+   },
+   "prefix_tokens": 153,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 9.04216443891561,
+     "self_ppl_prefix": 4.200911069491573,
+     "distinct2": 0.7244094488188977,
+     "rep3": 0.19841269841269837,
+     "words": 143,
+     "text": " they found that the server was not turned on. They also found that the problem was due to a short circuit inside the server. They had to cut out a part of the server to fix the short circuit. They then replaced the part and turned on the server. After some time, they found that the problem appeared again. So they cut out another part and replaced it with another part. After some time, they found that the problem appeared again. So they cut out another part and replaced it with another part. The"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 10.289586989409171,
+     "self_ppl_prefix": 3.2049124473867048,
+     "distinct2": 0.8661417322834646,
+     "rep3": 0.05555555555555558,
+     "words": 128,
+     "text": " they found that the server had been stolen. It was a very expensive server. They decided to hire a private detective to investigate the theft. The detective hired had a budget of 10000 dollars. The detective cost is 100 dollars per hour. How much money would the detective have left after completing the investigation?\nTo determine how much money the private investigator would have left after completing the investigation, we need to follow these steps:\n\n1. Identify the total budget for the invest"
+    }
+   }
+  },
+  {
+   "i": 5,
+   "prompt": "Our quarterly report highlights three trends:",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 34,
+     "entries": 2,
+     "dropped_margin": 32,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 157,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 8.261491724294428,
+     "self_ppl_prefix": 3.4314531405259463,
+     "distinct2": 0.9153846153846154,
+     "rep3": 0.03100775193798455,
+     "words": 131,
+     "text": " the increasing importance of AI, the growing need for technology training, and the rapid advancement of the skills gap.\nIt is no secret that AI is becoming increasingly important in the workplace. In fact, a recent Deloitte survey of 400 executives found that 87% of companies are planning to increase their investment in AI, and 77% are already using AI in some way. This is no surprise, as AI has the potential to significantly improve productivity, efficiency, and decision-making.\nHowever, with "
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 9.38785504761536,
+     "self_ppl_prefix": 5.8645257259395915,
+     "distinct2": 0.8076923076923077,
+     "rep3": 0.06201550387596899,
+     "words": 138,
+     "text": " the increasing importance of AI, the growing need for digital health, and the increasing demand of telehealth.\nThe report also features the latest news in the field of AI, including new studies on the use and efficacy of AI in various industries.\nIn addition, the report presents the latest in AI and telehealth, including a new telehealth program and a new AI-powered medical device.\nFurthermore, the report highlights the importance of digital health in the healthcare industry and the growing nee"
+    }
+   }
+  },
+  {
+   "i": 6,
+   "prompt": "The old lighthouse keeper wrote in his journal",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 143,
+     "enforced": 28,
+     "entries": 6,
+     "dropped_margin": 22,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 142,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 10.484553792383295,
+     "self_ppl_prefix": 2.8046298707504835,
+     "distinct2": 0.7403846153846154,
+     "rep3": 0.1456310679611651,
+     "words": 126,
+     "text": ": \"Every night, the shadow of the lighthouse moves from right to left. I noticed that every time the shadow crosses the line $y = 2$, it is exactly 15 minutes after the lighthouse keeper leaves the lighthouse at night. If the shadow crosses the line $y = 2$ at 7 PM, when will the shadow cross the line $y = 4$?\" To determine when the shadow of the lighthouse crosses the line \\( y = 4 \\), we need to understand the relationship between the time the lighthouse keeper leaves the lighthouse and the po"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 17.81515866907008,
+     "self_ppl_prefix": 4.993619970795238,
+     "distinct2": 0.8557692307692307,
+     "rep3": 0.10679611650485432,
+     "words": 105,
+     "text": ": \"Every night, the moon sets, and the stars shine brightly, making the dark sky a beautiful canvas of twinkling lights.\" ——____\nA. Li Ming\nB. Li Hua\nC. Li Ping\nD. Li Gang\n\nTo determine who wrote the journal entry, we need to identify the author of the entry. The entry states: \"The moon sets, and the stars shine brightly, making the dark sky a beautifulcanvas of twinklinglights.\"\n\nThis entry is clearly written by Li Ming, who is the correct author of the journal. Therefore, the correct choice am"
+    }
+   }
+  },
+  {
+   "i": 7,
+   "prompt": "Scientists have long debated whether",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 34,
+     "entries": 0,
+     "dropped_margin": 33,
+     "dropped_rank": 1
+    }
+   },
+   "prefix_tokens": 152,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 8.198648597914984,
+     "self_ppl_prefix": 6.5335574155537754,
+     "distinct2": 0.9259259259259259,
+     "rep3": 0.03731343283582089,
+     "words": 139,
+     "text": " the Earth's climate is changing and, if so, what might be the causes and what effects it might have. In the following decades, however, scientists are expected to see a large increase in their understanding of global warming, although some say it is too soon to tell.\nAccording to The New York Times, the recent climatic changes have been caused by the melting of ice sheets. This melting is increasing the amount of water in the atmosphere, which in turn is causing the climate to become warmer. Sc"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 9.182528117726614,
+     "self_ppl_prefix": 6.096356731860123,
+     "distinct2": 0.9333333333333333,
+     "rep3": 0.0,
+     "words": 136,
+     "text": " the Earth's climate is changing and, if so, whether human activity plays the leading role in the changes. Now, a group of 100 scientists from 12 countries have published a new report that provides a definitive answer to these two questions. In their paper, which has been accepted to be published in the journal Climatic Change, the researchers conclude that climate change is \"real, and human activities are a significant cause.\"\nThe scientists studied the scientific literature on climate change s"
+    }
+   }
+  },
+  {
+   "i": 8,
+   "prompt": "The recipe calls for fresh tomatoes and",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 28,
+     "entries": 3,
+     "dropped_margin": 24,
+     "dropped_rank": 1
+    }
+   },
+   "prefix_tokens": 161,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 12.423767335398477,
+     "self_ppl_prefix": 3.741729327598173,
+     "distinct2": 0.8731343283582089,
+     "rep3": 0.052631578947368474,
+     "words": 135,
+     "text": " basil. I decided to use a can of crushed tomatoes instead. The recipe asks for 2 tablespoons of olive oil, but I'm only using one. If the recipe originally calls for 1/4 teaspoon of salt, should I adjust the salt amount to compensate for the can of crushed tomatoes, or should I use the same amount of salt I originally planned? To determine if you should adjust the salt amount in your recipe, let's analyze the components of the recipe and how they interact.\n\n1. **Tomatoes and Basil**: Tomatoes a"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 10.400584050496729,
+     "self_ppl_prefix": 4.580454610155262,
+     "distinct2": 0.8955223880597015,
+     "rep3": 0.045112781954887216,
+     "words": 140,
+     "text": " basil. I decided to make a tomato basil sauce and I have some leftover basil leaves. My friend told me that he can add these leaves to a certain dish and it will enhance the flavor. Can you tell me what dish I can use the leftover basil leaves? The recipe calls for fresh tomatoes and basil. You can use the leftover basil leaves to add a subtle and fresh flavor to any dish. Here are some suggestions:\n\n1. Pasta dishes: You can add the basil leaves to your favorite pasta sauce or toss them with co"
+    }
+   }
+  },
+  {
+   "i": 9,
+   "prompt": "Before the election, voters in the district",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 34,
+     "entries": 3,
+     "dropped_margin": 30,
+     "dropped_rank": 1
+    }
+   },
+   "prefix_tokens": 155,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 6.355333012035909,
+     "self_ppl_prefix": 2.279097346155643,
+     "distinct2": 0.71875,
+     "rep3": 0.18110236220472442,
+     "words": 129,
+     "text": " are divided into two groups: Group A, which consists of 35 voters, and Group B, which consists of 60 voters. After the election, the district's board found that the number of votes received by Candidate X in Group A was 25% more than the number of votes received by Candidate Y. Candidate Y received 20% fewer votes than Candidate X. How many more votes did Candidate X receive than Candidate Y?\nTo determine how many more votes Candidate X received than Candidate Y, we start by defining the number"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 10.420149846991249,
+     "self_ppl_prefix": 3.5360178878262283,
+     "distinct2": 0.859375,
+     "rep3": 0.047244094488189003,
+     "words": 133,
+     "text": " are divided into two groups, Group A and B, with Group A being 40% of the total voters. If Group A votes for candidate X, there is a 70% chance that Group B also votes for X. If 30% of the voters in Group A do not vote for X and the rest vote for candidate X, what is the probability of candidate X winning the election?\n\nTo determine the probability of candidate X winning the election, we need to consider the voting patterns in two scenarios: when all voters from both groups vote and when only t"
+    }
+   }
+  },
+  {
+   "i": 10,
+   "prompt": "Dear customer, we are writing to inform you that",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 25,
+     "entries": 3,
+     "dropped_margin": 20,
+     "dropped_rank": 2
+    }
+   },
+   "prefix_tokens": 160,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 7.413552370921876,
+     "self_ppl_prefix": 2.896831252037433,
+     "distinct2": 0.813953488372093,
+     "rep3": 0.1328125,
+     "words": 130,
+     "text": " there is a potential issue with your order. The product you ordered, [product name], has been recalled due to safety concerns. We are doing everything we can to ensure that our customers are safe and to minimize any inconvenience. Please contact our customer service team at [customer service phone number] to proceed with a replacement or refund. We appreciate your understanding and cooperation during this time. Thank you for your patience. [Your company name] regards. [Your company representati"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 5.653472750037089,
+     "self_ppl_prefix": 2.909360221304437,
+     "distinct2": 0.8062015503875969,
+     "rep3": 0.1796875,
+     "words": 134,
+     "text": " there is a potential issue with your order. The product you ordered is not available in our inventory and has been removed from our website. We are unable to process your order as we do not have the product to fulfill it. We apologize for any inconvenience this may have caused and hope you will reconsider your purchase. If you have any questions or concerns, please don't hesitate to reach out to us. Thank you. #orderstatuschange\nI'm not sure what you mean by \"order status change.\" Could you ple"
+    }
+   }
+  },
+  {
+   "i": 11,
+   "prompt": "The court found that the defendant",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 39,
+     "entries": 2,
+     "dropped_margin": 37,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 145,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 14.057654038798315,
+     "self_ppl_prefix": 3.766192659946988,
+     "distinct2": 0.9279279279279279,
+     "rep3": 0.036363636363636376,
+     "words": 143,
+     "text": " had failed to take proper steps to secure the property, which had resulted in the loss of over £3 million to the victim. The Court of Appeal ruled that there had been a significant miscarriage of justice, and ordered a new trial.\n\nHow would you describe the sentiment of this tweet?\nTo describe the sentiment of this tweet, I would say it is neutral. The tweet is simply stating a fact about a legal case without expressing any particular emotion or opinion. It does not contain any positive or nega"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 10.942597939641267,
+     "self_ppl_prefix": 6.356887827628253,
+     "distinct2": 0.8468468468468469,
+     "rep3": 0.10909090909090913,
+     "words": 112,
+     "text": " had failed to take proper steps to secure the property, which had resulted in the loss of over £3 million in five years.\nThe 21 year old woman was sentenced to three years in jail and fined £30,000.\nThe woman had been convicted of theft from the firm's property in January.\nThe court was told that on the night of 7 January 220kg of cannabis was stolen from the firm's property in Salisbury.\nOn the night of 21 January a further £36,000 of cash was stolen from the firm's premises in Salisbury, whil"
+    }
+   }
+  },
+  {
+   "i": 12,
+   "prompt": "In a statement released on Monday, the ministry",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 25,
+     "entries": 0,
+     "dropped_margin": 25,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 157,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 9.883958654174087,
+     "self_ppl_prefix": 7.041601515701245,
+     "distinct2": 0.953125,
+     "rep3": 0.03149606299212604,
+     "words": 133,
+     "text": " said the delay was due to \"technical glitches and some administrative and procedural issues\".\nThe ministry said it is working on ways to improve the system.\nHowever, it has not provided further details.\nIn 2013, the government launched a new electronic system to issue student ID cards, called the e-kart.\nBut the ministry was accused of not taking sufficient steps to address security concerns and poor quality of the cards.\nThat led to a wave of protests in 2014. Hundreds of thousands of people m"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 9.815588512976511,
+     "self_ppl_prefix": 7.367896866239683,
+     "distinct2": 0.890625,
+     "rep3": 0.047244094488189003,
+     "words": 129,
+     "text": " said the delay was due to \"technical issues\".\nAs part of the update, the government said it will keep the number of students who are enrolled on the list of 1.15 million.\nThe statement said the delay was the result of \"technical issues that we are currently working to resolve\".\nThe government, however, has not disclosed how long the delay is expected to last.\nThe ministry said that the latest enrolment number is the \"most accurate\" one available.\nHowever, the government also said that students "
+    }
+   }
+  },
+  {
+   "i": 13,
+   "prompt": "The insurance policy covers damage caused by",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 35,
+     "entries": 2,
+     "dropped_margin": 30,
+     "dropped_rank": 3
+    }
+   },
+   "prefix_tokens": 152,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 9.342328104130063,
+     "self_ppl_prefix": 3.0093085041241845,
+     "distinct2": 0.8141592920353983,
+     "rep3": 0.1160714285714286,
+     "words": 129,
+     "text": " natural disasters such as earthquakes, floods, fires, lightning, storms, hail, and other forms of natural disasters or accidents. The insurance contract stipulates a deductible of 5% of the actual loss. If a company pays $10,000 in claims, what is the maximum amount of loss that the company can incur?\n\nTo determine the maximum amount of loss that the company can incur, we need to understand the relationship between the claims paid, the deductible, and the actual loss. The deductible is a fixed "
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 17.652850876624164,
+     "self_ppl_prefix": 4.250002960998974,
+     "distinct2": 0.8672566371681416,
+     "rep3": 0.0625,
+     "words": 114,
+     "text": " natural disasters such as earthquakes, floods, fires, lightning, storms, hail, and windstorms. This type of insurance is known as ____.\nA. All-risk Insurance\nB.Intermediate Risk Insurance\nC. Comprehensive Insurance\nD.Intermediate Comprehensive Insurance\nAnswer: C\n\nA company's financial statements for the fiscal year 2021 showed that the net sales for the year were 30 million yuan and the net profit was 3.6 million yuan. The company's cost of sales for the fiscal year was 22 million yuan. The co"
+    }
+   }
+  },
+  {
+   "i": 14,
+   "prompt": "Students returning to campus this fall will notice",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 32,
+     "entries": 0,
+     "dropped_margin": 31,
+     "dropped_rank": 1
+    }
+   },
+   "prefix_tokens": 153,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 8.8061624562607,
+     "self_ppl_prefix": 4.387610090664427,
+     "distinct2": 0.904,
+     "rep3": 0.016129032258064502,
+     "words": 126,
+     "text": " that there is a significant change in the way in which all the buildings are numbered. The new numbering system will eliminate the need to walk past the number of a building, and will instead list the location of each building by name. The first and last building numbers will stay the same, and buildings in the middle will be renumbered as needed. Additionally, the numbering system will include a unique code for each building to further distinguish it from others.\nHere is a list of the new buil"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 12.746456059182925,
+     "self_ppl_prefix": 7.179918880270364,
+     "distinct2": 0.856,
+     "rep3": 0.06451612903225812,
+     "words": 138,
+     "text": " that there is a significant change in the way in which all the buildings are numbered. This is the result of a new numbering system implemented at the University of Oklahoma beginning this fall, called the North-South numbering system.\nThe new numbering system is designed to be more logical and more intuitive to students and visitors. The old system was confusing and confusing, with buildings listed alphabetically and with numbers that don’t make much sense when looking at the campus map.\nThe n"
+    }
+   }
+  },
+  {
+   "i": 15,
+   "prompt": "The museum's new exhibition explores",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 1,
+     "dropped_margin": 30,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 162,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 7.094784974095647,
+     "self_ppl_prefix": 3.6517148925444736,
+     "distinct2": 0.921875,
+     "rep3": 0.03149606299212604,
+     "words": 143,
+     "text": " the diverse ways in which the Muslim world has celebrated the holiday of Eid al-Fitr, marking the end of Ramadan, and the ways in which this celebration has been influenced by local traditions and cultures. The exhibition features works from the museum's collection as well as loans from leading museums and private collectors around the world. Visitors will have the opportunity to learn about the origins of the holiday, its significance in Islamic culture, and its evolution over time. The exhibi"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 8.515387237600601,
+     "self_ppl_prefix": 4.806705745950086,
+     "distinct2": 0.9140625,
+     "rep3": 0.03149606299212604,
+     "words": 129,
+     "text": " the diverse ways in which the Muslim world has celebrated the holiday of Eid al-Adha, which commemorates the willingness of Ibrahim to sacrifice his son, Ismail. The exhibition also provides an in-depth look at the history of Eid al-Adha, from the early Islamic period through the 20th century, and explores the ways in which it has influenced contemporary culture.\nIn addition to its historical significance, the exhibition also highlights the modern-day practices and traditions of Eid al-Akhir, t"
+    }
+   }
+  },
+  {
+   "i": 16,
+   "prompt": "According to the latest figures from the bureau,",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 24,
+     "entries": 6,
+     "dropped_margin": 16,
+     "dropped_rank": 2
+    }
+   },
+   "prefix_tokens": 121,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 6.38788975859097,
+     "self_ppl_prefix": 1.7900316651887698,
+     "distinct2": 0.6458333333333334,
+     "rep3": 0.25263157894736843,
+     "words": 97,
+     "text": " in 2019, the average number of daily visitors to the site was 200,000. In 2020, the number of visitors increased by 50%. In 2021, the number of visitors increased by 20% compared to 2020. How many daily visitors did the site have in 2021? To determine the number of daily visitors to the site in 2021, we need to follow these steps:\n\n1. Calculate the number of visitors in 2020.\n2. Calculate the number of visitors in 2021 based on the number of visitors in 2020.\n\nFirst, we know that the average nu"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 13.812096779994087,
+     "self_ppl_prefix": 2.990873716161661,
+     "distinct2": 0.6770833333333334,
+     "rep3": 0.2315789473684211,
+     "words": 100,
+     "text": " in 2019, the average number of daily visitors to the museum was approximately 2,500. By 2022, the average number of visitors had increased by 30%. Calculate the number of daily visitors in the museum at that point in time. To determine the number of daily visitors to the Museum in 2022, we start with the average number of visitors in 2019 and apply the 30% increase.\n\n1. Identify the average number of daily visitors in the museum at the end of the year 2109.\n   \\[\n   \\text{Average visitors in 20"
+    }
+   }
+  },
+  {
+   "i": 17,
+   "prompt": "The startup announced that it had raised",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 23,
+     "entries": 0,
+     "dropped_margin": 21,
+     "dropped_rank": 2
+    }
+   },
+   "prefix_tokens": 161,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 12.2520023717739,
+     "self_ppl_prefix": 6.112437455738335,
+     "distinct2": 0.984,
+     "rep3": 0.0,
+     "words": 126,
+     "text": " $150 million in a Series C financing round led by Coatue Management. The round also included participation from Sequoia Capital, Index Ventures, and $40 million from the existing Series B investors.\nThe company, which was founded in 2017, is based in San Francisco. It has offices in New York City, London, and Amsterdam. The company is currently building out a global team.\nSonic is a data-driven platform that enables organizations to create and share content with employees and customers in real "
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 7.574211692794101,
+     "self_ppl_prefix": 4.4831189754025855,
+     "distinct2": 0.816,
+     "rep3": 0.12096774193548387,
+     "words": 127,
+     "text": " $150 million from the first close of its Series A funding round.\nThe company, which works with customers to help them create and run virtual events, closed the round led by Benchmark Capital, an investment firm that specializes in early-stage startups.\nIn addition to Benchmark, other investors who contributed to the round include Lakestar, a venture capital firm that invests in early-stage technology companies; Tenzing Capital, a venture capital firm that invests in early-stage technology compa"
+    }
+   }
+  },
+  {
+   "i": 18,
+   "prompt": "Doctors recommend that patients with high blood pressure",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 30,
+     "entries": 1,
+     "dropped_margin": 29,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 164,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 21.46522416654558,
+     "self_ppl_prefix": 3.2212255609488762,
+     "distinct2": 0.9888888888888889,
+     "rep3": 0.0,
+     "words": 103,
+     "text": " should reduce salt intake. In addition to reducing the intake of high-sodium foods, patients can also take which of the following drugs to lower blood pressure? ____ \nA. Penicillin\nB. Diazepam\nC. Hydrochlorothiazide\nD. Vitamin C\nAnswer:\nC\n\nIn the case of a single-phase grounding fault in a power grid, the zero-sequence current flowing through the fault point is equal to the sum of the capacitance currents of all non-fault phases to ground.\nA. True\nB. False\nAnswer:\nB\n\nThe duration of continuous "
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 17.235262752608186,
+     "self_ppl_prefix": 4.823900187722718,
+     "distinct2": 0.7666666666666667,
+     "rep3": 0.1348314606741573,
+     "words": 91,
+     "text": " should reduce salt intake. In addition to the salt added during cooking, patients should also pay attention to the hidden sources of salt in their diet, such as soups, sausAGES, and fast food. Which of the followin\nA. high blood pressure patients should pay attention to the hidden salt sources in their diet\nB. patients with high blood pressure should reduce the salt intake\nC. patients with high blood pressure should not cook food at home\nD. patients with high blood pressure should avoid eating "
+    }
+   }
+  },
+  {
+   "i": 19,
+   "prompt": "The train was delayed for two hours because",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 32,
+     "entries": 1,
+     "dropped_margin": 31,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 242,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 6.781828782827599,
+     "self_ppl_prefix": 2.6269565609119843,
+     "distinct2": 0.734375,
+     "rep3": 0.17460317460317465,
+     "words": 82,
+     "text": " of the bad weather． ____\nBecause\n/\nBecause of\n答案:\n\nC\n\n【题文】The teacher is strict _________ us．\nin\nfor\nwith\n答案:\n\nC\n\n【题文】I often go to school ________ bus．\nby\nwith\nin\n答案:\n\nA\n\n【题文】I usually go to school ________ bus．\nby\nin\nwith\n答案:\n\nA\n\n【题文】He has got a job ________ computer．\nby\nin\nwith\n答案:\n\nB\n\n【题文】He has got a job ________ computer．\nin\nwith\nby\n答案:\n\nA\n\n【题文】He has got a job ________ computer．\nby\nin\nwith\n答案:\n\nC\n\n"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 25.021557872122504,
+     "self_ppl_prefix": 5.356807015860663,
+     "distinct2": 0.84375,
+     "rep3": 0.06349206349206349,
+     "words": 65,
+     "text": " of the bad weather． ____\nBecause the train is delayed for two hours．\nBecause of the train being late for 2 hours．\n\n答案是B，because of后接名词或名词性短语，主语是the train；because of the train being delayed for two hour表示“因为火车延迟了两小时”．故选B．\n\n---How about going to the cinema？ ---________．\nIt's my dream．\nI don't like going to the cinema．\n\n答案是A，根据答语推测，答句是同意上一句的建议，It's my dream．我的梦想．故选A．\n\nI like _______．（ ）\nplaying chess with friends\n\n答案是B，playing chess with friends和theater是并列"
+    }
+   }
+  },
+  {
+   "i": 20,
+   "prompt": "Our team reviewed the contract and found",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 1,
+     "dropped_margin": 28,
+     "dropped_rank": 2
+    }
+   },
+   "prefix_tokens": 177,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 7.0356550278459205,
+     "self_ppl_prefix": 3.447421473382418,
+     "distinct2": 0.8692307692307693,
+     "rep3": 0.054263565891472854,
+     "words": 131,
+     "text": " the following terms:\nA. “The goods provided by the seller must comply with the contract terms and specifications.”\nB. “The buyer shall pay the price according to the payment terms and conditions as agreed in the contract.”\nC. “The buyer has the right to request the seller to modify or replace the goods if the quality does not meet the contract terms.”\nD. “The seller shall bear the responsibility for the delivery of the goods and shall ensure the safety and reliability of the goods.”\nWhich of th"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 6.669574511497306,
+     "self_ppl_prefix": 4.459691161636527,
+     "distinct2": 0.7615384615384615,
+     "rep3": 0.13953488372093026,
+     "words": 133,
+     "text": " the following terms:\nA. “The goods shall be free from defects and the seller shall be responsible for the repair or replacement of the goods if any defect is found after the delivery of the goods to the buyer.”\nB. The seller shall be liable in damages for any defects in the goods.\nC. “If the buyer rejects or returns any goods, the buyer shall be responsible for the cost of returning or re-delivering the goods, and the seller shall be responsible for any loss of profit or goodwill caused by such"
+    }
+   }
+  },
+  {
+   "i": 21,
+   "prompt": "The mayor's office confirmed that the bridge",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 36,
+     "entries": 4,
+     "dropped_margin": 30,
+     "dropped_rank": 2
+    }
+   },
+   "prefix_tokens": 143,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 12.524749203244435,
+     "self_ppl_prefix": 2.5243182624151124,
+     "distinct2": 0.7169811320754716,
+     "rep3": 0.21904761904761905,
+     "words": 107,
+     "text": " would be opened to traffic at noon, with an additional 15-minute delay due to the need for safety checks. Calculate the actual time the bridge opened to traffic. To determine the actual time the bridge opened to traffic, we need to start with the given time and account for the additional delay. Here are the steps:\n\n1. The original time the bridge was supposed to open is noon.\n2. There is an additional 15-minute delay due to safety checks.\n3. Therefore, the actual time the bridge opened to traff"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 33.83844641036943,
+     "self_ppl_prefix": 7.513636575731239,
+     "distinct2": 0.9622641509433962,
+     "rep3": 0.00952380952380949,
+     "words": 116,
+     "text": " would be opened to traffic at noon, with an estimated 25,000 visitors expected, 500 of whom are children under the city's child protection guidelines. The office planned to use an extra 300 vehicles for the event, but a shortage of drivers caused a delay in the bridge opening by 1 hour. Assuming each vehicle requires 2 drivers and the original plan of 25,000 drivers was insufficient, how many additional drivers were required to meet the event's needs? To determine how many additional vehicles w"
+    }
+   }
+  },
+  {
+   "i": 22,
+   "prompt": "Farmers in the region are worried that",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 26,
+     "entries": 6,
+     "dropped_margin": 19,
+     "dropped_rank": 1
+    }
+   },
+   "prefix_tokens": 152,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 8.543151083288356,
+     "self_ppl_prefix": 3.7917953277721073,
+     "distinct2": 0.7627118644067796,
+     "rep3": 0.16239316239316237,
+     "words": 123,
+     "text": " the drought will cause a loss of crops.\nA. loss\nB. loss of crops\nC. loss of\nD. loss of a crop\nAnswer:\nB\n\nIt is believed that a new technique, which has been tested in small-scale trials, will greatly improve the quality of fruit.\nA. that\nB. which\nC. where\nD. as\nAnswer:\nB\n\nThe new method may be more effective than the old one.\nA. may be more effective than\nB. may be more effective\nC. may be more effective than the old one\nD. may be more effective than the old one\nAnswer:\nC\n\nThe relationship betw"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 11.171312982544052,
+     "self_ppl_prefix": 3.6058773696021356,
+     "distinct2": 0.788135593220339,
+     "rep3": 0.15384615384615385,
+     "words": 119,
+     "text": " the drought will cause a loss of crops and animals, and the government is trying to help them. A local government official said, \"If it rains more than 10 days in the next month, the farmers' crop and animal loss will be reduced by about 50%.\" The official said, \"If there is no rain in the next month, the farmers' losses will increase by about 50%.\" Based on this, how many days of rain do you think are in the next month?  \nA. 4  \nB. 5  \nC. 6  \nD. 7  \nE. 8\n\nTo determine the number of days of rai"
+    }
+   }
+  },
+  {
+   "i": 23,
+   "prompt": "The new software update changes the way",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 26,
+     "entries": 2,
+     "dropped_margin": 24,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 159,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 10.149559015520813,
+     "self_ppl_prefix": 3.484646049636918,
+     "distinct2": 0.8974358974358975,
+     "rep3": 0.0431034482758621,
+     "words": 118,
+     "text": " a company processes sales. The update includes a new feature that requires a user input validation system. The system checks the input for valid format and value range. The validation is designed to ensure that the input is a positive integer and falls within a specific range. The range is set to be between 1 and 100 inclusive. \n\nLet's define a function \\(f(x)\\) that represents the validation process for a given input \\(x\\). The function \\(f(x)\\) returns \\(1\\) if the input is valid (i.e., \\(x\\)"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 13.818862382700276,
+     "self_ppl_prefix": 4.201644787427797,
+     "distinct2": 0.8632478632478633,
+     "rep3": 0.09482758620689657,
+     "words": 126,
+     "text": " a company processes sales tax, but it does not change the amount of sales tax collected by the company. Which of the follow best describes the impact on the company's profit?\nTo determine the impact on the company's profit, let's break down the problem step by step.\n\n1. **Identify the Key Components**:\n   - **Sales Tax**: The amount of sales tax collected by the business.\n   - **Profit**: The profit of the business after accounting for all expenses and taxes.\n   - **Software Update**: A change "
+    }
+   }
+  },
+  {
+   "i": 24,
+   "prompt": "It was the coldest winter anyone could remember,",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 34,
+     "entries": 0,
+     "dropped_margin": 33,
+     "dropped_rank": 1
+    }
+   },
+   "prefix_tokens": 161,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 7.902195080934491,
+     "self_ppl_prefix": 4.485805822534192,
+     "distinct2": 0.8642857142857143,
+     "rep3": 0.043165467625899234,
+     "words": 141,
+     "text": " and the place was nearly deserted. As the last of the snow began to melt, the cold returned. It was so cold that it felt as though your body was frozen in place. The air was so cold that it could freeze a candle. The wind was so strong that it could tear the fabric of your clothes. The sky was a deep shade of blue, and the clouds were so high that it felt like you were flying.\nAs the night drew in, the stars began to appear in the sky. They were bright and twinkling, and they seemed to be watch"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 10.164090889257627,
+     "self_ppl_prefix": 4.9734301053531285,
+     "distinct2": 0.9857142857142858,
+     "rep3": 0.0,
+     "words": 142,
+     "text": " and the place was nearly deserted. As the sun set, the only sign of life was the glow from the few fireplaces. The air was so cold that it felt like the sky was frozen solid. The few people who were still out were shivering and huddled close together, trying to stay warm.\n\nSuddenly, a group of people appeared out of the mist. They were dressed in heavy coats and hats and looked like they had just stepped out of a movie. As they approached, the air around them grew warm and the snow started to m"
+    }
+   }
+  },
+  {
+   "i": 25,
+   "prompt": "The committee will vote next week on",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 29,
+     "entries": 0,
+     "dropped_margin": 27,
+     "dropped_rank": 2
+    }
+   },
+   "prefix_tokens": 165,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 11.575810595100174,
+     "self_ppl_prefix": 6.270123168641286,
+     "distinct2": 0.9126984126984127,
+     "rep3": 0.008000000000000007,
+     "words": 127,
+     "text": " whether to add a sixth star to the flag. The addition would make it the most starred flag in the world.\nAccording to the committee’s research, the addition would be welcomed by 96% of the world’s population, but it would be opposed by 95% of U.S. voters.\nWhat’s the committee’s rationale for the star addition?\nThe committee is based on the belief that the flag represents all Americans. It is not a matter of who wants the star added or who doesn’t. It’s a matter of the American people as a whole."
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 13.599172631901475,
+     "self_ppl_prefix": 8.824668435917218,
+     "distinct2": 0.9047619047619048,
+     "rep3": 0.040000000000000036,
+     "words": 136,
+     "text": " whether to add a $50 million line item to the budget for a new facility for those working to stop the spread of the deadly Ebola virus in west Africa.\nThe $20 million line item for the Ebola-related funds will be cut in half next week, but the committee has yet to decide whether to add the $5 million to the budget. The money is earmarked to be used in the U. S. and in other countries to fight the deadly virus, which is not currently in the United State.\n“We have to act quickly to stop the sprea"
+    }
+   }
+  },
+  {
+   "i": 26,
+   "prompt": "Researchers at the university discovered that",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 38,
+     "entries": 0,
+     "dropped_margin": 37,
+     "dropped_rank": 1
+    }
+   },
+   "prefix_tokens": 161,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 9.197837401959251,
+     "self_ppl_prefix": 4.090676015327243,
+     "distinct2": 0.8934426229508197,
+     "rep3": 0.03305785123966942,
+     "words": 123,
+     "text": " the gene is linked to a form of the disease known as “cystic fibrosis,” which leads to the buildup of mucus in the lungs and digestive tract, and the development of chronic infections.\nDr. Xianzhong Chen, a professor at the University of Cincinnati’s College of Medicine, and colleagues in China, Japan and the United States studied the gene expression patterns of patients with the disease.\nCystic fibrosis is a hereditary disease that is the most common cause of childhood lung disease and is a le"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 6.8142077312739255,
+     "self_ppl_prefix": 4.2498276672317035,
+     "distinct2": 0.9262295081967213,
+     "rep3": 0.008264462809917328,
+     "words": 125,
+     "text": " the gene is linked to a form of the disease known as progressive multifocal leukoencephalopathy, or PML.\nThe gene, which was identified as being associated with PML in a study published last week in the Journal of the National Cancer Institute, is called APOBEC2L.\nThe discovery, which is being described as \"a major breakthrough\" in the fight against the disease, could lead to the development of new drugs to treat or prevent it, the researchers say.\nThe APOBEC gene, which is part of a larger fam"
+    }
+   }
+  },
+  {
+   "i": 27,
+   "prompt": "The company's chief executive said that",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 23,
+     "entries": 0,
+     "dropped_margin": 23,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 161,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 5.469226566119179,
+     "self_ppl_prefix": 3.022712000527001,
+     "distinct2": 0.5661764705882353,
+     "rep3": 0.33333333333333337,
+     "words": 142,
+     "text": " the air pollution problem was the result of a lack of awareness, and the company would be responsible for the cleanup.\nThe article in the newspaper reported that the company's chief executive said that the air pollution problem was the result of a lack of awareness, and the company would be responsible for the cleanup. Therefore, the company should be responsible for the cleanup.\nIs this conclusion logically sound? The conclusion \"The company should be responsible for the cleanup\" is logically "
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 11.02921853008934,
+     "self_ppl_prefix": 4.0699277598023595,
+     "distinct2": 0.9338235294117647,
+     "rep3": 0.022222222222222254,
+     "words": 137,
+     "text": " the air pollution problem was the result of a lack of awareness, and the company would be held accountable for the problem. How would you respond to this statement? Provide an appropriate response that addresses the root cause and suggests solutions for the problem.\nThe statement made by the company's chief executive is not entirely accurate and may not address the root cause of the air pollution problem. Air pollution is caused by a combination of factors such as industrial emissions, transpor"
+    }
+   }
+  },
+  {
+   "i": 28,
+   "prompt": "Residents were asked to leave their homes after",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 34,
+     "entries": 1,
+     "dropped_margin": 32,
+     "dropped_rank": 1
+    }
+   },
+   "prefix_tokens": 139,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 14.565561134901037,
+     "self_ppl_prefix": 4.50783366641954,
+     "distinct2": 0.9339622641509434,
+     "rep3": 0.01904761904761909,
+     "words": 117,
+     "text": " the earthquake on 17 September 2014.\nThey were told to stay inside to avoid aftershocks and aftershock injuries.\nThe storm caused widespread damage, with at least 125 homes destroyed in the town.\nMany of the buildings were swept away and people's possessions were damaged.\nThe town of 12,000 people, home to 22,000 people, has been completely rebuilt.\nWhat is a summary of this text?\n\nThis text is about a disaster that happened in a town called Palmyra. The earthquake and storm caused a lot of dam"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 9.731385616855922,
+     "self_ppl_prefix": 5.58694107639652,
+     "distinct2": 0.9905660377358491,
+     "rep3": 0.0,
+     "words": 107,
+     "text": " the earthquake on 17 October.\nIt killed 21 people, injured 163 and destroyed about 400 homes, the government said.\nThe earthquake was the worst in the region since 1985, when 240 people died in an earthquake.\nThe earthquake's epicenter was 20km (12 miles) west-northwest of the capital.\nThe government said it had 12,000 tents ready for the affected people to take shelter in, with food and medical supplies also on hand.\nAbout 1,200 people have been evacuated to shelters. But some have not been re"
+    }
+   }
+  },
+  {
+   "i": 29,
+   "prompt": "The article argues that modern cities",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 34,
+     "entries": 0,
+     "dropped_margin": 31,
+     "dropped_rank": 3
+    }
+   },
+   "prefix_tokens": 158,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 8.716743980053375,
+     "self_ppl_prefix": 5.444797384487184,
+     "distinct2": 0.8518518518518519,
+     "rep3": 0.04477611940298509,
+     "words": 146,
+     "text": " are riddled with a profound lack of autonomy. The lack of autonomy has many implications, but one of the most obvious is the lack of free will. Many people feel trapped in the lives they are living. The lack of free will is a result of the lack of autonomy. This is particularly evident in the current state of our cities. Modern cities are essentially governments in which the people are subjects. The people are not allowed to make their own decisions and are not free to choose their own paths in"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 12.335628521910408,
+     "self_ppl_prefix": 6.060256285078801,
+     "distinct2": 0.9407407407407408,
+     "rep3": 0.014925373134328401,
+     "words": 136,
+     "text": " are riddled with a profound lack and a long-standing need for local food production. In the article, the author describes the “food desert” phenomenon in cities, which is a term to describe a situation in which people in certain parts of a city have limited access to fresh and healthy foods, while other areas of a city have a surplus of food that is often wasted. This is a particularly pressing issue for food deserts, which are often located near or in low-income communities. The article also d"
+    }
+   }
+  },
+  {
+   "i": 30,
+   "prompt": "Please find attached the minutes of",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 23,
+     "entries": 1,
+     "dropped_margin": 22,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 133,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 8.34783815395574,
+     "self_ppl_prefix": 4.9621958967134505,
+     "distinct2": 0.9320388349514563,
+     "rep3": 0.02941176470588236,
+     "words": 127,
+     "text": " the March 25th meeting of the Downtown Community Planning Advisory Committee.\nThe next meeting will be held on May 18th.  The agenda is attached to this e-mail.\nThank you, we look forward to hearing from you.\nThe Downtown Community Planning Advisory Committee (DPCAC) is a committee of elected representatives of the City of Tucson and is charged with developing a vision and vision statement for downtown Tucson.\nThe DPCAC is made up of seven members representing the City, the County, the business"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 9.092103435132016,
+     "self_ppl_prefix": 4.930316547580432,
+     "distinct2": 0.6310679611650486,
+     "rep3": 0.27450980392156865,
+     "words": 104,
+     "text": " the March 25th meeting of our Board of Supervisors. If you have any comments, please feel free either to call me directly (646-293-2220) or to send me an email at shana@julieharvey.com. The following items were discussed: 1) Discussion of the 2016 annual report of the Board of Directors of The Climate Corporation, 2) Discussion of the 2016 Annual Report of the Board of Directors of The Data Corporation of The Climate Corporation, 3) Discussion of the 2016 Annual Report of the Board of Directors"
+    }
+   }
+  },
+  {
+   "i": 31,
+   "prompt": "The spacecraft entered orbit around",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 32,
+     "entries": 9,
+     "dropped_margin": 19,
+     "dropped_rank": 3
+    }
+   },
+   "prefix_tokens": 160,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 11.293873131068692,
+     "self_ppl_prefix": 2.227755364224205,
+     "distinct2": 0.8375,
+     "rep3": 0.08860759493670889,
+     "words": 81,
+     "text": " a planet with a mass of {eq}1.6 \\times 10^{24} \\ kg{/eq}. The spacecraft's orbital velocity was 8,500 m/s. Calculate the radius of the orbit. (Use the formula for the orbital radius of a satellite, {eq}r = \\frac{v^2}{GM}{/eq}, where {eq}G = 6.67 \\times 10^{-11} \\ m^3/kg/s^2{/eq} is the gravitational constant and {eq}M{/eq} is the mass of the planet.) To calculate the radius of the orbit, we will use the given formula for the orbital radius of a satellite:\n\n\\[\nr = \\frac{v^2}{"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 15.072775177849849,
+     "self_ppl_prefix": 3.8699356049496076,
+     "distinct2": 0.8875,
+     "rep3": 0.06329113924050633,
+     "words": 103,
+     "text": " a planet with a star. If it took 150 minutes to orbit once, how many orbits would it complete in 3 hours and 45 minutes?\nTo determine how many orbits the spacecraft completes in 3 hours and 45 minutes, we need to follow these steps:\n\n1. Convert the total time from hours andminutes into minutes.\n2. Determine the number of minutes in one orbit.\n3 Calculate the number of orbits by dividing the time in minutes by the time for one orbit.\n\nFirst, we convert 45 minutes into minutes:\n\\[\n3 \\text{\\(hours"
+    }
+   }
+  },
+  {
+   "i": 32,
+   "prompt": "Local businesses have struggled since",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 47,
+     "entries": 2,
+     "dropped_margin": 43,
+     "dropped_rank": 2
+    }
+   },
+   "prefix_tokens": 163,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 12.796728695092508,
+     "self_ppl_prefix": 4.550230294941673,
+     "distinct2": 0.9280575539568345,
+     "rep3": 0.02898550724637683,
+     "words": 140,
+     "text": " the pandemic hit, with many seeing their sales drop off or shut down. For example, the retail sector has been hit hard, with some small shops finding it hard to compete with online retailers. However, some businesses have shown resilience and found new ways to adapt to the new normal. For example, some businesses have switched to online services, while others have focused on delivering a high-quality customer experience despite reduced foot traffic.\nMoreover, many businesses have also seen an i"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 12.61844744637806,
+     "self_ppl_prefix": 6.6540956895607,
+     "distinct2": 0.9640287769784173,
+     "rep3": 0.007246376811594235,
+     "words": 143,
+     "text": " the pandemic hit, with many seeing the number of sales and profits shrink over the past year. Now, some business owners have started to turn their attention back towards the future, looking at the potential that new technologies could bring. This is especially true for those businesses that have been forced to adapt to remote work and online shopping, and those looking to expand their customer base.\nHowever, there are many challenges that businesses will need to overcome before they can fully e"
+    }
+   }
+  },
+  {
+   "i": 33,
+   "prompt": "The treaty was signed in",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 34,
+     "entries": 9,
+     "dropped_margin": 25,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 151,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 5.732990391834706,
+     "self_ppl_prefix": 3.307455463251415,
+     "distinct2": 0.7075471698113207,
+     "rep3": 0.2571428571428571,
+     "words": 131,
+     "text": " the British city of Liverpool on 31 August 1919, after a two-day conference, which resulted in the League of Nations being established as the world's first international organization.\nThe treaty was signed in the British city of Liverpool on 31 August 1919, after a two-day conference, which resulted in the League of Nations being established as the world's first international organization. The League was established as a result of the aftermath of the First World War and was intended to prevent"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 21.234543232040416,
+     "self_ppl_prefix": 5.315507797429261,
+     "distinct2": 0.9433962264150944,
+     "rep3": 0.03809523809523807,
+     "words": 107,
+     "text": " the British city of Liverpool is known as ____.\nA. The Tientsin Treaty\nB. The Sino-Britain Treaty\nC. Treaty of Nanjiao\nD. The Boxer Protocol\nAnswer: B\n\nThe party responsible for issuing the \"Fireworks and Pyrotechnics Safety and Quality National Standard\" is ____\nA. National Quality Supervision Bureau\nB. Ministry of Public Security\nC. National Development and Reform Commission\nD. State Administration of Work Safety\nE.\nAnswer: D. State Administration of Work Safety\n\nWhich of these options correc"
+    }
+   }
+  },
+  {
+   "i": 34,
+   "prompt": "Our records indicate that your account",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 33,
+     "entries": 4,
+     "dropped_margin": 27,
+     "dropped_rank": 2
+    }
+   },
+   "prefix_tokens": 163,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 7.052804140728515,
+     "self_ppl_prefix": 3.1342906713273218,
+     "distinct2": 0.8103448275862069,
+     "rep3": 0.16521739130434787,
+     "words": 143,
+     "text": " has been inactive for the past 24 months and is scheduled to be closed. Awaiting customer feedback to proceed.\n\nWhat is a sentence that would logically follow the above? After careful consideration, the bank has decided to close the account. They will notify you of the closure and provide any necessary information. It is important to review your account statements and any available funds to ensure that you do not have any outstanding balances. Please let us know if you have any questions or con"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 33.72053292435724,
+     "self_ppl_prefix": 4.947831661229841,
+     "distinct2": 0.9913793103448276,
+     "rep3": 0.0,
+     "words": 117,
+     "text": " has been inactive for the last 18 months. Based on your feedback, we decided to cancel your account. We hope that this message finds you in good health and high spirits. This is an unfortunate situation that we are not proud of, but we have no choice but to close your account.\n\nTranslate this to Spanish.\nEl registro indica que tu cuenta tiene 12 meses de inactividad. Según tu feedback, decidimos cancelarte la cuenta. Esperamos que esta notificación te encuentre saludable y alegre. Esto es un ma"
+    }
+   }
+  },
+  {
+   "i": 35,
+   "prompt": "The festival returns this summer with",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 26,
+     "entries": 2,
+     "dropped_margin": 22,
+     "dropped_rank": 2
+    }
+   },
+   "prefix_tokens": 155,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 11.874784585945246,
+     "self_ppl_prefix": 5.670005870620609,
+     "distinct2": 0.8807339449541285,
+     "rep3": 0.03703703703703709,
+     "words": 110,
+     "text": " a series of live music performances, food trucks, and free outdoor movies. You can find more information here.\nIf you’ve been wondering about the artists at the World of Vinyl Festival, here’s a look at the artists and acts that will be performing at the event.\nThere will be a live performance by singer-songwriter Mark Knopfler on Friday, July 23 at 7:30 p.m. He will perform his hit songs from the 1970s and 1980s.\nThere will be a performance by alternative rock band The Pretty Reckless on Satur"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 13.93939015517318,
+     "self_ppl_prefix": 5.943738906013076,
+     "distinct2": 0.9174311926605505,
+     "rep3": 0.02777777777777779,
+     "words": 139,
+     "text": " a series of live music performances, film screenings and a panel discussion on the role of music in society. Featuring artists from around the world and spanning a wide variety of genres, this year’s festival promises to be a vibrant celebration of the power and influence of music.\nIn addition to the main festival lineup, there will be a number events and activities for children and families to enjoy. In celebration of the festival’s 30th anniversary, there is a special “Day of the Child” event"
+    }
+   }
+  },
+  {
+   "i": 36,
+   "prompt": "The hospital announced a new policy on",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 33,
+     "entries": 6,
+     "dropped_margin": 26,
+     "dropped_rank": 1
+    }
+   },
+   "prefix_tokens": 159,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 8.309571450375781,
+     "self_ppl_prefix": 2.123599560038526,
+     "distinct2": 0.717948717948718,
+     "rep3": 0.19827586206896552,
+     "words": 123,
+     "text": " the morning shift. They now want to reduce the number of nurses working on the morning shift by 10%. If there are currently 50 nurses on the morning shift, how many nurses will there be after the policy is implemented? To determine the number of nurses on the morning shift after the policy is implemented, we need to follow these steps:\n\n1. Identify the current number of nurses on the morning shift.\n2. Calculate the number of nurses that will be reduced by 10%.\n3. Subtract the reduced number fro"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 15.055237694844177,
+     "self_ppl_prefix": 3.865470640931393,
+     "distinct2": 0.9145299145299145,
+     "rep3": 0.017241379310344862,
+     "words": 118,
+     "text": " the morning shift. They are expecting to have 45 new babies in the morning. The hospital has 12 nurses on duty, and 3 are on maternity leave. The remaining nurses need to be divided into 4 groups to assist with the births, with each nurse covering a specific number of births. How many births will each nurse in each group be responsible for? To determine how many births each nurse will be responsible for, we need to follow these steps:\n\n1. Calculate the number of nurses who are available to assi"
+    }
+   }
+  },
+  {
+   "i": 37,
+   "prompt": "Investigators said the fire started in",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 29,
+     "entries": 5,
+     "dropped_margin": 24,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 157,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 7.4622479372641175,
+     "self_ppl_prefix": 5.968163032903802,
+     "distinct2": 0.868421052631579,
+     "rep3": 0.04424778761061943,
+     "words": 125,
+     "text": " the parking garage of the 52-story building in downtown Los Angeles on Monday night, about 11:30 p.m.\nThey say the fire was \"extremely large\" and quickly spread. They say it started in a storage area and made its way up the building. The fire destroyed two floors, leaving the building uninhabitable.\nFirefighters were able to control the fire, but the building will remain closed until the cause of the blaze is determined, officials said.\nIn a statement, the city's fire chief said the cause of th"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 31.729346572714732,
+     "self_ppl_prefix": 4.883389312129574,
+     "distinct2": 0.8947368421052632,
+     "rep3": 0.07079646017699115,
+     "words": 115,
+     "text": " the parking garage of the 52-story building in downtown Los Angeles on Tuesday afternoon.\nQ: Which is this about?\nAvailable options: 1. World.  2. Sports.  3.Occupations.  4. Business. Options. 5. Science/Tech. 6. Not enough information. 7.Not a story. The type of logical reasoning being tested is determining the category of the given text. The type of logical reasoning being tested is classification.\n\nThe passage describes a fire incident that occurred in Los Angeles. This is a news item about"
+    }
+   }
+  },
+  {
+   "i": 38,
+   "prompt": "The school board approved a plan to",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 27,
+     "entries": 2,
+     "dropped_margin": 23,
+     "dropped_rank": 2
+    }
+   },
+   "prefix_tokens": 142,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 7.307721557048694,
+     "self_ppl_prefix": 3.4167246885818874,
+     "distinct2": 0.8727272727272727,
+     "rep3": 0.04587155963302747,
+     "words": 111,
+     "text": " build a new library, but the construction of the library is dependent on the availability of funds. If the school raises $300,000 through fundraising events, the construction can begin immediately. However, if the school doesn't raise this amount, they will seek additional funding through grants. If the school raises $100,000 through grants, they will still need to raise $200,000 through fundraising events to complete the construction. If the school only raises $50,000 through grants, they will"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 9.279122560537687,
+     "self_ppl_prefix": 4.3434312491539835,
+     "distinct2": 0.8727272727272727,
+     "rep3": 0.05504587155963303,
+     "words": 119,
+     "text": " build a new library for the school. The total cost of building the library is $2,000.00. The school board wants to spread this cost evenly among the 50 families in the neighborhood, including the families that support the new library. What is the amount of money that each family will contribute towards building a new library?\nTo calculate the contribution of each family, you would simply take the total cost of building the library and divide it by the number of families. \n\nSo, the amount each f"
+    }
+   }
+  },
+  {
+   "i": 39,
+   "prompt": "Historians disagree about why",
+   "seal": {
+    "c5_free_hm0": {
+     "tokens": 160,
+     "enforced": 24,
+     "entries": 3,
+     "dropped_margin": 21,
+     "dropped_rank": 0
+    }
+   },
+   "prefix_tokens": 150,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 10.92914940818021,
+     "self_ppl_prefix": 4.782689463066218,
+     "distinct2": 0.8984375,
+     "rep3": 0.07086614173228345,
+     "words": 140,
+     "text": " the American Revolution began. Some say it began because of British policies. Others say it began because of the Stamp Act. Others say it began because of British taxation. What is certain is that the American Revolution was a period of change, and as a result, the United States began to emerge from British control. The American Revolution also introduced new ideas about liberty, democracy, and government that would shape the world for centuries to come.\nThe British colonists were angry because"
+    },
+    "c5_free_hm0": {
+     "ppl_prefix": 8.921726102348101,
+     "self_ppl_prefix": 3.455249360857524,
+     "distinct2": 0.875,
+     "rep3": 0.03937007874015752,
+     "words": 129,
+     "text": " the American Revolution began. Some say that it was inevitable; others claim that it was sparked by the Stamp Act of 1765. Why did the Stamp Act of 1765, which imposed a tax on American newspapers and other printed materials, lead to such a significant change in the relationship between the colonies and Britain?\nThe Stamp Act of 1765 was a significant event that led many American colonists to demand greater independence from Britain, as it was a tax imposed on printed materials such as newspape"
+    }
+   }
+  }
+ ]
+}

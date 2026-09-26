@@ -1,0 +1,86 @@
+{
+ "model": "gpt2-medium",
+ "code": "aa2dddc19298c239",
+ "verify": {
+  "cpu:float32": {
+   "128": {
+    "seconds": 0.2299,
+    "tokens_per_s": 556.7
+   },
+   "512": {
+    "seconds": 0.5552,
+    "tokens_per_s": 922.2
+   },
+   "1000": {
+    "seconds": 0.9772,
+    "tokens_per_s": 1023.3
+   }
+  },
+  "mps:float32": {
+   "128": {
+    "seconds": 0.0611,
+    "tokens_per_s": 2095.8
+   },
+   "512": {
+    "seconds": 0.1774,
+    "tokens_per_s": 2886.2
+   },
+   "1000": {
+    "seconds": 0.3488,
+    "tokens_per_s": 2867.1
+   }
+  },
+  "mps:float16": {
+   "128": {
+    "seconds": 0.0538,
+    "tokens_per_s": 2377.7
+   },
+   "512": {
+    "seconds": 0.1578,
+    "tokens_per_s": 3244.7
+   },
+   "1000": {
+    "seconds": 0.2985,
+    "tokens_per_s": 3350.0
+   }
+  }
+ },
+ "seal": {
+  "cpu:float32": {
+   "align": "free",
+   "free_after": 0,
+   "tokens": [
+    160,
+    160,
+    160
+   ],
+   "generate_s": 11.493,
+   "seal_s": 22.29,
+   "overhead_%": 93.9
+  },
+  "mps:float32": {
+   "align": "free",
+   "free_after": 0,
+   "tokens": [
+    160,
+    160,
+    160
+   ],
+   "generate_s": 6.592,
+   "seal_s": 11.246,
+   "overhead_%": 70.6
+  },
+  "mps:float16": {
+   "align": "free",
+   "free_after": 0,
+   "tokens": [
+    160,
+    160,
+    160
+   ],
+   "generate_s": 6.082,
+   "seal_s": 10.881,
+   "overhead_%": 78.9
+  }
+ }
+}

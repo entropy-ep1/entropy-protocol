@@ -1,0 +1,155 @@
+
+==================================== ERRORS ====================================
+_____________________ ERROR collecting tests/test_batch.py _____________________
+ImportError while importing test module '/home/ubuntu/ep/tests/test_batch.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/local/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_batch.py:7: in <module>
+    from entropy_protocol import crypto  # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   ModuleNotFoundError: No module named 'entropy_protocol'
+___________________ ERROR collecting tests/test_canongen.py ____________________
+ImportError while importing test module '/home/ubuntu/ep/tests/test_canongen.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/local/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_canongen.py:6: in <module>
+    from entropy_protocol.canon import canonicalize  # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   ModuleNotFoundError: No module named 'entropy_protocol'
+_____________________ ERROR collecting tests/test_core.py ______________________
+ImportError while importing test module '/home/ubuntu/ep/tests/test_core.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/local/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_core.py:4: in <module>
+    from entropy_protocol import crypto
+E   ModuleNotFoundError: No module named 'entropy_protocol'
+___________________ ERROR collecting tests/test_delivery.py ____________________
+ImportError while importing test module '/home/ubuntu/ep/tests/test_delivery.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/local/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_delivery.py:5: in <module>
+    from entropy_protocol import cose, crypto, hpke
+E   ModuleNotFoundError: No module named 'entropy_protocol'
+______________________ ERROR collecting tests/test_e2e.py ______________________
+ImportError while importing test module '/home/ubuntu/ep/tests/test_e2e.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/local/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_e2e.py:7: in <module>
+    from entropy_protocol import attest, crypto  # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   ModuleNotFoundError: No module named 'entropy_protocol'
+_____________________ ERROR collecting tests/test_gate.py ______________________
+ImportError while importing test module '/home/ubuntu/ep/tests/test_gate.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/local/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_gate.py:4: in <module>
+    from entropy_protocol.record import Header, Record, dumps, loads
+E   ModuleNotFoundError: No module named 'entropy_protocol'
+____________________ ERROR collecting tests/test_gateway.py ____________________
+ImportError while importing test module '/home/ubuntu/ep/tests/test_gateway.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/local/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_gateway.py:9: in <module>
+    from entropy_protocol.canon import canonicalize
+E   ModuleNotFoundError: No module named 'entropy_protocol'
+_____________________ ERROR collecting tests/test_hpke.py ______________________
+ImportError while importing test module '/home/ubuntu/ep/tests/test_hpke.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/local/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_hpke.py:4: in <module>
+    from entropy_protocol import hpke
+E   ModuleNotFoundError: No module named 'entropy_protocol'
+___________________ ERROR collecting tests/test_identity.py ____________________
+ImportError while importing test module '/home/ubuntu/ep/tests/test_identity.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/local/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_identity.py:8: in <module>
+    from entropy_protocol.backend_hf import HFBackend, weight_files  # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   ModuleNotFoundError: No module named 'entropy_protocol'
+_____________________ ERROR collecting tests/test_joins.py _____________________
+ImportError while importing test module '/home/ubuntu/ep/tests/test_joins.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/local/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_joins.py:7: in <module>
+    from entropy_protocol.canon import canonicalize  # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   ModuleNotFoundError: No module named 'entropy_protocol'
+_____________________ ERROR collecting tests/test_plain.py _____________________
+ImportError while importing test module '/home/ubuntu/ep/tests/test_plain.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/local/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_plain.py:8: in <module>
+    from entropy_protocol import crypto  # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   ModuleNotFoundError: No module named 'entropy_protocol'
+__________________ ERROR collecting tests/test_statements.py ___________________
+ImportError while importing test module '/home/ubuntu/ep/tests/test_statements.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/local/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_statements.py:6: in <module>
+    from entropy_protocol import cose, tlog
+E   ModuleNotFoundError: No module named 'entropy_protocol'
+____________________ ERROR collecting tests/test_vectors.py ____________________
+ImportError while importing test module '/home/ubuntu/ep/tests/test_vectors.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/local/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_vectors.py:12: in <module>
+    from entropy_protocol import cose, crypto, statements, tlog  # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   ModuleNotFoundError: No module named 'entropy_protocol'
+=========================== short test summary info ============================
+ERROR tests/test_batch.py
+ERROR tests/test_canongen.py
+ERROR tests/test_core.py
+ERROR tests/test_delivery.py
+ERROR tests/test_e2e.py
+ERROR tests/test_gate.py
+ERROR tests/test_gateway.py
+ERROR tests/test_hpke.py
+ERROR tests/test_identity.py
+ERROR tests/test_joins.py
+ERROR tests/test_plain.py
+ERROR tests/test_statements.py
+ERROR tests/test_vectors.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 13 errors during collection !!!!!!!!!!!!!!!!!!!
+13 errors in 1.31s

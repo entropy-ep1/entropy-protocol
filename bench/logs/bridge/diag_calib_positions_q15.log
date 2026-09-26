@@ -1,0 +1,3 @@
+corpus: 17 texts, 3399 positions (519s)
+mps:float16 {"delta_all_positions": 0.3468, "delta_from_first_checkpoint": 0.3468, "p99.99_from_first_checkpoint": 0.3148, "top_outliers_(delta,position,text)": [[0.347, 155, 6], [0.292, 0, 9], [0.251, 6, 6], [0.229, 0, 1], [0.195, 7, 6], [0.185, 0, 6], [0.176, 23, 6], [0.169, 0, 5]]}
+mps:bfloat16 {"delta_all_positions": 9.9042, "delta_from_first_checkpoint": 9.9042, "p99.99_from_first_checkpoint": 9.5225, "top_outliers_(delta,position,text)": [[9.904, 117, 6], [8.758, 129, 6], [7.254, 118, 6], [6.11, 195, 2], [5.329, 140, 10], [4.993, 108, 8], [4.775, 109, 10], [4.235, 130, 6]]}

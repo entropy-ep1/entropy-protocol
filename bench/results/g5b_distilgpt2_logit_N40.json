@@ -1,0 +1,3524 @@
+{
+ "summary": {
+  "model": "distilgpt2",
+  "oracle": "gpt2-medium",
+  "n": 40,
+  "usable_for_ppl": 19,
+  "space": "logit",
+  "cal": {
+   "fp32": 0.00024,
+   "fp16": 0.338013
+  },
+  "minutes": 11.5,
+  "variants": {
+   "unsealed": {
+    "median_ppl_prefix": 20.89,
+    "mean_distinct2": 0.892,
+    "mean_rep3": 0.091,
+    "mean_words": 60.5
+   },
+   "i5_k10_w40": {
+    "median_ppl_prefix": 31.39,
+    "median_ppl_ratio": 1.279,
+    "share_ratio_gt_1.25": 0.526,
+    "mean_distinct2": 0.923,
+    "mean_rep3": 0.052,
+    "mean_words": 103.9,
+    "mean_entries": 14,
+    "entries_per_100_tokens": 10.37,
+    "survival_%": 53.5,
+    "texts_below_8_entries_%": 22.5
+   },
+   "i10_k10_w40": {
+    "median_ppl_prefix": 18.3,
+    "median_ppl_ratio": 1.067,
+    "share_ratio_gt_1.25": 0.421,
+    "mean_distinct2": 0.906,
+    "mean_rep3": 0.068,
+    "mean_words": 95.5,
+    "mean_entries": 6.3,
+    "entries_per_100_tokens": 4.58,
+    "survival_%": 48.9,
+    "texts_below_8_entries_%": 70.0
+   },
+   "i10_k10_w1": {
+    "median_ppl_prefix": 21.91,
+    "median_ppl_ratio": 1.086,
+    "share_ratio_gt_1.25": 0.421,
+    "mean_distinct2": 0.909,
+    "mean_rep3": 0.07,
+    "mean_words": 82.6,
+    "mean_entries": 3.5,
+    "entries_per_100_tokens": 2.82,
+    "survival_%": 30.2,
+    "texts_below_8_entries_%": 100.0
+   },
+   "i10_k3_w5": {
+    "median_ppl_prefix": 21.98,
+    "median_ppl_ratio": 1.039,
+    "share_ratio_gt_1.25": 0.263,
+    "mean_distinct2": 0.918,
+    "mean_rep3": 0.06,
+    "mean_words": 90.6,
+    "mean_entries": 6.3,
+    "entries_per_100_tokens": 4.85,
+    "survival_%": 51.9,
+    "texts_below_8_entries_%": 57.5
+   },
+   "i5_k3_w5": {
+    "median_ppl_prefix": 22.32,
+    "median_ppl_ratio": 1.385,
+    "share_ratio_gt_1.25": 0.579,
+    "mean_distinct2": 0.925,
+    "mean_rep3": 0.058,
+    "mean_words": 102.8,
+    "mean_entries": 14.1,
+    "entries_per_100_tokens": 10.37,
+    "survival_%": 53.6,
+    "texts_below_8_entries_%": 12.5
+   }
+  }
+ },
+ "rows": [
+  {
+   "i": 0,
+   "prompt": "The city council met on Tuesday to discuss",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 100,
+     "enforced": 19,
+     "entries": 5,
+     "dropped_margin": 6,
+     "dropped_rank": 8
+    },
+    "i10_k10_w40": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 7,
+     "dropped_margin": 5,
+     "dropped_rank": 3
+    },
+    "i10_k10_w1": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 5,
+     "dropped_margin": 7,
+     "dropped_rank": 3
+    },
+    "i10_k3_w5": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 8,
+     "dropped_margin": 5,
+     "dropped_rank": 2
+    },
+    "i5_k3_w5": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 14,
+     "dropped_margin": 7,
+     "dropped_rank": 10
+    }
+   },
+   "prefix_tokens": 6,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 5,
+     "text": " ways to improve public safety.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 39,
+     "text": " ways to improve public safety.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFor more information on how or if the city is planning to approve a new light rail line, visit www.citycouncil.org.\n•\n\n\n\n\n\n\n\n\n-\n\n\n\n -\n\n\n\n\n\n\n\n\n\n-\n\n\nFollow Matthew Hiddens, Chief Executive Officer, on Twitter at @MatthewTheHiddens."
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 125,
+     "text": " ways to improve public safety.\n\n\n\n\n\n\n\n\n\n\n\n\n\nTampa Bay Police Chief Mark Davis said the changes would have to be implemented as part of the city's plan to increase police and fire prevention.\nDavis said the changes would create a more positive environment among the officers who work in the community, and will affect how long officers are on duty.\nOfficers who work in public safety, police and fire work are also subject to an arrest warrant, Davis said.\nDavis said the changes would \"cut the stigm"
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 118,
+     "text": " ways to improve public safety.\n\n\n\nOn Tuesday, the city's Council unanimously approved a pilot program that will improve the safety of its 311.1 million residents by improving the safety of its 2.4 million residents.\n\n\nThe council's public safety committee voted 2-1 to move forward with a report to the city's Public Safety Committee on Tuesday.\n\nIt also approved a $1 million modernization plan for its 311.01 million residents.\nThe plan includes a new public safety response to curb vehicle theft,"
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 126,
+     "text": " ways to improve public safety.\n\n\n\nA meeting with the city's public safety commission on Thursday was held to discuss ways to improve public safety.\n\n\n\nCouncil members met with city representatives in an effort to get the city to adopt a citywide initiative that aims to reduce accidents at a rate of one-third of the state's 1.3 million inhabitants.\n\n\nBut the council's efforts have been overshadowed by a protest by two men who say they were talking about a citywide initiative that would let peopl"
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 114,
+     "text": " ways to improve public safety, the city said in the report.\n\n\n\n\n\n\n\n\n\n\n\nA study of the results of the city's six-month study, published last week, found that the number of fatalities in 2015 has increased by 39%, a 14.3 per cent jump from 2015 and a 6.2 per cent increase from 2015.\n\n\nThe study, which was released by the city and the city's public health department on Wednesday, found that people have received a marked increase in homicide rates from 2012-2014.\n\nThe study's authors say that more "
+    }
+   }
+  },
+  {
+   "i": 1,
+   "prompt": "In the early morning, the research team",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 21,
+     "dropped_margin": 8,
+     "dropped_rank": 2
+    },
+    "i10_k10_w40": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 7,
+     "dropped_margin": 8,
+     "dropped_rank": 0
+    },
+    "i10_k10_w1": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 6,
+     "dropped_margin": 7,
+     "dropped_rank": 2
+    },
+    "i10_k3_w5": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 7,
+     "dropped_margin": 6,
+     "dropped_rank": 2
+    },
+    "i5_k3_w5": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 17,
+     "dropped_margin": 12,
+     "dropped_rank": 2
+    }
+   },
+   "prefix_tokens": 157,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 17.389020721673543,
+     "distinct2": 0.9256198347107438,
+     "rep3": 0.025000000000000022,
+     "words": 138,
+     "text": " and the other scientists were working on the game's mechanics. After hours of waiting, they got to work on the controls. By the time they finished work, they were able to play the game in more than two hours.\n\n\n\n\"The first thing we noticed in the game was that there was a huge number of players in the game that played at a lower cost than normal, with many being lower and some being higher. So we wanted to take that game back into the game.\"\nIn the final hour, the team spent more than half a da"
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": 19.53266782505124,
+     "distinct2": 0.9504132231404959,
+     "rep3": 0.008333333333333304,
+     "words": 131,
+     "text": " and the other scientists were discussing the best possible way to prevent the Ebola virus being spread to patients in Ghana.\n\n\n\n\n\"We thought maybe we should take some very cautious steps,\" said Dr. David Chinnag, a professor of epidemiology at the University School of Medicine in São Paulo. \"If we can get this virus out of Ghana, we've probably got to come before people to get it before they're going to get it out of Guinea by the end of the year.\"\nChinnagle and colleagues had just carried out "
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": 18.303221343417345,
+     "distinct2": 0.9338842975206612,
+     "rep3": 0.008333333333333304,
+     "words": 137,
+     "text": " and the other scientists were working on the game's engine, the software for the world's first online multiplayer online casino. The game is now available to download from the Play Store.\n\n\n\nThere is currently no proof that it will work as well, but it has been predicted that the game-wide online gambling market is actually growing by the end of the year, according to a recent study by the World Bank.\nFor example, in the first half of 2015, the biggest online gambling market in the world, gambl"
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": 11.912922092550813,
+     "distinct2": 0.8347107438016529,
+     "rep3": 0.04166666666666663,
+     "words": 140,
+     "text": " and the other scientists were working on the game's new game. The game was originally scheduled to launch in late September, but the team quickly decided to drop it before the game was released.\n\nAs the game was getting delayed, it was suddenly clear that if the game was going to be released, it was to be released in North America and Europe. And then when the game was announced, all of those things were confirmed.\nWhen the project was announced, the team immediately asked the team to make a ga"
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": 14.256034764256402,
+     "distinct2": 0.7024793388429752,
+     "rep3": 0.19999999999999996,
+     "words": 136,
+     "text": " and the other scientists were working on the game's effects on the size of the game. The researchers used a new method of measuring the size of the screen and the size of the screen's memory.\n\n\n\nThe researchers found that players who have played a lot of the game's modes on the map played significantly more games with smaller memory points than those who had played the first game.\nIn this study, the researchers used a new method of measuring the size of the screen and the size, which they calle"
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": 18.084208186758488,
+     "distinct2": 0.9586776859504132,
+     "rep3": 0.01666666666666672,
+     "words": 122,
+     "text": " and the other scientists were at the press conference and were watching the video of the conference. I'm not sure if the video was the best way to tell what's going on. But I think it's important to note that the researchers' findings are very similar. And that's not the only thing that is important. We're going to need to know how to turn this thing around, and we're going to need to see how it works.\n\n\n\n\n\nThis article is part of the E&E News Network, a global community of news, technology ins"
+    }
+   }
+  },
+  {
+   "i": 2,
+   "prompt": "A new study on sleep and memory suggests that",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 17,
+     "dropped_margin": 12,
+     "dropped_rank": 2
+    },
+    "i10_k10_w40": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 7,
+     "dropped_margin": 2,
+     "dropped_rank": 6
+    },
+    "i10_k10_w1": {
+     "tokens": 110,
+     "enforced": 10,
+     "entries": 1,
+     "dropped_margin": 3,
+     "dropped_rank": 6
+    },
+    "i10_k3_w5": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 6,
+     "dropped_margin": 1,
+     "dropped_rank": 7
+    },
+    "i5_k3_w5": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 14,
+     "dropped_margin": 10,
+     "dropped_rank": 7
+    }
+   },
+   "prefix_tokens": 23,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 21,
+     "text": " sleep quality has increased in many cases, suggesting that a lack of sleep is a common cause of excessive sleep problems.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 130,
+     "text": " sleep quality has increased in countries where the effects of long-term sleep deprivation might be underestimated.\n \"Sleep deprivation is particularly challenging when it comes to the ability to respond to chronic stress,\" says Prof Gudlitz, a professor of social sciences\n\nThe study, called “Sleep Disorders: A Clinical Review, has been published in the April issue of Psychological Science [PDF]. It has investigated the effects of long standing sleep deprivation on memory, cognition and behaviou"
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 122,
+     "text": " sleep quality has increased in many cases, suggesting that sleep may be linked to cognitive impairment.\n\n\n\n\n\n\n\n\n\n\n\nHe said: \"We have found that sleep quality has been associated with improvement in memory, memory, and memory in both men and women.\n\n\n\n\"Our findings confirm that the psychological and psychomotor skills associated with sleep quality, both female and male, are important for the prevention of sleep disorder and suggest that the main factor behind sleep's effects may be the general c"
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 37,
+     "text": " sleep quality has increased in many cases, suggesting that sleep may be linked to cognitive impairment.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCaught in the Trap:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMight be able to sleep longer, but most of the time, when asleep, may be more effective.\n\n\n\n\n\n\n\n"
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 70,
+     "text": " sleep quality has increased in many cases, suggesting that this is the case.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA recent study found that people with attention deficit disorder are less likely to report sleep problems than people with attention deficit disorder (ADHD).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIn a recent study, two of the most common sleep-related causes of ADHD have been ADHD. One, aphasia, was the \"only known ADHD\" disorder that has been reported in the last 20 years.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 126,
+     "text": " sleep quality has increased in the human brain, and in people.\n\n,\n\n\n\n,\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis is a very different set of studies in which sleep quality is directly related to sleep quality, but in a much more general context, a small number of studies show that sleep can be caused by the effects of sleep.\nThe study focused on people who had sleep quality or sleep quality as a measure of the amount of time they spent in sleep.\nThe study focuses on people who spent a lot on sleep and their body, and t"
+    }
+   }
+  },
+  {
+   "i": 3,
+   "prompt": "The history of the printing press shows",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 17,
+     "dropped_margin": 10,
+     "dropped_rank": 4
+    },
+    "i10_k10_w40": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 8,
+     "dropped_margin": 3,
+     "dropped_rank": 4
+    },
+    "i10_k10_w1": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 5,
+     "dropped_margin": 6,
+     "dropped_rank": 4
+    },
+    "i10_k3_w5": {
+     "tokens": 59,
+     "enforced": 5,
+     "entries": 0,
+     "dropped_margin": 3,
+     "dropped_rank": 2
+    },
+    "i5_k3_w5": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 16,
+     "dropped_margin": 10,
+     "dropped_rank": 5
+    }
+   },
+   "prefix_tokens": 59,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 15.244344676177446,
+     "distinct2": 0.8867924528301887,
+     "rep3": 0.038461538461538436,
+     "words": 134,
+     "text": " that the US was the first country to print its own printing press.\n\n\n\nThe Printing Press was one of the first printing presses in the United States.\nIt was invented in 1892 and was the first printing press on the US Patent and Trademark Office. The printing press was then known as the Print Press.\nIt was used as a service in many areas of the world.\nIt was the first printing press on the US Patent and Trademark Office. It was the first printing press on the US Patent and Trademark Office.\nIts p"
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": 23.373189836685277,
+     "distinct2": 0.7735849056603774,
+     "rep3": 0.07692307692307687,
+     "words": 142,
+     "text": " that the US was the source of the printing press; for example, the printers that could be made in the US were the first to produce the printing lines of the US-Canadian printing press; for one, the printing presses on the US-Canadian and the American printing presses were the first to produce most of the paper. Some of the early printers were made in the United States. The printer mill was run by a small shop that was not owned within the United States. Many of the printing press prints were pr"
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": 16.83589994284982,
+     "distinct2": 0.7735849056603774,
+     "rep3": 0.17307692307692313,
+     "words": 133,
+     "text": " that the US was the first country to print its first printed printed paper. This is one of the reasons why the US was the first country to print its first printed paper in history.\n\n\n In the 18th century, the US first issued a printing press by printing in 1848. When the printing press was first issued, it was followed by printing in the United States. In 1849, the US began printing at the end of the 19th century. In 1893, the US introduced the first printing press.\nIn 1898, the first printing "
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": 37.9083141880891,
+     "distinct2": 0.9245283018867925,
+     "rep3": 0.019230769230769273,
+     "words": 139,
+     "text": " that the US was the first country to print its official printed and printed paper. Although the press produced the printing press, it was the first nation to export and print printed paper.\n\n\n\nThe American printing press was first introduced in 1910 by the British Army in the British Army.\nThe printer in question was the American Edition. The American edition was printed by the British Army.\nThe original American edition was published in 1926, as it was from a piece of paper made by the British"
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": 15.943630688964273,
+     "distinct2": 0.8867924528301887,
+     "rep3": 0.038461538461538436,
+     "words": 54,
+     "text": " that the US was the first country to print its first printed printed paper. This is one of the earliest known instances of printing paper, which was later used for printing a wide variety of products. The US also became the first country to produce a printing press, which is the first printed paper."
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": 22.341747086902043,
+     "distinct2": 0.9433962264150944,
+     "rep3": 0.0,
+     "words": 137,
+     "text": " that the US was the second largest producer of printing and printing. The printing media was made by the United States government in 1939.\n\n\nIn the 1940s the American printing press was the most important source of printing in American history.\nThe United States produced approximately 42% of the world's paper in 1933, according to the World Factbook (WTF). The production was met with overwhelming support from the United States Congress. The US government was responsible for this success in obta"
+    }
+   }
+  },
+  {
+   "i": 4,
+   "prompt": "When the engineers opened the server room,",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 18,
+     "dropped_margin": 12,
+     "dropped_rank": 1
+    },
+    "i10_k10_w40": {
+     "tokens": 72,
+     "enforced": 7,
+     "entries": 2,
+     "dropped_margin": 2,
+     "dropped_rank": 3
+    },
+    "i10_k10_w1": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 6,
+     "dropped_margin": 9,
+     "dropped_rank": 0
+    },
+    "i10_k3_w5": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 9,
+     "dropped_margin": 3,
+     "dropped_rank": 3
+    },
+    "i5_k3_w5": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 16,
+     "dropped_margin": 11,
+     "dropped_rank": 4
+    }
+   },
+   "prefix_tokens": 71,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 26.845947530690864,
+     "distinct2": 0.9387755102040817,
+     "rep3": 0.04166666666666663,
+     "words": 136,
+     "text": " we were able to take advantage of the standard internal code we have written about.\n\n\nAnd since I know that there is no such thing as API to operate in an open, open, open, open, open, open world, I can't see why any of that is possible.\nAs you can see, we have implemented a few very important things, as well as some basic features that the dev team had been working on.\nThe first thing we needed to do was start making sure that our app was not running on a platform that was running on the KVM.\n"
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": 32.20852437550286,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 133,
+     "text": " we were able to take advantage of our success. When we first started with Server.net, we looked at the server backend development and wanted to make something happen. We started adding servers at all times.\n\n\n\nTo start with, we started to create an idea for server.net for use in the client side. We wanted to add service servers at all times. In order to use service servers, we started to create a client that would run on server, at any time.\nOne problem with server.gov\nWe used the new server na"
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": 36.50629921904239,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 50,
+     "text": " we were able to take advantage of the standard internal server interface, and we are very happy that our team has implemented the 1.8.1.1.1 feature.\n\n\n\nThere should be no surprises.\nIn addition to the addition of server and server settings, the server-port is also available in the app.\nSee also:"
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": 23.820522174052787,
+     "distinct2": 0.8367346938775511,
+     "rep3": 0.08333333333333337,
+     "words": 139,
+     "text": " we were able to take advantage of the standard internal processes by running an event-side process and getting the virtual machine started.\n\n\n\nIn the moment, we were working through all the processes for the virtual machine, we were able to start the server and then we were able to configure it. In the moment, we were able to configure an event-side process and then we were able to configure it.\nA bit of work\nWith our busy internal process in place, we were able to achieve the best possible per"
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": 19.436256191690866,
+     "distinct2": 0.9795918367346939,
+     "rep3": 0.0,
+     "words": 97,
+     "text": " we were able to take advantage of the standard internal server interface, and we are very happy that our team has implemented the 1.8.1.\n\n\nThe first release of the 1.4.1 is now available and as of now there are only 1.8.1.0 available.\nThe new 1.8.1 version is available in the 1.8.1.1 build.\nThe 1.8.1.1.1 build includes all of the new features of the 1.8.1.1.1 build.\nYou can now start running the latest version of the 1.8.x build by running the latest version of the 1.8.x build by running the la"
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": 68.78542250969267,
+     "distinct2": 0.9795918367346939,
+     "rep3": 0.0,
+     "words": 124,
+     "text": " we were able to take advantage of our success. Our training, we were given a year’s worth of experience and the hiring of a key architect.”\n\n\nIt is in fact a short time since the 2015 certification of the project, but the data is now readily available, thanks to Microsoft’’s approach to the internal development process.\nAt the time of the certification, the group was only 6,500.\n‪Read next: Microsoft invests in Windows 10\nMicrosoft is now a software and services company, with a core business of"
+    }
+   }
+  },
+  {
+   "i": 5,
+   "prompt": "Our quarterly report highlights three trends:",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 18,
+     "dropped_margin": 10,
+     "dropped_rank": 2
+    },
+    "i10_k10_w40": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 7,
+     "dropped_margin": 6,
+     "dropped_rank": 1
+    },
+    "i10_k10_w1": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 7,
+     "dropped_margin": 6,
+     "dropped_rank": 1
+    },
+    "i10_k3_w5": {
+     "tokens": 10,
+     "enforced": 0,
+     "entries": 0,
+     "dropped_margin": 0,
+     "dropped_rank": 0
+    },
+    "i5_k3_w5": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 16,
+     "dropped_margin": 7,
+     "dropped_rank": 8
+    }
+   },
+   "prefix_tokens": 0,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": null,
+     "distinct2": 0.0,
+     "rep3": 1.0,
+     "words": 0,
+     "text": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 0.0,
+     "rep3": 1.0,
+     "words": 101,
+     "text": "\n\n\n\n\nThis year’s earnings are higher than the year prior.\n\n\nThe Company’s earnings are higher than the year prior.\nThat’s not down from the year prior -- it is up from the year prior.\nWhile the Company’s earnings are up from Year-to-Year-and-Chart, according to the Company s earnings and the share price, they are down from Year-to of the year prior. Overall, they are down from Year-to-Threshold.\nConversely, the share price increases in the year prior may have been lower than the year prior.\nThe "
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 0.0,
+     "rep3": 1.0,
+     "words": 107,
+     "text": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAs a result, The Recession saw the largest $1.4 billion deficit in five years, but had largely recovered from the recession. The unemployment rate stood at 7.4 percent, down from 7 million in 2012 and to 6.9 percent in 2010, which has remained unchanged.\n\n\n\n\nThe decline in the unemployment rate was somewhat larger than the 2007 fiscal year, with the unemployment index at 7.3 percent. The unemployment rate was slightly lower, while the unemployment rate was at 7.3 percent.\n\nAs"
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": null,
+     "distinct2": 0.0,
+     "rep3": 1.0,
+     "words": 101,
+     "text": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAs a result, the Company has completed a 30-day turnaround on its global earnings per share to 1.99% from its recent 3.25%-year higher. The Company is now fully operating and expects to continue to expand its global earnings per share to 1.41% from its 2.25% earlier this year.\n\n\n\nOur results have been consistent with our expectations for the Company‬s current earnings per share (as determined by the Company‬s latest earnings per cent and earnings per share) and our latest ear"
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 0.0,
+     "rep3": 1.0,
+     "words": 0,
+     "text": "\n\n\n\n\n\n\n\n\n\n"
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 0.0,
+     "rep3": 1.0,
+     "words": 103,
+     "text": "\n\n\n\n\n•\n\n•\n•\n•\n•\n•\n•\n•\n•\n•\n•\n•\nWe expect that the results of this study will lead investors to expect to see an increase in stock prices for the second quarter.\n\n\n\n\n\n\n\n\n\n\n•\n•\nIn summary, the results indicate that the S&L market is experiencing a significant price improvement in the third quarter.\n\n\n\n\n\n\nWe expect that the S&L market will now see a corresponding increase in stocks for the second quarter.\n\n\n\nThe S&L market is also expected to see significant gains in the shares in the second quarter"
+    }
+   }
+  },
+  {
+   "i": 6,
+   "prompt": "The old lighthouse keeper wrote in his journal",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 20,
+     "dropped_margin": 9,
+     "dropped_rank": 2
+    },
+    "i10_k10_w40": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 8,
+     "dropped_margin": 4,
+     "dropped_rank": 3
+    },
+    "i10_k10_w1": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 0,
+     "dropped_margin": 5,
+     "dropped_rank": 10
+    },
+    "i10_k3_w5": {
+     "tokens": 82,
+     "enforced": 8,
+     "entries": 2,
+     "dropped_margin": 3,
+     "dropped_rank": 3
+    },
+    "i5_k3_w5": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 18,
+     "dropped_margin": 7,
+     "dropped_rank": 6
+    }
+   },
+   "prefix_tokens": 80,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 26.02714455219071,
+     "distinct2": 0.9411764705882353,
+     "rep3": 0.04477611940298509,
+     "words": 129,
+     "text": ": \"The reason for my leave was because I'd never been a big man.\"\n\n\n\nIn his journal, he said: \"There were times I didn't feel good enough to walk through the island but I felt better because of how I looked, how I looked, how I felt.\n\"I think I've done a great job in taking care of my loneliness.\n\"But I really didn't want to leave. I thought I would be nice to the others.\n\"My view is that it was better to leave because I'd never been a big man and I would have been happy if I had been there.\n\"I "
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": 24.861229117756142,
+     "distinct2": 0.8823529411764706,
+     "rep3": 0.07462686567164178,
+     "words": 127,
+     "text": ": \"The reason for the decline of the coalmining industries is that coal, and other industrial waste, is so important that it is so important that it be used for safety and good for people.\"\n\n\n\n\nThe coal mining industry is expected to grow by $1 billion in the next few years, according to the report, as coal prices soar.\nIt is also expected to grow by $4.5 billion in the next three years.\n\"For two years, the coal industry will grow by $1 billion, and the future will be mainly coal industry and co"
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": 26.668930625950498,
+     "distinct2": 0.9558823529411765,
+     "rep3": 0.014925373134328401,
+     "words": 138,
+     "text": ": \"The reason for my leave was because I was looking for a way to get a better job. It was the only place I knew I could get a better job.\"\n\n\n\nThe couple eventually agreed to work in the new field of lighthouse research, where they would spend the next couple, which would bring them up to the level of the new lighthouse and provide the vision that they wanted the whole project to be.\n\"I believe that I have a job, but I don't want to see the number of people I can work, and that would be a big ch"
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": 25.30602184754587,
+     "distinct2": 0.9705882352941176,
+     "rep3": 0.0,
+     "words": 123,
+     "text": ": \"The reason for my leave was because I don't see much of a lighthouse. I can just look at my neighbors and see where there are the best things to do.\"\n\n\n\nSo the next day, a man walked into the lighthouse and asked if he had any information on what happened.\n\"No,\" he said, \"just a phone call. I'm not even sure, but I'm not sure I can say a word.\"\nThe man answered by saying that he has been left with nothing.\n\"I'm leaving now,\" the man said, \"and I know there are no guys here.\"\nHear back, she to"
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": 29.57701974196006,
+     "distinct2": 0.9558823529411765,
+     "rep3": 0.014925373134328401,
+     "words": 69,
+     "text": ": \"The reason for my leave was because I felt as though my country was a huge country. My people were so simple and the people were so strong that I felt the need to serve. I wanted to know how I could handle this.\"\n\n\n\n\n\"I'm not saying that it was just my job to keep a lighthouse keeper, but the truth is that you could get my job.\""
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": 19.623034791390083,
+     "distinct2": 0.9852941176470589,
+     "rep3": 0.0,
+     "words": 129,
+     "text": ": \"The reason for the decline of the coal-fired power plant in South Australia is that coal-fired power plants can be developed at affordable prices in a high-profile and sustainable manner. Coal was a major contributor to South Australia's energy transition from coal to coal, and now, even at an affordable cost, it is now the first country ever to do so.\" He wrote: \"I hope that the coal-based plans for the South Australians, which will be implemented by the South Australian Energy and Climate C"
+    }
+   }
+  },
+  {
+   "i": 7,
+   "prompt": "Scientists have long debated whether",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 106,
+     "enforced": 21,
+     "entries": 12,
+     "dropped_margin": 8,
+     "dropped_rank": 0
+    },
+    "i10_k10_w40": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 9,
+     "dropped_margin": 5,
+     "dropped_rank": 1
+    },
+    "i10_k10_w1": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 2,
+     "dropped_margin": 3,
+     "dropped_rank": 9
+    },
+    "i10_k3_w5": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 8,
+     "dropped_margin": 4,
+     "dropped_rank": 3
+    },
+    "i5_k3_w5": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 16,
+     "dropped_margin": 10,
+     "dropped_rank": 5
+    }
+   },
+   "prefix_tokens": 12,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 10,
+     "text": " the noxious effect of such a phenomenon could be reversed.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 93,
+     "text": " the noxious effect of the toxin is actually responsible for the toxicity of the toxin. The fact is (not surprisingly) that the toxin has been linked to smoking for more than 15 years, and that the toxin has been linked over the years to a number of health problems including cancer, diabetes, diabetes... and cancer.\nFor those of you who have been exposed to the harmful chemicals in our environment, you can read more about how our environment is changing and how the chemicals are causing the heal"
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 118,
+     "text": " the noxious effect of such a phenomenon could be explained by the increased frequency of women taking anticondulsants, which are known as anticonin. These anticonin can also be an aphrodisiac, a potent aphrodisist that comes from the Thai culture.\n\nWhen men take anticonin, they typically have smaller concentrations of their anticonin, which can attract women to their homes, and to the hair in their hair. This can be seen in insects with long hair, and as long as a few bites, the anticonin can a"
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 74,
+     "text": " the noxious effect of such a phenomenon could be explained by the increased frequency of women taking anticonvulsants. The study suggests that although many female smokers may still have a negative effect on the immune system, there are some women who do have positive results in the treatment of their hormone replacement therapy:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWe do not believe the increasing frequency of women taking anticonvulsants should be explained by the more se"
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 113,
+     "text": " the noxious effect of such a phenomenon could be explained by the increased frequency of women taking anticonclonal injections (anticonclonal injections) in women. However, a new study suggests that anticonclonal injections, including the anticonclonal injection, also have an additional protective effect on fetal development.\n\n\n\n\nThe authors of the study, who carried out the study and, despite their recent finding that anticoncloning therapy can be harmful to fetuses, used anticonclonal injecti"
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 134,
+     "text": " the noxious effect of marijuana on humans is to blame for a series of problems in the body.\n\n\n\n\nIn a post published in the journal Nature Communications, scientists describe a bizarre phenomenon in which the immune system's response to a chemical called cannabinoids (CBD) is not fully understood or even understood.\nCBD may lead to an increased risk of cancer among people who have been smoking marijuana for a long-term period, according in the study published in the journal Nature.\nIt is known t"
+    }
+   }
+  },
+  {
+   "i": 8,
+   "prompt": "The recipe calls for fresh tomatoes and",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 21,
+     "dropped_margin": 6,
+     "dropped_rank": 4
+    },
+    "i10_k10_w40": {
+     "tokens": 55,
+     "enforced": 5,
+     "entries": 2,
+     "dropped_margin": 2,
+     "dropped_rank": 1
+    },
+    "i10_k10_w1": {
+     "tokens": 74,
+     "enforced": 7,
+     "entries": 4,
+     "dropped_margin": 3,
+     "dropped_rank": 0
+    },
+    "i10_k3_w5": {
+     "tokens": 112,
+     "enforced": 11,
+     "entries": 8,
+     "dropped_margin": 3,
+     "dropped_rank": 0
+    },
+    "i5_k3_w5": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 16,
+     "dropped_margin": 9,
+     "dropped_rank": 6
+    }
+   },
+   "prefix_tokens": 47,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 36.345729196905204,
+     "distinct2": 0.8846153846153846,
+     "rep3": 0.07999999999999996,
+     "words": 114,
+     "text": " tomatoes.\n\n\n\nThe recipe also uses tomato sprouts.\nThe recipe also uses jalapeno peppers.\nThey can be made with leftover tomatoes.\nHowever, they have to be left unsweetened.\nBaking Instructions\nPrep time: 30 minutes\nCook time: 30 minutes\nServes 4\nCook time: 30 minutes\nCook time: 30 minutes\nPlace tomatoes in a baking dish.\nPut the tomatoes in a pot and cook for a minute.\nOnce they are in the pot, place the tomatoes in a large pot and cook for a minute.\nNow place the tomatoes in a pot.\nAdd the tom"
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": 84.60969342744666,
+     "distinct2": 0.9615384615384616,
+     "rep3": 0.0,
+     "words": 119,
+     "text": " tomatoes.\n\n\n\n\nIngredients:\nVegetables:\nFor the best sliced tomatoes - or just to make the best pompeas - you can cut all the meat in the tomatoes from the sides.\n(If you want meat to be sliced, you can cut them to make the best pompeas - or just to make the best pompeas - you've got to cut them to make the best pompeas - or just to make the best luscious tomatoes - we suggest using a chile blend).\nFor any sliced tomatoes - or just to make the best pompeas - you can cut them to keep the water fl"
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": 55.59711192450344,
+     "distinct2": 0.7692307692307693,
+     "rep3": 0.12,
+     "words": 27,
+     "text": " tomatoes.\n\n\n\nThe recipe also uses black pepper, black pepper, salt, and pepper.\nSee also [ edit ]\n\n\n\n\n\n\n\n\n\n\n\n\nOther blogs [ edit ]\n\n\n\n\nOther comments [ edit ]"
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": 81.69982445254031,
+     "distinct2": 0.8461538461538461,
+     "rep3": 0.07999999999999996,
+     "words": 39,
+     "text": " tomatoes.\n\n\n\nThe recipe also uses a mixture of frozen-cut tomatoes and fresh basil.\n(Image: Flickr)\nImage: Flickr)\nImage: Flickr)\nImage: photo.com/emood\nImage: Flickr - Dayla\nImage: Flickr)\nImage: Flickr - More news from the world of cucrows and greens."
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": 26.352993878191366,
+     "distinct2": 0.7307692307692307,
+     "rep3": 0.19999999999999996,
+     "words": 63,
+     "text": " tomatoes.\n\n\n\nThe recipe also uses a mixture of frozen-cut tomatoes and fresh basil and basil.\nThe recipe also uses a mixture and a mix of frozen-cut tomatoes and fresh garlic.\nThe recipe also uses a mixture of chilled-cut tomatoes and fresh basil and basil. (Photo: Hal Williams)\n(Photo: Photo: Hal Williams)\n(Photo: Hal Williamson)\n(Photo: Hal Williams)\nRead or Share this story: http://delonline.-em.us/1h6iUjj"
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": 35.33037381532225,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 97,
+     "text": " tomatoes.\n\n\n\n\nIngredients:\nA tomato, chopped and peeled and diced.\n2.1/2 cups chopped fresh tomatoes.\n3.5/3 cup water\n2 1/4 cups fresh red wine, chopped\n1/4 cup olive Oil, boiled\n1 tablespoon olive oil\n1-2 tablespoons cumin\n1/4 cup red wine, minced\n1-2 tablespoons calery powder\n1/4 cup black pepper or vegetable oil\n1/4 cup fresh red wine, minced\n1 1/4 cup dark cumin\n1/8 teaspoon vanilla extract\nMethod:\nHeat a pan of oil in a large bowl and add the olive oil.\nTake the tomatoes and tomatoes and a"
+    }
+   }
+  },
+  {
+   "i": 9,
+   "prompt": "Before the election, voters in the district",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 152,
+     "enforced": 30,
+     "entries": 15,
+     "dropped_margin": 10,
+     "dropped_rank": 5
+    },
+    "i10_k10_w40": {
+     "tokens": 118,
+     "enforced": 11,
+     "entries": 5,
+     "dropped_margin": 3,
+     "dropped_rank": 3
+    },
+    "i10_k10_w1": {
+     "tokens": 80,
+     "enforced": 7,
+     "entries": 1,
+     "dropped_margin": 2,
+     "dropped_rank": 3
+    },
+    "i10_k3_w5": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 4,
+     "dropped_margin": 5,
+     "dropped_rank": 6
+    },
+    "i5_k3_w5": {
+     "tokens": 152,
+     "enforced": 30,
+     "entries": 11,
+     "dropped_margin": 12,
+     "dropped_rank": 6
+    }
+   },
+   "prefix_tokens": 21,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 19,
+     "text": " were divided about whether they would vote for Hillary Clinton in the general election, according to the Associated Press.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 0.9333333333333333,
+     "rep3": 0.0,
+     "words": 116,
+     "text": " were divided about whether they would support Donald Trump.\n\n\n\n\nMr. Trump said he would support Mr. Cruz even if he were not the nominee.\n\nAsked about the nature of the race, Mr. Comey said that Mr. Trump's comments came as a result of an investigation into his ties to Russia but not as a result of his own efforts. As a result, he said, Mr. Trump may have a different message against Mr. Comey. Instead, he said, Mr. Comey should not have been able to see the result.\n\n\n\nMr. Comey and Mr. Trump's "
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 29,
+     "text": " were divided about whether they would vote for Hillary Clinton.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n“\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n​\n\n\n\n\n\n\n\n\n\"\n\n\n\n\n\n\n\n\n​​\n\n\n\n\n\n\n\n\n |\n\n\n\n\n\n\n\n\nThis post was written by Michael Vollmer, a former assistant attorney general of Michigan."
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 16,
+     "text": " were divided about whether they would vote for Hillary Clinton over Donald Trump.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSECTION 2.1.1.\n\n-\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 85,
+     "text": " were divided about whether they would vote for Hillary Clinton.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIn the meantime, the election was still unfolding. In many cases, it was not as if a large majority of voters were undecided, but just like most voters, voters decided on whether to vote for Clinton.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOn the other side of the aisle, Clinton made an unexpected move with the announcement of her support for Trump, where she said she would not support the president.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShe made "
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 116,
+     "text": " were divided about whether they were eligible for the Senate.\n\n\n\n“I would like to thank the members of the Republican Party for their support for our election, but also to the people on both sides of the issue and for their support. I would like to thank them for their support for our election, but only because they have been able to get these votes,““ I was asked by a number of reporters who were asked what they would do if they were elected president in 2017.\n‡\n‡\nWe will be holding a special "
+    }
+   }
+  },
+  {
+   "i": 10,
+   "prompt": "Dear customer, we are writing to inform you that",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 20,
+     "dropped_margin": 4,
+     "dropped_rank": 7
+    },
+    "i10_k10_w40": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 9,
+     "dropped_margin": 3,
+     "dropped_rank": 3
+    },
+    "i10_k10_w1": {
+     "tokens": 63,
+     "enforced": 6,
+     "entries": 2,
+     "dropped_margin": 0,
+     "dropped_rank": 4
+    },
+    "i10_k3_w5": {
+     "tokens": 114,
+     "enforced": 11,
+     "entries": 7,
+     "dropped_margin": 4,
+     "dropped_rank": 0
+    },
+    "i5_k3_w5": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 19,
+     "dropped_margin": 9,
+     "dropped_rank": 1
+    }
+   },
+   "prefix_tokens": 50,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 31.520625486802665,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 42,
+     "text": " they are going to be shipping a letter to their respective business partners. They will be contacting them and demanding that they be notified about their shipment.\n\n\n\n\nIn the meantime, please consider contacting our customer service. You can see our letter below:"
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": 40.308737249654385,
+     "distinct2": 0.9512195121951219,
+     "rep3": 0.025000000000000022,
+     "words": 131,
+     "text": " they are going to be required to request a payment under the T&D policy.\n\n\nAfter the customer stated, this means that we have requested payment through the TTM, you will be required to get a valid e-mail within 2 business days to receive this change.\n‹ A customer has requested payment through the TTM.\n‹ This means that we will have to obtain a refund to pay for the change, and we will not be able to provide refunds to you.\n‹ This means that we will have required payment through the T4, you will"
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": 11.492150290894214,
+     "distinct2": 0.5121951219512195,
+     "rep3": 0.4,
+     "words": 146,
+     "text": " they are going to be shipping a letter to their store and that they are going to be shipping their letter to the store and that they are going to be shipping the letter to their store and that they think this is a good idea and that they are going to be shipping the letter to their store and there is no reason for this to happen.\n\n\n\nWe are going to be reaching out to you on Twitter, and we'll be sending you a copy of the letter.\nThank you on behalf of the store, and you are very happy that you "
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": 38.50067500050152,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 46,
+     "text": " they are going to be shipping a letter to their employees informing them of their decision not to return their order.\n\n\n\n“If you have any questions please let me know,”\n“I have received the letter and they're not as upset as I am as I am.”"
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": 32.00518108301772,
+     "distinct2": 0.8780487804878049,
+     "rep3": 0.050000000000000044,
+     "words": 97,
+     "text": " they are going to be shipping a letter to their agent about their return.\n\n\n\nThe letter said they are looking for a representative to work with, and they are looking for an individual to help them find the right people.\nThe letter was sent on Sunday afternoon, but it is still in the mail.\nWe do not know if the letter will be returned.\nWe are sorry about the situation and hope that you will find a more personalized letter soon.\nWe can't yet confirm if they will be sent to the UK or to the UK."
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": 27.917198838231815,
+     "distinct2": 0.7560975609756098,
+     "rep3": 0.19999999999999996,
+     "words": 123,
+     "text": " they are going to be contacted immediately and are contacted immediately.\n\n\nPlease send an email to your friend at info@hiromets.net with the following line:\n-\n-\n-\n-\n-\n-\n- \n-\n-\n-\n-\n--\n--\n-  \n--\nWe appreciate your support and hope that you will continue to make our efforts to reach out to our friends and supporters to discuss the upcoming campaigns.\nPlease keep our track of the campaign and support that is currently being prepared by our staff. We hope to see you soon, as we get closer to the fi"
+    }
+   }
+  },
+  {
+   "i": 11,
+   "prompt": "The court found that the defendant",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 16,
+     "dropped_margin": 7,
+     "dropped_rank": 8
+    },
+    "i10_k10_w40": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 5,
+     "dropped_margin": 4,
+     "dropped_rank": 6
+    },
+    "i10_k10_w1": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 6,
+     "dropped_margin": 6,
+     "dropped_rank": 3
+    },
+    "i10_k3_w5": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 13,
+     "dropped_margin": 1,
+     "dropped_rank": 1
+    },
+    "i5_k3_w5": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 20,
+     "dropped_margin": 7,
+     "dropped_rank": 3
+    }
+   },
+   "prefix_tokens": 97,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 4.651226516840902,
+     "distinct2": 0.5217391304347826,
+     "rep3": 0.4505494505494505,
+     "words": 93,
+     "text": " had a prior history of intentional infliction of emotional distress and that it was not at all unreasonable to believe he would be subject to the mental health treatment or treatment he was required to receive if he was to receive the treatment. The Court also found that the defendant had a prior history of intentional infliction of emotional distress and that it was not at all unreasonable to believe he would be subject to the mental health treatment or treatment he was required to receive if "
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": 34.28267326022884,
+     "distinct2": 0.8586956521739131,
+     "rep3": 0.08791208791208793,
+     "words": 109,
+     "text": " had a prior history of mental health problems, even though he did not have a criminal record, the judgment ruled.\n\n\n\n\n\n\n\n\n\n\n\nMr. Harkins (a former assistant district attorneys general) said that such claims were made at school and he did not find them to be true by anyone other than the defendant.\n\n\n\n\n\n\n\nWhile he did not prove it is true, he cited a history of mental health issues that he believed were used to coerce defendants to provide them with new work, including work from prison.\n\n\nMr. Ha"
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": 7.544107048201414,
+     "distinct2": 0.532608695652174,
+     "rep3": 0.3846153846153846,
+     "words": 100,
+     "text": " had a prior history of intentional infliction of emotional, mental or physical distress, and that the defendant had a prior history of an intentional infliction of emotional, mental or physical distress. The court also found that the defendant had a prior history of an intentional infliction of emotional, mental or physical distress. This court also found that the defendant had a first and second history of intentional infliction of emotional atonement.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": 18.648242850407243,
+     "distinct2": 0.8260869565217391,
+     "rep3": 0.15384615384615385,
+     "words": 110,
+     "text": " had a prior history of intentional infliction of emotional, emotional and psychological distress, and that he had engaged in criminal conduct for the purposes of causing serious bodily harm and other adverse effects. He also admitted that he had engaged in criminal conduct for the purpose of causing serious bodily harm and other adverse effects. A state court order dismissed the case.\n\n\n\n\n\n\n\n\n\n\n\n1.\n\n2.\n3.\nIn addition to his previous convictions, he has been convicted of three separate felonies "
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": 4.831149581131168,
+     "distinct2": 0.391304347826087,
+     "rep3": 0.5494505494505495,
+     "words": 136,
+     "text": " had a prior history of intentional infliction of emotional distress, and that the defendant had no prior history to such an injury, and that the defendant had the prior history of intentional infliction of emotional distress (in this case, as defined in Section 3), and that the defendant had no prior history of infliction of emotional distress (in this case, as defined in Section 3), and that the defendant's prior history of intentional infliction of emotional distress (in this case, as defined"
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": 9.315977510603838,
+     "distinct2": 0.6739130434782609,
+     "rep3": 0.20879120879120883,
+     "words": 139,
+     "text": " had a prior history of mental health problems, even though he did not have prior mental health problems, and that the petitioner․ was an adult and not a minor, the judge concluded that the defendant had a prior history of the mental health problems, even though he did not need to do so. In sum, the judge concluded that, in the absence of a prior history of the mental health problems, the defendant could have been convicted of the assault of a child. The court determined that the defendant's pri"
+    }
+   }
+  },
+  {
+   "i": 12,
+   "prompt": "In a statement released on Monday, the ministry",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 42,
+     "enforced": 8,
+     "entries": 2,
+     "dropped_margin": 3,
+     "dropped_rank": 3
+    },
+    "i10_k10_w40": {
+     "tokens": 98,
+     "enforced": 9,
+     "entries": 6,
+     "dropped_margin": 3,
+     "dropped_rank": 0
+    },
+    "i10_k10_w1": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 3,
+     "dropped_margin": 7,
+     "dropped_rank": 5
+    },
+    "i10_k3_w5": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 8,
+     "dropped_margin": 6,
+     "dropped_rank": 1
+    },
+    "i5_k3_w5": {
+     "tokens": 65,
+     "enforced": 12,
+     "entries": 5,
+     "dropped_margin": 5,
+     "dropped_rank": 2
+    }
+   },
+   "prefix_tokens": 41,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 64.12741621675144,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 134,
+     "text": " said that the Ministry of Culture and Culture has accepted responsibility for the recent spate of incidents of vandalism at the Met’s offices and the tweets that were carried out on May 15.\n\n\n\n“We are aware that the number of vandalism against the Met was slightly below the normal level in May, but we are aware that the number of tweets was below the normal level in May,” the statement said.\n“This is yet another matter in which we are aware of incidents and will continue to provide information "
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": 75.96459901646918,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 25,
+     "text": " said that the Ministry of Education, Education, and Education are being instructed to ensure that all students in the study have the right qualifications.\n\n\n.@sec.h/uS9KZ6"
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": 38.68572270690313,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 82,
+     "text": " said that the Ministry of Culture and Culture has accepted the proposal.\n\n\n\n\n\n\"Given the difficulties faced by the government and the family under the age of five, we welcome the government being able to take responsibility for the work and the social impact of the decision,\" the statement said.\nThe ministry said that the ministry has agreed to have a meeting on Monday, January 14.\nSome 300 families who have been affected by the decision have also been affected by the decision."
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": 52.62408297891851,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 116,
+     "text": " said that the Ministry of Culture and Culture has accepted requests from the UK and the US to investigate the activities of the Norwegian, Swedish, and other countries involved in the conflict.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n‪\n\n\n\n\n\n\n\nWe are informed that a total of 23 terrorist attacks have been committed in the past 24 hours in Norway on the Russian and Norwegian border. The number of attacks has increased significantly over the past few days, in which 29 were carried out in the first 24 hours of Aug"
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": 27.83571568329591,
+     "distinct2": 0.9583333333333334,
+     "rep3": 0.0,
+     "words": 138,
+     "text": " said that the Ministry of Culture and Culture has accepted the proposal.\n\n\n\n\n\n\"I am very pleased to say that the ministry has decided that we will be looking at the issue of a Chinese-owned media outlet. We will continue working with the government to ensure that the future is not only for the media but for the Chinese people in general,\" the statement said.\nThe ministry said the ministry's announcement was the latest development in a string of recent government actions in China that have been "
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": 23.11134537925297,
+     "distinct2": 0.9583333333333334,
+     "rep3": 0.0,
+     "words": 59,
+     "text": " said that the Ministry of Education, Education, and Pensions were under investigation and that it was taking further action to ensure that the public had access to the information and services they provide to their children.The ministry said that the education ministry had not taken a comprehensive approach in tackling child pornography and had not acted on the matter."
+    }
+   }
+  },
+  {
+   "i": 13,
+   "prompt": "The insurance policy covers damage caused by",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 19,
+     "dropped_margin": 10,
+     "dropped_rank": 2
+    },
+    "i10_k10_w40": {
+     "tokens": 29,
+     "enforced": 2,
+     "entries": 0,
+     "dropped_margin": 1,
+     "dropped_rank": 1
+    },
+    "i10_k10_w1": {
+     "tokens": 26,
+     "enforced": 2,
+     "entries": 1,
+     "dropped_margin": 0,
+     "dropped_rank": 1
+    },
+    "i10_k3_w5": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 9,
+     "dropped_margin": 6,
+     "dropped_rank": 0
+    },
+    "i5_k3_w5": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 20,
+     "dropped_margin": 3,
+     "dropped_rank": 8
+    }
+   },
+   "prefix_tokens": 7,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 6,
+     "text": " the first wave of storm damage.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 129,
+     "text": " the first wave of storm Katrina, which devastated homes and disrupted business.\n - 8:00 p.m. - The National Hurricane Center said the storm is expected to bring about 9.5 inches of rain to the region from the Florida Keys, in a statement.\nBut the storm is expected to touch the southeastern coast by Saturday.\n\n\nPiers Morgan, deputy state director for the National Weather Service, said the storm is expected to affect more than 10,280 homes.\n\"So far we have seen a strong but low level of rain in t"
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 24,
+     "text": " the first wave of storm damage.\n\n\nThis is the first hurricane to hit the United States since the storm hit Puerto Rico in April."
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 21,
+     "text": " the first wave of storm damage.\n\n\nIt is unclear if the New York City government will be looking into the matter."
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 117,
+     "text": " the first wave of storm damage.\n\n\nA 30-year-old man has been arrested after his wife said she was 'spooked' by the storm's landfall.\n\n\n\nPolice have described the man as a 'princusant' and described his wife as 'punchy' and said the woman had a large amount of money in her pocket.\n\n'She said she had 'a £250 bill' for the bill and told police she was 'spooked' by the storm's landfall\nThe woman has been charged with aggravated assault with a dangerous weapon in the case.\nHe has been charged with a"
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 123,
+     "text": " the first wave of storm surges or dangerous weather. It can be charged by up to $15 per month for a maximum of $50 for a maximum of $50 for a maximum of $50 for a maximum of $50 for a maximum of $50 for a maximum of 50 for a maximum of $50 for a maximum of $50 for a limit of $50 for a maximum of $50 to a maximum of $51 for a maximum of $50 for a maximum of $50 for a maximum of $50 for a maximum of $50 for a maximum of $5 for a maximum of 10 minutes.\n\n\n\n\n\n\n\n\n\n\n\nIn 2018, up to $35,000 of the $45,"
+    }
+   }
+  },
+  {
+   "i": 14,
+   "prompt": "Students returning to campus this fall will notice",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 16,
+     "dropped_margin": 9,
+     "dropped_rank": 6
+    },
+    "i10_k10_w40": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 4,
+     "dropped_margin": 1,
+     "dropped_rank": 10
+    },
+    "i10_k10_w1": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 3,
+     "dropped_margin": 8,
+     "dropped_rank": 3
+    },
+    "i10_k3_w5": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 6,
+     "dropped_margin": 7,
+     "dropped_rank": 2
+    },
+    "i5_k3_w5": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 11,
+     "dropped_margin": 16,
+     "dropped_rank": 4
+    }
+   },
+   "prefix_tokens": 113,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 15.678150825852066,
+     "distinct2": 0.86,
+     "rep3": 0.08163265306122447,
+     "words": 127,
+     "text": " that the student newspaper, Students for Peace and Democracy, was absent for the first time on Friday, March 21.\n\n\n\n\nStudents for Peace and Democracy, a student organization that has been on the streets of Montgomery since 2007, is closing its doors and will close its doors on Friday, March 21, according to the Montgomery County Clerk's Office.\n\nA letter from the students' association that runs the student newspaper's website sent to the school's spokesman said the students' association has an "
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": 31.391869891990297,
+     "distinct2": 0.98,
+     "rep3": 0.0,
+     "words": 123,
+     "text": " that the student newspaper, called the Stop Campus Feminisation Facebook page, has been shut down.\n\n\n\n\n\"We've learned that we want to stay up to date with our demands, and we'll continue to put up a policy to ensure that we don't turn away students from being identified as being sexist, antisocial or antisocial\".\n\nThe page then says \"Please note – we are taking action that will prevent students from being identified as being non-binary and non-biological\".\nIt notes that while the article is a \""
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": 14.648572071281848,
+     "distinct2": 0.9,
+     "rep3": 0.08163265306122447,
+     "words": 51,
+     "text": " that the student newspaper, Students for Peace and Democracy would not be permitted to publish this material in a manner that would negatively impact the student's safety.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n[and]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n—\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n(As you can see, the entire student newspaper is being banned from the campus.\n\n\nHere's how the student newspaper, Students for Peace"
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": 21.02451433081196,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 128,
+     "text": " that the student newspaper, Students for Peace and Democracy have published a different story about the administration‏s decision to publish a story that was misleading and misleading, and that will be published on July 19th. The story was intended to expose the administration that had taken its position on the issue.\nI've read about several stories about the administration‏s decision to publish a story that was misleading but misrepresented and misrepresented by the Student Government.\nI've al"
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": 19.434847517507688,
+     "distinct2": 0.88,
+     "rep3": 0.08163265306122447,
+     "words": 134,
+     "text": " that the student newspaper, Students for Peace and Democracy has become the subject of a number of student protests.\n\n\n\n\nStudents for Peace and Democracy will not be appearing on campus on October 21 to protest the planned upcoming campus protest.\n\nA number of student organizations have petitioned campus police to stop the planned protest.\nThe protest started on Friday, October 20, with a protest on the campus of UC Berkeley in the parking lot of the Berkeley campus.\nThe student newspaper's pre"
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": 22.289032553210397,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 128,
+     "text": " that the student newspaper, Student Voice, is now a distinct student organization.\n\n\n\nThe newspaper, which has been a member of the Student Student Voice since 2011, has more than 500 employees in total, including about 1,500 new staff and staff. The student group is comprised of about 1,800 faculty, student partners, and the student newspaper has a total total of 2,000 faculty members.\nA total of 3,800 student members are currently in charge of Student Voice.\nAlthough the newspaper is currentl"
+    }
+   }
+  },
+  {
+   "i": 15,
+   "prompt": "The museum's new exhibition explores",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 14,
+     "dropped_margin": 8,
+     "dropped_rank": 9
+    },
+    "i10_k10_w40": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 9,
+     "dropped_margin": 5,
+     "dropped_rank": 1
+    },
+    "i10_k10_w1": {
+     "tokens": 54,
+     "enforced": 5,
+     "entries": 1,
+     "dropped_margin": 2,
+     "dropped_rank": 2
+    },
+    "i10_k3_w5": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 4,
+     "dropped_margin": 6,
+     "dropped_rank": 5
+    },
+    "i5_k3_w5": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 17,
+     "dropped_margin": 5,
+     "dropped_rank": 9
+    }
+   },
+   "prefix_tokens": 29,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 25,
+     "text": " new concepts for the emerging digital era, with art historians and post-internet experts investigating how digital and physical art transforms the world and the past.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 110,
+     "text": " new concepts for the emerging art and culture, taking place on June 22 at 13:30 a.th. Admission is free!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHere's a brief description in the end of this collection of interactive work, \"The Art of Life for the People, by the American Art Movement: Lessons from the Art Movement.\"\nThe museum's exhibit features a series of educational slides, gallery tours featuring interviews with museum visitors for the exhibition, and a workshop on the art and culture of the arts aroun"
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 0.9583333333333334,
+     "rep3": 0.0,
+     "words": 124,
+     "text": " new concepts for the emerging digital era, with art galleries like the Open Library, the Institute for Technology Informatics, the University of Toronto, the University of Toronto and the Toronto Museum of Art. Check out the gallery's official gallery page.\nI spoke to Toronto's most famous artist, Pierre Brzezinski, about the digital era. (Photo: Jean-Jacques Béry) A Canadian artist who has had the privilege of being on a tour with the Library of Congress.\nA journalist, Brzezinski said the idea"
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": null,
+     "distinct2": 0.9583333333333334,
+     "rep3": 0.0,
+     "words": 47,
+     "text": " new concepts for the emerging digital era, with artisans working with old figures and old figures from the past. The exhibition will explore the past, new ways to change the way we work, and a few interesting aspects of our lives, including how we live our lives."
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 97,
+     "text": " new concepts for the emerging digital era, with art galleries like the Open Library, the Institute for Technology's Digital Vision and the Academy of Technology's Digital Media.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis is the first ever exhibition from the Chicago Museum of Art.\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe exhibitions will focus on concepts such as computer-generated images, digital media, and digital technology, as well as how the new digital era can be changed.\n\n\nThe exhibition will feature numerous different wa"
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 112,
+     "text": " new concepts for the emerging cultural landscape of the South China Sea, with this exhibition, like the final exhibition in September, on the oceanfront.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIn the sea of the South China Sea, the exhibition draws on the work that has been done in the past. The photographs, printed in new print by Studio Jellis, document the journey of an international group of scientists, and explore the forces that have shaped the future landscape in the South China Sea.\n\n\nA great deal of the "
+    }
+   }
+  },
+  {
+   "i": 16,
+   "prompt": "According to the latest figures from the bureau,",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 17,
+     "dropped_margin": 7,
+     "dropped_rank": 7
+    },
+    "i10_k10_w40": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 11,
+     "dropped_margin": 2,
+     "dropped_rank": 2
+    },
+    "i10_k10_w1": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 7,
+     "dropped_margin": 4,
+     "dropped_rank": 4
+    },
+    "i10_k3_w5": {
+     "tokens": 105,
+     "enforced": 10,
+     "entries": 7,
+     "dropped_margin": 1,
+     "dropped_rank": 2
+    },
+    "i5_k3_w5": {
+     "tokens": 47,
+     "enforced": 9,
+     "entries": 3,
+     "dropped_margin": 3,
+     "dropped_rank": 3
+    }
+   },
+   "prefix_tokens": 20,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 15,
+     "text": " the average household income of the 45 states was $31,400, the lowest figure since 2012.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 111,
+     "text": " the average household income of 20,000 households in the United States has fallen by 25%, from 12,000 in 2007 to 12,000 in 2007 while the average household income of 33,000 households (in 2000, it was 10,000).\n\n\n\n\nA survey of 1,000 households in the United States, conducted on June 21-28, found just 39.7% households had no income and 7.8% had no income. In contrast, a report by the Bureau of Labor Statistics found that only 1.1 % of households had no personal income and 3.4% had no income. In a"
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 111,
+     "text": " the average household income of the 45 states was $7,973 in 2014, according to data from the Bureau of Labor Statistics. The average household size for the states was $8,973 — a drop from $9,973 a year ago.\n\n\n\n\nThe figure for the states was $8,973 in 2014, according to data from the Bureau of Labor Statistics. The average household size for the states was $8,973 in 2014, according to data from the Bureau of Labor Statistics. The average household size for the states was $8,921 in 2014, accordin"
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": null,
+     "distinct2": 0.7857142857142857,
+     "rep3": 0.15384615384615385,
+     "words": 111,
+     "text": " the average household income of the 45 states was $18,553, while the average household income of 47 states was $18,522, while the average household income of 47 states was $18,552, while the average household income of 47 states was $18,552, while the average household in 46 states was $18,552, while state income of 47 states was $18,552-30 percent of household income.\n\n\nFor comparison, the average household income of 48 states was $18,553, while the average household income of 47 states was $1"
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 73,
+     "text": " the average household income of the 45 states was $15,000.\n\n\n\n\nThe data came from the Census Bureau and released Thursday.\n\n\nIn the latest data, the average households were $20,000.\nIn the latest figures, the average household income of the 45 State of the Union was $15,000. It was $15,000.\nThe data also came from the Bureau of Labor Statistics.\nThe Census Bureau also had a report this year on employment for the state."
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 35,
+     "text": " the average household income of the country is just under $18,000.\n\n\n\nAccording, the number of people living in areas that have been hit by the financial crash has fallen by around 1.4 percent from 2015."
+    }
+   }
+  },
+  {
+   "i": 17,
+   "prompt": "The startup announced that it had raised",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 19,
+     "dropped_margin": 8,
+     "dropped_rank": 4
+    },
+    "i10_k10_w40": {
+     "tokens": 23,
+     "enforced": 2,
+     "entries": 2,
+     "dropped_margin": 0,
+     "dropped_rank": 0
+    },
+    "i10_k10_w1": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 3,
+     "dropped_margin": 4,
+     "dropped_rank": 8
+    },
+    "i10_k3_w5": {
+     "tokens": 159,
+     "enforced": 15,
+     "entries": 7,
+     "dropped_margin": 6,
+     "dropped_rank": 1
+    },
+    "i5_k3_w5": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 15,
+     "dropped_margin": 11,
+     "dropped_rank": 5
+    }
+   },
+   "prefix_tokens": 7,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 3,
+     "text": " $300,000 from investors.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 132,
+     "text": " $300,000 from U.S. investors who will be able to buy the $5 million in stock. The venture capital firm is also offering investment funds, which are used to buy stock from investors who would prefer to buy shares.\n\nAccording to the Financial Times, the plan calls for 20 percent of the funds to be reserved for the investors, as well as being used for the shareholders.\nThe fund also plans to conduct a report later this month.\nThe startup has been working on a mobile app, which allows customers to "
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 15,
+     "text": " $300,000 from investors.\n\n\n, this story has been updated to reflect the amount was raised."
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 103,
+     "text": " $300,000 from investors.\n\n\n\n\n\n\n\n\n\n\n\n\nBut it also won't be enough to take a firm like IFTTT back into the limelight.\n\n\n\n\n\n\n\n\nSo far, that's not the case.\n\n\n\nThe company has been acquiring and paying companies that have already been smart enough to share their products with people, and they are more than willing to share it with you.\nIt's not as if they are making the same mistake, but it's not a one-off thing.\nYou might ask, where is it now?\nThis is a huge technology bubble.\nYou might ask, how m"
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 112,
+     "text": " $300,000 from investors.\n\n\n“The story is that the funding was kept on an old $100 million low, so I'm not surprised. I think it's a pretty high number. The valuation is very low. And we know that the valuation is extremely low.“\nThe company said that it wanted to raise money to support a new startup, but that is not the case with any of its competitors.\n“I can't say if you're not in my group, but there are some companies that are in my group, so I'm really interested in some of those companies."
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 115,
+     "text": " $300,000 from $4 million.\n“ Twitter has been a long time coming, so it“ will be quite a time to get some new friends to join us and share a little of our work.“\nThe company“ has been playing a lot of big games on social media since last year, including the hashtag \"EverydayWork\" in which it tweeted that “jQuery and Twitter are no longer the only way to connect with a person.\nThe company announced last week that the company was partnering with a new app called Yummy and in response to the compan"
+    }
+   }
+  },
+  {
+   "i": 18,
+   "prompt": "Doctors recommend that patients with high blood pressure",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 14,
+     "dropped_margin": 14,
+     "dropped_rank": 3
+    },
+    "i10_k10_w40": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 8,
+     "dropped_margin": 5,
+     "dropped_rank": 2
+    },
+    "i10_k10_w1": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 2,
+     "dropped_margin": 3,
+     "dropped_rank": 10
+    },
+    "i10_k3_w5": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 11,
+     "dropped_margin": 3,
+     "dropped_rank": 1
+    },
+    "i5_k3_w5": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 16,
+     "dropped_margin": 9,
+     "dropped_rank": 6
+    }
+   },
+   "prefix_tokens": 125,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 16.114267305316517,
+     "distinct2": 0.8840579710144928,
+     "rep3": 0.07352941176470584,
+     "words": 119,
+     "text": " are screened for excess blood pressure,” said Dr. Chris Hodge, a clinical assistant professor at North Carolina State University. “They are just as likely to suffer from high blood pressure as they are with any other type of heart disease.”\n\n\n\n\n\"They are the most vulnerable,\" said Dr. Michael Peale, an associate professor of heart disease and vascular sciences at North Carolina State University.\n“They are a rare group of people with high blood pressure and very low blood pressure, but many are "
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": 30.27136647167949,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 130,
+     "text": " are screened for excess blood pressure and require a high oxygen level.\n\n'Sudden heart failure'\n\"If people in the same room do want to take a risk, and because they are in a stressful situation, and are carrying the risk with them, then the medical services should be involved in this consultation,\" he said.\nHe said: \"I'm aware of a number of people who have this high blood flow and may have an elevated blood pressure.\n\"'In some cases, high blood pressure can cause a heart failure'.\n \"It's a sig"
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": 22.387939868868408,
+     "distinct2": 0.9565217391304348,
+     "rep3": 0.0,
+     "words": 118,
+     "text": " are screened for excess blood pressure,” said Prof. Paul Duggan, associate professor of medicine at Vanderbilt University, and the co-author of their paper.\n\n\n\n\n\n\nIt's not uncommon for patients to have low blood levels during long periods of illness, with high blood pressure and high blood pressure.\nIt's possible if the person is about to experience high blood pressure, Dr. Duggan said, but it's not certain how often they'll experience high blood pressure.\nHis group estimates that as many as 10"
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": 27.533191920411067,
+     "distinct2": 0.9565217391304348,
+     "rep3": 0.02941176470588236,
+     "words": 70,
+     "text": " are screened for excess blood pressure,” said Mr. Taylor.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSantan\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis article is a reference to a draft-health plan for the Centers for Disease Control and Prevention (Centers for Disease Control and Prevention) that will contain more information on the risks and benefits of medications and medications. The list includes drugs and services for all medical conditions, including a blood pressure monitor, diabetes monitoring, a"
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": 29.98360522167473,
+     "distinct2": 0.9420289855072463,
+     "rep3": 0.014705882352941124,
+     "words": 112,
+     "text": " are screened for excess blood pressure,” said Jürgen Wiese, a neurologist who studied the blood pressure in the US and Canada.\n\n\n\n\n“Vitamins E-vitamin A and B vitamins A and B in healthy adults,” he said\nThe high blood pressure is caused by a blood-pressure disorder that causes the body to lose a certain amount of blood pressure.\nBut even after that, it can be detrimental for patients with high blood pressure who don't have adequate blood pressure.”\nWith the introduction of the Vitins E-Vitamin"
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": 22.319572444748783,
+     "distinct2": 0.8840579710144928,
+     "rep3": 0.05882352941176472,
+     "words": 126,
+     "text": " are screened for excess blood flow.\n\n\n\n\nThe Canadian Cancer Foundation recommends that patients with elevated blood pressure be screened for excess blood flow. (CBC)\n\n\n\n\"While blood is an important source of blood circulation for heart disease, blood is also an extremely important source of blood,\" said Dr. Bisham Kandar, a consultant physician in the Canadian Heart Association.\nHe said a big part in the risk of heart failure is that patients with high blood pressure are still at risk for high "
+    }
+   }
+  },
+  {
+   "i": 19,
+   "prompt": "The train was delayed for two hours because",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 63,
+     "enforced": 12,
+     "entries": 2,
+     "dropped_margin": 2,
+     "dropped_rank": 8
+    },
+    "i10_k10_w40": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 7,
+     "dropped_margin": 7,
+     "dropped_rank": 1
+    },
+    "i10_k10_w1": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 7,
+     "dropped_margin": 7,
+     "dropped_rank": 1
+    },
+    "i10_k3_w5": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 4,
+     "dropped_margin": 6,
+     "dropped_rank": 5
+    },
+    "i5_k3_w5": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 15,
+     "dropped_margin": 10,
+     "dropped_rank": 6
+    }
+   },
+   "prefix_tokens": 10,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 9,
+     "text": " of a high speed collision between the two trains.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 32,
+     "text": " of a high speed collision.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIon\n\n\n\n\n\n\n\nThis story was written by the staff of Red Lake, the community association that has run the Red Lake Line from San Francisco to San Francisco."
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 142,
+     "text": " of a high speed collision between the two trains. During the entire ride the train was stopped for a couple of seconds. At that point the train was in danger of collision with a large number of people traveling at different speeds. The train was almost full of passengers. The train had several small engines and a small power supply.\n\nIt was very difficult to see how the train was actually travelling. This was a very rare event, and we had very few chances to see any of the trains at an exact ti"
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 106,
+     "text": " of a high speed collision between the two trains. Police say the train hit the ground with a truck and was driving southbound when it hit the road.\n\n\n\n\nThe train had been travelling from the Ithalow, south-westerly town of Khanna to Raghud.\n\nThe train had been travelling from the Raghud village to Raghud, but was traveling southbound when it hit the road as it hit the road.\nThe train, running at 10:30am and heading towards Rishanagar, was travelling from Khanna to Raghud, and then hit the road,"
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 96,
+     "text": " of a high speed collision between the two trains.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIn a brief statement, Mr. Sturgeon said: \"This is a huge mistake that the Government is now trying to make.\n\n\n\n\nBut it is clear that our Government is not pursuing the right to conduct the business of a railway with a high speed collision, as is the case with the Port of Edinburgh.\n\n\n\n\nBut the Government is not going to make a case for the safety of its trains.\n\n\n\n\n\n\n\n\n\n\n\n\nIt is clear that Mr. Sturgeon's comments are"
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 103,
+     "text": " of a high speed collision on the train. The derailment occurred near the end of the Route 70 at about 2:40 p.m., the company said in a statement Friday.\n\n\n\n\n\n\n\n\n\n\n\n\nA crash occurred near the train on the Northeast Side of Washington. The train's derailment occurred near the end of the Route 75 at about 2:40 p.m., the company said.\n\n\n\n\n\nAt least one train was killed and three others were injured, officials said.\n\n\n\n\n\n\n\n\n\nIn a statement, the company said that it was reviewing the cause of the der"
+    }
+   }
+  },
+  {
+   "i": 20,
+   "prompt": "Our team reviewed the contract and found",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 147,
+     "enforced": 29,
+     "entries": 14,
+     "dropped_margin": 9,
+     "dropped_rank": 6
+    },
+    "i10_k10_w40": {
+     "tokens": 33,
+     "enforced": 3,
+     "entries": 0,
+     "dropped_margin": 2,
+     "dropped_rank": 1
+    },
+    "i10_k10_w1": {
+     "tokens": 61,
+     "enforced": 6,
+     "entries": 5,
+     "dropped_margin": 0,
+     "dropped_rank": 1
+    },
+    "i10_k3_w5": {
+     "tokens": 131,
+     "enforced": 13,
+     "entries": 9,
+     "dropped_margin": 2,
+     "dropped_rank": 1
+    },
+    "i5_k3_w5": {
+     "tokens": 75,
+     "enforced": 14,
+     "entries": 10,
+     "dropped_margin": 3,
+     "dropped_rank": 1
+    }
+   },
+   "prefix_tokens": 19,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 17,
+     "text": " the player is not available for the next four years. He was signed by Philadelphia in 2009.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 115,
+     "text": " the player is not available for the 2014-15 MLS season, and therefore the player will not be available for the 2014-15 season.\n\n, also from Canada, will not be available for all the 2014-15 games.\n\n\nThe team is re-evaluating the 2015-16 season.\nIt may not be clear how difficult it is to play this season for MLS. At this point, the team may be able to choose a new lineup and adjust to the league's conditions.\nIf there is a change in the starting lineup, the team should decide to start a roster i"
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 12,
+     "text": " the player is not available for the next four years .\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHe‬"
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 47,
+     "text": " the player is not available for the next four years. The club has a new contract to offer the contract, and the player is not available for the next four years.\n\n\n\n\n\nThis article was written by Ian Cason, a former football executive and player-manager at Sheffield Wednesday."
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 114,
+     "text": " the player is not available for the next four years. The club has a new contract to offer the player a new contract, and the player is eligible to continue playing for the next four years.\n‌The club has a new contract to offer the player a new contract, and the player is eligible to continue playing for the next four years. The club has a new contract to offer the player a new contract, and the player is eligible to remain playing for the next four years.\n‬‌The club has a new contract to offer "
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 63,
+     "text": " the player is not available in the current season, which means he is ineligible for a full season. He is eligible for a full season for this season in the NHL, which means he is ineligible for another season.\n\nIn addition to the player's injury, he will not be eligible for a full season, which means he is eligible for a part-time season."
+    }
+   }
+  },
+  {
+   "i": 21,
+   "prompt": "The mayor's office confirmed that the bridge",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 16,
+     "dropped_margin": 9,
+     "dropped_rank": 6
+    },
+    "i10_k10_w40": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 5,
+     "dropped_margin": 2,
+     "dropped_rank": 6
+    },
+    "i10_k10_w1": {
+     "tokens": 33,
+     "enforced": 3,
+     "entries": 2,
+     "dropped_margin": 0,
+     "dropped_rank": 1
+    },
+    "i10_k3_w5": {
+     "tokens": 10,
+     "enforced": 0,
+     "entries": 0,
+     "dropped_margin": 0,
+     "dropped_rank": 0
+    },
+    "i5_k3_w5": {
+     "tokens": 91,
+     "enforced": 18,
+     "entries": 10,
+     "dropped_margin": 6,
+     "dropped_rank": 2
+    }
+   },
+   "prefix_tokens": 4,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 3,
+     "text": " is being constructed.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 105,
+     "text": " is being constructed.\n\n\n\n\n\n\n\n\n\n\n-\n\n\n\n\n\n\n\n\n--\n\n\n\n\n\n\n--\nIn a statement on Thursday, the mayor's office said that it will be using the bridge to build access on the north side or south of the river.\n\n\n\nOn Wednesday, the mayor's office said it would reopen the bridge.\n\n\n\nThe bridge that connects the state Capitol to the West Side, the state Capitol, and elsewhere on the West Side, was constructed in the first place.\n\nThe bridge was designed to create a \"buffer zone zone\" on the north facing of the "
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 60,
+     "text": " is being constructed.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBishop Robinson said the bridge is intended to be ‐the first bridge to be constructed.‬\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMr. Robinson said the project is intended to connect the city to the West River and serve as an open-air road connecting the city to the Great and Great Lakes.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeaver said the bridge will be built within the next five years.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 9,
+     "text": " is being constructed.\n\n\n\n\n\n• Email: lisvadil@freepress.mb.ca | Twitter: lispadil"
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 3,
+     "text": " is being constructed.\n\n\n\n\n\n"
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 74,
+     "text": " is being constructed.\n›\nThe bridge is under construction and will open in the coming days as part of the MTA's “ Community Transportation and Infrastructure Improvement Plan.›\nThe bridge will remain in operation until late 2017, according to city officials.\nIt will not be the first time a bridge has been built in the past three years.\nHowever, construction of the bridge is currently taking place on a busy and busy Interstate 60."
+    }
+   }
+  },
+  {
+   "i": 22,
+   "prompt": "Farmers in the region are worried that",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 16,
+     "dropped_margin": 10,
+     "dropped_rank": 5
+    },
+    "i10_k10_w40": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 10,
+     "dropped_margin": 1,
+     "dropped_rank": 4
+    },
+    "i10_k10_w1": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 1,
+     "dropped_margin": 11,
+     "dropped_rank": 3
+    },
+    "i10_k3_w5": {
+     "tokens": 120,
+     "enforced": 11,
+     "entries": 3,
+     "dropped_margin": 1,
+     "dropped_rank": 7
+    },
+    "i5_k3_w5": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 9,
+     "dropped_margin": 11,
+     "dropped_rank": 11
+    }
+   },
+   "prefix_tokens": 14,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 13,
+     "text": " the animals could have been exploited by a man who had been poisoned.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 125,
+     "text": " the animals could have been found in the early hours of Monday morning.\n\n\n\n\n\nAt around 6:30PM, the farmster was seen in the middle part of the road, and he was seen looking towards the shore, making a small but visible splash behind him.\nHe was wearing a sombrero and boots.\nHe was wearing a grey shirt and boots, and seemed to be wearing a grey jumper.\nHe was wearing a navy blue shirt with a black striped shirt and blue shorts. As he approached, the farmster asked if he found the animals in the "
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 97,
+     "text": " the animals could have been exploited by a man who had been hunting in the wild for a long time until he caught fire.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShelter from the fire, after the flames ignited, the area near the junction with the junction with the junction with the junction with the junction with the junction with the junction with the junction with the junction with the junction with the junction with the junction it's the cattle that were killed\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNebula in the woods\n\n\n\nEther"
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 141,
+     "text": " the animals could have been exploited by a man who had been hunting in the wild for a long time for food, as well as by the use of pesticides.\n\n\n\n\nThe animals had been placed in cages for up to 30 years before having been slaughtered.\n\nThey had also been given the animals to feed their owners and the owner, who later admitted that the animals were not suitable enough for their survival.\nBut the couple were found not to have any food on their plates and a large amount of blood from the animals h"
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 19,
+     "text": " the animals could have been exploited by a man who is now in his 50s.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSORDS OF PUBLIC\n\n\n\n\nAUSTRALIA\n\n\n\n\n\n"
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 95,
+     "text": " the animals could have been used as an exploitative breeding ground for livestock, according to the State Department‍.\n\n.\n\n\n\n\n“\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA-\n\n\n\n\n\n\n\n\n\n\n\n\nA-\n\n\nThe Department has released an investigation into a large-breed lion killing in the southern Sudan, which the government estimates could have contributed to the slaughter of at least 100 livestock in recent years.\nThe agency reported that the lion's carcass was \"not an animal that was found in the wild.\" It also said the slaught"
+    }
+   }
+  },
+  {
+   "i": 23,
+   "prompt": "The new software update changes the way",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 21,
+     "dropped_margin": 9,
+     "dropped_rank": 1
+    },
+    "i10_k10_w40": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 7,
+     "dropped_margin": 6,
+     "dropped_rank": 2
+    },
+    "i10_k10_w1": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 5,
+     "dropped_margin": 8,
+     "dropped_rank": 2
+    },
+    "i10_k3_w5": {
+     "tokens": 78,
+     "enforced": 7,
+     "entries": 3,
+     "dropped_margin": 2,
+     "dropped_rank": 2
+    },
+    "i5_k3_w5": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 20,
+     "dropped_margin": 6,
+     "dropped_rank": 3
+    }
+   },
+   "prefix_tokens": 69,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 15.52577054087058,
+     "distinct2": 0.9318181818181818,
+     "rep3": 0.023255813953488413,
+     "words": 110,
+     "text": " that the malware is made. In the meantime, the botnet is hidden.\n\n\n\nWe've seen a lot of botnets, and now we know what's going on. There's a bunch of tiny botnets, and we're not sure what's going on. If you have any questions, you can reach us at robertbietemilton@gmail.com.\nThe malware is a collection of pre-configured, authenticated files that can be used to control a botnet, which is intended to control a computer system, such as the Internet. If you don't know what the botnet is, you can che"
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": 9.073508210189589,
+     "distinct2": 0.45454545454545453,
+     "rep3": 0.4651162790697675,
+     "words": 140,
+     "text": " that the malware is made more difficult for the victim to access, the malware is changing the way that the victim can access, and the malware is changing the way that the victim can access, and the malware is changing the way that the victim can access/access, and the tool is changing the way he or she can access the tool. The tool is changing the way that \"a person can access the tool without any computer access to it, without any computer access to it at all,\" meaning that the user cannot acc"
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": 32.35950288665871,
+     "distinct2": 0.9545454545454546,
+     "rep3": 0.0,
+     "words": 138,
+     "text": " that the malware is made. In the meantime, the malware has now been applied to the device itself.\n\n\n\nThe software update is a new release that will see the device use its own software, such as SQLite. For the past decade, there have been no real changes to the software. For instance, the software update is based on the latest version of the database with the latest features. In addition, the software update replaces the old SQLite database with new security features such as Safe File Sharing, a"
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": 11.17414192305277,
+     "distinct2": 0.5909090909090909,
+     "rep3": 0.37209302325581395,
+     "words": 134,
+     "text": " that the malware is made. In the meantime, check out the full update notes.\n\n\nFor more on the new version of the malware, check out the latest update notes.\nFor more on the new version of the malware, check out the latest update notes.\nThis is a large update, and it is important to note that it only has a few minor bugs.\nAdditionally, in this case, there is no malicious intent to steal anything from anyone. This is important because there is no malicious intent to steal anything from anyone. Th"
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": 74.31185199453608,
+     "distinct2": 0.9772727272727273,
+     "rep3": 0.0,
+     "words": 45,
+     "text": " that the malware is made. In the meantime, it’s been updated to include:\n\n\n\n\n\n\n\n\n\n\n•\n\n\n\n\n\n\n\n\nTo be updated, you can use the tool (or download the new version from the Cydia Store), by using the search function.\nThe latest versions of the tool are available now."
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": 33.094007269128625,
+     "distinct2": 0.9772727272727273,
+     "rep3": 0.0,
+     "words": 119,
+     "text": " that the malware is made.\n\n\n\n“We“are putting out updates to ensure that all new users are aware that the latest version of this software update is still being released. As soon as we have the release of the update, you can use the “help menu‡ on your desktop to view the latest version of all new users.‬\n“This feature is available through our app store.‬ We“re updating all new users from time to time to make sure you have the latest version of this software update.‬\n“If you are one of the new us"
+    }
+   }
+  },
+  {
+   "i": 24,
+   "prompt": "It was the coldest winter anyone could remember,",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 17,
+     "dropped_margin": 8,
+     "dropped_rank": 6
+    },
+    "i10_k10_w40": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 6,
+     "dropped_margin": 9,
+     "dropped_rank": 0
+    },
+    "i10_k10_w1": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 6,
+     "dropped_margin": 7,
+     "dropped_rank": 2
+    },
+    "i10_k3_w5": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 7,
+     "dropped_margin": 6,
+     "dropped_rank": 2
+    },
+    "i5_k3_w5": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 20,
+     "dropped_margin": 8,
+     "dropped_rank": 3
+    }
+   },
+   "prefix_tokens": 158,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 3.383350018103202,
+     "distinct2": 0.2702702702702703,
+     "rep3": 0.7,
+     "words": 112,
+     "text": " and the coldest weather we've ever seen. The winter was cold.\n\n\n\nThe weather was cold.\nIt was cold.\nThe temperature was colder than it was at the time of the snow.\nIt was cold.\nThe temperature was colder than it was at the time of the snow.\nIt was cold.\nThe temperature was warmer than it was at the time of the snow.\nIt was cold.\nThe temperature was warmer than it was at the time of the snow.\nIt was cold.\nIt was cold.\nIt was cold.\nIt was cold.\nIt was cold.\nIt was cold.\nIt was cold.\nIt was cold.\n"
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": 16.34206824017132,
+     "distinct2": 0.8918918918918919,
+     "rep3": 0.054545454545454564,
+     "words": 125,
+     "text": " and the coldest weather I've ever seen.\"\n\n\n\nAs well as his wife, he said he had never seen him in his life.\n\"I never witnessed him in my life since he was in high grade,\" he said.\n\"I was still my best friend, and I had no idea I was there.\"\nHe could not remember any of his friends.\n\"I knew I was out there, but I knew I was there,\" he stressed.\n\"I knew I was there, even though I could not remember any of my friends around me.\n\"You know what, I was there all the time as a kid. And we would always"
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": 16.375899305987083,
+     "distinct2": 0.954954954954955,
+     "rep3": 0.0,
+     "words": 135,
+     "text": " and the coldest weather we've ever seen. That was the last time we had to travel at night, so I made a quick trip to the airport with an average of 14 hours.\n\nWhat's the biggest reason for this? It's because I was working at a hotel in the Bronx. It's a great place for traveling at night. I was living in Manhattan.\nWhen I visited the airport on New York's East Side, I couldn't even remember how much time I had packed up and the amount of food I had to eat. The food was just so good.\nI didn't ev"
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": 14.801744771410133,
+     "distinct2": 0.918918918918919,
+     "rep3": 0.009090909090909038,
+     "words": 125,
+     "text": " and the coldest weather we've ever seen. In fact, it was a perfect storm.\n\n\nThe weather was really bad for people, with very little snowfall and no snowfall.\nBut when we got home, we decided to take a break.\nThe coldest winter we were able to go was in January, when we were attacked by a large herd of wolves.\nAnd then they attacked us all.\nWe were attacked by the very strong, thick packs of wolves with heavy packs of wolves.\nThe wolves were very bad, and we were very scared.\nAfter a while, we c"
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": 10.855935496956757,
+     "distinct2": 0.8198198198198198,
+     "rep3": 0.13636363636363635,
+     "words": 129,
+     "text": " and the coldest weather we've ever seen.\n\n\n\nThe sun set for the afternoon with the rain pouring down on the streets of London.\n\"I went down to the street and it was pretty bad,\" said Helen and her husband Peter.\n\"I was just really worried about how the weather was going to affect me.\"\nThe sun set for the afternoon with the rain pouring down on the streets of London.\nThe wind started to blow up as the wind picked up and moved towards the city.\n\"We thought it'd wind up like it was blowing,\" said "
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": 12.063738027955464,
+     "distinct2": 0.8378378378378378,
+     "rep3": 0.0636363636363636,
+     "words": 113,
+     "text": " and the coldest weather I've ever seen.\"\n\n\n\n\nA group of people arrived at St. Peter's Church in St. Peter's on Tuesday, May 25, 2015, at about 9 a.m., according to the St. Peter's Facebook page.\nBrent Stevens, pastor of St. Peter of St. Peter's (St. Peter's Cathedral) at the time, said that he was \"one of the first women to experience the chill of the cold on our doorstep.\"\n\"This is the coldest year anybody could remember, and the coldest weather I can remember,\" he said of the coldest winter a"
+    }
+   }
+  },
+  {
+   "i": 25,
+   "prompt": "The committee will vote next week on",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 7,
+     "enforced": 1,
+     "entries": 0,
+     "dropped_margin": 1,
+     "dropped_rank": 0
+    },
+    "i10_k10_w40": {
+     "tokens": 12,
+     "enforced": 1,
+     "entries": 1,
+     "dropped_margin": 0,
+     "dropped_rank": 0
+    },
+    "i10_k10_w1": {
+     "tokens": 17,
+     "enforced": 1,
+     "entries": 0,
+     "dropped_margin": 0,
+     "dropped_rank": 1
+    },
+    "i10_k3_w5": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 8,
+     "dropped_margin": 4,
+     "dropped_rank": 3
+    },
+    "i5_k3_w5": {
+     "tokens": 42,
+     "enforced": 8,
+     "entries": 4,
+     "dropped_margin": 2,
+     "dropped_rank": 2
+    }
+   },
+   "prefix_tokens": 7,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 18,
+     "text": " the Senate Bill 39-54, as the majority leader of the House and Senate in the House of Representatives.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 4,
+     "text": " the Senate Bill 39-39."
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 8,
+     "text": " the Senate Bill 39-54, as the majority does."
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 13,
+     "text": " the Senate Bill 39-54, as the majority of Senate members must support it."
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 108,
+     "text": " the Senate Bill 39-54, as the majority vote of the Senate on the House floor.\n“It’s the end of the day for my family and the community of Massachusetts,” said Sen. William J. Leahy, D-Massachusetts. “We are all committed to moving forward.”\nThe bill will receive its final approval, but Senate Majority PAC Chairman John Madigan said it won“an overwhelming majority” over the Democratic leader. It’s expected to be signed by the end of next week.\nThe bill was introduced on the House floor in 2009 b"
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 20,
+     "text": " the Senate Bill 39-47, which could be passed by the end of the month.\n\n.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFollow Ian Hanchett on Twitter"
+    }
+   }
+  },
+  {
+   "i": 26,
+   "prompt": "Researchers at the university discovered that",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 12,
+     "dropped_margin": 13,
+     "dropped_rank": 5
+    },
+    "i10_k10_w40": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 5,
+     "dropped_margin": 7,
+     "dropped_rank": 3
+    },
+    "i10_k10_w1": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 5,
+     "dropped_margin": 2,
+     "dropped_rank": 6
+    },
+    "i10_k3_w5": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 12,
+     "dropped_margin": 1,
+     "dropped_rank": 2
+    },
+    "i5_k3_w5": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 14,
+     "dropped_margin": 12,
+     "dropped_rank": 5
+    }
+   },
+   "prefix_tokens": 107,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 8.695041031269232,
+     "distinct2": 0.5606060606060606,
+     "rep3": 0.41538461538461535,
+     "words": 125,
+     "text": " the number of female female sauropod species in the Mediterranean Sea, for which they are thought to be highly unusual, is much higher than it was during the heyday of the Late Pleistocene.\n\n\n\n“We have found that the number of female sauropod species in the Mediterranean Sea, for which they are thought to be highly unusual, is much higher than it was during the heyday of the Late Pleistocene.\n“This is the first study to show that there is a direct correlation between the number of female saurop"
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": 35.91923977864663,
+     "distinct2": 0.8787878787878788,
+     "rep3": 0.09230769230769231,
+     "words": 123,
+     "text": " the number of female female members of the team of 20 female scientists in the Cagliari National Oceanic and Atmospheric Administration have dropped by 5% per year. The results are a result of a study published in the journal Nature Communications.\n\n\n\n\n“According to the new research, scientists have more than two hundred female members of the team of 20 female volunteers,” according research co-authors Peter Mas, PhD, Associate Professor, Professor, Program Director and Program Director;\n“The t"
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": 22.865623346104194,
+     "distinct2": 0.9545454545454546,
+     "rep3": 0.01538461538461533,
+     "words": 128,
+     "text": " the number of female female sauropod species in Africa is actually much lower than it was in the United States. This means that even a small amount of female sauropod species are still very rare because they can be found in vast swathes of forest.\n\n\n\nBut that is not the case. As a result, it's clear they're not extinct.\n\"A lot of women are going to have to adapt to extreme conditions,\" says Lena Worrall, a professor of ecology at the University of Queensland's School of Ecology. \"They are also "
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": 16.10184725787412,
+     "distinct2": 0.7121212121212122,
+     "rep3": 0.2153846153846154,
+     "words": 67,
+     "text": " the number of female female sauropod species in Canada has fallen to 15 species, according to a new study published in the journal Nature Communications.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAnd he believes that the number of female sauropacific sauropod species in Canada is declining.\n\n\n\n\n\n\n\n\nA new study found that the number of female sauropod species in Canada has fallen to 15 species with a total of 10 species, the authors say.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": 20.642426947604395,
+     "distinct2": 0.8939393939393939,
+     "rep3": 0.0461538461538461,
+     "words": 126,
+     "text": " the number of female female sauropod species in the north of the country increased to over 200,000 during the past five years, the first time since the end of the PUC-Maurice Conservation Programme, the first time since the U.S. Government was in power in 1989. This may explain why the population of sauropod and similar species has increased in the past three years from a total of 111,000 to 145,000 in 2005, according to a new study from the University of Melbourne.\n\n\n\n\nIn a study published in "
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": 41.59902362321036,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 116,
+     "text": " the number of female female students in the country fell in 2015 after the World Bank broke up with its own health watchdog.\n.@SeesDaluevatiWomen: https://t.co/tJuZwXwQZ6 — Michael N. Smith (@MikeSmith1) July 23, 2016\nThe UK government announced in May that it would be cutting down its funding to universities, which are concerned about global health risks.\n\nThe new policy was unveiled to the Education Secretary in May, and it means that more women will be joining universities in the coming year"
+    }
+   }
+  },
+  {
+   "i": 27,
+   "prompt": "The company's chief executive said that",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 43,
+     "enforced": 8,
+     "entries": 4,
+     "dropped_margin": 2,
+     "dropped_rank": 2
+    },
+    "i10_k10_w40": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 7,
+     "dropped_margin": 5,
+     "dropped_rank": 3
+    },
+    "i10_k10_w1": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 4,
+     "dropped_margin": 5,
+     "dropped_rank": 5
+    },
+    "i10_k3_w5": {
+     "tokens": 120,
+     "enforced": 11,
+     "entries": 6,
+     "dropped_margin": 3,
+     "dropped_rank": 0
+    },
+    "i5_k3_w5": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 20,
+     "dropped_margin": 5,
+     "dropped_rank": 6
+    }
+   },
+   "prefix_tokens": 43,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 63.213431349535504,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 122,
+     "text": " the Efraze-Hennepin Lagerfeld's government has ordered the EU to remove its European Union membership, which it had said was part of the European Union's security strategy.\n\n\n\n\nThe EU has been a key supplier to its EU security strategy since the end of the last decade, in part to fight the Islamic State group, and the use of anti-terrorism tools, including GPS and water cannons.\n\nBut the European Union, which has expressed concern about the \"militancy of terrorism\" that the Islamic State group "
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": 34.92867931122939,
+     "distinct2": 0.9696969696969697,
+     "rep3": 0.0,
+     "words": 34,
+     "text": " the Efraze-based approach to technological evolution is a key driver of the change.\"The growth of the digital economy is driven by a number things that have changed in the last six years,\" he said."
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": 18.186157963307277,
+     "distinct2": 0.8181818181818182,
+     "rep3": 0.09375,
+     "words": 102,
+     "text": " the Efraze-Hennepin-Belsen Agreement that was signed on April 20. \"The Efraze-Hennepin-Belsen Agreement was signed on April 28. The Efraze-Hennpe-Belsen Agreement is also signed on April 17.\n\n\n\n\"We are pleased you are now pleased to have reached agreement with the Swedish Chamber of Commerce, the Danish Chamber of Commerce, and the Danish Chamber of Commerce to begin a new market for affordable and competitive food products in the Nordic countries,\" Efraze-Hennphin-Belsen said in a statement. \""
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": 131.77537220061387,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 46,
+     "text": " the Efraze-Hennepin-Belsen Agreement that was signed on April 20, 2015 is not fair. (Jonathan Ernst/Reuters)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAnd this is the first time that the Efrze-Hennepin-Belsen Agreement is wrong.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNow the company is well aware that the Efrahze-Hennepin-Belsen Agreement is wrong.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHere's the gist of the Efraze-Hennepin-Belsen Agreement.\n\n\n\n\n\n\n\n\n\n"
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": 69.71491821611436,
+     "distinct2": 0.9696969696969697,
+     "rep3": 0.0,
+     "words": 57,
+     "text": " the Efraze-Hennepin-Belsen Agreement that was signed on April 20, 2015 is not fair. (Jonathan Ernst/Reuters)\n\n\n\n\n\n\n\n\"The U.S. is not the only global leader in the world with the world's largest economy. We are a multibillionaire, global leader in the global energy industry. The U.S. has made the world a global leader by the middle of the century.\"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": 85.95484806881275,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 112,
+     "text": " the Efraze-based approach to technological innovation is being implemented by companies across the globe.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA close-up of Apple's iPhone 6S and 5S's iPhone 6S, with its upcoming operating system, will be released later this year by Apple, the company says.\n\n\nIt will be available to the public at the beginning this year, it said\n\n\n\n\nBut it also said the company is seeking to make sure that the iPhone 5's processor and processor are not limited to the iPhone's processor.\nApple will al"
+    }
+   }
+  },
+  {
+   "i": 28,
+   "prompt": "Residents were asked to leave their homes after",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 87,
+     "enforced": 17,
+     "entries": 7,
+     "dropped_margin": 8,
+     "dropped_rank": 2
+    },
+    "i10_k10_w40": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 7,
+     "dropped_margin": 3,
+     "dropped_rank": 5
+    },
+    "i10_k10_w1": {
+     "tokens": 53,
+     "enforced": 5,
+     "entries": 2,
+     "dropped_margin": 1,
+     "dropped_rank": 2
+    },
+    "i10_k3_w5": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 11,
+     "dropped_margin": 2,
+     "dropped_rank": 1
+    },
+    "i5_k3_w5": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 16,
+     "dropped_margin": 13,
+     "dropped_rank": 2
+    }
+   },
+   "prefix_tokens": 9,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 7,
+     "text": " the attack, after a local newspaper reported.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 70,
+     "text": " the attack, after a second man was killed and another was injured.\n The previous attack, on the same day, left two people dead and three missing.\n\n\nAt least two people were in the city, including a man and a woman, as part of a protest against a high number uprisings in the local town of Menon.\nIt comes a minute after a military operation at the border with Syria began."
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 101,
+     "text": " the attack, after a local newspaper reported.\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAs in other places, a woman and a man with a gunshot wound to the back were taken to Northam Hospital with minor injuries.\n\n\n\n\n\n\n\n\n\n\n\n\nAccording to police, the victim's name and address may not be known.\n\n\n\n\nHe was pronounced dead at the scene and the other residents of the district are being treated for injuries. In addition, the injured people who were not injured do not know who they were.\nThe victims were taken to the hospita"
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 28,
+     "text": " the attack, after a local newspaper reported.\n\n\n\n\n\n\n\n\n\n\n“It was the worst attack in the history of Britain“\n\n\n\n\n\nThis article was published by The Conversation. Read the original article."
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 117,
+     "text": " the attack, after a local newspaper reported.\n‌ Read the full report\n\n\n\nA number of Muslim children were wounded during the attack, a senior Islamic community official said.\n\n\nWitnesses said children were leaving a home in the Alwaleed village of Dahram, near the border with Bangladesh, near the border with Myanmar, near the border with Myanmar, where the attack began.\n\nSalee resident Natana Adel reported seeing children with a few children in a home near the border with Myanmar.\nHe said the ch"
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 137,
+     "text": " the attack, after a number of people were killed and dozens of others injured by the incident.\n\"It is shocking to know that a man and a woman were injured, as the victims were killed. It is a very tragic situation, which was not planned. We are trying to put the perpetrators of the attack in jail and not possible to bring them to justice.\"\nPolice are now searching for the suspects, who have reportedly been hiding in the area for a week, after a deadly attack in the central city of Ramon.\nThe vi"
+    }
+   }
+  },
+  {
+   "i": 29,
+   "prompt": "The article argues that modern cities",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 18,
+     "dropped_margin": 11,
+     "dropped_rank": 2
+    },
+    "i10_k10_w40": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 7,
+     "dropped_margin": 6,
+     "dropped_rank": 2
+    },
+    "i10_k10_w1": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 4,
+     "dropped_margin": 4,
+     "dropped_rank": 7
+    },
+    "i10_k3_w5": {
+     "tokens": 100,
+     "enforced": 9,
+     "entries": 6,
+     "dropped_margin": 2,
+     "dropped_rank": 1
+    },
+    "i5_k3_w5": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 22,
+     "dropped_margin": 6,
+     "dropped_rank": 3
+    }
+   },
+   "prefix_tokens": 99,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 15.87415486511627,
+     "distinct2": 0.8536585365853658,
+     "rep3": 0.09876543209876543,
+     "words": 131,
+     "text": " are becoming more efficient and efficient. The \"average person who lives in a city\" doesn't want to get to know where his or her income is, and it's clear that the \"average person\" who lives in a city has a financial future that, to be sure, isn't quite that good.\n\n\n\nSo, why does the average person who lives in a city expect to live in a city where income is better?\nIn the first place, there are more people living in a city than people living in a city where income is more stable, but that does"
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": 33.0639749230132,
+     "distinct2": 0.9390243902439024,
+     "rep3": 0.012345679012345734,
+     "words": 145,
+     "text": " are becoming more efficient and sustainable by creating more money for their citizens and towns so that they can get back to the living standards needed to meet the needs of their citizens. The article argues that \"hundreds and thousands of working people around the world have been working to become much more efficient and cleaner and productive by producing cleaner and more efficient municipal transportation systems through the use of municipal transportation systems.\"\n\nLocations and growth of"
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": 16.93886735088374,
+     "distinct2": 0.8658536585365854,
+     "rep3": 0.04938271604938271,
+     "words": 127,
+     "text": " are becoming more efficient and efficient. The \"average\" urban area has been rising in the past few decades, according to the study.\n\n\n\n\nThe study found that the average city in 2012 saw an increase in population growth over the past decade.\n\nMore than 6,000 people lived in the city in 2012, up from the most recent number of 5,000 in the same period in 2012.\nHowever, that same number declined in the second quarter.\nThe study found that the average number of people living in a city had increased"
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": 17.243474903722493,
+     "distinct2": 0.9024390243902439,
+     "rep3": 0.06172839506172845,
+     "words": 125,
+     "text": " are becoming more efficient and efficient. The \"average density of the population\" was 16.5% and the \"average density of the population\" was 19.9%. In addition, there were \"greater and more significant improvements\" in the capital market over the last decade. (See the article for more information.)\n\n\n\n\nIn the early 1990s, the rate of new residential and commercial developments on the capital market decreased by 60% from a year ago to a year ago, when the population was much more concentrated an"
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": 21.982410795455756,
+     "distinct2": 0.9146341463414634,
+     "rep3": 0.04938271604938271,
+     "words": 83,
+     "text": " are becoming more efficient and efficient. The \"average urban population\" in America is about 17% fewer.\n\n\n\nThe data collected from the United States and the EU is the first to show that cities are increasing the cost of living by 1.6% for the same time period in 2012.\nThese figures are also the first to show a 2% increase in the cost of living in an area where people are living on average for the past 12 months.\nSee also [ edit ]"
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": 22.016099624066857,
+     "distinct2": 0.975609756097561,
+     "rep3": 0.0,
+     "words": 143,
+     "text": " are becoming more efficient and safer in their housing and housing development than they are in their cities.\nIt also argues that a large number of cities have adopted the concept of urban planning.\nIn a report, the Council of London argues that because of the rise in the number (in the early 1990s) of people living outside the city, it's important to examine the impact of such plans on local decisions in building and housing.\nThe report states that it suggests that, in recent decades, the deve"
+    }
+   }
+  },
+  {
+   "i": 30,
+   "prompt": "Please find attached the minutes of",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 16,
+     "dropped_margin": 11,
+     "dropped_rank": 4
+    },
+    "i10_k10_w40": {
+     "tokens": 97,
+     "enforced": 9,
+     "entries": 3,
+     "dropped_margin": 4,
+     "dropped_rank": 2
+    },
+    "i10_k10_w1": {
+     "tokens": 91,
+     "enforced": 9,
+     "entries": 3,
+     "dropped_margin": 3,
+     "dropped_rank": 3
+    },
+    "i10_k3_w5": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 8,
+     "dropped_margin": 6,
+     "dropped_rank": 1
+    },
+    "i5_k3_w5": {
+     "tokens": 115,
+     "enforced": 22,
+     "entries": 15,
+     "dropped_margin": 5,
+     "dropped_rank": 2
+    }
+   },
+   "prefix_tokens": 89,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 45.790565801647055,
+     "distinct2": 0.45614035087719296,
+     "rep3": 0.4821428571428571,
+     "words": 78,
+     "text": " the 25th and 30th of August, 2016\n\n\nFiled under:\n\n\nJune\n\nFebruary\n\nApril\nMarch\nApril\nMay\nJune\nJuly\nAugust\nSeptember\nOctober\nNovember\nDecember\nJanuary\nFebruary\nMarch\nApril\nMay\nJune\nJuly\nAugust\nSeptember\nOctober\nNovember\nDecember\nDecember\nJanuary\nFebruary\nMarch\nMarch\nApril\nMay\nJune\nJuly\nAugust\n\nSeptember\nOctober\nNovember\nDecember\nDecember\nDecember\nDecember\nDecember\nDecember\nDecember\nDecember\nDecember\nDecember\nDecember\nDecember\nDecember\nDecember\nDecember\nDecember\nDecember\nDecember\nDecember\nDecembe"
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": 23.54101212226535,
+     "distinct2": 0.9122807017543859,
+     "rep3": 0.0357142857142857,
+     "words": 121,
+     "text": " the 25th and 30th of March 2017 and the start of the month.\n\n\nThe first eight months of the month are usually on holiday and can be seen in other parts of the world by visiting the site.\nFind out more about the festival\nThe four-day festival is about to start and in all parts of the world this time around, with many people visiting it.\nThe festival is a celebration of the natural environment, the natural environment, the landscape, nature, nature, the natural world and with many people visiting"
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": 26.814270598200117,
+     "distinct2": 0.6140350877192983,
+     "rep3": 0.2857142857142857,
+     "words": 58,
+     "text": " the 25th and 30th of August, 2016.\n\n\n\n\nDownload the video\n\nDownload the video\nDownload the video\nDownload (on demand)\nDownload the video\nDownload:\nDownload the video\nDownload:\nDownload the video\nDownload:\nDownload:\nDownload at the top\nDownload:\nDownload at the next\nDownload:\nDownload at the last\nSee also\n\n\nPlease enable JavaScript to view the comments powered by Disqus."
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": 21.91119618311412,
+     "distinct2": 0.38596491228070173,
+     "rep3": 0.5535714285714286,
+     "words": 67,
+     "text": " the 25th and 30th of August, 2016.\n\n\n\n\nDownload the video\n\nDownload the video\nDownload the video\nDownload the video\nDownload the video\nDownload the video -\nDownload the video -\nDownload the video -\nDownload the video -\nDownload the video and the video -\nDownload the video -\nIf you're interested in downloading and using the video for more, please follow us on Twitter and Instagram."
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": 24.29399444145804,
+     "distinct2": 0.9824561403508771,
+     "rep3": 0.0,
+     "words": 130,
+     "text": " the 25th and 30th of August, 2016 on my GitHub repository.\n\n\nI can't tell you how many people I have met, but that's not even the one who is making my post.\nSo, please don't miss the next installment of the wonderful articles I have published, such as \"What the heck, why did it take so long to build my post? Why does it take so long to create a version of my first post? Why does it take so long to create a copy of my first post? Why can't I publish my first post? I love my posts, but my post is"
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": 16.880530353920488,
+     "distinct2": 0.7017543859649122,
+     "rep3": 0.2321428571428571,
+     "words": 102,
+     "text": " the 25th and 30s of the 10th. This was the first time that this device has appeared on a regular basis, and it was the first time that this device ever appeared on a regular basis, and it was not the first time that these devices have appeared on the regular basis.\nI think that the long-term vision of this technology is to provide a new, yet more powerful platform that enables the development process to be very efficient for people to reach their goals. This could be a valuable tool for all peo"
+    }
+   }
+  },
+  {
+   "i": 31,
+   "prompt": "The spacecraft entered orbit around",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 73,
+     "enforced": 14,
+     "entries": 7,
+     "dropped_margin": 4,
+     "dropped_rank": 3
+    },
+    "i10_k10_w40": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 12,
+     "dropped_margin": 2,
+     "dropped_rank": 1
+    },
+    "i10_k10_w1": {
+     "tokens": 140,
+     "enforced": 13,
+     "entries": 2,
+     "dropped_margin": 1,
+     "dropped_rank": 9
+    },
+    "i10_k3_w5": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 11,
+     "dropped_margin": 3,
+     "dropped_rank": 1
+    },
+    "i5_k3_w5": {
+     "tokens": 87,
+     "enforced": 17,
+     "entries": 9,
+     "dropped_margin": 6,
+     "dropped_rank": 2
+    }
+   },
+   "prefix_tokens": 8,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 5,
+     "text": " Saturn on March 4, 2013.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 53,
+     "text": " Saturn on March 4, 2012 and the probe entered Jupiter's atmosphere on March 18, 2012. The data was collected by the orbiting mission. The spacecraft was launched from the International Space Station in March 2013.[5]\n\nAn overview of the spacecraft's role in the mission has been made available at the ESA website.\n\n\n\nAwards[2]"
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 108,
+     "text": " Saturn on March 4, 2013.\n\n\nOn March 17, 2015, the spacecraft passed the S-130 Dragon spacecraft, which reached the moon Titan, to its left, and circled the moon. It passed the Cassini spacecraft, and the Rosetta spacecraft.\nThe Cassini spacecraft passed through Saturn at 2.15am on March 4, 2013.\nCassini's Cassini spacecraft passed through Saturn at 4.15am on March 4, 2013.\nCassini's spacecraft passed Saturn at 4.15am on March 4, 2013.\nCassini's spacecraft passed through Saturn inside the atmosp"
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 15,
+     "text": " Saturn on March 4, 2013.\n\n\n\n\n\n\n\n\n\n\n\n\nSARVE THE VIRGINIA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCARE (and)\n\n\n\n\nTHE VIRGINIA\n\n\n\n\n\n\n\n\n\n\n\n\n\nAUSTRALIA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTURBINE\n\n\n\n\n\nVIRGINIA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 134,
+     "text": " Saturn on March 4, 2013.\n\n\n\"The crew is not completely certain of the status that the spacecraft will be taken,\" said one of the crew members on board the spacecraft. \"The crew is not completely certain of the status that the spacecraft will be taken.\"\nThe crew is not completely certain of the status that the spacecraft will be taken.\nThe crew is not completely certain of the status that the spacecraft will be taken.\nCrew members are not completely sure of the status that the spacecraft will be"
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 57,
+     "text": " Saturn on March 4, 2016, carrying about 1,500 passengers and about 1,500 crew members on board. The spacecraft was carrying a crew of five.\n\n\nA team of two engineers at the NASA/JAXA Jet Propulsion Laboratory (JPL) and the Jet Propulsion Laboratory (JPL) are exploring the moon's icy interior.\nThe JPL's mission is to study the moon's surface."
+    }
+   }
+  },
+  {
+   "i": 32,
+   "prompt": "Local businesses have struggled since",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 12,
+     "dropped_margin": 14,
+     "dropped_rank": 5
+    },
+    "i10_k10_w40": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 11,
+     "dropped_margin": 4,
+     "dropped_rank": 0
+    },
+    "i10_k10_w1": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 4,
+     "dropped_margin": 8,
+     "dropped_rank": 3
+    },
+    "i10_k3_w5": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 8,
+     "dropped_margin": 6,
+     "dropped_rank": 1
+    },
+    "i5_k3_w5": {
+     "tokens": 117,
+     "enforced": 23,
+     "entries": 12,
+     "dropped_margin": 5,
+     "dropped_rank": 6
+    }
+   },
+   "prefix_tokens": 6,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 5,
+     "text": " the beginning of the decade.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 118,
+     "text": " the beginning of the decade under pressure from the Department of Health and Human Services.\n\n\n\nAs per the U.T. Department of Health’s website, the agency’s fiscal year 2016 is showing that the number of new Medicaid-eligible people in 2013 was 7.3 million, down from the 2.6 million it has reported in 2013, according to the Center for Community and Community Health. As the Department of Health and Human Services reported in a statement released Monday, the number of new Medicaid-eligible people"
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 130,
+     "text": " the beginning of the decade.\n\n\n\nHe says they are unable to meet or even enforce tax and personal savings accounts, and that if they do, they may lose some of their income in the next 10 years.\n\nBut he says any of the changes that would be made in the federal government will help the economy.\n\"The government needs to make sure they are doing something to help the economy,\" he said.\n\"We need to make sure they are doing something to help me.\"\nA recent report by the National Association of Universi"
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 119,
+     "text": " the beginning of the decade.\n\n\n\n\n\n\n\n\n\n\n\n\n\nIt's not surprising that the ruling's supporters have had a real struggle in recent years.\n\nThis year's special election was a direct blow to some of the traditional left-wing parties.\nHowever, the ruling has also been another blow to its current base of supporters.\nA joint meeting of the National Assembly and the Cabinet of Ministers has been held to discuss the matter, which is expected tomorrow.\nThe three main parties, the National Labour Party and t"
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 139,
+     "text": " the beginning of the decade.\n\n\n\nA new effort to expand the company's office in the city of Camden has been put in place. Camden City Council voted to extend the office to three more buildings, including a new office in Camden, a new office in the city of Camden and a new office in the city of Camden.\n\nThe new office is the second of the new buildings that are being built in Camden, a new office on East Orange Street in the city of Camden. It will be located at the Camden and Camden Central Cent"
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 96,
+     "text": " the beginning of the decade and it is unclear what will happen if the bill passes in July.\n\n\n\n\n\nA spokesman for the government told The Associated Press that the government is not seeking to extend the deadline for the bill, which is due to be passed. But his office said it could not comment on whether a new deadline would be reached.\n\n\n\n\n\n\n\nA spokesman for the chief financial officer of the Bank of England and the Bank of England said the government is looking for a \"reasonable\" explanation fo"
+    }
+   }
+  },
+  {
+   "i": 33,
+   "prompt": "The treaty was signed in",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 23,
+     "dropped_margin": 8,
+     "dropped_rank": 0
+    },
+    "i10_k10_w40": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 13,
+     "dropped_margin": 2,
+     "dropped_rank": 0
+    },
+    "i10_k10_w1": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 6,
+     "dropped_margin": 8,
+     "dropped_rank": 1
+    },
+    "i10_k3_w5": {
+     "tokens": 73,
+     "enforced": 7,
+     "entries": 1,
+     "dropped_margin": 3,
+     "dropped_rank": 3
+    },
+    "i5_k3_w5": {
+     "tokens": 9,
+     "enforced": 1,
+     "entries": 0,
+     "dropped_margin": 0,
+     "dropped_rank": 1
+    }
+   },
+   "prefix_tokens": 9,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 7,
+     "text": " 1974. The treaty was signed in 1972.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 132,
+     "text": " 1974. The treaty was based on the idea that the United States would only come to this country if Russia did not develop a nuclear weapon, and that the United States would not be able to come to the agreement.\n\nDuring the Cold War, Congress introduced the Reagan-Bill Clinton-Bill Clinton, a bill designed to improve the global role of our military in the world — by increasing the number of troops in the United U.S. and increasing the number of troops required to defend itself. According to this p"
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 115,
+     "text": " 1974. The treaty was signed in 1972.\n.\nThe President took office on July 11, 1986. The bill was signed in 1986. The passage of the bill was ratified in March of 1991.\n.\n.\n.\nMr. President was appointed to the US Senate in November 2009.\nMr. President was elected to the US president's office in September 2009.\n.\n.\n.\nMr. President was appointed to the US Senate in September 2009.\n.\n.\n.\n.\nMr. President was designated as a US senator in November 2009.\n.\"\n.\nMr. President was appointed to U.S. Senate "
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 132,
+     "text": " 1974. The treaty was signed in 1972.\nBut in December 2010, the Supreme Court in San Francisco decided to appeal the ban on gay marriage.\nThat decision did not prevent the Obama administration from enforcing a ban on same-sex marriage.\nThe gay marriage ban was the second federal law in the country to ban same-sex marriage.\nThe president will now have to defend his ruling against the ban.\nThe Supreme Court in San Francisco struck down the ban in the June 18, 2011, ruling that same-sex couples had"
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 37,
+     "text": " 1974. The treaty was signed in 1972.\n\n\n\n\n\n\n\n\n\n\nIn fact, the treaty was ratified in 1974.\n\n\n\n\n\nIn fact, the U.S. is not a member of the European Union.\n\n\n\n\n\n\nThis article may not be published, broadcast, rewritten or redistributed."
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 7,
+     "text": " 1974. The treaty was passed in 1996."
+    }
+   }
+  },
+  {
+   "i": 34,
+   "prompt": "Our records indicate that your account",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 59,
+     "enforced": 11,
+     "entries": 6,
+     "dropped_margin": 4,
+     "dropped_rank": 1
+    },
+    "i10_k10_w40": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 8,
+     "dropped_margin": 5,
+     "dropped_rank": 2
+    },
+    "i10_k10_w1": {
+     "tokens": 53,
+     "enforced": 5,
+     "entries": 1,
+     "dropped_margin": 2,
+     "dropped_rank": 2
+    },
+    "i10_k3_w5": {
+     "tokens": 21,
+     "enforced": 2,
+     "entries": 1,
+     "dropped_margin": 0,
+     "dropped_rank": 1
+    },
+    "i5_k3_w5": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 16,
+     "dropped_margin": 10,
+     "dropped_rank": 5
+    }
+   },
+   "prefix_tokens": 15,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": null,
+     "distinct2": 0.9166666666666666,
+     "rep3": 0.0,
+     "words": 13,
+     "text": " is being terminated from your account. Please check the status of your account.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 52,
+     "text": " is being terminated from your account, and you have lost your accounts, or you have lost your accounts, or you have lost your accounts, or you currently have a balance in our account. If you have problems with your account at any time, please come forward to help us resolve your problem."
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 121,
+     "text": " is being terminated from your account. Please check the status of your account for the correct date of the termination date, so that you can continue using your business.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAnd in addition to the additional data you have collected, you will also be able to gain access to important data about your accounts.\n\n\n\nWhile you may use your data in accordance with our Services, your personal information may not be transferred to your account. We will continue to provide the information (i"
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 33,
+     "text": " is being terminated from your account. Please check the settings on the Settings menu to see if your account is being terminated.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote: We did not add any additional functionality to that application."
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 19,
+     "text": " is being terminated from your account. Please check the account details to ensure you can keep your account secure."
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 134,
+     "text": " is being terminated from your computer.\n\n\nIn this case, the company believes that you have a valid password. The company does not provide any information about how you might be terminated.\nThe following information is provided in the same format as this information.\nYour account is being terminated from your computer.\nThe company is not responsible for your access to any of the information stored on your computer.\nYour account has the same (and only, valid) security information you need to acce"
+    }
+   }
+  },
+  {
+   "i": 35,
+   "prompt": "The festival returns this summer with",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 18,
+     "dropped_margin": 12,
+     "dropped_rank": 1
+    },
+    "i10_k10_w40": {
+     "tokens": 149,
+     "enforced": 14,
+     "entries": 5,
+     "dropped_margin": 3,
+     "dropped_rank": 6
+    },
+    "i10_k10_w1": {
+     "tokens": 108,
+     "enforced": 10,
+     "entries": 3,
+     "dropped_margin": 4,
+     "dropped_rank": 3
+    },
+    "i10_k3_w5": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 6,
+     "dropped_margin": 5,
+     "dropped_rank": 2
+    },
+    "i5_k3_w5": {
+     "tokens": 87,
+     "enforced": 17,
+     "entries": 12,
+     "dropped_margin": 3,
+     "dropped_rank": 2
+    }
+   },
+   "prefix_tokens": 87,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 31.80903643032407,
+     "distinct2": 0.9523809523809523,
+     "rep3": 0.024390243902439046,
+     "words": 99,
+     "text": " a special schedule to see the usual highlights including a 13th birthday cake for the new 6th and final two or three days of the festival on May 22nd, 2017.\n\n\n\n5.50pm - First night of the festival\nThe festival will feature food, drink, food, and great music.\n5.30pm - Doors open at 6pm\n9.30pm - Doors open at 7pm\n10.00pm - Doors open at 8pm\n11.30pm - Doors open at 9pm\n11.30pm - Doors open at 10pm\n12.30pm - Doors open at 11pm\n13.30pm - Doors open at 12pm\n14.30pm - Doors open at 13pm\n15.00pm - Door"
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": 19.416965308834957,
+     "distinct2": 0.8809523809523809,
+     "rep3": 0.024390243902439046,
+     "words": 125,
+     "text": " a special schedule to see where the heroes of the old-school game of the year will live and what’s the future of the game of the year?\n\nTo celebrate the 12th anniversary of the \"Super Smash Bros. Melee\" Nintendo 3DS, the official announcement of the Super Smash Bros. Melee tournament will be announced on Tuesday, April 12th. Players are invited to enter the tournament, and are invited to compete on their Wii U and 3DS. There will be an all-day tournament on June 15th, 2016!\nThe tournament will "
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": 16.101225355198174,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 68,
+     "text": " a special schedule to see the usual highlights including a showcase for the film and music of the year. To see all the highlights, click here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nC\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAll ages welcome to the event.\n\n\nWhat do you think? Do you think this event will be successful? Do you think this is an important thing for the film or music of the year? Let us know in the comments below!"
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": 23.145417836592504,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 82,
+     "text": " a special schedule to see the usual highlights including a performance from Academy Award winner Colin Trevorrow and one of the best musical performances ever recorded.\nIt was announced on Friday that Academy Awards winners Phil Lord and Ethan Hawke will return to the U.S. on Friday night. The two will reunite on a special show with the band, which are set to start out at 7:30 p.m. EST on Saturday night.\nFor more information, you can follow the festival on @thechicagotribune."
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": 28.32135202717588,
+     "distinct2": 0.9285714285714286,
+     "rep3": 0.0,
+     "words": 106,
+     "text": " a special schedule to see the usual highlights including a new class of films and games, including ‪Eve and the Moon‬, ‪Dawn‬, and the ‪Evan Song,‬, and the upcoming ‡Transformers,‬.\n\n\nIn February, the festivals will launch the first production of the ‪Eve and the Moon‬‬, a TV series that features a new cast of characters including a new member of the crew, and new villains, all inspired by the original Transformers.\nAfter the original trilogy was released, the series got renewed in February, b"
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": 15.84766521415106,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 43,
+     "text": " a special schedule to see some of the best classic and sci-fi films and documentaries from a wide-ranging range of actors including Ben Affleck, James Franco, Jason Stoll, Jack Nicholson, and David Tennant. Check out the film reviews from the festival below: http://www.finale.com/festival/festival-reviews/4th-century-festival-festival-review.html"
+    }
+   }
+  },
+  {
+   "i": 36,
+   "prompt": "The hospital announced a new policy on",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 17,
+     "dropped_margin": 9,
+     "dropped_rank": 5
+    },
+    "i10_k10_w40": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 6,
+     "dropped_margin": 3,
+     "dropped_rank": 6
+    },
+    "i10_k10_w1": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 7,
+     "dropped_margin": 5,
+     "dropped_rank": 3
+    },
+    "i10_k3_w5": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 4,
+     "dropped_margin": 1,
+     "dropped_rank": 10
+    },
+    "i5_k3_w5": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 17,
+     "dropped_margin": 11,
+     "dropped_rank": 3
+    }
+   },
+   "prefix_tokens": 96,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 20.888860815728616,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 122,
+     "text": " Friday, after the Department of Health and Human Services announced it had eliminated a \"high-risk\" group of doctors at the hospital.\n\n\n\n\nThe decision came after patients told BuzzFeed News that they had already been placed in a family unit that was receiving treatment for diabetes and had to be kept in a medical unit.\n\n\n\n\"The patient was told that there had been a lot of issues with the [care] system,\" said Deborah Gordon, an obstetrics and gynecology department spokeswoman.\n\"We've just taken "
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": 35.03604577764109,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 136,
+     "text": " Friday, after the Department in January announced that patients at the hospital will be entitled to a stipend under the Patient Protection and Affordable Care Act (PPIPA) to apply for the National Health and Human Services Act, as needed.\n\n\n\n\nThe policy will change to the 2016 Act, which will require the Department to make an exemption \"for the individual.\" Currently, patients at the hospital must file a form of documentation before submitting the Form for the new health law, but the National H"
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": 44.40757499092034,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 84,
+     "text": " Friday, after the Department of Health and Human Services announced it would make the move.\n\n\n\n\n\n\n\n\n\n\n\n\nHudson's wife, Jodi, has been with him since the shooting, said the family's attorney.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShe said she was afraid she had to go home to see her husband, who had a grandparent, and her mother, who had been shot by police.\n\n\n\n\n\n\n\nSgt. Mike Reitman said the hospital decided it would make it easier to locate a suspect.\n\n\n\n\n\n\n\n\nMr. Rasmussen said the hospital had been alerted to the p"
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": 20.300216708357276,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 121,
+     "text": " Friday, after the Department of Health and Human Services announced it would make the move.\n\n\n, more than a year ago, the agency said an anti-abortion legislation would not be implemented in this way.\n\n\n“We believe that we are now able to provide a safe and stable environment for our patients and their families, and to help them understand how to remain in a safe and healthy health care system,“ said Dr Peter Wawrinka, president of the National Committee on the Elimination of Life-Stopping and "
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": 10.917250390987867,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 29,
+     "text": " Friday, after the Department of Health and Human Services said it had taken a look at the progress of hospitals in the next few months.\n\n\n‌\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n‌\n\n\n\n\n\n\n\n\"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n‌\n\n\n\n\n\n\n\n"
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": 33.085494810047265,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 114,
+     "text": " Friday, after the Department's Office for Healthcare Research said it would help patients in the care of a new drug-resistant strain of the drug.\n.@ViveranoIrapp: And the new policy, which would help patients in the care of a new drug that is resistant to the virus. #CareNow @ViveranoIru. — Health Care (@HealthCare) January 1, 2017\n\n.@Viveranoirapp: And you know, it's really a health care bill for people who are under the age of 18. So the plan will help those under the age of 18, and it will h"
+    }
+   }
+  },
+  {
+   "i": 37,
+   "prompt": "Investigators said the fire started in",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 15,
+     "dropped_margin": 10,
+     "dropped_rank": 6
+    },
+    "i10_k10_w40": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 3,
+     "dropped_margin": 11,
+     "dropped_rank": 1
+    },
+    "i10_k10_w1": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 5,
+     "dropped_margin": 1,
+     "dropped_rank": 8
+    },
+    "i10_k3_w5": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 12,
+     "dropped_margin": 2,
+     "dropped_rank": 1
+    },
+    "i5_k3_w5": {
+     "tokens": 50,
+     "enforced": 9,
+     "entries": 2,
+     "dropped_margin": 2,
+     "dropped_rank": 5
+    }
+   },
+   "prefix_tokens": 15,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 12,
+     "text": " a car, the same way a firefighter might do with fire extinguishers.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 0.8181818181818182,
+     "rep3": 0.09999999999999998,
+     "words": 109,
+     "text": " a car, the same apartment blocks and the same apartment blocks.\n\n/Oct. 19, 2015: An apartment block in the 1100 block of Riverwood was engulfed by blaze on Wednesday night, witnesses said. (Published July 17, 2015) 8:00\n\n A fire engulfed a building Sunday night in New Mexico, leaving people hospitalized for more than two hours, according to local news reports after a fire erupted in the 1400 block of Lake Erie, according to police officers.\n\n\n\n\n\nThe fire has been reported to the Navajo Nation.\n"
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 126,
+     "text": " a car, the same way a firefighter might do his job, as a firefighter.\n\n\n, on the northwest corner of the St. Louis suburb of St. Louis, a fire broke out in the middle of the night, and the occupants came out of the car and drove into the nearby street, police said.\n\n\n\nThe victim, who was not named, was in her 20s and was about to be diagnosed with schizophrenia, police said.\nA neighbor said that she saw a woman and saw a car, a white Honda Accord.\nHer boyfriend said that she saw a man carrying "
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 85,
+     "text": " a car, the same way a firefighter might do when an explosion was first reported.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nT-Mobile , AT&T and Verizon have both confirmed that the fire started in a car, the same way a firefighter might do when an explosion being first reported.\n\n\n\n\n\nSterling said he expects to have an additional investigation into the incident.\n\n\n\n\nMountain View Police Chief Kevin Altenberg said Friday morning that the fire started in a car, the same way a firefighter might do when an ex"
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 136,
+     "text": " a car, the same way a firefighter might do when an explosion was first reported.\n\n\nIn a news release issued late Wednesday afternoon, firefighters said the fire started in a car, the same ways a firefighter might do when an explosion was first reportedly reported.\nIn a news release issued late February, firefighters said the fire started in a car, the same way a firefighter might do when an event was first reported.\n\"At least one car in the morning was burned by an explosion,\" Fire Chief Joseph"
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 26,
+     "text": " a car, the same as the blaze that killed at least 21 people. \"There was no indication that it was an accident,\" the NYPD said.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\"\n\n\n\n"
+    }
+   }
+  },
+  {
+   "i": 38,
+   "prompt": "The school board approved a plan to",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 42,
+     "enforced": 8,
+     "entries": 3,
+     "dropped_margin": 4,
+     "dropped_rank": 1
+    },
+    "i10_k10_w40": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 5,
+     "dropped_margin": 4,
+     "dropped_rank": 6
+    },
+    "i10_k10_w1": {
+     "tokens": 36,
+     "enforced": 3,
+     "entries": 1,
+     "dropped_margin": 1,
+     "dropped_rank": 1
+    },
+    "i10_k3_w5": {
+     "tokens": 99,
+     "enforced": 9,
+     "entries": 2,
+     "dropped_margin": 2,
+     "dropped_rank": 5
+    },
+    "i5_k3_w5": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 14,
+     "dropped_margin": 12,
+     "dropped_rank": 5
+    }
+   },
+   "prefix_tokens": 20,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 17,
+     "text": " allow the students to use the library for their own use, including the school board's library use.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 38,
+     "text": " allow the students to use and use private fields for learning and social activities.The plan calls for the school to allow the students to use and use private methods of education such as the arts, technology and entrepreneurship."
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 69,
+     "text": " allow the students to use the library for their own projects, and it was approved by the city board Wednesday.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nI‰\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLast updated: May 12, 2015, 3:51 a.m. to 4:57 p\"\n\n\n\n\n\n\n\n\nTo learn more about the school board‰\n and the other school board‰\n\n\nI‰\n\n\n\n\n\n\nHere are the details of the proposal:\n\nOn April 12, 2015, the School Board approved a plan to allow the students to use the library"
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 14,
+     "text": " allow the students to use the library for their own academic activities.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFollow @diancohn"
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 39,
+     "text": " allow the students to use the library for their own use. The board also approved a new student-to-teacher plan to make it easier to use the library for their own use.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis post was originally published on The Chronicle."
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": null,
+     "distinct2": 1.0,
+     "rep3": 0.0,
+     "words": 129,
+     "text": " allow the students to use the new mobile app as the primary platform for their school's day-to - day-to-day activities.\n\nA school board member who is on board with the new mobile app would not be allowed to use the new mobile app on his mobile device without the approval of the board.\nThe board approved the plan by a vote of 6-4.\nThe new mobile app will allow teachers to use the new technology for a day-only, day-to-day experience, but it will require students to use the new mobile app on their"
+    }
+   }
+  },
+  {
+   "i": 39,
+   "prompt": "Historians disagree about why",
+   "seal": {
+    "i5_k10_w40": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 15,
+     "dropped_margin": 11,
+     "dropped_rank": 5
+    },
+    "i10_k10_w40": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 7,
+     "dropped_margin": 6,
+     "dropped_rank": 2
+    },
+    "i10_k10_w1": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 3,
+     "dropped_margin": 5,
+     "dropped_rank": 7
+    },
+    "i10_k3_w5": {
+     "tokens": 160,
+     "enforced": 15,
+     "entries": 8,
+     "dropped_margin": 2,
+     "dropped_rank": 5
+    },
+    "i5_k3_w5": {
+     "tokens": 160,
+     "enforced": 31,
+     "entries": 25,
+     "dropped_margin": 4,
+     "dropped_rank": 2
+    }
+   },
+   "prefix_tokens": 157,
+   "quality": {
+    "unsealed": {
+     "ppl_prefix": 26.677324993268194,
+     "distinct2": 0.8974358974358975,
+     "rep3": 0.051724137931034475,
+     "words": 127,
+     "text": " he was sent to Spain in 1808, but they say that he had a good time as a student of the Spanish Inquisition.\n\n\n\nThe first is that the first Spanish politician was sent to Spain for a trip to the Americas in 1809, following a lengthy and painful and difficult journey, as a pupil of the Spanish Inquisition.\nThe other (whose name was not recorded) was Sir John Charles Townsend, who later became mayor of Halle, and his uncle, Sir Henry I. Townsend, a prominent Spanish-American politician.\nThe last s"
+    },
+    "i5_k10_w40": {
+     "ppl_prefix": 28.1113602165936,
+     "distinct2": 0.8888888888888888,
+     "rep3": 0.03448275862068961,
+     "words": 122,
+     "text": " he was sent to Spain but the book's telling is that he was born in Genoa in 1775. His father, he wrote, was also a Catholic.\n\n\n\nThe book was written by Edmund Harrison, founder of the Catholic church in the country, and co-author of the “Arian Odyssey”, an interesting retelling of his life.\n\nThe book is made by Robert Roach, a veteran Catholic bishop in the 19th c. century.\nThe book is part of a series of rare collections of books by Roach from the Library of Congress: The Complete Bible, The C"
+    },
+    "i10_k10_w40": {
+     "ppl_prefix": 14.61622893882175,
+     "distinct2": 0.8034188034188035,
+     "rep3": 0.08620689655172409,
+     "words": 136,
+     "text": " he was sent to Spain in 1808, but in the end he was sent to the British for a service in Paris. He was sent to the French for a service in Paris.\n\n\nOne of the reasons this is controversial is because of the fact that there is no hard evidence for his absence in the Scottish Parliament in the early 1800s. However, one can make the point that the \"right\" (of the British people) did, at least in the early 1800s, return to Scotland and that the Scottish people did not have a right to vote in the Sc"
+    },
+    "i10_k10_w1": {
+     "ppl_prefix": 16.54233719237515,
+     "distinct2": 0.8974358974358975,
+     "rep3": 0.03448275862068961,
+     "words": 118,
+     "text": " he was sent to Spain in 1808, but the key to the dispute is that his bond with him was not high. The Spaniards, who had long been a fan of the Spaniards, were afraid that he would be made a bad man but, as they had said, he would be put to death.\n\n\n\n\n\n\nAfter the death of Queen Maria Maria Maria Maria was buried on July 8, 1808, in Bismarck, Spain. On the grounds that she was one of the finest women of her time, she was found buried in a tree.\n\nShe died on July 9, 1808, in Bismarck, Spain. Her m"
+    },
+    "i10_k3_w5": {
+     "ppl_prefix": 18.888393090821452,
+     "distinct2": 0.9401709401709402,
+     "rep3": 0.0,
+     "words": 129,
+     "text": " he was sent to Spain in 1808, but his trial was successful.\n\n\n\n\nHe was accused of having changed his mind about his own history, and he was subsequently acquitted of any criminal offences.\n\nHe was never charged with anything but suspicion of being a \"fraud\", a term that can be used to describe a person who had not been convicted in a criminal case.\nThe case, which was put on trial in 1808, was the third in the history of Spanish courts, after the Spanish Inquisition.\nThe Spanish Inquisition\nIn "
+    },
+    "i5_k3_w5": {
+     "ppl_prefix": 5.151197327490205,
+     "distinct2": 0.36752136752136755,
+     "rep3": 0.5431034482758621,
+     "words": 148,
+     "text": " he was sent to Spain. He was told that he was not interested in learning more about the history of the country, and the life of the monarch of Spain, and that he was not interested in learning more about the history of Spain. He was told that he was not interested in learning more about the history of the country or the life of the country or the life of its monarch, and that he was not interested in learning more about the history of the country or the long history of the country or the long h"
+    }
+   }
+  }
+ ]
+}

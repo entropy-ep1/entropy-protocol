@@ -1,0 +1,205 @@
+{
+ "code": "5917cdbda8f6a5c0",
+ "model": "Qwen/Qwen2.5-7B-Instruct@a09a35458c702b33eeacc393d103063234e8bc28",
+ "weights": "fd024e4fed1dfb65cc679af8aa2d7b542971a1b74ab8cb4d703ac082afc3922c",
+ "env": {
+  "device": "cuda",
+  "hardware": "NVIDIA L40S",
+  "dtype": "float16",
+  "class": "fp16",
+  "torch": "2.7.0+cu128",
+  "transformers": "4.53.2",
+  "attn": "sdpa",
+  "batch": 1
+ },
+ "time": "2026-09-15T14:44:18",
+ "name": "A_quality",
+ "tol": 0.421875,
+ "interval": 5,
+ "context": 4,
+ "alphas": [
+  0.01,
+  0.001,
+  0.0001,
+  1e-05,
+  1e-06
+ ],
+ "positives": {
+  "50": {
+   "texts": 128,
+   "texts_reaching_L": 128,
+   "detected_at": {
+    "0.01": {
+     "rate": 0.289062,
+     "count": 37
+    },
+    "0.001": {
+     "rate": 0.039062,
+     "count": 5
+    },
+    "0.0001": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "1e-05": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "1e-06": {
+     "rate": 0.0,
+     "count": 0
+    }
+   },
+   "median_p": 0.03125,
+   "mean_checkpoints": 6.1,
+   "match_rate": 0.9593
+  },
+  "100": {
+   "texts": 128,
+   "texts_reaching_L": 128,
+   "detected_at": {
+    "0.01": {
+     "rate": 0.820312,
+     "count": 105
+    },
+    "0.001": {
+     "rate": 0.601562,
+     "count": 77
+    },
+    "0.0001": {
+     "rate": 0.25,
+     "count": 32
+    },
+    "1e-05": {
+     "rate": 0.070312,
+     "count": 9
+    },
+    "1e-06": {
+     "rate": 0.007812,
+     "count": 1
+    }
+   },
+   "median_p": 0.00048828125,
+   "mean_checkpoints": 12.1,
+   "match_rate": 0.9652
+  },
+  "200": {
+   "texts": 128,
+   "texts_reaching_L": 128,
+   "detected_at": {
+    "0.01": {
+     "rate": 0.976562,
+     "count": 125
+    },
+    "0.001": {
+     "rate": 0.960938,
+     "count": 123
+    },
+    "0.0001": {
+     "rate": 0.890625,
+     "count": 114
+    },
+    "1e-05": {
+     "rate": 0.789062,
+     "count": 101
+    },
+    "1e-06": {
+     "rate": 0.617188,
+     "count": 79
+    }
+   },
+   "median_p": 4.76837158203125e-07,
+   "mean_checkpoints": 24.0,
+   "match_rate": 0.9691
+  },
+  "400": {
+   "texts": 128,
+   "texts_reaching_L": 127,
+   "detected_at": {
+    "0.01": {
+     "rate": 0.984375,
+     "count": 126
+    },
+    "0.001": {
+     "rate": 0.976562,
+     "count": 125
+    },
+    "0.0001": {
+     "rate": 0.960938,
+     "count": 123
+    },
+    "1e-05": {
+     "rate": 0.953125,
+     "count": 122
+    },
+    "1e-06": {
+     "rate": 0.953125,
+     "count": 122
+    }
+   },
+   "median_p": 2.5579538487363607e-12,
+   "mean_checkpoints": 43.7,
+   "match_rate": 0.9723
+  }
+ },
+ "nulls": {
+  "same_model_other_key": {
+   "pairs": 128,
+   "false_positive_at": {
+    "0.01": {
+     "rate": 0.007812,
+     "count": 1
+    },
+    "0.001": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "0.0001": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "1e-05": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "1e-06": {
+     "rate": 0.0,
+     "count": 0
+    }
+   },
+   "min_p": 0.00685909252933925
+  },
+  "data:c4": {
+   "texts": 500,
+   "keys": 20,
+   "pairs": 10000,
+   "false_positive_at": {
+    "0.01": {
+     "rate": 0.0064,
+     "count": 64
+    },
+    "0.001": {
+     "rate": 0.0006,
+     "count": 6
+    },
+    "0.0001": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "1e-05": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "1e-06": {
+     "rate": 0.0,
+     "count": 0
+    }
+   },
+   "min_p": 0.0001776405593157393,
+   "mean_checkpoints": 53.9,
+   "seconds": 63.3
+  }
+ },
+ "attacks": {},
+ "minutes": 1.6
+}

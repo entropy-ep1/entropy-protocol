@@ -1,0 +1,59 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+  10/40  401s
+  20/40  787s
+  30/40  1169s
+  40/40  1543s
+{
+ "model": "Qwen/Qwen2.5-1.5B-Instruct",
+ "code": "2d2866250eda5363",
+ "variant_params": {
+  "c5_free_hm0": {
+   "interval": 5,
+   "k": 1,
+   "high_window": 3,
+   "selection": "content",
+   "align": "free",
+   "high_margin": 0.0
+  }
+ },
+ "oracle": "gpt2-medium",
+ "n": 40,
+ "usable_for_ppl": 40,
+ "space": "logit",
+ "min_new_tokens": 120,
+ "max_new_tokens": 160,
+ "cal": {
+  "fp32": 0.002237,
+  "fp16": 3.597708
+ },
+ "minutes": 25.7,
+ "variants": {
+  "unsealed": {
+   "median_ppl_prefix": 8.76,
+   "mean_distinct2": 0.838,
+   "mean_rep3": 0.098,
+   "mean_words": 127.0
+  },
+  "c5_free_hm0": {
+   "self_geo_mean_ppl_ratio": 1.284,
+   "self_pairs": 40,
+   "median_ppl_prefix": 10.99,
+   "median_ppl_ratio": 1.235,
+   "geo_mean_ppl_ratio": 1.335,
+   "ci95": [
+    1.148,
+    1.561
+   ],
+   "share_ratio_gt_1.25": 0.5,
+   "mean_distinct2": 0.867,
+   "mean_rep3": 0.074,
+   "mean_words": 123.7,
+   "mean_entries": 2.4,
+   "entries_per_100_tokens": 1.49,
+   "survival_%": 7.5,
+   "texts_below_8_entries_%": 95.0
+  }
+ }
+}
+written <repo>/bench/results/g5b_Qwen_Qwen2.5-1.5B-Instruct_logit_min120_N40_bridge.json

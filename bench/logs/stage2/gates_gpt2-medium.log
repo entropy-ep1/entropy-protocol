@@ -1,0 +1,177 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+  10/200  419s
+  20/200  718s
+  30/200  1090s
+  40/200  1484s
+  50/200  1947s
+  60/200  2339s
+  70/200  2708s
+  80/200  3135s
+  90/200  3600s
+  100/200  3974s
+  110/200  4315s
+  120/200  4688s
+  130/200  5106s
+  140/200  5407s
+  150/200  5696s
+  160/200  6011s
+  170/200  6422s
+  180/200  6750s
+  190/200  7069s
+  200/200  7366s
+{
+ "model": "gpt2-medium",
+ "device": "cpu",
+ "dtype": "float32",
+ "n": 200,
+ "minutes": 122.8,
+ "code": "aa2dddc19298c239",
+ "operating_point": {
+  "interval": 5,
+  "k": 1,
+  "window": 3,
+  "tol_space": "logit",
+  "cal": {
+   "fp32": 0.000641,
+   "fp16": 0.644806
+  }
+ },
+ "texts_below_8_entries": 27,
+ "mean_tokens": 173.6,
+ "mean_entries": 14.8,
+ "survival_%": 42.99,
+ "mean_seal_s": 30.24,
+ "mean_verify_s": 0.437,
+ "G1": {
+  "decisive_texts": 200,
+  "indeterminate_texts": 0,
+  "same_VERIFIED_%": 100.0,
+  "same_wrong_MODIFIED": 0,
+  "crlf_VERIFIED_%": 100.0,
+  "crlf_wrong_MODIFIED": 0,
+  "email_VERIFIED_%": 100.0,
+  "email_wrong_MODIFIED": 0,
+  "nbsp_VERIFIED_%": 100.0,
+  "nbsp_wrong_MODIFIED": 0,
+  "combined_VERIFIED_%": 100.0,
+  "combined_wrong_MODIFIED": 0,
+  "bom_nnbsp_VERIFIED_%": 100.0,
+  "bom_nnbsp_wrong_MODIFIED": 0,
+  "c2pa_manifest_VERIFIED_%": 100.0,
+  "c2pa_manifest_wrong_MODIFIED": 0,
+  "invisible_VERIFIED_%": 100.0,
+  "invisible_wrong_MODIFIED": 0
+ },
+ "G2": {
+  "checks": 399,
+  "false_VERIFIED": 0,
+  "MODIFIED_%": 100.0
+ },
+ "G3": {
+  "replace_word": {
+   "n": 200,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 76.5
+  },
+  "one_char": {
+   "n": 200,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 9.0
+  },
+  "delete_sentence": {
+   "n": 179,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 98.88,
+   "model_layer_alone_%": 100.0
+  },
+  "insert_sentence": {
+   "n": 179,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 94.41
+  },
+  "truncate_tail": {
+   "n": 200,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 95.0
+  }
+ },
+ "G6_privacy_leaks": 0,
+ "G10_lite": {
+  "texts": 200,
+  "detected_at_0.01": 0.95,
+  "detected_at_0.001": 0.92,
+  "detected_at_0.0001": 0.905,
+  "detected_at_1e-06": 0.83,
+  "median_p": 4.1237058212573174e-10,
+  "null_min_p": 0.2744140625
+ },
+ "localization_misses": [
+  {
+   "i": 30,
+   "edit": "delete_sentence",
+   "edit_at": 170,
+   "changed": [],
+   "deleted": [
+    166
+   ],
+   "divergent": [
+    [
+     180,
+     183
+    ],
+    [
+     211,
+     217
+    ],
+    [
+     308,
+     313
+    ],
+    [
+     355,
+     361
+    ],
+    [
+     504,
+     507
+    ]
+   ],
+   "original_around": " Board\n.\n\nTuesday, October 13, 2017\n\nProspectus to be submitted to the Board\n\n.\n\nWednesday and Friday, October 15 and 16, 2017\n\n\nBoard Meeting\n\nWednesday, Octob"
+  },
+  {
+   "i": 119,
+   "edit": "delete_sentence",
+   "edit_at": 219,
+   "changed": [],
+   "deleted": [
+    216
+   ],
+   "divergent": [
+    [
+     244,
+     251
+    ],
+    [
+     327,
+     331
+    ],
+    [
+     393,
+     400
+    ]
+   ],
+   "original_around": "bate, known as the \"Hebrew Bible controversy,\" has been raging for centuries.\n. . .\nThe Bible is written in Hebrew, and the original Hebrew is Greek. The text o"
+  }
+ ]
+}
+written <repo>/bench/results/gates_gpt2-medium_cpu_float32_N200_stage2.json

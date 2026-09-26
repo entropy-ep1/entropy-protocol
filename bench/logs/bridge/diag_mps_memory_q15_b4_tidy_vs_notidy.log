@@ -1,0 +1,22 @@
+=== dev code, tidy
+[17:54:33] start                              live   0.00 GB | driver   0.00 GB | footprint   0.28 GB
+[17:54:39] model loaded (MPS_SLACK 2147483648) live   2.88 GB | driver   3.05 GB | footprint   3.98 GB
+[17:54:58] model call 50 (8, 1)               live   2.92 GB | driver   4.29 GB | footprint   5.54 GB
+[17:55:08] model call 100 (8, 1)              live   2.93 GB | driver   4.31 GB | footprint   5.78 GB
+[17:55:19] model call 150 (8, 1)              live   2.95 GB | driver   5.24 GB | footprint   6.95 GB
+[17:55:30] model call 200 (4, 1)              live   2.95 GB | driver   3.40 GB | footprint   5.38 GB
+[17:55:38] model call 250 (4, 1)              live   2.95 GB | driver   3.40 GB | footprint   5.60 GB
+[17:55:46] model call 300 (1, 8)              live   2.88 GB | driver   3.40 GB | footprint   5.86 GB
+[17:55:49] done: 910 tokens, 300 calls, 70s, outputs fdf42d7546a16d79 live   2.88 GB | driver   4.09 GB | footprint   6.33 GB
+[17:55:50] after empty_cache                  live   2.88 GB | driver   4.09 GB | footprint   6.33 GB
+=== dev code, no-tidy
+[17:55:54] start                              live   0.00 GB | driver   0.00 GB | footprint   0.27 GB
+[17:55:59] model loaded (MPS_SLACK inf)       live   2.88 GB | driver   3.05 GB | footprint   3.99 GB
+[17:56:18] model call 50 (8, 1)               live   2.92 GB | driver   4.29 GB | footprint   5.55 GB
+[17:56:29] model call 100 (8, 1)              live   2.94 GB | driver   6.48 GB | footprint   8.00 GB
+[17:56:40] model call 150 (8, 1)              live   2.95 GB | driver   9.35 GB | footprint  11.00 GB
+[17:56:51] model call 200 (4, 1)              live   2.92 GB | driver   9.68 GB | footprint  12.00 GB
+[17:57:00] model call 250 (4, 1)              live   2.93 GB | driver   9.68 GB | footprint  12.00 GB
+[17:57:08] model call 300 (1, 8)              live   2.88 GB | driver   9.68 GB | footprint  12.00 GB
+[17:57:11] done: 910 tokens, 300 calls, 71s, outputs fdf42d7546a16d79 live   2.88 GB | driver  11.71 GB | footprint  14.00 GB
+[17:57:12] after empty_cache                  live   2.88 GB | driver   4.09 GB | footprint   5.65 GB

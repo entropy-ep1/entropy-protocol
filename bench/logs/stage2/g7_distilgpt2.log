@@ -1,0 +1,89 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+{
+ "model": "distilgpt2",
+ "code": "aa2dddc19298c239",
+ "verify": {
+  "cpu:float32": {
+   "128": {
+    "seconds": 0.0003,
+    "tokens_per_s": 425189.7
+   },
+   "512": {
+    "seconds": 0.0011,
+    "tokens_per_s": 474494.9
+   },
+   "1000": {
+    "seconds": 0.0022,
+    "tokens_per_s": 458531.5
+   }
+  },
+  "mps:float32": {
+   "128": {
+    "seconds": 0.0003,
+    "tokens_per_s": 412072.5
+   },
+   "512": {
+    "seconds": 0.0011,
+    "tokens_per_s": 469204.7
+   },
+   "1000": {
+    "seconds": 0.0024,
+    "tokens_per_s": 424418.3
+   }
+  },
+  "mps:float16": {
+   "128": {
+    "seconds": 0.0169,
+    "tokens_per_s": 7562.8
+   },
+   "512": {
+    "seconds": 0.0405,
+    "tokens_per_s": 12635.4
+   },
+   "1000": {
+    "seconds": 0.0737,
+    "tokens_per_s": 13562.9
+   }
+  }
+ },
+ "seal": {
+  "cpu:float32": {
+   "align": "free",
+   "free_after": 0,
+   "tokens": [
+    160,
+    160,
+    160
+   ],
+   "generate_s": 3.027,
+   "seal_s": 5.417,
+   "overhead_%": 79.0
+  },
+  "mps:float32": {
+   "align": "free",
+   "free_after": 0,
+   "tokens": [
+    160,
+    160,
+    160
+   ],
+   "generate_s": 2.994,
+   "seal_s": 4.545,
+   "overhead_%": 51.8
+  },
+  "mps:float16": {
+   "align": "free",
+   "free_after": 0,
+   "tokens": [
+    160,
+    160,
+    160
+   ],
+   "generate_s": 2.689,
+   "seal_s": 4.205,
+   "overhead_%": 56.4
+  }
+ }
+}
+written <repo>/bench/results/g7_distilgpt2.json

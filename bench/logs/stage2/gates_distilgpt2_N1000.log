@@ -1,0 +1,706 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+  10/1000  80s
+  20/1000  147s
+  30/1000  217s
+  40/1000  276s
+  50/1000  349s
+  60/1000  411s
+  70/1000  478s
+  80/1000  551s
+  90/1000  621s
+  100/1000  685s
+  110/1000  741s
+  120/1000  803s
+  130/1000  871s
+  140/1000  934s
+  150/1000  994s
+  160/1000  1045s
+  170/1000  1116s
+  180/1000  1175s
+  190/1000  1236s
+  200/1000  1295s
+  210/1000  1367s
+  220/1000  1437s
+  230/1000  1501s
+  240/1000  1567s
+  250/1000  1639s
+  260/1000  1704s
+  270/1000  1763s
+  280/1000  1821s
+  290/1000  1890s
+  300/1000  1961s
+  310/1000  2030s
+  320/1000  2089s
+  330/1000  2156s
+  340/1000  2215s
+  350/1000  2279s
+  360/1000  2343s
+  370/1000  2411s
+  380/1000  2477s
+  390/1000  2540s
+  400/1000  2597s
+  410/1000  2665s
+  420/1000  2721s
+  430/1000  2790s
+  440/1000  2856s
+  450/1000  2926s
+  460/1000  2985s
+  470/1000  3055s
+  480/1000  3119s
+  490/1000  3191s
+  500/1000  3254s
+  510/1000  3320s
+  520/1000  3386s
+  530/1000  3458s
+  540/1000  3516s
+  550/1000  3583s
+  560/1000  3654s
+  570/1000  3716s
+  580/1000  3769s
+  590/1000  3828s
+  600/1000  3894s
+  610/1000  3953s
+  620/1000  4005s
+  630/1000  4074s
+  640/1000  4137s
+  650/1000  4204s
+  660/1000  4247s
+  670/1000  4310s
+  680/1000  4374s
+  690/1000  4441s
+  700/1000  4510s
+  710/1000  4573s
+  720/1000  4635s
+  730/1000  4705s
+  740/1000  4770s
+  750/1000  4828s
+  760/1000  4893s
+  770/1000  4966s
+  780/1000  5026s
+  790/1000  5098s
+  800/1000  5156s
+  810/1000  5226s
+  820/1000  5283s
+  830/1000  5354s
+  840/1000  5425s
+  850/1000  5491s
+  860/1000  5549s
+  870/1000  5619s
+  880/1000  5689s
+  890/1000  5760s
+  900/1000  5824s
+  910/1000  5887s
+  920/1000  5954s
+  930/1000  6022s
+  940/1000  6078s
+  950/1000  6129s
+  960/1000  6190s
+  970/1000  6262s
+  980/1000  6325s
+  990/1000  6382s
+  1000/1000  6442s
+{
+ "model": "distilgpt2",
+ "device": "cpu",
+ "dtype": "float32",
+ "n": 1000,
+ "minutes": 107.4,
+ "code": "aa2dddc19298c239",
+ "operating_point": {
+  "interval": 5,
+  "k": 1,
+  "window": 3,
+  "tol_space": "logit",
+  "cal": {
+   "fp32": 0.000206,
+   "fp16": 0.306839
+  }
+ },
+ "texts_below_8_entries": 539,
+ "mean_tokens": 178.8,
+ "mean_entries": 12.8,
+ "survival_%": 70.24,
+ "mean_seal_s": 5.92,
+ "mean_verify_s": 0.035,
+ "G1": {
+  "decisive_texts": 1000,
+  "indeterminate_texts": 0,
+  "same_VERIFIED_%": 100.0,
+  "same_wrong_MODIFIED": 0,
+  "crlf_VERIFIED_%": 100.0,
+  "crlf_wrong_MODIFIED": 0,
+  "email_VERIFIED_%": 100.0,
+  "email_wrong_MODIFIED": 0,
+  "nbsp_VERIFIED_%": 100.0,
+  "nbsp_wrong_MODIFIED": 0,
+  "combined_VERIFIED_%": 100.0,
+  "combined_wrong_MODIFIED": 0,
+  "bom_nnbsp_VERIFIED_%": 100.0,
+  "bom_nnbsp_wrong_MODIFIED": 0,
+  "c2pa_manifest_VERIFIED_%": 100.0,
+  "c2pa_manifest_wrong_MODIFIED": 0,
+  "invisible_VERIFIED_%": 100.0,
+  "invisible_wrong_MODIFIED": 0
+ },
+ "G2": {
+  "checks": 1999,
+  "false_VERIFIED": 0,
+  "MODIFIED_%": 100.0
+ },
+ "G3": {
+  "replace_word": {
+   "n": 973,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 58.58
+  },
+  "one_char": {
+   "n": 973,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 18.29
+  },
+  "delete_sentence": {
+   "n": 436,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 95.64,
+   "model_layer_alone_%": 98.39
+  },
+  "insert_sentence": {
+   "n": 436,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 95.41
+  },
+  "truncate_tail": {
+   "n": 1000,
+   "MODIFIED_%": 53.9,
+   "false_VERIFIED": 461,
+   "localized_%": 99.81,
+   "model_layer_alone_%": 48.8
+  }
+ },
+ "G6_privacy_leaks": 0,
+ "G10_lite": {
+  "texts": 1000,
+  "detected_at_0.01": 0.479,
+  "detected_at_0.001": 0.411,
+  "detected_at_0.0001": 0.372,
+  "detected_at_1e-06": 0.29,
+  "median_p": 0.015625,
+  "null_min_p": 0.11328125
+ },
+ "localization_misses": [
+  {
+   "i": 18,
+   "edit": "delete_sentence",
+   "edit_at": 202,
+   "changed": [],
+   "deleted": [
+    356
+   ],
+   "divergent": [],
+   "original_around": "Drs. Drs. Drs. Drs. Drs. Drs. Drs. Drs. Drs. Drs. Drs. Drs. Drs. Drs. Drs. Drs. Drs. Drs. Drs. Drs. Drs. Drs. Drs. Drs. Drs. Drs. Drs. Drs. Drs. Drs. Drs. Drs. "
+  },
+  {
+   "i": 43,
+   "edit": "delete_sentence",
+   "edit_at": 508,
+   "changed": [],
+   "deleted": [
+    892
+   ],
+   "divergent": [],
+   "original_around": "r.\nThe first printing press was the first to manufacture a new type of printer. The first printing press was the first to manufacture a new type of printer.\nThe"
+  },
+  {
+   "i": 216,
+   "edit": "delete_sentence",
+   "edit_at": 337,
+   "changed": [],
+   "deleted": [
+    231
+   ],
+   "divergent": [
+    [
+     374,
+     378
+    ],
+    [
+     433,
+     444
+    ],
+    [
+     433,
+     444
+    ],
+    [
+     433,
+     444
+    ],
+    [
+     459,
+     465
+    ]
+   ],
+   "original_around": "last month that, in August, the government cut tax credits to the working poor.\nThe government announced last month that, in August, the government cut tax cred"
+  },
+  {
+   "i": 219,
+   "edit": "delete_sentence",
+   "edit_at": 452,
+   "changed": [],
+   "deleted": [
+    421
+   ],
+   "divergent": [
+    [
+     481,
+     487
+    ],
+    [
+     544,
+     550
+    ],
+    [
+     581,
+     587
+    ],
+    [
+     687,
+     694
+    ],
+    [
+     703,
+     706
+    ]
+   ],
+   "original_around": "aturday, 8 July, and was postponed for two hours.\nIt was delayed for two hours.\nIt was delayed for two hours.\nOn the morning of 9 July, the train was delayed fo"
+  },
+  {
+   "i": 259,
+   "edit": "delete_sentence",
+   "edit_at": 325,
+   "changed": [],
+   "deleted": [
+    418
+   ],
+   "divergent": [
+    [
+     440,
+     444
+    ],
+    [
+     448,
+     456
+    ],
+    [
+     542,
+     548
+    ],
+    [
+     604,
+     607
+    ],
+    [
+     625,
+     631
+    ]
+   ],
+   "original_around": "e of the night.\n\n\n\n\nThe train was stopped for two minutes because of its speed. The train was stopped in the middle of the night and then stopped in the middle "
+  },
+  {
+   "i": 277,
+   "edit": "delete_sentence",
+   "edit_at": 313,
+   "changed": [
+    [
+     177,
+     244
+    ]
+   ],
+   "deleted": [
+    652
+   ],
+   "divergent": [
+    [
+     345,
+     348
+    ],
+    [
+     481,
+     484
+    ],
+    [
+     657,
+     658
+    ],
+    [
+     673,
+     674
+    ],
+    [
+     682,
+     683
+    ]
+   ],
+   "original_around": ", New York.\nThe fire started at the 10th and 12th Streets in Chatham, New York.\nThe fire started at the 10th and 11th Streets in Chatham, New York.\nThe fire sta"
+  },
+  {
+   "i": 328,
+   "edit": "delete_sentence",
+   "edit_at": 416,
+   "changed": [],
+   "deleted": [
+    661
+   ],
+   "divergent": [
+    [
+     724,
+     726
+    ],
+    [
+     849,
+     856
+    ],
+    [
+     881,
+     882
+    ],
+    [
+     887,
+     888
+    ],
+    [
+     966,
+     967
+    ]
+   ],
+   "original_around": "ittle dressing, but an little over half an onions and a few more garlic cloves. The recipe calls for fresh tomatoes and a little dressing, but an little over ha"
+  },
+  {
+   "i": 328,
+   "edit": "truncate_tail",
+   "edit_at": 734,
+   "changed": [],
+   "deleted": [
+    661
+   ],
+   "divergent": [
+    [
+     759,
+     760
+    ],
+    [
+     765,
+     766
+    ],
+    [
+     844,
+     845
+    ],
+    [
+     848,
+     849
+    ],
+    [
+     850,
+     851
+    ]
+   ],
+   "original_around": "cloves. The recipe calls for fresh tomatoes and a little dressing, but an little over half an onions and a few more garlic cloves. The recipe calls for fresh to"
+  },
+  {
+   "i": 510,
+   "edit": "delete_sentence",
+   "edit_at": 409,
+   "changed": [],
+   "deleted": [
+    726
+   ],
+   "divergent": [
+    [
+     819,
+     820
+    ],
+    [
+     840,
+     841
+    ],
+    [
+     866,
+     867
+    ],
+    [
+     891,
+     892
+    ]
+   ],
+   "original_around": "please email me at the page and I will respond with a response to your request.\nIf you have any questions please email me at the page and I will respond with a "
+  },
+  {
+   "i": 550,
+   "edit": "delete_sentence",
+   "edit_at": 290,
+   "changed": [],
+   "deleted": [
+    389
+   ],
+   "divergent": [
+    [
+     494,
+     504
+    ],
+    [
+     531,
+     537
+    ],
+    [
+     827,
+     831
+    ],
+    [
+     868,
+     869
+    ],
+    [
+     886,
+     887
+    ]
+   ],
+   "original_around": "l and replace the government's proposed 15-year-old automatic veto of the bill.\nThe bill would repeal and replace the government's proposed 15-year-old automati"
+  },
+  {
+   "i": 570,
+   "edit": "delete_sentence",
+   "edit_at": 409,
+   "changed": [],
+   "deleted": [
+    198
+   ],
+   "divergent": [
+    [
+     477,
+     481
+    ],
+    [
+     485,
+     499
+    ],
+    [
+     499,
+     500
+    ],
+    [
+     529,
+     535
+    ],
+    [
+     579,
+     582
+    ]
+   ],
+   "original_around": "venience. We're sorry for the inconvenience. We're sorry for the inconvenience. We're sorry for the inconvenience. We're sorry for the inconvenience.\n\nThank You"
+  },
+  {
+   "i": 684,
+   "edit": "delete_sentence",
+   "edit_at": 478,
+   "changed": [],
+   "deleted": [
+    528
+   ],
+   "divergent": [
+    [
+     674,
+     678
+    ],
+    [
+     899,
+     900
+    ]
+   ],
+   "original_around": "e servers used for their performance were not connected directly to the server. The servers were connected directly to the server. The servers were connected di"
+  },
+  {
+   "i": 744,
+   "edit": "delete_sentence",
+   "edit_at": 360,
+   "changed": [],
+   "deleted": [
+    599
+   ],
+   "divergent": [],
+   "original_around": "die. I want to die. I want to die. I want to die. I want to die. I want to die. I want to die. I want to die. I want to die. I want to die. I want to die. I wan"
+  },
+  {
+   "i": 755,
+   "edit": "delete_sentence",
+   "edit_at": 333,
+   "changed": [],
+   "deleted": [
+    452
+   ],
+   "divergent": [
+    [
+     452,
+     460
+    ],
+    [
+     524,
+     530
+    ],
+    [
+     531,
+     541
+    ],
+    [
+     548,
+     552
+    ],
+    [
+     724,
+     728
+    ]
+   ],
+   "original_around": " the venue. Tickets are $20 for the day, $20 for the night and $25 for the day. Admission is $20 and you are encouraged to enter the venue. Admission is $20 and"
+  },
+  {
+   "i": 806,
+   "edit": "delete_sentence",
+   "edit_at": 442,
+   "changed": [],
+   "deleted": [
+    371
+   ],
+   "divergent": [
+    [
+     451,
+     457
+    ],
+    [
+     721,
+     722
+    ]
+   ],
+   "original_around": "ake home. We have a large tree to take home. We have a large tree to take home. We have a large tree to take home. We have a small tree to take home.\nOn the por"
+  },
+  {
+   "i": 833,
+   "edit": "delete_sentence",
+   "edit_at": 348,
+   "changed": [],
+   "deleted": [
+    791
+   ],
+   "divergent": [
+    [
+     791,
+     792
+    ],
+    [
+     792,
+     793
+    ],
+    [
+     799,
+     800
+    ],
+    [
+     831,
+     832
+    ]
+   ],
+   "original_around": "2005.\nThe UK will continue to sign the treaty, which was signed in August 2005.\nThe UK will continue to sign the treaty, which was signed in August 2005.\nThe UK"
+  },
+  {
+   "i": 863,
+   "edit": "delete_sentence",
+   "edit_at": 93,
+   "changed": [],
+   "deleted": [
+    150
+   ],
+   "divergent": [
+    [
+     192,
+     193
+    ],
+    [
+     197,
+     198
+    ]
+   ],
+   "original_around": "update their devices. The new features will bring more control over the device. The new features will bring more control over the device. The new features will "
+  },
+  {
+   "i": 877,
+   "edit": "delete_sentence",
+   "edit_at": 447,
+   "changed": [],
+   "deleted": [
+    848
+   ],
+   "divergent": [
+    [
+     980,
+     981
+    ],
+    [
+     986,
+     987
+    ],
+    [
+     992,
+     993
+    ]
+   ],
+   "original_around": " was closed. The blaze started in a short time after the restaurant was closed. The blaze started in a short time after the restaurant was closed. The blaze sta"
+  },
+  {
+   "i": 886,
+   "edit": "delete_sentence",
+   "edit_at": 662,
+   "changed": [],
+   "deleted": [
+    685
+   ],
+   "divergent": [
+    [
+     752,
+     756
+    ],
+    [
+     771,
+     772
+    ],
+    [
+     772,
+     773
+    ],
+    [
+     792,
+     793
+    ]
+   ],
+   "original_around": "she had been in the church for a year, and I had never seen anything like this.\nShe was very beautiful.\nShe was very beautiful. I thought I was going to be in t"
+  },
+  {
+   "i": 964,
+   "edit": "delete_sentence",
+   "edit_at": 428,
+   "changed": [],
+   "deleted": [
+    832
+   ],
+   "divergent": [],
+   "original_around": "he data was collected from the server and the number of jobs that were created.\nThe data was collected from the server and the number of jobs that were created."
+  }
+ ]
+}
+written <repo>/bench/results/gates_distilgpt2_cpu_float32_N1000_stage2.json

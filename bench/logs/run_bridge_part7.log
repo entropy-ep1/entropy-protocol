@@ -1,0 +1,66 @@
+19:09:42 part 7; code 73eee0d50e518249
+19:09:42 tests: passed on this code in part 8 (<repo>/bench/logs/bridge/tests_73eee0d50e518249.log)
+19:09:42 START align_microsoft_phi-3-mini-4k-instruct (swap used 3533.06M)
+19:29:51 END align_microsoft_phi-3-mini-4k-instruct rc=0
+19:29:51 START gsm_microsoft_Phi-3-mini-4k-instruct_plain (swap used 4407.12M)
+19:44:10 END gsm_microsoft_Phi-3-mini-4k-instruct_plain rc=0
+19:44:10 START gsm_microsoft_Phi-3-mini-4k-instruct_quality (swap used 6570.69M)
+bench/run_bridge_part7.sh: line 21: 47297 Terminated: 15          "$@" > "$L/$name.log" 2>&1
+20:06:29 END gsm_microsoft_Phi-3-mini-4k-instruct_quality rc=143
+20:06:29 START gsm_microsoft_Phi-3-mini-4k-instruct_strong (swap used 7824.81M)
+bench/run_bridge_part7.sh: line 21: 50647 Terminated: 15          "$@" > "$L/$name.log" 2>&1
+20:28:41 END gsm_microsoft_Phi-3-mini-4k-instruct_strong rc=143
+20:28:41 SKIP: corpus gsm_quality has 36 of 50 texts
+20:28:41 SKIP: corpus gsm_strong has 36 of 50 texts
+20:28:41 START prose_microsoft_Phi-3-mini-4k-instruct_plain (swap used 6899.44M)
+20:31:14 STOPPED part 7 script after gsm (both sealed GSM8K jobs reached 16 GB at batch 10: growth across batches); prose_plain (pid 53005) left to finish
+20:41:49 prose_plain finished (pid 53005)
+21:05:52 RESTART part 7: sealing in processes of 16 texts (bench/logs/bridge/diag_phi3_growth_seal_vs_genonly.log); complete steps kept
+21:05:52 part 7; code 73eee0d50e518249
+21:05:52 tests: passed on this code in part 8 (<repo>/bench/logs/bridge/tests_73eee0d50e518249.log)
+21:05:52 align: complete (73eee0d50e518249)
+21:05:53 START gsm_quality_microsoft_Phi-3-mini-4k-instruct_o32 (swap used 4123.12M)
+21:13:57 END gsm_quality_microsoft_Phi-3-mini-4k-instruct_o32 rc=0
+21:13:57 START gsm_quality_microsoft_Phi-3-mini-4k-instruct_o48 (swap used 6014.56M)
+21:14:59 END gsm_quality_microsoft_Phi-3-mini-4k-instruct_o48 rc=0
+21:14:59 START gsm_strong_microsoft_Phi-3-mini-4k-instruct_o32 (swap used 6027.25M)
+21:22:10 END gsm_strong_microsoft_Phi-3-mini-4k-instruct_o32 rc=0
+21:22:10 START gsm_strong_microsoft_Phi-3-mini-4k-instruct_o48 (swap used 6007.06M)
+21:23:58 END gsm_strong_microsoft_Phi-3-mini-4k-instruct_o48 rc=0
+21:23:58 START q_microsoft_Phi-3-mini-4k-instruct_gsm_quality (swap used 5241.56M)
+21:24:02 END q_microsoft_Phi-3-mini-4k-instruct_gsm_quality rc=0
+21:24:03 START q_microsoft_Phi-3-mini-4k-instruct_gsm_strong (swap used 5217.56M)
+21:24:06 END q_microsoft_Phi-3-mini-4k-instruct_gsm_strong rc=0
+21:24:06 START prose_quality_microsoft_Phi-3-mini-4k-instruct_o0 (swap used 5217.56M)
+21:34:57 END prose_quality_microsoft_Phi-3-mini-4k-instruct_o0 rc=0
+21:34:57 START prose_quality_microsoft_Phi-3-mini-4k-instruct_o16 (swap used 5754.94M)
+22:16:54 END prose_quality_microsoft_Phi-3-mini-4k-instruct_o16 rc=0
+22:16:54 START prose_quality_microsoft_Phi-3-mini-4k-instruct_o32 (swap used 7664.88M)
+22:22:39 END prose_quality_microsoft_Phi-3-mini-4k-instruct_o32 rc=0
+22:22:39 START prose_strong_microsoft_Phi-3-mini-4k-instruct_o0 (swap used 7725.12M)
+22:34:45 END prose_strong_microsoft_Phi-3-mini-4k-instruct_o0 rc=0
+22:34:45 START prose_strong_microsoft_Phi-3-mini-4k-instruct_o16 (swap used 8014.06M)
+22:48:18 END prose_strong_microsoft_Phi-3-mini-4k-instruct_o16 rc=0
+22:48:18 START prose_strong_microsoft_Phi-3-mini-4k-instruct_o32 (swap used 8253.38M)
+22:54:21 END prose_strong_microsoft_Phi-3-mini-4k-instruct_o32 rc=0
+22:54:21 START detp_microsoft_Phi-3-mini-4k-instruct_quality (swap used 8746.31M)
+22:55:11 END detp_microsoft_Phi-3-mini-4k-instruct_quality rc=0
+22:55:11 START detp_microsoft_Phi-3-mini-4k-instruct_strong (swap used 9831.25M)
+22:56:10 END detp_microsoft_Phi-3-mini-4k-instruct_strong rc=0
+22:56:10 START qp_microsoft_Phi-3-mini-4k-instruct_quality (swap used 7943.81M)
+22:56:25 END qp_microsoft_Phi-3-mini-4k-instruct_quality rc=0
+22:56:25 START qd_microsoft_Phi-3-mini-4k-instruct_quality (swap used 7903.81M)
+22:56:31 END qd_microsoft_Phi-3-mini-4k-instruct_quality rc=0
+22:56:31 START qp_microsoft_Phi-3-mini-4k-instruct_strong (swap used 7879.81M)
+22:56:44 END qp_microsoft_Phi-3-mini-4k-instruct_strong rc=0
+22:56:44 START qd_microsoft_Phi-3-mini-4k-instruct_strong (swap used 7799.81M)
+22:56:48 END qd_microsoft_Phi-3-mini-4k-instruct_strong rc=0
+22:56:48 START det_microsoft_Phi-3-mini-4k-instruct_gsm_quality (swap used 7783.81M)
+22:57:41 END det_microsoft_Phi-3-mini-4k-instruct_gsm_quality rc=0
+22:57:41 START det_microsoft_Phi-3-mini-4k-instruct_gsm_strong (swap used 9065.44M)
+22:58:56 END det_microsoft_Phi-3-mini-4k-instruct_gsm_strong rc=0
+22:58:56 START gates_microsoft_phi-3-mini-4k-instruct_quality (swap used 8361.94M)
+23:17:07 END gates_microsoft_phi-3-mini-4k-instruct_quality rc=0
+23:17:07 START gates_microsoft_phi-3-mini-4k-instruct_strong (swap used 7722.31M)
+23:34:04 END gates_microsoft_phi-3-mini-4k-instruct_strong rc=0
+23:34:04 BRIDGE PART 7 DONE

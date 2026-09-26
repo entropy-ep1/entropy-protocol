@@ -1,0 +1,146 @@
+{
+ "code": "00a100caabf1bdf8",
+ "model": "Qwen/Qwen2.5-0.5B-Instruct@7ae557604adf67be50417f59c2c2f167def9a775",
+ "weights": "f0a62a4d86e57dd5ac645484981288c15febea408def1de858997925056a74aa",
+ "env": {
+  "device": "mps",
+  "hardware": "arm64",
+  "dtype": "float16",
+  "class": "fp16",
+  "torch": "2.7.1",
+  "transformers": "4.53.2",
+  "attn": "sdpa",
+  "batch": 1
+ },
+ "time": "2026-09-13T15:21:23",
+ "name": "gsm_guard90",
+ "tol": 0.0,
+ "interval": 5,
+ "context": 4,
+ "alphas": [
+  0.01,
+  0.001,
+  0.0001,
+  1e-05,
+  1e-06
+ ],
+ "positives": {
+  "100": {
+   "texts": 100,
+   "texts_reaching_L": 100,
+   "detected_at": {
+    "0.01": {
+     "rate": 0.09,
+     "count": 9
+    },
+    "0.001": {
+     "rate": 0.03,
+     "count": 3
+    },
+    "0.0001": {
+     "rate": 0.01,
+     "count": 1
+    },
+    "1e-05": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "1e-06": {
+     "rate": 0.0,
+     "count": 0
+    }
+   },
+   "median_p": 0.21197509765625,
+   "mean_checkpoints": 18.0,
+   "match_rate": 0.6336
+  },
+  "200": {
+   "texts": 100,
+   "texts_reaching_L": 91,
+   "detected_at": {
+    "0.01": {
+     "rate": 0.11,
+     "count": 11
+    },
+    "0.001": {
+     "rate": 0.04,
+     "count": 4
+    },
+    "0.0001": {
+     "rate": 0.01,
+     "count": 1
+    },
+    "1e-05": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "1e-06": {
+     "rate": 0.0,
+     "count": 0
+    }
+   },
+   "median_p": 0.1481031842995435,
+   "mean_checkpoints": 32.5,
+   "match_rate": 0.607
+  },
+  "400": {
+   "texts": 100,
+   "texts_reaching_L": 16,
+   "detected_at": {
+    "0.01": {
+     "rate": 0.14,
+     "count": 14
+    },
+    "0.001": {
+     "rate": 0.06,
+     "count": 6
+    },
+    "0.0001": {
+     "rate": 0.02,
+     "count": 2
+    },
+    "1e-05": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "1e-06": {
+     "rate": 0.0,
+     "count": 0
+    }
+   },
+   "median_p": 0.14879760414221435,
+   "mean_checkpoints": 44.8,
+   "match_rate": 0.6001
+  }
+ },
+ "nulls": {
+  "same_model_other_key": {
+   "pairs": 100,
+   "false_positive_at": {
+    "0.01": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "0.001": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "0.0001": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "1e-05": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "1e-06": {
+     "rate": 0.0,
+     "count": 0
+    }
+   },
+   "min_p": 0.012373017921220399
+  }
+ },
+ "attacks": {},
+ "minutes": 1.1
+}

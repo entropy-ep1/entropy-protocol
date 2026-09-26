@@ -1,0 +1,83 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+{
+ "model": "gpt2-medium",
+ "code": "23ecd270bd10bef6",
+ "verify": {
+  "cpu:float32": {
+   "128": {
+    "seconds": 0.2388,
+    "tokens_per_s": 536.1
+   },
+   "512": {
+    "seconds": 0.5632,
+    "tokens_per_s": 909.0
+   },
+   "1000": {
+    "seconds": 1.0654,
+    "tokens_per_s": 938.6
+   }
+  },
+  "mps:float32": {
+   "128": {
+    "seconds": 0.062,
+    "tokens_per_s": 2064.2
+   },
+   "512": {
+    "seconds": 0.175,
+    "tokens_per_s": 2925.1
+   },
+   "1000": {
+    "seconds": 0.3453,
+    "tokens_per_s": 2896.0
+   }
+  },
+  "mps:float16": {
+   "128": {
+    "seconds": 0.0544,
+    "tokens_per_s": 2355.0
+   },
+   "512": {
+    "seconds": 0.156,
+    "tokens_per_s": 3281.5
+   },
+   "1000": {
+    "seconds": 0.2951,
+    "tokens_per_s": 3389.0
+   }
+  }
+ },
+ "seal": {
+  "cpu:float32": {
+   "tokens": [
+    160,
+    111,
+    160
+   ],
+   "generate_s": 11.695,
+   "seal_s": 12.043,
+   "overhead_%": 3.0
+  },
+  "mps:float32": {
+   "tokens": [
+    160,
+    111,
+    160
+   ],
+   "generate_s": 6.563,
+   "seal_s": 6.62,
+   "overhead_%": 0.9
+  },
+  "mps:float16": {
+   "tokens": [
+    160,
+    160,
+    160
+   ],
+   "generate_s": 6.191,
+   "seal_s": 6.18,
+   "overhead_%": -0.2
+  }
+ }
+}
+written <repo>/bench/results/g7_gpt2-medium.json

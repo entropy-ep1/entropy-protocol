@@ -1,0 +1,83 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+{
+ "model": "Qwen/Qwen2.5-0.5B-Instruct",
+ "code": "23ecd270bd10bef6",
+ "verify": {
+  "cpu:float32": {
+   "128": {
+    "seconds": 0.2154,
+    "tokens_per_s": 594.1
+   },
+   "512": {
+    "seconds": 0.5,
+    "tokens_per_s": 1024.0
+   },
+   "1000": {
+    "seconds": 0.9146,
+    "tokens_per_s": 1093.4
+   }
+  },
+  "mps:float32": {
+   "128": {
+    "seconds": 0.0843,
+    "tokens_per_s": 1517.6
+   },
+   "512": {
+    "seconds": 0.2188,
+    "tokens_per_s": 2339.9
+   },
+   "1000": {
+    "seconds": 0.4012,
+    "tokens_per_s": 2492.8
+   }
+  },
+  "mps:float16": {
+   "128": {
+    "seconds": 0.0838,
+    "tokens_per_s": 1527.0
+   },
+   "512": {
+    "seconds": 0.1993,
+    "tokens_per_s": 2568.7
+   },
+   "1000": {
+    "seconds": 0.3601,
+    "tokens_per_s": 2777.3
+   }
+  }
+ },
+ "seal": {
+  "cpu:float32": {
+   "tokens": [
+    160,
+    160,
+    160
+   ],
+   "generate_s": 13.375,
+   "seal_s": 13.618,
+   "overhead_%": 1.8
+  },
+  "mps:float32": {
+   "tokens": [
+    160,
+    160,
+    160
+   ],
+   "generate_s": 10.848,
+   "seal_s": 10.885,
+   "overhead_%": 0.3
+  },
+  "mps:float16": {
+   "tokens": [
+    160,
+    160,
+    160
+   ],
+   "generate_s": 10.645,
+   "seal_s": 10.756,
+   "overhead_%": 1.0
+  }
+ }
+}
+written <repo>/bench/results/g7_Qwen_Qwen2.5-0.5B-Instruct.json

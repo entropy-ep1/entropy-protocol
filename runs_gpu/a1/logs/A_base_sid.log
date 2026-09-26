@@ -1,0 +1,5 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:04,  1.46s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:02<00:02,  1.43s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:04<00:01,  1.42s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:05<00:00,  1.37s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:05<00:00,  1.40s/it]
+15:15:09   synthid L=100: {'mean': {'tpr': 1.0, 'threshold': 0.5120822622107969, 'null_n': 1128, 'resolvable': True}, 'weighted': {'tpr': 1.0, 'threshold': 0.5125747919082642, 'null_n': 1128, 'resolvable': True}}
+15:15:09   synthid L=200: {'mean': {'tpr': 1.0, 'threshold': 0.5120822622107969, 'null_n': 1128, 'resolvable': True}, 'weighted': {'tpr': 1.0, 'threshold': 0.5125747919082642, 'null_n': 1128, 'resolvable': True}}
+15:15:09   synthid L=400: {'mean': {'tpr': 1.0, 'threshold': 0.5120822622107969, 'null_n': 1128, 'resolvable': True}, 'weighted': {'tpr': 1.0, 'threshold': 0.5125747919082642, 'null_n': 1128, 'resolvable': True}}
+15:15:09 written baseline_synthid_A.summary.json

@@ -1,0 +1,1 @@
+Part 6 restart of 13.09 17:32 (batch 4, frozen copy 00a100ca). The GSM8K guard-0.9 job was stopped by bench/mem_watchdog.sh at 17:34:25 (14 GB footprint) after its first batch (4 texts); the part-6 script went on to quality and detection over that 4-text corpus (and started a prose detection) before it was stopped at 17:35. None of these results is valid: do not use.

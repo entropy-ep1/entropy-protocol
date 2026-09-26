@@ -1,0 +1,35 @@
+== data
+20:40:27 tiny data written to $TMPDIR/smoke_c/data
+== cal
+20:41:12 done: 540 tokens in 38s
+20:41:19 arm64_float32_default_b1: 6 texts, 540 positions -> C_s_cal__arm64_float32_default_b1.npz
+20:41:24 arm64_float32_default_b3: 6 texts, 540 positions -> C_s_cal__arm64_float32_default_b3.npz
+20:41:31 arm64_bfloat16_default_b3: 6 texts, 540 positions -> C_s_cal__arm64_bfloat16_default_b3.npz
+20:41:34 table {'fp32': 0.0}; kept share 1.000; flips at kept positions: 7 -> $TMPDIR/smoke_c/runs/Qwen_Qwen2.5-0.5B-Instruct/calibration_C_s_cal.json
+== sealed
+20:42:14 done: 540 tokens in 37s
+20:42:57 done: 540 tokens in 38s
+20:43:29 done: 540 tokens in 26s
+== null
+20:43:47 written detect_C_s_null.summary.json
+20:44:06 written detect_C_s_null_q.summary.json
+== baselines
+20:44:33 done: 360 tokens in 23s
+20:45:12 done: 360 tokens in 35s
+20:45:21 written baseline_kgw_C_s_p1.summary.json
+20:45:24 written baseline_synthid_C_s_p1.summary.json
+== records
+20:45:41 {'corpus': 'C_s_sealed', 'config': 'fp32_default_b3', 'texts': 6, 'decisive': 6, 'same_VERIFIED_%': 100.0, 'same_wrong_MODIFIED': 0, 'same_INDETERMINATE': 0, 'calibrated': ['True'], 'transport_wrong_MODIFIED': {'crlf': 0, 'email': 0, 'nbsp': 0, 'combined': 0, 'bom_nnbsp': 0, 'c2pa_manifest': 0, 'invisible': 0}, 'transport_VERIFIED_%': {'crlf': 100.0, 'email': 100.0, 'nbsp': 100.0, 'combined': 100.0, 'bom_nnbsp': 100.0, 'c2pa_manifest': 100.0, 'invisible': 100.0}, 'unrelated_false_VERIFIED': 0, 'edits': {'replace_word': {'n': 6, 'noop_skipped': 0, 'MODIFIED_%': 100.0, 'false_VERIFIED': 0, 'localized_%': 100.0, 'model_layer_%': 100.0}, 'one_char': {'n': 6, 'noop_skipped': 0, 'MODIFIED_%': 100.0, 'false_VERIFIED': 0, 'localized_%': 100.0, 'model_layer_%': 66.667}, 'delete_sentence': {'n': 6, 'noop_skipped': 0, 'MODIFIED_%': 100.0, 'false_VERIFIED': 0, 'localized_%': 100.0, 'model_layer_%': 100.0}, 'insert_sentence': {'n': 6, 'noop_skipped': 0, 'MODIFIED_%': 100.0, 'false_VERIFIED': 0, 'localized_%': 100.0, 'model_layer_%': 83.333}, 'truncate_tail': {'n': 6, 'noop_skipped': 0, 'MODIFIED_%': 100.0, 'false_VERIFIED': 0, 'localized_%': 100.0, 'model_layer_%': 100.0}}, 'noop_edits_not_VERIFIED': 0, 'privacy_leaks': 0}
+20:45:59 {'corpus': 'C_s_quality', 'config': 'fp32_default_b3', 'texts': 6, 'decisive': 6, 'same_VERIFIED_%': 100.0, 'same_wrong_MODIFIED': 0, 'same_INDETERMINATE': 0, 'calibrated': ['True'], 'transport_wrong_MODIFIED': {'crlf': 0, 'email': 0, 'nbsp': 0, 'combined': 0, 'bom_nnbsp': 0, 'c2pa_manifest': 0, 'invisible': 0}, 'transport_VERIFIED_%': {'crlf': 100.0, 'email': 100.0, 'nbsp': 100.0, 'combined': 100.0, 'bom_nnbsp': 100.0, 'c2pa_manifest': 100.0, 'invisible': 100.0}, 'unrelated_false_VERIFIED': 0, 'edits': {'replace_word': {'n': 6, 'noop_skipped': 0, 'MODIFIED_%': 100.0, 'false_VERIFIED': 0, 'localized_%': 100.0, 'model_layer_%': 100.0}, 'one_char': {'n': 6, 'noop_skipped': 0, 'MODIFIED_%': 100.0, 'false_VERIFIED': 0, 'localized_%': 100.0, 'model_layer_%': 83.333}, 'delete_sentence': {'n': 6, 'noop_skipped': 0, 'MODIFIED_%': 100.0, 'false_VERIFIED': 0, 'localized_%': 100.0, 'model_layer_%': 100.0}, 'insert_sentence': {'n': 6, 'noop_skipped': 0, 'MODIFIED_%': 100.0, 'false_VERIFIED': 0, 'localized_%': 100.0, 'model_layer_%': 100.0}, 'truncate_tail': {'n': 6, 'noop_skipped': 0, 'MODIFIED_%': 100.0, 'false_VERIFIED': 0, 'localized_%': 100.0, 'model_layer_%': 100.0}}, 'noop_edits_not_VERIFIED': 0, 'privacy_leaks': 0}
+20:46:26 {'corpus': 'C_s_sealed', 'config': 'bf16_default_b3', 'texts': 6, 'decisive': 4, 'same_VERIFIED_%': 100.0, 'same_wrong_MODIFIED': 0, 'same_INDETERMINATE': 2, 'calibrated': ['False'], 'transport_wrong_MODIFIED': {'crlf': 0, 'email': 0, 'nbsp': 0, 'combined': 0, 'bom_nnbsp': 0, 'c2pa_manifest': 0, 'invisible': 0}, 'transport_VERIFIED_%': {'crlf': 100.0, 'email': 100.0, 'nbsp': 100.0, 'combined': 100.0, 'bom_nnbsp': 100.0, 'c2pa_manifest': 100.0, 'invisible': 100.0}}
+== detect
+20:46:50 written detect_C_s.summary.json
+== gsm8k
+20:47:14 done: 80 tokens in 20s
+20:47:26 done: 80 tokens in 6s
+20:47:29 {'items': 1, 'accuracy_a': 0.0, 'accuracy_b': 0.0, 'only_a_correct': 0, 'only_b_correct': 0}
+== speed
+20:48:03   verify batch 32: {'tok_s': 841.9, 'seconds_per_text': 0.1425, 'peak_gb': None}
+== fp32_fit
+~0.50B parameters -> fp32 1.9 GiB of weights; fits a 48 GiB card: True
+SMOKE C OK

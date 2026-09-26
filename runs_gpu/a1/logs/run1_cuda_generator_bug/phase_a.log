@@ -1,0 +1,31 @@
+13:24:07 START data
+13:24:55 END data rc=0
+13:24:55 START unit_tests
+13:24:58 END unit_tests rc=2
+13:24:58 START tiny_model
+13:25:00 END tiny_model rc=0
+13:25:00 START model_tests
+13:25:02 END model_tests rc=2
+13:25:02 START cal_seal
+13:27:27 END cal_seal rc=1
+13:27:27 START dump_float16_b1
+13:27:43 END dump_float16_b1 rc=0
+13:27:43 START dump_float16_b32
+13:27:57 END dump_float16_b32 rc=0
+13:27:57 START dump_bfloat16_b32
+13:28:05 END dump_bfloat16_b32 rc=0
+13:28:05 START dump_float32_b1
+13:28:21 END dump_float32_b1 rc=0
+13:28:21 START table
+13:28:26 END table rc=1
+13:28:26 START sealed
+13:28:41 END sealed rc=1
+13:28:41 START quality
+13:28:55 END quality rc=1
+13:28:55 START sealed_bf
+13:29:13 END sealed_bf rc=1
+13:29:13 START plain
+13:29:29 END plain rc=1
+13:29:29 START kgw
+13:30:29 END kgw rc=0
+13:30:29 START synthid

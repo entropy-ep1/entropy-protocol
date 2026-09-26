@@ -1,0 +1,15 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:04<00:04,  4.18s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:07<00:00,  3.64s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:07<00:00,  3.72s/it]
+20:06:44 microsoft/Phi-3-mini-4k-instruct sealed gsm_strong: 50 of 50 to do, batch 4
+20:08:24   batch 1: 4 texts, 779 tokens, 99.8s (8 tok/s)
+20:11:24   batch 2: 4 texts, 1314 tokens, 179.9s (7 tok/s)
+20:13:49   batch 3: 4 texts, 1211 tokens, 144.8s (8 tok/s)
+20:16:16   batch 4: 4 texts, 1174 tokens, 147.8s (8 tok/s)
+20:18:44   batch 5: 4 texts, 1105 tokens, 147.8s (7 tok/s)
+20:20:57   batch 6: 4 texts, 939 tokens, 132.8s (7 tok/s)
+20:23:15   batch 7: 4 texts, 1118 tokens, 138.4s (8 tok/s)
+20:25:28   batch 8: 4 texts, 1081 tokens, 132.2s (8 tok/s)
+20:27:17   batch 9: 4 texts, 873 tokens, 109.3s (8 tok/s)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

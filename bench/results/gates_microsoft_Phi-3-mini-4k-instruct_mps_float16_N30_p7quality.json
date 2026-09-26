@@ -1,0 +1,2064 @@
+{
+ "summary": {
+  "model": "microsoft/Phi-3-mini-4k-instruct",
+  "device": "mps",
+  "dtype": "float16",
+  "n": 30,
+  "minutes": 18.1,
+  "code": "73eee0d50e518249",
+  "operating_point": {
+   "interval": 5,
+   "k": 1,
+   "window": 3,
+   "guard": 0.9
+  },
+  "texts_below_8_entries": 1,
+  "mean_tokens": 188.9,
+  "mean_entries": 21.1,
+  "survival_%": 100.0,
+  "mean_seal_s": 28.22,
+  "mean_verify_s": 0.523,
+  "G1": {
+   "decisive_texts": 30,
+   "indeterminate_texts": 0,
+   "same_VERIFIED_%": 100.0,
+   "same_wrong_MODIFIED": 0,
+   "crlf_VERIFIED_%": 100.0,
+   "crlf_wrong_MODIFIED": 0,
+   "email_VERIFIED_%": 100.0,
+   "email_wrong_MODIFIED": 0,
+   "nbsp_VERIFIED_%": 100.0,
+   "nbsp_wrong_MODIFIED": 0,
+   "combined_VERIFIED_%": 100.0,
+   "combined_wrong_MODIFIED": 0,
+   "bom_nnbsp_VERIFIED_%": 100.0,
+   "bom_nnbsp_wrong_MODIFIED": 0,
+   "c2pa_manifest_VERIFIED_%": 100.0,
+   "c2pa_manifest_wrong_MODIFIED": 0,
+   "invisible_VERIFIED_%": 100.0,
+   "invisible_wrong_MODIFIED": 0
+  },
+  "G2": {
+   "checks": 59,
+   "false_VERIFIED": 0,
+   "MODIFIED_%": 100.0
+  },
+  "G3": {
+   "replace_word": {
+    "n": 30,
+    "MODIFIED_%": 100.0,
+    "false_VERIFIED": 0,
+    "localized_%": 100.0,
+    "model_layer_alone_%": 76.67
+   },
+   "one_char": {
+    "n": 30,
+    "MODIFIED_%": 100.0,
+    "false_VERIFIED": 0,
+    "localized_%": 100.0,
+    "model_layer_alone_%": 40.0
+   },
+   "delete_sentence": {
+    "n": 29,
+    "MODIFIED_%": 100.0,
+    "false_VERIFIED": 0,
+    "localized_%": 100.0,
+    "model_layer_alone_%": 100.0
+   },
+   "insert_sentence": {
+    "n": 29,
+    "MODIFIED_%": 100.0,
+    "false_VERIFIED": 0,
+    "localized_%": 100.0,
+    "model_layer_alone_%": 93.1
+   },
+   "truncate_tail": {
+    "n": 30,
+    "MODIFIED_%": 100.0,
+    "false_VERIFIED": 0,
+    "localized_%": 100.0,
+    "model_layer_alone_%": 100.0
+   }
+  },
+  "G6_privacy_leaks": 0,
+  "G10_lite": {
+   "texts": 30,
+   "detected_at_0.01": 0.9667,
+   "detected_at_0.001": 0.9333,
+   "detected_at_0.0001": 0.7,
+   "detected_at_1e-06": 0.3667,
+   "median_p": 4.849396646022797e-06,
+   "null_min_p": 0.2265625
+  },
+  "localization_misses": [],
+  "profile": "quality",
+  "detect_gate": 0.9
+ },
+ "rows": [
+  {
+   "i": 0,
+   "tokens": 200,
+   "enforced": 17,
+   "entries": 17,
+   "seal_s": 40.489,
+   "dropped": [
+    0,
+    0,
+    0
+   ],
+   "same": "VERIFIED",
+   "verify_s": 3.149,
+   "transport": {
+    "crlf": "VERIFIED",
+    "email": "VERIFIED",
+    "nbsp": "VERIFIED",
+    "combined": "VERIFIED",
+    "bom_nnbsp": "VERIFIED",
+    "c2pa_manifest": "VERIFIED",
+    "invisible": "VERIFIED"
+   },
+   "edits": {
+    "replace_word": {
+     "verdict": "MODIFIED",
+     "first_div": 327,
+     "edit_at": 430,
+     "localized": true,
+     "model_layer_detected": false
+    },
+    "one_char": {
+     "verdict": "MODIFIED",
+     "first_div": 327,
+     "edit_at": 433,
+     "localized": true,
+     "model_layer_detected": false
+    },
+    "delete_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 326,
+     "edit_at": 327,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "insert_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 488,
+     "edit_at": 487,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "truncate_tail": {
+     "verdict": "MODIFIED",
+     "first_div": 561,
+     "edit_at": 654,
+     "localized": true,
+     "model_layer_detected": true
+    }
+   },
+   "wm_p": 0.0020904541015625,
+   "unrelated": [
+    "MODIFIED"
+   ],
+   "privacy_leaks": []
+  },
+  {
+   "i": 1,
+   "tokens": 131,
+   "enforced": 27,
+   "entries": 27,
+   "seal_s": 18.791,
+   "dropped": [
+    0,
+    0,
+    0
+   ],
+   "same": "VERIFIED",
+   "verify_s": 0.329,
+   "transport": {
+    "crlf": "VERIFIED",
+    "email": "VERIFIED",
+    "nbsp": "VERIFIED",
+    "combined": "VERIFIED",
+    "bom_nnbsp": "VERIFIED",
+    "c2pa_manifest": "VERIFIED",
+    "invisible": "VERIFIED"
+   },
+   "edits": {
+    "replace_word": {
+     "verdict": "MODIFIED",
+     "first_div": 194,
+     "edit_at": 276,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "one_char": {
+     "verdict": "MODIFIED",
+     "first_div": 194,
+     "edit_at": 277,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "delete_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 193,
+     "edit_at": 194,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "insert_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 308,
+     "edit_at": 307,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "truncate_tail": {
+     "verdict": "MODIFIED",
+     "first_div": 308,
+     "edit_at": 398,
+     "localized": true,
+     "model_layer_detected": true
+    }
+   },
+   "wm_p": 4.023313522338867e-07,
+   "unrelated": [
+    "MODIFIED",
+    "MODIFIED"
+   ],
+   "privacy_leaks": []
+  },
+  {
+   "i": 2,
+   "tokens": 200,
+   "enforced": 23,
+   "entries": 23,
+   "seal_s": 31.926,
+   "dropped": [
+    0,
+    0,
+    0
+   ],
+   "same": "VERIFIED",
+   "verify_s": 0.449,
+   "transport": {
+    "crlf": "VERIFIED",
+    "email": "VERIFIED",
+    "nbsp": "VERIFIED",
+    "combined": "VERIFIED",
+    "bom_nnbsp": "VERIFIED",
+    "c2pa_manifest": "VERIFIED",
+    "invisible": "VERIFIED"
+   },
+   "edits": {
+    "replace_word": {
+     "verdict": "MODIFIED",
+     "first_div": 454,
+     "edit_at": 463,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "one_char": {
+     "verdict": "MODIFIED",
+     "first_div": 454,
+     "edit_at": 465,
+     "localized": true,
+     "model_layer_detected": false
+    },
+    "delete_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 449,
+     "edit_at": 450,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "insert_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 454,
+     "edit_at": 453,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "truncate_tail": {
+     "verdict": "MODIFIED",
+     "first_div": 630,
+     "edit_at": 681,
+     "localized": true,
+     "model_layer_detected": true
+    }
+   },
+   "wm_p": 2.384185791015625e-07,
+   "unrelated": [
+    "MODIFIED",
+    "MODIFIED"
+   ],
+   "privacy_leaks": []
+  },
+  {
+   "i": 3,
+   "tokens": 200,
+   "enforced": 22,
+   "entries": 22,
+   "seal_s": 32.862,
+   "dropped": [
+    0,
+    0,
+    0
+   ],
+   "same": "VERIFIED",
+   "verify_s": 0.447,
+   "transport": {
+    "crlf": "VERIFIED",
+    "email": "VERIFIED",
+    "nbsp": "VERIFIED",
+    "combined": "VERIFIED",
+    "bom_nnbsp": "VERIFIED",
+    "c2pa_manifest": "VERIFIED",
+    "invisible": "VERIFIED"
+   },
+   "edits": {
+    "replace_word": {
+     "verdict": "MODIFIED",
+     "first_div": 432,
+     "edit_at": 472,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "one_char": {
+     "verdict": "MODIFIED",
+     "first_div": 432,
+     "edit_at": 477,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "delete_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 343,
+     "edit_at": 344,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "insert_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 432,
+     "edit_at": 431,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "truncate_tail": {
+     "verdict": "MODIFIED",
+     "first_div": 644,
+     "edit_at": 695,
+     "localized": true,
+     "model_layer_detected": true
+    }
+   },
+   "wm_p": 4.76837158203125e-07,
+   "unrelated": [
+    "MODIFIED",
+    "MODIFIED"
+   ],
+   "privacy_leaks": []
+  },
+  {
+   "i": 4,
+   "tokens": 200,
+   "enforced": 21,
+   "entries": 21,
+   "seal_s": 30.465,
+   "dropped": [
+    0,
+    0,
+    0
+   ],
+   "same": "VERIFIED",
+   "verify_s": 0.488,
+   "transport": {
+    "crlf": "VERIFIED",
+    "email": "VERIFIED",
+    "nbsp": "VERIFIED",
+    "combined": "VERIFIED",
+    "bom_nnbsp": "VERIFIED",
+    "c2pa_manifest": "VERIFIED",
+    "invisible": "VERIFIED"
+   },
+   "edits": {
+    "replace_word": {
+     "verdict": "MODIFIED",
+     "first_div": 400,
+     "edit_at": 438,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "one_char": {
+     "verdict": "MODIFIED",
+     "first_div": 400,
+     "edit_at": 442,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "delete_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 607,
+     "edit_at": 608,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "insert_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 612,
+     "edit_at": 611,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "truncate_tail": {
+     "verdict": "MODIFIED",
+     "first_div": 612,
+     "edit_at": 677,
+     "localized": true,
+     "model_layer_detected": true
+    }
+   },
+   "wm_p": 9.5367431640625e-07,
+   "unrelated": [
+    "MODIFIED",
+    "MODIFIED"
+   ],
+   "privacy_leaks": []
+  },
+  {
+   "i": 5,
+   "tokens": 200,
+   "enforced": 29,
+   "entries": 29,
+   "seal_s": 29.61,
+   "dropped": [
+    0,
+    0,
+    0
+   ],
+   "same": "VERIFIED",
+   "verify_s": 0.449,
+   "transport": {
+    "crlf": "VERIFIED",
+    "email": "VERIFIED",
+    "nbsp": "VERIFIED",
+    "combined": "VERIFIED",
+    "bom_nnbsp": "VERIFIED",
+    "c2pa_manifest": "VERIFIED",
+    "invisible": "VERIFIED"
+   },
+   "edits": {
+    "replace_word": {
+     "verdict": "MODIFIED",
+     "first_div": 444,
+     "edit_at": 461,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "one_char": {
+     "verdict": "MODIFIED",
+     "first_div": 444,
+     "edit_at": 464,
+     "localized": true,
+     "model_layer_detected": false
+    },
+    "delete_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 122,
+     "edit_at": 123,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "insert_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 260,
+     "edit_at": 259,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "truncate_tail": {
+     "verdict": "MODIFIED",
+     "first_div": 444,
+     "edit_at": 698,
+     "localized": true,
+     "model_layer_detected": true
+    }
+   },
+   "wm_p": 4.215165972709656e-06,
+   "unrelated": [
+    "MODIFIED",
+    "MODIFIED"
+   ],
+   "privacy_leaks": []
+  },
+  {
+   "i": 6,
+   "tokens": 85,
+   "enforced": 6,
+   "entries": 6,
+   "seal_s": 12.975,
+   "dropped": [
+    0,
+    0,
+    0
+   ],
+   "same": "VERIFIED",
+   "verify_s": 0.214,
+   "transport": {
+    "crlf": "VERIFIED",
+    "email": "VERIFIED",
+    "nbsp": "VERIFIED",
+    "combined": "VERIFIED",
+    "bom_nnbsp": "VERIFIED",
+    "c2pa_manifest": "VERIFIED",
+    "invisible": "VERIFIED"
+   },
+   "edits": {
+    "replace_word": {
+     "verdict": "MODIFIED",
+     "first_div": 104,
+     "edit_at": 187,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "one_char": {
+     "verdict": "MODIFIED",
+     "first_div": 104,
+     "edit_at": 189,
+     "localized": true,
+     "model_layer_detected": false
+    },
+    "delete_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 103,
+     "edit_at": 104,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "insert_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 205,
+     "edit_at": 204,
+     "localized": true,
+     "model_layer_detected": false
+    },
+    "truncate_tail": {
+     "verdict": "MODIFIED",
+     "first_div": 205,
+     "edit_at": 276,
+     "localized": true,
+     "model_layer_detected": true
+    }
+   },
+   "wm_p": 0.015625,
+   "unrelated": [
+    "MODIFIED",
+    "MODIFIED"
+   ],
+   "privacy_leaks": []
+  },
+  {
+   "i": 7,
+   "tokens": 200,
+   "enforced": 20,
+   "entries": 20,
+   "seal_s": 28.49,
+   "dropped": [
+    0,
+    0,
+    0
+   ],
+   "same": "VERIFIED",
+   "verify_s": 0.454,
+   "transport": {
+    "crlf": "VERIFIED",
+    "email": "VERIFIED",
+    "nbsp": "VERIFIED",
+    "combined": "VERIFIED",
+    "bom_nnbsp": "VERIFIED",
+    "c2pa_manifest": "VERIFIED",
+    "invisible": "VERIFIED"
+   },
+   "edits": {
+    "replace_word": {
+     "verdict": "MODIFIED",
+     "first_div": 336,
+     "edit_at": 438,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "one_char": {
+     "verdict": "MODIFIED",
+     "first_div": 336,
+     "edit_at": 440,
+     "localized": true,
+     "model_layer_detected": false
+    },
+    "delete_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 334,
+     "edit_at": 335,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "insert_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 575,
+     "edit_at": 574,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "truncate_tail": {
+     "verdict": "MODIFIED",
+     "first_div": 575,
+     "edit_at": 656,
+     "localized": true,
+     "model_layer_detected": true
+    }
+   },
+   "wm_p": 5.4836273193359375e-06,
+   "unrelated": [
+    "MODIFIED",
+    "MODIFIED"
+   ],
+   "privacy_leaks": []
+  },
+  {
+   "i": 8,
+   "tokens": 200,
+   "enforced": 17,
+   "entries": 17,
+   "seal_s": 29.743,
+   "dropped": [
+    0,
+    0,
+    0
+   ],
+   "same": "VERIFIED",
+   "verify_s": 0.461,
+   "transport": {
+    "crlf": "VERIFIED",
+    "email": "VERIFIED",
+    "nbsp": "VERIFIED",
+    "combined": "VERIFIED",
+    "bom_nnbsp": "VERIFIED",
+    "c2pa_manifest": "VERIFIED",
+    "invisible": "VERIFIED"
+   },
+   "edits": {
+    "replace_word": {
+     "verdict": "MODIFIED",
+     "first_div": 280,
+     "edit_at": 319,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "one_char": {
+     "verdict": "MODIFIED",
+     "first_div": 280,
+     "edit_at": 321,
+     "localized": true,
+     "model_layer_detected": false
+    },
+    "delete_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 279,
+     "edit_at": 280,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "insert_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 337,
+     "edit_at": 336,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "truncate_tail": {
+     "verdict": "MODIFIED",
+     "first_div": 500,
+     "edit_at": 501,
+     "localized": true,
+     "model_layer_detected": true
+    }
+   },
+   "wm_p": 3.0517578125e-05,
+   "unrelated": [
+    "MODIFIED",
+    "MODIFIED"
+   ],
+   "privacy_leaks": []
+  },
+  {
+   "i": 9,
+   "tokens": 200,
+   "enforced": 21,
+   "entries": 21,
+   "seal_s": 28.967,
+   "dropped": [
+    0,
+    0,
+    0
+   ],
+   "same": "VERIFIED",
+   "verify_s": 0.456,
+   "transport": {
+    "crlf": "VERIFIED",
+    "email": "VERIFIED",
+    "nbsp": "VERIFIED",
+    "combined": "VERIFIED",
+    "bom_nnbsp": "VERIFIED",
+    "c2pa_manifest": "VERIFIED",
+    "invisible": "VERIFIED"
+   },
+   "edits": {
+    "replace_word": {
+     "verdict": "MODIFIED",
+     "first_div": 451,
+     "edit_at": 460,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "one_char": {
+     "verdict": "MODIFIED",
+     "first_div": 451,
+     "edit_at": 462,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "delete_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 450,
+     "edit_at": 451,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "insert_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 513,
+     "edit_at": 512,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "truncate_tail": {
+     "verdict": "MODIFIED",
+     "first_div": 675,
+     "edit_at": 720,
+     "localized": true,
+     "model_layer_detected": true
+    }
+   },
+   "wm_p": 0.000110626220703125,
+   "unrelated": [
+    "MODIFIED",
+    "MODIFIED"
+   ],
+   "privacy_leaks": []
+  },
+  {
+   "i": 10,
+   "tokens": 200,
+   "enforced": 15,
+   "entries": 15,
+   "seal_s": 29.635,
+   "dropped": [
+    0,
+    0,
+    0
+   ],
+   "same": "VERIFIED",
+   "verify_s": 0.447,
+   "transport": {
+    "crlf": "VERIFIED",
+    "email": "VERIFIED",
+    "nbsp": "VERIFIED",
+    "combined": "VERIFIED",
+    "bom_nnbsp": "VERIFIED",
+    "c2pa_manifest": "VERIFIED",
+    "invisible": "VERIFIED"
+   },
+   "edits": {
+    "replace_word": {
+     "verdict": "MODIFIED",
+     "first_div": 292,
+     "edit_at": 406,
+     "localized": true,
+     "model_layer_detected": false
+    },
+    "one_char": {
+     "verdict": "MODIFIED",
+     "first_div": 292,
+     "edit_at": 409,
+     "localized": true,
+     "model_layer_detected": false
+    },
+    "delete_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 290,
+     "edit_at": 291,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "insert_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 501,
+     "edit_at": 500,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "truncate_tail": {
+     "verdict": "MODIFIED",
+     "first_div": 578,
+     "edit_at": 608,
+     "localized": true,
+     "model_layer_detected": true
+    }
+   },
+   "wm_p": 0.0003643035888671875,
+   "unrelated": [
+    "MODIFIED",
+    "MODIFIED"
+   ],
+   "privacy_leaks": []
+  },
+  {
+   "i": 11,
+   "tokens": 83,
+   "enforced": 11,
+   "entries": 11,
+   "seal_s": 12.125,
+   "dropped": [
+    0,
+    0,
+    0
+   ],
+   "same": "VERIFIED",
+   "verify_s": 0.213,
+   "transport": {
+    "crlf": "VERIFIED",
+    "email": "VERIFIED",
+    "nbsp": "VERIFIED",
+    "combined": "VERIFIED",
+    "bom_nnbsp": "VERIFIED",
+    "c2pa_manifest": "VERIFIED",
+    "invisible": "VERIFIED"
+   },
+   "edits": {
+    "replace_word": {
+     "verdict": "MODIFIED",
+     "first_div": 172,
+     "edit_at": 207,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "one_char": {
+     "verdict": "MODIFIED",
+     "first_div": 172,
+     "edit_at": 209,
+     "localized": true,
+     "model_layer_detected": false
+    },
+    "truncate_tail": {
+     "verdict": "MODIFIED",
+     "first_div": 272,
+     "edit_at": 294,
+     "localized": true,
+     "model_layer_detected": true
+    }
+   },
+   "wm_p": 0.00048828125,
+   "unrelated": [
+    "MODIFIED",
+    "MODIFIED"
+   ],
+   "privacy_leaks": []
+  },
+  {
+   "i": 12,
+   "tokens": 200,
+   "enforced": 10,
+   "entries": 10,
+   "seal_s": 28.933,
+   "dropped": [
+    0,
+    0,
+    0
+   ],
+   "same": "VERIFIED",
+   "verify_s": 0.441,
+   "transport": {
+    "crlf": "VERIFIED",
+    "email": "VERIFIED",
+    "nbsp": "VERIFIED",
+    "combined": "VERIFIED",
+    "bom_nnbsp": "VERIFIED",
+    "c2pa_manifest": "VERIFIED",
+    "invisible": "VERIFIED"
+   },
+   "edits": {
+    "replace_word": {
+     "verdict": "MODIFIED",
+     "first_div": 390,
+     "edit_at": 461,
+     "localized": true,
+     "model_layer_detected": false
+    },
+    "one_char": {
+     "verdict": "MODIFIED",
+     "first_div": 390,
+     "edit_at": 464,
+     "localized": true,
+     "model_layer_detected": false
+    },
+    "delete_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 389,
+     "edit_at": 390,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "insert_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 630,
+     "edit_at": 629,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "truncate_tail": {
+     "verdict": "MODIFIED",
+     "first_div": 631,
+     "edit_at": 682,
+     "localized": true,
+     "model_layer_detected": true
+    }
+   },
+   "wm_p": 0.00048828125,
+   "unrelated": [
+    "MODIFIED",
+    "MODIFIED"
+   ],
+   "privacy_leaks": []
+  },
+  {
+   "i": 13,
+   "tokens": 200,
+   "enforced": 26,
+   "entries": 26,
+   "seal_s": 28.405,
+   "dropped": [
+    0,
+    0,
+    0
+   ],
+   "same": "VERIFIED",
+   "verify_s": 0.459,
+   "transport": {
+    "crlf": "VERIFIED",
+    "email": "VERIFIED",
+    "nbsp": "VERIFIED",
+    "combined": "VERIFIED",
+    "bom_nnbsp": "VERIFIED",
+    "c2pa_manifest": "VERIFIED",
+    "invisible": "VERIFIED"
+   },
+   "edits": {
+    "replace_word": {
+     "verdict": "MODIFIED",
+     "first_div": 404,
+     "edit_at": 420,
+     "localized": true,
+     "model_layer_detected": false
+    },
+    "one_char": {
+     "verdict": "MODIFIED",
+     "first_div": 404,
+     "edit_at": 423,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "delete_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 400,
+     "edit_at": 401,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "insert_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 404,
+     "edit_at": 403,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "truncate_tail": {
+     "verdict": "MODIFIED",
+     "first_div": 659,
+     "edit_at": 661,
+     "localized": true,
+     "model_layer_detected": true
+    }
+   },
+   "wm_p": 1.0803341865539551e-07,
+   "unrelated": [
+    "MODIFIED",
+    "MODIFIED"
+   ],
+   "privacy_leaks": []
+  },
+  {
+   "i": 14,
+   "tokens": 200,
+   "enforced": 38,
+   "entries": 38,
+   "seal_s": 30.354,
+   "dropped": [
+    0,
+    0,
+    0
+   ],
+   "same": "VERIFIED",
+   "verify_s": 0.467,
+   "transport": {
+    "crlf": "VERIFIED",
+    "email": "VERIFIED",
+    "nbsp": "VERIFIED",
+    "combined": "VERIFIED",
+    "bom_nnbsp": "VERIFIED",
+    "c2pa_manifest": "VERIFIED",
+    "invisible": "VERIFIED"
+   },
+   "edits": {
+    "replace_word": {
+     "verdict": "MODIFIED",
+     "first_div": 428,
+     "edit_at": 445,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "one_char": {
+     "verdict": "MODIFIED",
+     "first_div": 428,
+     "edit_at": 446,
+     "localized": true,
+     "model_layer_detected": false
+    },
+    "delete_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 427,
+     "edit_at": 428,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "insert_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 692,
+     "edit_at": 691,
+     "localized": true,
+     "model_layer_detected": false
+    },
+    "truncate_tail": {
+     "verdict": "MODIFIED",
+     "first_div": 691,
+     "edit_at": 691,
+     "localized": true,
+     "model_layer_detected": true
+    }
+   },
+   "wm_p": 7.275957614183426e-11,
+   "unrelated": [
+    "MODIFIED",
+    "MODIFIED"
+   ],
+   "privacy_leaks": []
+  },
+  {
+   "i": 15,
+   "tokens": 200,
+   "enforced": 14,
+   "entries": 14,
+   "seal_s": 29.069,
+   "dropped": [
+    0,
+    0,
+    0
+   ],
+   "same": "VERIFIED",
+   "verify_s": 0.45,
+   "transport": {
+    "crlf": "VERIFIED",
+    "email": "VERIFIED",
+    "nbsp": "VERIFIED",
+    "combined": "VERIFIED",
+    "bom_nnbsp": "VERIFIED",
+    "c2pa_manifest": "VERIFIED",
+    "invisible": "VERIFIED"
+   },
+   "edits": {
+    "replace_word": {
+     "verdict": "MODIFIED",
+     "first_div": 448,
+     "edit_at": 468,
+     "localized": true,
+     "model_layer_detected": false
+    },
+    "one_char": {
+     "verdict": "MODIFIED",
+     "first_div": 448,
+     "edit_at": 471,
+     "localized": true,
+     "model_layer_detected": false
+    },
+    "delete_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 608,
+     "edit_at": 609,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "insert_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 615,
+     "edit_at": 614,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "truncate_tail": {
+     "verdict": "MODIFIED",
+     "first_div": 656,
+     "edit_at": 698,
+     "localized": true,
+     "model_layer_detected": true
+    }
+   },
+   "wm_p": 0.00048828125,
+   "unrelated": [
+    "MODIFIED",
+    "MODIFIED"
+   ],
+   "privacy_leaks": []
+  },
+  {
+   "i": 16,
+   "tokens": 200,
+   "enforced": 24,
+   "entries": 24,
+   "seal_s": 29.889,
+   "dropped": [
+    0,
+    0,
+    0
+   ],
+   "same": "VERIFIED",
+   "verify_s": 0.469,
+   "transport": {
+    "crlf": "VERIFIED",
+    "email": "VERIFIED",
+    "nbsp": "VERIFIED",
+    "combined": "VERIFIED",
+    "bom_nnbsp": "VERIFIED",
+    "c2pa_manifest": "VERIFIED",
+    "invisible": "VERIFIED"
+   },
+   "edits": {
+    "replace_word": {
+     "verdict": "MODIFIED",
+     "first_div": 448,
+     "edit_at": 482,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "one_char": {
+     "verdict": "MODIFIED",
+     "first_div": 448,
+     "edit_at": 483,
+     "localized": true,
+     "model_layer_detected": false
+    },
+    "delete_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 260,
+     "edit_at": 261,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "insert_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 447,
+     "edit_at": 446,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "truncate_tail": {
+     "verdict": "MODIFIED",
+     "first_div": 609,
+     "edit_at": 697,
+     "localized": true,
+     "model_layer_detected": true
+    }
+   },
+   "wm_p": 5.960464477539063e-08,
+   "unrelated": [
+    "MODIFIED",
+    "MODIFIED"
+   ],
+   "privacy_leaks": []
+  },
+  {
+   "i": 17,
+   "tokens": 200,
+   "enforced": 23,
+   "entries": 23,
+   "seal_s": 28.913,
+   "dropped": [
+    0,
+    0,
+    0
+   ],
+   "same": "VERIFIED",
+   "verify_s": 0.455,
+   "transport": {
+    "crlf": "VERIFIED",
+    "email": "VERIFIED",
+    "nbsp": "VERIFIED",
+    "combined": "VERIFIED",
+    "bom_nnbsp": "VERIFIED",
+    "c2pa_manifest": "VERIFIED",
+    "invisible": "VERIFIED"
+   },
+   "edits": {
+    "replace_word": {
+     "verdict": "MODIFIED",
+     "first_div": 375,
+     "edit_at": 415,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "one_char": {
+     "verdict": "MODIFIED",
+     "first_div": 375,
+     "edit_at": 418,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "delete_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 374,
+     "edit_at": 375,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "insert_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 493,
+     "edit_at": 492,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "truncate_tail": {
+     "verdict": "MODIFIED",
+     "first_div": 558,
+     "edit_at": 610,
+     "localized": true,
+     "model_layer_detected": true
+    }
+   },
+   "wm_p": 2.86102294921875e-06,
+   "unrelated": [
+    "MODIFIED",
+    "MODIFIED"
+   ],
+   "privacy_leaks": []
+  },
+  {
+   "i": 18,
+   "tokens": 200,
+   "enforced": 25,
+   "entries": 25,
+   "seal_s": 29.156,
+   "dropped": [
+    0,
+    0,
+    0
+   ],
+   "same": "VERIFIED",
+   "verify_s": 0.46,
+   "transport": {
+    "crlf": "VERIFIED",
+    "email": "VERIFIED",
+    "nbsp": "VERIFIED",
+    "combined": "VERIFIED",
+    "bom_nnbsp": "VERIFIED",
+    "c2pa_manifest": "VERIFIED",
+    "invisible": "VERIFIED"
+   },
+   "edits": {
+    "replace_word": {
+     "verdict": "MODIFIED",
+     "first_div": 318,
+     "edit_at": 349,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "one_char": {
+     "verdict": "MODIFIED",
+     "first_div": 318,
+     "edit_at": 351,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "delete_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 230,
+     "edit_at": 231,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "insert_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 318,
+     "edit_at": 317,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "truncate_tail": {
+     "verdict": "MODIFIED",
+     "first_div": 460,
+     "edit_at": 549,
+     "localized": true,
+     "model_layer_detected": true
+    }
+   },
+   "wm_p": 5.960464477539063e-08,
+   "unrelated": [
+    "MODIFIED",
+    "MODIFIED"
+   ],
+   "privacy_leaks": []
+  },
+  {
+   "i": 19,
+   "tokens": 200,
+   "enforced": 22,
+   "entries": 22,
+   "seal_s": 28.863,
+   "dropped": [
+    0,
+    0,
+    0
+   ],
+   "same": "VERIFIED",
+   "verify_s": 0.453,
+   "transport": {
+    "crlf": "VERIFIED",
+    "email": "VERIFIED",
+    "nbsp": "VERIFIED",
+    "combined": "VERIFIED",
+    "bom_nnbsp": "VERIFIED",
+    "c2pa_manifest": "VERIFIED",
+    "invisible": "VERIFIED"
+   },
+   "edits": {
+    "replace_word": {
+     "verdict": "MODIFIED",
+     "first_div": 388,
+     "edit_at": 398,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "one_char": {
+     "verdict": "MODIFIED",
+     "first_div": 388,
+     "edit_at": 399,
+     "localized": true,
+     "model_layer_detected": false
+    },
+    "delete_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 381,
+     "edit_at": 382,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "insert_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 388,
+     "edit_at": 387,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "truncate_tail": {
+     "verdict": "MODIFIED",
+     "first_div": 595,
+     "edit_at": 604,
+     "localized": true,
+     "model_layer_detected": true
+    }
+   },
+   "wm_p": 7.2479248046875e-05,
+   "unrelated": [
+    "MODIFIED",
+    "MODIFIED"
+   ],
+   "privacy_leaks": []
+  },
+  {
+   "i": 20,
+   "tokens": 197,
+   "enforced": 23,
+   "entries": 23,
+   "seal_s": 28.615,
+   "dropped": [
+    0,
+    0,
+    0
+   ],
+   "same": "VERIFIED",
+   "verify_s": 0.448,
+   "transport": {
+    "crlf": "VERIFIED",
+    "email": "VERIFIED",
+    "nbsp": "VERIFIED",
+    "combined": "VERIFIED",
+    "bom_nnbsp": "VERIFIED",
+    "c2pa_manifest": "VERIFIED",
+    "invisible": "VERIFIED"
+   },
+   "edits": {
+    "replace_word": {
+     "verdict": "MODIFIED",
+     "first_div": 357,
+     "edit_at": 402,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "one_char": {
+     "verdict": "MODIFIED",
+     "first_div": 357,
+     "edit_at": 403,
+     "localized": true,
+     "model_layer_detected": false
+    },
+    "delete_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 356,
+     "edit_at": 357,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "insert_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 418,
+     "edit_at": 418,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "truncate_tail": {
+     "verdict": "MODIFIED",
+     "first_div": 590,
+     "edit_at": 605,
+     "localized": true,
+     "model_layer_detected": true
+    }
+   },
+   "wm_p": 1.9073486328125e-06,
+   "unrelated": [
+    "MODIFIED",
+    "MODIFIED"
+   ],
+   "privacy_leaks": []
+  },
+  {
+   "i": 21,
+   "tokens": 200,
+   "enforced": 27,
+   "entries": 27,
+   "seal_s": 29.197,
+   "dropped": [
+    0,
+    0,
+    0
+   ],
+   "same": "VERIFIED",
+   "verify_s": 0.46,
+   "transport": {
+    "crlf": "VERIFIED",
+    "email": "VERIFIED",
+    "nbsp": "VERIFIED",
+    "combined": "VERIFIED",
+    "bom_nnbsp": "VERIFIED",
+    "c2pa_manifest": "VERIFIED",
+    "invisible": "VERIFIED"
+   },
+   "edits": {
+    "replace_word": {
+     "verdict": "MODIFIED",
+     "first_div": 426,
+     "edit_at": 458,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "one_char": {
+     "verdict": "MODIFIED",
+     "first_div": 426,
+     "edit_at": 459,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "delete_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 425,
+     "edit_at": 426,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "insert_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 595,
+     "edit_at": 594,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "truncate_tail": {
+     "verdict": "MODIFIED",
+     "first_div": 595,
+     "edit_at": 738,
+     "localized": true,
+     "model_layer_detected": true
+    }
+   },
+   "wm_p": 2.086162567138672e-07,
+   "unrelated": [
+    "MODIFIED",
+    "MODIFIED"
+   ],
+   "privacy_leaks": []
+  },
+  {
+   "i": 22,
+   "tokens": 200,
+   "enforced": 22,
+   "entries": 22,
+   "seal_s": 29.234,
+   "dropped": [
+    0,
+    0,
+    0
+   ],
+   "same": "VERIFIED",
+   "verify_s": 0.452,
+   "transport": {
+    "crlf": "VERIFIED",
+    "email": "VERIFIED",
+    "nbsp": "VERIFIED",
+    "combined": "VERIFIED",
+    "bom_nnbsp": "VERIFIED",
+    "c2pa_manifest": "VERIFIED",
+    "invisible": "VERIFIED"
+   },
+   "edits": {
+    "replace_word": {
+     "verdict": "MODIFIED",
+     "first_div": 384,
+     "edit_at": 457,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "one_char": {
+     "verdict": "MODIFIED",
+     "first_div": 384,
+     "edit_at": 462,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "delete_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 383,
+     "edit_at": 384,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "insert_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 487,
+     "edit_at": 486,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "truncate_tail": {
+     "verdict": "MODIFIED",
+     "first_div": 582,
+     "edit_at": 689,
+     "localized": true,
+     "model_layer_detected": true
+    }
+   },
+   "wm_p": 7.826089859008789e-05,
+   "unrelated": [
+    "MODIFIED",
+    "MODIFIED"
+   ],
+   "privacy_leaks": []
+  },
+  {
+   "i": 23,
+   "tokens": 200,
+   "enforced": 27,
+   "entries": 27,
+   "seal_s": 28.554,
+   "dropped": [
+    0,
+    0,
+    0
+   ],
+   "same": "VERIFIED",
+   "verify_s": 0.454,
+   "transport": {
+    "crlf": "VERIFIED",
+    "email": "VERIFIED",
+    "nbsp": "VERIFIED",
+    "combined": "VERIFIED",
+    "bom_nnbsp": "VERIFIED",
+    "c2pa_manifest": "VERIFIED",
+    "invisible": "VERIFIED"
+   },
+   "edits": {
+    "replace_word": {
+     "verdict": "MODIFIED",
+     "first_div": 392,
+     "edit_at": 504,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "one_char": {
+     "verdict": "MODIFIED",
+     "first_div": 392,
+     "edit_at": 508,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "delete_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 258,
+     "edit_at": 259,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "insert_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 390,
+     "edit_at": 389,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "truncate_tail": {
+     "verdict": "MODIFIED",
+     "first_div": 763,
+     "edit_at": 774,
+     "localized": true,
+     "model_layer_detected": true
+    }
+   },
+   "wm_p": 8.121132850646973e-07,
+   "unrelated": [
+    "MODIFIED",
+    "MODIFIED"
+   ],
+   "privacy_leaks": []
+  },
+  {
+   "i": 24,
+   "tokens": 200,
+   "enforced": 19,
+   "entries": 19,
+   "seal_s": 29.156,
+   "dropped": [
+    0,
+    0,
+    0
+   ],
+   "same": "VERIFIED",
+   "verify_s": 0.453,
+   "transport": {
+    "crlf": "VERIFIED",
+    "email": "VERIFIED",
+    "nbsp": "VERIFIED",
+    "combined": "VERIFIED",
+    "bom_nnbsp": "VERIFIED",
+    "c2pa_manifest": "VERIFIED",
+    "invisible": "VERIFIED"
+   },
+   "edits": {
+    "replace_word": {
+     "verdict": "MODIFIED",
+     "first_div": 368,
+     "edit_at": 396,
+     "localized": true,
+     "model_layer_detected": false
+    },
+    "one_char": {
+     "verdict": "MODIFIED",
+     "first_div": 368,
+     "edit_at": 399,
+     "localized": true,
+     "model_layer_detected": false
+    },
+    "delete_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 268,
+     "edit_at": 269,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "insert_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 368,
+     "edit_at": 367,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "truncate_tail": {
+     "verdict": "MODIFIED",
+     "first_div": 510,
+     "edit_at": 631,
+     "localized": true,
+     "model_layer_detected": true
+    }
+   },
+   "wm_p": 2.002716064453125e-05,
+   "unrelated": [
+    "MODIFIED",
+    "MODIFIED"
+   ],
+   "privacy_leaks": []
+  },
+  {
+   "i": 25,
+   "tokens": 200,
+   "enforced": 17,
+   "entries": 17,
+   "seal_s": 29.553,
+   "dropped": [
+    0,
+    0,
+    0
+   ],
+   "same": "VERIFIED",
+   "verify_s": 0.454,
+   "transport": {
+    "crlf": "VERIFIED",
+    "email": "VERIFIED",
+    "nbsp": "VERIFIED",
+    "combined": "VERIFIED",
+    "bom_nnbsp": "VERIFIED",
+    "c2pa_manifest": "VERIFIED",
+    "invisible": "VERIFIED"
+   },
+   "edits": {
+    "replace_word": {
+     "verdict": "MODIFIED",
+     "first_div": 305,
+     "edit_at": 323,
+     "localized": true,
+     "model_layer_detected": false
+    },
+    "one_char": {
+     "verdict": "MODIFIED",
+     "first_div": 305,
+     "edit_at": 326,
+     "localized": true,
+     "model_layer_detected": false
+    },
+    "delete_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 49,
+     "edit_at": 50,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "insert_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 127,
+     "edit_at": 126,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "truncate_tail": {
+     "verdict": "MODIFIED",
+     "first_div": 453,
+     "edit_at": 498,
+     "localized": true,
+     "model_layer_detected": true
+    }
+   },
+   "wm_p": 0.00048828125,
+   "unrelated": [
+    "MODIFIED",
+    "MODIFIED"
+   ],
+   "privacy_leaks": []
+  },
+  {
+   "i": 26,
+   "tokens": 172,
+   "enforced": 24,
+   "entries": 24,
+   "seal_s": 24.95,
+   "dropped": [
+    0,
+    0,
+    0
+   ],
+   "same": "VERIFIED",
+   "verify_s": 0.372,
+   "transport": {
+    "crlf": "VERIFIED",
+    "email": "VERIFIED",
+    "nbsp": "VERIFIED",
+    "combined": "VERIFIED",
+    "bom_nnbsp": "VERIFIED",
+    "c2pa_manifest": "VERIFIED",
+    "invisible": "VERIFIED"
+   },
+   "edits": {
+    "replace_word": {
+     "verdict": "MODIFIED",
+     "first_div": 420,
+     "edit_at": 420,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "one_char": {
+     "verdict": "MODIFIED",
+     "first_div": 420,
+     "edit_at": 422,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "delete_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 419,
+     "edit_at": 420,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "insert_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 536,
+     "edit_at": 535,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "truncate_tail": {
+     "verdict": "MODIFIED",
+     "first_div": 631,
+     "edit_at": 633,
+     "localized": true,
+     "model_layer_detected": true
+    }
+   },
+   "wm_p": 2.86102294921875e-06,
+   "unrelated": [
+    "MODIFIED",
+    "MODIFIED"
+   ],
+   "privacy_leaks": []
+  },
+  {
+   "i": 27,
+   "tokens": 200,
+   "enforced": 13,
+   "entries": 13,
+   "seal_s": 29.005,
+   "dropped": [
+    0,
+    0,
+    0
+   ],
+   "same": "VERIFIED",
+   "verify_s": 0.451,
+   "transport": {
+    "crlf": "VERIFIED",
+    "email": "VERIFIED",
+    "nbsp": "VERIFIED",
+    "combined": "VERIFIED",
+    "bom_nnbsp": "VERIFIED",
+    "c2pa_manifest": "VERIFIED",
+    "invisible": "VERIFIED"
+   },
+   "edits": {
+    "replace_word": {
+     "verdict": "MODIFIED",
+     "first_div": 311,
+     "edit_at": 339,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "one_char": {
+     "verdict": "MODIFIED",
+     "first_div": 311,
+     "edit_at": 344,
+     "localized": true,
+     "model_layer_detected": false
+    },
+    "delete_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 310,
+     "edit_at": 311,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "insert_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 420,
+     "edit_at": 419,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "truncate_tail": {
+     "verdict": "MODIFIED",
+     "first_div": 462,
+     "edit_at": 505,
+     "localized": true,
+     "model_layer_detected": true
+    }
+   },
+   "wm_p": 0.000244140625,
+   "unrelated": [
+    "MODIFIED",
+    "MODIFIED"
+   ],
+   "privacy_leaks": []
+  },
+  {
+   "i": 28,
+   "tokens": 200,
+   "enforced": 20,
+   "entries": 20,
+   "seal_s": 29.578,
+   "dropped": [
+    0,
+    0,
+    0
+   ],
+   "same": "VERIFIED",
+   "verify_s": 0.456,
+   "transport": {
+    "crlf": "VERIFIED",
+    "email": "VERIFIED",
+    "nbsp": "VERIFIED",
+    "combined": "VERIFIED",
+    "bom_nnbsp": "VERIFIED",
+    "c2pa_manifest": "VERIFIED",
+    "invisible": "VERIFIED"
+   },
+   "edits": {
+    "replace_word": {
+     "verdict": "MODIFIED",
+     "first_div": 322,
+     "edit_at": 330,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "one_char": {
+     "verdict": "MODIFIED",
+     "first_div": 322,
+     "edit_at": 331,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "delete_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 321,
+     "edit_at": 322,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "insert_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 388,
+     "edit_at": 387,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "truncate_tail": {
+     "verdict": "MODIFIED",
+     "first_div": 508,
+     "edit_at": 521,
+     "localized": true,
+     "model_layer_detected": true
+    }
+   },
+   "wm_p": 1.049041748046875e-05,
+   "unrelated": [
+    "MODIFIED",
+    "MODIFIED"
+   ],
+   "privacy_leaks": []
+  },
+  {
+   "i": 29,
+   "tokens": 200,
+   "enforced": 30,
+   "entries": 30,
+   "seal_s": 29.15,
+   "dropped": [
+    0,
+    0,
+    0
+   ],
+   "same": "VERIFIED",
+   "verify_s": 0.476,
+   "transport": {
+    "crlf": "VERIFIED",
+    "email": "VERIFIED",
+    "nbsp": "VERIFIED",
+    "combined": "VERIFIED",
+    "bom_nnbsp": "VERIFIED",
+    "c2pa_manifest": "VERIFIED",
+    "invisible": "VERIFIED"
+   },
+   "edits": {
+    "replace_word": {
+     "verdict": "MODIFIED",
+     "first_div": 373,
+     "edit_at": 442,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "one_char": {
+     "verdict": "MODIFIED",
+     "first_div": 373,
+     "edit_at": 443,
+     "localized": true,
+     "model_layer_detected": false
+    },
+    "delete_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 372,
+     "edit_at": 373,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "insert_sentence": {
+     "verdict": "MODIFIED",
+     "first_div": 498,
+     "edit_at": 497,
+     "localized": true,
+     "model_layer_detected": true
+    },
+    "truncate_tail": {
+     "verdict": "MODIFIED",
+     "first_div": 652,
+     "edit_at": 711,
+     "localized": true,
+     "model_layer_detected": true
+    }
+   },
+   "wm_p": 4.656612873077393e-10,
+   "unrelated": [
+    "MODIFIED",
+    "MODIFIED"
+   ],
+   "privacy_leaks": []
+  }
+ ]
+}

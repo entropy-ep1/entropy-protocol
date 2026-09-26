@@ -1,0 +1,15 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+12:06:10 Qwen/Qwen2.5-0.5B-Instruct plain gsm_plain: 100 of 100 to do, batch 16
+Traceback (most recent call last):
+  File "<repo>-next/bench/gpu/seal_corpus.py", line 175, in <module>
+    main()
+  File "<repo>-next/bench/gpu/seal_corpus.py", line 155, in main
+    outs = [ids for ids, _ in generate_batch(backend, inputs, [lambda j, g: None] * len(group), a.max_new,
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>-next/src/entropy_protocol/batch.py", line 127, in generate_batch
+    raise FloatingPointError(f"non-finite logits after the prompt pass ({backend.environment['class']}, "
+FloatingPointError: non-finite logits after the prompt pass (fp16, attention sdpa): precision overflow or a padding problem

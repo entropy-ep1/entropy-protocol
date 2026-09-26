@@ -1,0 +1,6 @@
+2026-09-14 09:01:06 phase A: spot refused (MaxSpotInstanceCountExceeded), on-demand refused (VcpuLimitExceeded, limit 0) in us-east-2; retry loop started (bench/gpu/infra/phase_a_when_ready.sh, 15 min x 9)
+2026-09-14 11:52:02 Serhii approved g6e.xlarge as well (same L40S, spot, cap 4 h); loop restarted over both types
+2026-09-14 12:29:46 Serhii approved p5.4xlarge, g5.2xlarge, g6.2xlarge (spot, cap 4 h) in addition; loop restarted
+2026-09-14 16:50:38 16 tries 12:32-16:49: no spot capacity for any of the 5 types, on-demand G limit 0; restarting for 48 tries (12 h) with the watcher chained
+2026-09-14 21:54:50 stopped: the approved quotas are 1 vCPU each (AWS e-mails of 14.09: G spot 1, P spot 1, P on-demand 1; G on-demand 1 pending) - no GPU instance fits (min 4 vCPU); new requests with 32/16/16/16 vCPU needed
+2026-09-15 08:19:28 AWS e-mail 15.09 10:23Z: G on-demand limit 8 vCPU applied (case 178930412700555) -> g6e.2xlarge on-demand (approved 14.09 as the fallback, cap 4 h)

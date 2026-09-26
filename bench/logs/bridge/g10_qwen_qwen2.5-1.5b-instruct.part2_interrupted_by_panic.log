@@ -1,0 +1,5 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+  L=100: {'n_texts': 30, 'detected_at': {'0.01': 1.0, '0.001': 0.9, '0.0001': 0.8333, '1e-06': 0.1333}, 'median_p': 2.5272369384765625e-05, 'mean_checkpoints': 19.2, 'match_rate': 0.955}  545s
+  L=200: {'n_texts': 30, 'detected_at': {'0.01': 1.0, '0.001': 1.0, '0.0001': 0.9667, '1e-06': 0.9333}, 'median_p': 1.418811734765768e-10, 'mean_checkpoints': 36.5, 'match_rate': 0.97}  1639s
+  L=400: {'n_texts': 30, 'detected_at': {'0.01': 1.0, '0.001': 1.0, '0.0001': 1.0, '1e-06': 1.0}, 'median_p': 5.987506497551198e-17, 'mean_checkpoints': 65.4, 'match_rate': 0.968}  4448s

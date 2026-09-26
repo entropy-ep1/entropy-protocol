@@ -1,0 +1,92 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+  10/200  39s
+  20/200  77s
+  30/200  109s
+  40/200  134s
+  50/200  175s
+  60/200  206s
+  70/200  232s
+  80/200  260s
+  90/200  303s
+  100/200  328s
+  110/200  362s
+  120/200  394s
+  130/200  432s
+  140/200  467s
+  150/200  497s
+  160/200  530s
+  170/200  571s
+  180/200  597s
+  190/200  631s
+  200/200  665s
+{
+ "model": "distilgpt2",
+ "device": "cpu",
+ "dtype": "float32",
+ "n": 200,
+ "minutes": 11.1,
+ "mean_tokens": 147.2,
+ "mean_entries": 24.0,
+ "survival_%": 83.73,
+ "mean_seal_s": 2.74,
+ "mean_verify_s": 0.053,
+ "G1": {
+  "decisive_texts": 200,
+  "indeterminate_texts": 0,
+  "same_VERIFIED_%": 100.0,
+  "same_wrong_MODIFIED": 0,
+  "crlf_VERIFIED_%": 100.0,
+  "crlf_wrong_MODIFIED": 0,
+  "email_VERIFIED_%": 100.0,
+  "email_wrong_MODIFIED": 0,
+  "nbsp_VERIFIED_%": 100.0,
+  "nbsp_wrong_MODIFIED": 0,
+  "combined_VERIFIED_%": 100.0,
+  "combined_wrong_MODIFIED": 0
+ },
+ "G2": {
+  "checks": 399,
+  "false_VERIFIED": 0,
+  "MODIFIED_%": 100.0
+ },
+ "G3": {
+  "replace_word": {
+   "n": 200,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 85.5
+  },
+  "one_char": {
+   "n": 200,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 38.0
+  },
+  "delete_sentence": {
+   "n": 146,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 100.0
+  },
+  "insert_sentence": {
+   "n": 146,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 100.0
+  },
+  "truncate_tail": {
+   "n": 200,
+   "MODIFIED_%": 100.0,
+   "false_VERIFIED": 0,
+   "localized_%": 100.0,
+   "model_layer_alone_%": 97.0
+  }
+ },
+ "G6_privacy_leaks": 0
+}
+written <repo>/bench/results/gates_distilgpt2_cpu_float32_N200.json

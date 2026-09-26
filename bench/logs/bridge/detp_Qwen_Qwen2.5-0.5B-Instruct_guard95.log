@@ -1,0 +1,5 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+14:55:32   positives L=100: {'0.01': {'rate': 0.95, 'count': 38}, '0.001': {'rate': 0.675, 'count': 27}, '0.0001': {'rate': 0.45, 'count': 18}, '1e-05': {'rate': 0.225, 'count': 9}, '1e-06': {'rate': 0.075, 'count': 3}}
+14:55:32   positives L=200: {'0.01': {'rate': 1.0, 'count': 40}, '0.001': {'rate': 0.975, 'count': 39}, '0.0001': {'rate': 0.975, 'count': 39}, '1e-05': {'rate': 0.825, 'count': 33}, '1e-06': {'rate': 0.7, 'count': 28}}
+14:55:32 written detect_prose_guard95.summary.json

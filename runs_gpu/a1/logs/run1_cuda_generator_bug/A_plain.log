@@ -1,0 +1,21 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:02<00:06,  2.08s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:04<00:04,  2.06s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:06<00:02,  2.05s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:07<00:00,  1.95s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:07<00:00,  1.99s/it]
+13:29:26 Qwen/Qwen2.5-7B-Instruct plain A_c4_plain: 128 of 128 to do, batch 32
+Traceback (most recent call last):
+  File "/home/ubuntu/ep/bench/gpu/seal_corpus.py", line 175, in <module>
+    main()
+  File "/home/ubuntu/ep/bench/gpu/seal_corpus.py", line 155, in main
+    outs = [ids for ids, _ in generate_batch(backend, inputs, [lambda j, g: None] * len(group), a.max_new,
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/pytorch/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/ep/src/entropy_protocol/batch.py", line 186, in generate_batch
+    samp = nucleus_batch(scores, temperature, top_p, g)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/ep/src/entropy_protocol/batch.py", line 61, in nucleus_batch
+    return si.gather(1, _multinomial(sp, g)[:, None]).squeeze(1)
+                        ^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/ep/src/entropy_protocol/batch.py", line 50, in _multinomial
+    return torch.multinomial(p.cpu(), 1, generator=g).squeeze(1).to(p.device)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected a 'cpu' device type for generator but found 'cuda'

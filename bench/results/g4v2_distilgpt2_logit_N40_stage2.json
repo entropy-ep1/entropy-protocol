@@ -1,0 +1,181 @@
+{
+ "model": "distilgpt2",
+ "code": "aa2dddc19298c239",
+ "n": 40,
+ "calib_texts": 30,
+ "calib_positions": 2215,
+ "space": "logit",
+ "c": 3.0,
+ "reference": "cpu:float32",
+ "delta": {
+  "mps:float32": 0.0001068115234375,
+  "mps:float16": 0.08785247802734375,
+  "mps:bfloat16": 0.6383056640625,
+  "cpu:bfloat16": 0.7708740234375
+ },
+ "calibration_errors": {},
+ "certified": [
+  "fp32",
+  "fp16"
+ ],
+ "table": {
+  "fp32": 0.00032,
+  "fp16": 0.263557
+ },
+ "calibrated_flag_by_config": {
+  "cpu:float32": true,
+  "mps:float32": true,
+  "mps:float16": true,
+  "mps:bfloat16": false,
+  "cpu:bfloat16": false
+ },
+ "survival_%": {
+  "calibrated": 69.69,
+  "uncalibrated": 95.54
+ },
+ "mean_entries": {
+  "calibrated": 11.3,
+  "uncalibrated": 15.5
+ },
+ "texts_below_8_entries": {
+  "calibrated": 21,
+  "uncalibrated": 18
+ },
+ "verdicts": {
+  "cpu:float32|calibrated": {
+   "unchanged": {
+    "VERIFIED": 40
+   },
+   "transported": {
+    "VERIFIED": 40
+   },
+   "edited": {
+    "MODIFIED": 38
+   },
+   "no_edit_possible": 2
+  },
+  "cpu:float32|uncalibrated": {
+   "unchanged": {
+    "VERIFIED": 40
+   },
+   "transported": {
+    "VERIFIED": 40
+   },
+   "edited": {
+    "MODIFIED": 38
+   },
+   "no_edit_possible": 2
+  },
+  "mps:float32|calibrated": {
+   "unchanged": {
+    "VERIFIED": 40
+   },
+   "transported": {
+    "VERIFIED": 40
+   },
+   "edited": {
+    "MODIFIED": 38
+   },
+   "no_edit_possible": 2
+  },
+  "mps:float32|uncalibrated": {
+   "unchanged": {
+    "VERIFIED": 40
+   },
+   "transported": {
+    "VERIFIED": 40
+   },
+   "edited": {
+    "MODIFIED": 38
+   },
+   "no_edit_possible": 2
+  },
+  "mps:float16|calibrated": {
+   "unchanged": {
+    "VERIFIED": 40
+   },
+   "transported": {
+    "VERIFIED": 40
+   },
+   "edited": {
+    "MODIFIED": 38
+   },
+   "no_edit_possible": 2
+  },
+  "mps:float16|uncalibrated": {
+   "unchanged": {
+    "VERIFIED": 38,
+    "INDETERMINATE": 2
+   },
+   "transported": {
+    "VERIFIED": 38,
+    "INDETERMINATE": 2
+   },
+   "edited": {
+    "MODIFIED": 38
+   },
+   "no_edit_possible": 2
+  },
+  "mps:bfloat16|calibrated": {
+   "unchanged": {
+    "VERIFIED": 40
+   },
+   "transported": {
+    "VERIFIED": 40
+   },
+   "edited": {
+    "MODIFIED": 38
+   },
+   "no_edit_possible": 2
+  },
+  "mps:bfloat16|uncalibrated": {
+   "unchanged": {
+    "VERIFIED": 33,
+    "INDETERMINATE": 7
+   },
+   "transported": {
+    "VERIFIED": 33,
+    "INDETERMINATE": 7
+   },
+   "edited": {
+    "MODIFIED": 38
+   },
+   "no_edit_possible": 2
+  },
+  "cpu:bfloat16|calibrated": {
+   "unchanged": {
+    "VERIFIED": 40
+   },
+   "transported": {
+    "VERIFIED": 40
+   },
+   "edited": {
+    "MODIFIED": 38
+   },
+   "no_edit_possible": 2
+  },
+  "cpu:bfloat16|uncalibrated": {
+   "unchanged": {
+    "VERIFIED": 28,
+    "INDETERMINATE": 12
+   },
+   "transported": {
+    "VERIFIED": 28,
+    "INDETERMINATE": 12
+   },
+   "edited": {
+    "MODIFIED": 38
+   },
+   "no_edit_possible": 2
+  }
+ },
+ "wrong_MODIFIED_on_unchanged_any_config": 0,
+ "edited_reported_VERIFIED_any_config": 0,
+ "certified_configs_all_VERIFIED": true,
+ "minutes": 22.7,
+ "operating_point": {
+  "interval": 5,
+  "k": 1,
+  "window": 3
+ }
+}

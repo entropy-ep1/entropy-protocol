@@ -1,0 +1,14 @@
+{
+ "prose_g90u90": {
+  "distinct_1": 0.4912,
+  "distinct_2": 0.7975,
+  "distinct_3": 0.8804,
+  "self_bleu4": 0.1283
+ },
+ "prose_plain": {
+  "distinct_1": 0.4927,
+  "distinct_2": 0.7932,
+  "distinct_3": 0.8782,
+  "self_bleu4": 0.113
+ }
+}

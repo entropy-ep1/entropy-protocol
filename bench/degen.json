@@ -1,0 +1,34 @@
+{
+ "reference_content_free": {
+  "texts": 30,
+  "tail_blank_%": 0.0,
+  "mean_newline_share": 0.011,
+  "mean_chars": 762.9,
+  "mean_entries": 33.0,
+  "below_8_entries_%": 3.3
+ },
+ "content_prompt": {
+  "texts": 30,
+  "tail_blank_%": 0.0,
+  "mean_newline_share": 0.009,
+  "mean_chars": 815.3,
+  "mean_entries": 31.8,
+  "below_8_entries_%": 6.7,
+  "mean_wm_checkpoints": 25.9,
+  "wm_detected_at_1%": 0.8
+ },
+ "interval_prompt": {
+  "texts": 30,
+  "tail_blank_%": 0.0,
+  "mean_newline_share": 0.027,
+  "mean_chars": 690.9,
+  "mean_entries": 25.9,
+  "below_8_entries_%": 13.3
+ },
+ "plain": {
+  "texts": 30,
+  "tail_blank_%": 56.7,
+  "mean_newline_share": 0.416,
+  "mean_chars": 441
+ }
+}

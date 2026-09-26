@@ -1,0 +1,43 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:04<00:04,  4.94s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:08<00:00,  4.34s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:08<00:00,  4.43s/it]
+[    48s] # 0 cg=0 enf=56 ent=56 det=56/56 regions=0 word=VERIFIED
+[    77s] # 0 cg=1 enf=45 ent=45 det=45/45 regions=0 word=VERIFIED
+[   109s] # 1 cg=0 enf=45 ent=45 det=45/45 regions=0 word=VERIFIED
+[   142s] # 1 cg=1 enf=49 ent=49 det=49/49 regions=0 word=VERIFIED
+[   170s] # 2 cg=0 enf=31 ent=31 det=31/31 regions=0 word=VERIFIED
+[   198s] # 2 cg=1 enf=31 ent=31 det=31/31 regions=0 word=VERIFIED
+[   227s] # 3 cg=0 enf=37 ent=37 det=37/37 regions=0 word=VERIFIED
+[   254s] # 3 cg=1 enf=37 ent=37 det=37/37 regions=0 word=VERIFIED
+[   280s] # 4 cg=0 enf=35 ent=34 det=34/35 regions=0 word=VERIFIED
+[   305s] # 4 cg=1 enf=37 ent=36 det=36/37 regions=0 word=VERIFIED
+[   335s] # 5 cg=0 enf=35 ent=34 det=32/34 regions=1 word=VERIFIED
+[   359s] # 5 cg=1 enf=33 ent=33 det=33/33 regions=0 word=VERIFIED
+[   388s] # 6 cg=0 enf=38 ent=38 det=37/37 regions=1 word=VERIFIED
+[   417s] # 6 cg=1 enf=39 ent=38 det=38/39 regions=0 word=VERIFIED
+[   447s] # 7 cg=0 enf=32 ent=31 det=31/32 regions=0 word=VERIFIED
+[   475s] # 7 cg=1 enf=30 ent=30 det=30/30 regions=0 word=VERIFIED
+[   504s] # 8 cg=0 enf=39 ent=39 det=39/39 regions=0 word=VERIFIED
+[   536s] # 8 cg=1 enf=42 ent=42 det=42/42 regions=0 word=VERIFIED
+[   561s] # 9 cg=0 enf=26 ent=26 det=26/26 regions=0 word=VERIFIED
+[   590s] # 9 cg=1 enf=52 ent=52 det=49/49 regions=0 word=VERIFIED
+[   615s] #10 cg=0 enf=39 ent=39 det=39/39 regions=0 word=VERIFIED
+[   643s] #10 cg=1 enf=33 ent=33 det=33/33 regions=0 word=VERIFIED
+[   672s] #11 cg=0 enf=35 ent=35 det=35/35 regions=0 word=VERIFIED
+[   705s] #11 cg=1 enf=33 ent=33 det=33/33 regions=0 word=VERIFIED
+[   736s] #12 cg=0 enf=38 ent=38 det=38/38 regions=0 word=VERIFIED
+[   763s] #12 cg=1 enf=29 ent=29 det=29/29 regions=0 word=VERIFIED
+[   790s] #13 cg=0 enf=30 ent=30 det=30/30 regions=0 word=VERIFIED
+[   816s] #13 cg=1 enf=27 ent=27 det=27/27 regions=0 word=VERIFIED
+[   847s] #14 cg=0 enf=38 ent=38 det=38/38 regions=0 word=VERIFIED
+[   873s] #14 cg=1 enf=35 ent=35 det=35/35 regions=0 word=VERIFIED
+[   899s] #15 cg=0 enf=38 ent=36 det=35/37 regions=1 word=VERIFIED
+[   932s] #15 cg=1 enf=49 ent=49 det=49/49 regions=0 word=VERIFIED
+[   962s] #16 cg=0 enf=41 ent=38 det=34/39 regions=6 word=VERIFIED
+[   990s] #16 cg=1 enf=33 ent=33 det=33/33 regions=0 word=VERIFIED
+[  1025s] #17 cg=0 enf=31 ent=30 det=30/31 regions=1 word=VERIFIED
+[  1060s] #17 cg=1 enf=34 ent=34 det=34/34 regions=0 word=VERIFIED
+[  1094s] #18 cg=0 enf=39 ent=39 det=36/36 regions=0 word=VERIFIED
+[  1126s] #18 cg=1 enf=39 ent=39 det=36/36 regions=0 word=VERIFIED
+[  1157s] #19 cg=0 enf=35 ent=35 det=34/34 regions=0 word=VERIFIED
+[  1190s] #19 cg=1 enf=35 ent=35 det=34/34 regions=0 word=VERIFIED

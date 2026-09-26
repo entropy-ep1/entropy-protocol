@@ -1,0 +1,145 @@
+# Entropy Protocol (ep1)
+
+**A receipt for machine-written text.** Seal text at the moment a language model writes it. Later, anyone you
+give the receipt to can check — deterministically, without the prompt, and without the receipt revealing a word of
+the text — whether a document is that text, and if it is not, exactly where it was changed.
+
+> **What a missing mark means.** ep1 speaks only about text that was sealed. A text with no ep1 mark was not
+> sealed; that says nothing about whether a person or a machine wrote it. ep1 is not a classifier of AI authorship
+> and never judges unsealed text.
+
+This repository is the reference implementation, the specification of its formats, test vectors, a second
+independent implementation, and the evaluation program behind every number below.
+
+---
+
+## Why a receipt, not a guess
+
+Tools that infer authorship from a single text cannot be both useful and fair: they must accuse some honest writers,
+and their error rates are estimated, not known. Statistical watermarks report a score whose null distribution depends
+on the model and the text. Metadata attached to a file does not survive a copy out of a chat window.
+
+ep1 takes the other road. At generation it writes a **record** with two layers:
+
+- a **content layer** — digests of the canonical text and of its sentence blocks: exact integrity and the location of
+  every edit;
+- a **model layer** — checkpoints: a character offset and an ordinal property of the model's choice there (its first
+  choice, or not). No token, no word, no text.
+
+A verifier re-reads the candidate once with the same model and returns a determination:
+
+| Verdict | Meaning |
+|---|---|
+| `VERIFIED` | the candidate is the sealed text (canonical form: line endings, invisible characters, typographic quotes do not matter) |
+| `VERIFIED_TEXT` | a rendered copy (Markdown shown as a reader sees it) whose visible text is the sealed one |
+| `MODIFIED` | changed — with the changed blocks, deletion points and diverging ranges |
+| `INDETERMINATE` | the verifier's numerics cannot decide; **an identical text is never reported as MODIFIED** |
+| `NOT_VERIFIABLE` | no valid record |
+
+Without any record, a holder of the **detection key** can test whether a text was sealed under that key. The
+p-value is **exact**: for any text not sealed under the key, the count of matching checkpoints follows
+Binomial(n, ½) by construction — no model- or text-dependent calibration of the null.
+
+## What ep1 proves — and what it does not
+
+**Proves**, given a record: whether a candidate is the sealed text and, if not, where it differs.
+**Proves**, given the detection key: whether a text was sealed under the key, with an exact false-positive
+probability.
+
+**Does not prove**, and we say so first:
+
+| Limit | Detail |
+|---|---|
+| Unsealed text | no mark means *not sealed*, not *not AI*; ep1 does not judge unsealed text |
+| Rewriting | paraphrase and translation are modifications and are reported as such; after a rewrite of about a quarter of the words the record-free signal is gone |
+| Short text | below about 50 tokens record-free detection has too few checkpoints |
+| The issuer | whoever holds the master key can seal a text its model did not write; proof against the issuer needs attested generation (not in this release) |
+| Same model | the verifier needs the same weights and tokenizer, in a certified numerical class; outside it the answer is `INDETERMINATE`, never a false verdict |
+| The key | a holder of the detection key can imitate the mark — hand it only to trusted detectors, or run detection as a service |
+| Measured range | the exact null has been checked empirically to 1e-4 on 28,688 pairs; the 1e-6 figures below are computed from it |
+| Cost | sealing adds 22–23% latency at batch 1–8 and 76% at batch 32 on the machine below |
+| Time stamps | we check a time-stamp token's imprint; validating the authority's signature and chain is the reader's trust decision |
+
+## Measured
+
+One NVIDIA L40S, Qwen2.5-7B-Instruct, fp16, 128 texts of 400 tokens per corpus (phase A, 15.09.2026, total cost
+$4.60). Every number is a file under [`runs_gpu/a1/`](runs_gpu/a1) and a command in [`bench/gpu/`](bench/gpu).
+
+| | Result |
+|---|---|
+| Records of unchanged text in five verifier configurations — fp16; bf16 outside the calibration table; fp32; bf16 generation with fp16 measurement; the quality operating point | 100% `VERIFIED` (128 texts each; 32 for fp32 and for bf16 generation); **0 false `MODIFIED`** |
+| Records after transport (CRLF, e-mail, no-break spaces, BOM, an embedded C2PA text manifest, invisible characters) | 0 failures |
+| Edited texts (word replaced, one character, sentence deleted or inserted, tail truncated) | `MODIFIED` in 99.2–100%, with location |
+| Exact null, 20,000 human C4 pairs | 155 at 1e-2 (200 allowed), 16 at 1e-3 (20), 1 at 1e-4 (2), 0 at 1e-5 and 1e-6 |
+| Record-free detection at 1e-6, 200 / 400 tokens | 96.1% / 100% (strong) · 61.7% / 95.3% (quality) |
+| GSM8K accuracy: unsealed / quality / strong | 87.5% / 85.2% / 39.1% |
+| Verification throughput · peak memory | 9,275 tokens/s · 15.41 GB |
+
+*Quality* (the default) leaves the model free where it is confident; *strong* enforces every checkpoint and breaks
+arithmetic — use it only where the mark matters more than the answer.
+
+## Quick start
+
+```bash
+pip install -e ".[markdown]"      # Python >= 3.10; brings torch and transformers
+M=Qwen/Qwen2.5-0.5B-Instruct
+entropy keygen --out master.key
+entropy seal --model $M --key master.key --prompt "Explain tides in two sentences." --out sealed.json
+python3 -c 'import json; d = json.load(open("sealed.json")); open("candidate.txt", "w").write(d["text"])'
+TOKEN=$(python3 -c 'import json; print(json.load(open("sealed.json"))["token"])')
+entropy verify --model $M --text-file candidate.txt --token "$TOKEN" --key master.key   # VERIFIED
+entropy detect --model $M --text-file candidate.txt --key master.key                    # exact p-value
+```
+
+The whole product in one command, on a CPU, nothing leaving the machine: [`bench/demo_review.sh`](bench/demo_review.sh)
+(keys → an OpenAI-compatible sealing gateway on `127.0.0.1` → a sealed answer → three candidates checked: as
+delivered, as a rendered copy, with one word changed → record-free detection with its exact p-value → the same
+verdict through an MCP tool → signed statements, a transparency log and an evidence package checked offline).
+
+`entropy --help` lists the rest: `serve` (sealing gateway), `mcp` (verifier as assistant tools), `commit` /
+`register` / `serve-log` / `submit` (SCITT statements and receipts), `timestamp` (RFC 3161), `evidence` (a
+single-file package with an offline check), `deliver` (a record encrypted to one verifier's public key).
+
+## Reproduce the numbers
+
+The evaluation keys are **public by design**: key *i* is `SHA-256("ep-gpu-eval/2026-09/master/<i>")`
+([`bench/gpu/common.py`](bench/gpu/common.py)), so anyone can re-derive them and recompute every detection. The
+phases are scripts with a hard cost cap per machine; each step leaves a log and resumes where it stopped.
+
+| Phase | What | Script |
+|---|---|---|
+| A | every experiment on one 7B model | [`run_phase_a.sh`](bench/gpu/run_phase_a.sh) |
+| B | the same records verified on other GPU architectures; calibration across machines | [`run_phase_b.sh`](bench/gpu/run_phase_b.sh) |
+| C | a million-trial null; canonical baselines (KGW, SynthID) against length-matched nulls; three model families | [`run_phase_c.sh`](bench/gpu/run_phase_c.sh) |
+
+Each has a CPU dry run (`smoke_phase_*.sh`) that exercises every call on a small model before a paid machine starts.
+
+## Specification and a second implementation
+
+- Formats: [`spec/ep1.cddl`](spec/ep1.cddl) — the record, the statements, receipts, the evidence package. No floating
+  point on the wire: tolerances in integer micro-units, p-values from counts.
+- Test vectors: [`spec/test-vectors/ep1-vectors.json`](spec/test-vectors/ep1-vectors.json), regenerated by
+  [`spec/make_vectors.py`](spec/make_vectors.py).
+- An independent JavaScript implementation of every model-free part: [`impl-js/`](impl-js) — 72/72 vectors. CI
+  regenerates the vectors with the Python reference, requires them to be byte-identical to the committed file, and
+  runs the JavaScript implementation against them.
+- Design and rationale: [`ARCHITECTURE.md`](ARCHITECTURE.md).
+
+Built on published standards: SCITT architecture (RFC 9943), COSE Receipts (RFC 9942), Certificate Transparency
+v2 Merkle trees (RFC 9162), COSE Hash Envelope (RFC 9995), CWT claims in COSE (RFC 9597), RFC 3161 time stamps
+(carried per RFC 9921), SCRAPI (draft-ietf-scitt-scrapi), COSE-HPKE (draft-ietf-cose-hpke).
+
+## Status
+
+0.1.0 — a reference implementation ahead of standardization. Formats may change before a specification is adopted
+by a standards body; records name their canonical form and version, and older records keep verifying.
+
+## License and patents
+
+Code: [Apache License 2.0](LICENSE). Patent applications cover this work; see [PATENTS.md](PATENTS.md) for the
+commitment made to implementers of the specification.
+
+## Authors
+
+Roman Oliinyk and Serhii Nikolaichuk. Cite as in [CITATION.cff](CITATION.cff). Security reports:
+[SECURITY.md](SECURITY.md).

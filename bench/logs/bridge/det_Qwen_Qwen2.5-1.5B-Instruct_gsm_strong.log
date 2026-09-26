@@ -1,0 +1,6 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+19:09:40   positives L=100: {'0.01': {'rate': 1.0, 'count': 100}, '0.001': {'rate': 0.97, 'count': 97}, '0.0001': {'rate': 0.91, 'count': 91}, '1e-05': {'rate': 0.65, 'count': 65}, '1e-06': {'rate': 0.32, 'count': 32}}
+19:09:41   positives L=200: {'0.01': {'rate': 1.0, 'count': 100}, '0.001': {'rate': 0.99, 'count': 99}, '0.0001': {'rate': 0.97, 'count': 97}, '1e-05': {'rate': 0.96, 'count': 96}, '1e-06': {'rate': 0.95, 'count': 95}}
+19:09:41   positives L=400: {'0.01': {'rate': 1.0, 'count': 100}, '0.001': {'rate': 0.99, 'count': 99}, '0.0001': {'rate': 0.97, 'count': 97}, '1e-05': {'rate': 0.96, 'count': 96}, '1e-06': {'rate': 0.96, 'count': 96}}
+19:09:41 written detect_gsm_strong.summary.json

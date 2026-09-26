@@ -1,0 +1,131 @@
+{
+ "model": "gpt2-medium",
+ "code": "aa2dddc19298c239",
+ "align": "free",
+ "interval": 5,
+ "k": 1,
+ "context": 4,
+ "alphas": [
+  0.01,
+  0.001,
+  0.0001,
+  1e-06
+ ],
+ "positives": {
+  "100": {
+   "n_texts": 20,
+   "detected_at": {
+    "0.01": 0.9,
+    "0.001": 0.85,
+    "0.0001": 0.8,
+    "1e-06": 0.2
+   },
+   "median_p": 1.7642974853515625e-05,
+   "mean_checkpoints": 17.9,
+   "match_rate": 0.966
+  },
+  "200": {
+   "n_texts": 20,
+   "detected_at": {
+    "0.01": 1.0,
+    "0.001": 1.0,
+    "0.0001": 0.95,
+    "1e-06": 0.95
+   },
+   "median_p": 5.820766091346741e-10,
+   "mean_checkpoints": 36.5,
+   "match_rate": 0.971
+  }
+ },
+ "nulls": {
+  "human_docstrings": {
+   "n_texts": 200,
+   "false_positive_at": {
+    "0.01": 0.015,
+    "0.001": 0.005,
+    "0.0001": 0.0,
+    "1e-06": 0.0
+   },
+   "mean_checkpoints": 12.9,
+   "match_rate": 0.484,
+   "min_p": 0.0009765625
+  },
+  "same_model_no_key": {
+   "n_texts": 120,
+   "false_positive_at": {
+    "0.01": 0.0167,
+    "0.001": 0.0,
+    "0.0001": 0.0,
+    "1e-06": 0.0
+   },
+   "mean_checkpoints": 36.8,
+   "match_rate": 0.509,
+   "min_p": 0.003957948667448363
+  },
+  "same_model_other_key": {
+   "n_texts": 60,
+   "false_positive_at": {
+    "0.01": 0.0,
+    "0.001": 0.0,
+    "0.0001": 0.0,
+    "1e-06": 0.0
+   },
+   "mean_checkpoints": 34.8,
+   "match_rate": 0.51,
+   "min_p": 0.02351551371975802
+  }
+ },
+ "attacks": {
+  "replace_10pct_words": {
+   "n_texts": 20,
+   "detected_at": {
+    "0.01": 0.6,
+    "0.001": 0.3,
+    "0.0001": 0.1,
+    "1e-06": 0.0
+   },
+   "median_p": 0.0029940602835267782
+  },
+  "replace_25pct_words": {
+   "n_texts": 20,
+   "detected_at": {
+    "0.01": 0.15,
+    "0.001": 0.0,
+    "0.0001": 0.0,
+    "1e-06": 0.0
+   },
+   "median_p": 0.23334963276101917
+  },
+  "delete_sentence": {
+   "n_texts": 20,
+   "detected_at": {
+    "0.01": 1.0,
+    "0.001": 0.95,
+    "0.0001": 0.7,
+    "1e-06": 0.4
+   },
+   "median_p": 3.380700945854187e-06
+  },
+  "embed_in_human_text": {
+   "n_texts": 20,
+   "detected_at": {
+    "0.01": 0.55,
+    "0.001": 0.25,
+    "0.0001": 0.05,
+    "1e-06": 0.0
+   },
+   "median_p": 0.004089805881929412
+  },
+  "truncate_half": {
+   "n_texts": 20,
+   "detected_at": {
+    "0.01": 0.95,
+    "0.001": 0.85,
+    "0.0001": 0.7,
+    "1e-06": 0.05
+   },
+   "median_p": 2.6524066925048828e-05
+  }
+ },
+ "minutes": 43.6
+}

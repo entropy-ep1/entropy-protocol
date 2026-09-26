@@ -1,0 +1,87 @@
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.18) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+  10/40  183s
+  20/40  355s
+  30/40  519s
+  40/40  690s
+{
+ "model": "distilgpt2",
+ "oracle": "gpt2-medium",
+ "n": 40,
+ "usable_for_ppl": 19,
+ "space": "logit",
+ "cal": {
+  "fp32": 0.00024,
+  "fp16": 0.338013
+ },
+ "minutes": 11.5,
+ "variants": {
+  "unsealed": {
+   "median_ppl_prefix": 20.89,
+   "mean_distinct2": 0.892,
+   "mean_rep3": 0.091,
+   "mean_words": 60.5
+  },
+  "i5_k10_w40": {
+   "median_ppl_prefix": 31.39,
+   "median_ppl_ratio": 1.279,
+   "share_ratio_gt_1.25": 0.526,
+   "mean_distinct2": 0.923,
+   "mean_rep3": 0.052,
+   "mean_words": 103.9,
+   "mean_entries": 14,
+   "entries_per_100_tokens": 10.37,
+   "survival_%": 53.5,
+   "texts_below_8_entries_%": 22.5
+  },
+  "i10_k10_w40": {
+   "median_ppl_prefix": 18.3,
+   "median_ppl_ratio": 1.067,
+   "share_ratio_gt_1.25": 0.421,
+   "mean_distinct2": 0.906,
+   "mean_rep3": 0.068,
+   "mean_words": 95.5,
+   "mean_entries": 6.3,
+   "entries_per_100_tokens": 4.58,
+   "survival_%": 48.9,
+   "texts_below_8_entries_%": 70.0
+  },
+  "i10_k10_w1": {
+   "median_ppl_prefix": 21.91,
+   "median_ppl_ratio": 1.086,
+   "share_ratio_gt_1.25": 0.421,
+   "mean_distinct2": 0.909,
+   "mean_rep3": 0.07,
+   "mean_words": 82.6,
+   "mean_entries": 3.5,
+   "entries_per_100_tokens": 2.82,
+   "survival_%": 30.2,
+   "texts_below_8_entries_%": 100.0
+  },
+  "i10_k3_w5": {
+   "median_ppl_prefix": 21.98,
+   "median_ppl_ratio": 1.039,
+   "share_ratio_gt_1.25": 0.263,
+   "mean_distinct2": 0.918,
+   "mean_rep3": 0.06,
+   "mean_words": 90.6,
+   "mean_entries": 6.3,
+   "entries_per_100_tokens": 4.85,
+   "survival_%": 51.9,
+   "texts_below_8_entries_%": 57.5
+  },
+  "i5_k3_w5": {
+   "median_ppl_prefix": 22.32,
+   "median_ppl_ratio": 1.385,
+   "share_ratio_gt_1.25": 0.579,
+   "mean_distinct2": 0.925,
+   "mean_rep3": 0.058,
+   "mean_words": 102.8,
+   "mean_entries": 14.1,
+   "entries_per_100_tokens": 10.37,
+   "survival_%": 53.6,
+   "texts_below_8_entries_%": 12.5
+  }
+ }
+}
+written <repo>/bench/results/g5b_distilgpt2_logit_N40.json

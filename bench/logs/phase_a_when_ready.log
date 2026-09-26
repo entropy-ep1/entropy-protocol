@@ -1,0 +1,49 @@
+
+aws: [ERROR]: An error occurred (InsufficientInstanceCapacity) when calling the RunInstances operation (reached max retries: 2): We currently do not have sufficient g6e.2xlarge capacity in the Availability Zone you requested (us-east-2a). Our system will be working on provisioning additional capacity. You can currently get g6e.2xlarge capacity by not specifying an Availability Zone in your request or choosing us-east-2b, us-east-2c.
+
+aws: [ERROR]: An error occurred (MaxSpotInstanceCountExceeded) when calling the RunInstances operation: Max spot instance count exceeded
+
+aws: [ERROR]: An error occurred (InsufficientInstanceCapacity) when calling the RunInstances operation (reached max retries: 2): We currently do not have sufficient g6e.2xlarge capacity in the Availability Zone you requested (us-east-2b). Our system will be working on provisioning additional capacity. You can currently get g6e.2xlarge capacity by not specifying an Availability Zone in your request or choosing us-east-2a, us-east-2c.
+
+aws: [ERROR]: An error occurred (InsufficientInstanceCapacity) when calling the RunInstances operation (reached max retries: 2): We currently do not have sufficient g6e.xlarge capacity in the Availability Zone you requested (us-east-2a). Our system will be working on provisioning additional capacity. You can currently get g6e.xlarge capacity by not specifying an Availability Zone in your request or choosing us-east-2b, us-east-2c.
+
+aws: [ERROR]: An error occurred (InsufficientInstanceCapacity) when calling the RunInstances operation (reached max retries: 2): We currently do not have sufficient g6e.xlarge capacity in the Availability Zone you requested (us-east-2c). Our system will be working on provisioning additional capacity. You can currently get g6e.xlarge capacity by not specifying an Availability Zone in your request or choosing us-east-2a, us-east-2b.
+
+aws: [ERROR]: An error occurred (InsufficientInstanceCapacity) when calling the RunInstances operation (reached max retries: 2): We currently do not have sufficient g6e.xlarge capacity in the Availability Zone you requested (us-east-2b). Our system will be working on provisioning additional capacity. You can currently get g6e.xlarge capacity by not specifying an Availability Zone in your request or choosing us-east-2a, us-east-2c.
+
+aws: [ERROR]: An error occurred (InsufficientInstanceCapacity) when calling the RunInstances operation (reached max retries: 2): We currently do not have sufficient p5.4xlarge capacity in the Availability Zone you requested (us-east-2a). Our system will be working on provisioning additional capacity. You can currently get p5.4xlarge capacity by not specifying an Availability Zone in your request or choosing us-east-2b, us-east-2c.
+
+aws: [ERROR]: An error occurred (InsufficientInstanceCapacity) when calling the RunInstances operation (reached max retries: 2): We currently do not have sufficient p5.4xlarge capacity in the Availability Zone you requested (us-east-2c). Our system will be working on provisioning additional capacity. You can currently get p5.4xlarge capacity by not specifying an Availability Zone in your request or choosing us-east-2a, us-east-2b.
+
+aws: [ERROR]: An error occurred (InsufficientInstanceCapacity) when calling the RunInstances operation (reached max retries: 2): We currently do not have sufficient p5.4xlarge capacity in the Availability Zone you requested (us-east-2b). Our system will be working on provisioning additional capacity. You can currently get p5.4xlarge capacity by not specifying an Availability Zone in your request or choosing us-east-2a, us-east-2c.
+
+aws: [ERROR]: An error occurred (InsufficientInstanceCapacity) when calling the RunInstances operation (reached max retries: 2): We currently do not have sufficient g5.2xlarge capacity in the Availability Zone you requested (us-east-2a). Our system will be working on provisioning additional capacity. You can currently get g5.2xlarge capacity by not specifying an Availability Zone in your request or choosing us-east-2b, us-east-2c.
+
+aws: [ERROR]: An error occurred (InsufficientInstanceCapacity) when calling the RunInstances operation (reached max retries: 2): We currently do not have sufficient g5.2xlarge capacity in the Availability Zone you requested (us-east-2c). Our system will be working on provisioning additional capacity. You can currently get g5.2xlarge capacity by not specifying an Availability Zone in your request or choosing us-east-2a, us-east-2b.
+
+aws: [ERROR]: An error occurred (InsufficientInstanceCapacity) when calling the RunInstances operation (reached max retries: 2): We currently do not have sufficient g5.2xlarge capacity in the Availability Zone you requested (us-east-2b). Our system will be working on provisioning additional capacity. You can currently get g5.2xlarge capacity by not specifying an Availability Zone in your request or choosing us-east-2a, us-east-2c.
+
+aws: [ERROR]: An error occurred (MaxSpotInstanceCountExceeded) when calling the RunInstances operation: Max spot instance count exceeded
+
+aws: [ERROR]: An error occurred (MaxSpotInstanceCountExceeded) when calling the RunInstances operation: Max spot instance count exceeded
+
+aws: [ERROR]: An error occurred (MaxSpotInstanceCountExceeded) when calling the RunInstances operation: Max spot instance count exceeded
+launched a1 i-02a1157ea7997740f g6e.2xlarge (ondemand) ip 3.22.250.26, cap 4h (AMI ami-032b37e4db407994d)
+ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=accept-new ubuntu@3.22.250.26
+08:22:24 ssh up on 3.22.250.26
+[notice] To update, run: pip install --upgrade pip
+torch 2.7.0+cu128 cuda 12.8 transformers 4.53.2
+gpu NVIDIA L40S 44.4 GiB
+bootstrap done
+code -> a1 (3.22.250.26)
+13:25:00 END tiny_model rc=0
+13:25:00 START model_tests
+13:25:02 END model_tests rc=2
+13:25:02 START cal_seal
+08:25:07 PHASE A STARTED on 3.22.250.26
+08:25:10 results down ( 40K)
+13:25:02 START cal_seal
+08:45:14 results down (764K)
+13:45:12 START dump_float16_b1
+09:05:19 results down (3.9M)
+14:04:41 START chat_plain
