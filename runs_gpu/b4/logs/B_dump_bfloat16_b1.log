@@ -1,0 +1,2 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:01,  1.93it/s]Loading checkpoint shards:  50%|█████     | 2/4 [00:01<00:01,  1.94it/s]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:01<00:00,  1.94it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:02<00:00,  2.02it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:02<00:00,  1.99it/s]
+02:55:41 NVIDIA-H100-NVL_bfloat16_default_b1: 512 texts, 203613 positions -> B_cal__NVIDIA-H100-NVL_bfloat16_default_b1.npz

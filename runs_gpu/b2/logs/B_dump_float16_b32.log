@@ -1,0 +1,2 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:09<00:29,  9.79s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:16<00:15,  7.97s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:24<00:08,  8.01s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:30<00:00,  7.40s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:30<00:00,  7.75s/it]
+03:04:20 NVIDIA-A10G_float16_default_b32: 512 texts, 203613 positions -> B_cal__NVIDIA-A10G_float16_default_b32.npz

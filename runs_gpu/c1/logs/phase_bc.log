@@ -1,0 +1,61 @@
+02:14:56 START versions
+02:14:58 END versions rc=0
+02:14:58 START data
+bench/gpu/run_phase_b.sh: line 16:  2560 Aborted                 (core dumped) "$@" > "logs/B_$n.log" 2>&1
+02:15:45 END data rc=134
+02:15:45 START unit_tests
+02:15:54 END unit_tests rc=0
+02:15:54 START tiny_model
+02:15:56 END tiny_model rc=0
+02:15:56 START model_tests
+02:20:51 END model_tests rc=0
+02:20:51 START cal_seal
+02:22:35 END cal_seal rc=0
+02:22:35 PHASE B STOPPED: no B_cal.jsonl on this machine
+--- phase C ---
+02:22:37 START data
+02:24:12 END data rc=0
+02:24:12 START null1m_strong
+--- restart 02:27:06: B_cal download fix ---
+02:27:07 SKIP versions (done earlier)
+02:27:07 START data
+02:27:18 END data rc=0
+02:27:18 SKIP unit_tests (done earlier)
+02:27:18 SKIP tiny_model (done earlier)
+02:27:18 SKIP model_tests (done earlier)
+02:27:18 START cal_seal
+02:37:28 END cal_seal rc=0
+02:37:28 START dump_float16_b1
+02:41:18 END dump_float16_b1 rc=0
+02:41:18 START dump_float16_b32
+02:41:57 END dump_float16_b32 rc=0
+02:41:57 START dump_float16_b32_eager
+02:42:14 END dump_float16_b32_eager rc=1
+02:42:14 START dump_bfloat16_b1
+02:46:02 END dump_bfloat16_b1 rc=0
+02:46:02 START dump_bfloat16_b32
+02:46:34 END dump_bfloat16_b32 rc=0
+02:46:34 START dump_float32_b1
+02:52:03 END dump_float32_b1 rc=0
+02:52:03 START dump_float32_b32
+02:54:07 END dump_float32_b32 rc=0
+02:54:07 START speed
+02:57:59 END speed rc=0
+02:57:59 START verify_A_c4_sealed_fp16cert_fp16
+02:59:42 END verify_A_c4_sealed_fp16cert_fp16 rc=0
+02:59:42 START verify_A_c4_sealed_fp16cert_bf16
+03:00:40 END verify_A_c4_sealed_fp16cert_bf16 rc=0
+03:00:40 START verify_A_c4_sealed_fp16cert_fp32
+03:03:05 END verify_A_c4_sealed_fp16cert_fp32 rc=0
+03:03:05 START verify_A_c4_quality_fp16cert_fp16
+03:04:48 END verify_A_c4_quality_fp16cert_fp16 rc=0
+03:04:48 START verify_A_c4_quality_fp16cert_bf16
+03:05:45 END verify_A_c4_quality_fp16cert_bf16 rc=0
+03:05:45 START verify_A_c4_quality_fp16cert_fp32
+03:08:17 END verify_A_c4_quality_fp16cert_fp32 rc=0
+03:08:17 START kgw_diag
+03:09:06 END kgw_diag rc=0
+03:09:06 PHASE B DONE (GPU 44 GB, fp32 steps: run)
+--- phase C ---
+03:09:08 SKIP data (done earlier)
+03:09:08 START null1m_strong

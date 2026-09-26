@@ -1,0 +1,21 @@
+{
+ "code": "ee345ac9b9a46276",
+ "model": "Qwen/Qwen2.5-7B-Instruct@a09a35458c702b33eeacc393d103063234e8bc28",
+ "weights": "fd024e4fed1dfb65cc679af8aa2d7b542971a1b74ab8cb4d703ac082afc3922c",
+ "env": {
+  "device": "cuda",
+  "hardware": "NVIDIA H100 NVL",
+  "dtype": "float32",
+  "class": "fp32",
+  "torch": "2.7.1+cu128",
+  "transformers": "4.53.2",
+  "attn": "sdpa",
+  "batch": 1
+ },
+ "time": "2026-09-26T03:00:52",
+ "batch": 32,
+ "config": "NVIDIA-H100-NVL_float32_default_b32",
+ "texts": 512,
+ "positions": 203613,
+ "finite": true
+}

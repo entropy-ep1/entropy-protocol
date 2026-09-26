@@ -1,0 +1,4 @@
+  File "/home/ubuntu/ep/bench/diag_kgw_length.py", line 59
+    f"p<=1e-4 {100 * d['share_p_le_1e-4']:5.1f}% | scored {d["median_scored_tokens"]:6.1f} | "
+                                                              ^^^^^^^^^^^^^^^^^^^^
+SyntaxError: f-string: unmatched '['

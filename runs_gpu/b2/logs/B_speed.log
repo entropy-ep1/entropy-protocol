@@ -1,0 +1,8 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:03<00:10,  3.36s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:07<00:07,  3.89s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:15<00:05,  5.57s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:23<00:00,  6.55s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:23<00:00,  5.81s/it]
+Fetching 14 files:   0%|          | 0/14 [00:00<?, ?it/s]Fetching 14 files: 100%|██████████| 14/14 [00:00<00:00, 215883.29it/s]
+02:38:11   batch 1: {'plain_tok_s': 28.1, 'sealed_tok_s': 24.4, 'overhead_%': 15.1, 'peak_gb_plain': 14.216737270355225, 'peak_gb_sealed': 14.670382022857666}
+02:39:01   batch 8: {'plain_tok_s': 186.1, 'sealed_tok_s': 146.8, 'overhead_%': 26.8, 'peak_gb_plain': 14.37656307220459, 'peak_gb_sealed': 14.68239164352417}
+02:40:23   batch 32: {'plain_tok_s': 553.6, 'sealed_tok_s': 316.3, 'overhead_%': 75.0, 'peak_gb_plain': 14.906018257141113, 'peak_gb_sealed': 15.409183025360107}
+02:42:26   batch 64: {'plain_tok_s': 821.0, 'sealed_tok_s': 393.5, 'overhead_%': 108.6, 'peak_gb_plain': 15.615678310394287, 'peak_gb_sealed': 16.621989727020264}
+02:42:27   verify batch 1: {'tok_s': 2300.4, 'seconds_per_text': 0.4347, 'peak_gb': 15.146673679351807}
+02:42:36   verify batch 32: {'tok_s': 3465.2, 'seconds_per_text': 0.2886, 'peak_gb': 18.47488021850586}

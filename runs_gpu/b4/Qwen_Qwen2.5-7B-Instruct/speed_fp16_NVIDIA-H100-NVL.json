@@ -1,0 +1,58 @@
+{
+ "code": "ee345ac9b9a46276",
+ "model": "Qwen/Qwen2.5-7B-Instruct@a09a35458c702b33eeacc393d103063234e8bc28",
+ "weights": "fd024e4fed1dfb65cc679af8aa2d7b542971a1b74ab8cb4d703ac082afc3922c",
+ "env": {
+  "device": "cuda",
+  "hardware": "NVIDIA H100 NVL",
+  "dtype": "float16",
+  "class": "fp16",
+  "torch": "2.7.1+cu128",
+  "transformers": "4.53.2",
+  "attn": "sdpa",
+  "batch": 1
+ },
+ "time": "2026-09-26T02:40:06",
+ "generation": {
+  "1": {
+   "plain_tok_s": 33.3,
+   "sealed_tok_s": 27.3,
+   "overhead_%": 21.9,
+   "peak_gb_plain": 14.24003267288208,
+   "peak_gb_sealed": 14.69370412826538
+  },
+  "8": {
+   "plain_tok_s": 223.1,
+   "sealed_tok_s": 191.2,
+   "overhead_%": 16.7,
+   "peak_gb_plain": 14.400236129760742,
+   "peak_gb_sealed": 14.705713748931885
+  },
+  "32": {
+   "plain_tok_s": 819.8,
+   "sealed_tok_s": 555.4,
+   "overhead_%": 47.6,
+   "peak_gb_plain": 14.928534507751465,
+   "peak_gb_sealed": 15.435261726379395
+  },
+  "64": {
+   "plain_tok_s": 1468.0,
+   "sealed_tok_s": 803.1,
+   "overhead_%": 82.8,
+   "peak_gb_plain": 15.639364242553711,
+   "peak_gb_sealed": 16.646281719207764
+  }
+ },
+ "verify": {
+  "1": {
+   "tok_s": 14890.6,
+   "seconds_per_text": 0.0672,
+   "peak_gb": 15.16999864578247
+  },
+  "32": {
+   "tok_s": 19101.1,
+   "seconds_per_text": 0.0524,
+   "peak_gb": 18.49819564819336
+  }
+ }
+}

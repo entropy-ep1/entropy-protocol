@@ -1,0 +1,13 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:02,  1.14it/s]Loading checkpoint shards:  50%|█████     | 2/4 [00:01<00:01,  1.12it/s]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:02<00:00,  1.11it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:03<00:00,  1.16it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:03<00:00,  1.14it/s]
+Traceback (most recent call last):
+  File "/home/ubuntu/ep/bench/gpu/calib_dump.py", line 69, in <module>
+    main()
+  File "/home/ubuntu/ep/bench/gpu/calib_dump.py", line 56, in main
+    for sc in score_batch(b, [ids[i] for i in part], a.k, token_budget=a.batch * 1100):
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/ep/src/entropy_protocol/batch.py", line 372, in score_batch
+    raise FloatingPointError(f"non-finite logits in the verification pass ({backend.environment['class']}): "
+FloatingPointError: non-finite logits in the verification pass (fp16): precision overflow

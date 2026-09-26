@@ -1,0 +1,7 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:04<00:12,  4.10s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:10<00:10,  5.50s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:11<00:03,  3.35s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:12<00:00,  2.30s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:12<00:00,  3.02s/it]
+02:47:07 verify A_c4_sealed_fp16cert on bf16_default_b32: 128 of 128 to do
+02:47:40   32/128  33s
+02:48:10   64/128  63s
+02:48:40   96/128  93s
+02:49:10   128/128  123s
+02:49:10 {'corpus': 'A_c4_sealed_fp16cert', 'config': 'bf16_default_b32', 'texts': 128, 'decisive': 128, 'same_VERIFIED_%': 100.0, 'same_wrong_MODIFIED': 0, 'same_INDETERMINATE': 0, 'calibrated': ['False'], 'transport_wrong_MODIFIED': {'crlf': 0, 'email': 0, 'nbsp': 0, 'combined': 0, 'bom_nnbsp': 0, 'c2pa_manifest': 0, 'invisible': 0}, 'transport_VERIFIED_%': {'crlf': 100.0, 'email': 100.0, 'nbsp': 100.0, 'combined': 100.0, 'bom_nnbsp': 100.0, 'c2pa_manifest': 100.0, 'invisible': 100.0}}

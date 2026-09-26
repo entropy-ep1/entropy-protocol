@@ -1,0 +1,19 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:02<00:06,  2.24s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:04<00:04,  2.20s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:06<00:02,  2.18s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:08<00:00,  2.12s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:08<00:00,  2.15s/it]
+02:27:31 Qwen/Qwen2.5-7B-Instruct sealed B_cal: 512 of 512 to do, batch 32
+02:28:27   batch 1: 32 texts, 12800 tokens, 55.4s (231 tok/s)
+02:29:03   batch 2: 32 texts, 12727 tokens, 36.1s (352 tok/s)
+02:29:39   batch 3: 32 texts, 12785 tokens, 35.7s (358 tok/s)
+02:30:19   batch 4: 32 texts, 12737 tokens, 39.6s (322 tok/s)
+02:30:53   batch 5: 32 texts, 12632 tokens, 34.6s (365 tok/s)
+02:31:29   batch 6: 32 texts, 12800 tokens, 34.9s (366 tok/s)
+02:32:06   batch 7: 32 texts, 12710 tokens, 37.1s (343 tok/s)
+02:32:41   batch 8: 32 texts, 12712 tokens, 35.1s (362 tok/s)
+02:33:16   batch 9: 32 texts, 12800 tokens, 35.0s (366 tok/s)
+02:33:51   batch 10: 32 texts, 12729 tokens, 35.0s (364 tok/s)
+02:34:27   batch 11: 32 texts, 12699 tokens, 36.0s (352 tok/s)
+02:35:03   batch 12: 32 texts, 12768 tokens, 35.3s (362 tok/s)
+02:35:38   batch 13: 32 texts, 12698 tokens, 35.4s (359 tok/s)
+02:36:14   batch 14: 32 texts, 12717 tokens, 36.2s (351 tok/s)
+02:36:51   batch 15: 32 texts, 12521 tokens, 36.6s (342 tok/s)
+02:37:27   batch 16: 32 texts, 12781 tokens, 36.0s (355 tok/s)
+02:37:27 done: 203616 tokens in 596s

@@ -1,0 +1,5 @@
+64 texts, vocabulary 152064, tokenizer Qwen/Qwen2.5-7B-Instruct
+  L= 100: median z   4.47 | p<=1e-2  81.2% | p<=1e-4  62.5% | scored   99.0 | green 0.444 | unique bigrams 0.929
+  L= 200: median z   6.02 | p<=1e-2  96.9% | p<=1e-4  82.8% | scored  199.0 | green 0.435 | unique bigrams 0.859
+  L= 400: median z   8.35 | p<=1e-2 100.0% | p<=1e-4  96.9% | scored  399.0 | green 0.431 | unique bigrams 0.758
+written /home/ubuntu/ep/runs/Qwen_Qwen2.5-7B-Instruct/diag_kgw_length_cuda.json

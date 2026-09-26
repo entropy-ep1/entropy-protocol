@@ -1,0 +1,4 @@
+torch 2.7.0+cu128 cuda 12.8 cudnn 91002 transformers 4.53.2 python 3.12.10
+gpu NVIDIA A10G 22.1 GiB cc (8, 6)
+580.126.09, NVIDIA A10G, 23028 MiB
+6.8.0-1052-aws

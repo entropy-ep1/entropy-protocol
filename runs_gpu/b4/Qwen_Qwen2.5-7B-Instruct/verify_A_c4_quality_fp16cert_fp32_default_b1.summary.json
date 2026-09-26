@@ -1,0 +1,47 @@
+{
+ "code": "ee345ac9b9a46276",
+ "model": "Qwen/Qwen2.5-7B-Instruct@a09a35458c702b33eeacc393d103063234e8bc28",
+ "weights": "fd024e4fed1dfb65cc679af8aa2d7b542971a1b74ab8cb4d703ac082afc3922c",
+ "env": {
+  "device": "cuda",
+  "hardware": "NVIDIA H100 NVL",
+  "dtype": "float32",
+  "class": "fp32",
+  "torch": "2.7.1+cu128",
+  "transformers": "4.53.2",
+  "attn": "sdpa",
+  "batch": 1
+ },
+ "time": "2026-09-26T02:49:59",
+ "batch": 1,
+ "summary": {
+  "corpus": "A_c4_quality_fp16cert",
+  "config": "fp32_default_b1",
+  "texts": 64,
+  "decisive": 64,
+  "same_VERIFIED_%": 100.0,
+  "same_wrong_MODIFIED": 0,
+  "same_INDETERMINATE": 0,
+  "calibrated": [
+   "False"
+  ],
+  "transport_wrong_MODIFIED": {
+   "crlf": 0,
+   "email": 0,
+   "nbsp": 0,
+   "combined": 0,
+   "bom_nnbsp": 0,
+   "c2pa_manifest": 0,
+   "invisible": 0
+  },
+  "transport_VERIFIED_%": {
+   "crlf": 100.0,
+   "email": 100.0,
+   "nbsp": 100.0,
+   "combined": 100.0,
+   "bom_nnbsp": 100.0,
+   "c2pa_manifest": 100.0,
+   "invisible": 100.0
+  }
+ }
+}

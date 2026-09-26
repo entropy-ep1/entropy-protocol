@@ -1,0 +1,33 @@
+02:28:44 START versions
+02:28:56 END versions rc=0
+02:28:56 START data
+02:29:51 END data rc=0
+02:29:51 START unit_tests
+02:30:00 END unit_tests rc=0
+02:30:00 START tiny_model
+02:30:02 END tiny_model rc=0
+02:30:02 START model_tests
+02:36:07 END model_tests rc=0
+02:36:07 START speed
+02:42:38 END speed rc=0
+02:42:38 START verify_A_c4_sealed_fp16cert_fp16
+02:46:44 END verify_A_c4_sealed_fp16cert_fp16 rc=0
+02:46:44 START verify_A_c4_sealed_fp16cert_bf16
+02:49:13 END verify_A_c4_sealed_fp16cert_bf16 rc=0
+02:49:13 START verify_A_c4_quality_fp16cert_fp16
+02:53:18 END verify_A_c4_quality_fp16cert_fp16 rc=0
+02:53:18 START verify_A_c4_quality_fp16cert_bf16
+02:55:40 END verify_A_c4_quality_fp16cert_bf16 rc=0
+02:55:40 START kgw_diag
+02:56:50 END kgw_diag rc=0
+02:56:50 START dump_float16_b1
+03:02:38 END dump_float16_b1 rc=0
+03:02:38 START dump_float16_b32
+03:04:21 END dump_float16_b32 rc=0
+03:04:21 START dump_float16_b32_eager
+03:04:55 END dump_float16_b32_eager rc=1
+03:04:55 START dump_bfloat16_b1
+03:10:39 END dump_bfloat16_b1 rc=0
+03:10:39 START dump_bfloat16_b32
+03:11:59 END dump_bfloat16_b32 rc=0
+03:11:59 PHASE B DONE (GPU 22 GB, fp32 steps: skipped)

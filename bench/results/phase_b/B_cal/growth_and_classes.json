@@ -1,0 +1,732 @@
+{
+ "model": "Qwen/Qwen2.5-7B-Instruct",
+ "reference": "NVIDIA-A10G_float16_default_b1",
+ "texts": 512,
+ "positions_used": 201565,
+ "growth": {
+  "NVIDIA-A10G_bfloat16_default_b1": {
+   "4": {
+    "median": 3.1758,
+    "min": 0.9609,
+    "max": 29.0625
+   },
+   "8": {
+    "median": 4.4648,
+    "min": 1.125,
+    "max": 29.0625
+   },
+   "16": {
+    "median": 6.7031,
+    "min": 2.4141,
+    "max": 29.0625
+   },
+   "32": {
+    "median": 9.832,
+    "min": 3.0469,
+    "max": 29.0625
+   },
+   "48": {
+    "median": 11.8125,
+    "min": 4.4062,
+    "max": 29.0625
+   },
+   "64": {
+    "median": 15.6562,
+    "min": 3.7383,
+    "max": 29.0625
+   }
+  },
+  "NVIDIA-A10G_bfloat16_default_b32": {
+   "4": {
+    "median": 3.3047,
+    "min": 0.9141,
+    "max": 30.9375
+   },
+   "8": {
+    "median": 4.5117,
+    "min": 1.125,
+    "max": 30.9375
+   },
+   "16": {
+    "median": 6.7031,
+    "min": 2.1562,
+    "max": 30.9375
+   },
+   "32": {
+    "median": 11.0859,
+    "min": 3.9375,
+    "max": 30.9375
+   },
+   "48": {
+    "median": 12.0,
+    "min": 3.9375,
+    "max": 30.9375
+   },
+   "64": {
+    "median": 19.9453,
+    "min": 4.1953,
+    "max": 30.9375
+   }
+  },
+  "NVIDIA-A10G_float16_default_b32": {
+   "4": {
+    "median": 0.1963,
+    "min": 0.0938,
+    "max": 3.6562
+   },
+   "8": {
+    "median": 0.2812,
+    "min": 0.0938,
+    "max": 3.6562
+   },
+   "16": {
+    "median": 0.4688,
+    "min": 0.1406,
+    "max": 3.6562
+   },
+   "32": {
+    "median": 0.8965,
+    "min": 0.2344,
+    "max": 3.6562
+   },
+   "48": {
+    "median": 1.0547,
+    "min": 0.2812,
+    "max": 3.6562
+   },
+   "64": {
+    "median": 1.1953,
+    "min": 0.375,
+    "max": 3.6562
+   }
+  },
+  "NVIDIA-H100-NVL_bfloat16_default_b1": {
+   "4": {
+    "median": 3.293,
+    "min": 0.7031,
+    "max": 29.8125
+   },
+   "8": {
+    "median": 4.4824,
+    "min": 1.3594,
+    "max": 29.8125
+   },
+   "16": {
+    "median": 7.5703,
+    "min": 2.0859,
+    "max": 29.8125
+   },
+   "32": {
+    "median": 11.0859,
+    "min": 4.1133,
+    "max": 29.8125
+   },
+   "48": {
+    "median": 12.0,
+    "min": 4.7812,
+    "max": 29.8125
+   },
+   "64": {
+    "median": 20.7422,
+    "min": 5.4141,
+    "max": 29.8125
+   }
+  },
+  "NVIDIA-H100-NVL_bfloat16_default_b32": {
+   "4": {
+    "median": 3.8203,
+    "min": 0.8214,
+    "max": 40.125
+   },
+   "8": {
+    "median": 4.8281,
+    "min": 1.4062,
+    "max": 40.125
+   },
+   "16": {
+    "median": 6.8438,
+    "min": 2.6719,
+    "max": 40.125
+   },
+   "32": {
+    "median": 10.6055,
+    "min": 3.2461,
+    "max": 40.125
+   },
+   "48": {
+    "median": 15.082,
+    "min": 4.6875,
+    "max": 40.125
+   },
+   "64": {
+    "median": 19.9453,
+    "min": 4.1836,
+    "max": 40.125
+   }
+  },
+  "NVIDIA-H100-NVL_float16_default_b1": {
+   "4": {
+    "median": 0.1875,
+    "min": 0.0938,
+    "max": 5.707
+   },
+   "8": {
+    "median": 0.2812,
+    "min": 0.1172,
+    "max": 5.707
+   },
+   "16": {
+    "median": 0.375,
+    "min": 0.1406,
+    "max": 5.707
+   },
+   "32": {
+    "median": 0.6094,
+    "min": 0.1875,
+    "max": 5.707
+   },
+   "48": {
+    "median": 1.0312,
+    "min": 0.2578,
+    "max": 5.707
+   },
+   "64": {
+    "median": 1.5469,
+    "min": 0.2812,
+    "max": 5.707
+   }
+  },
+  "NVIDIA-H100-NVL_float16_default_b32": {
+   "4": {
+    "median": 0.1875,
+    "min": 0.0938,
+    "max": 3.1392
+   },
+   "8": {
+    "median": 0.2812,
+    "min": 0.1406,
+    "max": 5.1152
+   },
+   "16": {
+    "median": 0.4453,
+    "min": 0.1406,
+    "max": 5.1152
+   },
+   "32": {
+    "median": 0.9961,
+    "min": 0.1875,
+    "max": 5.1152
+   },
+   "48": {
+    "median": 1.2188,
+    "min": 0.2344,
+    "max": 5.1152
+   },
+   "64": {
+    "median": 1.9805,
+    "min": 0.2344,
+    "max": 5.1152
+   }
+  },
+  "NVIDIA-H100-NVL_float32_default_b1": {
+   "4": {
+    "median": 0.4553,
+    "min": 0.1037,
+    "max": 12.6268
+   },
+   "8": {
+    "median": 0.8078,
+    "min": 0.1769,
+    "max": 12.6268
+   },
+   "16": {
+    "median": 1.5319,
+    "min": 0.2379,
+    "max": 12.6268
+   },
+   "32": {
+    "median": 2.5055,
+    "min": 0.4095,
+    "max": 12.6268
+   },
+   "48": {
+    "median": 2.7651,
+    "min": 0.535,
+    "max": 12.6268
+   },
+   "64": {
+    "median": 3.4208,
+    "min": 1.0424,
+    "max": 12.6268
+   }
+  },
+  "NVIDIA-H100-NVL_float32_default_b32": {
+   "4": {
+    "median": 0.4078,
+    "min": 0.1004,
+    "max": 7.6523
+   },
+   "8": {
+    "median": 0.7173,
+    "min": 0.1328,
+    "max": 12.6267
+   },
+   "16": {
+    "median": 1.3892,
+    "min": 0.1851,
+    "max": 12.6267
+   },
+   "32": {
+    "median": 2.5029,
+    "min": 0.4523,
+    "max": 12.6267
+   },
+   "48": {
+    "median": 3.8862,
+    "min": 0.6549,
+    "max": 12.6267
+   },
+   "64": {
+    "median": 3.8862,
+    "min": 0.8981,
+    "max": 12.6267
+   }
+  },
+  "NVIDIA-L40S_bfloat16_default_b1": {
+   "4": {
+    "median": 3.2227,
+    "min": 0.8906,
+    "max": 28.6172
+   },
+   "8": {
+    "median": 4.3828,
+    "min": 1.3125,
+    "max": 31.3125
+   },
+   "16": {
+    "median": 6.8438,
+    "min": 2.0625,
+    "max": 31.3125
+   },
+   "32": {
+    "median": 11.0859,
+    "min": 2.8828,
+    "max": 31.3125
+   },
+   "48": {
+    "median": 13.5,
+    "min": 4.5,
+    "max": 31.3125
+   },
+   "64": {
+    "median": 21.0938,
+    "min": 5.4141,
+    "max": 31.3125
+   }
+  },
+  "NVIDIA-L40S_bfloat16_default_b32": {
+   "4": {
+    "median": 3.0615,
+    "min": 0.8906,
+    "max": 26.3438
+   },
+   "8": {
+    "median": 4.6494,
+    "min": 1.4297,
+    "max": 30.9375
+   },
+   "16": {
+    "median": 7.2188,
+    "min": 2.1094,
+    "max": 30.9375
+   },
+   "32": {
+    "median": 11.0859,
+    "min": 3.3047,
+    "max": 30.9375
+   },
+   "48": {
+    "median": 11.8008,
+    "min": 4.5117,
+    "max": 30.9375
+   },
+   "64": {
+    "median": 21.1172,
+    "min": 4.1719,
+    "max": 30.9375
+   }
+  },
+  "NVIDIA-L40S_float16_default_b1": {
+   "4": {
+    "median": 0.2812,
+    "min": 0.0938,
+    "max": 7.4751
+   },
+   "8": {
+    "median": 0.375,
+    "min": 0.1406,
+    "max": 7.4751
+   },
+   "16": {
+    "median": 0.5742,
+    "min": 0.1641,
+    "max": 7.4751
+   },
+   "32": {
+    "median": 1.3828,
+    "min": 0.2812,
+    "max": 7.4751
+   },
+   "48": {
+    "median": 1.7461,
+    "min": 0.3516,
+    "max": 7.4751
+   },
+   "64": {
+    "median": 2.9466,
+    "min": 0.3516,
+    "max": 7.4751
+   }
+  },
+  "NVIDIA-L40S_float16_default_b32": {
+   "4": {
+    "median": 0.2051,
+    "min": 0.0938,
+    "max": 3.6562
+   },
+   "8": {
+    "median": 0.3076,
+    "min": 0.1055,
+    "max": 3.6562
+   },
+   "16": {
+    "median": 0.375,
+    "min": 0.1406,
+    "max": 3.6562
+   },
+   "32": {
+    "median": 0.8965,
+    "min": 0.1875,
+    "max": 3.6562
+   },
+   "48": {
+    "median": 1.0547,
+    "min": 0.2812,
+    "max": 3.6562
+   },
+   "64": {
+    "median": 1.6875,
+    "min": 0.3281,
+    "max": 3.6562
+   }
+  },
+  "NVIDIA-L40S_float32_default_b1": {
+   "4": {
+    "median": 0.4525,
+    "min": 0.099,
+    "max": 7.6402
+   },
+   "8": {
+    "median": 0.8301,
+    "min": 0.1451,
+    "max": 12.6264
+   },
+   "16": {
+    "median": 1.4576,
+    "min": 0.2421,
+    "max": 12.6264
+   },
+   "32": {
+    "median": 2.4973,
+    "min": 0.3846,
+    "max": 12.6264
+   },
+   "48": {
+    "median": 2.7648,
+    "min": 1.0292,
+    "max": 12.6264
+   },
+   "64": {
+    "median": 3.886,
+    "min": 0.8165,
+    "max": 12.6264
+   }
+  },
+  "NVIDIA-L40S_float32_default_b32": {
+   "4": {
+    "median": 0.441,
+    "min": 0.093,
+    "max": 12.6272
+   },
+   "8": {
+    "median": 0.7448,
+    "min": 0.1274,
+    "max": 12.6272
+   },
+   "16": {
+    "median": 1.5312,
+    "min": 0.2705,
+    "max": 12.6272
+   },
+   "32": {
+    "median": 2.4976,
+    "min": 0.3723,
+    "max": 12.6272
+   },
+   "48": {
+    "median": 2.7649,
+    "min": 0.6715,
+    "max": 12.6272
+   },
+   "64": {
+    "median": 3.8863,
+    "min": 1.0429,
+    "max": 12.6272
+   }
+  },
+  "NVIDIA-L4_bfloat16_default_b1": {
+   "4": {
+    "median": 3.7383,
+    "min": 0.7969,
+    "max": 43.875
+   },
+   "8": {
+    "median": 5.0625,
+    "min": 1.4531,
+    "max": 43.875
+   },
+   "16": {
+    "median": 7.4297,
+    "min": 1.9688,
+    "max": 43.875
+   },
+   "32": {
+    "median": 9.6885,
+    "min": 3.1641,
+    "max": 43.875
+   },
+   "48": {
+    "median": 10.7109,
+    "min": 4.3125,
+    "max": 43.875
+   },
+   "64": {
+    "median": 20.7422,
+    "min": 4.9688,
+    "max": 43.875
+   }
+  },
+  "NVIDIA-L4_bfloat16_default_b32": {
+   "4": {
+    "median": 3.457,
+    "min": 0.8438,
+    "max": 26.3438
+   },
+   "8": {
+    "median": 4.7637,
+    "min": 1.4062,
+    "max": 29.625
+   },
+   "16": {
+    "median": 7.8047,
+    "min": 1.6641,
+    "max": 26.3438
+   },
+   "32": {
+    "median": 11.0859,
+    "min": 2.9766,
+    "max": 29.625
+   },
+   "48": {
+    "median": 12.8906,
+    "min": 4.2656,
+    "max": 29.625
+   },
+   "64": {
+    "median": 21.4453,
+    "min": 5.1211,
+    "max": 29.625
+   }
+  },
+  "NVIDIA-L4_float16_default_b1": {
+   "4": {
+    "median": 0.2578,
+    "min": 0.0938,
+    "max": 6.2578
+   },
+   "8": {
+    "median": 0.4219,
+    "min": 0.1406,
+    "max": 6.2578
+   },
+   "16": {
+    "median": 0.6328,
+    "min": 0.1875,
+    "max": 6.2578
+   },
+   "32": {
+    "median": 0.9844,
+    "min": 0.2812,
+    "max": 6.2578
+   },
+   "48": {
+    "median": 1.5469,
+    "min": 0.3281,
+    "max": 6.2578
+   },
+   "64": {
+    "median": 2.8213,
+    "min": 0.5156,
+    "max": 6.2578
+   }
+  },
+  "NVIDIA-L4_float16_default_b32": {
+   "4": {
+    "median": 0.2344,
+    "min": 0.0938,
+    "max": 4.3828
+   },
+   "8": {
+    "median": 0.3516,
+    "min": 0.1172,
+    "max": 4.3828
+   },
+   "16": {
+    "median": 0.5156,
+    "min": 0.1406,
+    "max": 4.3828
+   },
+   "32": {
+    "median": 0.7734,
+    "min": 0.2461,
+    "max": 4.3828
+   },
+   "48": {
+    "median": 0.7969,
+    "min": 0.2812,
+    "max": 4.3828
+   },
+   "64": {
+    "median": 0.9375,
+    "min": 0.4219,
+    "max": 4.3828
+   }
+  }
+ },
+ "classes": {
+  "NVIDIA-A10G_bfloat16_default_b1": {
+   "own_tolerance": 29.0625,
+   "judged": 1,
+   "judged_share_of_kept": 0.0001,
+   "sign_flips_among_judged": 0
+  },
+  "NVIDIA-A10G_bfloat16_default_b32": {
+   "own_tolerance": 30.9375,
+   "judged": 1,
+   "judged_share_of_kept": 0.0001,
+   "sign_flips_among_judged": 0
+  },
+  "NVIDIA-A10G_float16_default_b32": {
+   "own_tolerance": 3.6562,
+   "judged": 14404,
+   "judged_share_of_kept": 1.0,
+   "sign_flips_among_judged": 0
+  },
+  "NVIDIA-H100-NVL_bfloat16_default_b1": {
+   "own_tolerance": 29.8125,
+   "judged": 1,
+   "judged_share_of_kept": 0.0001,
+   "sign_flips_among_judged": 0
+  },
+  "NVIDIA-H100-NVL_bfloat16_default_b32": {
+   "own_tolerance": 40.125,
+   "judged": 0,
+   "judged_share_of_kept": 0.0,
+   "sign_flips_among_judged": 0
+  },
+  "NVIDIA-H100-NVL_float16_default_b1": {
+   "own_tolerance": 5.707,
+   "judged": 14404,
+   "judged_share_of_kept": 1.0,
+   "sign_flips_among_judged": 0
+  },
+  "NVIDIA-H100-NVL_float16_default_b32": {
+   "own_tolerance": 5.1152,
+   "judged": 14404,
+   "judged_share_of_kept": 1.0,
+   "sign_flips_among_judged": 0
+  },
+  "NVIDIA-H100-NVL_float32_default_b1": {
+   "own_tolerance": 12.6268,
+   "judged": 1712,
+   "judged_share_of_kept": 0.1189,
+   "sign_flips_among_judged": 0
+  },
+  "NVIDIA-H100-NVL_float32_default_b32": {
+   "own_tolerance": 12.6267,
+   "judged": 1712,
+   "judged_share_of_kept": 0.1189,
+   "sign_flips_among_judged": 0
+  },
+  "NVIDIA-L40S_bfloat16_default_b1": {
+   "own_tolerance": 31.3125,
+   "judged": 1,
+   "judged_share_of_kept": 0.0001,
+   "sign_flips_among_judged": 0
+  },
+  "NVIDIA-L40S_bfloat16_default_b32": {
+   "own_tolerance": 30.9375,
+   "judged": 1,
+   "judged_share_of_kept": 0.0001,
+   "sign_flips_among_judged": 0
+  },
+  "NVIDIA-L40S_float16_default_b1": {
+   "own_tolerance": 7.4751,
+   "judged": 13547,
+   "judged_share_of_kept": 0.9405,
+   "sign_flips_among_judged": 0
+  },
+  "NVIDIA-L40S_float16_default_b32": {
+   "own_tolerance": 3.6562,
+   "judged": 14404,
+   "judged_share_of_kept": 1.0,
+   "sign_flips_among_judged": 0
+  },
+  "NVIDIA-L40S_float32_default_b1": {
+   "own_tolerance": 12.6264,
+   "judged": 1712,
+   "judged_share_of_kept": 0.1189,
+   "sign_flips_among_judged": 0
+  },
+  "NVIDIA-L40S_float32_default_b32": {
+   "own_tolerance": 12.6272,
+   "judged": 1712,
+   "judged_share_of_kept": 0.1189,
+   "sign_flips_among_judged": 0
+  },
+  "NVIDIA-L4_bfloat16_default_b1": {
+   "own_tolerance": 43.875,
+   "judged": 0,
+   "judged_share_of_kept": 0.0,
+   "sign_flips_among_judged": 0
+  },
+  "NVIDIA-L4_bfloat16_default_b32": {
+   "own_tolerance": 29.625,
+   "judged": 1,
+   "judged_share_of_kept": 0.0001,
+   "sign_flips_among_judged": 0
+  },
+  "NVIDIA-L4_float16_default_b1": {
+   "own_tolerance": 6.2578,
+   "judged": 14404,
+   "judged_share_of_kept": 1.0,
+   "sign_flips_among_judged": 0
+  },
+  "NVIDIA-L4_float16_default_b32": {
+   "own_tolerance": 4.3828,
+   "judged": 14404,
+   "judged_share_of_kept": 1.0,
+   "sign_flips_among_judged": 0
+  }
+ }
+}

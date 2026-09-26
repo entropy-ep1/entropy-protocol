@@ -1,0 +1,35 @@
+{
+ "model": "Qwen/Qwen2.5-7B-Instruct",
+ "vocab": 152064,
+ "tokenizer": "Qwen/Qwen2.5-7B-Instruct",
+ "texts": 64,
+ "lengths": {
+  "100": {
+   "texts": 64,
+   "median_z": 4.47,
+   "share_p_le_1e-2": 0.8125,
+   "share_p_le_1e-4": 0.625,
+   "median_scored_tokens": 99.0,
+   "median_green_fraction": 0.4444,
+   "median_unique_bigrams": 0.929
+  },
+  "200": {
+   "texts": 64,
+   "median_z": 6.02,
+   "share_p_le_1e-2": 0.9688,
+   "share_p_le_1e-4": 0.8281,
+   "median_scored_tokens": 199.0,
+   "median_green_fraction": 0.4347,
+   "median_unique_bigrams": 0.859
+  },
+  "400": {
+   "texts": 64,
+   "median_z": 8.35,
+   "share_p_le_1e-2": 1.0,
+   "share_p_le_1e-4": 0.9688,
+   "median_scored_tokens": 399.0,
+   "median_green_fraction": 0.4311,
+   "median_unique_bigrams": 0.758
+  }
+ }
+}

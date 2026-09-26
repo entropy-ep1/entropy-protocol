@@ -1,0 +1,5 @@
+64 texts, vocabulary 152064, tokenizer Qwen/Qwen2.5-7B-Instruct
+  L= 100: median z  -0.17 | p<=1e-2   1.6% | p<=1e-4   0.0% | scored   99.0 | green 0.242 | unique bigrams 0.929
+  L= 200: median z  -0.45 | p<=1e-2   1.6% | p<=1e-4   0.0% | scored  199.0 | green 0.236 | unique bigrams 0.859
+  L= 400: median z  -0.65 | p<=1e-2   1.6% | p<=1e-4   0.0% | scored  399.0 | green 0.236 | unique bigrams 0.758
+written /home/ubuntu/ep/runs/Qwen_Qwen2.5-7B-Instruct/diag_kgw_length.json

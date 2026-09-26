@@ -1,0 +1,4 @@
+torch 2.7.1+cu128 cuda 12.8 cudnn 90701 transformers 4.53.2 python 3.12.3
+gpu NVIDIA H100 NVL 92.6 GiB cc (9, 0)
+595.91.07, NVIDIA H100 NVL, 95830 MiB
+7.0.0-1013-azure-fde

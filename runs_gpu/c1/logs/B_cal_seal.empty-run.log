@@ -1,0 +1,5 @@
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files:  25%|██▌       | 1/4 [01:19<03:57, 79.15s/it]Fetching 4 files: 100%|██████████| 4/4 [01:19<00:00, 19.79s/it]
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:02<00:06,  2.26s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:04<00:04,  2.23s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:06<00:02,  2.20s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:08<00:00,  2.12s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:08<00:00,  2.16s/it]
+Fetching 14 files:   0%|          | 0/14 [00:00<?, ?it/s]Fetching 14 files: 100%|██████████| 14/14 [00:00<00:00, 200.21it/s]
+02:22:34 Qwen/Qwen2.5-7B-Instruct sealed B_cal: 0 of 0 to do, batch 32
+02:22:34 done: 0 tokens in 0s
