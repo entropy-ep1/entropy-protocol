@@ -11,7 +11,12 @@ for d in "$ROOT"/runs_gpu/*/"$S"/calib; do
   cp -n "$d/${CORPUS}__"*.npz "$d/${CORPUS}__"*.json "$WORK/$S/calib/" 2>/dev/null || true
 done
 echo "dumps: $(ls "$WORK/$S/calib" | grep -c '\.npz$') from $(ls -d "$ROOT"/runs_gpu/*/ | wc -l | tr -d ' ') machines"
-REF=$(ls "$WORK/$S/calib" | grep -E "^${CORPUS}__.*_float16_default_b1\.npz$" | head -1 | sed "s/^${CORPUS}__//; s/\.npz$//")
+# the reference: fp16 batch 1 on the card that sealed the corpus (its meta names it), as in phase A; else the first
+REF=""
+SEALER=$(python3 -c "import json, glob, sys; m = [json.load(open(p))['env']['hardware'] for p in glob.glob(sys.argv[1])]; print(m[0] if m else '')" \
+         "$ROOT/runs_gpu/*/$S/$CORPUS.meta.json" 2>/dev/null || true)
+[ -n "$SEALER" ] && [ -f "$WORK/$S/calib/${CORPUS}__${SEALER// /-}_float16_default_b1.npz" ] && REF="${SEALER// /-}_float16_default_b1"
+[ -n "$REF" ] || REF=$(ls "$WORK/$S/calib" | grep -E "^${CORPUS}__.*_float16_default_b1\.npz$" | head -1 | sed "s/^${CORPUS}__//; s/\.npz$//")
 [ -n "$REF" ] || { echo "no fp16 batch-1 dump to use as the reference"; exit 1; }
 echo "reference: $REF"
 EP_RUNS="$WORK" python3 "$ROOT/bench/gpu/calib_table.py" --model "$M" --corpus "$CORPUS" --reference "$REF" \
