@@ -13,6 +13,12 @@ license-files = ["LICENSE", "NOTICE"]
 authors = [{ name = "Roman Oliinyk" }, { name = "Serhii Nikolaichuk" }]
 dependencies = ["torch>=2.2", "transformers>=4.44", "cryptography>=42", "cbor2>=5.6"]
 
+[project.urls]
+Homepage = "https://github.com/entropy-ep1/entropy-protocol"
+Repository = "https://github.com/entropy-ep1/entropy-protocol"
+Issues = "https://github.com/entropy-ep1/entropy-protocol/issues"
+Changelog = "https://github.com/entropy-ep1/entropy-protocol/blob/main/CHANGELOG.md"
+
 [project.optional-dependencies]
 dev = ["pytest>=8"]
 markdown = ["markdown-it-py>=3"]    # the visible-text layer (plain.py) when sealing

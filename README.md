@@ -106,6 +106,7 @@ disagree at all — at most 1 position in 144,871 for fp16 and fp32, about 2 in 
 ## Quick start
 
 ```bash
+git clone https://github.com/entropy-ep1/entropy-protocol.git && cd entropy-protocol
 pip install -e ".[markdown]"      # Python >= 3.10; brings torch and transformers
 M=Qwen/Qwen2.5-0.5B-Instruct
 entropy keygen --out master.key
