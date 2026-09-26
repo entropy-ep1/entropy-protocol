@@ -56,7 +56,7 @@ def main():
              "median_unique_bigrams": round(st.median(uniq), 3)}
         report["lengths"][str(L)] = d
         print(f"  L={L:4d}: median z {d['median_z']:6.2f} | p<=1e-2 {100 * d['share_p_le_1e-2']:5.1f}% | "
-              f"p<=1e-4 {100 * d['share_p_le_1e-4']:5.1f}% | scored {d["median_scored_tokens"]:6.1f} | "
+              f"p<=1e-4 {100 * d['share_p_le_1e-4']:5.1f}% | scored {d['median_scored_tokens']:6.1f} | "
               f"green {d['median_green_fraction']:.3f} | unique bigrams {d['median_unique_bigrams']:.3f}")
     if a.out:
         Path(a.out).write_text(json.dumps(report, indent=1))

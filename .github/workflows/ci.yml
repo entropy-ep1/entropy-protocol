@@ -8,11 +8,32 @@ permissions:
 jobs:
   python:
     runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        # the oldest version pyproject.toml admits, and the newest: 26.09.2026 an f-string valid only on 3.12 (quotes
+        # nested in quotes) broke a script on a 3.10 machine, and CI ran 3.12 alone
+        python: ["3.10", "3.12"]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: ${{ matrix.python }}
+      - name: every Python file in the repository parses on this version
+        run: |
+          python - <<'EOF'
+          import ast, pathlib, sys
+          bad = []
+          for p in sorted(pathlib.Path(".").rglob("*.py")):
+              if ".git" in p.parts or "node_modules" in p.parts:
+                  continue
+              try:
+                  ast.parse(p.read_text(encoding="utf-8"), str(p))
+              except SyntaxError as e:
+                  bad.append(f"{p}:{e.lineno}: {e.msg}")
+          print("\n".join(bad) or "all files parse")
+          sys.exit(1 if bad else 0)
+          EOF
       - name: install (CPU torch, pinned stack of the evaluation program)
         run: |
           python -m pip install --upgrade pip
