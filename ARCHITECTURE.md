@@ -162,6 +162,12 @@ without it keep their bytes (every earlier test vector is unchanged).
 - **CUDA classes measured on the L40S (7B, positions ≥ 4, against fp16 b1):** fp16 b32 0.141, fp32 b1 0.68,
   bf16 b32 8.34 (p99.99 2.25): bf16 stays outside the table (one flip at a position a record would keep), fp16 and
   fp32 flip at none of 4712.
+- **Across machines (phase B, 26.09, 512 sealed texts, 201,565 positions, four architectures).** Against the
+  sealer's fp16 batch-1 pass, at the record margin of the phase A records (0.84): fp16 and fp32 on every card flip
+  at most 1 position in 144,871 (two positions in all, at tokens 11 and 16), bf16 about 2 in 10,000. The rule
+  c·max does not converge on a larger corpus — 0.42 on 64 texts, 7.8 on 512, set by a few positions near the start
+  of texts — so its phase B table is not adopted; next format version: first checkpoint at token 32 and a quantile
+  tolerance with an explicit `INDETERMINATE` budget, the verifier dropping its own low-margin entries.
 - **Logit space** (log-probability ratio): one tolerance fits the top token and the tail alike.
 - **Table in the header**: seal margin ≥ 2 × largest listed tolerance; the verifier applies its own class;
   outside the table → evaluated with the largest tolerance and flagged `calibrated = False`.
@@ -316,12 +322,13 @@ loaded lazily on the first call. A failed check is a tool error, not a dead serv
 | Content-keyed selection, verifier-context enforcement, record-free detection with exact p-value | implemented, tested; gate G10 |
 | COSE statements (generation / verification / detection), local RFC 9162 log with RFC 9942 receipts | implemented, tested; test vectors |
 | SCRAPI Transparency Service and client | implemented, tested (local); interop with third-party services pending |
-| Second implementation (JavaScript, model-free parts) | 38/38 test-vector checks |
+| Second implementation (JavaScript, model-free parts) | 72/72 test-vector checks; CI regenerates the vectors with Python and runs both |
 | Record delivered by public key: HPKE (RFC 9180, vectors A.1.1/A.2.1) + COSE-HPKE integrated encryption (draft-27) | implemented, tested; second implementation opens it |
-| RFC 3161 time-stamps, TEE-attested generation | not implemented |
+| RFC 3161 time stamps over statements (`entropy timestamp`; imprint checked, the authority's chain is the reader's trust decision) | implemented, tested |
+| TEE-attested generation | not implemented |
 | Backends: HF transformers, single and batched | implemented, tested · vLLM / llama.cpp — pending |
 | Model identity: weights digest over exactly the files the loader reads (index of shards) | implemented, tested |
-| GPU evaluation harness (`bench/gpu/`): 7–14B models, 4 GPU types, KGW / SynthID baselines, 14 attack classes | ready, smoke-tested on CPU; cloud runs pending |
+| GPU evaluation program (`bench/gpu/`): phase A (15.09, L40S, Qwen2.5-7B), phases B and C (26.09: L40S, L4, A10G, H100; Qwen2.5-7B and 14B, Mistral-7B-v0.3, OLMo-2-7B; a two-million-pair null; KGW and SynthID-Text) | run; results in `runs_gpu/`, reports in `bench/results/phase_{b,c}/REPORT.md` |
 
 Known behaviour to measure at scale: on a small base model that falls into blank-line loops (distilgpt2: 57 % of
 unsealed texts), whether content-keyed enforcement breaks the loop depends on the key (0–56 % of sealed texts

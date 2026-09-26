@@ -53,11 +53,12 @@ probability.
 | Unsealed text | no mark means *not sealed*, not *not AI*; ep1 does not judge unsealed text |
 | Rewriting | paraphrase and translation are modifications and are reported as such; after a rewrite of about a quarter of the words the record-free signal is gone |
 | Short text | below about 50 tokens record-free detection has too few checkpoints |
+| The model | record-free detection is as strong as the model is numerically steady: OLMo-2-7B in fp16 leaves too few checkpoints at the quality operating point (52 % at p ≤ 0.01 on 400 tokens), while its records verify as every model's do — measure detection on your own model before relying on it |
 | The issuer | whoever holds the master key can seal a text its model did not write; proof against the issuer needs attested generation (not in this release) |
 | Same model | the verifier needs the same weights and tokenizer, in a certified numerical class; outside it the answer is `INDETERMINATE`, never a false verdict |
 | The key | a holder of the detection key can imitate the mark — hand it only to trusted detectors, or run detection as a service |
-| Measured range | the exact null has been checked empirically to 1e-4 on 28,688 pairs; the 1e-6 figures below are computed from it |
-| Cost | sealing adds 22–23% latency at batch 1–8 and 76% at batch 32 on the machine below |
+| Measured range | the exact null is measured down to 1e-6, on 2.1 million (text, key) pairs across four models; smaller p-values rest on the construction, not on a measurement |
+| Cost | sealing adds 14–27 % latency at batch 1–8, 48–77 % at batch 32 and 83–109 % at batch 64 (four cards, four models) |
 | Time stamps | we check a time-stamp token's imprint; validating the authority's signature and chain is the reader's trust decision |
 
 ## Measured
@@ -90,6 +91,17 @@ disagree at all — at most 1 position in 144,871 for fp16 and fp32, about 2 in 
 | L40S | 9,089 | 33 · 606 |
 | A10G | 2,300 | 24 · 394 |
 | L4 | 2,077 | 14 · 242 |
+
+**The null at 10⁻⁶, two other watermarks, three more models** (phase C, 26.09.2026,
+[report](bench/results/phase_c/REPORT.md)).
+
+| | Result |
+|---|---|
+| Exact null: 2,127,680 (text, key) pairs of human and unsealed text, four models | 0.63–0.75 of the bound at every level down to 1e-5; at 1e-6, 4 against a bound of 2.1 (P = 0.17 under the bound) |
+| The same check for KGW and SynthID-Text — their own p-values on 4,000 human texts | KGW flags 0.1 % at a nominal 1e-4 and 2.2 % at a nominal 1 % (400 tokens); SynthID about twice nominal at 1e-3 |
+| Mistral-7B-v0.3, OLMo-2-7B, Qwen2.5-14B: records of unchanged text, fp16 and bf16 | 100 % `VERIFIED` (768 records, 1,152 verifications), 0 false `MODIFIED` |
+| Record-free detection at 1e-6, 400 tokens, strong · quality | Mistral 99.2 · 83.6 %; OLMo-2 98.4 · 0.8 %; Qwen2.5-14B 100 · 82.8 % |
+| GSM8K accuracy, quality operating point against unsealed, four models | no measurable cost (McNemar p = 0.51–0.71); *strong* breaks arithmetic on all four |
 
 ## Quick start
 
@@ -130,7 +142,7 @@ phases are scripts with a hard cost cap per machine; each step leaves a log and 
 |---|---|---|
 | A | every experiment on one 7B model | [`run_phase_a.sh`](bench/gpu/run_phase_a.sh) |
 | B | the same records verified on other GPU architectures; calibration across machines | [`run_phase_b.sh`](bench/gpu/run_phase_b.sh) |
-| C | a million-trial null; canonical baselines (KGW, SynthID) against length-matched nulls; three model families | [`run_phase_c.sh`](bench/gpu/run_phase_c.sh) |
+| C | a million-trial null; KGW and SynthID-Text against length-matched human nulls; three more model families | [`run_phase_c.sh`](bench/gpu/run_phase_c.sh) |
 
 Each has a CPU dry run (`smoke_phase_*.sh`) that exercises every call on a small model before a paid machine starts.
 

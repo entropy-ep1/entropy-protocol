@@ -17,4 +17,6 @@ First public release of the reference implementation.
 - An OpenAI-compatible sealing gateway (`entropy serve`) and the verifier as MCP tools for an assistant (`entropy mcp`).
 - A second implementation of every model-free part in JavaScript (`impl-js/`), checked against the test vectors in
   CI; the vector path of the Python reference imports no machine-learning stack.
-- The GPU evaluation program (`bench/gpu/`) with phase A results on Qwen2.5-7B-Instruct and an NVIDIA L40S.
+- The GPU evaluation program (`bench/gpu/`) and its results: phase A (Qwen2.5-7B-Instruct, NVIDIA L40S), phase B
+  (the same records verified on four GPU architectures), phase C (a two-million-pair null, KGW and SynthID-Text,
+  Mistral-7B-v0.3, OLMo-2-7B and Qwen2.5-14B).
