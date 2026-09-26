@@ -1,0 +1,7 @@
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:03<00:06,  3.08s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:06<00:03,  3.00s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:08<00:00,  2.88s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:08<00:00,  2.92s/it]
+05:53:31 allenai/OLMo-2-1124-7B-Instruct sealed C_olmo7_c4_quality: 128 of 128 to do, batch 32
+05:54:40   batch 1: 32 texts, 12800 tokens, 69.2s (185 tok/s)
+05:55:25   batch 2: 32 texts, 12800 tokens, 44.9s (285 tok/s)
+05:56:09   batch 3: 32 texts, 12800 tokens, 43.9s (292 tok/s)
+05:56:53   batch 4: 32 texts, 12800 tokens, 43.8s (292 tok/s)
+05:56:53 done: 51200 tokens in 202s

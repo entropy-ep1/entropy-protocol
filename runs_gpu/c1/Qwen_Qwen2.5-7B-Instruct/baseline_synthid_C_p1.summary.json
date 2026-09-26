@@ -1,0 +1,228 @@
+{
+ "code": "ee345ac9b9a46276",
+ "model": "Qwen/Qwen2.5-7B-Instruct@a09a35458c702b33eeacc393d103063234e8bc28",
+ "weights": "fd024e4fed1dfb65cc679af8aa2d7b542971a1b74ab8cb4d703ac082afc3922c",
+ "env": {
+  "device": "cuda",
+  "hardware": "NVIDIA L40S",
+  "dtype": "float16",
+  "class": "fp16",
+  "torch": "2.7.0+cu128",
+  "transformers": "4.53.2",
+  "attn": "sdpa",
+  "batch": 1
+ },
+ "time": "2026-09-26T05:12:10",
+ "scheme": "synthid",
+ "positives": {
+  "100": {
+   "mean": {
+    "texts": 256,
+    "tpr_at_fpr_0.01": {
+     "tpr": 0.9766,
+     "threshold": 0.5222222222222223,
+     "null_n": 4000,
+     "resolvable": true
+    },
+    "tpr_at_fpr_0.001": {
+     "tpr": 0.9453,
+     "threshold": 0.5319444444444444,
+     "null_n": 4000,
+     "resolvable": true
+    },
+    "tpr_at_fpr_0.0001": {
+     "tpr": 0.9414,
+     "threshold": 0.5354166666666667,
+     "null_n": 4000,
+     "resolvable": false
+    },
+    "exact_tpr_at": {
+     "0.01": 0.9727,
+     "0.001": 0.957,
+     "0.0001": 0.9375
+    }
+   },
+   "weighted": {
+    "texts": 256,
+    "tpr_at_fpr_0.01": {
+     "tpr": 0.9883,
+     "threshold": 0.5253874063491821,
+     "null_n": 4000,
+     "resolvable": true
+    },
+    "tpr_at_fpr_0.001": {
+     "tpr": 0.9648,
+     "threshold": 0.5342476963996887,
+     "null_n": 4000,
+     "resolvable": true
+    },
+    "tpr_at_fpr_0.0001": {
+     "tpr": 0.9531,
+     "threshold": 0.5385732054710388,
+     "null_n": 4000,
+     "resolvable": false
+    },
+    "exact_tpr_at": null
+   }
+  },
+  "200": {
+   "mean": {
+    "texts": 256,
+    "tpr_at_fpr_0.01": {
+     "tpr": 0.9922,
+     "threshold": 0.5156357388316152,
+     "null_n": 4000,
+     "resolvable": true
+    },
+    "tpr_at_fpr_0.001": {
+     "tpr": 0.9883,
+     "threshold": 0.5206837606837607,
+     "null_n": 4000,
+     "resolvable": true
+    },
+    "tpr_at_fpr_0.0001": {
+     "tpr": 0.9844,
+     "threshold": 0.522852233676976,
+     "null_n": 4000,
+     "resolvable": false
+    },
+    "exact_tpr_at": {
+     "0.01": 0.9883,
+     "0.001": 0.9844,
+     "0.0001": 0.9727
+    }
+   },
+   "weighted": {
+    "texts": 256,
+    "tpr_at_fpr_0.01": {
+     "tpr": 0.9961,
+     "threshold": 0.516653835773468,
+     "null_n": 4000,
+     "resolvable": true
+    },
+    "tpr_at_fpr_0.001": {
+     "tpr": 0.9922,
+     "threshold": 0.5223295092582703,
+     "null_n": 4000,
+     "resolvable": true
+    },
+    "tpr_at_fpr_0.0001": {
+     "tpr": 0.9844,
+     "threshold": 0.5296883583068848,
+     "null_n": 4000,
+     "resolvable": false
+    },
+    "exact_tpr_at": null
+   }
+  },
+  "400": {
+   "mean": {
+    "texts": 256,
+    "tpr_at_fpr_0.01": {
+     "tpr": 0.9961,
+     "threshold": 0.5114503816793893,
+     "null_n": 4000,
+     "resolvable": true
+    },
+    "tpr_at_fpr_0.001": {
+     "tpr": 0.9922,
+     "threshold": 0.516156462585034,
+     "null_n": 4000,
+     "resolvable": true
+    },
+    "tpr_at_fpr_0.0001": {
+     "tpr": 0.9844,
+     "threshold": 0.5209876543209877,
+     "null_n": 4000,
+     "resolvable": false
+    },
+    "exact_tpr_at": {
+     "0.01": 0.9961,
+     "0.001": 0.9922,
+     "0.0001": 0.9844
+    }
+   },
+   "weighted": {
+    "texts": 256,
+    "tpr_at_fpr_0.01": {
+     "tpr": 1.0,
+     "threshold": 0.512387216091156,
+     "null_n": 4000,
+     "resolvable": true
+    },
+    "tpr_at_fpr_0.001": {
+     "tpr": 0.9922,
+     "threshold": 0.5176558494567871,
+     "null_n": 4000,
+     "resolvable": true
+    },
+    "tpr_at_fpr_0.0001": {
+     "tpr": 0.9844,
+     "threshold": 0.5294632315635681,
+     "null_n": 4000,
+     "resolvable": false
+    },
+    "exact_tpr_at": null
+   }
+  }
+ },
+ "nulls": {
+  "L100:data:c4:human:mean": {
+   "texts": 4000,
+   "cut_to_tokens": 100,
+   "exact_fpr_at": {
+    "0.01": 0.011,
+    "0.001": 0.002,
+    "0.0001": 0.00025
+   }
+  },
+  "L100:data:c4:human:weighted": {
+   "texts": 4000,
+   "cut_to_tokens": 100,
+   "exact_fpr_at": null
+  },
+  "full:data:c4:human:mean": {
+   "texts": 4000,
+   "cut_to_tokens": null,
+   "exact_fpr_at": {
+    "0.01": 0.0115,
+    "0.001": 0.002,
+    "0.0001": 0.00025
+   }
+  },
+  "full:data:c4:human:weighted": {
+   "texts": 4000,
+   "cut_to_tokens": null,
+   "exact_fpr_at": null
+  },
+  "L200:data:c4:human:mean": {
+   "texts": 4000,
+   "cut_to_tokens": 200,
+   "exact_fpr_at": {
+    "0.01": 0.01025,
+    "0.001": 0.00125,
+    "0.0001": 0.0
+   }
+  },
+  "L200:data:c4:human:weighted": {
+   "texts": 4000,
+   "cut_to_tokens": 200,
+   "exact_fpr_at": null
+  },
+  "L400:data:c4:human:mean": {
+   "texts": 4000,
+   "cut_to_tokens": 400,
+   "exact_fpr_at": {
+    "0.01": 0.01175,
+    "0.001": 0.002,
+    "0.0001": 0.00025
+   }
+  },
+  "L400:data:c4:human:weighted": {
+   "texts": 4000,
+   "cut_to_tokens": 400,
+   "exact_fpr_at": null
+  }
+ },
+ "attacks": {}
+}

@@ -1,0 +1,7 @@
+Loading checkpoint shards:   0%|          | 0/8 [00:00<?, ?it/s]Loading checkpoint shards:  12%|█▎        | 1/8 [00:01<00:10,  1.50s/it]Loading checkpoint shards:  25%|██▌       | 2/8 [00:05<00:17,  2.91s/it]Loading checkpoint shards:  38%|███▊      | 3/8 [00:06<00:09,  1.87s/it]Loading checkpoint shards:  50%|█████     | 4/8 [00:06<00:05,  1.40s/it]Loading checkpoint shards:  62%|██████▎   | 5/8 [00:07<00:03,  1.13s/it]Loading checkpoint shards:  75%|███████▌  | 6/8 [00:07<00:01,  1.04it/s]Loading checkpoint shards:  88%|████████▊ | 7/8 [00:08<00:00,  1.16it/s]Loading checkpoint shards: 100%|██████████| 8/8 [00:08<00:00,  1.49it/s]Loading checkpoint shards: 100%|██████████| 8/8 [00:08<00:00,  1.11s/it]
+06:47:42 verify C_qwen14_c4_sealed on bf16_default_b32: 128 of 128 to do
+06:48:05   32/128  22s
+06:48:27   64/128  44s
+06:48:49   96/128  67s
+06:49:11   128/128  88s
+06:49:11 {'corpus': 'C_qwen14_c4_sealed', 'config': 'bf16_default_b32', 'texts': 128, 'decisive': 128, 'same_VERIFIED_%': 100.0, 'same_wrong_MODIFIED': 0, 'same_INDETERMINATE': 0, 'calibrated': ['False'], 'transport_wrong_MODIFIED': {'crlf': 0, 'email': 0, 'nbsp': 0, 'combined': 0, 'bom_nnbsp': 0, 'c2pa_manifest': 0, 'invisible': 0}, 'transport_VERIFIED_%': {'crlf': 100.0, 'email': 100.0, 'nbsp': 100.0, 'combined': 100.0, 'bom_nnbsp': 100.0, 'c2pa_manifest': 100.0, 'invisible': 100.0}}

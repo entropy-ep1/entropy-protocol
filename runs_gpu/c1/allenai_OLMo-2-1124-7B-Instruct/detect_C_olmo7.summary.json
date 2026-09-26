@@ -1,0 +1,235 @@
+{
+ "code": "ee345ac9b9a46276",
+ "model": "allenai/OLMo-2-1124-7B-Instruct@470b1fba1ae01581f270116362ee4aa1b97f4c84",
+ "weights": "9063fad36aa4380c1d19d24908a5eeef94c5297cee51af9374c18128ec865567",
+ "env": {
+  "device": "cuda",
+  "hardware": "NVIDIA L40S",
+  "dtype": "float16",
+  "class": "fp16",
+  "torch": "2.7.0+cu128",
+  "transformers": "4.53.2",
+  "attn": "sdpa",
+  "batch": 1
+ },
+ "time": "2026-09-26T06:03:42",
+ "name": "C_olmo7",
+ "tol": 2.425781,
+ "interval": 5,
+ "context": 4,
+ "alphas": [
+  0.01,
+  0.001,
+  0.0001,
+  1e-05,
+  1e-06
+ ],
+ "positives": {
+  "50": {
+   "texts": 128,
+   "texts_reaching_L": 128,
+   "detected_at": {
+    "0.01": {
+     "rate": 0.101562,
+     "count": 13
+    },
+    "0.001": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "0.0001": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "1e-05": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "1e-06": {
+     "rate": 0.0,
+     "count": 0
+    }
+   },
+   "median_p": 0.0625,
+   "mean_checkpoints": 3.8,
+   "match_rate": 1.0
+  },
+  "100": {
+   "texts": 128,
+   "texts_reaching_L": 128,
+   "detected_at": {
+    "0.01": {
+     "rate": 0.601562,
+     "count": 77
+    },
+    "0.001": {
+     "rate": 0.273438,
+     "count": 35
+    },
+    "0.0001": {
+     "rate": 0.023438,
+     "count": 3
+    },
+    "1e-05": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "1e-06": {
+     "rate": 0.0,
+     "count": 0
+    }
+   },
+   "median_p": 0.0078125,
+   "mean_checkpoints": 7.5,
+   "match_rate": 1.0
+  },
+  "200": {
+   "texts": 128,
+   "texts_reaching_L": 128,
+   "detected_at": {
+    "0.01": {
+     "rate": 1.0,
+     "count": 128
+    },
+    "0.001": {
+     "rate": 0.945312,
+     "count": 121
+    },
+    "0.0001": {
+     "rate": 0.625,
+     "count": 80
+    },
+    "1e-05": {
+     "rate": 0.335938,
+     "count": 43
+    },
+    "1e-06": {
+     "rate": 0.203125,
+     "count": 26
+    }
+   },
+   "median_p": 3.0517578125e-05,
+   "mean_checkpoints": 15.5,
+   "match_rate": 1.0
+  },
+  "400": {
+   "texts": 128,
+   "texts_reaching_L": 123,
+   "detected_at": {
+    "0.01": {
+     "rate": 1.0,
+     "count": 128
+    },
+    "0.001": {
+     "rate": 1.0,
+     "count": 128
+    },
+    "0.0001": {
+     "rate": 1.0,
+     "count": 128
+    },
+    "1e-05": {
+     "rate": 0.992188,
+     "count": 127
+    },
+    "1e-06": {
+     "rate": 0.984375,
+     "count": 126
+    }
+   },
+   "median_p": 4.656612873077393e-10,
+   "mean_checkpoints": 31.4,
+   "match_rate": 1.0
+  }
+ },
+ "nulls": {
+  "same_model_other_key": {
+   "pairs": 128,
+   "false_positive_at": {
+    "0.01": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "0.001": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "0.0001": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "1e-05": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "1e-06": {
+     "rate": 0.0,
+     "count": 0
+    }
+   },
+   "min_p": 0.01754101668484509
+  },
+  "data:c4": {
+   "texts": 1000,
+   "keys": 20,
+   "pairs": 20000,
+   "false_positive_at": {
+    "0.01": {
+     "rate": 0.0063,
+     "count": 126
+    },
+    "0.001": {
+     "rate": 0.00055,
+     "count": 11
+    },
+    "0.0001": {
+     "rate": 5e-05,
+     "count": 1
+    },
+    "1e-05": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "1e-06": {
+     "rate": 0.0,
+     "count": 0
+    }
+   },
+   "min_p": 2.1138511328899767e-05,
+   "mean_checkpoints": 40.2,
+   "seconds": 131.7
+  },
+  "runs:C_olmo7_c4_plain": {
+   "texts": 128,
+   "keys": 20,
+   "pairs": 2560,
+   "false_positive_at": {
+    "0.01": {
+     "rate": 0.004687,
+     "count": 12
+    },
+    "0.001": {
+     "rate": 0.001563,
+     "count": 4
+    },
+    "0.0001": {
+     "rate": 0.000391,
+     "count": 1
+    },
+    "1e-05": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "1e-06": {
+     "rate": 0.0,
+     "count": 0
+    }
+   },
+   "min_p": 1.7940998077392578e-05,
+   "mean_checkpoints": 30.6,
+   "seconds": 14.0
+  }
+ },
+ "attacks": {},
+ "minutes": 3.0
+}

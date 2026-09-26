@@ -1,0 +1,76 @@
+{
+ "model": "mistralai/Mistral-7B-Instruct-v0.3@c170c708c41dac9275d15a8fff4eca08d52bab71",
+ "weights_digest": "676bbe9d8ede165c0bfb016dd673ef8f8734d2a6164dc64716c702c68af0f4d4",
+ "space": "logit",
+ "c": 3.0,
+ "k": 1,
+ "reference": "NVIDIA-L40S_float16_default_b1",
+ "reference_env": {
+  "device": "cuda",
+  "hardware": "NVIDIA L40S",
+  "dtype": "float16",
+  "class": "fp16",
+  "torch": "2.7.0+cu128",
+  "transformers": "4.53.2",
+  "attn": "sdpa",
+  "batch": 1
+ },
+ "texts": 64,
+ "from_position": 4,
+ "positions": 24665,
+ "positions_incl_unused": 24921,
+ "delta": {
+  "NVIDIA-L40S_bfloat16_default_b32": 0.484375,
+  "NVIDIA-L40S_float16_default_b32": 0.2421875,
+  "NVIDIA-L40S_float32_default_b1": 0.3349800109863281
+ },
+ "per_config": {
+  "NVIDIA-L40S_bfloat16_default_b32": {
+   "delta": 0.484375,
+   "p99.9": 0.2552421987056732,
+   "p99.99": 0.375,
+   "mean": 0.03763071075081825,
+   "flips_all": 162,
+   "positions": 24665,
+   "delta_incl_unused_positions": 0.484375,
+   "flips_unused_positions": 0,
+   "flips_at_kept_positions": 0,
+   "kept_positions": 14772
+  },
+  "NVIDIA-L40S_float16_default_b32": {
+   "delta": 0.2421875,
+   "p99.9": 0.046875,
+   "p99.99": 0.0546875,
+   "mean": 0.005106285680085421,
+   "flips_all": 21,
+   "positions": 24665,
+   "delta_incl_unused_positions": 0.2421875,
+   "flips_unused_positions": 0,
+   "flips_at_kept_positions": 0,
+   "kept_positions": 14772
+  },
+  "NVIDIA-L40S_float32_default_b1": {
+   "delta": 0.3349800109863281,
+   "p99.9": 0.15385407209396362,
+   "p99.99": 0.25890636444091797,
+   "mean": 0.009306912310421467,
+   "flips_all": 33,
+   "positions": 24665,
+   "delta_incl_unused_positions": 0.3349800109863281,
+   "flips_unused_positions": 0,
+   "flips_at_kept_positions": 0,
+   "kept_positions": 14772
+  }
+ },
+ "by_class": {
+  "bf16": 0.484375,
+  "fp16": 0.2421875,
+  "fp32": 0.3349800109863281
+ },
+ "errors": {},
+ "table": {
+  "fp16": 0.726562
+ },
+ "record_margin_needed": 1.453124,
+ "kept_share": 0.5989053314413136
+}

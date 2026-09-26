@@ -1,0 +1,1 @@
+05:19:20 table {'fp16': 0.726562}; kept share 0.599; flips at kept positions: 0 -> /home/ubuntu/ep/runs/mistralai_Mistral-7B-Instruct-v0.3/calibration_C_mistral7_cal.json

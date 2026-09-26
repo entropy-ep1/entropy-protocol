@@ -59,3 +59,133 @@ bench/gpu/run_phase_b.sh: line 16:  2560 Aborted                 (core dumped) "
 --- phase C ---
 03:09:08 SKIP data (done earlier)
 03:09:08 START null1m_strong
+03:59:27 END null1m_strong rc=0
+03:59:27 START null1m_quality
+04:49:42 END null1m_quality rc=0
+04:49:42 START kgw_p1
+04:52:41 END kgw_p1 rc=0
+04:52:41 START synthid_p1
+04:59:18 END synthid_p1 rc=0
+04:59:18 START base_kgw
+05:11:56 END base_kgw rc=0
+05:11:56 START base_sid
+05:12:46 END base_sid rc=0
+05:12:46 START mistral7_cal_seal
+05:17:33 END mistral7_cal_seal rc=0
+05:17:34 START mistral7_dump_float16_b1
+05:18:10 END mistral7_dump_float16_b1 rc=0
+05:18:10 START mistral7_dump_float16_b32
+05:18:28 END mistral7_dump_float16_b32 rc=0
+05:18:28 START mistral7_dump_bfloat16_b32
+05:18:39 END mistral7_dump_bfloat16_b32 rc=0
+05:18:39 START mistral7_dump_float32_b1
+05:19:17 END mistral7_dump_float32_b1 rc=0
+05:19:17 START mistral7_table
+05:19:21 END mistral7_table rc=0
+05:19:21 START mistral7_sealed
+05:22:32 END mistral7_sealed rc=0
+05:22:32 START mistral7_quality
+05:25:32 END mistral7_quality rc=0
+05:25:32 START mistral7_plain
+05:27:17 END mistral7_plain rc=0
+05:27:17 START mistral7_v_fp16
+05:28:52 END mistral7_v_fp16 rc=0
+05:28:52 START mistral7_v_q
+05:30:27 END mistral7_v_q rc=0
+05:30:27 START mistral7_v_bf16
+05:31:19 END mistral7_v_bf16 rc=0
+05:31:19 START mistral7_detect
+05:33:47 END mistral7_detect rc=0
+05:33:47 START mistral7_detect_q
+05:36:03 END mistral7_detect_q rc=0
+05:36:03 START mistral7_gsm_seal
+05:38:31 END mistral7_gsm_seal rc=0
+05:38:31 START mistral7_gsm_qual
+05:40:39 END mistral7_gsm_qual rc=0
+05:40:39 START mistral7_gsm_plain
+05:42:03 END mistral7_gsm_plain rc=0
+05:42:03 START mistral7_q_gsm
+05:42:07 END mistral7_q_gsm rc=0
+05:42:07 START mistral7_q_gsm_q
+05:42:12 END mistral7_q_gsm_q rc=0
+05:42:12 START mistral7_speed
+05:43:59 END mistral7_speed rc=0
+05:43:59 START olmo7_cal_seal
+05:47:37 END olmo7_cal_seal rc=0
+05:47:37 START olmo7_dump_float16_b1
+05:48:15 END olmo7_dump_float16_b1 rc=0
+05:48:15 START olmo7_dump_float16_b32
+05:48:33 END olmo7_dump_float16_b32 rc=0
+05:48:33 START olmo7_dump_bfloat16_b32
+05:48:46 END olmo7_dump_bfloat16_b32 rc=0
+05:48:46 START olmo7_dump_float32_b1
+05:49:33 END olmo7_dump_float32_b1 rc=0
+05:49:33 START olmo7_table
+05:49:37 END olmo7_table rc=0
+05:49:37 START olmo7_sealed
+05:53:17 END olmo7_sealed rc=0
+05:53:17 START olmo7_quality
+05:56:54 END olmo7_quality rc=0
+05:56:54 START olmo7_plain
+05:58:49 END olmo7_plain rc=0
+05:58:49 START olmo7_v_fp16
+06:00:46 END olmo7_v_fp16 rc=0
+06:00:46 START olmo7_v_q
+06:02:24 END olmo7_v_q rc=0
+06:02:24 START olmo7_v_bf16
+06:03:28 END olmo7_v_bf16 rc=0
+06:03:28 START olmo7_detect
+06:06:30 END olmo7_detect rc=0
+06:06:30 START olmo7_detect_q
+06:09:18 END olmo7_detect_q rc=0
+06:09:18 START olmo7_gsm_seal
+06:12:01 END olmo7_gsm_seal rc=0
+06:12:01 START olmo7_gsm_qual
+06:14:35 END olmo7_gsm_qual rc=0
+06:14:35 START olmo7_gsm_plain
+06:16:16 END olmo7_gsm_plain rc=0
+06:16:16 START olmo7_q_gsm
+06:16:21 END olmo7_q_gsm rc=0
+06:16:21 START olmo7_q_gsm_q
+06:16:25 END olmo7_q_gsm_q rc=0
+06:16:25 START olmo7_speed
+06:18:39 END olmo7_speed rc=0
+06:18:39 START qwen14_cal_seal
+06:25:18 END qwen14_cal_seal rc=0
+06:25:18 START qwen14_dump_float16_b1
+06:26:30 END qwen14_dump_float16_b1 rc=0
+06:26:30 START qwen14_dump_float16_b32
+06:27:03 END qwen14_dump_float16_b32 rc=0
+06:27:03 START qwen14_dump_bfloat16_b32
+06:27:27 END qwen14_dump_bfloat16_b32 rc=0
+06:27:27 START qwen14_table
+06:27:32 END qwen14_table rc=0
+06:27:32 START qwen14_sealed
+06:32:46 END qwen14_sealed rc=0
+06:32:46 START qwen14_quality
+06:38:05 END qwen14_quality rc=0
+06:38:05 START qwen14_plain
+06:41:10 END qwen14_plain rc=0
+06:41:10 START qwen14_v_fp16
+06:44:21 END qwen14_v_fp16 rc=0
+06:44:21 START qwen14_v_q
+06:47:29 END qwen14_v_q rc=0
+06:47:29 START qwen14_v_bf16
+06:49:12 END qwen14_v_bf16 rc=0
+06:49:12 START qwen14_detect
+06:53:11 END qwen14_detect rc=0
+06:53:11 START qwen14_detect_q
+06:57:00 END qwen14_detect_q rc=0
+06:57:00 START qwen14_gsm_seal
+07:02:00 END qwen14_gsm_seal rc=0
+07:02:00 START qwen14_gsm_qual
+07:06:13 END qwen14_gsm_qual rc=0
+07:06:13 START qwen14_gsm_plain
+07:09:01 END qwen14_gsm_plain rc=0
+07:09:01 START qwen14_q_gsm
+07:09:11 END qwen14_q_gsm rc=0
+07:09:11 START qwen14_q_gsm_q
+07:09:16 END qwen14_q_gsm_q rc=0
+07:09:16 START qwen14_speed
+07:12:32 END qwen14_speed rc=0
+07:12:32 PHASE C DONE (GPU 44 GB)

@@ -1,0 +1,5 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:02<00:06,  2.24s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:04<00:04,  2.20s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:06<00:02,  2.18s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:08<00:00,  2.10s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:08<00:00,  2.14s/it]
+03:09:43   positives L=200: {'0.01': {'rate': 1.0, 'count': 128}, '0.001': {'rate': 1.0, 'count': 128}, '0.0001': {'rate': 1.0, 'count': 128}, '1e-05': {'rate': 0.992188, 'count': 127}, '1e-06': {'rate': 0.960938, 'count': 123}}
+03:09:44   positives L=400: {'0.01': {'rate': 1.0, 'count': 128}, '0.001': {'rate': 1.0, 'count': 128}, '0.0001': {'rate': 1.0, 'count': 128}, '1e-05': {'rate': 1.0, 'count': 128}, '1e-06': {'rate': 1.0, 'count': 128}}
+03:59:24   null data:c4: 1000000 pairs, {'0.01': {'rate': 0.007028, 'count': 7028}, '0.001': {'rate': 0.00065, 'count': 650}, '0.0001': {'rate': 7.2e-05, 'count': 72}, '1e-05': {'rate': 5e-06, 'count': 5}, '1e-06': {'rate': 2e-06, 'count': 2}}
+03:59:24 written detect_C_null1m_strong.summary.json

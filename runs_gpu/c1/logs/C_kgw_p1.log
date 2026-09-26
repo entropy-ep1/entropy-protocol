@@ -1,0 +1,11 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:02<00:06,  2.23s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:04<00:04,  2.20s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:06<00:02,  2.17s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:08<00:00,  2.10s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:08<00:00,  2.13s/it]
+04:49:55 Qwen/Qwen2.5-7B-Instruct kgw C_c4_kgw_p1: 256 of 256 to do, batch 32
+04:50:17   batch 1: 32 texts, 12800 tokens, 21.2s (605 tok/s)
+04:50:37   batch 2: 32 texts, 12800 tokens, 20.1s (638 tok/s)
+04:50:57   batch 3: 32 texts, 12800 tokens, 20.2s (632 tok/s)
+04:51:17   batch 4: 32 texts, 12800 tokens, 20.1s (636 tok/s)
+04:51:38   batch 5: 32 texts, 12800 tokens, 20.8s (615 tok/s)
+04:51:59   batch 6: 32 texts, 12800 tokens, 20.7s (619 tok/s)
+04:52:19   batch 7: 32 texts, 12800 tokens, 20.4s (629 tok/s)
+04:52:40   batch 8: 32 texts, 12800 tokens, 20.5s (625 tok/s)
+04:52:40 done: 102400 tokens in 165s

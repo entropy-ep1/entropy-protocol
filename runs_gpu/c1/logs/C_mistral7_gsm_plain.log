@@ -1,0 +1,7 @@
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:02<00:05,  2.88s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:05<00:02,  2.91s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:08<00:00,  2.78s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:08<00:00,  2.81s/it]
+05:40:53 mistralai/Mistral-7B-Instruct-v0.3 plain C_mistral7_gsm8k_plain: 128 of 128 to do, batch 32
+05:41:11   batch 1: 32 texts, 7235 tokens, 17.9s (405 tok/s)
+05:41:26   batch 2: 32 texts, 6258 tokens, 15.0s (417 tok/s)
+05:41:45   batch 3: 32 texts, 6765 tokens, 19.1s (355 tok/s)
+05:42:02   batch 4: 32 texts, 6704 tokens, 17.0s (395 tok/s)
+05:42:02 done: 26962 tokens in 69s

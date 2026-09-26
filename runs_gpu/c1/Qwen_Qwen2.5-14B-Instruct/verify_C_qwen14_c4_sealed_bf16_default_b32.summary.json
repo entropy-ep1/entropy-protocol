@@ -1,0 +1,47 @@
+{
+ "code": "ee345ac9b9a46276",
+ "model": "Qwen/Qwen2.5-14B-Instruct@cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+ "weights": "3a5e903d81ab8c1ff4d1adacea2ec593c5f801939633ebdcc7fe7e0252715f73",
+ "env": {
+  "device": "cuda",
+  "hardware": "NVIDIA L40S",
+  "dtype": "bfloat16",
+  "class": "bf16",
+  "torch": "2.7.0+cu128",
+  "transformers": "4.53.2",
+  "attn": "sdpa",
+  "batch": 1
+ },
+ "time": "2026-09-26T06:49:11",
+ "batch": 32,
+ "summary": {
+  "corpus": "C_qwen14_c4_sealed",
+  "config": "bf16_default_b32",
+  "texts": 128,
+  "decisive": 128,
+  "same_VERIFIED_%": 100.0,
+  "same_wrong_MODIFIED": 0,
+  "same_INDETERMINATE": 0,
+  "calibrated": [
+   "False"
+  ],
+  "transport_wrong_MODIFIED": {
+   "crlf": 0,
+   "email": 0,
+   "nbsp": 0,
+   "combined": 0,
+   "bom_nnbsp": 0,
+   "c2pa_manifest": 0,
+   "invisible": 0
+  },
+  "transport_VERIFIED_%": {
+   "crlf": 100.0,
+   "email": 100.0,
+   "nbsp": 100.0,
+   "combined": 100.0,
+   "bom_nnbsp": 100.0,
+   "c2pa_manifest": 100.0,
+   "invisible": 100.0
+  }
+ }
+}

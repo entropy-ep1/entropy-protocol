@@ -1,0 +1,44 @@
+{
+ "code": "ee345ac9b9a46276",
+ "model": "allenai/OLMo-2-1124-7B-Instruct@470b1fba1ae01581f270116362ee4aa1b97f4c84",
+ "weights": "9063fad36aa4380c1d19d24908a5eeef94c5297cee51af9374c18128ec865567",
+ "env": {
+  "device": "cuda",
+  "hardware": "NVIDIA L40S",
+  "dtype": "float16",
+  "class": "fp16",
+  "torch": "2.7.0+cu128",
+  "transformers": "4.53.2",
+  "attn": "sdpa",
+  "batch": 1
+ },
+ "time": "2026-09-26T06:16:39",
+ "generation": {
+  "1": {
+   "plain_tok_s": 31.0,
+   "sealed_tok_s": 25.9,
+   "overhead_%": 19.5,
+   "peak_gb_plain": 13.738033294677734,
+   "peak_gb_sealed": 13.917906284332275
+  },
+  "32": {
+   "plain_tok_s": 705.1,
+   "sealed_tok_s": 408.9,
+   "overhead_%": 72.4,
+   "peak_gb_plain": 17.919527530670166,
+   "peak_gb_sealed": 22.091468334197998
+  }
+ },
+ "verify": {
+  "1": {
+   "tok_s": 9695.9,
+   "seconds_per_text": 0.1031,
+   "peak_gb": 14.234629154205322
+  },
+  "32": {
+   "tok_s": 6694.9,
+   "seconds_per_text": 0.1494,
+   "peak_gb": 16.812968254089355
+  }
+ }
+}

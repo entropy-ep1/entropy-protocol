@@ -1,0 +1,7 @@
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:02<00:05,  2.94s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:05<00:02,  2.92s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:08<00:00,  2.84s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:08<00:00,  2.86s/it]
+06:14:48 allenai/OLMo-2-1124-7B-Instruct plain C_olmo7_gsm8k_plain: 128 of 128 to do, batch 32
+06:15:11   batch 1: 32 texts, 7064 tokens, 22.7s (312 tok/s)
+06:15:34   batch 2: 32 texts, 7387 tokens, 22.9s (323 tok/s)
+06:15:54   batch 3: 32 texts, 6495 tokens, 19.7s (330 tok/s)
+06:16:15   batch 4: 32 texts, 6056 tokens, 21.3s (285 tok/s)
+06:16:15 done: 27002 tokens in 87s

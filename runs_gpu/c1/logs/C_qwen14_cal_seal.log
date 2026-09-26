@@ -1,0 +1,7 @@
+Fetching 8 files:   0%|          | 0/8 [00:00<?, ?it/s]Fetching 8 files:  12%|█▎        | 1/8 [02:27<17:13, 147.66s/it]Fetching 8 files:  25%|██▌       | 2/8 [02:32<06:20, 63.45s/it] Fetching 8 files: 100%|██████████| 8/8 [02:32<00:00, 19.02s/it]
+Loading checkpoint shards:   0%|          | 0/8 [00:00<?, ?it/s]Loading checkpoint shards:  12%|█▎        | 1/8 [00:04<00:29,  4.20s/it]Loading checkpoint shards:  25%|██▌       | 2/8 [00:08<00:23,  3.97s/it]Loading checkpoint shards:  38%|███▊      | 3/8 [00:14<00:25,  5.00s/it]Loading checkpoint shards:  50%|█████     | 4/8 [00:21<00:23,  5.78s/it]Loading checkpoint shards:  62%|██████▎   | 5/8 [00:29<00:19,  6.65s/it]Loading checkpoint shards:  75%|███████▌  | 6/8 [00:37<00:14,  7.14s/it]Loading checkpoint shards:  88%|████████▊ | 7/8 [00:46<00:07,  7.90s/it]Loading checkpoint shards: 100%|██████████| 8/8 [00:50<00:00,  6.67s/it]Loading checkpoint shards: 100%|██████████| 8/8 [00:50<00:00,  6.37s/it]
+Fetching 18 files:   0%|          | 0/18 [00:00<?, ?it/s]Fetching 18 files: 100%|██████████| 18/18 [00:00<00:00, 395.06it/s]
+06:22:43 Qwen/Qwen2.5-14B-Instruct sealed C_qwen14_cal: 64 of 64 to do, batch 32
+06:24:07   batch 1: 32 texts, 12800 tokens, 84.1s (152 tok/s)
+06:25:16   batch 2: 32 texts, 12800 tokens, 68.6s (187 tok/s)
+06:25:16 done: 25600 tokens in 153s

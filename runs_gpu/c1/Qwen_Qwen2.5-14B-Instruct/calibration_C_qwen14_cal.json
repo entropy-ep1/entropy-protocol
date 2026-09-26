@@ -1,0 +1,62 @@
+{
+ "model": "Qwen/Qwen2.5-14B-Instruct@cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+ "weights_digest": "3a5e903d81ab8c1ff4d1adacea2ec593c5f801939633ebdcc7fe7e0252715f73",
+ "space": "logit",
+ "c": 3.0,
+ "k": 1,
+ "reference": "NVIDIA-L40S_float16_default_b1",
+ "reference_env": {
+  "device": "cuda",
+  "hardware": "NVIDIA L40S",
+  "dtype": "float16",
+  "class": "fp16",
+  "torch": "2.7.0+cu128",
+  "transformers": "4.53.2",
+  "attn": "sdpa",
+  "batch": 1
+ },
+ "texts": 64,
+ "from_position": 4,
+ "positions": 25344,
+ "positions_incl_unused": 25600,
+ "delta": {
+  "NVIDIA-L40S_bfloat16_default_b32": 3.4375,
+  "NVIDIA-L40S_float16_default_b32": 0.296875
+ },
+ "per_config": {
+  "NVIDIA-L40S_bfloat16_default_b32": {
+   "delta": 3.4375,
+   "p99.9": 0.59375,
+   "p99.99": 1.31035315990448,
+   "mean": 0.0608714334666729,
+   "flips_all": 301,
+   "positions": 25344,
+   "delta_incl_unused_positions": 3.4375,
+   "flips_unused_positions": 0,
+   "flips_at_kept_positions": 0,
+   "kept_positions": 11947
+  },
+  "NVIDIA-L40S_float16_default_b32": {
+   "delta": 0.296875,
+   "p99.9": 0.078125,
+   "p99.99": 0.1551765650510788,
+   "mean": 0.007741560693830252,
+   "flips_all": 37,
+   "positions": 25344,
+   "delta_incl_unused_positions": 0.296875,
+   "flips_unused_positions": 0,
+   "flips_at_kept_positions": 0,
+   "kept_positions": 11947
+  }
+ },
+ "by_class": {
+  "bf16": 3.4375,
+  "fp16": 0.296875
+ },
+ "errors": {},
+ "table": {
+  "fp16": 0.890625
+ },
+ "record_margin_needed": 1.78125,
+ "kept_share": 0.47139362373737376
+}

@@ -1,0 +1,7 @@
+{
+ "items": 128,
+ "accuracy_a": 0.1406,
+ "accuracy_b": 0.5234,
+ "only_a_correct": 4,
+ "only_b_correct": 53
+}

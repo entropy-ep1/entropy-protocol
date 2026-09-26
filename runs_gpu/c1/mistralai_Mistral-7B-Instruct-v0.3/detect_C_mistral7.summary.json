@@ -1,0 +1,235 @@
+{
+ "code": "ee345ac9b9a46276",
+ "model": "mistralai/Mistral-7B-Instruct-v0.3@c170c708c41dac9275d15a8fff4eca08d52bab71",
+ "weights": "676bbe9d8ede165c0bfb016dd673ef8f8734d2a6164dc64716c702c68af0f4d4",
+ "env": {
+  "device": "cuda",
+  "hardware": "NVIDIA L40S",
+  "dtype": "float16",
+  "class": "fp16",
+  "torch": "2.7.0+cu128",
+  "transformers": "4.53.2",
+  "attn": "sdpa",
+  "batch": 1
+ },
+ "time": "2026-09-26T05:31:32",
+ "name": "C_mistral7",
+ "tol": 0.726562,
+ "interval": 5,
+ "context": 4,
+ "alphas": [
+  0.01,
+  0.001,
+  0.0001,
+  1e-05,
+  1e-06
+ ],
+ "positives": {
+  "50": {
+   "texts": 128,
+   "texts_reaching_L": 128,
+   "detected_at": {
+    "0.01": {
+     "rate": 0.539062,
+     "count": 69
+    },
+    "0.001": {
+     "rate": 0.109375,
+     "count": 14
+    },
+    "0.0001": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "1e-05": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "1e-06": {
+     "rate": 0.0,
+     "count": 0
+    }
+   },
+   "median_p": 0.0078125,
+   "mean_checkpoints": 6.7,
+   "match_rate": 0.9988
+  },
+  "100": {
+   "texts": 128,
+   "texts_reaching_L": 128,
+   "detected_at": {
+    "0.01": {
+     "rate": 0.992188,
+     "count": 127
+    },
+    "0.001": {
+     "rate": 0.898438,
+     "count": 115
+    },
+    "0.0001": {
+     "rate": 0.476562,
+     "count": 61
+    },
+    "1e-05": {
+     "rate": 0.226562,
+     "count": 29
+    },
+    "1e-06": {
+     "rate": 0.070312,
+     "count": 9
+    }
+   },
+   "median_p": 0.0001220703125,
+   "mean_checkpoints": 13.9,
+   "match_rate": 0.9994
+  },
+  "200": {
+   "texts": 128,
+   "texts_reaching_L": 128,
+   "detected_at": {
+    "0.01": {
+     "rate": 1.0,
+     "count": 128
+    },
+    "0.001": {
+     "rate": 1.0,
+     "count": 128
+    },
+    "0.0001": {
+     "rate": 1.0,
+     "count": 128
+    },
+    "1e-05": {
+     "rate": 0.984375,
+     "count": 126
+    },
+    "1e-06": {
+     "rate": 0.953125,
+     "count": 122
+    }
+   },
+   "median_p": 3.725290298461914e-09,
+   "mean_checkpoints": 28.2,
+   "match_rate": 0.9997
+  },
+  "400": {
+   "texts": 128,
+   "texts_reaching_L": 123,
+   "detected_at": {
+    "0.01": {
+     "rate": 1.0,
+     "count": 128
+    },
+    "0.001": {
+     "rate": 1.0,
+     "count": 128
+    },
+    "0.0001": {
+     "rate": 1.0,
+     "count": 128
+    },
+    "1e-05": {
+     "rate": 0.992188,
+     "count": 127
+    },
+    "1e-06": {
+     "rate": 0.992188,
+     "count": 127
+    }
+   },
+   "median_p": 2.7755575615628914e-17,
+   "mean_checkpoints": 55.2,
+   "match_rate": 0.9997
+  }
+ },
+ "nulls": {
+  "same_model_other_key": {
+   "pairs": 128,
+   "false_positive_at": {
+    "0.01": {
+     "rate": 0.015625,
+     "count": 2
+    },
+    "0.001": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "0.0001": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "1e-05": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "1e-06": {
+     "rate": 0.0,
+     "count": 0
+    }
+   },
+   "min_p": 0.0031088013296633353
+  },
+  "data:c4": {
+   "texts": 1000,
+   "keys": 20,
+   "pairs": 20000,
+   "false_positive_at": {
+    "0.01": {
+     "rate": 0.0079,
+     "count": 158
+    },
+    "0.001": {
+     "rate": 0.00105,
+     "count": 21
+    },
+    "0.0001": {
+     "rate": 0.0002,
+     "count": 4
+    },
+    "1e-05": {
+     "rate": 5e-05,
+     "count": 1
+    },
+    "1e-06": {
+     "rate": 0.0,
+     "count": 0
+    }
+   },
+   "min_p": 8.714261300815998e-06,
+   "mean_checkpoints": 67.9,
+   "seconds": 109.5
+  },
+  "runs:C_mistral7_c4_plain": {
+   "texts": 128,
+   "keys": 20,
+   "pairs": 2560,
+   "false_positive_at": {
+    "0.01": {
+     "rate": 0.007812,
+     "count": 20
+    },
+    "0.001": {
+     "rate": 0.000391,
+     "count": 1
+    },
+    "0.0001": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "1e-05": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "1e-06": {
+     "rate": 0.0,
+     "count": 0
+    }
+   },
+   "min_p": 0.00015347350777328295,
+   "mean_checkpoints": 57.4,
+   "seconds": 10.9
+  }
+ },
+ "attacks": {},
+ "minutes": 2.4
+}

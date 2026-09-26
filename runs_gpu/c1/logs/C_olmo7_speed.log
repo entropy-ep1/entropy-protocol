@@ -1,0 +1,5 @@
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:02<00:05,  2.96s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:05<00:02,  2.96s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:08<00:00,  2.87s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:08<00:00,  2.90s/it]
+06:17:26   batch 1: {'plain_tok_s': 31.0, 'sealed_tok_s': 25.9, 'overhead_%': 19.5, 'peak_gb_plain': 13.738033294677734, 'peak_gb_sealed': 13.917906284332275}
+06:18:33   batch 32: {'plain_tok_s': 705.1, 'sealed_tok_s': 408.9, 'overhead_%': 72.4, 'peak_gb_plain': 17.919527530670166, 'peak_gb_sealed': 22.091468334197998}
+06:18:33   verify batch 1: {'tok_s': 9695.9, 'seconds_per_text': 0.1031, 'peak_gb': 14.234629154205322}
+06:18:38   verify batch 32: {'tok_s': 6694.9, 'seconds_per_text': 0.1494, 'peak_gb': 16.812968254089355}

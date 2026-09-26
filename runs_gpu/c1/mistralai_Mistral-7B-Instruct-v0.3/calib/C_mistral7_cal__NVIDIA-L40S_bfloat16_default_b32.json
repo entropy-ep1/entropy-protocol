@@ -1,0 +1,21 @@
+{
+ "code": "ee345ac9b9a46276",
+ "model": "mistralai/Mistral-7B-Instruct-v0.3@c170c708c41dac9275d15a8fff4eca08d52bab71",
+ "weights": "676bbe9d8ede165c0bfb016dd673ef8f8734d2a6164dc64716c702c68af0f4d4",
+ "env": {
+  "device": "cuda",
+  "hardware": "NVIDIA L40S",
+  "dtype": "bfloat16",
+  "class": "bf16",
+  "torch": "2.7.0+cu128",
+  "transformers": "4.53.2",
+  "attn": "sdpa",
+  "batch": 1
+ },
+ "time": "2026-09-26T05:18:38",
+ "batch": 32,
+ "config": "NVIDIA-L40S_bfloat16_default_b32",
+ "texts": 64,
+ "positions": 24921,
+ "finite": true
+}

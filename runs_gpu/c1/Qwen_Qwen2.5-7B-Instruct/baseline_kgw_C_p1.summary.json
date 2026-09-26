@@ -1,0 +1,142 @@
+{
+ "code": "ee345ac9b9a46276",
+ "model": "Qwen/Qwen2.5-7B-Instruct@a09a35458c702b33eeacc393d103063234e8bc28",
+ "weights": "fd024e4fed1dfb65cc679af8aa2d7b542971a1b74ab8cb4d703ac082afc3922c",
+ "env": {
+  "device": "cuda",
+  "hardware": "NVIDIA L40S",
+  "dtype": "float16",
+  "class": "fp16",
+  "torch": "2.7.0+cu128",
+  "transformers": "4.53.2",
+  "attn": "sdpa",
+  "batch": 1
+ },
+ "time": "2026-09-26T04:59:31",
+ "scheme": "kgw",
+ "positives": {
+  "100": {
+   "score": {
+    "texts": 256,
+    "tpr_at_fpr_0.01": {
+     "tpr": 0.9219,
+     "threshold": 2.6111648393354674,
+     "null_n": 4000,
+     "resolvable": true
+    },
+    "tpr_at_fpr_0.001": {
+     "tpr": 0.7578,
+     "threshold": 4.003786086981051,
+     "null_n": 4000,
+     "resolvable": true
+    },
+    "tpr_at_fpr_0.0001": {
+     "tpr": 0.668,
+     "threshold": 4.467993169529578,
+     "null_n": 4000,
+     "resolvable": false
+    },
+    "exact_tpr_at": {
+     "0.01": 0.9336,
+     "0.001": 0.8984,
+     "0.0001": 0.8398
+    }
+   }
+  },
+  "200": {
+   "score": {
+    "texts": 256,
+    "tpr_at_fpr_0.01": {
+     "tpr": 0.9805,
+     "threshold": 2.496563802663677,
+     "null_n": 4000,
+     "resolvable": true
+    },
+    "tpr_at_fpr_0.001": {
+     "tpr": 0.9688,
+     "threshold": 3.1514002099197236,
+     "null_n": 4000,
+     "resolvable": true
+    },
+    "tpr_at_fpr_0.0001": {
+     "tpr": 0.9336,
+     "threshold": 4.133654820803794,
+     "null_n": 4000,
+     "resolvable": false
+    },
+    "exact_tpr_at": {
+     "0.01": 0.9805,
+     "0.001": 0.9766,
+     "0.0001": 0.957
+    }
+   }
+  },
+  "400": {
+   "score": {
+    "texts": 256,
+    "tpr_at_fpr_0.01": {
+     "tpr": 1.0,
+     "threshold": 2.803655568127988,
+     "null_n": 4000,
+     "resolvable": true
+    },
+    "tpr_at_fpr_0.001": {
+     "tpr": 0.9844,
+     "threshold": 3.7285728689537163,
+     "null_n": 4000,
+     "resolvable": true
+    },
+    "tpr_at_fpr_0.0001": {
+     "tpr": 0.9766,
+     "threshold": 4.310527248642598,
+     "null_n": 4000,
+     "resolvable": false
+    },
+    "exact_tpr_at": {
+     "0.01": 1.0,
+     "0.001": 0.9961,
+     "0.0001": 0.9883
+    }
+   }
+  }
+ },
+ "nulls": {
+  "L100:data:c4:human:score": {
+   "texts": 4000,
+   "cut_to_tokens": 100,
+   "exact_fpr_at": {
+    "0.01": 0.01025,
+    "0.001": 0.0025,
+    "0.0001": 0.001
+   }
+  },
+  "full:data:c4:human:score": {
+   "texts": 4000,
+   "cut_to_tokens": null,
+   "exact_fpr_at": {
+    "0.01": 0.02175,
+    "0.001": 0.0045,
+    "0.0001": 0.00125
+   }
+  },
+  "L200:data:c4:human:score": {
+   "texts": 4000,
+   "cut_to_tokens": 200,
+   "exact_fpr_at": {
+    "0.01": 0.01475,
+    "0.001": 0.00125,
+    "0.0001": 0.00025
+   }
+  },
+  "L400:data:c4:human:score": {
+   "texts": 4000,
+   "cut_to_tokens": 400,
+   "exact_fpr_at": {
+    "0.01": 0.022,
+    "0.001": 0.0045,
+    "0.0001": 0.001
+   }
+  }
+ },
+ "attacks": {}
+}

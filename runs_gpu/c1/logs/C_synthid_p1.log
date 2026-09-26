@@ -1,0 +1,19 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:02<00:06,  2.24s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:04<00:04,  2.20s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:06<00:02,  2.18s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:08<00:00,  2.10s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:08<00:00,  2.14s/it]
+04:52:55 Qwen/Qwen2.5-7B-Instruct synthid C_c4_synthid_p1: 256 of 256 to do, batch 16
+04:53:20   batch 1: 16 texts, 6400 tokens, 25.0s (256 tok/s)
+04:53:44   batch 2: 16 texts, 6400 tokens, 23.8s (269 tok/s)
+04:54:07   batch 3: 16 texts, 6400 tokens, 23.8s (269 tok/s)
+04:54:31   batch 4: 16 texts, 6400 tokens, 23.7s (271 tok/s)
+04:54:55   batch 5: 16 texts, 6400 tokens, 23.7s (270 tok/s)
+04:55:19   batch 6: 16 texts, 6400 tokens, 23.6s (272 tok/s)
+04:55:42   batch 7: 16 texts, 6400 tokens, 23.6s (271 tok/s)
+04:56:06   batch 8: 16 texts, 6400 tokens, 23.7s (270 tok/s)
+04:56:30   batch 9: 16 texts, 6400 tokens, 23.9s (267 tok/s)
+04:56:54   batch 10: 16 texts, 6400 tokens, 23.7s (270 tok/s)
+04:57:17   batch 11: 16 texts, 6400 tokens, 23.7s (270 tok/s)
+04:57:41   batch 12: 16 texts, 6400 tokens, 23.9s (268 tok/s)
+04:58:05   batch 13: 16 texts, 6400 tokens, 23.8s (269 tok/s)
+04:58:29   batch 14: 16 texts, 6400 tokens, 23.7s (270 tok/s)
+04:58:53   batch 15: 16 texts, 6400 tokens, 23.8s (269 tok/s)
+04:59:17   batch 16: 16 texts, 6400 tokens, 23.8s (269 tok/s)
+04:59:17 done: 102400 tokens in 382s

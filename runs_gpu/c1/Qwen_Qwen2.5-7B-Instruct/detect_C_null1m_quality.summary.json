@@ -1,0 +1,147 @@
+{
+ "code": "ee345ac9b9a46276",
+ "model": "Qwen/Qwen2.5-7B-Instruct@a09a35458c702b33eeacc393d103063234e8bc28",
+ "weights": "fd024e4fed1dfb65cc679af8aa2d7b542971a1b74ab8cb4d703ac082afc3922c",
+ "env": {
+  "device": "cuda",
+  "hardware": "NVIDIA L40S",
+  "dtype": "float16",
+  "class": "fp16",
+  "torch": "2.7.0+cu128",
+  "transformers": "4.53.2",
+  "attn": "sdpa",
+  "batch": 1
+ },
+ "time": "2026-09-26T03:59:40",
+ "name": "C_null1m_quality",
+ "tol": 0.421875,
+ "interval": 5,
+ "context": 4,
+ "alphas": [
+  0.01,
+  0.001,
+  0.0001,
+  1e-05,
+  1e-06
+ ],
+ "positives": {
+  "200": {
+   "texts": 128,
+   "texts_reaching_L": 128,
+   "detected_at": {
+    "0.01": {
+     "rate": 0.976562,
+     "count": 125
+    },
+    "0.001": {
+     "rate": 0.960938,
+     "count": 123
+    },
+    "0.0001": {
+     "rate": 0.890625,
+     "count": 114
+    },
+    "1e-05": {
+     "rate": 0.789062,
+     "count": 101
+    },
+    "1e-06": {
+     "rate": 0.617188,
+     "count": 79
+    }
+   },
+   "median_p": 4.76837158203125e-07,
+   "mean_checkpoints": 24.0,
+   "match_rate": 0.9691
+  },
+  "400": {
+   "texts": 128,
+   "texts_reaching_L": 127,
+   "detected_at": {
+    "0.01": {
+     "rate": 0.984375,
+     "count": 126
+    },
+    "0.001": {
+     "rate": 0.976562,
+     "count": 125
+    },
+    "0.0001": {
+     "rate": 0.960938,
+     "count": 123
+    },
+    "1e-05": {
+     "rate": 0.953125,
+     "count": 122
+    },
+    "1e-06": {
+     "rate": 0.953125,
+     "count": 122
+    }
+   },
+   "median_p": 2.5579538487363607e-12,
+   "mean_checkpoints": 43.7,
+   "match_rate": 0.9723
+  }
+ },
+ "nulls": {
+  "same_model_other_key": {
+   "pairs": 128,
+   "false_positive_at": {
+    "0.01": {
+     "rate": 0.007812,
+     "count": 1
+    },
+    "0.001": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "0.0001": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "1e-05": {
+     "rate": 0.0,
+     "count": 0
+    },
+    "1e-06": {
+     "rate": 0.0,
+     "count": 0
+    }
+   },
+   "min_p": 0.00685909252933925
+  },
+  "data:c4": {
+   "texts": 20000,
+   "keys": 50,
+   "pairs": 1000000,
+   "false_positive_at": {
+    "0.01": {
+     "rate": 0.007098,
+     "count": 7098
+    },
+    "0.001": {
+     "rate": 0.000615,
+     "count": 615
+    },
+    "0.0001": {
+     "rate": 7.1e-05,
+     "count": 71
+    },
+    "1e-05": {
+     "rate": 9e-06,
+     "count": 9
+    },
+    "1e-06": {
+     "rate": 2e-06,
+     "count": 2
+    }
+   },
+   "min_p": 3.7565215485479975e-07,
+   "mean_checkpoints": 54.0,
+   "seconds": 2974.3
+  }
+ },
+ "attacks": {},
+ "minutes": 50.1
+}
