@@ -111,6 +111,17 @@ def synthid_scores(backend, id_lists, batch: int = 16):
     return out                                           # (mean, exact p of mean, weighted mean)
 
 
+def exact_rate(ps, f):
+    """Share of p-values <= f, a missing p-value counting as 1. A p-value of exactly 0.0 is the strongest detection,
+    not a missing one: transformers' KGW detector returns 0.0 above z ~ 7.5 (its normal tail underflows), and the
+    earlier `(p or 1) <= f` counted those as misses - phase A's KGW 'fell' to 75 % and 34 % at 200 and 400 tokens
+    where the detector found 97 % and 100 % (26.09.2026).
+    >>> exact_rate([0.0, 0.5, None], 0.01)
+    0.3333
+    """
+    return round(sum((1.0 if p is None else p) <= f for p in ps) / max(1, len(ps)), 4)
+
+
 def tpr_at_fpr(pos, neg, fpr):
     """Threshold = the (1 - fpr) empirical quantile of the null scores (larger = watermarked)."""
     if not neg:
@@ -167,7 +178,7 @@ def main():
         report["positives"][str(L)] = {k: {"texts": len(v), **{f"tpr_at_fpr_{f:g}": tpr_at_fpr([x[0] for x in v],
                                                                                               null_scores.get(k, []), f)
                                                                for f in FPRS},
-                                           "exact_tpr_at": {f"{f:g}": round(sum((x[1] or 1) <= f for x in v) / len(v), 4)
+                                           "exact_tpr_at": {f"{f:g}": exact_rate([x[1] for x in v], f)
                                                             for f in FPRS} if v and v[0][1] is not None else None}
                                        for k, v in sc.items()}
         log(f"  {a.scheme} L={L}: " + str({k: x["tpr_at_fpr_0.01"] for k, x in report["positives"][str(L)].items()}))

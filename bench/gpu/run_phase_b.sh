@@ -43,7 +43,8 @@ for C in A_c4_sealed_fp16cert A_c4_quality_fp16cert; do
   [ "$FP32" = 1 ] && run "verify_${C}_fp32" python3 $G/verify_corpus.py --model "$M" --dtype float32 --batch 1 \
                        --corpus "$C" --n 64 --only-same
 done
-# why the KGW baseline weakened with length (phase A: 81 / 75 / 34 % at p <= 1e-2): needs this model's own
+# KGW by length (phase A reported 81 / 75 / 34 % at p <= 1e-2 - an artifact: p = 0.0 counted as a miss, fixed in
+# baselines.exact_rate 26.09.2026; the detector on CUDA finds 81 / 97 / 100 %): needs this model's own
 # tokenizer and vocabulary, no weights (push the corpus up first: infra/sync.sh runs-up)
 [ -s "$EP_RUNS/$S/A_c4_kgw.jsonl" ] && run kgw_diag python3 bench/diag_kgw_length.py "$EP_RUNS" --model "$M" \
   --tokenizer "$M" --corpus A_c4_kgw --out "$EP_RUNS/$S/diag_kgw_length.json"

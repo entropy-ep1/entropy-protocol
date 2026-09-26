@@ -1,9 +1,11 @@
-"""Why did the KGW baseline find FEWER texts as they got longer (phase A: 81 / 75 / 34 % at p <= 1e-2 for
-100 / 200 / 400 tokens)? The detector needs no model weights - only the tokenizer and the vocabulary size - so this
-runs on the Mac over the corpus phase A left behind. Reports, per length: the z-score, how many tokens the detector
-scored (it ignores repeated bigrams), the green fraction, and how repetitive the text is.
+"""Does the KGW baseline find fewer texts as they get longer? (Phase A reported 81 / 75 / 34 % at p <= 1e-2 for
+100 / 200 / 400 tokens - an artifact of counting p = 0.0 as a miss, see baselines.exact_rate; on CUDA this finds
+81 / 97 / 100 %.) The detector needs no model weights - only the tokenizer and the vocabulary size - but it
+must run on the device type the corpus was generated on (CUDA for the GPU phases; see --device). Reports, per length:
+the z-score, how many tokens the detector scored (it ignores repeated bigrams), the green fraction, and how
+repetitive the text is.
 Usage: python3 bench/diag_kgw_length.py runs_gpu/a1 [--model Qwen/Qwen2.5-7B-Instruct] [--tokenizer Qwen/Qwen2.5-0.5B-Instruct]
-         [--vocab 152064] [--corpus A_c4_kgw]"""
+         [--vocab 152064] [--corpus A_c4_kgw] [--device cuda]"""
 import argparse
 import json
 import statistics as st
@@ -27,6 +29,10 @@ def main():
                                                          "own; the greenlist depends on it, so a guess reads as noise)")
     ap.add_argument("--corpus", default="A_c4_kgw")
     ap.add_argument("--lengths", default="100,200,400")
+    # the greenlist is torch.randperm under a torch.Generator on the detector's device, and CPU and CUDA generators
+    # draw different permutations from the same seed: a CPU detector reads a CUDA-generated corpus as noise (green
+    # fraction = gamma; 26.09.2026). Detect on the device type the corpus was generated on.
+    ap.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     ap.add_argument("--out", default="")
     a = ap.parse_args()
     from transformers import AutoConfig, AutoTokenizer, WatermarkDetector, WatermarkingConfig
@@ -34,7 +40,7 @@ def main():
     cfg = AutoConfig.from_pretrained(a.tokenizer)
     if a.vocab:
         cfg.vocab_size = a.vocab
-    det = WatermarkDetector(cfg, "cpu", WatermarkingConfig(), ignore_repeated_ngrams=True)
+    det = WatermarkDetector(cfg, a.device, WatermarkingConfig(), ignore_repeated_ngrams=True)
     rows = [json.loads(x) for x in (Path(a.phase_dir) / a.model.replace("/", "_") / f"{a.corpus}.jsonl").read_text().splitlines() if x.strip()]
     ids = [tok(canonicalize(r["text"]), add_special_tokens=False)["input_ids"] for r in rows]
     print(f"{len(rows)} texts, vocabulary {cfg.vocab_size}, tokenizer {a.tokenizer}")
@@ -45,7 +51,7 @@ def main():
             cut = x[:L]
             if len(cut) < 3:
                 continue
-            r = det(torch.tensor([cut]), return_dict=True)
+            r = det(torch.tensor([cut], device=a.device), return_dict=True)
             z.append(float(r.z_score[0])); p.append(float(r.p_value[0]))
             scored.append(int(r.num_tokens_scored[0])); green.append(float(r.green_fraction[0]))
             grams = list(zip(cut, cut[1:]))
