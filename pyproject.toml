@@ -1,14 +1,15 @@
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=77"]    # SPDX license expression and license-files
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "entropy-protocol"
 version = "0.1.0.dev0"
-description = "Reference implementation of the Entropy Protocol: seal AI-generated text at generation, verify anywhere without revealing it."
+description = "Reference implementation of the Entropy Protocol: seal language-model text when it is written; verify it later, deterministically, with a record that reveals no text."
 readme = "README.md"
 requires-python = ">=3.10"
-license = { text = "Apache-2.0" }
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
 authors = [{ name = "Roman Oliinyk" }, { name = "Serhii Nikolaichuk" }]
 dependencies = ["torch>=2.2", "transformers>=4.44", "cryptography>=42", "cbor2>=5.6"]
 
