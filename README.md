@@ -84,12 +84,19 @@ arithmetic — use it only where the mark matters more than the answer.
 pip install -e ".[markdown]"      # Python >= 3.10; brings torch and transformers
 M=Qwen/Qwen2.5-0.5B-Instruct
 entropy keygen --out master.key
-entropy seal --model $M --key master.key --prompt "Explain tides in two sentences." --out sealed.json
+entropy seal --model $M --key master.key --max-new-tokens 400 \
+  --prompt "Write a short story about a lighthouse keeper who finds a letter in a bottle." --out sealed.json
 python3 -c 'import json; d = json.load(open("sealed.json")); open("candidate.txt", "w").write(d["text"])'
 TOKEN=$(python3 -c 'import json; print(json.load(open("sealed.json"))["token"])')
-entropy verify --model $M --text-file candidate.txt --token "$TOKEN" --key master.key   # VERIFIED
-entropy detect --model $M --text-file candidate.txt --key master.key                    # exact p-value
+entropy verify --model $M --text-file candidate.txt --token "$TOKEN" --key master.key   # "verdict": "VERIFIED"
+entropy detect --model $M --text-file candidate.txt --key master.key                    # "p_value", exact
 ```
+
+On a laptop CPU this takes under two minutes. One run ([files](bench/results/quickstart_2026-09-26)): `VERIFIED`
+with all 51 checkpoints of the record matched; record-free detection found 42 of 44 checkpoints and reported
+p = 5.6 × 10⁻¹¹. Change one word in `candidate.txt` and
+verify again: `MODIFIED`, with the character range of the sentence that changed. Short or formulaic answers carry few checkpoints — detection needs
+about 50 tokens or more, and is strongest on open-ended text.
 
 The whole product in one command, on a CPU, nothing leaving the machine: [`bench/demo_review.sh`](bench/demo_review.sh)
 (keys → an OpenAI-compatible sealing gateway on `127.0.0.1` → a sealed answer → three candidates checked: as

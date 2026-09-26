@@ -1,0 +1,99 @@
+{
+ "verdict": "MODIFIED",
+ "reason": "the canonical text differs from the sealed text",
+ "score": 0.8627450980392157,
+ "matched": 44,
+ "divergent": 7,
+ "indeterminate": 0,
+ "entries": 51,
+ "model_evidence": "strong",
+ "divergence_ranges": [
+  [
+   83,
+   88
+  ],
+  [
+   159,
+   167
+  ],
+  [
+   275,
+   283
+  ],
+  [
+   543,
+   547
+  ],
+  [
+   547,
+   552
+  ],
+  [
+   655,
+   660
+  ],
+  [
+   747,
+   755
+  ]
+ ],
+ "changed_ranges": [
+  [
+   0,
+   89
+  ]
+ ],
+ "deletion_points": [],
+ "first_divergence": 0,
+ "digest_match": false,
+ "calibrated": null,
+ "candidate_digest": "a32817dd23d4d3cd3e6f49af64618cf77a70b88c2faa225f3c4b309941bab643",
+ "model": "Qwen/Qwen2.5-0.5B-Instruct@7ae557604adf67be50417f59c2c2f167def9a775",
+ "weights_digest": "f0a62a4d86e57dd5ac645484981288c15febea408def1de858997925056a74aa",
+ "tokenizer_digest": "f884026e05f6dfffe68b72d580b588006d98b3bc0a128bb1ac425c76f7fc438c",
+ "decoding": {
+  "device": "cpu",
+  "dtype": "float32",
+  "class": "fp32",
+  "canon": "ep1-canon/v4:nfc+del-cr-bom-zw-shy+del-vs-runs+nbsp+typo+rstrip-lines+strip;seg2",
+  "context": "bos+text",
+  "k": 1,
+  "tol_space": "logit",
+  "tol": 0.0,
+  "env": {
+   "device": "cpu",
+   "hardware": "arm64",
+   "dtype": "float32",
+   "class": "fp32",
+   "torch": "2.7.1",
+   "transformers": "4.53.2",
+   "attn": "sdpa",
+   "batch": 1
+  },
+  "sealing_env": {
+   "attn": "sdpa",
+   "batch": 1,
+   "class": "fp32",
+   "dtype": "float32",
+   "torch": "2.7.1",
+   "device": "cpu",
+   "hardware": "arm64",
+   "transformers": "4.53.2"
+  }
+ },
+ "text_match": false,
+ "text_view": {
+  "text": "The keeper is a passionate sailor who is on a mission to uncover the secrets of the past. The keeper discovers a mysterious letter that is written in the local dialect of the town where the lighthouse is located. The keeper is determined to read the letter and understand the history that it holds. Along the way, the keeper must confront a powerful rival who threatens to destroy the lighthouse and its secrets. With the help of a local witch, the keeper uncovers the truth and finds that the letter is not just a letter, but a message to all who read it, warning of a coming disaster. The keeper is determined to keep the secrets of the lighthouse safe, even if it means risking their life. The keeper is a true hero who goes above and beyond to uncover the secrets of the past, and the letter that the keeper finds is a true testament to his courage and determination. As the keeper reads the letter, he is transported to the present day, where he must navigate the dangers of a new threat and the challenges of a new world. The keeper is a true hero who has made a difference in history, and the letter that the keeper finds is a true testament to that. As the keeper reads the letter, he is transported to the present day, where he must navigate the dangers of a new threat and the challenges of a new world. The keeper is a true hero who has made a difference in history, and the letter that the keeper finds is a true testament to that. As the keeper reads the letter, he is transported to the present day, where he must navigate the dangers of a new threat and the challenges of a new world. The keeper is a true hero who has made a difference in history, and the letter that the keeper finds is a true testament to that. As the keeper reads the letter, he is transported to the present day, where he must navigate the dangers of a new threat and the challenges of a new world. The keeper is a true hero",
+  "changed_ranges": [
+   [
+    0,
+    89
+   ]
+  ],
+  "deletion_points": []
+ },
+ "doc_id": "582p5b3sWyZPYBgh",
+ "nonce": "f438715b1620a46d",
+ "engine": "entropy-protocol/0.1.0.dev0",
+ "seconds": 1.598
+}
