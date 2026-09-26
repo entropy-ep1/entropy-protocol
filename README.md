@@ -78,6 +78,19 @@ $4.60). Every number is a file under [`runs_gpu/a1/`](runs_gpu/a1) and a command
 *Quality* (the default) leaves the model free where it is confident; *strong* enforces every checkpoint and breaks
 arithmetic — use it only where the mark matters more than the answer.
 
+**On other hardware** (phase B, 26.09.2026, [report](bench/results/phase_b/REPORT.md)). The same records, sealed on
+the L40S, verified again on an L4 (Ada), an A10G (Ampere) and an H100 NVL in confidential-computing mode (Hopper), in
+fp16, bf16 and fp32, on three clouds: **2,304 verifications, 100 % `VERIFIED`, 0 false `MODIFIED`**. Where machines
+disagree at all — at most 1 position in 144,871 for fp16 and fp32, about 2 in 10,000 for bf16 — the answer is
+`INDETERMINATE`, never `MODIFIED`.
+
+| Card | Verification, tokens/s (batch 1) | Sealed generation, tokens/s (batch 1 · 64) |
+|---|---|---|
+| H100 NVL | 14,891 | 27 · 803 |
+| L40S | 9,089 | 33 · 606 |
+| A10G | 2,300 | 24 · 394 |
+| L4 | 2,077 | 14 · 242 |
+
 ## Quick start
 
 ```bash
