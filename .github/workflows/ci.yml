@@ -48,6 +48,13 @@ jobs:
           from huggingface_hub import snapshot_download as s
           for m in ("distilgpt2", "Qwen/Qwen2.5-0.5B-Instruct"):
               s(m, allow_patterns=["*.json", "*.safetensors", "*.txt"])
+          # tokenizers only, for the property test that canonical tokenizations always join (four tokenizer families);
+          # a tokenizer that cannot be fetched leaves its test skipped, and the skip is listed below (-rs)
+          for m in ("microsoft/Phi-3-mini-4k-instruct", "mistralai/Mistral-7B-Instruct-v0.2"):
+              try:
+                  s(m, allow_patterns=["tokenizer*", "special_tokens_map.json", "config.json"])
+              except Exception as exc:  # noqa: BLE001
+                  print(f"::warning::{m} tokenizer not fetched: {exc}")
           EOF
       - name: unit tests (no model)
         run: python -m pytest tests -q -m "not model" -rs
