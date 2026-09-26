@@ -13,6 +13,8 @@ Usage: python3 bench/gpu/prep_data.py [--c4 20000] [--wiki 5000] [--langs en,uk,
 from __future__ import annotations
 
 import argparse
+import os
+import sys
 
 from common import DATA, Store, log
 
@@ -171,3 +173,10 @@ def main():
 
 if __name__ == "__main__":
     main()
+    # Every row is already on disk: Store writes, flushes and fsyncs each line. Leave without interpreter
+    # finalization - the streaming loaders of `datasets` keep background threads whose teardown aborts CPython at
+    # exit ("PyGILState_Release: thread state ... must be current", SIGABRT, rc 134), which marked a complete
+    # download as failed (phase B on the L40S, 26.09.2026). An exception in main() still exits non-zero.
+    sys.stdout.flush()
+    sys.stderr.flush()
+    os._exit(0)

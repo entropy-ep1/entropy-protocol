@@ -8,7 +8,9 @@ build/
 dist/
 .venv/
 .DS_Store
-# operational, per operator: the machine ledger carries live IPs; the Azure cap watchers' own output
+# operational, per operator: the machine ledger carries live IPs; the launch, preparation and watcher logs on the
+# operator's side carry the operator's own address (the SSH rule). The machines' run logs are evidence and live under
+# runs_gpu/<machine>/logs.
 bench/gpu/infra/instances.tsv
-bench/gpu/infra/azure_cap_*.log
+bench/gpu/infra/*.log
 node_modules/

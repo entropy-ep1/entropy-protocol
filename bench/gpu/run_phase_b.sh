@@ -10,6 +10,7 @@ source "$HOME/ep.env"; cd "$HOME/ep"
 export PYTHONPATH=$HOME/ep/src
 SEAL=0; [ "${1:-}" = "--seal" ] && { SEAL=1; shift; }
 M=${1:-Qwen/Qwen2.5-7B-Instruct}; N=${2:-512}; S=${M//\//_}; G=bench/gpu; mkdir -p logs
+CAL_AT=2000     # the shared corpus's prompts are C4 rows CAL_AT.. - disjoint from phase A's; the download must reach them
 GPU_GB=$(python3 -c "import torch; print(int(torch.cuda.get_device_properties(0).total_memory / 2**30))" 2>/dev/null || echo 0)
 FP32=1; [ "$GPU_GB" -lt 40 ] && FP32=0          # a 7B in fp32 takes ~30 GB of weights
 stamp() { date -u +%H:%M:%S; }
@@ -22,28 +23,16 @@ run() {
 need() { [ -f "logs/B_$1.ok" ] || { echo "$(stamp) PHASE B STOPPED: $1 failed (logs/B_$1.log)"; exit 1; }; }
 
 run versions   bash -c 'python3 -c "import torch,transformers,platform; print(\"torch\",torch.__version__,\"cuda\",torch.version.cuda,\"cudnn\",torch.backends.cudnn.version(),\"transformers\",transformers.__version__,\"python\",platform.python_version()); print(\"gpu\",torch.cuda.get_device_name(0),round(torch.cuda.get_device_properties(0).total_memory/2**30,1),\"GiB cc\",torch.cuda.get_device_capability(0))"; nvidia-smi --query-gpu=driver_version,name,memory.total --format=csv,noheader; uname -r'
-run data       python3 $G/prep_data.py --c4 $((N + 1200)) --wiki 300 --langs en,uk --only c4,wiki
+run data       python3 $G/prep_data.py --c4 $((CAL_AT + N)) --wiki 300 --langs en,uk --only c4,wiki
 run unit_tests python3 -m pytest tests -q -m "not model"
 run tiny_model python3 -c "from huggingface_hub import snapshot_download as s; s('distilgpt2', allow_patterns=['*.json', '*.safetensors', '*.txt'])"
 run model_tests python3 -m pytest tests -q -m model
 if [ "$SEAL" = 1 ]; then
-  run cal_seal python3 $G/seal_corpus.py --model "$M" --dtype float16 --data c4 --field prompt --offset 2000 --n "$N" \
+  run cal_seal python3 $G/seal_corpus.py --model "$M" --dtype float16 --data c4 --field prompt --offset "$CAL_AT" --n "$N" \
                  --batch 32 --max-new 400 --min-new 300 --mode sealed --name B_cal
   need cal_seal
 fi
-[ -s "$EP_RUNS/$S/B_cal.jsonl" ] || { echo "$(stamp) PHASE B STOPPED: no B_cal.jsonl on this machine"; exit 1; }
-# every configuration this card can run: precision x batch x attention kernel
-CFGS=("float16 1 default" "float16 32 default" "float16 32 eager" "bfloat16 1 default" "bfloat16 32 default")
-[ "$FP32" = 1 ] && CFGS+=("float32 1 default" "float32 32 default")
-for cfg in "${CFGS[@]}"; do
-  set -- $cfg
-  DT=$1; B=$2; A=$3
-  if [ "$A" = eager ]; then
-    run "dump_${DT}_b${B}_eager" python3 $G/calib_dump.py --model "$M" --dtype "$DT" --batch "$B" --attn eager --corpus B_cal
-  else
-    run "dump_${DT}_b${B}" python3 $G/calib_dump.py --model "$M" --dtype "$DT" --batch "$B" --corpus B_cal
-  fi
-done
+# the steps up to the dumps need no shared corpus: a machine without --seal runs them while the first one seals it
 # throughput: batch 64 is new (phase A stopped at 32 and the card was not full)
 run speed python3 $G/speed.py --model "$M" --dtype float16 --batches 1,8,32,64 --tokens 256
 # phase A records (fp16-only table) verified here, including fp32: does a verifier outside the table stay correct?
@@ -58,4 +47,24 @@ done
 # tokenizer and vocabulary, no weights (push the corpus up first: infra/sync.sh runs-up)
 [ -s "$EP_RUNS/$S/A_c4_kgw.jsonl" ] && run kgw_diag python3 bench/diag_kgw_length.py "$EP_RUNS" --model "$M" \
   --tokenizer "$M" --corpus A_c4_kgw --out "$EP_RUNS/$S/diag_kgw_length.json"
+# the shared corpus: sealed here (--seal) or copied from the first machine (infra/sync.sh runs-up; rsync renames the
+# finished file into place, so its presence means it is complete) - wait for it up to three hours
+for i in $(seq 1 180); do
+  [ -s "$EP_RUNS/$S/B_cal.jsonl" ] && break
+  [ "$i" = 1 ] && echo "$(stamp) waiting for B_cal.jsonl"
+  sleep 60
+done
+[ -s "$EP_RUNS/$S/B_cal.jsonl" ] || { echo "$(stamp) PHASE B STOPPED: no B_cal.jsonl on this machine"; exit 1; }
+# every configuration this card can run: precision x batch x attention kernel
+CFGS=("float16 1 default" "float16 32 default" "float16 32 eager" "bfloat16 1 default" "bfloat16 32 default")
+[ "$FP32" = 1 ] && CFGS+=("float32 1 default" "float32 32 default")
+for cfg in "${CFGS[@]}"; do
+  set -- $cfg
+  DT=$1; B=$2; A=$3
+  if [ "$A" = eager ]; then
+    run "dump_${DT}_b${B}_eager" python3 $G/calib_dump.py --model "$M" --dtype "$DT" --batch "$B" --attn eager --corpus B_cal
+  else
+    run "dump_${DT}_b${B}" python3 $G/calib_dump.py --model "$M" --dtype "$DT" --batch "$B" --corpus B_cal
+  fi
+done
 echo "$(stamp) PHASE B DONE (GPU ${GPU_GB} GB, fp32 steps: $([ "$FP32" = 1 ] && echo run || echo skipped))"

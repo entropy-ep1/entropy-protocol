@@ -16,6 +16,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import sys
 import time
 import unicodedata
 
@@ -117,7 +118,12 @@ def main():
     ap.add_argument("--name", required=True)
     a = ap.parse_args()
 
-    items = read_jsonl(DATA / f"{a.data}.jsonl")[a.offset:a.offset + a.n]
+    rows = read_jsonl(DATA / f"{a.data}.jsonl")
+    items = rows[a.offset:a.offset + a.n]
+    if len(items) < a.n:
+        # a short slice used to seal what was there and exit 0: phase B asked for C4 rows 2000-2511 of a 1712-row
+        # download, sealed nothing and reported success (26.09.2026)
+        sys.exit(f"{a.data}.jsonl has {len(rows)} rows; --offset {a.offset} --n {a.n} needs {a.offset + a.n}")
     backend = load_backend(a.model, a.device, a.dtype, a.attn)
     meter = load_backend(a.model, a.device, a.measure_dtype, a.attn) if a.measure_dtype and a.measure_dtype != a.dtype else None
     cal = json.loads(open(a.cal).read()) if a.cal else {}
