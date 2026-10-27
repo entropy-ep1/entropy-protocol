@@ -19,3 +19,6 @@ node_modules/
 bench/results/attested/**/root.key
 bench/results/attested/**/verifier/
 bench/results/attested/**/log.key
+# fuzz campaigns: results.tgz is the evidence; its extracted copy stays local
+bench/results/fuzz/*/work/
+bench/results/fuzz/*/merged/

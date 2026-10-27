@@ -1,4 +1,4 @@
-"""Keys, keyed bitstream and the encrypted log token (spec [0121]-[0124]).
+"""Keys, keyed bitstream and the encrypted log token (ARCHITECTURE §3-4).
 
 Key hierarchy (HKDF-SHA256, domain-separated):
     K                      master secret of the generating party (32 bytes)

@@ -42,7 +42,7 @@ VARIANTS = {                     # name: SealParams overrides
     "i10_k3_w5": dict(interval=10, k=3, high_window=5, selection="interval"),
     "i5_k10_w40_L75": dict(interval=5, k=10, high_window=40, low_share=0.75, selection="interval"),
     "i5_k3_w5_L75": dict(interval=5, k=3, high_window=5, low_share=0.75, selection="interval"),
-    "i10_k10_w1": dict(interval=10, k=10, high_window=1, selection="interval"),   # claim 4: most probable HIGH token
+    "i10_k10_w1": dict(interval=10, k=10, high_window=1, selection="interval"),   # HIGH = the most probable token outside the top-k
     "i5_k1_w3": dict(interval=5, k=1, high_window=3, selection="interval"),       # HIGH = not the first choice
     "i10_k1_w3": dict(interval=10, k=1, high_window=3, selection="interval"),
     "c5_k1_w3_prompt": dict(interval=5, k=1, high_window=3, selection="content", align="prompt"),

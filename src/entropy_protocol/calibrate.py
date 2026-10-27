@@ -1,4 +1,4 @@
-"""Calibration of the verification tolerance (spec [0117]) — measured, not chosen.
+"""Calibration of the verification tolerance (ARCHITECTURE §6a) — measured, not chosen.
 
 Every configuration re-reads each calibration text (BOS + text, one pass). At every position and for both
 predicates the signed margin (value of the token present minus the boundary value) is compared with the
@@ -14,7 +14,7 @@ is at least seal_margin_factor times the largest tolerance of the table.
 
 Space "logit": values are logits, so a margin is a log-probability ratio (log p_tok - log p_boundary); numerical
 noise is then of the same size for the most probable token and for tail tokens, and one tolerance fits both
-predicates. Space "prob": values are probabilities (the embodiment of [0115] as filed).
+predicates. Space "prob": values are probabilities (kept for the records that name it).
 """
 from __future__ import annotations
 

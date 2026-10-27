@@ -1,4 +1,4 @@
-"""Ordinal (rank) predicates and their boundary margins (spec [0114]-[0115]).
+"""Ordinal (rank) predicates and their boundary margins (ARCHITECTURE §5).
 
 rank0 = number of vocabulary tokens with strictly greater probability than the token present.
   LOW  holds iff rank0 == 0          (the model's single most probable choice)

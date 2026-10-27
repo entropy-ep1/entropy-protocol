@@ -169,6 +169,10 @@ def test_unreadable_certificates_and_keys_are_refusals():
     assert amd.verify_chain(der(vcek), der(ask), der(ark), "Genoa", at)
     with pytest.raises(amd.SNPError, match="not a DER certificate"):               # was a bare ValueError
         amd.verify_chain(der(vcek), der(ask)[:-7], der(ark), "Genoa", at)
+    v10 = der(vcek).replace(bytes.fromhex("a003020102"), bytes.fromhex("a00302010a"), 1)   # X.509 version 10: not a
+    assert v10 != der(vcek)                                                                # ValueError in cryptography
+    with pytest.raises(amd.SNPError, match="not a DER certificate"):
+        amd.verify_chain(v10, der(ask), der(ark), "Genoa", at)
     from entropy_protocol.attested import hcl
     report = hcl.parse((run.parent / "capture-20261027T162455Z/r0_hcl_report.bin").read_bytes()).snp
     with pytest.raises(amd.SNPError, match="cannot be read"):                      # a real report, no VCEK

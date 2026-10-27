@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""G4 — verification across inference configurations (spec [0117]), with a per-class calibration table.
+"""G4 — verification across inference configurations (ARCHITECTURE §6a), with a per-class calibration table.
 
 1. Calibrate (entropy_protocol.calibrate): on a corpus of reference generations, every configuration
    (device x precision) re-reads each text; delta = max |margin_cfg - margin_ref| over all positions and both

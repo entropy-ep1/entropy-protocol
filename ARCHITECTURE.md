@@ -1,7 +1,6 @@
-# Entropy Protocol ep1 — architecture of the reference implementation (v0.1.0.dev0, stage 2 + ideal-product work)
+# Entropy Protocol ep1 — architecture of the reference implementation
 
-PRIVATE — do not publish before the covering provisional application is filed. Seed of
-`draft-oliinyk-scitt-generation-records`. Formats: `spec/ep1.cddl`; test vectors: `spec/test-vectors/`.
+Formats: `spec/ep1.cddl`; test vectors: `spec/test-vectors/`.
 
 ## 1. Goal
 Seal AI-generated text at the moment of generation so that
@@ -42,7 +41,7 @@ On the wire every number is an integer: `tol_u`/`cal_u` in micro-units of the to
 - `salt` = 16 random bytes for the public commitment.
 - Token: `"ep1." + base64url(CBOR{v, doc, n, ct})`, ChaCha20-Poly1305, AAD = CBOR{v, doc}.
 
-## 4. Keys (HKDF-SHA256, domain-separated) — spec [0121]-[0124]
+## 4. Keys (HKDF-SHA256, domain-separated)
 `K_bits = KDF(K,"ep1/bits")` · `K_doc = KDF(K,"ep1/doc|"+doc)` · `K_log = KDF(K_doc,"ep1/log")` ·
 `K_ver = KDF(K_doc,"ep1/verifier|"+verifier_id)` · **`K_wm = KDF(K,"ep1/wm")`**.
 
@@ -51,7 +50,7 @@ On the wire every number is an integer: `tol_u`/`cal_u` in micro-units of the to
    HMAC under `K_wm` over the preceding 4 token ids decides whether j is a checkpoint (probability 1/`interval`)
    and which predicate it carries (LOW/HIGH, 1/2 each). A detector recomputes it from the text alone; an edit
    desynchronizes only the positions whose context it touches. `selection="interval"`: every `interval`-th
-   position, predicate from the per-document bitstream `K_bits` (spec [0104]; claim 1 embodiment).
+   position, predicate from the per-document bitstream `K_bits`.
 2. **Enforcement.** `align="prompt"`: the predicate is enforced on the generation distribution (prompt + text).
    `align="free"`: a second cache holds the **verifier's context** (start token + text, no prompt); the predicate
    is enforced there — LOW = the first choice in that context; HIGH = the most probable token under the prompt
@@ -103,12 +102,12 @@ near the difference are read in another context. Canonical generation makes the 
 Measured (alignment audit, 20 texts × 200 tokens each; `bench/align_audit.py`): distilgpt2 — detection match
 96.7 % → **100 %** (678/678), record entries 554/820 → **814/814**, token differences 37 → **0**; Qwen2.5-0.5B chat —
 99.9 % → **100 %** (683/683). Word/Docs autocorrect + CRLF: 40/40 VERIFIED (v3 would have failed 55–80 % of them).
-**Operating points** (`profiles.py`, measured 13.09 on Qwen2.5-0.5B/1.5B): *strong* (the reference) enforces every
+**Operating points** (`profiles.py`, measured on Qwen2.5-0.5B/1.5B): *strong* (the reference) enforces every
 selected checkpoint — GSM8K accuracy 38 % → 3 % (0.5B), 64 % → 11 % (1.5B): a HIGH checkpoint overrules the model where
 it copies a number or a name from the question, which the prompt-free view cannot see. *quality* = guard 0.9 at
 sealing + gate 0.9 at detection — GSM8K and prose quality as unsealed; prose, 200 tokens: 90 % at 1e-6 and 100 % at 1e-4
 (0.5B), 60 % / 97.5 % (1.5B, with the sealing gate as well); maths keeps almost no mark (low entropy). The record is exact
-under either. **Default: quality** (decided 13.09.2026) on the product's surfaces — `entropy seal / detect / serve` and
+under either. **Default: quality** on the product's surfaces — `entropy seal / detect / serve` and
 `gateway.Gateway`; `SealParams()` stays the protocol's reference parameters (strong), which the specification and its
 vectors are written against. A record carries no guard, so records of both points have one form; the detector's gate
 for any sealing parameters is max(gate, guard) (`profiles.detect_gate_for`), and an explicit `--gate 0` is honoured.
@@ -156,7 +155,7 @@ without it keep their bytes (every earlier test vector is unchanged).
   the JS implementation reproduces normalization, blocks and the layer (`spec/test-vectors`: `visible_text`,
   `visible_text_v2`, `record_v4_visible`).
 
-## 6a. Tolerance and calibration (`calibrate.py`) — spec [0115]-[0117]
+## 6a. Tolerance and calibration (`calibrate.py`)
 - **Measured, not chosen**, on a corpus of *sealed* generations (forced tokens put the model where numerical
   noise is larger: Qwen2.5 fp16 0.36 on sealed vs 0.19 on plain text). δ = max |margin_cfg − margin_ref| over the
   positions that can hold a checkpoint (index ≥ `seal.first_checkpoint(params)`: `context` = 4 for content
@@ -304,7 +303,7 @@ loaded lazily on the first call. A failed check is a tool error, not a dead serv
   names each part and gives the exact commands. Trust stays with the reader: the package carries its own keys, so
   the reader compares them with the issuer's published key.
 
-## 7d. Attested sealing and attested detection (`attested/`) — spec [0100]–[0109]
+## 7d. Attested sealing and attested detection (`attested/`)
 The record binds a text to a model's choices, but whoever holds `K` can seal any text (§8, last row). Here the keys,
 the model and the sealing code run inside a confidential VM with a confidential GPU, and every statement carries
 evidence of that, appraised by a credential authority before it certifies the statement key.
@@ -419,13 +418,13 @@ Hypothesis (`tests/test_fuzz.py`); coverage-guided campaigns run with atheris (`
 | Detector holding `K_wm` | can detect and imitate the mark; cannot open records |
 | Different hardware / precision at verification | tolerance → `INDETERMINATE`, never a false `MODIFIED` on identical text |
 | Paraphrase, translation, heavy rewriting | `MODIFIED`; detection signal lost (as for every watermark) |
-| **Issuer holding `K` seals a text its model did not write** | **not prevented by the record alone.** Proof of model origin against the issuer requires attested generation (TEE + RATS evidence) — stage 3. |
+| **Issuer holding `K` seals a text its model did not write** | not prevented by the record alone; prevented when sealing runs attested (§7d): the statement key is certified only for a confidential VM running the declared model and code. Excluding that VM's operator as well needs a locked, measured image |
 
 ## 9. Honest status
 | Component | Status |
 |---|---|
 | Canonical form v5 (deletions before NFC, NFC pinned to Unicode 14.0, typographic folding, script sentence ends), content layer with ordered alignment, model layer, verdicts | implemented, tested; v3 and v4 records verify |
-| ep1 CBOR profile in both implementations; 26 fuzz targets (properties, differential) with seed corpora from real data | implemented; replayed and Hypothesis-driven in every test run |
+| ep1 CBOR profile in both implementations; 26 fuzz targets (properties, differential) with seed corpora from real data | implemented; replayed and Hypothesis-driven in every test run, ClusterFuzzLite on every pull request, coverage-guided campaigns with atheris |
 | Canonical generation (token-identical re-read), confidence gate and guard, unsatisfiable-position exclusion | implemented, tested; alignment audit 100 % on distilgpt2 and Qwen2.5-0.5B |
 | Paragraph-start readings for localized detection (single and batched) | implemented, tested |
 | Sealing gateway (`entropy serve`, OpenAI-compatible) and presentation typography | implemented, tested (local, internal) |
@@ -434,7 +433,7 @@ Hypothesis (`tests/test_fuzz.py`); coverage-guided campaigns run with atheris (`
 | Content-keyed selection, verifier-context enforcement, record-free detection with exact p-value | implemented, tested; gate G10 |
 | COSE statements (generation / verification / detection), local RFC 9162 log with RFC 9942 receipts | implemented, tested; test vectors |
 | SCRAPI Transparency Service and client | implemented, tested (local); interop with third-party services pending |
-| Second implementation (JavaScript, model-free parts) | 72/72 test-vector checks; CI regenerates the vectors with Python and runs both |
+| Second implementation (JavaScript, model-free parts) | 130/130 test-vector checks; CI regenerates the vectors with Python and runs both |
 | Record delivered by public key: HPKE (RFC 9180, vectors A.1.1/A.2.1) + COSE-HPKE integrated encryption (draft-27) | implemented, tested; second implementation opens it |
 | RFC 3161 time stamps over statements (`entropy timestamp`; imprint checked, the authority's chain is the reader's trust decision) | implemented, tested |
 | TEE-attested sealing and detection (§7d) | implemented; run end to end on an Azure confidential H100 (`bench/results/attested/`): two keys certified after 48 checks each, 20 texts, 20 packages checking offline |
@@ -446,37 +445,3 @@ Known behaviour to measure at scale: on a small base model that falls into blank
 unsealed texts), whether content-keyed enforcement breaks the loop depends on the key (0–56 % of sealed texts
 degenerate across 8 keys; interval selection breaks loops for every key). Evaluation corpora therefore rotate
 over ≥ 5 keys; a key-independent loop guard is designed but not adopted before 7–14B measurements.
-
-## 10. New matter for the provisional (do not publish before filing)
-Canonical sealing (canonical text, context-free, char anchors, keep holding checkpoints with margin); the
-two-layer record with "identical canonical text is never MODIFIED"; ordered block alignment and deletion-point
-localization; logit-space tolerance with a per-class calibration table, seal-time margin and verifier-class lookup;
-calibration on sealed text; generation in any precision with measurement in a certified precision; canonical
-form v3 (invisible characters, embedded variation-selector payloads); **content-keyed checkpoint selection with
-record-free detection whose null is exactly Binomial(n, ½) (k = 1 complementary predicates, context
-de-duplication, key-independent near-tie exclusion)**; **enforcement in the verifier's context via a second,
-prompt-free cache (LOW = verifier-context first choice; HIGH = best prompt-distribution token outside the
-verifier-context top-k with the calibrated margin)**; salted commitment over the record plaintext registered as a
-COSE Hash Envelope before release; verification and detection statements referencing the generation statement;
-both enforcement contexts stacked in one batch (weights read once per step); generation and record measurement in
-different precisions; detection against many keys from one model pass (key-independent positions, ranks and
-exclusion); model identity over exactly the loader's files.
-Added in the ideal-product work (stage 2+): **key-independent confidence gate** read in the verifier's view, with
-record entries restricted to positions below the gate in the record's own measurement pass; **canonical form v4**
-(typographic folding as the inverse of word-processor autocorrect; sentence blocks by scripts' full stops);
-**canonical generation** — generating exactly the token sequence the verifier re-reads from the canonical text:
-bans of every character the canonical form changes, a UTF-8 state machine with forbidden-prefix and continuation
-rules, the partial-character ban when the verifier's first choice is banned, the line-end whitespace rule, the
-first token taken in the verifier's view as the verifier reads it after stripping, join checks by re-tokenization
-with probe continuations and their fallbacks, HIGH exclusion of the first choice's byte prefixes and
-whitespace-only extensions; **detector exclusion of positions where the sealer could not satisfy LOW** (read from
-text and model, preserving the exact Binomial null); **paragraph-start readings** for localized detection with a
-Bonferroni correction across readings; **presentation typography by fold-inverse substitution** so a localized,
-typeset text verifies as the canonical sealed one; a **sealing gateway** returning custody tokens with each
-completion. Added 14.09: a **visible-text layer** — the record also binds the text as a reader sees it once its
-Markdown is rendered (renderer on the sealing side only; the verifier normalizes the candidate literally: line-start
-list markers, whitespace, line joins), with its own blocks located per visible line, giving the verdict
-`VERIFIED_TEXT` for a rendered copy while a changed link target in a source stays `MODIFIED`; and a **memory budget
-with self-re-execution** for a long-running sealing service on unified-memory accelerators; an **evidence package** whose offline check re-establishes the chain text → verdict → generation statement → log → time stamp without any secret, and a **verifier exposed as assistant tools** that never hands out a key or a record. Added 15.09: the
-**tolerance measured only over positions that can hold a checkpoint** (the table carries its first measured
-position; sealing and detection refuse a table that does not cover their first checkpoint).

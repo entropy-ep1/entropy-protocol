@@ -19,6 +19,10 @@ from cryptography.x509.oid import NameOID
 STATEMENT_EKU = x509.ObjectIdentifier("1.3.6.1.5.5.7.3.36")    # id-kp-documentSigning (RFC 9336)
 
 
+# What reading a certificate, CSR or key out of evidence can raise: besides ValueError, an unknown key algorithm and an
+# invalid X.509 version, neither of which is a ValueError. Every verifier here turns them into its own refusal.
+UNREADABLE = (ValueError, TypeError, UnsupportedAlgorithm, x509.InvalidVersion)
+
 class PKIError(ValueError):
     """A certificate does not chain to the root, or is not valid for its use."""
 
@@ -64,13 +68,13 @@ def check_leaf(leaf_der: bytes, root: x509.Certificate, at: dt.datetime, eku: x5
     """The leaf is signed by the root, valid at ``at``, an end entity with ``eku``; returns its Ed25519 key."""
     try:
         leaf = x509.load_der_x509_certificate(leaf_der)
-    except (ValueError, TypeError) as exc:
+    except UNREADABLE as exc:
         raise PKIError(f"leaf is not a certificate: {exc}") from exc
     if leaf.issuer != root.subject:
         raise PKIError("leaf not issued by this root")
     try:
         leaf.verify_directly_issued_by(root)
-    except (ValueError, TypeError, InvalidSignature, UnsupportedAlgorithm) as exc:
+    except (*UNREADABLE, InvalidSignature) as exc:
         raise PKIError("leaf signature does not verify under the root") from exc
     if not leaf.not_valid_before_utc <= at <= leaf.not_valid_after_utc:
         raise PKIError(f"leaf not valid at {at.isoformat()}")
@@ -78,7 +82,7 @@ def check_leaf(leaf_der: bytes, root: x509.Certificate, at: dt.datetime, eku: x5
         bc = leaf.extensions.get_extension_for_class(x509.BasicConstraints).value
         ekus = leaf.extensions.get_extension_for_class(x509.ExtendedKeyUsage).value
         key = leaf.public_key()
-    except (ValueError, x509.ExtensionNotFound, UnsupportedAlgorithm) as exc:
+    except (*UNREADABLE, x509.ExtensionNotFound) as exc:
         raise PKIError(f"leaf lacks what an end-entity certificate of this authority carries: {exc}") from exc
     if bc.ca:
         raise PKIError("leaf is a CA certificate")
@@ -103,7 +107,7 @@ def read_csr(csr_der: bytes) -> tuple[Ed25519PublicKey, str]:
         csr = x509.load_der_x509_csr(csr_der)
         valid = csr.is_signature_valid
         key = csr.public_key()
-    except (ValueError, TypeError, UnsupportedAlgorithm) as exc:
+    except UNREADABLE as exc:
         raise PKIError(f"not a readable CSR: {exc}") from exc
     if not valid:
         raise PKIError("CSR signature does not verify (no proof of possession)")

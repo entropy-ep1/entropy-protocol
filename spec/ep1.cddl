@@ -1,5 +1,4 @@
 ; Entropy Protocol ep1 — data formats (CDDL, RFC 8610). Reference implementation: entropy_protocol.
-; PRIVATE until the covering provisional application is filed.
 ; All CBOR uses deterministic encoding (RFC 8949 section 4.2.1). No floating point anywhere: tolerances are
 ; integer micro-units of their space, fractions are per-mille, p-values follow exactly from the counts.
 
