@@ -1,8 +1,5 @@
 # Patents
 
-> **DRAFT — to be confirmed by the authors before publication.** Wording follows the decision of 11.09.2026:
-> royalty-free for implementations of the specification.
-
 The authors of the Entropy Protocol have filed patent applications covering it, including U.S. Patent Application
 No. 19/795,862 and U.S. Provisional Application No. 64/185,147.
 
