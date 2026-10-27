@@ -1,0 +1,233 @@
+{
+ "ok": true,
+ "checks": [
+  {
+   "name": "attestation: authority root",
+   "ok": null,
+   "detail": "Entropy Protocol reference authority 20261027T172258Z, SHA-256 bfb434b109665e5af203334c42153d70c18e78733f3f34a74feaf8f3a9aa4618 - compare with the fingerprint the authority publishes"
+  },
+  {
+   "name": "attestation (generation): result signed by the authority",
+   "ok": true,
+   "detail": "issued 2026-10-27T17:37:19+00:00, status 2, submods ['cpu', 'gpu0', 'vtpm']"
+  },
+  {
+   "name": "attestation (generation): result affirming",
+   "ok": true,
+   "detail": "failed checks: none"
+  },
+  {
+   "name": "attestation (generation): result is for this kind of statement",
+   "ok": true,
+   "detail": "ep1-statement-key"
+  },
+  {
+   "name": "attestation (generation): statement names this result",
+   "ok": true,
+   "detail": "protected header ep1-ear = SHA-256 of the result"
+  },
+  {
+   "name": "attestation (generation): certificate of the authority for the signing key",
+   "ok": true,
+   "detail": "CN=urn:ep1:sealer:azure-cgpu:20261027T172258Z/seal"
+  },
+  {
+   "name": "attestation (generation): result affirms this key",
+   "ok": true,
+   "detail": "ep1 key = SHA-256 of the certified key"
+  },
+  {
+   "name": "attestation (generation): result's nonce is the request's handle",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "attestation (generation): evidence appraised again offline",
+   "ok": true,
+   "detail": "47 checks, failed: none; not performed: none"
+  },
+  {
+   "name": "attestation (generation): the result's identities are the evidence's",
+   "ok": true,
+   "detail": "binding a4c70533839cce7a…, weights fd024e4fed1dfb65…, code 17e2ea6481dfc5f4…"
+  },
+  {
+   "name": "attestation (generation): the request's key is the certified key",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "attestation (detection): result signed by the authority",
+   "ok": true,
+   "detail": "issued 2026-10-27T17:37:33+00:00, status 2, submods ['cpu', 'gpu0', 'vtpm']"
+  },
+  {
+   "name": "attestation (detection): result affirming",
+   "ok": true,
+   "detail": "failed checks: none"
+  },
+  {
+   "name": "attestation (detection): result is for this kind of statement",
+   "ok": true,
+   "detail": "ep1-detection-key"
+  },
+  {
+   "name": "attestation (detection): statement names this result",
+   "ok": true,
+   "detail": "protected header ep1-ear = SHA-256 of the result"
+  },
+  {
+   "name": "attestation (detection): certificate of the authority for the signing key",
+   "ok": true,
+   "detail": "CN=urn:ep1:sealer:azure-cgpu:20261027T172258Z/detect"
+  },
+  {
+   "name": "attestation (detection): result affirms this key",
+   "ok": true,
+   "detail": "ep1 key = SHA-256 of the certified key"
+  },
+  {
+   "name": "attestation (detection): result's nonce is the request's handle",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "attestation (detection): evidence appraised again offline",
+   "ok": true,
+   "detail": "47 checks, failed: none; not performed: none"
+  },
+  {
+   "name": "attestation (detection): the result's identities are the evidence's",
+   "ok": true,
+   "detail": "binding b71b7404003d5528…, weights fd024e4fed1dfb65…, code 17e2ea6481dfc5f4…"
+  },
+  {
+   "name": "attestation (detection): the request's key is the certified key",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "generation statement signature",
+   "ok": true,
+   "detail": "issuer 'urn:ep1:sealer:azure-cgpu:20261027T172258Z/seal', subject 'GnVZ17JlRIyPsG-Z', key 7922ebee94b181ed… (certified on attested hardware)"
+  },
+  {
+   "name": "verification statement signature",
+   "ok": true,
+   "detail": "issuer 'urn:ep1:verifier:reference-20261027T172258Z', subject 'GnVZ17JlRIyPsG-Z', key 5878c4b40fa03473…"
+  },
+  {
+   "name": "detection statement signature",
+   "ok": true,
+   "detail": "issuer 'urn:ep1:sealer:azure-cgpu:20261027T172258Z/detect', subject '3d961f164dd33f1563641b92428cf1375e27b5587c91853e88a8985f441e2528', key 60f0dc6f5e6f440d… (certified on attested hardware)"
+  },
+  {
+   "name": "the verdict is about this text",
+   "ok": true,
+   "detail": "canonical form ep1-canon/v4:nfc+del-cr-bom-zw-shy+del-vs-runs+nbsp+typo+rstrip-lines+strip;seg2, digest 3d961f164dd33f15…"
+  },
+  {
+   "name": "the detection is about this text",
+   "ok": true,
+   "detail": "ep1-wm/k1-i5-c4-g900"
+  },
+  {
+   "name": "the verdict names this generation statement",
+   "ok": true,
+   "detail": "reference = SHA-256 of the logged statement"
+  },
+  {
+   "name": "both statements speak about the same document",
+   "ok": true,
+   "detail": "GnVZ17JlRIyPsG-Z"
+  },
+  {
+   "name": "the verifier read with the attested model",
+   "ok": true,
+   "detail": "weights fd024e4fed1dfb65…, tokenizer f884026e05f6dfff…"
+  },
+  {
+   "name": "the detector read with the attested model",
+   "ok": true,
+   "detail": "weights fd024e4fed1dfb65…, tokenizer f884026e05f6dfff…"
+  },
+  {
+   "name": "generation receipt: included in the log",
+   "ok": true,
+   "detail": "leaf 9 of 10, root c873b8d325d0769f…"
+  },
+  {
+   "name": "verification receipt: included in the log",
+   "ok": true,
+   "detail": "leaf 10 of 11, root ffa6b100ae67327e…"
+  },
+  {
+   "name": "detection receipt: included in the log",
+   "ok": true,
+   "detail": "leaf 11 of 12, root 63772ba835890146…"
+  },
+  {
+   "name": "generation time stamp: imprint",
+   "ok": true,
+   "detail": "20261027174403Z, serial 218166406312874885648959219148384306117, policy 2.16.840.1.114412.7.1"
+  },
+  {
+   "name": "generation time stamp: authority signature",
+   "ok": null,
+   "detail": "openssl ts -verify -in <token.tsr> -data <stamped bytes> -CAfile <authority CA>"
+  },
+  {
+   "name": "verification time stamp: imprint",
+   "ok": true,
+   "detail": "20261027174403Z, serial 143242573366333145078161639257569676682, policy 2.16.840.1.114412.7.1"
+  },
+  {
+   "name": "verification time stamp: authority signature",
+   "ok": null,
+   "detail": "openssl ts -verify -in <token.tsr> -data <stamped bytes> -CAfile <authority CA>"
+  },
+  {
+   "name": "detection time stamp: imprint",
+   "ok": true,
+   "detail": "20261027174403Z, serial 92885091285945458207318955463772375726, policy 2.16.840.1.114412.7.1"
+  },
+  {
+   "name": "detection time stamp: authority signature",
+   "ok": null,
+   "detail": "openssl ts -verify -in <token.tsr> -data <stamped bytes> -CAfile <authority CA>"
+  },
+  {
+   "name": "the text re-read with the model",
+   "ok": null,
+   "detail": "not part of an offline check: run `entropy verify` with the model and the record (see README.md)"
+  }
+ ],
+ "summary": {
+  "doc": "GnVZ17JlRIyPsG-Z",
+  "verdict": "VERIFIED",
+  "counts": [
+   12,
+   0,
+   0,
+   12
+  ],
+  "detected": false,
+  "statements": [
+   "det",
+   "gen",
+   "ver"
+  ],
+  "receipts": [
+   "det",
+   "gen",
+   "ver"
+  ],
+  "time_stamps": [
+   "det",
+   "gen",
+   "ver"
+  ],
+  "text_chars": 1153,
+  "note": "sealed in an Azure confidential VM with a confidential H100; see att"
+ }
+}

@@ -1,0 +1,65 @@
+{
+ "authority": "http://timestamp.digicert.com",
+ "fetched_at": "20261027T192443Z",
+ "replies": [
+  {
+   "k": 0,
+   "name": "5aWyrqFNxAxJwkXE-generation",
+   "http": 200,
+   "request_sha256": "b25e80ac5b20b195b16b53ad246b8de2e7fafafd0e3cdcd55b9ccceb90d8f8c6",
+   "reply_sha256": "932e16017a4a938de24ea8360cdd11be17074b2dfb8a0bbca591890bad0e0722",
+   "reply_bytes": 6014,
+   "outcome": {
+    "version": 1,
+    "policy": "2.16.840.1.114412.7.1",
+    "hash": "sha-256",
+    "imprint": "5eea0cf6b76a8bb12a9d0ae6b44997cae04ddbdaf0737ba979e03f2709ca4de6",
+    "serial": 163726998672941775431315600361992490780,
+    "gen_time": "20261027192443Z"
+   }
+  },
+  {
+   "k": 1,
+   "name": "7-wnbxDvm0roRTI4-generation",
+   "http": 200,
+   "request_sha256": "1c0a296a0dedfbd21f7c1e6aa73ec7aea884b25cbf8f2ccad649a6f4da765f51",
+   "reply_sha256": "6b863e5bfc9d7384fd5812c88a15968bf40f68831d60f0a304c9750c1da9e4fe",
+   "reply_bytes": 6015,
+   "outcome": {
+    "version": 1,
+    "policy": "2.16.840.1.114412.7.1",
+    "hash": "sha-256",
+    "imprint": "5651fe7e46c398ee1c2b4816225dd7abd3b2ad4fb7fecb63e49c34a8e2de42ee",
+    "serial": 276146721296944179862981727413048265043,
+    "gen_time": "20261027192443Z"
+   }
+  },
+  {
+   "k": 2,
+   "name": "8MzNqZDD035JDvk_-generation",
+   "http": 200,
+   "request_sha256": "3413d6f6437fc7c39d88d09decbdd8398a6104e60adb7093c9098fba103d5244",
+   "reply_sha256": "7bd18c29f2363167280d942e7ab39aa86920e3b354b0a7c4029a1eaedcc4ea82",
+   "reply_bytes": 1089,
+   "outcome": {
+    "version": 1,
+    "policy": "2.16.840.1.114412.7.1",
+    "hash": "sha-256",
+    "imprint": "02dbbc53686cf5d236c787b87ac2e05f53e908d17df3bdbdffcd5b7f567adf75",
+    "serial": 12898852500409523034057983687045704119,
+    "gen_time": "20261027192443Z"
+   }
+  },
+  {
+   "k": 3,
+   "name": "short-imprint",
+   "http": 400,
+   "request_sha256": "8c4f508e06ed2d4875da8bb4264aebe6a515f0164273f0dd0a7dc043086fce3c",
+   "reply_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "reply_bytes": 0,
+   "outcome": {
+    "refused": "not a DER TimeStampResp"
+   }
+  }
+ ]
+}

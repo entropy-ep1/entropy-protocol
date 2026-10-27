@@ -21,7 +21,6 @@ from __future__ import annotations
 import hashlib
 import time
 
-import cbor2
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey, Ed25519PublicKey
 
 from . import ENGINE, cose, crypto
@@ -55,13 +54,15 @@ def _claims(iss: str, sub: str, iat: int | None) -> dict:
 
 
 def generation_statement(key: bytes, token: str, signer: Ed25519PrivateKey, issuer: str,
-                         iat: int | None = None) -> tuple[bytes, dict]:
-    """(Signed Statement, commitment). ``key`` opens the record: the custody key K_log or a verifier key."""
+                         iat: int | None = None, extra: dict | None = None) -> tuple[bytes, dict]:
+    """(Signed Statement, commitment). ``key`` opens the record: the custody key K_log or a verifier key.
+    ``extra``: further protected header parameters - in an attested environment the key's certificate (x5chain)
+    and the digest of the attestation result (ARCHITECTURE §7d)."""
     doc_id = crypto.token_doc_id(token)
     c = commitment(crypto.decrypt_token(key, token), doc_id)
     protected = {cose.ALG: cose.ED25519, cose.KID: cose.kid_of(signer.public_key()),
                  cose.CWT_CLAIMS: _claims(issuer, doc_id, iat), cose.TYP: TYP_GENERATION,
-                 cose.PAYLOAD_HASH_ALG: cose.SHA256, cose.PREIMAGE_CONTENT_TYPE: CT_COMMITMENT}
+                 cose.PAYLOAD_HASH_ALG: cose.SHA256, cose.PREIMAGE_CONTENT_TYPE: CT_COMMITMENT, **(extra or {})}
     return cose.sign1(protected, sha256(cose.dumps(c)), signer), c
 
 
@@ -86,9 +87,9 @@ def statement_ref(statement: bytes) -> bytes:
 
 
 def _sign_result(body: dict, signer: Ed25519PrivateKey, issuer: str, sub: str, typ: str, ct: str,
-                 envelope: bool, iat: int | None) -> bytes:
+                 envelope: bool, iat: int | None, extra: dict | None = None) -> bytes:
     protected = {cose.ALG: cose.ED25519, cose.KID: cose.kid_of(signer.public_key()),
-                 cose.CWT_CLAIMS: _claims(issuer, sub, iat), cose.TYP: typ}
+                 cose.CWT_CLAIMS: _claims(issuer, sub, iat), cose.TYP: typ, **(extra or {})}
     if envelope:
         protected.update({cose.PAYLOAD_HASH_ALG: cose.SHA256, cose.PREIMAGE_CONTENT_TYPE: ct})
         return cose.sign1(protected, sha256(cose.dumps(body)), signer)
@@ -97,7 +98,7 @@ def _sign_result(body: dict, signer: Ed25519PrivateKey, issuer: str, sub: str, t
 
 def verification_statement(result, candidate: str, signer: Ed25519PrivateKey, verifier_id: str, *,
                            generation: bytes | None = None, envelope: bool = False,
-                           iat: int | None = None) -> tuple[bytes, dict]:
+                           iat: int | None = None, extra: dict | None = None) -> tuple[bytes, dict]:
     """(Signed Statement, payload map) for a ``verify.Result``. No text, no per-position ranks or probabilities."""
     d = result.decoding or {}
     body = {"v": 1, "verdict": result.verdict, "doc": result.doc_id,
@@ -113,13 +114,15 @@ def verification_statement(result, candidate: str, signer: Ed25519PrivateKey, ve
                     "calibrated": result.calibrated},
             "nonce": result.nonce, "engine": result.engine}
     return _sign_result(body, signer, verifier_id, result.doc_id or "", TYP_VERIFICATION, CT_VERIFICATION,
-                        envelope, iat), body
+                        envelope, iat, extra), body
 
 
 def detection_statement(detection, candidate: str, backend, signer: Ed25519PrivateKey, detector_id: str, *,
-                        envelope: bool = False, iat: int | None = None) -> tuple[bytes, dict]:
+                        envelope: bool = False, iat: int | None = None,
+                        extra: dict | None = None) -> tuple[bytes, dict]:
     """(Signed Statement, payload map) for a ``detect.Detection``."""
-    cand = sha256(canonicalize(candidate, getattr(detection, "canon", CANON_ID)).encode())
+    canon = getattr(detection, "canon", CANON_ID)
+    cand = sha256(canonicalize(candidate, canon).encode())
     # no floating point on the wire: the p-value is exactly binomial_tail(checkpoints, matched); the threshold
     # travels as its decimal exponent (alpha = 10^-alpha_exp)
     import math
@@ -128,8 +131,9 @@ def detection_statement(detection, candidate: str, backend, signer: Ed25519Priva
             "technique": f"ep1-wm/k{detection.k}-i{detection.interval}-c{detection.context}"
                          + (f"-g{round(detection.gate * 1000)}" if detection.gate else ""), "cand": cand,
             "wts": bytes.fromhex(backend.weights_digest), "tok": bytes.fromhex(backend.tokenizer_digest),
-            "engine": ENGINE}
-    return _sign_result(body, signer, detector_id, cand.hex(), TYP_DETECTION, CT_DETECTION, envelope, iat), body
+            "engine": ENGINE, "canon": canon}
+    return _sign_result(body, signer, detector_id, cand.hex(), TYP_DETECTION, CT_DETECTION, envelope, iat,
+                        extra), body
 
 
 def read_statement(statement: bytes, issuer_key: Ed25519PublicKey, body: dict | None = None) -> dict:
@@ -141,4 +145,4 @@ def read_statement(statement: bytes, issuer_key: Ed25519PublicKey, body: dict | 
         if sha256(cose.dumps(body)) != payload:
             raise cose.COSEError("payload map does not match the envelope")
         return {"claims": prot[cose.CWT_CLAIMS], "typ": prot.get(cose.TYP), "payload": body}
-    return {"claims": prot[cose.CWT_CLAIMS], "typ": prot.get(cose.TYP), "payload": cbor2.loads(payload)}
+    return {"claims": prot[cose.CWT_CLAIMS], "typ": prot.get(cose.TYP), "payload": cose.loads(payload)}

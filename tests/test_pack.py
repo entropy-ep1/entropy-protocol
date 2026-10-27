@@ -113,6 +113,28 @@ def test_request_and_token_reading():
         ts3161.token_from_response(rejected)
 
 
+def test_token_reader_takes_der_only_and_in_linear_time():
+    tok = _tstinfo(hashlib.sha256(b"statement").digest())
+    for bad, why in [(tok[:-1], "runs past its parent"), (b"\x30\x80" + tok[2:], "not definite"),
+                     (b"\x1f\x01\x00", "multi-octet"), (b"\x30" * 2, "runs past"),
+                     (b"\x30\x02\x30\x05", "runs past its parent")]:              # a child longer than its parent
+        with pytest.raises(ValueError, match=why):
+            ts3161.token_info(bad)
+    deep = b"\x05\x00"
+    for _ in range(40):
+        deep = ts3161._tlv(0x30, deep)
+    with pytest.raises(ValueError, match="too deep"):
+        ts3161.token_info(deep)
+    # a campaign input that took 13 s when children could outrun their parents (fuzz/corpus/timestamp/finding-*)
+    import time
+    from pathlib import Path
+    for f in Path(__file__).resolve().parents[1].glob("fuzz/corpus/timestamp/finding-*"):
+        t0 = time.monotonic()
+        with pytest.raises(ValueError):
+            ts3161.token_info(f.read_bytes())
+        assert time.monotonic() - t0 < 1.0
+
+
 @pytest.mark.model
 def test_the_whole_chain_from_sealing_to_the_package(tmp_path):
     pytest.importorskip("torch")

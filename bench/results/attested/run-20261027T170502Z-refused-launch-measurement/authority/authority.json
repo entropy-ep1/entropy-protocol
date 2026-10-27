@@ -1,0 +1,8 @@
+{
+ "rrp_id": "urn:ep1:authority:reference-20261027T170502Z",
+ "name": "Entropy Protocol reference authority 20261027T170502Z",
+ "verifier_id": [
+  "https://github.com/entropy-ep1/entropy-protocol",
+  "entropy-protocol/0.1.0.dev0"
+ ]
+}

@@ -5,6 +5,7 @@
 // delivered by public key (COSE-HPKE integrated encryption, draft-ietf-cose-hpke-27).
 // PRIVATE until the covering provisional application is filed.
 import crypto from "node:crypto";
+import { assigned14 } from "./unicode14.mjs";
 
 // ------------------------------------------------------------------ CBOR (RFC 8949), deterministic encoding
 export class Tag { constructor(tag, value) { this.tag = tag; this.value = value; } }
@@ -68,53 +69,74 @@ export function encode(v) {
   throw new Error(`cannot encode ${typeof v}`);
 }
 
+// Strict where the reference (cbor2) is strict and bounded where untrusted input could make it loop: a byte past the
+// end is an error, not a zero; an array or map may not declare more items than there are bytes left (each item takes
+// at least one); text must be valid UTF-8. (Differential fuzzing against the reference, 27.10.2026: a few bytes
+// declaring a 2^60-item array kept the old decoder reading zeros past the end; ill-formed UTF-8 was replaced, not
+// refused.)
+const UTF8 = new TextDecoder("utf-8", { fatal: true });
 export function decode(buf) {
   let i = 0;
+  const need = (k) => { if (i + k > buf.length) throw new Error("truncated CBOR"); };
+  const short = () => { throw new Error("integer or length not in its shortest form"); };
   const readN = (ai) => {
     if (ai < 24) return ai;
-    if (ai === 24) return buf[i++];
-    if (ai === 25) { const n = buf.readUInt16BE(i); i += 2; return n; }
-    if (ai === 26) { const n = buf.readUInt32BE(i); i += 4; return n; }
-    if (ai === 27) { const n = buf.readBigUInt64BE(i); i += 8; return n <= BigInt(Number.MAX_SAFE_INTEGER) ? Number(n) : n; }
+    if (ai === 24) { need(1); const n = buf[i++]; if (n < 24) short(); return n; }
+    if (ai === 25) { need(2); const n = buf.readUInt16BE(i); i += 2; if (n < 0x100) short(); return n; }
+    if (ai === 26) { need(4); const n = buf.readUInt32BE(i); i += 4; if (n < 0x10000) short(); return n; }
+    if (ai === 27) {
+      need(8); const n = buf.readBigUInt64BE(i); i += 8; if (n < 0x100000000n) short();
+      return n <= BigInt(Number.MAX_SAFE_INTEGER) ? Number(n) : n;
+    }
     throw new Error("indefinite lengths are not deterministic CBOR");
   };
-  const item = () => {
+  const count = (n) => {                                        // a declared length checked against what is left
+    if (typeof n === "bigint" || n > buf.length - i) throw new Error("CBOR length beyond the input");
+    return n;
+  };
+  // the ep1 CBOR profile (cose.py check_profile): tags 16 and 18 only, false/true/null only, no floating point,
+  // at most 64 levels of nesting
+  const item = (depth) => {
+    if (depth > 64) throw new Error("CBOR nested too deeply");
+    need(1);
     const ib = buf[i++], major = ib >> 5, ai = ib & 31;
     if (major === 7) {
-      if (ai === 20) return false; if (ai === 21) return true; if (ai === 22) return null; if (ai === 23) return undefined;
-      if (ai === 25) { const h = buf.readUInt16BE(i); i += 2; return half(h); }
-      if (ai === 26) { const f = buf.readFloatBE(i); i += 4; return f; }
-      if (ai === 27) { const f = buf.readDoubleBE(i); i += 8; return f; }
-      throw new Error("unsupported simple value");
+      if (ai === 20) return false; if (ai === 21) return true; if (ai === 22) return null;
+      throw new Error("simple value or floating point outside the ep1 profile");
     }
     const n = readN(ai);
     switch (major) {
       case 0: return n;
       case 1: return typeof n === "bigint" ? -1n - n : -1 - n;
-      case 2: { const b = buf.subarray(i, i + n); i += n; return Buffer.from(b); }
-      case 3: { const s = buf.toString("utf8", i, i + n); i += n; return s; }
-      case 4: { const a = []; for (let k = 0; k < n; k++) a.push(item()); return a; }
-      case 5: { const m = new Map(); for (let k = 0; k < n; k++) { const key = item(); m.set(key, item()); } return m; }
-      case 6: return new Tag(n, item());
+      case 2: { count(n); const b = buf.subarray(i, i + n); i += n; return Buffer.from(b); }
+      case 3: { count(n); const s = UTF8.decode(buf.subarray(i, i + n)); i += n; return s; }
+      case 4: { count(n); const a = []; for (let k = 0; k < n; k++) a.push(item(depth + 1)); return a; }
+      case 5: {
+        count(n); const m = new Map(), seen = new Set();
+        for (let k = 0; k < n; k++) {
+          if (i >= buf.length || buf[i] >> 5 > 3) throw new Error("map key that is not an integer, text or byte string");
+          const a = i, key = item(depth + 1), raw = buf.toString("hex", a, i);
+          if (seen.has(raw)) throw new Error("duplicate map key");
+          seen.add(raw); m.set(key, item(depth + 1));
+        }
+        return m;
+      }
+      case 6: if (n !== 16 && n !== 18) throw new Error(`tag ${n} outside the ep1 profile`); return new Tag(n, item(depth + 1));
     }
     throw new Error("bad CBOR");
   };
-  const out = item();
+  const out = item(0);
   if (i !== buf.length) throw new Error("trailing bytes");
   return out;
 }
 
-function half(h) {
-  const s = h & 0x8000 ? -1 : 1, e = (h >> 10) & 0x1f, m = h & 0x3ff;
-  if (e === 0) return s * m * 2 ** -24;
-  if (e === 31) return m ? NaN : s * Infinity;
-  return s * (1 + m / 1024) * 2 ** (e - 15);
-}
 
 // ------------------------------------------------------------------ canonical form v3
 export const CANON_V3 = "ep1-canon/v3:nfc+del-cr-bom-zw-shy+del-vs-runs+nbsp+rstrip-lines+strip";
 export const CANON_V4 = "ep1-canon/v4:nfc+del-cr-bom-zw-shy+del-vs-runs+nbsp+typo+rstrip-lines+strip;seg2";
-export const CANON_ID = CANON_V4;                              // new records; records name their version
+// v5: the deletions before NFC, so the form is idempotent (see canon.py)
+export const CANON_V5 = "ep1-canon/v5:del-cr-bom-zw-shy+del-vs-runs+nfc-u14+nbsp+typo+rstrip-lines+strip;seg2";
+export const CANON_ID = CANON_V5;                              // new records; records name their version
 const FOLD = new Map([[0x201c, 0x22], [0x201d, 0x22], [0x201e, 0x22], [0x201f, 0x22], [0xab, 0x22], [0xbb, 0x22],
   [0x2018, 0x27], [0x2019, 0x27], [0x201a, 0x27], [0x201b, 0x27], [0x2bc, 0x27],
   [0x2010, 0x2d], [0x2011, 0x2d], [0x2012, 0x2d], [0x2013, 0x2d], [0x2212, 0x2d]]);
@@ -128,7 +150,77 @@ const WS = new Set([0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x1c, 0x1d, 0x1e, 0x1f, 0x20, 
   0x2000, 0x2001, 0x2002, 0x2003, 0x2004, 0x2005, 0x2006, 0x2007, 0x2008, 0x2009, 0x200a, 0x2028, 0x2029,
   0x202f, 0x205f, 0x3000]);         // Python str.isspace() for the code points that can reach step 6
 
+// a string from code points without spreading them into one call (that overflows the stack on long texts)
+const fromCodePoints = (cps) => {
+  let out = "";
+  for (let k = 0; k < cps.length; k += 8192) out += String.fromCodePoint(...cps.slice(k, k + 8192));
+  return out;
+};
+
+function deletions(cps) {                                     // v5 steps 1-2, on the source as given
+  const kept = [];
+  for (let k = 0; k < cps.length;) {
+    const c = cps[k];
+    if (c === 0xfeff) {
+      let e = k + 1; while (e < cps.length && isVS(cps[e])) e++;
+      k = e - (k + 1) >= 8 ? e : k + 1; continue;
+    }
+    if (!DELETE.has(c)) kept.push(c);
+    k++;
+  }
+  const out = [];
+  for (let k = 0; k < kept.length;) {
+    if (isVS(kept[k])) {
+      let e = k; while (e < kept.length && isVS(kept[e])) e++;
+      if (e - k >= 8) { k = e; continue; }
+    }
+    out.push(kept[k]); k++;
+  }
+  return out;
+}
+
+function finish(cps) {                                        // trailing spaces of lines, then of the text
+  const res = [];
+  for (let k = 0; k < cps.length;) {
+    if (cps[k] === 0x20 || cps[k] === 0x09) {
+      let e = k; while (e < cps.length && (cps[e] === 0x20 || cps[e] === 0x09)) e++;
+      if (e === cps.length || cps[e] === 0x0a) { k = e; continue; }
+    }
+    res.push(cps[k]); k++;
+  }
+  let a = 0, b = res.length;
+  while (a < b && WS.has(res[a])) a++;
+  while (b > a && WS.has(res[b - 1])) b--;
+  return fromCodePoints(res.slice(a, b));
+}
+
+// NFC as Unicode 14.0 defines it: cut at every code point not assigned in 14.0, normalize the pieces (see canon.py)
+function nfc14(cps) {
+  const out = [];
+  let piece = [];
+  const flush = () => { if (piece.length) { for (const ch of fromCodePoints(piece).normalize("NFC")) out.push(ch.codePointAt(0)); piece = []; } };
+  for (const c of cps) {
+    if (assigned14(c)) piece.push(c);
+    else { flush(); out.push(c); }
+  }
+  flush();
+  return out;
+}
+
+function canonicalizeV5(text) {
+  const raw = Array.from(text, (ch) => ch.codePointAt(0));
+  const nfc = nfc14(deletions(raw));
+  const out = [];
+  for (const c of nfc) {
+    if (FOLD_MULTI.has(c)) out.push(...FOLD_MULTI.get(c));
+    else if (FOLD.has(c)) out.push(FOLD.get(c));
+    else out.push(SPACE.has(c) ? 0x20 : c);
+  }
+  return finish(out);
+}
+
 export function canonicalize(text, version = CANON_ID) {
+  if (version === CANON_V5) return canonicalizeV5(text);
   if (version !== CANON_V3 && version !== CANON_V4) throw new Error("unsupported canonical form");
   const v4 = version === CANON_V4;
   const src = Array.from(text.normalize("NFC"), (ch) => ch.codePointAt(0));
@@ -165,13 +257,13 @@ export function canonicalize(text, version = CANON_ID) {
   let a = 0, b = res.length;
   while (a < b && WS.has(res[a])) a++;
   while (b > a && WS.has(res[b - 1])) b--;
-  return String.fromCodePoint(...res.slice(a, b));
+  return fromCodePoints(res.slice(a, b));
 }
 
 export function segment(ctext, version = CANON_ID) {         // offsets in code points, as in the record
   const cps = Array.from(ctext, (ch) => ch.codePointAt(0));
   const spans = [];
-  const v4 = version === CANON_V4;
+  const v4 = version === CANON_V4 || version === CANON_V5;    // seg2
   let start = 0;
   const emit = (a, b) => {
     let s = a, e = b;
@@ -204,22 +296,29 @@ export function blockDigest(ctext, [a, b]) {
 // an ordinal "12." / "12)", a task box "[ ]" / "[x]" or a ballot box) removed; whitespace runs one space; empty lines
 // dropped; lines joined by one space. Blocks: canonical v4 segmentation inside each line, as code-point spans.
 export const PLAIN_V1 = "ep1-plain/v1:canon-v4+commonmark-gfm-visible+list-marker+ws";
+export const PLAIN_V2 = "ep1-plain/v2:canon-v5+commonmark-gfm-visible+list-marker+ws";
+export const PLAIN_ID = PLAIN_V2;
+const canonOf = (form) => {
+  if (form === PLAIN_V2) return CANON_V5;
+  if (form === PLAIN_V1) return CANON_V4;
+  throw new Error("unsupported visible-text form");
+};
 const MARKER = /^[ \t]*(?:(?:[-*+\u2022\u25e6\u25aa\u2023\u25cf\u00b7]|[0-9]{1,9}[.)])[ \t]+)?(?:(?:\[[ xX]\]|[\u2610\u2611\u2612])[ \t]+)?/u;
 const VWS = /[ \t\n\x0b\x0c\u1680\u2000-\u200a\u2028\u2029\u205f\u3000]+/gu;
-function visibleLines(text) {
+function visibleLines(text, form = PLAIN_ID) {
   const out = [];
-  for (const raw of canonicalize(text, CANON_V4).split("\n")) {
+  for (const raw of canonicalize(text, canonOf(form)).split("\n")) {
     const line = raw.replace(MARKER, "").replace(VWS, " ").replace(/^ +| +$/g, "");
     if (line) out.push(line);
   }
   return out;
 }
-export const plainNormalize = (text) => visibleLines(text).join(" ");
-export function segmentVisible(text) {                        // [visible text, blocks as code-point spans]
-  const lines = visibleLines(text), spans = [];
+export const plainNormalize = (text, form = PLAIN_ID) => visibleLines(text, form).join(" ");
+export function segmentVisible(text, form = PLAIN_ID) {      // [visible text, blocks as code-point spans]
+  const lines = visibleLines(text, form), spans = [];
   let pos = 0;
   for (const line of lines) {
-    for (const [a, b] of segment(line, CANON_V4)) spans.push([pos + a, pos + b]);
+    for (const [a, b] of segment(line, canonOf(form))) spans.push([pos + a, pos + b]);
     pos += Array.from(line).length + 1;
   }
   return [lines.join(" "), spans];
@@ -303,9 +402,17 @@ export function rootFromInclusion(leaf, index, size, path) {
 }
 export function verifyReceipt(receipt, statement, logPub) {
   let obj = decode(receipt); if (obj instanceof Tag) obj = obj.value;
+  if (!(Array.isArray(obj) && obj.length === 4 && Buffer.isBuffer(obj[0]) && obj[1] instanceof Map)) throw new Error("not a COSE_Sign1");
   const prot = decode(obj[0]);
-  if (prot.get(395) !== 1) throw new Error("unsupported VDS");
-  const [size, index, path] = decode(obj[1].get(396).get(-1)[0]);
+  if (!(prot instanceof Map) || prot.get(395) !== 1) throw new Error("unsupported VDS");
+  const vdp = obj[1].get(396), proofs = vdp instanceof Map ? vdp.get(-1) : undefined;
+  if (!(Array.isArray(proofs) && proofs.length && Buffer.isBuffer(proofs[0]))) throw new Error("no inclusion proof");
+  const proof = decode(proofs[0]);                  // [tree size, leaf index, [sibling hash, ...]], as tlog.py
+  if (!(Array.isArray(proof) && proof.length === 3 && proof.slice(0, 2).every((v) => Number.isSafeInteger(v) && v >= 0)
+        && Array.isArray(proof[2]) && proof[2].every((h) => Buffer.isBuffer(h) && h.length === 32))) {
+    throw new Error("malformed inclusion proof");
+  }
+  const [size, index, path] = proof;
   const root = rootFromInclusion(leafHash(entryOf(statement)), index, size, path);
   verify1(receipt, logPub, root);
   return { size, index, root: root.toString("hex") };
@@ -363,5 +470,29 @@ export function binomialTail(n, m) {
   if (m <= 0) return 1; if (m > n) return 0;
   let c = 1n, sum = 0n;                                         // c = C(n, i), iterating i = 0..n
   for (let i = 0; i <= n; i++) { if (i >= m) sum += c; c = c * BigInt(n - i) / BigInt(i + 1); }
-  return Number(sum) / 2 ** n;
+  return ratioPow2(sum, n);
+}
+
+// sum / 2^n rounded to the nearest double, ties to even: what Python's int / int gives (correctly rounded). The
+// plain Number(sum) / 2 ** n overflows from n = 1024 (both sides Infinity: 0 at 1024, NaN beyond) - a document with
+// more than 1023 checkpoints - and rounds twice in the subnormal range (found by differential fuzzing, 27.10.2026).
+function ratioPow2(sum, n) {
+  if (sum === 0n) return 0;
+  const bl = sum.toString(2).length;
+  const e = bl - 1 - n;                                         // exponent of the leading bit
+  if (e < -1075) return 0;
+  if (e === -1075) return sum > (1n << BigInt(bl - 1)) ? 5e-324 : 0;  // above half the least subnormal, or a tie to 0
+  const bits = e >= -1022 ? 53 : e + 1075;                      // significant bits a double holds at that exponent
+  let shift = bl - bits, q;
+  if (shift > 0) {
+    const s = BigInt(shift);
+    q = sum >> s;
+    const rem = sum - (q << s), half = 1n << (s - 1n);
+    if (rem > half || (rem === half && (q & 1n))) q += 1n;
+  } else {
+    q = sum << BigInt(-shift);
+  }
+  let x = Number(q), k = shift - n;                             // the value is q * 2^k, exactly representable
+  while (k < -1000) { x *= 2 ** -1000; k += 1000; }             // each step exact: x stays normal until the last
+  return x * 2 ** k;
 }

@@ -1,0 +1,44 @@
+{
+ "model": "Qwen/Qwen2.5-7B-Instruct@a09a35458c702b33eeacc393d103063234e8bc28",
+ "weights": "fd024e4fed1dfb65cc679af8aa2d7b542971a1b74ab8cb4d703ac082afc3922c",
+ "tokenizer": "f884026e05f6dfffe68b72d580b588006d98b3bc0a128bb1ac425c76f7fc438c",
+ "class": "fp16",
+ "params": {
+  "align": "free",
+  "cal": {
+   "fp16": 421875
+  },
+  "canon_gen": true,
+  "context": 4,
+  "free_after": 0,
+  "gate_u": 0,
+  "guard_u": 900000,
+  "high_margin_u": 0,
+  "high_window": 3,
+  "indet_frac_u": 200000,
+  "interval": 5,
+  "k": 1,
+  "low_share_u": 500000,
+  "max_new_tokens": 200,
+  "min_entries": 8,
+  "min_new_tokens": 0,
+  "plain_layer": true,
+  "seal_margin_factor_u": 2000000,
+  "selection": "content",
+  "temperature_u": 800000,
+  "tol_u": 0,
+  "tol_space": "logit",
+  "top_p_u": 900000
+ },
+ "load_seconds": 13.8,
+ "env": {
+  "device": "cuda",
+  "hardware": "NVIDIA H100 NVL",
+  "dtype": "float16",
+  "class": "fp16",
+  "torch": "2.7.1+cu128",
+  "transformers": "4.53.2",
+  "attn": "sdpa",
+  "batch": 1
+ }
+}

@@ -80,6 +80,24 @@ def test_log_receipt_verifies_and_binds_the_statement():
     assert tlog.entry_of(cbor2.dumps(cbor2.CBORTag(18, parts))) == tlog.entry_of(stmts[2])
 
 
+def test_log_receipt_refuses_malformed_inclusion_proofs():
+    issuer, log_key = Ed25519PrivateKey.generate(), Ed25519PrivateKey.generate()
+    log = tlog.TransparencyLog(log_key)
+    stmts = [cose.sign1({cose.ALG: cose.ED25519}, f"s{i}".encode(), issuer) for i in range(3)]
+    receipt = [log.register(s)[1] for s in stmts][-1]
+    parts = list(cbor2.loads(receipt).value)
+
+    def with_vdp(vdp):                       # the unprotected header is not signed: change it, keep the signature
+        return cbor2.dumps(cbor2.CBORTag(18, [parts[0], {cose.VDP: vdp}, parts[2], parts[3]]))
+    assert tlog.verify_receipt(with_vdp(parts[1][cose.VDP]), stmts[2], log_key.public_key())["leaf_index"] == 2
+    size, index, path = cbor2.loads(parts[1][cose.VDP][tlog.INCLUSION][0])
+    for vdp in (5, {tlog.INCLUSION: b"x"}, {tlog.INCLUSION: [5]}, {tlog.INCLUSION: [cbor2.dumps(5)]},   # the fuzz finding
+                {tlog.INCLUSION: [cbor2.dumps([size, -1, list(path)])]},
+                {tlog.INCLUSION: [cbor2.dumps([size, index, [b"x"]])]}):
+        with pytest.raises(cose.COSEError, match="inclusion proof"):
+            tlog.verify_receipt(with_vdp(vdp), stmts[2], log_key.public_key())
+
+
 @pytest.mark.model
 def test_statements_end_to_end():
     pytest.importorskip("torch")

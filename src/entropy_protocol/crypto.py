@@ -22,6 +22,8 @@ from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.ciphers.aead import ChaCha20Poly1305
 from cryptography.hazmat.primitives.kdf.hkdf import HKDF
 
+from . import cose
+
 VERSION = 1
 PREFIX = "ep1."
 
@@ -104,7 +106,7 @@ def _envelope(token: str) -> dict:
         raise TokenError("not an ep1 log token")
     body = token[len(PREFIX):]
     try:
-        env = cbor2.loads(base64.urlsafe_b64decode(body + "=" * (-len(body) % 4)))
+        env = cose.loads(base64.urlsafe_b64decode(body + "=" * (-len(body) % 4)))
     except Exception as exc:  # noqa: BLE001
         raise TokenError("malformed log token") from exc
     if not isinstance(env, dict) or env.get("v") != VERSION or not {"doc", "n", "ct"} <= env.keys():

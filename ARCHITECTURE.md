@@ -61,13 +61,19 @@ On the wire every number is an integer: `tol_u`/`cal_u` in micro-units of the to
    knows too little of the topic) and later ones in the verifier's context.
    Other positions: nucleus sampling. Special tokens never enter the text; every end-of-sequence id ends it; where
    the model's first choice at a checkpoint is to end, the text ends (no entry).
-3. Decode; canonicalize (`ep1-canon/v4`: NFC; delete CR, BOM, zero-width space, word joiner, soft hyphen; delete a
+3. Decode; canonicalize (`ep1-canon/v5`: delete CR, BOM, zero-width space, word joiner, soft hyphen; delete a
    U+FEFF-opened run of ≥ 8 variation selectors as a unit (C2PA 2.4 A.8 wrapper), then any run of ≥ 8 selectors;
-   keep single selectors and ZWJ/ZWNJ; no-break spaces → space; **typographic folding** — curly quotes and
-   guillemets → `"`, curly apostrophes and U+02BC → `'`, hyphen/en dash/minus → `-`, em dash → `--`, ellipsis →
-   `...` (the inverse of a word processor's autocorrect); strip trailing whitespace per line and around the text;
-   blocks by sentence ends including scripts' own full stops, `seg2`), keeping a map from decoded to canonical
-   indices. Records name their form; v3 records still verify.
+   keep single selectors and ZWJ/ZWNJ; **then NFC as Unicode 14.0 defines it** — the text is cut at every code point
+   not assigned in 14.0 (to 14.0 a starter nothing composes or reorders across) and the pieces normalized, which
+   Unicode's normalization stability policy makes exact under any later library version; no-break spaces → space;
+   **typographic folding** — curly quotes and guillemets → `"`, curly apostrophes and U+02BC → `'`, hyphen/en
+   dash/minus → `-`, em dash → `--`, ellipsis → `...` (the inverse of a word processor's autocorrect); strip trailing
+   whitespace per line and around the text; blocks by sentence ends including scripts' own full stops, `seg2`),
+   keeping a map from indices of the decoded text to canonical indices. The form is idempotent: after the deletions
+   only starters are replaced or removed. Records name their form; v3 and v4 records still verify (v4 normalized
+   before deleting, which is not idempotent where a deleted character separated a base from its mark or marks of
+   different classes, and neither v3 nor v4 is pinned to a Unicode version). The 14.0 table (706 ranges) is generated
+   for both implementations from Unicode's DerivedAge (`spec/make_unicode14.py`).
 4. Anchor each enforced checkpoint at the canonical offset of the first non-space character of its token.
 5. Re-read the canonical text alone (one forward pass); keep a checkpoint only if its predicate holds there with
    margin ≥ 2 × the largest tolerance of the calibration table and it maps to a distinct canonical token.
@@ -132,10 +138,11 @@ without it keep their bytes (every earlier test vector is unchanged).
   HTML shown as text, as chat windows do), keeps what a reader sees — one line per paragraph, heading, list item,
   table row and line of code; image alt texts are not visible — then normalizes. Without markdown-it-py the layer is
   not written.
-- **Verifier**: never renders. The candidate is taken literally and normalized: canonical form v4; per line one
+- **Verifier**: never renders. The candidate is taken literally and normalized: the form's canonical form (`plain/v2`:
+  canonical form v5; `plain/v1`: v4); per line one
   marker at its start removed (bullets, an ordinal `12.`/`12)`, a task box `[ ]`/`[x]` or the ballot box a copy
   shows); whitespace runs one space; empty lines dropped; lines joined by one space (the digest does not depend on
-  how a copy breaks its lines). Blocks: v4 segmentation inside each line (a change is located to its list item or
+  how a copy breaks its lines). Blocks: seg2 segmentation inside each line (a change is located to its list item or
   table row even where items end without a full stop).
 - **Verdict `VERIFIED_TEXT`**: canonical digest differs, visible digest equal. The visible text is the sealed one;
   formatting (markup, line breaks, list numbering) is not covered and the model layer is not evaluated on it. A
@@ -147,7 +154,7 @@ without it keep their bytes (every earlier test vector is unchanged).
 - Checked: `tests/test_plain.py` (rendered constructs vs what a copy gives back, literal candidates, a rendered copy
   → `VERIFIED_TEXT`, one edited list item located exactly, a changed link target caught, records without the layer);
   the JS implementation reproduces normalization, blocks and the layer (`spec/test-vectors`: `visible_text`,
-  `record_v4_visible`; 72/72).
+  `visible_text_v2`, `record_v4_visible`).
 
 ## 6a. Tolerance and calibration (`calibrate.py`) — spec [0115]-[0117]
 - **Measured, not chosen**, on a corpus of *sealed* generations (forced tokens put the model where numerical
@@ -297,6 +304,110 @@ loaded lazily on the first call. A failed check is a tool error, not a dead serv
   names each part and gives the exact commands. Trust stays with the reader: the package carries its own keys, so
   the reader compares them with the issuer's published key.
 
+## 7d. Attested sealing and attested detection (`attested/`) — spec [0100]–[0109]
+The record binds a text to a model's choices, but whoever holds `K` can seal any text (§8, last row). Here the keys,
+the model and the sealing code run inside a confidential VM with a confidential GPU, and every statement carries
+evidence of that, appraised by a credential authority before it certifies the statement key.
+
+**First platform: Azure `Standard_NCC40ads_H100_v5`** — an AMD SEV-SNP guest (Genoa) under Microsoft's paravisor,
+with an H100 NVL in confidential-computing mode. The paravisor owns REPORT_DATA; a guest binds its own 64 octets
+through the vTPM: it writes them to NV index 0x01400002 (guest attestation input, 64 octets), and the paravisor
+writes a fresh report to NV 0x01400001 whose runtime claims (JSON) carry them as `user-data` (hex), together with
+the vTPM attestation key `HCLAkPub` and the VM configuration; REPORT_DATA holds the hash of those runtime claims
+(type in the report's request data). Layout: header 32 octets (`HCLA`, version 2, report size, request type,
+status), the SNP report (1184 octets, slot 0x4a0), request data (data size, version, report type, hash type,
+variable size), runtime claims. Source: microsoft/openvmm `vm/devices/tpm/tpm_guest_tests/src/report.rs`,
+`openhcl/openhcl_attestation_protocol/src/igvm_attest/get.rs`, `vm/devices/tpm/tpm_protocol/src/lib.rs`.
+Other platforms put the binding straight into the processor's guest field (SEV-SNP REPORT_DATA at 0x50; TDX
+REPORTDATA).
+
+**Binding value** (64 octets): SHA-512 over length-prefixed fields (4-octet big-endian length, then the octets):
+`"ep1/attested-binding/v1"`, the freshness handle (the authority's nonce), `rrp_id` (the authority's identity, held
+in the sealer's configuration, never taken from the wire), `target` (the sealing service's identity), SHA-256 of
+the certificate signing request (DER), the statement public key (SubjectPublicKeyInfo DER), the weights digest, the
+tokenizer digest, the code identity (SHA-256 of the sorted list of [path, SHA-256(file)] of the installed package),
+the sealing class, and SHA-256 of the sealing parameters (canonical CBOR). The GPU report is taken over the same
+handle (32 octets); the vTPM quote's qualifying data is SHA-256 of the binding value.
+
+**Enrollment** (attestation-based, after the message shapes of draft-novak-rats-tacra): the authority returns
+`{freshness_kind: "present-nonce", handle, rrp_id, mode: "enroll", expires_in}`; the sealer answers with
+`{freshness_kind, target, credential_type: "ep1-statement-key", handle, evidence, profile: "ep1/azure-cgpu/v1",
+binding: {method: "binding-input", hash: "sha512"}, csr}`. The conduit between them is untrusted.
+
+**Appraisal** — each check is named in the result:
+- `cpu`: VCEK → ASK → ARK to the pinned ARK-Genoa (AMD's RSASSA-PSS certificates encode the PSS trailer field at its
+  default, which DER forbids: cryptography 42.0.8 refuses them, 43.0.3 and later read and verify them — hence the
+  dependency floor), the ASK not on AMD's CRL; the report's ECDSA P-384 signature under the VCEK; the VCEK's TCB
+  extensions equal the reported TCB; TCB at or above the floors of AMD's bulletins (SNP 0x1B, microcode 0x56 on Genoa);
+  ALIAS_CHECK_COMPLETE (BadRAM) and mitigation vector bit 1 (RMPocalypse); DEBUG off; the launch endorsed — its
+  measurement in the reference set, or an ID block signed by a pinned ID key (the firmware launches only a measurement
+  the ID key signed, AMD 56860 rev. 1.59 §8.19.2; Azure runs several paravisor builds at once under one key);
+  REPORT_DATA = hash of the runtime claims, the rest zero.
+- `vtpm`: `user-data` = the binding value; `HCLAkPub` present; secure boot and the vTPM on; the quote (TPMS_ATTEST)
+  signed by that AK, its qualifying data = SHA-256(binding), its PCR digest = the quoted PCRs; the TCG event log (each
+  event carrying exactly one digest of every bank the Spec ID event announces, at that bank's size), with systemd's
+  after-boot measurements (PCR 11), replays to them; the boot chain (PCR 4, 7) and the kernel image's
+  sections (`.linux`, `.initrd`, `.cmdline`, measured by systemd-stub) in the reference set. The paravisor renews its
+  report on read, at most every 2 s: the attester reads until the report carries what it wrote.
+- `gpu0`: the certificate chain to NVIDIA's pinned device identity root; the SPDM measurement response signed by the
+  device's attestation key over the handle; the firmware ID in the device certificate = the one in the report; the
+  measurements against NVIDIA's reference integrity manifests (driver and VBIOS; RIM index i is SPDM block i + 1; the
+  manifests' chain checked here to NVIDIA's pinned RIM root, because signxml 5 refuses it under RFC 5280); revocation
+  of the GPU chain and both manifest chains by OCSP, the responses kept.
+- binding: recomputed from the request's fields equals `user-data`; the handle was issued by this authority and has
+  not expired or been used; the CSR's signature verifies under its own key, which is the key in the binding.
+
+**Attestation result** — EAR (draft-ietf-rats-ear-04) as a CWT, COSE_Sign1 under the authority's root key itself
+(never an end-entity key: sealers hold end-entity certificates of the same root, and a result that verified under
+any of them could be forged by a sealer for itself): profile `tag:ietf.org,2026:rats/ear#04`, `iat`/`exp`, verifier identity, `eat_nonce` = handle, `ear_status`,
+submods `cpu`, `vtpm`, `gpu0` (each with status, trustworthiness vector, policy identifiers, attester claims), and
+`ear_device_topology` `{"cpu": ["vtpm", "gpu0"]}` — which GPU is bound to which guest. The appraised identities
+(statement key, model digests, code identity, class, parameters, binding value) travel as an ep1 extension.
+
+**Certificate**: X.509 for the Ed25519 statement key, issued by the authority's root; subject = `target`; extended
+key usage id-kp-documentSigning; valid from five minutes before issue (the sealer checks it against its own clock)
+for the result's lifetime. The sealer pins the authority's root and `rrp_id` in its own configuration. Statements signed in the environment carry `x5chain` (RFC 9360, label 33) and
+SHA-256 of the attestation result in the protected header, so both reach the log with the statement.
+
+**Attested detection**: the same enrollment with `credential_type: "ep1-detection-key"`; `K_wm` is generated inside
+the environment and never leaves it; detection is a service that returns detection statements signed under the
+certified key. Whoever runs the service can no longer imitate the mark with `K_wm` (§8), and the exact null is
+unchanged.
+
+**Evidence package `ep1-pack/v2`** adds `att`: the result, the enrollment request (evidence + CSR), the collateral
+used (AMD chain and CRL, GPU chain, RIMs, OCSP responses) and the policy (reference values). The offline check
+appraises the evidence again with the same code at the result's issue time, verifies the result's signature to the
+authority's root (pinned by the reader), the certificate, the statement key = the key in the binding, and then the
+existing chain (text → statements → log → time stamp). It names every root, reference value or revocation status it
+was not given.
+
+**What it proves, what it does not.** Hardware-signed: a genuine AMD SEV-SNP processor at the reported TCB, the
+paravisor's measurement, debug off, the vTPM key bound to that report, the boot chain in the quoted PCRs, a genuine
+H100 whose firmware and driver match NVIDIA's manifests; the statement key was generated by software in this guest,
+the only party that can write the guest input. Reported by that software: the model digests, the code identity, the
+class and the parameters inside the binding — trustworthy as far as the guest's software is (boot chain appraised;
+user space measured when the image measures it). Excluding the operator needs a locked image — no interactive
+access, measured root file system — whose measurements become the reference values. Time comes from outside the
+environment (RFC 3161 over the logged form, the log's registration), never from the guest's clock.
+
+## 7e. The ep1 CBOR profile, and fuzzing (`cose.check_profile`, `impl-js`, `fuzz/`)
+Both implementations decode untrusted CBOR only within one profile, checked before any value is built: definite
+lengths, each within the bytes that are left; integers and lengths in their shortest form; tags 16 (COSE_Encrypt0)
+and 18 (COSE_Sign1) only; `false`, `true` and `null` as the only simple values; no floating point; map keys integers,
+text or byte strings, never twice in one map; at most 64 levels of nesting; text valid UTF-8. Two decoders that
+read the same bytes differently are how signed formats get bypassed elsewhere; within the profile both accept
+exactly the same inputs and decode them to the same values.
+
+`fuzz/targets.py` holds one target per parser of untrusted input — records, tokens, COSE, delivered records,
+statements, receipts, time stamps, evidence packages, the paravisor's report, SNP reports, TPM quotes, signatures
+and event logs, systemd's log, GPU reports, NVIDIA's manifests, enrollment messages, attestation results, the
+authority's appraisal — with the errors each may raise (the offline package check and the appraisal never raise:
+they report). Property targets check that canonical form v5 is idempotent and that its index map stays inside the
+text; differential targets give the same input to both implementations (canonical forms, blocks, visible text,
+CBOR). Seeds are real data (`fuzz/make_corpus.py`); every test run replays each corpus and drives each target with
+Hypothesis (`tests/test_fuzz.py`); coverage-guided campaigns run with atheris (`fuzz/run.py`,
+`fuzz/campaign_gcp.sh`), and whatever they find joins the corpus.
+
 ## 8. What is proven, against whom (threat model)
 | Adversary | Outcome |
 |---|---|
@@ -313,7 +424,8 @@ loaded lazily on the first call. A failed check is a tool error, not a dead serv
 ## 9. Honest status
 | Component | Status |
 |---|---|
-| Canonical form v4 (typographic folding, script sentence ends), content layer with ordered alignment, model layer, verdicts | implemented, tested; v3 records verify |
+| Canonical form v5 (deletions before NFC, NFC pinned to Unicode 14.0, typographic folding, script sentence ends), content layer with ordered alignment, model layer, verdicts | implemented, tested; v3 and v4 records verify |
+| ep1 CBOR profile in both implementations; 26 fuzz targets (properties, differential) with seed corpora from real data | implemented; replayed and Hypothesis-driven in every test run |
 | Canonical generation (token-identical re-read), confidence gate and guard, unsatisfiable-position exclusion | implemented, tested; alignment audit 100 % on distilgpt2 and Qwen2.5-0.5B |
 | Paragraph-start readings for localized detection (single and batched) | implemented, tested |
 | Sealing gateway (`entropy serve`, OpenAI-compatible) and presentation typography | implemented, tested (local, internal) |
@@ -325,7 +437,7 @@ loaded lazily on the first call. A failed check is a tool error, not a dead serv
 | Second implementation (JavaScript, model-free parts) | 72/72 test-vector checks; CI regenerates the vectors with Python and runs both |
 | Record delivered by public key: HPKE (RFC 9180, vectors A.1.1/A.2.1) + COSE-HPKE integrated encryption (draft-27) | implemented, tested; second implementation opens it |
 | RFC 3161 time stamps over statements (`entropy timestamp`; imprint checked, the authority's chain is the reader's trust decision) | implemented, tested |
-| TEE-attested generation | not implemented |
+| TEE-attested sealing and detection (§7d) | implemented; run end to end on an Azure confidential H100 (`bench/results/attested/`): two keys certified after 48 checks each, 20 texts, 20 packages checking offline |
 | Backends: HF transformers, single and batched | implemented, tested · vLLM / llama.cpp — pending |
 | Model identity: weights digest over exactly the files the loader reads (index of shards) | implemented, tested |
 | GPU evaluation program (`bench/gpu/`): phase A (15.09, L40S, Qwen2.5-7B), phases B and C (26.09: L40S, L4, A10G, H100; Qwen2.5-7B and 14B, Mistral-7B-v0.3, OLMo-2-7B; a two-million-pair null; KGW and SynthID-Text) | run; results in `runs_gpu/`, reports in `bench/results/phase_{b,c}/REPORT.md` |

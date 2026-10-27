@@ -1,0 +1,257 @@
+{
+ "time": "2026-10-27T17:37:19+00:00",
+ "status": 2,
+ "ok": true,
+ "target": "urn:ep1:sealer:azure-cgpu:20261027T172258Z/seal",
+ "checks": [
+  {
+   "name": "binding.handle_issued_unexpired_unused",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "binding.csr_proof_of_possession",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "binding.csr_subject_is_target",
+   "ok": true,
+   "detail": "CSR names 'urn:ep1:sealer:azure-cgpu:20261027T172258Z/seal'"
+  },
+  {
+   "name": "binding.params_map_digest",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "identity.weights",
+   "ok": true,
+   "detail": "observed fd024e4fed1dfb65cc679af8aa2d7b542971a1b74ab8cb4d703ac082afc3922c"
+  },
+  {
+   "name": "identity.tokenizer",
+   "ok": true,
+   "detail": "observed f884026e05f6dfffe68b72d580b588006d98b3bc0a128bb1ac425c76f7fc438c"
+  },
+  {
+   "name": "identity.code",
+   "ok": true,
+   "detail": "observed 17e2ea6481dfc5f4d1a215c926de73a6a01e72963ec43291a1ef876a2d26b508"
+  },
+  {
+   "name": "identity.class",
+   "ok": true,
+   "detail": "observed fp16"
+  },
+  {
+   "name": "identity.params",
+   "ok": true,
+   "detail": "observed 67ab2aac03353942d2f1631cf59a15124ff39b45a98bbbbc2047f3b4cddeae04"
+  },
+  {
+   "name": "cpu.hcl.parse",
+   "ok": true,
+   "detail": "report type 2, hash type 1"
+  },
+  {
+   "name": "cpu.chain.to_pinned_ark",
+   "ok": true,
+   "detail": "ARK-Genoa; Genoa"
+  },
+  {
+   "name": "cpu.chain.ask_not_revoked",
+   "ok": true,
+   "detail": "AMD CRL"
+  },
+  {
+   "name": "cpu.report.signature",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "cpu.report.tcb_matches_vcek",
+   "ok": true,
+   "detail": "reported {'blSPL': 10, 'teeSPL': 0, 'snpSPL': 27, 'ucodeSPL': 88}"
+  },
+  {
+   "name": "cpu.report.tcb_at_least_minimum",
+   "ok": true,
+   "detail": "minimum {'snpSPL': 27, 'ucodeSPL': 86}"
+  },
+  {
+   "name": "cpu.report.debug_off",
+   "ok": true,
+   "detail": "policy 0x3001f"
+  },
+  {
+   "name": "cpu.report.alias_check_complete",
+   "ok": true,
+   "detail": "platform info 0x24"
+  },
+  {
+   "name": "cpu.report.mitigation_vector",
+   "ok": true,
+   "detail": "current 0x7, required bits [1]"
+  },
+  {
+   "name": "cpu.report.launch_endorsed",
+   "ok": true,
+   "detail": "ID block signed by pinned ID key 942fd93ebde6ea7a\u2026 (family 01232000, image 02000000, guest SVN 65549)"
+  },
+  {
+   "name": "cpu.report.report_data_is_hash_of_runtime_claims",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "vtpm.runtime_claims.user_data_is_binding",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "vtpm.runtime_claims.secure_boot",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "vtpm.runtime_claims.tpm_enabled",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "vtpm.quote.signature_by_bound_ak",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "vtpm.quote.qualifying_data_is_binding_digest",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "vtpm.quote.pcr_digest",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "vtpm.eventlog.replays_to_quoted_pcrs",
+   "ok": true,
+   "detail": "PCRs replayed [0, 1, 2, 3, 4, 5, 6, 7, 9, 11, 14, 15]"
+  },
+  {
+   "name": "vtpm.uki_sections.in_reference_set",
+   "ok": true,
+   "detail": ".cmdline, .initrd, .linux"
+  },
+  {
+   "name": "vtpm.pcrs.in_reference_set",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "gpu.count",
+   "ok": true,
+   "detail": "1 GPU(s)"
+  },
+  {
+   "name": "gpu0.chain.to_pinned_root",
+   "ok": true,
+   "detail": "CN=GH100 A01 GSP FMC LF,O=NVIDIA Corporation,C=US,2.5.4.5=71FE0A60AF3CB4B8CAE2802E8572619CC31F886D"
+  },
+  {
+   "name": "gpu0.report.signature",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "gpu0.report.nonce_is_handle",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "gpu0.report.fwid_matches_certificate",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "gpu0.report.versions_match_nvml",
+   "ok": true,
+   "detail": "report 595.91.07 / 96.00.9f.00.04; NVML 595.91.07 / 96.00.9F.00.04"
+  },
+  {
+   "name": "gpu0.cc_mode_on_devtools_off",
+   "ok": true,
+   "detail": "NVML {'feature': 1, 'devtools': 0, 'environment': 2}"
+  },
+  {
+   "name": "gpu0.rim.driver.signature",
+   "ok": true,
+   "detail": "NV_GPU_DRIVER_GH100_595.91.07"
+  },
+  {
+   "name": "gpu0.rim.driver.ocsp.HCC RIM L4 Signer",
+   "ok": true,
+   "detail": "good"
+  },
+  {
+   "name": "gpu0.rim.driver.ocsp.NVIDIA Reference Value L3 GH100 ",
+   "ok": true,
+   "detail": "good"
+  },
+  {
+   "name": "gpu0.rim.driver.ocsp.US",
+   "ok": true,
+   "detail": "good"
+  },
+  {
+   "name": "gpu0.rim.vbios.signature",
+   "ok": true,
+   "detail": "NV_GPU_VBIOS_1010_0210_886_96009F0004"
+  },
+  {
+   "name": "gpu0.rim.vbios.ocsp.HCC RIM L4 Signer",
+   "ok": true,
+   "detail": "good"
+  },
+  {
+   "name": "gpu0.rim.vbios.ocsp.NVIDIA Reference Value L3 GH100 ",
+   "ok": true,
+   "detail": "good"
+  },
+  {
+   "name": "gpu0.rim.vbios.ocsp.US",
+   "ok": true,
+   "detail": "good"
+  },
+  {
+   "name": "gpu0.rim.measurements_match",
+   "ok": true,
+   "detail": "64 measurements"
+  },
+  {
+   "name": "gpu0.ocsp.GH100 A01 GSP BROM",
+   "ok": true,
+   "detail": "good"
+  },
+  {
+   "name": "gpu0.ocsp.US",
+   "ok": true,
+   "detail": "good"
+  },
+  {
+   "name": "gpu0.ocsp.NVIDIA Corporation",
+   "ok": true,
+   "detail": "good"
+  }
+ ],
+ "identities": {
+  "weights": "fd024e4fed1dfb65cc679af8aa2d7b542971a1b74ab8cb4d703ac082afc3922c",
+  "tokenizer": "f884026e05f6dfffe68b72d580b588006d98b3bc0a128bb1ac425c76f7fc438c",
+  "code": "17e2ea6481dfc5f4d1a215c926de73a6a01e72963ec43291a1ef876a2d26b508",
+  "class": "fp16",
+  "params": "67ab2aac03353942d2f1631cf59a15124ff39b45a98bbbbc2047f3b4cddeae04",
+  "binding": "a4c70533839cce7aa784228d74365722e5913b6b333abf291bdd2d1fe034e5631eb9190159f1321ff627198c338e0180af98090cca7e14aaa88cc0acbd0fe6fc",
+  "key": "7dba8b0dd1c5edbf477a4f2f099ab6dcc02119fc121c87a556d29b1dcbc7d384"
+ }
+}

@@ -14,3 +14,8 @@ dist/
 bench/gpu/infra/instances.tsv
 bench/gpu/infra/*.log
 node_modules/
+# attested runs: the authority's root key and the verifier's private key stay with the operator; every public part
+# of a run (root certificate, results, certificates, requests, statements) is evidence and tracked
+bench/results/attested/**/root.key
+bench/results/attested/**/verifier/
+bench/results/attested/**/log.key

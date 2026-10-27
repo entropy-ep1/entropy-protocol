@@ -1,0 +1,139 @@
+Warning: Permanently added '20.123.168.218' (ED25519) to the list of known hosts.
+local_gpu_verifier.tar
+local_gpu_verifier_http_service.tar
+logs
+mnist-sample-workload.py
+nvidia-persistenced-dependency.conf
+nvidia-persistenced.override.conf
+step-0-prepare-kernel.sh
+step-1-install-gpu-driver.sh
+step-2-attestation.sh
+step-3-install-gpu-tools.sh
+step-4-install-vllm-preview.sh
+utilities-enable-snapshot.sh
+utilities-install-local-gpu-verfier-service.sh
+utilities-install-openssl.sh
+utilities-launch-vllm.sh
+utilities-uninstall-r535-driver.sh
+utilities-update-kernel.sh
+version.txt
+  Downloading cryptography-43.0.1-cp39-abi3-manylinux_2_28_x86_64.whl.metadata (5.4 kB)
+Collecting ecdsa==0.18.0 (from nv-local-gpu-verifier==2.3.0)
+  Downloading ecdsa-0.18.0-py2.py3-none-any.whl.metadata (29 kB)
+Collecting lxml>=4.9.1 (from nv-local-gpu-verifier==2.3.0)
+  Downloading lxml-6.1.3-cp312-cp312-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl.metadata (3.3 kB)
+Collecting signxml==3.2.0 (from nv-local-gpu-verifier==2.3.0)
+  Downloading signxml-3.2.0-py3-none-any.whl.metadata (16 kB)
+Collecting xmlschema==2.2.3 (from nv-local-gpu-verifier==2.3.0)
+  Downloading xmlschema-2.2.3-py3-none-any.whl.metadata (8.2 kB)
+Collecting pyOpenSSL==24.2.1 (from nv-local-gpu-verifier==2.3.0)
+  Downloading pyOpenSSL-24.2.1-py3-none-any.whl.metadata (13 kB)
+Collecting PyJWT==2.7.0 (from nv-local-gpu-verifier==2.3.0)
+  Downloading PyJWT-2.7.0-py3-none-any.whl.metadata (4.1 kB)
+Collecting nvidia-ml-py==12.550.52 (from nv-local-gpu-verifier==2.3.0)
+  Downloading nvidia_ml_py-12.550.52-py3-none-any.whl.metadata (8.6 kB)
+Collecting requests==2.32.3 (from nv-local-gpu-verifier==2.3.0)
+  Downloading requests-2.32.3-py3-none-any.whl.metadata (4.6 kB)
+Collecting cffi>=1.12 (from cryptography==43.0.1->nv-local-gpu-verifier==2.3.0)
+  Downloading cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.5 kB)
+Collecting six>=1.9.0 (from ecdsa==0.18.0->nv-local-gpu-verifier==2.3.0)
+  Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Collecting charset-normalizer<4,>=2 (from requests==2.32.3->nv-local-gpu-verifier==2.3.0)
+  Downloading charset_normalizer-3.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (46 kB)
+Collecting idna<4,>=2.5 (from requests==2.32.3->nv-local-gpu-verifier==2.3.0)
+  Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+Collecting urllib3<3,>=1.21.1 (from requests==2.32.3->nv-local-gpu-verifier==2.3.0)
+  Downloading urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting certifi>=2017.4.17 (from requests==2.32.3->nv-local-gpu-verifier==2.3.0)
+  Downloading certifi-2026.10.23-py3-none-any.whl.metadata (2.5 kB)
+Collecting lxml>=4.9.1 (from nv-local-gpu-verifier==2.3.0)
+  Downloading lxml-4.9.4-cp312-cp312-manylinux_2_28_x86_64.whl.metadata (3.7 kB)
+Collecting elementpath<5.0.0,>=4.0.0 (from xmlschema==2.2.3->nv-local-gpu-verifier==2.3.0)
+  Downloading elementpath-4.8.0-py3-none-any.whl.metadata (7.2 kB)
+Collecting pycparser (from cffi>=1.12->cryptography==43.0.1->nv-local-gpu-verifier==2.3.0)
+  Downloading pycparser-3.12-py3-none-any.whl.metadata (9.7 kB)
+Downloading cryptography-43.0.1-cp39-abi3-manylinux_2_28_x86_64.whl (4.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.0/4.0 MB 127.7 MB/s  0:00:00
+Downloading ecdsa-0.18.0-py2.py3-none-any.whl (142 kB)
+Downloading nvidia_ml_py-12.550.52-py3-none-any.whl (39 kB)
+Downloading PyJWT-2.7.0-py3-none-any.whl (22 kB)
+Downloading pyOpenSSL-24.2.1-py3-none-any.whl (58 kB)
+Downloading requests-2.32.3-py3-none-any.whl (64 kB)
+Downloading signxml-3.2.0-py3-none-any.whl (57 kB)
+Downloading xmlschema-2.2.3-py3-none-any.whl (355 kB)
+Downloading charset_normalizer-3.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (257 kB)
+Downloading elementpath-4.8.0-py3-none-any.whl (243 kB)
+Downloading idna-3.20-py3-none-any.whl (69 kB)
+Downloading lxml-4.9.4-cp312-cp312-manylinux_2_28_x86_64.whl (8.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.0/8.0 MB 164.7 MB/s  0:00:00
+Downloading urllib3-2.8.0-py3-none-any.whl (135 kB)
+Downloading certifi-2026.10.23-py3-none-any.whl (135 kB)
+Downloading cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (221 kB)
+Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+Downloading pycparser-3.12-py3-none-any.whl (62 kB)
+Building wheels for collected packages: nv-local-gpu-verifier
+  Building wheel for nv-local-gpu-verifier (pyproject.toml): started
+  Building wheel for nv-local-gpu-verifier (pyproject.toml): finished with status 'done'
+  Created wheel for nv-local-gpu-verifier: filename=nv_local_gpu_verifier-2.3.0-py3-none-any.whl size=213069 sha256=a4b758223ac57663767d0824f2a9ceaaf47886c17db2de3f14974738eed53735
+  Stored in directory: /tmp/pip-ephem-wheel-cache-d5cgwueo/wheels/d0/9d/79/cd099578f432dbfaef90ed18227d975f82afa3ed8418e0db0b
+Successfully built nv-local-gpu-verifier
+Installing collected packages: nvidia-ml-py, urllib3, six, PyJWT, pycparser, lxml, idna, elementpath, charset-normalizer, certifi, xmlschema, requests, ecdsa, cffi, cryptography, pyOpenSSL, signxml, nv-local-gpu-verifier
+
+Successfully installed PyJWT-2.7.0 certifi-2026.10.23 cffi-2.1.1 charset-normalizer-3.5.2 cryptography-43.0.1 ecdsa-0.18.0 elementpath-4.8.0 idna-3.20 lxml-4.9.4 nv-local-gpu-verifier-2.3.0 nvidia-ml-py-12.550.52 pyOpenSSL-24.2.1 pycparser-3.12 requests-2.32.3 signxml-3.2.0 six-1.17.0 urllib3-2.8.0 xmlschema-2.2.3
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+Creating /usr/local/bin/gpu-attestation command ...
+gpu-attestation command installed. Run 'sudo gpu-attestation' from anywhere.
+Waiting for nvidia-persistenced to be ready ...
+nvidia-persistenced is active.
+GPU persistence mode is enabled on all GPUs.
+Generating random nonce in the local GPU Verifier ..
+Number of GPUs available : 1
+Fetching GPU 0 information from GPU driver.
+All GPU Evidences fetched successfully
+-----------------------------------
+Verifying GPU: GPU-3b2a1968-0175-e7ba-c0b4-e788f95bd7cd
+	Driver version fetched : 595.91.07
+	VBIOS version fetched : 96.00.9f.00.04
+	Validating GPU certificate chains.
+		The firmware ID in the device certificate chain is matching with the one in the attestation report.
+		GPU attestation report certificate chain validation successful.
+			The certificate chain revocation status verification successful.
+	Authenticating attestation report
+		The nonce in the SPDM GET MEASUREMENT request message is matching with the generated nonce.
+		Driver version fetched from the attestation report : 595.91.07
+		VBIOS version fetched from the attestation report : 96.00.9f.00.04
+		Attestation report signature verification successful.
+		Attestation report verification successful.
+	Authenticating the RIMs.
+		Authenticating Driver RIM
+			Fetching the driver RIM from the RIM service.
+			RIM Schema validation passed.
+			driver RIM certificate chain verification successful.
+			The certificate chain revocation status verification successful.
+			driver RIM signature verification successful.
+			Driver RIM verification successful
+		Authenticating VBIOS RIM.
+			Fetching the VBIOS RIM from the RIM service.
+			RIM Schema validation passed.
+			vbios RIM certificate chain verification successful.
+			The certificate chain revocation status verification successful.
+			vbios RIM signature verification successful.
+			VBIOS RIM verification successful
+	Comparing measurements (runtime vs golden)
+			The runtime measurements are matching with the golden measurements.                            
+		GPU is in expected state.
+	GPU 0 with UUID GPU-3b2a1968-0175-e7ba-c0b4-e788f95bd7cd verified successfully.
+	GPU Ready State is already READY
+GPU Attestation is Successful.
+
+Entity Attestation Token:
+[
+  [
+    "JWT",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJOVklESUEtUExBVEZPUk0tQVRURVNUQVRJT04iLCJuYmYiOjE3OTMxMTg4NTksImV4cCI6MTc5MzEyMjU3OSwiaWF0IjoxNzkzMTE4OTc5LCJqdGkiOiI3YTRkZTRjNC05NWZkLTQxYmEtYmU2Yy04ZGYwZThlZTBlZTgiLCJ4LW52aWRpYS12ZXIiOiIyLjAiLCJpc3MiOiJMT0NBTF9HUFVfVkVSSUZJRVIiLCJ4LW52aWRpYS1vdmVyYWxsLWF0dC1yZXN1bHQiOnRydWUsInN1Ym1vZHMiOnsiR1BVLTAiOlsiRElHRVNUIixbIlNIQTI1NiIsImIyZWYyYzA2MzE2NjI1MmM3OTk0NjA4MjM1NGIzYTk2MWE4OWVkN2FiMjJhZWVmZWFjZDhlMjFlZTIxNDYzYjEiXV19LCJlYXRfbm9uY2UiOiI3OWMwMTAxMWM4YWQyNGQwNWU0YmM3MDgyNTE2OWUzMWExMzY4MDM4YTVlZDU1OWY0Yzk0ZTI0MWNmY2RkODQ1In0.PSBg4AXkLzpus6e7In01-Qkz4ANTokqJuQQSicTiUMY"
+  ],
+  {
+    "GPU-0": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZWFzcmVzIjoic3VjY2VzcyIsIngtbnZpZGlhLWdwdS1hcmNoLWNoZWNrIjp0cnVlLCJ4LW52aWRpYS1ncHUtZHJpdmVyLXZlcnNpb24iOiI1OTUuOTEuMDciLCJ4LW52aWRpYS1ncHUtdmJpb3MtdmVyc2lvbiI6Ijk2LjAwLjlGLjAwLjA0IiwieC1udmlkaWEtZ3B1LWF0dGVzdGF0aW9uLXJlcG9ydC1jZXJ0LWNoYWluLXZhbGlkYXRlZCI6dHJ1ZSwieC1udmlkaWEtZ3B1LWF0dGVzdGF0aW9uLXJlcG9ydC1wYXJzZWQiOnRydWUsIngtbnZpZGlhLWdwdS1hdHRlc3RhdGlvbi1yZXBvcnQtbm9uY2UtbWF0Y2giOnRydWUsIngtbnZpZGlhLWdwdS1hdHRlc3RhdGlvbi1yZXBvcnQtc2lnbmF0dXJlLXZlcmlmaWVkIjp0cnVlLCJ4LW52aWRpYS1ncHUtZHJpdmVyLXJpbS1mZXRjaGVkIjp0cnVlLCJ4LW52aWRpYS1ncHUtZHJpdmVyLXJpbS1zY2hlbWEtdmFsaWRhdGVkIjp0cnVlLCJ4LW52aWRpYS1ncHUtZHJpdmVyLXJpbS1jZXJ0LXZhbGlkYXRlZCI6dHJ1ZSwieC1udmlkaWEtZ3B1LWRyaXZlci1yaW0tc2lnbmF0dXJlLXZlcmlmaWVkIjp0cnVlLCJ4LW52aWRpYS1ncHUtZHJpdmVyLXJpbS1tZWFzdXJlbWVudHMtYXZhaWxhYmxlIjp0cnVlLCJ4LW52aWRpYS1ncHUtdmJpb3MtcmltLWZldGNoZWQiOnRydWUsIngtbnZpZGlhLWdwdS12Ymlvcy1yaW0tc2NoZW1hLXZhbGlkYXRlZCI6dHJ1ZSwieC1udmlkaWEtZ3B1LXZiaW9zLXJpbS1jZXJ0LXZhbGlkYXRlZCI6dHJ1ZSwieC1udmlkaWEtZ3B1LXZiaW9zLXJpbS1zaWduYXR1cmUtdmVyaWZpZWQiOnRydWUsIngtbnZpZGlhLWdwdS12Ymlvcy1yaW0tbWVhc3VyZW1lbnRzLWF2YWlsYWJsZSI6dHJ1ZSwieC1udmlkaWEtZ3B1LXZiaW9zLWluZGV4LW5vLWNvbmZsaWN0Ijp0cnVlLCJzZWNib290Ijp0cnVlLCJkYmdzdGF0IjoiZGlzYWJsZWQiLCJlYXRfbm9uY2UiOiI3OWMwMTAxMWM4YWQyNGQwNWU0YmM3MDgyNTE2OWUzMWExMzY4MDM4YTVlZDU1OWY0Yzk0ZTI0MWNmY2RkODQ1IiwiaHdtb2RlbCI6IkdIMTAwIEEwMSBHU1AgQlJPTSIsInVlaWQiOiI2OTgyODY2ODUwMDU1Nzc0Mjc4NTMxNjg2NDg2NTcyNzc1NTQ1OTUxODEzNzEwNDUiLCJvZW1pZCI6IjU3MDMiLCJpc3MiOiJMT0NBTF9HUFVfVkVSSUZJRVIiLCJuYmYiOjE3OTMxMTg4NTksImV4cCI6MTc5MzEyMjU3OSwiaWF0IjoxNzkzMTE4OTc5LCJqdGkiOiIyNjViMDc4OC1iOTY4LTQ2OTUtYWVhYy02YjI4NDBiY2FiYTcifQ.0zLL3zuXrTo3Qk-gJH7ebaqoL6yp5HPqHSBsAkd22z8"
+  }
+]
+Copied verifier.log to /home/ubuntu/cgpu-onboarding-package/local_gpu_verifier/verifier.log
