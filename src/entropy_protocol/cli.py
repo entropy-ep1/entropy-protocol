@@ -46,9 +46,13 @@ def _pub_raw(path: str) -> bytes:
 
 
 def _backend(model: str, device: str = "cpu", dtype: str = "float32"):
-    import torch
+    try:
+        import torch
 
-    from .backend_hf import HFBackend
+        from .backend_hf import HFBackend
+    except ImportError as exc:           # the model stack is an extra; checking packages and statements needs none of it
+        raise SystemExit(f"this command reads a language model ({exc.name} is missing): "
+                         "pip install 'entropy-protocol[model]'") from exc
     return HFBackend(model, device=device, dtype=getattr(torch, dtype))
 
 

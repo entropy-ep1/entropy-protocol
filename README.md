@@ -135,7 +135,7 @@ entropy evidence --check bench/results/attested/run-20261027T172258Z/packs/5aWyr
 
 ```bash
 git clone https://github.com/entropy-ep1/entropy-protocol.git && cd entropy-protocol
-pip install -e ".[markdown]"      # Python >= 3.10; brings torch and transformers
+pip install -e ".[model,markdown]"   # Python >= 3.10; the model stack: torch and transformers
 M=Qwen/Qwen2.5-0.5B-Instruct
 entropy keygen --out master.key
 entropy seal --model $M --key master.key --max-new-tokens 400 \
