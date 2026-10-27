@@ -363,5 +363,29 @@ export function binomialTail(n, m) {
   if (m <= 0) return 1; if (m > n) return 0;
   let c = 1n, sum = 0n;                                         // c = C(n, i), iterating i = 0..n
   for (let i = 0; i <= n; i++) { if (i >= m) sum += c; c = c * BigInt(n - i) / BigInt(i + 1); }
-  return Number(sum) / 2 ** n;
+  return ratioPow2(sum, n);
+}
+
+// sum / 2^n rounded to the nearest double, ties to even: what Python's int / int gives (correctly rounded). The
+// plain Number(sum) / 2 ** n overflows from n = 1024 (both sides Infinity: 0 at 1024, NaN beyond) - a document with
+// more than 1023 checkpoints - and rounds twice in the subnormal range (found by differential fuzzing, 27.10.2026).
+function ratioPow2(sum, n) {
+  if (sum === 0n) return 0;
+  const bl = sum.toString(2).length;
+  const e = bl - 1 - n;                                         // exponent of the leading bit
+  if (e < -1075) return 0;
+  if (e === -1075) return sum > (1n << BigInt(bl - 1)) ? 5e-324 : 0;  // above half the least subnormal, or a tie to 0
+  const bits = e >= -1022 ? 53 : e + 1075;                      // significant bits a double holds at that exponent
+  let shift = bl - bits, q;
+  if (shift > 0) {
+    const s = BigInt(shift);
+    q = sum >> s;
+    const rem = sum - (q << s), half = 1n << (s - 1n);
+    if (rem > half || (rem === half && (q & 1n))) q += 1n;
+  } else {
+    q = sum << BigInt(-shift);
+  }
+  let x = Number(q), k = shift - n;                             // the value is q * 2^k, exactly representable
+  while (k < -1000) { x *= 2 ** -1000; k += 1000; }             // each step exact: x stays normal until the last
+  return x * 2 ** k;
 }

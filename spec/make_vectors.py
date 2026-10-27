@@ -186,7 +186,9 @@ def build() -> dict:
                              "content_type": delivery.CT_RECORD,
                              "cose_encrypt0": delivery.deliver(k_log, token, pk_r, sk_e=sk_e).hex()}
 
-    cases = [(10, 10), (20, 15), (30, 26), (40, 34), (18, 17)]
+    # small n; then past 1023 checkpoints (a double cannot hold 2^n there) and into the subnormal range
+    cases = [(10, 10), (20, 15), (30, 26), (40, 34), (18, 17), (1023, 600), (1024, 600), (1100, 700), (2000, 1100),
+             (5000, 2600), (1050, 1049), (1060, 1060), (1074, 1074), (1075, 1075), (1076, 1075), (3000, 2900)]
     v["binomial_tail"] = [{"n": n, "m": m, "p": binomial_tail(n, m),
                            "exact": str(Fraction(sum(__import__("math").comb(n, i) for i in range(m, n + 1)), 1 << n))}
                           for n, m in cases]
