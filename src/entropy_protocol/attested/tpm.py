@@ -182,3 +182,48 @@ def replay(log: EventLog, alg: int = ALG_SHA256) -> dict:
         start = (bytes(n - 1) + bytes([log.locality])) if e.pcr == 0 else bytes(n)
         pcrs[e.pcr] = HASH[alg](pcrs.get(e.pcr, start) + e.digests[alg]).digest()
     return pcrs
+
+
+def parse_systemd_log(blob: bytes) -> list[tuple[int, bytes]]:
+    """systemd's TPM2 measurement log (/run/log/systemd/tpm2-measure.log, JSON-SEQ, RFC 7464): (pcr, SHA-256 digest)
+    of every measurement systemd made after the firmware handed over (systemd-pcrphase into PCR 11, and others)."""
+    import json
+    out = []
+    for rec in blob.split(b"\x1e"):
+        rec = rec.strip()
+        if not rec:
+            continue
+        r = json.loads(rec)
+        d = next((x["digest"] for x in r.get("digests", []) if x.get("hashAlg") == "sha256"), None)
+        if d is None or "pcr" not in r:
+            raise TPMError("systemd log record without a PCR or a SHA-256 digest")
+        out.append((int(r["pcr"]), bytes.fromhex(d)))
+    return out
+
+
+def replay_with(log: EventLog, later: list[tuple[int, bytes]], alg: int = ALG_SHA256) -> dict:
+    """The firmware log's replay, then the measurements made after boot, in order."""
+    pcrs = replay(log, alg)
+    n = DIGEST_SIZE[alg]
+    for pcr, digest in later:
+        pcrs[pcr] = HASH[alg](pcrs.get(pcr, bytes(n)) + digest).digest()
+    return pcrs
+
+
+def uki_sections(log: EventLog) -> dict:
+    """systemd-stub's PCR 11 measurements of a unified kernel image: section name -> SHA-256 of its contents (the
+    stub measures each section's name, then its contents, as EV_IPL events)."""
+    out, name = {}, None
+    for e in log.events:
+        if e.pcr != 11 or e.type != 0x0D:
+            continue
+        try:
+            text = e.data.decode("utf-16-le").rstrip("\x00")
+        except UnicodeDecodeError:
+            text = ""
+        if name is None:
+            name = text
+        else:
+            out[name] = e.digests[ALG_SHA256]
+            name = None
+    return out

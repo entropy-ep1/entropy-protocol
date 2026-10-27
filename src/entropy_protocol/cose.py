@@ -4,6 +4,8 @@ Labels are the IANA COSE registry values (checked 12.09.2026):
   1 alg · 4 kid · 15 CWT Claims (RFC 9597) · 16 typ (RFC 9596)
   258 payload-hash-alg · 259 preimage-content-type · 260 payload-location (RFC 9995, COSE Hash Envelope)
   269 3161-ttc (RFC 9921) · 394 receipts · 395 vds · 396 vdp (RFC 9942) · 3 content type
+  33 x5chain (RFC 9360) · "ep1-ear" (text label, ep1: SHA-256 of the attestation result the signing key was certified
+  on; attested/service.py)
 Algorithms: Ed25519 = -19 (RFC 9864, fully specified; -8 "EdDSA" accepted on verification) · SHA-256 = -16.
 COSE-HPKE (draft-ietf-cose-hpke-27, suggested code points, not yet IANA): HPKE-3 = 41, HPKE-4 = 42, "ek" = -4.
 CWT claims: 1 iss · 2 sub · 6 iat.

@@ -60,7 +60,7 @@ def _thim_chain(thim: dict) -> tuple[bytes, bytes, bytes]:
 
 def appraise(req: dict, *, rrp_id: str, policy: dict, at: dt.datetime, collateral: dict) -> Appraisal:
     """``req`` is a read enrollment request (enroll.read_request); ``collateral`` = {"rims": {id: xml},
-    "ocsp": [{"serial": hex, "nonce": bytes, "response": bytes}]}."""
+    "ocsp": [{"serial": hex, "nonce": bytes, "response": bytes, ...}], "amd_crl": der}."""
     a = Appraisal(target=req["target"])
     ev = cose._thaw(cbor2.loads(req["evidence"]))
     add = lambda name, ok, detail="": a.checks.append(Check(name, ok, detail))  # noqa: E731
@@ -116,6 +116,15 @@ def appraise(req: dict, *, rrp_id: str, policy: dict, at: dt.datetime, collatera
             vcek_der, ask_der, ark_der = _thim_chain(ev["thim"])
             ext = amd.verify_chain(vcek_der, ask_der, ark_der, product, at)
             add("cpu.chain.to_pinned_ark", True, f"ARK-{product}; {ext.get('productName', '?')}")
+            if pol_amd.get("crl", "required") != "off":
+                crl = collateral.get("amd_crl")
+                try:
+                    if crl is None:
+                        raise amd.SNPError("no CRL")
+                    amd.check_crl(crl, ask_der, ark_der, at)
+                    add("cpu.chain.ask_not_revoked", True, "AMD CRL")
+                except (amd.SNPError, ValueError) as exc:
+                    add("cpu.chain.ask_not_revoked", False, str(exc))
             amd.verify_report(h.snp, vcek_der)
             add("cpu.report.signature", True)
             parts = amd.tcb_parts(h.snp.reported_tcb, product)
@@ -128,11 +137,20 @@ def appraise(req: dict, *, rrp_id: str, policy: dict, at: dt.datetime, collatera
         except (amd.SNPError, KeyError, StopIteration, ValueError) as exc:
             add("cpu.chain.to_pinned_ark", False, str(exc))
         add("cpu.report.debug_off", not h.snp.debug, f"policy 0x{h.snp.policy:x}")
+        if pol_amd.get("alias_check_complete", True):
+            add("cpu.report.alias_check_complete", h.snp.alias_check_complete,
+                f"platform info 0x{h.snp.platform_info:x}")
+        bits = pol_amd.get("mitigation_vector_bits", [])
+        if bits:
+            add("cpu.report.mitigation_vector", all(h.snp.current_mit_vector >> b & 1 for b in bits),
+                f"current 0x{h.snp.current_mit_vector:x}, required bits {bits}")
         refs = pol_amd.get("measurements", [])
         m = h.snp.measurement.hex()
         add("cpu.report.measurement_in_reference_set", (m in refs) if refs else None,
             f"measurement {m}" + ("" if refs else "; no reference values"))
-        cpu_ok["config"] = not h.snp.debug and (m in refs if refs else True)
+        cpu_ok["config"] = not h.snp.debug and (m in refs if refs else True) and \
+            (h.snp.alias_check_complete or not pol_amd.get("alias_check_complete", True)) and \
+            all(h.snp.current_mit_vector >> b & 1 for b in bits)
         rd = hcl.report_data_binds_claims(h)
         add("cpu.report.report_data_is_hash_of_runtime_claims", rd)
         cpu_ok["identity"] = rd
@@ -144,7 +162,7 @@ def appraise(req: dict, *, rrp_id: str, policy: dict, at: dt.datetime, collatera
                   "chip_id": h.snp.chip_id, "vmpl": h.snp.vmpl} if h else None)
 
     # ---- vtpm: user data, the attestation key, the quote and the boot chain
-    vt = {"identity": False, "exec": False, "config": False}
+    vt: dict = {"identity": False, "exec": False, "config": False}
     if h is not None:
         ud_ok = bool(expected) and h.user_data == expected
         add("vtpm.runtime_claims.user_data_is_binding", ud_ok)
@@ -164,21 +182,34 @@ def appraise(req: dict, *, rrp_id: str, policy: dict, at: dt.datetime, collatera
             values = tpm.split_values(q["pcrs"], quote)
             add("vtpm.quote.pcr_digest", tpm.pcr_digest(quote, values) == quote.pcr_digest)
             log = tpm.parse_event_log(ev["eventlog"])
-            replayed = tpm.replay(log)
-            mism = [i for i, v in replayed.items() if values.get((tpm.ALG_SHA256, i)) not in (None, v)]
-            add("vtpm.eventlog.replays_to_quoted_pcrs", not mism, f"PCRs replayed {sorted(replayed)}; "
-                f"mismatched {mism}" if mism else f"PCRs replayed {sorted(replayed)}")
+            later = tpm.parse_systemd_log(ev["systemd_tpm_log"]) if ev.get("systemd_tpm_log") else []
+            replayed = tpm.replay_with(log, later)
+            # PCR 11 is extended again after boot (systemd-pcrphase): without systemd's log it cannot be replayed
+            uncovered = {11} if not later and any(e.pcr == 11 for e in log.events) else set()
+            judged = {i: v for i, v in replayed.items() if i not in uncovered}
+            mism = [i for i, v in judged.items() if values.get((tpm.ALG_SHA256, i)) not in (None, v)]
+            add("vtpm.eventlog.replays_to_quoted_pcrs", not mism, f"PCRs replayed {sorted(judged)}; mismatched "
+                f"{mism}" if mism else f"PCRs replayed {sorted(judged)}"
+                + (f"; not covered without systemd's log: {sorted(uncovered)}" if uncovered else ""))
+            uki = tpm.uki_sections(log)
+            ref_uki = pol_vtpm.get("uki", {})
+            bad_uki = [k for k, allowed in ref_uki.items() if uki.get(k, b"").hex() not in allowed]
+            if ref_uki:
+                add("vtpm.uki_sections.in_reference_set", not bad_uki,
+                    f"outside the reference set: {bad_uki}" if bad_uki else ", ".join(sorted(ref_uki)))
+            vt["claims"] = {"pcr4": values.get((tpm.ALG_SHA256, 4), b""), "pcr7": values.get((tpm.ALG_SHA256, 7), b""),
+                            "uki": uki}
             refs = pol_vtpm.get("pcrs", {})
             bad = [i for i, allowed in refs.items() if values.get((tpm.ALG_SHA256, int(i)), b"").hex() not in allowed]
             add("vtpm.pcrs.in_reference_set", (not bad) if refs else None,
                 f"outside the reference set: {bad}" if bad else ("" if refs else "no reference values"))
             vt["identity"] = ud_ok and qd
-            vt["exec"] = (not mism) and (not bad if refs else True)
+            vt["exec"] = (not mism) and (not bad if refs else True) and not bad_uki
         except (hcl.HCLError, tpm.TPMError, KeyError) as exc:
             add("vtpm.quote.signature_by_bound_ak", False, str(exc))
     a.submods["vtpm"] = ear.appraisal(
         {ear.INSTANCE_IDENTITY: 2 if vt["identity"] else 96, ear.EXECUTABLES: 3 if vt["exec"] else 33,
-         ear.CONFIGURATION: 2 if vt["config"] else 32}, [policy.get("id", "")])
+         ear.CONFIGURATION: 2 if vt["config"] else 32}, [policy.get("id", "")], attester=vt.get("claims"))
 
     # ---- gpus: chain, signature over the handle, manifests, revocation
     gpus = ev.get("gpus", [])
@@ -223,10 +254,16 @@ def appraise(req: dict, *, rrp_id: str, policy: dict, at: dt.datetime, collatera
     return a
 
 
-def _rims(add, label, rep, drv, vb, collateral, at, revocation: bool) -> bool:
+def rim_ids(rep: nvidia.GPUReport) -> dict:
+    """The driver and VBIOS manifest ids for a report, as NVIDIA's verifier composes them from its opaque data."""
     up = lambda k: nvidia.text(rep.opaque.get(k, b"")).upper()  # noqa: E731
-    ids = {"driver": rim.driver_id(drv),
-           "vbios": rim.vbios_id(up("project"), up("project_sku"), up("chip_sku"), vb.replace(".", "").upper())}
+    vb = nvidia.vbios_version(rep.opaque.get("vbios_version", b""))
+    return {"driver": rim.driver_id(nvidia.text(rep.opaque.get("driver_version", b""))),
+            "vbios": rim.vbios_id(up("project"), up("project_sku"), up("chip_sku"), vb.replace(".", "").upper())}
+
+
+def _rims(add, label, rep, drv, vb, collateral, at, revocation: bool) -> bool:
+    ids = rim_ids(rep)
     gold = {}
     for kind, rid in ids.items():
         xml = collateral.get("rims", {}).get(rid)

@@ -108,8 +108,15 @@ class Report:
     chip_id: bytes
     committed_tcb: int
     launch_tcb: int
+    launch_mit_vector: int     # report version 5: 0x1F8
+    current_mit_vector: int    # report version 5: 0x200
     r: int
     s: int
+
+    @property
+    def alias_check_complete(self) -> bool:
+        """PLATFORM_INFO bit 5: the platform checked DIMM aliasing (the BadRAM fix, AMD-SB-3015)."""
+        return bool(self.platform_info >> 5 & 1)
 
     @property
     def debug(self) -> bool:
@@ -133,7 +140,9 @@ def parse_report(raw: bytes) -> Report:
                   flags=_u(raw, 0x48, 4), report_data=raw[0x50:0x90], measurement=raw[0x90:0xC0],
                   host_data=raw[0xC0:0xE0], id_key_digest=raw[0xE0:0x110], report_id=raw[0x140:0x160],
                   reported_tcb=_u(raw, 0x180, 8), chip_id=raw[0x1A0:0x1E0], committed_tcb=_u(raw, 0x1E0, 8),
-                  launch_tcb=_u(raw, 0x1F0, 8), r=_u(raw, 0x2A0, 72), s=_u(raw, 0x2E8, 72))
+                  launch_tcb=_u(raw, 0x1F0, 8), launch_mit_vector=_u(raw, 0x1F8, 8) if _u(raw, 0, 4) >= 5 else 0,
+                  current_mit_vector=_u(raw, 0x200, 8) if _u(raw, 0, 4) >= 5 else 0,
+                  r=_u(raw, 0x2A0, 72), s=_u(raw, 0x2E8, 72))
 
 
 def verify_report(rep: Report, leaf_der: bytes) -> None:
@@ -160,3 +169,30 @@ def tcb_parts(tcb: int, product: str) -> dict:
 def tcb_at_least(tcb: dict, minimum: dict) -> bool:
     """Every component at or above the minimum: TCB components are compared one by one, never as one integer."""
     return all(tcb.get(k, -1) >= v for k, v in minimum.items())
+
+
+KDS = "https://kdsintf.amd.com"
+
+
+def crl_url(product: str, signer: str = "vcek") -> str:
+    return f"{KDS}/{signer}/v1/{product}/crl"
+
+
+def fetch_crl(product: str, signer: str = "vcek", timeout: int = 20) -> bytes:
+    """AMD's CRL for the product's ASK (or ASVK), signed by the ARK. KDS rate-limits: fetch once per appraisal."""
+    import urllib.request
+    with urllib.request.urlopen(crl_url(product, signer), timeout=timeout) as r:  # noqa: S310 - fixed https URL
+        return r.read()
+
+
+def check_crl(crl_der: bytes, ask_der: bytes, ark_der: bytes, at: dt.datetime,
+              skew: dt.timedelta = dt.timedelta(minutes=5)) -> None:
+    """The CRL is the ARK's, current at ``at``, and does not list the ASK; SNPError otherwise."""
+    crl = x509.load_der_x509_crl(crl_der)
+    ask, ark = x509.load_der_x509_certificate(ask_der), x509.load_der_x509_certificate(ark_der)
+    if crl.issuer != ark.subject or not crl.is_signature_valid(ark.public_key()):
+        raise SNPError("CRL not signed by the ARK")
+    if crl.last_update_utc > at + skew or (crl.next_update_utc is not None and at > crl.next_update_utc + skew):
+        raise SNPError(f"CRL not current at {at.isoformat()}")
+    if crl.get_revoked_certificate_by_serial_number(ask.serial_number) is not None:
+        raise SNPError("the ASK is revoked")
