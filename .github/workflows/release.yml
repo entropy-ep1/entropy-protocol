@@ -1,8 +1,9 @@
 name: release
-# A tag v* builds the Python distributions, signs each file with Sigstore (keyless, the workflow's identity), writes
-# SHA256SUMS, attests build provenance, and publishes a GitHub release. workflow_dispatch runs everything except the
-# publication (dry run) - use it, or a signed -rc tag, after any change to this file before a real tag (17.09.2026:
-# action bumps broke a release silently because CI does not run this workflow).
+# A tag v* builds the Python distributions, signs each file with Sigstore (keyless, the workflow's identity; one
+# bundle <file>.sigstore.json per file), writes SHA256SUMS, attests build provenance, and publishes a GitHub release.
+# workflow_dispatch runs everything except the publication (dry run) - use it, or a signed -rc tag, after any change
+# to this file before a real tag (17.09.2026: action bumps broke a release silently because CI does not run this
+# workflow).
 on:
   push:
     tags: ["v*"]
@@ -26,17 +27,17 @@ jobs:
           ls -la dist
       - uses: sigstore/cosign-installer@v3
         with:
-          # pinned: the installer's default moved to cosign 3, which writes bundles and ignores
-          # --output-signature/--output-certificate (a release without assets, 17.09.2026)
-          cosign-release: "v2.6.5"
+          # pinned: cosign 3 writes and verifies Sigstore bundles (<file>.sigstore.json: signature, certificate and
+          # transparency-log proof in one file); cosign 2's separate .sig/.pem cannot be verified with cosign 3
+          cosign-release: "v3.1.3"
       - name: sign every file, then the checksums
         run: |
           cd dist
           for f in *; do
-            cosign sign-blob --yes --output-signature "$f.sig" --output-certificate "$f.pem" "$f"
+            cosign sign-blob --yes --bundle "$f.sigstore.json" "$f"
           done
           sha256sum -- * > SHA256SUMS
-          cosign sign-blob --yes --output-signature SHA256SUMS.sig --output-certificate SHA256SUMS.pem SHA256SUMS
+          cosign sign-blob --yes --bundle SHA256SUMS.sigstore.json SHA256SUMS
           ls -la
       - uses: actions/attest-build-provenance@v2
         # GitHub keeps build-provenance attestations for public repositories on every plan; for a private repository on

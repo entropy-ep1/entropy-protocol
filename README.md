@@ -201,6 +201,18 @@ v2 Merkle trees (RFC 9162), COSE Hash Envelope (RFC 9995), CWT claims in COSE (R
 0.1.0 — a reference implementation ahead of standardization. Formats may change before a specification is adopted
 by a standards body; records name their canonical form and version, and older records keep verifying.
 
+## Verify a release
+
+Every file of a release is signed with Sigstore by this repository's release workflow (one bundle,
+`<file>.sigstore.json`, per file), and `SHA256SUMS` lists them all. With cosign 3:
+
+```bash
+f=entropy_protocol-0.1.0-py3-none-any.whl
+cosign verify-blob --bundle "$f.sigstore.json" --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+  --certificate-identity https://github.com/entropy-ep1/entropy-protocol/.github/workflows/release.yml@refs/tags/v0.1.0 "$f"
+gh attestation verify "$f" --repo entropy-ep1/entropy-protocol      # GitHub's build-provenance attestation
+```
+
 ## License and patents
 
 Code: [Apache License 2.0](LICENSE). Patent applications cover this work; see [PATENTS.md](PATENTS.md) for the
