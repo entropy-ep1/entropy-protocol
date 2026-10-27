@@ -1,6 +1,6 @@
-# GPU evaluation harness (PRIVATE until the covering provisional application is filed)
+# GPU evaluation harness
 
-Plan and budget: `../../../GPU_EVAL_PLAN_RU.md`. Every script is resumable (one JSON line per finished item) and
+Every script is resumable (one JSON line per finished item) and
 writes `runs/<model>/...` with the code digest, model identity and environment of the run.
 
 | Script | Protocol item |

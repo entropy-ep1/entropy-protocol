@@ -5,7 +5,7 @@ Two layers in one record:
   content layer  canonical-text digest + per-block digests  -> exact integrity and block localization
   model layer    checkpoints (char offset, ordinal property) -> binds the text to the declared model,
                  localizes changes at character level; carries no text
-Verdicts (spec [0116]-[0120]):
+Verdicts (ARCHITECTURE §6):
   NOT_VERIFIABLE  the log token cannot be opened with the key (wrong key, altered token)
   VERIFIED        canonical text identical to the sealed text AND every decisive checkpoint matches
   MODIFIED        canonical text differs from the sealed text; changed blocks, deletion points and
@@ -16,7 +16,7 @@ Verdicts (spec [0116]-[0120]):
   VERIFIED_TEXT   the canonical text differs, but its visible text (plain.py: a rendered copy, e.g. out of a chat
                   window) is identical to the sealed text's; formatting is not covered and the model layer is not
                   evaluated on it. Only records with the visible-text layer; the candidate is taken literally.
-Tolerance ([0115]-[0117]): with a calibration table in the header the verifier applies the tolerance of its
+Tolerance (ARCHITECTURE §6a): with a calibration table in the header the verifier applies the tolerance of its
 own configuration class; a class absent from the table is evaluated with the largest listed tolerance and
 reported as calibrated = False.
 """
@@ -184,7 +184,7 @@ def judge(o: Opened, stats, t0: float) -> Result:
     matched = divergent = indet = 0
     ranges: list[list[int]] = []
     for (c, prop), st in zip(rec.entries, stats):
-        if st is None:                          # cannot be aligned to the candidate -> divergence ([0119])
+        if st is None:                          # cannot be aligned to the candidate -> divergence
             divergent += 1
             ranges.append([c, c + 1])
             continue

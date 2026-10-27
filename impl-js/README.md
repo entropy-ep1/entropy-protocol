@@ -1,7 +1,5 @@
 # ep1 — second implementation (JavaScript, model-free parts)
 
-PRIVATE until the covering provisional application is filed.
-
 A second codebase, in a second language, written from `spec/ep1.cddl` and `ARCHITECTURE.md`. Its purpose is to
 prove that the specification is complete enough for another implementer to reproduce every byte, and to catch
 ambiguities the reference implementation hides. It covers everything a verifier needs apart from running the model:

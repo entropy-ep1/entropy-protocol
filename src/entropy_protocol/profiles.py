@@ -7,7 +7,7 @@ quality  guard 0.9 at sealing: no checkpoint where the prompt-conditioned model 
          prose perplexity as unsealed (x1.01). The detector skips the positions where its own, prompt-free view is at
          least 90% sure (read from the text and the model, so the exact null holds): prose, 200 tokens, 0.5B: 90% at
          a false-positive rate of 1e-6 and 100% at 1e-4. Maths keeps almost no mark (low entropy: any watermark).
-strong   the reference point of stage 2: every selected checkpoint is enforced. Prose, 200 tokens: 100% at 1e-6, at
+strong   the protocol's reference point: every selected checkpoint is enforced. Prose, 200 tokens: 100% at 1e-6, at
          a perplexity of x1.15-1.25; but a checkpoint may overrule a confident model: GSM8K 38% -> 3% (0.5B) and
          64% -> 11% (1.5B).
 The record (verification against it) is exact under either: its content layer does not depend on enforcement.

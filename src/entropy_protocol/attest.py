@@ -1,9 +1,10 @@
-"""Evidence pack and signed verification attestation (spec [0126]-[0128]).
+"""A signed verification attestation in its minimal form: Ed25519 over canonical JSON.
 
 The pack carries the verdict, counts, divergence ranges, the model/tokenizer identity and the
 decoding configuration, the verifier nonce and a digest of the log token — never the text.
 Signed with Ed25519 over canonical JSON; checkable by anyone with the verifier's public key.
-(RFC 3161 time-stamping and registry posting: stage 3.)
+Signed COSE statements, the transparency log, RFC 3161 time stamps and the CBOR evidence package that supersede
+it for publication: statements.py, tlog.py, ts3161.py, pack.py.
 """
 from __future__ import annotations
 

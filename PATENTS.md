@@ -4,7 +4,7 @@
 > royalty-free for implementations of the specification.
 
 The authors of the Entropy Protocol have filed patent applications covering it, including U.S. Patent Application
-No. 19/795,862 and a U.S. provisional application (number to be added on filing).
+No. 19/795,862 and U.S. Provisional Application No. 64/185,147.
 
 **Code.** The code in this repository is licensed under the Apache License 2.0, which includes a patent license from
 every contributor for their contributions (section 3).

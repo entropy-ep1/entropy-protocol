@@ -3,7 +3,7 @@
 
 Candidate checkpoints = every checkpoint that holds on the reference (CPU float32) at tol = 0.
 For each checkpoint the signed predicate margin is measured in two spaces:
-  prob  : p_tok - p_boundary                      (spec [0115] as filed)
+  prob  : p_tok - p_boundary                      (the probability space)
   logit : l_tok - l_boundary  (= log p_tok - log p_boundary, a log-probability ratio)
 Texts are split: the first half calibrates delta (max |margin_cfg - margin_ref| over checkpoints),
 the second half tests tol = c * delta:

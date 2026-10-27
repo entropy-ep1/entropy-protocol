@@ -28,8 +28,8 @@ class Header:
     text_digest: str           # sha256 of the canonical text (binds the record to one text)
     engine: str                # sealing engine version
     extra: dict = field(default_factory=dict)
-    tol_space: str = "prob"    # "prob": |p - p_boundary| (spec [0115]); "logit": |log p - log p_boundary|
-    cal: dict = field(default_factory=dict)   # calibration table: configuration class -> tolerance ([0117])
+    tol_space: str = "prob"    # "prob": |p - p_boundary|; "logit": |log p - log p_boundary|
+    cal: dict = field(default_factory=dict)   # calibration table: configuration class -> tolerance
     components: dict = field(default_factory=dict)   # measured model components: name -> sha-256 hex
     env: dict = field(default_factory=dict)          # sealing environment (determinism envelope)
     selection: str = "interval"  # "interval" | "content" (content-keyed checkpoints, detectable without the record)

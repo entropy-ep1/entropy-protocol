@@ -3,13 +3,13 @@
 # --max-run-duration with --instance-termination-action=DELETE deletes the instance and its boot disk when the cap
 # runs out, whether or not this Mac is awake.
 # Usage: bash launch_gcp.sh <name> <machine type> <accelerator> <hours cap> [zone] [project]
-#   e.g. bash launch_gcp.sh b-l4 g2-standard-8 nvidia-l4 8 us-central1-a rats-probe
+#   e.g. bash launch_gcp.sh b-l4 g2-standard-8 nvidia-l4 8 us-central1-a my-project   (or GCP_PROJECT=my-project)
 # SSH: this Mac's key as INSTANCE metadata (user ubuntu). Never touches project metadata, firewall rules or other
 # instances: the project's default network already admits SSH, and the key is the only way in.
 # The project allows one GPU across all regions (GPUS_ALL_REGIONS = 1): one GCP machine at a time.
 set -euo pipefail
 NAME=${1:?name}; TYPE=${2:?machine type}; ACC=${3:?accelerator}; HOURS=${4:?hours cap}
-ZONE=${5:-us-central1-a}; PROJECT=${6:-rats-probe}
+ZONE=${5:-us-central1-a}; PROJECT=${6:-${GCP_PROJECT:?pass the project as the sixth argument or set GCP_PROJECT}}
 DIR=$(cd "$(dirname "$0")" && pwd); LEDGER="$DIR/instances.tsv"
 VM="ep-eval-$NAME"
 PUB=$(cat "$HOME/.ssh/id_ed25519.pub")
