@@ -68,33 +68,45 @@ export function encode(v) {
   throw new Error(`cannot encode ${typeof v}`);
 }
 
+// Strict where the reference (cbor2) is strict and bounded where untrusted input could make it loop: a byte past the
+// end is an error, not a zero; an array or map may not declare more items than there are bytes left (each item takes
+// at least one); text must be valid UTF-8. (Differential fuzzing against the reference, 27.10.2026: a few bytes
+// declaring a 2^60-item array kept the old decoder reading zeros past the end; ill-formed UTF-8 was replaced, not
+// refused.)
+const UTF8 = new TextDecoder("utf-8", { fatal: true });
 export function decode(buf) {
   let i = 0;
+  const need = (k) => { if (i + k > buf.length) throw new Error("truncated CBOR"); };
   const readN = (ai) => {
     if (ai < 24) return ai;
-    if (ai === 24) return buf[i++];
-    if (ai === 25) { const n = buf.readUInt16BE(i); i += 2; return n; }
-    if (ai === 26) { const n = buf.readUInt32BE(i); i += 4; return n; }
-    if (ai === 27) { const n = buf.readBigUInt64BE(i); i += 8; return n <= BigInt(Number.MAX_SAFE_INTEGER) ? Number(n) : n; }
+    if (ai === 24) { need(1); return buf[i++]; }
+    if (ai === 25) { need(2); const n = buf.readUInt16BE(i); i += 2; return n; }
+    if (ai === 26) { need(4); const n = buf.readUInt32BE(i); i += 4; return n; }
+    if (ai === 27) { need(8); const n = buf.readBigUInt64BE(i); i += 8; return n <= BigInt(Number.MAX_SAFE_INTEGER) ? Number(n) : n; }
     throw new Error("indefinite lengths are not deterministic CBOR");
   };
+  const count = (n) => {                                        // a declared length checked against what is left
+    if (typeof n === "bigint" || n > buf.length - i) throw new Error("CBOR length beyond the input");
+    return n;
+  };
   const item = () => {
+    need(1);
     const ib = buf[i++], major = ib >> 5, ai = ib & 31;
     if (major === 7) {
       if (ai === 20) return false; if (ai === 21) return true; if (ai === 22) return null; if (ai === 23) return undefined;
-      if (ai === 25) { const h = buf.readUInt16BE(i); i += 2; return half(h); }
-      if (ai === 26) { const f = buf.readFloatBE(i); i += 4; return f; }
-      if (ai === 27) { const f = buf.readDoubleBE(i); i += 8; return f; }
+      if (ai === 25) { need(2); const h = buf.readUInt16BE(i); i += 2; return half(h); }
+      if (ai === 26) { need(4); const f = buf.readFloatBE(i); i += 4; return f; }
+      if (ai === 27) { need(8); const f = buf.readDoubleBE(i); i += 8; return f; }
       throw new Error("unsupported simple value");
     }
     const n = readN(ai);
     switch (major) {
       case 0: return n;
       case 1: return typeof n === "bigint" ? -1n - n : -1 - n;
-      case 2: { const b = buf.subarray(i, i + n); i += n; return Buffer.from(b); }
-      case 3: { const s = buf.toString("utf8", i, i + n); i += n; return s; }
-      case 4: { const a = []; for (let k = 0; k < n; k++) a.push(item()); return a; }
-      case 5: { const m = new Map(); for (let k = 0; k < n; k++) { const key = item(); m.set(key, item()); } return m; }
+      case 2: { count(n); const b = buf.subarray(i, i + n); i += n; return Buffer.from(b); }
+      case 3: { count(n); const s = UTF8.decode(buf.subarray(i, i + n)); i += n; return s; }
+      case 4: { count(n); const a = []; for (let k = 0; k < n; k++) a.push(item()); return a; }
+      case 5: { count(n); const m = new Map(); for (let k = 0; k < n; k++) { const key = item(); m.set(key, item()); } return m; }
       case 6: return new Tag(n, item());
     }
     throw new Error("bad CBOR");
@@ -114,7 +126,9 @@ function half(h) {
 // ------------------------------------------------------------------ canonical form v3
 export const CANON_V3 = "ep1-canon/v3:nfc+del-cr-bom-zw-shy+del-vs-runs+nbsp+rstrip-lines+strip";
 export const CANON_V4 = "ep1-canon/v4:nfc+del-cr-bom-zw-shy+del-vs-runs+nbsp+typo+rstrip-lines+strip;seg2";
-export const CANON_ID = CANON_V4;                              // new records; records name their version
+// v5: the deletions before NFC, so the form is idempotent (see canon.py)
+export const CANON_V5 = "ep1-canon/v5:del-cr-bom-zw-shy+del-vs-runs+nfc+nbsp+typo+rstrip-lines+strip;seg2";
+export const CANON_ID = CANON_V5;                              // new records; records name their version
 const FOLD = new Map([[0x201c, 0x22], [0x201d, 0x22], [0x201e, 0x22], [0x201f, 0x22], [0xab, 0x22], [0xbb, 0x22],
   [0x2018, 0x27], [0x2019, 0x27], [0x201a, 0x27], [0x201b, 0x27], [0x2bc, 0x27],
   [0x2010, 0x2d], [0x2011, 0x2d], [0x2012, 0x2d], [0x2013, 0x2d], [0x2212, 0x2d]]);
@@ -128,7 +142,64 @@ const WS = new Set([0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x1c, 0x1d, 0x1e, 0x1f, 0x20, 
   0x2000, 0x2001, 0x2002, 0x2003, 0x2004, 0x2005, 0x2006, 0x2007, 0x2008, 0x2009, 0x200a, 0x2028, 0x2029,
   0x202f, 0x205f, 0x3000]);         // Python str.isspace() for the code points that can reach step 6
 
+// a string from code points without spreading them into one call (that overflows the stack on long texts)
+const fromCodePoints = (cps) => {
+  let out = "";
+  for (let k = 0; k < cps.length; k += 8192) out += String.fromCodePoint(...cps.slice(k, k + 8192));
+  return out;
+};
+
+function deletions(cps) {                                     // v5 steps 1-2, on the source as given
+  const kept = [];
+  for (let k = 0; k < cps.length;) {
+    const c = cps[k];
+    if (c === 0xfeff) {
+      let e = k + 1; while (e < cps.length && isVS(cps[e])) e++;
+      k = e - (k + 1) >= 8 ? e : k + 1; continue;
+    }
+    if (!DELETE.has(c)) kept.push(c);
+    k++;
+  }
+  const out = [];
+  for (let k = 0; k < kept.length;) {
+    if (isVS(kept[k])) {
+      let e = k; while (e < kept.length && isVS(kept[e])) e++;
+      if (e - k >= 8) { k = e; continue; }
+    }
+    out.push(kept[k]); k++;
+  }
+  return out;
+}
+
+function finish(cps) {                                        // trailing spaces of lines, then of the text
+  const res = [];
+  for (let k = 0; k < cps.length;) {
+    if (cps[k] === 0x20 || cps[k] === 0x09) {
+      let e = k; while (e < cps.length && (cps[e] === 0x20 || cps[e] === 0x09)) e++;
+      if (e === cps.length || cps[e] === 0x0a) { k = e; continue; }
+    }
+    res.push(cps[k]); k++;
+  }
+  let a = 0, b = res.length;
+  while (a < b && WS.has(res[a])) a++;
+  while (b > a && WS.has(res[b - 1])) b--;
+  return fromCodePoints(res.slice(a, b));
+}
+
+function canonicalizeV5(text) {
+  const raw = Array.from(text, (ch) => ch.codePointAt(0));
+  const nfc = Array.from(fromCodePoints(deletions(raw)).normalize("NFC"), (ch) => ch.codePointAt(0));
+  const out = [];
+  for (const c of nfc) {
+    if (FOLD_MULTI.has(c)) out.push(...FOLD_MULTI.get(c));
+    else if (FOLD.has(c)) out.push(FOLD.get(c));
+    else out.push(SPACE.has(c) ? 0x20 : c);
+  }
+  return finish(out);
+}
+
 export function canonicalize(text, version = CANON_ID) {
+  if (version === CANON_V5) return canonicalizeV5(text);
   if (version !== CANON_V3 && version !== CANON_V4) throw new Error("unsupported canonical form");
   const v4 = version === CANON_V4;
   const src = Array.from(text.normalize("NFC"), (ch) => ch.codePointAt(0));
@@ -165,13 +236,13 @@ export function canonicalize(text, version = CANON_ID) {
   let a = 0, b = res.length;
   while (a < b && WS.has(res[a])) a++;
   while (b > a && WS.has(res[b - 1])) b--;
-  return String.fromCodePoint(...res.slice(a, b));
+  return fromCodePoints(res.slice(a, b));
 }
 
 export function segment(ctext, version = CANON_ID) {         // offsets in code points, as in the record
   const cps = Array.from(ctext, (ch) => ch.codePointAt(0));
   const spans = [];
-  const v4 = version === CANON_V4;
+  const v4 = version === CANON_V4 || version === CANON_V5;    // seg2
   let start = 0;
   const emit = (a, b) => {
     let s = a, e = b;
@@ -204,22 +275,29 @@ export function blockDigest(ctext, [a, b]) {
 // an ordinal "12." / "12)", a task box "[ ]" / "[x]" or a ballot box) removed; whitespace runs one space; empty lines
 // dropped; lines joined by one space. Blocks: canonical v4 segmentation inside each line, as code-point spans.
 export const PLAIN_V1 = "ep1-plain/v1:canon-v4+commonmark-gfm-visible+list-marker+ws";
+export const PLAIN_V2 = "ep1-plain/v2:canon-v5+commonmark-gfm-visible+list-marker+ws";
+export const PLAIN_ID = PLAIN_V2;
+const canonOf = (form) => {
+  if (form === PLAIN_V2) return CANON_V5;
+  if (form === PLAIN_V1) return CANON_V4;
+  throw new Error("unsupported visible-text form");
+};
 const MARKER = /^[ \t]*(?:(?:[-*+\u2022\u25e6\u25aa\u2023\u25cf\u00b7]|[0-9]{1,9}[.)])[ \t]+)?(?:(?:\[[ xX]\]|[\u2610\u2611\u2612])[ \t]+)?/u;
 const VWS = /[ \t\n\x0b\x0c\u1680\u2000-\u200a\u2028\u2029\u205f\u3000]+/gu;
-function visibleLines(text) {
+function visibleLines(text, form = PLAIN_ID) {
   const out = [];
-  for (const raw of canonicalize(text, CANON_V4).split("\n")) {
+  for (const raw of canonicalize(text, canonOf(form)).split("\n")) {
     const line = raw.replace(MARKER, "").replace(VWS, " ").replace(/^ +| +$/g, "");
     if (line) out.push(line);
   }
   return out;
 }
-export const plainNormalize = (text) => visibleLines(text).join(" ");
-export function segmentVisible(text) {                        // [visible text, blocks as code-point spans]
-  const lines = visibleLines(text), spans = [];
+export const plainNormalize = (text, form = PLAIN_ID) => visibleLines(text, form).join(" ");
+export function segmentVisible(text, form = PLAIN_ID) {      // [visible text, blocks as code-point spans]
+  const lines = visibleLines(text, form), spans = [];
   let pos = 0;
   for (const line of lines) {
-    for (const [a, b] of segment(line, CANON_V4)) spans.push([pos + a, pos + b]);
+    for (const [a, b] of segment(line, canonOf(form))) spans.push([pos + a, pos + b]);
     pos += Array.from(line).length + 1;
   }
   return [lines.join(" "), spans];

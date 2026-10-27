@@ -24,6 +24,23 @@ eq("content selection", v.content_selection.contexts.map((c) => ep1.wmDecide(k.k
 for (const [i, c] of v.canonicalization.entries()) eq(`canonicalization[${i}]`, ep1.canonicalize(c.input, ep1.CANON_V3), c.output);
 eq("segmentation", ep1.segment(v.segmentation.text, ep1.CANON_V3).map((s) => [...s, ep1.blockDigest(v.segmentation.text, s)]),
    v.segmentation.blocks);
+// canonical form v5 (the reference): v4's steps with the deletions before NFC, idempotent
+const c5 = v.canonicalization_v5;
+eq("canon id v5", ep1.CANON_V5, c5.canon_id);
+for (const [i, c] of c5.cases.entries()) {
+  eq(`canonicalization v5[${i}]`, ep1.canonicalize(c.input, ep1.CANON_V5), c.output);
+  eq(`canonicalization v5[${i}] idempotent`, ep1.canonicalize(c.output, ep1.CANON_V5), c.output);
+  eq(`canonicalization v5[${i}] as v4`, ep1.canonicalize(c.input, ep1.CANON_V4), c.v4);
+}
+eq("canonical v5 segmentation text", ep1.canonicalize(c5.segmentation.text, ep1.CANON_V5), c5.segmentation.canonical);
+eq("segmentation v5", ep1.segment(c5.segmentation.canonical, ep1.CANON_V5).map((s) => [...s, ep1.blockDigest(c5.segmentation.canonical, s)]),
+   c5.segmentation.blocks);
+const vt2 = v.visible_text_v2;
+eq("visible form id v2", ep1.PLAIN_V2, vt2.form);
+for (const [i, c] of vt2.cases.entries()) {
+  const [vis, spans] = ep1.segmentVisible(c.input, ep1.PLAIN_V2);
+  eq(`visible text v2[${i}]`, [vis, spans.map((s) => [...s, ep1.blockDigest(vis, s)])], [c.visible, c.blocks]);
+}
 // canonical form v4: typographic folding and blocks for scripts written without spaces
 const c4 = v.canonicalization_v4;
 eq("canon id v4", ep1.CANON_V4, c4.canon_id);
@@ -56,7 +73,7 @@ eq("v4 gated record blocks", ep1.segment(r4.text, ep1.CANON_V4).map((s) => [...s
 const vt = v.visible_text;
 eq("visible form id", ep1.PLAIN_V1, vt.form);
 for (const [i, c] of vt.cases.entries()) {
-  const [vis, spans] = ep1.segmentVisible(c.input);
+  const [vis, spans] = ep1.segmentVisible(c.input, ep1.PLAIN_V1);
   eq(`visible text[${i}]`, vis, c.visible);
   eq(`visible blocks[${i}]`, spans.map((s) => [...s, ep1.blockDigest(vis, s)]), c.blocks);
 }
@@ -68,12 +85,12 @@ const rec5 = ep1.decode(o5.plaintext), h5 = rec5.get("h");
 eq("visible record header", [h5.get("canon"), h5.get("plain")], [ep1.CANON_V4, ep1.PLAIN_V1]);
 const hexOf = (str) => ep1.sha256(Buffer.from(str, "utf8")).toString("hex");
 eq("Markdown source: canonical digest = the record's (VERIFIED)", hexOf(ep1.canonicalize(r5.markdown, ep1.CANON_V4)), h5.get("text_digest"));
-const [cv, cs] = ep1.segmentVisible(r5.copy);
+const [cv, cs] = ep1.segmentVisible(r5.copy, ep1.PLAIN_V1);
 eq("rendered copy: canonical digest differs", hexOf(ep1.canonicalize(r5.copy, ep1.CANON_V4)) !== h5.get("text_digest"), true);
 eq("rendered copy: visible digest = the record's (VERIFIED_TEXT)", hexOf(cv), h5.get("plain_digest"));
 eq("rendered copy: visible blocks = the record's", cs.map((s) => [...s, ep1.blockDigest(cv, s)]), rec5.get("p"));
-eq("edited copy: visible text", ep1.plainNormalize(r5.edited), r5.edited_visible);
-eq("edited copy: visible digest differs (MODIFIED)", hexOf(ep1.plainNormalize(r5.edited)) !== h5.get("plain_digest"), true);
+eq("edited copy: visible text", ep1.plainNormalize(r5.edited, ep1.PLAIN_V1), r5.edited_visible);
+eq("edited copy: visible digest differs (MODIFIED)", hexOf(ep1.plainNormalize(r5.edited, ep1.PLAIN_V1)) !== h5.get("plain_digest"), true);
 
 // generation statement: commitment recomputed from the record, signature, envelope
 const g = v.generation_statement;

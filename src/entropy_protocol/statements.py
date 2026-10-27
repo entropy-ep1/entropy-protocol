@@ -122,7 +122,8 @@ def detection_statement(detection, candidate: str, backend, signer: Ed25519Priva
                         envelope: bool = False, iat: int | None = None,
                         extra: dict | None = None) -> tuple[bytes, dict]:
     """(Signed Statement, payload map) for a ``detect.Detection``."""
-    cand = sha256(canonicalize(candidate, getattr(detection, "canon", CANON_ID)).encode())
+    canon = getattr(detection, "canon", CANON_ID)
+    cand = sha256(canonicalize(candidate, canon).encode())
     # no floating point on the wire: the p-value is exactly binomial_tail(checkpoints, matched); the threshold
     # travels as its decimal exponent (alpha = 10^-alpha_exp)
     import math
@@ -131,7 +132,7 @@ def detection_statement(detection, candidate: str, backend, signer: Ed25519Priva
             "technique": f"ep1-wm/k{detection.k}-i{detection.interval}-c{detection.context}"
                          + (f"-g{round(detection.gate * 1000)}" if detection.gate else ""), "cand": cand,
             "wts": bytes.fromhex(backend.weights_digest), "tok": bytes.fromhex(backend.tokenizer_digest),
-            "engine": ENGINE}
+            "engine": ENGINE, "canon": canon}
     return _sign_result(body, signer, detector_id, cand.hex(), TYP_DETECTION, CT_DETECTION, envelope, iat,
                         extra), body
 

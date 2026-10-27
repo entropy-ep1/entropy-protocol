@@ -90,6 +90,16 @@ def dumps(rec: Record) -> bytes:
 
 
 def loads(data: bytes) -> Record:
+    """The record in ``data``; ValueError for anything else, malformed CBOR and a wrong shape included."""
+    try:
+        return _loads(data)
+    except ValueError:
+        raise
+    except (cbor2.CBORDecodeError, KeyError, TypeError, IndexError, AttributeError) as exc:
+        raise ValueError(f"not an ep1 record ({type(exc).__name__})") from exc
+
+
+def _loads(data: bytes) -> Record:
     body = cbor2.loads(data)
     header = _header_from_wire(body["h"])
     entries = tuple((int(c), int(p)) for c, p in body["e"])

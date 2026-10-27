@@ -59,6 +59,17 @@ def _thim_chain(thim: dict) -> tuple[bytes, bytes, bytes]:
 
 
 def appraise(req: dict, *, rrp_id: str, policy: dict, at: dt.datetime, collateral: dict) -> Appraisal:
+    """Every check, named. The evidence is untrusted: a shape no check anticipated fails closed, as "evidence.format",
+    and never raises (an authority must answer every request)."""
+    try:
+        return _appraise(req, rrp_id=rrp_id, policy=policy, at=at, collateral=collateral)
+    except Exception as exc:  # noqa: BLE001
+        a = Appraisal(target=str(req.get("target", "")) if isinstance(req, dict) else "")
+        a.checks.append(Check("evidence.format", False, f"{type(exc).__name__}: {exc}"))
+        return a
+
+
+def _appraise(req: dict, *, rrp_id: str, policy: dict, at: dt.datetime, collateral: dict) -> Appraisal:
     """``req`` is a read enrollment request (enroll.read_request); ``collateral`` = {"rims": {id: xml},
     "ocsp": [{"serial": hex, "nonce": bytes, "response": bytes, ...}], "amd_crl": der}."""
     a = Appraisal(target=req["target"])

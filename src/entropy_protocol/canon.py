@@ -33,8 +33,14 @@ import unicodedata
 
 CANON_V3 = "ep1-canon/v3:nfc+del-cr-bom-zw-shy+del-vs-runs+nbsp+rstrip-lines+strip"
 CANON_V4 = "ep1-canon/v4:nfc+del-cr-bom-zw-shy+del-vs-runs+nbsp+typo+rstrip-lines+strip;seg2"
-CANON_ID = CANON_V4                     # new records
-SUPPORTED = (CANON_V3, CANON_V4)
+# v5: the deletions before NFC. In v4 a deleted character could leave combining marks adjacent in a non-canonical
+# order, or a base and a combining mark that NFC would compose: canonicalize(canonicalize(x)) != canonicalize(x), so a
+# zero-width character inserted between such marks broke verification after transport (found by fuzzing, 27.10.2026:
+# U+0E48 U+0301 ZWJ U+0E48 U+0301). With NFC after every deletion, and only starters replaced or removed afterwards,
+# the form is idempotent by construction (tests/test_fuzz.py checks it).
+CANON_V5 = "ep1-canon/v5:del-cr-bom-zw-shy+del-vs-runs+nfc+nbsp+typo+rstrip-lines+strip;seg2"
+CANON_ID = CANON_V5                     # new records
+SUPPORTED = (CANON_V3, CANON_V4, CANON_V5)
 _TRAILING = " \t"
 _DELETE = {"\r", "﻿", "​", "⁠", "­"}
 _SPACE = {" ", " ", " "}
@@ -71,7 +77,7 @@ def segment(ctext: str, version: str = CANON_ID) -> list[tuple[int, int]]:
     _check(version)
     spans: list[tuple[int, int]] = []
     start, n = 0, len(ctext)
-    v4 = version == CANON_V4
+    v4 = version in (CANON_V4, CANON_V5)                                # seg2
 
     def emit(a: int, b: int) -> None:
         piece = ctext[a:b]
@@ -111,11 +117,14 @@ def block_digest(piece: str) -> str:
 def canonicalize_with_map(text: str, version: str = CANON_ID) -> tuple[str, dict[int, int]]:
     """Return (canonical_text, index_map).
 
-    ``index_map`` maps indices of ``unicodedata.normalize("NFC", text)`` to indices of the canonical
-    text; characters removed by canonicalization are absent from the map (v4: a character folded into
-    several, an ellipsis or an em dash, maps to the first of them).
+    ``index_map`` maps indices of the source to indices of the canonical text - for v3 and v4 indices of
+    ``unicodedata.normalize("NFC", text)``, for v5 indices of ``text`` itself; characters removed by
+    canonicalization are absent from the map (v4, v5: a character folded into several, an ellipsis or an em dash,
+    maps to the first of them; v5: characters NFC composes map to the composed character).
     """
     _check(version)
+    if version == CANON_V5:
+        return _canonicalize_v5(text)
     v4 = version == CANON_V4
     src = unicodedata.normalize("NFC", text)
     kept: list[tuple[str, int]] = []
@@ -168,4 +177,122 @@ def canonicalize_with_map(text: str, version: str = CANON_ID) -> tuple[str, dict
     canon = joined.strip()
     index_map = {src_i: ci - lead for ci, src_i in enumerate(rmap)
                  if src_i >= 0 and lead <= ci < lead + len(canon)}
+    return canon, index_map
+
+
+def _deleted(text: str) -> list[tuple[str, int]]:
+    """The deletions (CR, BOM, zero-widths, soft hyphen; a U+FEFF opening a run of selectors, with the run; runs of
+    eight or more variation selectors), as (character, source index) of what is kept."""
+    kept: list[tuple[str, int]] = []
+    k, n = 0, len(text)
+    while k < n:
+        ch = text[k]
+        if ch == "\ufeff":
+            e = k + 1
+            while e < n and _is_vs(text[e]):
+                e += 1
+            k = e if e - (k + 1) >= _VS_RUN else k + 1
+            continue
+        if ch not in _DELETE:
+            kept.append((ch, k))
+        k += 1
+    out: list[tuple[str, int]] = []
+    k, n = 0, len(kept)
+    while k < n:                      # runs split by a deleted character are seen whole
+        if _is_vs(kept[k][0]):
+            e = k
+            while e < n and _is_vs(kept[e][0]):
+                e += 1
+            if e - k >= _VS_RUN:
+                k = e
+                continue
+        out.append(kept[k])
+        k += 1
+    return out
+
+
+_SECONDS: frozenset | None = None
+
+
+def _composing_seconds() -> frozenset:
+    """Every character that canonical composition can join to what precedes it, starters included (Hangul vowels
+    and trailing consonants, Indic and other vowel signs with combining class 0): built once, when first needed."""
+    global _SECONDS
+    if _SECONDS is None:
+        seconds = set(range(0x1161, 0x1176)) | set(range(0x11A8, 0x11C3))
+        for cp in range(0x110000):
+            d = unicodedata.decomposition(chr(cp))
+            if d and not d.startswith("<"):
+                parts = d.split()
+                if len(parts) == 2:
+                    seconds.add(int(parts[1], 16))
+        _SECONDS = frozenset(seconds)
+    return _SECONDS
+
+
+def _nfc_with_map(chars: list[tuple[str, int]]) -> list[tuple[str, int]]:
+    """NFC of the characters, each result character carrying the source index of the first character of its
+    normalization segment (a segment starts at a starter that nothing before it can compose or reorder with)."""
+    s = "".join(c for c, _ in chars)
+    if unicodedata.is_normalized("NFC", s):
+        return chars
+    seconds = _composing_seconds()
+
+    def boundary(ch: str) -> bool:
+        if unicodedata.combining(ch) or ord(ch) in seconds:
+            return False
+        first = unicodedata.normalize("NFD", ch)[0]
+        return unicodedata.combining(first) == 0
+
+    out: list[tuple[str, int]] = []
+    a, n = 0, len(chars)
+    while a < n:
+        b = a + 1
+        while b < n and not boundary(chars[b][0]):
+            b += 1
+        seg = "".join(c for c, _ in chars[a:b])
+        norm = unicodedata.normalize("NFC", seg)
+        if norm == seg:
+            out.extend(chars[a:b])
+        else:
+            out.extend((c, chars[a][1]) for c in norm)
+        a = b
+    if "".join(c for c, _ in out) != unicodedata.normalize("NFC", s):
+        raise AssertionError("normalization segments do not compose to the NFC of the whole")
+    return out
+
+
+def _canonicalize_v5(text: str) -> tuple[str, dict[int, int]]:
+    chars = _nfc_with_map(_deleted(text))
+    tmp: list[str] = []
+    tmap: list[int] = []
+    for ch, i in chars:                                     # no-break spaces -> space, typographic folding
+        if ch in _FOLD:
+            rep = _FOLD[ch]
+            tmp.extend(rep)
+            tmap.extend([i] + [-1] * (len(rep) - 1))
+        else:
+            tmp.append(" " if ch in _SPACE else ch)
+            tmap.append(i)
+    res: list[str] = []
+    rmap: list[int] = []
+    k, length = 0, len(tmp)
+    while k < length:                                       # drop spaces/tabs that end a line or the text
+        if tmp[k] in _TRAILING:
+            e = k
+            while e < length and tmp[e] in _TRAILING:
+                e += 1
+            if e == length or tmp[e] == "\n":
+                k = e
+                continue
+        res.append(tmp[k])
+        rmap.append(tmap[k])
+        k += 1
+    joined = "".join(res)
+    lead = len(joined) - len(joined.lstrip())
+    canon = joined.strip()
+    index_map: dict[int, int] = {}
+    for ci, src_i in enumerate(rmap):
+        if src_i >= 0 and lead <= ci < lead + len(canon):
+            index_map.setdefault(src_i, ci - lead)          # a composed segment maps to its first character
     return canon, index_map

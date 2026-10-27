@@ -40,8 +40,18 @@ def initiation(handle: bytes, rrp_id: str, expires_in: int) -> bytes:
                        "acceptable_evidence": [PROFILE_AZURE_CGPU]})
 
 
+def _map(data: bytes) -> dict:
+    try:
+        m = cose._thaw(cbor2.loads(data))
+    except Exception as exc:  # noqa: BLE001 - every decoding failure of untrusted input is the same refusal
+        raise EnrollError(f"not CBOR ({type(exc).__name__})") from exc
+    if not isinstance(m, dict):
+        raise EnrollError("not a CBOR map")
+    return m
+
+
 def read_initiation(data: bytes) -> dict:
-    m = cose._thaw(cbor2.loads(data))
+    m = _map(data)
     if m.get("freshness_kind") != "present-nonce" or m.get("mode") != "enroll":
         raise EnrollError("not an enrollment initiation with a nonce")
     if not isinstance(m.get("handle"), bytes) or len(m["handle"]) != HANDLE_LEN:
@@ -59,7 +69,7 @@ def request(*, target: str, credential_type: str, handle: bytes, evidence: bytes
 
 
 def read_request(data: bytes) -> dict:
-    m = cose._thaw(cbor2.loads(data))
+    m = _map(data)
     need = {"freshness_kind": str, "target": str, "credential_type": str, "handle": bytes, "evidence": bytes,
             "profile": str, "binding": dict, "csr": bytes}
     for k, t in need.items():

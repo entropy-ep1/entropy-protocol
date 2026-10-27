@@ -74,7 +74,17 @@ STATUS = {0: "granted", 1: "grantedWithMods", 2: "rejection", 3: "waiting", 4: "
 
 
 def token_from_response(reply: bytes) -> bytes:
-    """The TimeStampToken out of a TimeStampResp (RFC 3161 §2.4.2), refusing any status but granted."""
+    """The TimeStampToken out of a TimeStampResp (RFC 3161 §2.4.2), refusing any status but granted. ValueError for
+    anything that is not one."""
+    try:
+        return _token_from_response(reply)
+    except ValueError:
+        raise
+    except (IndexError, TypeError) as exc:
+        raise ValueError(f"malformed TimeStampResp ({type(exc).__name__})") from exc
+
+
+def _token_from_response(reply: bytes) -> bytes:
     top = next(iter(_elements(reply)), None)
     if top is None or top[0] != 0x30:
         raise ValueError("not a DER TimeStampResp")
@@ -131,7 +141,17 @@ def tst_info(token: bytes) -> bytes:
 
 def token_info(token: bytes) -> dict:
     """What the token says about itself. TSTInfo fields are positional (RFC 3161 §2.4.2): version, policy,
-    messageImprint, serialNumber, genTime. No signature check (see the module docstring)."""
+    messageImprint, serialNumber, genTime. No signature check (see the module docstring). ValueError for anything
+    that is not a time-stamp token."""
+    try:
+        return _token_info(token)
+    except ValueError:
+        raise
+    except (IndexError, TypeError) as exc:
+        raise ValueError(f"malformed time-stamp token ({type(exc).__name__})") from exc
+
+
+def _token_info(token: bytes) -> dict:
     info = tst_info(token)
     seq = _first(info, 0x30, 0, len(info))
     if not seq:

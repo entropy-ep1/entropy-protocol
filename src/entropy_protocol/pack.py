@@ -21,7 +21,7 @@ import cbor2
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
 
 from . import cose, ts3161
-from .canon import CANON_ID, canonicalize
+from .canon import CANON_ID, CANON_V4, canonicalize
 from .statements import read_statement, sha256, statement_ref
 from .tlog import entry_of, verify_receipt
 
@@ -60,8 +60,19 @@ def _pub(raw: bytes) -> Ed25519PublicKey:
 
 
 def check(pack: bytes) -> dict:
-    """Every offline check, as a report: {"ok", "checks": [{"name", "ok", "detail"}], "summary"}."""
+    """Every offline check, as a report: {"ok", "checks": [{"name", "ok", "detail"}], "summary"}. The package is
+    untrusted input: whatever it holds, the answer is a report, and a package that cannot be read fails."""
+    try:
+        return _check(pack)
+    except Exception as exc:  # noqa: BLE001 - fails closed: an unreadable part can only make the package fail
+        return {"ok": False, "checks": [{"name": "package format", "ok": False,
+                                         "detail": f"{type(exc).__name__}: {exc}"}], "summary": {}}
+
+
+def _check(pack: bytes) -> dict:
     p = cbor2.loads(pack)
+    if not isinstance(p, dict):
+        raise ValueError("not an evidence package (a CBOR map is expected)")
     checks: list[dict] = []
 
     def note(name: str, ok: bool | None, detail: str = "") -> None:
@@ -105,7 +116,8 @@ def check(pack: bytes) -> dict:
              f"canonical form {canon}, digest {want.hex()[:16]}…")
     if text is not None and (bodies.get("det") or {}):
         det = bodies["det"]
-        want = sha256(canonicalize(text, CANON_ID).encode())
+        # a detection names its canonical form; one that does not was made when v4 was the reference
+        want = sha256(canonicalize(text, det.get("canon") or CANON_V4).encode())
         note("the detection is about this text", want == det.get("cand"), det.get("technique", ""))
     if "gen" in st and ver:
         note("the verdict names this generation statement", ver.get("gen") == statement_ref(st["gen"]),

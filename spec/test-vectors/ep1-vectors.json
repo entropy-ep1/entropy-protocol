@@ -301,6 +301,107 @@
    ]
   ]
  },
+ "canonicalization_v5": {
+  "canon_id": "ep1-canon/v5:del-cr-bom-zw-shy+del-vs-runs+nfc+nbsp+typo+rstrip-lines+strip;seg2",
+  "cases": [
+   {
+    "input": "Word paste: “don’t” — ok…",
+    "output": "Word paste: \"don't\" -- ok...",
+    "v4": "Word paste: \"don't\" -- ok..."
+   },
+   {
+    "input": "typed: \"don't\" -- ok...",
+    "output": "typed: \"don't\" -- ok...",
+    "v4": "typed: \"don't\" -- ok..."
+   },
+   {
+    "input": "Ukrainian: «mʼiata» – m’iata",
+    "output": "Ukrainian: \"m'iata\" - m'iata",
+    "v4": "Ukrainian: \"m'iata\" - m'iata"
+   },
+   {
+    "input": "minus −5, figure dash 1‒2, hyphens a---b",
+    "output": "minus -5, figure dash 1-2, hyphens a---b",
+    "v4": "minus -5, figure dash 1-2, hyphens a---b"
+   },
+   {
+    "input": "v3 steps still apply and​ BOM﻿",
+    "output": "v3 steps still apply and BOM",
+    "v4": "v3 steps still apply and BOM"
+   },
+   {
+    "input": "cafe​́ latte",
+    "output": "café latte",
+    "v4": "café latte"
+   },
+   {
+    "input": "soft e­́ hyphen",
+    "output": "soft é hyphen",
+    "v4": "soft é hyphen"
+   },
+   {
+    "input": "thai ก่́⁠่́ marks",
+    "output": "thai ก่่́́ marks",
+    "v4": "thai ก่่́́ marks"
+   },
+   {
+    "input": "bom between a﻿̈ and ö",
+    "output": "bom between ä and ö",
+    "v4": "bom between ä and ö"
+   },
+   {
+    "input": "crlf\r\ń at a line start",
+    "output": "crlf\ń at a line start",
+    "v4": "crlf\ń at a line start"
+   },
+   {
+    "input": "manifest x﻿️️️️️️️️️y",
+    "output": "manifest xy",
+    "v4": "manifest xy"
+   }
+  ],
+  "segmentation": {
+   "text": "zh 今天。好！吗？ ar كيف؟ He said \"Yes.\" Then (left.) End",
+   "canonical": "zh 今天。好！吗？ ar كيف؟ He said \"Yes.\" Then (left.) End",
+   "blocks": [
+    [
+     0,
+     6,
+     "4f5a677bca442510"
+    ],
+    [
+     6,
+     8,
+     "49672a086a169b18"
+    ],
+    [
+     8,
+     10,
+     "9d45d8943988ae7d"
+    ],
+    [
+     11,
+     18,
+     "0d41bfca380319ee"
+    ],
+    [
+     19,
+     33,
+     "00ceb8b783b47f51"
+    ],
+    [
+     34,
+     46,
+     "2f8a3e538496a745"
+    ],
+    [
+     47,
+     50,
+     "f4db1e48476f6075"
+    ]
+   ]
+  }
+ },
  "canonicalization_v4": {
   "canon_id": "ep1-canon/v4:nfc+del-cr-bom-zw-shy+del-vs-runs+nbsp+typo+rstrip-lines+strip;seg2",
   "cases": [
@@ -502,6 +603,146 @@
       34,
       57,
       "f95a7da5b9a4f51d"
+     ]
+    ]
+   }
+  ]
+ },
+ "visible_text_v2": {
+  "form": "ep1-plain/v2:canon-v5+commonmark-gfm-visible+list-marker+ws",
+  "cases": [
+   {
+    "input": "• one\n  ◦ two\n3) three\n[x] done\n☐ open",
+    "visible": "one two three done open",
+    "blocks": [
+     [
+      0,
+      3,
+      "7692c3ad3540bb80"
+     ],
+     [
+      4,
+      7,
+      "3fc4ccfe745870e2"
+     ],
+     [
+      8,
+      13,
+      "8b5b9db0c13db242"
+     ],
+     [
+      14,
+      18,
+      "a4c3ed04a95a3da1"
+     ],
+     [
+      19,
+      23,
+      "2348f99874421257"
+     ]
+    ]
+   },
+   {
+    "input": "Line with\ttabs  and   spaces\n\n\nNext para. Two sentences! Three?",
+    "visible": "Line with tabs and spaces Next para. Two sentences! Three?",
+    "blocks": [
+     [
+      0,
+      25,
+      "78dbf92bfa195ed0"
+     ],
+     [
+      26,
+      36,
+      "30791cb31779604a"
+     ],
+     [
+      37,
+      51,
+      "36f316b67f69209f"
+     ],
+     [
+      52,
+      58,
+      "f9dce11be6e27ea8"
+     ]
+    ]
+   },
+   {
+    "input": "- a\n* b\n+ c\n12. d\n1234567890. ten digits are not a marker\n3.14 is not one either",
+    "visible": "a b c d 1234567890. ten digits are not a marker 3.14 is not one either",
+    "blocks": [
+     [
+      0,
+      1,
+      "ca978112ca1bbdca"
+     ],
+     [
+      2,
+      3,
+      "3e23e8160039594a"
+     ],
+     [
+      4,
+      5,
+      "2e7d2c03a9507ae2"
+     ],
+     [
+      6,
+      7,
+      "18ac3e7343f01689"
+     ],
+     [
+      8,
+      19,
+      "37a82583eeff5905"
+     ],
+     [
+      20,
+      47,
+      "8234de556ebebe0e"
+     ],
+     [
+      48,
+      70,
+      "4211bb6ad162e7df"
+     ]
+    ]
+   },
+   {
+    "input": "·no space: kept\n● black circle item\n| a | b | stays as text",
+    "visible": "·no space: kept black circle item | a | b | stays as text",
+    "blocks": [
+     [
+      0,
+      15,
+      "7b087ba946188072"
+     ],
+     [
+      16,
+      33,
+      "b0073e0af1e99c98"
+     ],
+     [
+      34,
+      57,
+      "f95a7da5b9a4f51d"
+     ]
+    ]
+   },
+   {
+    "input": "- cafe​́ item\n- e­́ two",
+    "visible": "café item é two",
+    "blocks": [
+     [
+      0,
+      9,
+      "3bf7bd28bcdb4f30"
+     ],
+     [
+      10,
+      15,
+      "adfe667a63751011"
      ]
     ]
    }

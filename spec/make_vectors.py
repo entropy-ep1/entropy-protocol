@@ -18,9 +18,9 @@ sys.path.insert(0, str(ROOT / "src"))
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey  # noqa: E402
 
 from entropy_protocol import cose, crypto, delivery, hpke, statements, tlog  # noqa: E402
-from entropy_protocol.canon import CANON_V3, CANON_V4, block_digest, canonicalize, segment  # noqa: E402
+from entropy_protocol.canon import CANON_V3, CANON_V4, CANON_V5, block_digest, canonicalize, segment  # noqa: E402
 from entropy_protocol.stats import binomial_tail  # noqa: E402
-from entropy_protocol.plain import PLAIN_V1, normalize as visible_text, segment_source, segment_visible  # noqa: E402
+from entropy_protocol.plain import PLAIN_V1, PLAIN_V2, normalize as visible_text, segment_source, segment_visible  # noqa: E402
 from entropy_protocol.record import HIGH, LOW, Header, Record, dumps  # noqa: E402
 
 MASTER = bytes(range(32))
@@ -77,6 +77,16 @@ CANON_V4_CASES = [
     "v3 steps still apply\u00a0and\u200b BOM\ufeff",
 ]
 SEGMENT_TEXT_V4 = "zh \u4eca\u5929\u3002\u597d\uff01\u5417\uff1f ar \u0643\u064a\u0641\u061f He said \"Yes.\" Then (left.) End"
+# v5 (deletions before NFC): v4's cases, and the ones where v4 is not idempotent - a deleted character between a base
+# and its combining mark, or between combining marks of different classes (found by fuzzing)
+CANON_V5_CASES = CANON_V4_CASES + [
+    "cafe\u200b\u0301 latte",
+    "soft e\u00ad\u0301 hyphen",
+    "thai \u0e01\u0e48\u0301\u2060\u0e48\u0301 marks",
+    "bom between a\ufeff\u0308 and o\u0308",
+    "crlf\r\n\u0301 at a line start",
+    "manifest x\ufeff" + "\ufe0f" * 9 + "y",
+]
 
 
 def build() -> dict:
@@ -94,6 +104,14 @@ def build() -> dict:
     v["canonicalization"] = [{"input": s, "output": canonicalize(s, CANON_V3)} for s in CANON_CASES]
     spans = segment(SEGMENT_TEXT, CANON_V3)
     v["segmentation"] = {"text": SEGMENT_TEXT, "blocks": [[a, b, block_digest(SEGMENT_TEXT[a:b])] for a, b in spans]}
+    # canonical form v5 (the reference): v4's steps with the deletions before NFC - idempotent
+    v5_text = canonicalize(SEGMENT_TEXT_V4, CANON_V5)
+    v["canonicalization_v5"] = {"canon_id": CANON_V5,
+                                "cases": [{"input": c, "output": canonicalize(c, CANON_V5),
+                                           "v4": canonicalize(c, CANON_V4)} for c in CANON_V5_CASES],
+                                "segmentation": {"text": SEGMENT_TEXT_V4, "canonical": v5_text,
+                                                 "blocks": [[a, b, block_digest(v5_text[a:b])]
+                                                            for a, b in segment(v5_text, CANON_V5)]}}
     # canonical form v4 (records sealed from 13.09.2026): typographic folding, blocks for scripts without spaces
     v4_text = canonicalize(SEGMENT_TEXT_V4, CANON_V4)
     v["canonicalization_v4"] = {"canon_id": CANON_V4,
@@ -130,11 +148,16 @@ def build() -> dict:
     # visible-text layer: the verifier's normalization and blocks; a v4 record of a Markdown answer carrying the layer
     v["visible_text"] = {"form": PLAIN_V1, "cases": []}
     for c in VISIBLE_CASES:
-        vis, spans = segment_visible(c)
+        vis, spans = segment_visible(c, PLAIN_V1)
         v["visible_text"]["cases"].append({"input": c, "visible": vis,
                                            "blocks": [[a, b, block_digest(vis[a:b])] for a, b in spans]})
+    v["visible_text_v2"] = {"form": PLAIN_V2, "cases": []}
+    for c in VISIBLE_CASES + ["- cafe\u200b\u0301 item\n- e\u00ad\u0301 two"]:
+        vis, spans = segment_visible(c, PLAIN_V2)
+        v["visible_text_v2"]["cases"].append({"input": c, "visible": vis,
+                                              "blocks": [[a, b, block_digest(vis[a:b])] for a, b in spans]})
     text5 = canonicalize(VISIBLE_MD, CANON_V4)
-    vis5, spans5 = segment_source(text5)
+    vis5, spans5 = segment_source(text5, PLAIN_V1)
     header5 = dataclasses.replace(header, canon=CANON_V4, text_digest=crypto.sha256_hex(text5), plain=PLAIN_V1,
                                   plain_digest=crypto.sha256_hex(vis5))
     record5 = Record(header5, ((4, LOW),), tuple((a, b, block_digest(text5[a:b])) for a, b in segment(text5, CANON_V4)),
@@ -144,7 +167,7 @@ def build() -> dict:
     v["record_v4_visible"] = {"markdown": VISIBLE_MD, "text": text5, "visible": vis5, "cbor": plain5.hex(),
                               "token_log": crypto.encrypt_token(k_log, DOC, plain5, nonce=NONCE_LOG5),
                               "nonce_log": NONCE_LOG5.hex(), "copy": VISIBLE_COPY, "edited": edited5,
-                              "edited_visible": visible_text(edited5)}
+                              "edited_visible": visible_text(edited5, PLAIN_V1)}
 
     signer = Ed25519PrivateKey.from_private_bytes(SIGNER_SEED)
     gen, commit = statements.generation_statement(k_log, token, signer, "generator.example", iat=IAT)

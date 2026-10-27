@@ -22,11 +22,13 @@ from __future__ import annotations
 
 import re
 
-from .canon import CANON_V4, canonicalize, segment
+from .canon import CANON_V4, CANON_V5, canonicalize, segment
 
 PLAIN_V1 = "ep1-plain/v1:canon-v4+commonmark-gfm-visible+list-marker+ws"
-PLAIN_ID = PLAIN_V1                      # new records
-SUPPORTED_PLAIN = (PLAIN_V1,)
+PLAIN_V2 = "ep1-plain/v2:canon-v5+commonmark-gfm-visible+list-marker+ws"     # v1 on the idempotent canonical form
+PLAIN_ID = PLAIN_V2                      # new records
+SUPPORTED_PLAIN = (PLAIN_V1, PLAIN_V2)
+_CANON_OF = {PLAIN_V1: CANON_V4, PLAIN_V2: CANON_V5}
 # written as code points: the source stays ASCII; the JS implementation uses the same classes
 _BULLETS = "-*+" + "".join(map(chr, (0x2022, 0x25E6, 0x25AA, 0x2023, 0x25CF, 0x00B7)))
 _BOXES = "".join(map(chr, (0x2610, 0x2611, 0x2612)))       # the ballot boxes a copy of a task list may show
@@ -35,11 +37,11 @@ _MARKER = re.compile("^[ \t]*(?:(?:[" + re.escape(_BULLETS) + "]|[0-9]{1,9}[.)])
 _WS = re.compile("[ \t\n\x0b\x0c\u1680\u2000-\u200a\u2028\u2029\u205f\u3000]+")
 
 
-def _lines(text: str) -> list[str]:
-    """Visible lines: canonical form v4; per line one list marker at its start removed, whitespace runs one space;
-    empty lines dropped."""
+def _lines(text: str, form: str = PLAIN_ID) -> list[str]:
+    """Visible lines: the form's canonical form; per line one list marker at its start removed, whitespace runs one
+    space; empty lines dropped."""
     out: list[str] = []
-    for line in canonicalize(text, CANON_V4).split("\n"):
+    for line in canonicalize(text, _CANON_OF[form]).split("\n"):
         line = _WS.sub(" ", _MARKER.sub("", line, count=1)).strip(" ")
         if line:
             out.append(line)
@@ -55,7 +57,7 @@ def normalize(text: str, form: str = PLAIN_ID) -> str:
     """The visible text of a candidate taken literally: its visible lines joined by one space (the digest does not
     depend on how a copy breaks its lines)."""
     _check(form)
-    return " ".join(_lines(text))
+    return " ".join(_lines(text, form))
 
 
 def segment_visible(text: str, form: str = PLAIN_ID) -> tuple[str, list[tuple[int, int]]]:
@@ -63,9 +65,9 @@ def segment_visible(text: str, form: str = PLAIN_ID) -> tuple[str, list[tuple[in
     normalized text. A line is a paragraph, a heading, a list item, a table row or a line of code, so a change is
     located to its item even where list items and cells end without a full stop."""
     _check(form)
-    lines, spans, pos = _lines(text), [], 0
+    lines, spans, pos = _lines(text, form), [], 0
     for line in lines:
-        spans.extend((pos + a, pos + b) for a, b in segment(line))
+        spans.extend((pos + a, pos + b) for a, b in segment(line, _CANON_OF[form]))
         pos += len(line) + 1
     return " ".join(lines), spans
 

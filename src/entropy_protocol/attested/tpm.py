@@ -193,11 +193,16 @@ def parse_systemd_log(blob: bytes) -> list[tuple[int, bytes]]:
         rec = rec.strip()
         if not rec:
             continue
-        r = json.loads(rec)
-        d = next((x["digest"] for x in r.get("digests", []) if x.get("hashAlg") == "sha256"), None)
-        if d is None or "pcr" not in r:
-            raise TPMError("systemd log record without a PCR or a SHA-256 digest")
-        out.append((int(r["pcr"]), bytes.fromhex(d)))
+        try:
+            r = json.loads(rec)
+            digests = r.get("digests", []) if isinstance(r, dict) else None
+            d = next((x["digest"] for x in digests if isinstance(x, dict) and x.get("hashAlg") == "sha256"), None) \
+                if isinstance(digests, list) else None
+            if d is None or not isinstance(r.get("pcr"), int):
+                raise TPMError("systemd log record without a PCR or a SHA-256 digest")
+            out.append((r["pcr"], bytes.fromhex(d)))
+        except (ValueError, TypeError, KeyError) as exc:
+            raise TPMError(f"malformed systemd log record ({type(exc).__name__})") from exc
     return out
 
 

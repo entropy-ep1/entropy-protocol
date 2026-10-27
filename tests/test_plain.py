@@ -7,7 +7,7 @@ pytest.importorskip("markdown_it")
 
 from entropy_protocol import crypto  # noqa: E402
 from entropy_protocol.canon import canonicalize  # noqa: E402
-from entropy_protocol.plain import normalize, project_source  # noqa: E402
+from entropy_protocol.plain import PLAIN_ID, normalize, project_source  # noqa: E402
 from entropy_protocol.record import loads  # noqa: E402
 
 MASTER = bytes(range(32))
@@ -63,7 +63,7 @@ def _verify(candidate: str, token: str):
 def test_a_rendered_copy_verifies_as_its_text():
     s = _seal(SOURCE)
     rec = loads(crypto.decrypt_token(crypto.log_key(MASTER, s.doc_id), s.token))
-    assert rec.header.plain.startswith("ep1-plain/v1") and rec.plain_blocks
+    assert rec.header.plain == PLAIN_ID and rec.plain_blocks
     assert _verify(SOURCE, s.token).verdict == "VERIFIED"
     r = _verify(COPY, s.token)
     assert r.verdict == "VERIFIED_TEXT" and r.text_match is True and not r.changed_ranges
