@@ -61,13 +61,19 @@ On the wire every number is an integer: `tol_u`/`cal_u` in micro-units of the to
    knows too little of the topic) and later ones in the verifier's context.
    Other positions: nucleus sampling. Special tokens never enter the text; every end-of-sequence id ends it; where
    the model's first choice at a checkpoint is to end, the text ends (no entry).
-3. Decode; canonicalize (`ep1-canon/v4`: NFC; delete CR, BOM, zero-width space, word joiner, soft hyphen; delete a
+3. Decode; canonicalize (`ep1-canon/v5`: delete CR, BOM, zero-width space, word joiner, soft hyphen; delete a
    U+FEFF-opened run of ≥ 8 variation selectors as a unit (C2PA 2.4 A.8 wrapper), then any run of ≥ 8 selectors;
-   keep single selectors and ZWJ/ZWNJ; no-break spaces → space; **typographic folding** — curly quotes and
-   guillemets → `"`, curly apostrophes and U+02BC → `'`, hyphen/en dash/minus → `-`, em dash → `--`, ellipsis →
-   `...` (the inverse of a word processor's autocorrect); strip trailing whitespace per line and around the text;
-   blocks by sentence ends including scripts' own full stops, `seg2`), keeping a map from decoded to canonical
-   indices. Records name their form; v3 records still verify.
+   keep single selectors and ZWJ/ZWNJ; **then NFC as Unicode 14.0 defines it** — the text is cut at every code point
+   not assigned in 14.0 (to 14.0 a starter nothing composes or reorders across) and the pieces normalized, which
+   Unicode's normalization stability policy makes exact under any later library version; no-break spaces → space;
+   **typographic folding** — curly quotes and guillemets → `"`, curly apostrophes and U+02BC → `'`, hyphen/en
+   dash/minus → `-`, em dash → `--`, ellipsis → `...` (the inverse of a word processor's autocorrect); strip trailing
+   whitespace per line and around the text; blocks by sentence ends including scripts' own full stops, `seg2`),
+   keeping a map from indices of the decoded text to canonical indices. The form is idempotent: after the deletions
+   only starters are replaced or removed. Records name their form; v3 and v4 records still verify (v4 normalized
+   before deleting, which is not idempotent where a deleted character separated a base from its mark or marks of
+   different classes, and neither v3 nor v4 is pinned to a Unicode version). The 14.0 table (706 ranges) is generated
+   for both implementations from Unicode's DerivedAge (`spec/make_unicode14.py`).
 4. Anchor each enforced checkpoint at the canonical offset of the first non-space character of its token.
 5. Re-read the canonical text alone (one forward pass); keep a checkpoint only if its predicate holds there with
    margin ≥ 2 × the largest tolerance of the calibration table and it maps to a distinct canonical token.
@@ -132,10 +138,11 @@ without it keep their bytes (every earlier test vector is unchanged).
   HTML shown as text, as chat windows do), keeps what a reader sees — one line per paragraph, heading, list item,
   table row and line of code; image alt texts are not visible — then normalizes. Without markdown-it-py the layer is
   not written.
-- **Verifier**: never renders. The candidate is taken literally and normalized: canonical form v4; per line one
+- **Verifier**: never renders. The candidate is taken literally and normalized: the form's canonical form (`plain/v2`:
+  canonical form v5; `plain/v1`: v4); per line one
   marker at its start removed (bullets, an ordinal `12.`/`12)`, a task box `[ ]`/`[x]` or the ballot box a copy
   shows); whitespace runs one space; empty lines dropped; lines joined by one space (the digest does not depend on
-  how a copy breaks its lines). Blocks: v4 segmentation inside each line (a change is located to its list item or
+  how a copy breaks its lines). Blocks: seg2 segmentation inside each line (a change is located to its list item or
   table row even where items end without a full stop).
 - **Verdict `VERIFIED_TEXT`**: canonical digest differs, visible digest equal. The visible text is the sealed one;
   formatting (markup, line breaks, list numbering) is not covered and the model layer is not evaluated on it. A
@@ -147,7 +154,7 @@ without it keep their bytes (every earlier test vector is unchanged).
 - Checked: `tests/test_plain.py` (rendered constructs vs what a copy gives back, literal candidates, a rendered copy
   → `VERIFIED_TEXT`, one edited list item located exactly, a changed link target caught, records without the layer);
   the JS implementation reproduces normalization, blocks and the layer (`spec/test-vectors`: `visible_text`,
-  `record_v4_visible`; 72/72).
+  `visible_text_v2`, `record_v4_visible`).
 
 ## 6a. Tolerance and calibration (`calibrate.py`) — spec [0115]-[0117]
 - **Measured, not chosen**, on a corpus of *sealed* generations (forced tokens put the model where numerical
@@ -382,6 +389,24 @@ user space measured when the image measures it). Excluding the operator needs a 
 access, measured root file system — whose measurements become the reference values. Time comes from outside the
 environment (RFC 3161 over the logged form, the log's registration), never from the guest's clock.
 
+## 7e. The ep1 CBOR profile, and fuzzing (`cose.check_profile`, `impl-js`, `fuzz/`)
+Both implementations decode untrusted CBOR only within one profile, checked before any value is built: definite
+lengths, each within the bytes that are left; integers and lengths in their shortest form; tags 16 (COSE_Encrypt0)
+and 18 (COSE_Sign1) only; `false`, `true` and `null` as the only simple values; no floating point; map keys integers,
+text or byte strings, never twice in one map; at most 64 levels of nesting; text valid UTF-8. Two decoders that
+read the same bytes differently are how signed formats get bypassed elsewhere; within the profile both accept
+exactly the same inputs and decode them to the same values.
+
+`fuzz/targets.py` holds one target per parser of untrusted input — records, tokens, COSE, delivered records,
+statements, receipts, time stamps, evidence packages, the paravisor's report, SNP reports, TPM quotes, signatures
+and event logs, systemd's log, GPU reports, NVIDIA's manifests, enrollment messages, attestation results, the
+authority's appraisal — with the errors each may raise (the offline package check and the appraisal never raise:
+they report). Property targets check that canonical form v5 is idempotent and that its index map stays inside the
+text; differential targets give the same input to both implementations (canonical forms, blocks, visible text,
+CBOR). Seeds are real data (`fuzz/make_corpus.py`); every test run replays each corpus and drives each target with
+Hypothesis (`tests/test_fuzz.py`); coverage-guided campaigns run with atheris (`fuzz/run.py`,
+`fuzz/campaign_gcp.sh`), and whatever they find joins the corpus.
+
 ## 8. What is proven, against whom (threat model)
 | Adversary | Outcome |
 |---|---|
@@ -398,7 +423,8 @@ environment (RFC 3161 over the logged form, the log's registration), never from 
 ## 9. Honest status
 | Component | Status |
 |---|---|
-| Canonical form v4 (typographic folding, script sentence ends), content layer with ordered alignment, model layer, verdicts | implemented, tested; v3 records verify |
+| Canonical form v5 (deletions before NFC, NFC pinned to Unicode 14.0, typographic folding, script sentence ends), content layer with ordered alignment, model layer, verdicts | implemented, tested; v3 and v4 records verify |
+| ep1 CBOR profile in both implementations; 26 fuzz targets (properties, differential) with seed corpora from real data | implemented; replayed and Hypothesis-driven in every test run |
 | Canonical generation (token-identical re-read), confidence gate and guard, unsatisfiable-position exclusion | implemented, tested; alignment audit 100 % on distilgpt2 and Qwen2.5-0.5B |
 | Paragraph-start readings for localized detection (single and batched) | implemented, tested |
 | Sealing gateway (`entropy serve`, OpenAI-compatible) and presentation typography | implemented, tested (local, internal) |
