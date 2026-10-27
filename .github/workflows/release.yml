@@ -25,7 +25,7 @@ jobs:
           python -m pip install --upgrade pip build
           python -m build
           ls -la dist
-      - uses: sigstore/cosign-installer@v3
+      - uses: sigstore/cosign-installer@v4.1.2      # v4: installs cosign 3, whose releases carry bundles, not .sig
         with:
           # pinned: cosign 3 writes and verifies Sigstore bundles (<file>.sigstore.json: signature, certificate and
           # transparency-log proof in one file); cosign 2's separate .sig/.pem cannot be verified with cosign 3
