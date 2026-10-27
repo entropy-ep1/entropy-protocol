@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """Run one fuzz target (fuzz/targets.py).
 
     python fuzz/run.py <target> [libFuzzer options...] [corpus dir]     coverage-guided, with atheris (Linux)

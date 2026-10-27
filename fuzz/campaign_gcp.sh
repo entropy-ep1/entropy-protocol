@@ -5,11 +5,11 @@
 # crash, timeout or out-of-memory input and the libFuzzer statistics. The platform deletes the machine at the cap
 # (--max-run-duration), and the script deletes it at the end and confirms it is gone.
 # Evidence: bench/results/fuzz/<stamp>/; grown corpora: fuzz/corpus/<target>/ (merged).
-# Usage: bash fuzz/campaign_gcp.sh [minutes] [machine type]
+# Usage: GCP_PROJECT=<project> bash fuzz/campaign_gcp.sh [minutes] [machine type]
 set -euo pipefail
 MINUTES=${1:-60}
 TYPE=${2:-e2-highcpu-32}
-PROJECT=rats-probe
+PROJECT=${GCP_PROJECT:?set GCP_PROJECT to the project the machine runs in}
 ZONE=us-central1-a
 REPO=$(cd "$(dirname "$0")/.." && pwd)
 STAMP=$(date -u +%Y%m%dT%H%M%SZ)
@@ -50,8 +50,9 @@ git -C "$REPO" archive --format=tar HEAD | "${SSH[@]}" 'mkdir -p ep && tar -C ep
 
 echo "campaign: every target for $MINUTES minutes, in parallel ($(date -u +%H:%M:%SZ))"
 "${SSH[@]}" "cd ~ && for t in $TARGETS; do mkdir -p work/\$t/new && (cd work/\$t && PYTHONPATH=\$HOME/ep/src:\$HOME/ep/fuzz \
-  nohup timeout $((MINUTES * 60 + 300)) ~/v/bin/python -W ignore \$HOME/ep/fuzz/run.py \$t -max_total_time=$((MINUTES * 60)) \
-  -timeout=10 -rss_limit_mb=2048 -print_final_stats=1 new \$HOME/ep/fuzz/corpus/\$t > log 2>&1 &); done; sleep 5; \
+  PATH=\$HOME/v/bin:\$PATH setsid nohup timeout $((MINUTES * 60 + 300)) python3 -W ignore \$HOME/ep/fuzz/run.py \$t \
+  -max_total_time=$((MINUTES * 60)) -timeout=10 -rss_limit_mb=2048 -print_final_stats=1 new \$HOME/ep/fuzz/corpus/\$t \
+  > log 2>&1 < /dev/null &); done; sleep 5; \
   ls work | wc -l" </dev/null
 sleep $((MINUTES * 60 + 60))
 for _ in $(seq 1 30); do
@@ -61,9 +62,12 @@ done
 
 echo "merge corpora, collect findings ($(date -u +%H:%M:%SZ))"
 "${SSH[@]}" "cd ~ && for t in $TARGETS; do mkdir -p merged/\$t && (cd work/\$t && PYTHONPATH=\$HOME/ep/src:\$HOME/ep/fuzz \
-  timeout 900 ~/v/bin/python -W ignore \$HOME/ep/fuzz/run.py \$t -merge=1 -timeout=10 -rss_limit_mb=2048 \
-  \$HOME/merged/\$t \$HOME/ep/fuzz/corpus/\$t new > merge.log 2>&1 || true); done; \
-  tar -czf results.tgz work/*/log work/*/merge.log work/*/crash-* work/*/timeout-* work/*/oom-* work/*/slow-unit-* merged 2>/dev/null; ls -la results.tgz" </dev/null
+  PATH=\$HOME/v/bin:\$PATH timeout 900 python3 -W ignore \$HOME/ep/fuzz/run.py \$t -merge=1 -timeout=10 \
+  -rss_limit_mb=2048 \$HOME/merged/\$t \$HOME/ep/fuzz/corpus/\$t new > merge.log 2>&1 || true); \
+  [ -n \"\$(ls work/\$t/new)\" ] && [ -z \"\$(ls merged/\$t)\" ] && echo \"MERGE FAILED: \$t\"; done; \
+  find work -path '*/new/*' -size -65k > raw.lst; \
+  tar -czf results.tgz work/*/log work/*/merge.log work/*/crash-* work/*/timeout-* work/*/oom-* work/*/slow-unit-* merged \
+  -T raw.lst 2>/dev/null; ls -la results.tgz" </dev/null
 "${G[@]}" scp --zone "$ZONE" --quiet "$VM:~/results.tgz" "$OUT/results.tgz" </dev/null
 tar -C "$OUT" -xzf "$OUT/results.tgz"
 "$REPO/.venv/bin/python" -I - "$OUT" <<'EOF'
