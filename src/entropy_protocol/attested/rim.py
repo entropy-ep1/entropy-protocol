@@ -76,6 +76,7 @@ def verify(xml: bytes, at) -> object:
     from signxml.exceptions import SignXMLException
 
     from .nvidia import GPUError, RIM_ROOT_SHA256, verify_chain
+    from .pki import UNREADABLE
     parser = etree.XMLParser(resolve_entities=False, no_network=True, huge_tree=False)
     try:
         tree = etree.fromstring(xml, parser)
@@ -83,7 +84,7 @@ def verify(xml: bytes, at) -> object:
         verify_chain(chain, RIM_ROOT_SHA256, at)
         leaf_pem = chain[0].public_bytes(serialization.Encoding.PEM).decode()
         return XMLVerifier().verify(xml, x509_cert=leaf_pem, parser=parser).signed_xml
-    except (SignXMLException, InvalidSignature, etree.LxmlError, GPUError, ValueError) as exc:
+    except (SignXMLException, InvalidSignature, etree.LxmlError, GPUError, *UNREADABLE) as exc:
         raise RIMError(f"RIM signature does not verify: {exc}") from exc     # every signxml and lxml error included
 
 

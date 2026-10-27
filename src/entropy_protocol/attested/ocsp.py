@@ -12,12 +12,13 @@ import os
 import urllib.request
 
 from cryptography import x509
-from cryptography.exceptions import InvalidSignature, UnsupportedAlgorithm
+from cryptography.exceptions import InvalidSignature
 from cryptography.hazmat.primitives import hashes, serialization
 from cryptography.hazmat.primitives.asymmetric import ec
 from cryptography.x509 import ocsp
 
 from .nvidia import GPUError, verify_chain
+from .pki import UNREADABLE
 
 OCSP_URL = "https://ocsp.ndis.nvidia.com/"
 SKEW = dt.timedelta(seconds=300)    # tolerated clock difference with the responder (as `openssl ocsp -validity_period`)
@@ -61,7 +62,7 @@ def check(resp_der: bytes, cert: x509.Certificate, issuer: x509.Certificate, non
         if not isinstance(key, ec.EllipticCurvePublicKey):
             raise GPUError("the OCSP responder's key is not ECDSA")
         key.verify(r.signature, r.tbs_response_bytes, ec.ECDSA(r.signature_hash_algorithm))
-    except (InvalidSignature, ValueError, TypeError, UnsupportedAlgorithm) as exc:
+    except (InvalidSignature, *UNREADABLE) as exc:
         if isinstance(exc, GPUError):
             raise
         raise GPUError(f"OCSP response signature does not verify: {exc}") from exc
