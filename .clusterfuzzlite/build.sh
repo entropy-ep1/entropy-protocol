@@ -13,7 +13,9 @@ with atheris.instrument_imports():
 atheris.Setup(sys.argv, lambda data: targets.run("${t}", data))
 atheris.Fuzz()
 PY
-  compile_python_fuzzer "fuzz/fuzz_${t}.py" --add-data "fuzz/targets.py:." --paths fuzz
+  # signxml loads its XML schemas as package data (signxml.schemas) through importlib.resources, which PyInstaller
+  # does not follow: without --collect-all the first RIM that reaches schema validation fails to import it
+  compile_python_fuzzer "fuzz/fuzz_${t}.py" --add-data "fuzz/targets.py:." --paths fuzz --collect-all signxml
   if [ -d "fuzz/corpus/${t}" ]; then
     (cd "fuzz/corpus/${t}" && zip -q -r "$OUT/fuzz_${t}_seed_corpus.zip" .)
   fi
