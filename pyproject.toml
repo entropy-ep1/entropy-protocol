@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "entropy-protocol"
-version = "0.1.0.dev0"
+version = "0.1.0rc1"
 description = "Reference implementation of the Entropy Protocol: seal language-model text when it is written; verify it later, deterministically, with a record that reveals no text."
 readme = "README.md"
 requires-python = ">=3.10"

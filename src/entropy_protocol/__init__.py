@@ -7,5 +7,5 @@ INDETERMINATE, or NOT_VERIFIABLE.
 Apache-2.0; see LICENSE, NOTICE and PATENTS.md.
 """
 
-__version__ = "0.1.0.dev0"
+__version__ = "0.1.0rc1"
 ENGINE = f"entropy-protocol/{__version__}"
