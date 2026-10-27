@@ -328,8 +328,9 @@ handle (32 octets); the vTPM quote's qualifying data is SHA-256 of the binding v
 binding: {method: "binding-input", hash: "sha512"}, csr}`. The conduit between them is untrusted.
 
 **Appraisal** — each check is named in the result:
-- `cpu`: VCEK → ASK → ARK to the pinned ARK-Genoa (AMD's RSASSA-PSS certificates encode the default trailer field,
-  which strict DER parsers refuse — read with our own DER walker); the report's ECDSA P-384 signature under the VCEK;
+- `cpu`: VCEK → ASK → ARK to the pinned ARK-Genoa (AMD's RSASSA-PSS certificates encode the PSS trailer field at its
+  default, which DER forbids: cryptography 42.0.8 refuses them, 43.0.3 and later read and verify them — hence the
+  dependency floor); the report's ECDSA P-384 signature under the VCEK;
   the VCEK's TCB extensions equal the reported TCB; TCB at or above the policy's minimum; DEBUG off; the launch
   measurement (the paravisor) in the reference set; REPORT_DATA = hash of the runtime claims, the rest zero.
 - `vtpm`: `user-data` = the binding value; `HCLAkPub` present; secure boot and the vTPM on; the quote (TPMS_ATTEST)
@@ -341,8 +342,9 @@ binding: {method: "binding-input", hash: "sha512"}, csr}`. The conduit between t
 - binding: recomputed from the request's fields equals `user-data`; the handle was issued by this authority and has
   not expired or been used; the CSR's signature verifies under its own key, which is the key in the binding.
 
-**Attestation result** — EAR (draft-ietf-rats-ear-04) as a CWT, COSE_Sign1 under the authority's result-signing
-key: profile `tag:ietf.org,2026:rats/ear#04`, `iat`/`exp`, verifier identity, `eat_nonce` = handle, `ear_status`,
+**Attestation result** — EAR (draft-ietf-rats-ear-04) as a CWT, COSE_Sign1 under the authority's root key itself
+(never an end-entity key: sealers hold end-entity certificates of the same root, and a result that verified under
+any of them could be forged by a sealer for itself): profile `tag:ietf.org,2026:rats/ear#04`, `iat`/`exp`, verifier identity, `eat_nonce` = handle, `ear_status`,
 submods `cpu`, `vtpm`, `gpu0` (each with status, trustworthiness vector, policy identifiers, attester claims), and
 `ear_device_topology` `{"cpu": ["vtpm", "gpu0"]}` — which GPU is bound to which guest. The appraised identities
 (statement key, model digests, code identity, class, parameters, binding value) travel as an ep1 extension.

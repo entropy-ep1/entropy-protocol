@@ -87,6 +87,9 @@ def main(argv: list[str] | None = None) -> int:
     ima = step("ima_log", az.ima_log)
     if ima:
         put("ima_log.bin", ima)
+    sd = step("systemd_tpm_log", az.systemd_tpm_log)
+    if sd:
+        put("systemd_tpm2_measure.log", sd)
     about = "\n".join(_sh(c) for c in (
         ["cat", "/etc/os-release"], ["uname", "-a"], ["cat", "/proc/cmdline"],
         ["tpm2_getcap", "properties-fixed"], ["tpm2_getcap", "pcrs"], ["tpm2_getcap", "algorithms"],

@@ -47,9 +47,9 @@ echo "machine up: $RG ($(date -u +%H:%M:%SZ))"
 
 echo "tools"
 "${SSH[@]}" "ubuntu@$IP" 'sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -q tpm2-tools python3-venv >/dev/null && \
-  python3 -m venv /home/ubuntu/cap && /home/ubuntu/cap/bin/pip -q install "cbor2>=5.6" "cryptography>=42" \
+  python3 -m venv /home/ubuntu/cap && /home/ubuntu/cap/bin/pip -q install "cbor2>=5.6" "cryptography>=43.0.3" \
   "nvidia-ml-py==12.550.52" && /home/ubuntu/cap/bin/pip freeze' </dev/null > "$OUT/guest_pip_freeze.txt"
-tar -C "$REPO" -czf - src | "${SSH[@]}" "ubuntu@$IP" 'mkdir -p /home/ubuntu/ep && tar -C /home/ubuntu/ep -xzf -'
+COPYFILE_DISABLE=1 tar --no-xattrs -C "$REPO" -czf - src | "${SSH[@]}" "ubuntu@$IP" 'mkdir -p /home/ubuntu/ep && tar -C /home/ubuntu/ep -xzf -'
 
 echo "capture ($ROUNDS rounds)"
 "${SSH[@]}" "ubuntu@$IP" "sudo env PYTHONPATH=/home/ubuntu/ep/src /home/ubuntu/cap/bin/python -m \

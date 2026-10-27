@@ -18,6 +18,7 @@ import json
 import re
 import subprocess
 import tempfile
+import time
 import urllib.request
 from pathlib import Path
 
@@ -29,6 +30,7 @@ GUEST_INPUT_SIZE = 64
 THIM_URL = "http://169.254.169.254/metadata/THIM/amd/certification"
 EVENT_LOG = Path("/sys/kernel/security/tpm0/binary_bios_measurements")
 IMA_LOG = Path("/sys/kernel/security/ima/binary_runtime_measurements")
+SYSTEMD_TPM_LOG = Path("/run/log/systemd/tpm2-measure.log")     # PCR 11 extensions after boot (systemd-pcrphase)
 QUOTE_PCRS = tuple(range(16))
 GPU_NONCE_SIZE = 32
 
@@ -64,9 +66,17 @@ def nv_read(index: int) -> bytes:
         return out.read_bytes()
 
 
-def guest_report(user_data: bytes) -> bytes:
+REPORT_RENEW_SECONDS = 2.0     # openvmm tpm_device REPORT_TIMER_PERIOD
+
+
+def guest_report(user_data: bytes, tries: int = 4) -> bytes:
     """The paravisor's report with ``user_data`` (64 octets) in its runtime claims; defines the input index (owner
-    read/write, empty authorization, as the paravisor's own tests do) when the guest has not defined it yet."""
+    read/write, empty authorization, as the paravisor's own tests do) when the guest has not defined it yet.
+
+    The paravisor renews the report when the report index is read, at most once per REPORT_TIMER_PERIOD (2 s,
+    openvmm `tpm_device`); a read within that period returns the previous report (observed on Azure NCC40ads H100 v5,
+    27.10.2026: three writes 0.1-0.3 s apart, one report). So the report is read until its runtime claims carry the
+    octets just written, waiting out the period between reads."""
     if len(user_data) != GUEST_INPUT_SIZE:
         raise ValueError(f"guest input is {GUEST_INPUT_SIZE} octets, got {len(user_data)}")
     if nv_size(NV_GUEST_INPUT) is None:
@@ -76,7 +86,22 @@ def guest_report(user_data: bytes) -> bytes:
         src = Path(d) / "in.bin"
         src.write_bytes(user_data)
         _run(["tpm2_nvwrite", "-C", "o", "-i", str(src), f"0x{NV_GUEST_INPUT:08x}"])
-    return nv_read(NV_REPORT)
+    for attempt in range(tries):
+        if attempt:
+            time.sleep(REPORT_RENEW_SECONDS + 0.2)
+        rep = nv_read(NV_REPORT)
+        if _user_data_of(rep) == user_data:
+            return rep
+    raise EvidenceError(f"the paravisor's report did not take the guest input after {tries} reads")
+
+
+def _user_data_of(report: bytes) -> bytes:
+    """`user-data` of a report's runtime claims (the attester's own sanity check; the appraisal re-parses)."""
+    from .hcl import HCLError, parse
+    try:
+        return parse(report).user_data
+    except (HCLError, ValueError):
+        return b""
 
 
 def ak_public() -> dict:
@@ -113,6 +138,10 @@ def event_log() -> bytes:
 
 def ima_log() -> bytes | None:
     return IMA_LOG.read_bytes() if IMA_LOG.exists() else None
+
+
+def systemd_tpm_log() -> bytes | None:
+    return SYSTEMD_TPM_LOG.read_bytes() if SYSTEMD_TPM_LOG.exists() else None
 
 
 def thim() -> dict:

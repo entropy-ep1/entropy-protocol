@@ -11,7 +11,7 @@ requires-python = ">=3.10"
 license = "Apache-2.0"
 license-files = ["LICENSE", "NOTICE"]
 authors = [{ name = "Roman Oliinyk" }, { name = "Serhii Nikolaichuk" }]
-dependencies = ["torch>=2.2", "transformers>=4.44", "cryptography>=42", "cbor2>=5.6"]
+dependencies = ["torch>=2.2", "transformers>=4.44", "cryptography>=43.0.3", "cbor2>=5.6"]
 
 [project.urls]
 Homepage = "https://github.com/entropy-ep1/entropy-protocol"
@@ -22,6 +22,8 @@ Changelog = "https://github.com/entropy-ep1/entropy-protocol/blob/main/CHANGELOG
 [project.optional-dependencies]
 dev = ["pytest>=8"]
 markdown = ["markdown-it-py>=3"]    # the visible-text layer (plain.py) when sealing
+attested = ["signxml>=4", "lxml>=4.9"]    # appraising NVIDIA's signed reference manifests (attested/rim.py)
+guest = ["nvidia-ml-py>=12.550.52"]       # collecting GPU evidence inside a confidential VM (attested/azure_cgpu.py)
 
 [project.scripts]
 entropy = "entropy_protocol.cli:main"
