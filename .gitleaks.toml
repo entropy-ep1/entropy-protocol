@@ -1,0 +1,31 @@
+# gitleaks: the default rules, and this repository's false positives, each with its reason. With this file a scan of
+# the whole history (gitleaks detect --log-opts=--all) and of a clean checkout report nothing; every allowance below
+# was read before it was added, and a private key placed among the evidence is still found. No credential, private
+# key or token of a run is ever committed (.gitignore keeps them out).
+[extend]
+useDefault = true
+
+[allowlist]
+description = "digests, published test vectors and ciphertext that look like secrets and are not"
+paths = [
+  # sealed corpora: custody tokens are base64url ciphertext, and a random run of it can read as a GitHub token
+  # (ghp_/gho_/ghs_ and 36 more characters)
+  '''(^|/)runs_gpu/.*\.jsonl$''',
+  '''(^|/)bench/results/runs_frozen_[^/]+/.*\.jsonl$''',
+  '''(^|/)bench/results/runs/.*\.jsonl$''',
+  # published test vectors: HPKE (RFC 9180, Appendix A) and the specification's own, under fixed test keys
+  '''(^|/)tests/test_hpke\.py$''',
+  '''(^|/)spec/test-vectors/.*\.json$''',
+  # NVIDIA's local verifier's attestation results (JWTs it signs with HS256 under its own key), as captured
+  '''(^|/)bench/results/attested/capture-[^/]+/onboarding_step2_attestation\.txt$''',
+]
+regexTarget = "line"
+regexes = [
+  # SHA-256 digests of tokenizers, weights and keys in JSON, calibration tables and logs
+  '''"?(tokenizer_digest|tokenizer|weights|key)"?: ?"[0-9a-f]{64}"''',
+  # a type or a cipher named after "key:" / "token:" in an annotation or in prose
+  '''key: Ed25519PrivateKey''',
+  '''token: ChaCha20-Poly1305''',
+  # the pinned SHA-256 of the tokenizer in the attested run's script
+  '''TOKENIZER=[0-9a-f]{64}''',
+]
