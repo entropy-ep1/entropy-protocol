@@ -106,11 +106,22 @@ def verify_quote(msg: bytes, sig: bytes, rsa_public_key) -> None:
         raise TPMError("quote signature does not verify") from exc
 
 
+def bank(alg: int) -> int:
+    """The digest size of a PCR bank this module can replay and hash."""
+    if alg not in DIGEST_SIZE:
+        raise TPMError(f"PCR bank 0x{alg:04x} not supported")
+    return DIGEST_SIZE[alg]
+
+
 def pcr_digest(q: Quote, values: dict) -> bytes:
     """The digest a quote commits to: H(PCR values in selection order); ``values`` maps (alg, index) -> digest."""
     if len(q.selection) != 1:
         raise TPMError("one bank per quote expected")
     alg, idx = q.selection[0]
+    bank(alg)
+    missing = [i for i in idx if (alg, i) not in values]
+    if missing:
+        raise TPMError(f"no value for PCRs {missing}")
     return HASH[alg](b"".join(values[(alg, i)] for i in idx)).digest()
 
 
@@ -118,7 +129,7 @@ def split_values(blob: bytes, q: Quote) -> dict:
     """tpm2_quote's "values" output (concatenated digests in selection order) as (alg, index) -> digest."""
     out, off = {}, 0
     for alg, idx in q.selection:
-        n = DIGEST_SIZE[alg]
+        n = bank(alg)
         for i in idx:
             out[(alg, i)] = blob[off:off + n]
             off += n
@@ -155,6 +166,8 @@ def parse_event_log(blob: bytes) -> EventLog:
     algs = {}
     for _ in range(spec.u(4)):
         a, n = spec.u(2), spec.u(2)
+        if a in algs or n != DIGEST_SIZE.get(a, n):
+            raise TPMError(f"bank 0x{a:04x} announced twice or with a wrong digest size ({n})")
         algs[a] = n
     log = EventLog(algs=algs)
     while r.o < len(blob):
@@ -162,11 +175,15 @@ def parse_event_log(blob: bytes) -> EventLog:
         digests = {}
         for _ in range(r.u(4)):
             a = r.u(2)
-            if a not in algs:
-                raise TPMError(f"digest of algorithm 0x{a:04x} not announced")
+            if a not in algs or a in digests:
+                raise TPMError(f"digest of algorithm 0x{a:04x} not announced, or given twice")
             digests[a] = r.take(algs[a])
+        if digests.keys() != algs.keys():      # every event carries one digest of each announced bank
+            raise TPMError(f"event {len(log.events) + 1} lacks the digests of some announced banks")
         data = r.take(r.u(4))
         if etype == EV_NO_ACTION and data.startswith(b"StartupLocality\x00"):
+            if len(data) != 17:
+                raise TPMError("StartupLocality event is not 17 octets")
             log.locality = data[16]
         log.events.append(Event(pcr, etype, digests, data))
     return log
@@ -174,7 +191,9 @@ def parse_event_log(blob: bytes) -> EventLog:
 
 def replay(log: EventLog, alg: int = ALG_SHA256) -> dict:
     """PCR index -> value after replaying every measured event of the bank."""
-    n = DIGEST_SIZE[alg]
+    if alg not in log.algs:
+        raise TPMError(f"bank 0x{alg:04x} is not in the log")
+    n = bank(alg)
     pcrs: dict = {}
     for e in log.events:
         if e.type == EV_NO_ACTION:
@@ -198,9 +217,13 @@ def parse_systemd_log(blob: bytes) -> list[tuple[int, bytes]]:
             digests = r.get("digests", []) if isinstance(r, dict) else None
             d = next((x["digest"] for x in digests if isinstance(x, dict) and x.get("hashAlg") == "sha256"), None) \
                 if isinstance(digests, list) else None
-            if d is None or not isinstance(r.get("pcr"), int):
+            pcr = r.get("pcr") if isinstance(r, dict) else None
+            if d is None or type(pcr) is not int or not 0 <= pcr < 24:
                 raise TPMError("systemd log record without a PCR or a SHA-256 digest")
-            out.append((r["pcr"], bytes.fromhex(d)))
+            digest = bytes.fromhex(d)
+            if len(digest) != 32:
+                raise TPMError("systemd log record's SHA-256 digest is not 32 octets")
+            out.append((pcr, digest))
         except (ValueError, TypeError, KeyError) as exc:
             raise TPMError(f"malformed systemd log record ({type(exc).__name__})") from exc
     return out
@@ -209,7 +232,7 @@ def parse_systemd_log(blob: bytes) -> list[tuple[int, bytes]]:
 def replay_with(log: EventLog, later: list[tuple[int, bytes]], alg: int = ALG_SHA256) -> dict:
     """The firmware log's replay, then the measurements made after boot, in order."""
     pcrs = replay(log, alg)
-    n = DIGEST_SIZE[alg]
+    n = bank(alg)
     for pcr, digest in later:
         pcrs[pcr] = HASH[alg](pcrs.get(pcr, bytes(n)) + digest).digest()
     return pcrs
@@ -218,6 +241,8 @@ def replay_with(log: EventLog, later: list[tuple[int, bytes]], alg: int = ALG_SH
 def uki_sections(log: EventLog) -> dict:
     """systemd-stub's PCR 11 measurements of a unified kernel image: section name -> SHA-256 of its contents (the
     stub measures each section's name, then its contents, as EV_IPL events)."""
+    if ALG_SHA256 not in log.algs:
+        raise TPMError("the log has no SHA-256 bank")
     out, name = {}, None
     for e in log.events:
         if e.pcr != 11 or e.type != 0x0D:

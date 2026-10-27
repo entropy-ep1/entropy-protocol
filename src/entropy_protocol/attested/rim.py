@@ -94,11 +94,14 @@ def golden(tree) -> dict:
     out: dict = {}
     for res in payload:
         a = res.attrib
-        idx = int(a["index"])
+        try:
+            idx, size = int(a["index"]), int(a["size"])
+            values = [a[f"{HASH_NS}Hash{i}"].lower() for i in range(int(a["alternatives"]))]
+        except (KeyError, ValueError) as exc:
+            raise RIMError(f"malformed measurement {a.get('name', '?')!r} ({type(exc).__name__}: {exc})") from exc
         if idx in out:
             raise RIMError(f"index {idx} appears twice")
-        out[idx] = {"active": a.get("active") != "False", "size": int(a["size"]), "name": a.get("name", ""),
-                    "values": [a[f"{HASH_NS}Hash{i}"].lower() for i in range(int(a["alternatives"]))]}
+        out[idx] = {"active": a.get("active") != "False", "size": size, "name": a.get("name", ""), "values": values}
     if not out:
         raise RIMError("RIM has no measurements")
     return out
