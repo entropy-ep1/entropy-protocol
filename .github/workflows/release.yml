@@ -39,6 +39,9 @@ jobs:
           cosign sign-blob --yes --output-signature SHA256SUMS.sig --output-certificate SHA256SUMS.pem SHA256SUMS
           ls -la
       - uses: actions/attest-build-provenance@v2
+        # GitHub keeps build-provenance attestations for public repositories on every plan; for a private repository on
+        # the free plan it refuses them ("Feature not available ... make this repository public", dry run 27.10.2026)
+        if: ${{ !github.event.repository.private }}
         with:
           subject-path: "dist/*.whl, dist/*.tar.gz"
       - name: publish (tags only)
@@ -48,7 +51,8 @@ jobs:
           TAG: ${{ github.ref_name }}
         run: |
           set -euo pipefail
-          gh release create "$TAG" --draft --title "Entropy Protocol $TAG" --notes "See CHANGELOG.md."
+          pre=""; case "$TAG" in *-rc*) pre="--prerelease" ;; esac      # a release candidate is a pre-release
+          gh release create "$TAG" --draft $pre --title "Entropy Protocol $TAG" --notes "See CHANGELOG.md."
           # one file at a time with retries: a parallel upload raced on one release and left partial sets
           # (21/25, 13/25) in another project on 17.09.2026
           for f in dist/*; do
