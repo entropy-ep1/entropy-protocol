@@ -16,10 +16,12 @@ import hashlib
 from dataclasses import dataclass
 
 from cryptography import x509
-from cryptography.exceptions import InvalidSignature, UnsupportedAlgorithm
+from cryptography.exceptions import InvalidSignature
 from cryptography.hazmat.primitives import hashes, serialization
 from cryptography.hazmat.primitives.asymmetric import ec
 from cryptography.hazmat.primitives.asymmetric.utils import encode_dss_signature
+
+from .pki import UNREADABLE
 
 
 DEVICE_ROOT_SHA256 = "102bf659d5419614c9d8e6aecebc80454eb26b1df6a769ac720b9a690b167b48"
@@ -135,7 +137,7 @@ def certificate_fwid(leaf: x509.Certificate) -> bytes:
 def verify_report(rep: GPUReport, leaf: x509.Certificate) -> None:
     try:
         key = leaf.public_key()
-    except (ValueError, UnsupportedAlgorithm) as exc:
+    except UNREADABLE as exc:
         raise GPUError(f"the attestation key cannot be read: {exc}") from exc
     if not isinstance(key, ec.EllipticCurvePublicKey) or key.curve.name != "secp384r1":
         raise GPUError("the attestation key is not ECDSA P-384")
@@ -160,7 +162,7 @@ def verify_chain(chain: list[x509.Certificate], root_sha256: str, at) -> None:
     for child, parent in zip(chain, chain[1:] + [root]):
         try:
             child.verify_directly_issued_by(parent)
-        except (ValueError, TypeError, InvalidSignature, UnsupportedAlgorithm) as exc:   # an unreadable key included
+        except (*UNREADABLE, InvalidSignature) as exc:                     # an unreadable key included
             raise GPUError(f"{child.subject.rfc4514_string()} is not signed by its issuer") from exc
         if not child.not_valid_before_utc <= at <= child.not_valid_after_utc:
             raise GPUError(f"{child.subject.rfc4514_string()} not valid at {at.isoformat()}")

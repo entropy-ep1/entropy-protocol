@@ -20,7 +20,7 @@ from .record import HIGH, LOW, Header, Record, dumps
 
 @dataclass(frozen=True)
 class SealParams:
-    # Reference operating point (stage 2, 12.09.2026, Qwen2.5-0.5B, 40-60 prompts, calibrated fp32+fp16):
+    # Reference operating point (measured on Qwen2.5-0.5B, 40-60 prompts, calibrated fp32+fp16):
     # one checkpoint in 5 tokens chosen by the detection key from the preceding 4 tokens; LOW = the first choice,
     # HIGH = not the first choice (k = 1, among ranks 1-3); enforced in the verifier's context (align="free")
     # without a HIGH margin. Perplexity under an independent judge x1.12 [0.97-1.29] (enforcing in the
@@ -46,7 +46,7 @@ class SealParams:
     high_margin: float | None = 0.0
     # "content": checkpoints and predicates chosen by a PRF of the preceding `context` token ids under the
     # detection key -> the text can also be detected without its record (detect.py); "interval": every
-    # `interval`-th generated position, predicate from the per-document keyed bitstream (spec [0104])
+    # `interval`-th generated position, predicate from the per-document keyed bitstream
     selection: str = "content"
     context: int = 4
     # where predicates are enforced: "prompt" (generation context) or "free" (the verifier's context:

@@ -1,4 +1,4 @@
-"""Attested sealing and attested detection (ARCHITECTURE §7d; spec [0100]-[0109]).
+"""Attested sealing and attested detection (ARCHITECTURE §7d).
 
 The keys, the model and the sealing code run in a confidential VM with a confidential GPU; a credential authority
 appraises the hardware evidence, which carries a binding value over the statement key, the model and the code, and

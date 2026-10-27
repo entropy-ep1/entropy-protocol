@@ -1,0 +1,212 @@
+{
+ "appraise": {
+  "execs": 20555,
+  "execs_per_sec": 113,
+  "peak_rss_mb": 82,
+  "cov": 599,
+  "ft": 1212,
+  "findings": []
+ },
+ "canon": {
+  "execs": 35143,
+  "execs_per_sec": 194,
+  "peak_rss_mb": 66,
+  "cov": 221,
+  "ft": 1227,
+  "findings": []
+ },
+ "canon_diff": {
+  "execs": 25275,
+  "execs_per_sec": 139,
+  "peak_rss_mb": 66,
+  "cov": 268,
+  "ft": 1208,
+  "findings": []
+ },
+ "cbor_diff": {
+  "execs": 158719,
+  "execs_per_sec": 876,
+  "peak_rss_mb": 66,
+  "cov": 117,
+  "ft": 437,
+  "findings": []
+ },
+ "cose_encrypt0": {
+  "execs": 263033,
+  "execs_per_sec": 1453,
+  "peak_rss_mb": 67,
+  "cov": 96,
+  "ft": 319,
+  "findings": []
+ },
+ "cose_sign1": {
+  "execs": 287232,
+  "execs_per_sec": 1586,
+  "peak_rss_mb": 67,
+  "cov": 88,
+  "ft": 319,
+  "findings": []
+ },
+ "delivered": {
+  "execs": 171623,
+  "execs_per_sec": 948,
+  "peak_rss_mb": 67,
+  "cov": 97,
+  "ft": 316,
+  "findings": []
+ },
+ "ear": {
+  "execs": 196094,
+  "execs_per_sec": 1083,
+  "peak_rss_mb": 67,
+  "cov": 89,
+  "ft": 308,
+  "findings": []
+ },
+ "enroll": {
+  "execs": 189438,
+  "execs_per_sec": 1046,
+  "peak_rss_mb": 67,
+  "cov": 82,
+  "ft": 258,
+  "findings": []
+ },
+ "event_log": {
+  "execs": 339090,
+  "execs_per_sec": 1873,
+  "peak_rss_mb": 67,
+  "cov": 59,
+  "ft": 195,
+  "findings": []
+ },
+ "gpu_report": {
+  "execs": 754230,
+  "execs_per_sec": 4167,
+  "peak_rss_mb": 65,
+  "cov": 41,
+  "ft": 95,
+  "findings": []
+ },
+ "hcl": {
+  "execs": 1888586,
+  "execs_per_sec": 10434,
+  "peak_rss_mb": 66,
+  "cov": 88,
+  "ft": 101,
+  "findings": []
+ },
+ "pack": {
+  "execs": 2915,
+  "execs_per_sec": 16,
+  "peak_rss_mb": 112,
+  "cov": 1030,
+  "ft": 2512,
+  "findings": []
+ },
+ "plain": {
+  "execs": 55663,
+  "execs_per_sec": 307,
+  "peak_rss_mb": 66,
+  "cov": 157,
+  "ft": 747,
+  "findings": []
+ },
+ "receipt": {
+  "execs": 260356,
+  "execs_per_sec": 1438,
+  "peak_rss_mb": 66,
+  "cov": 128,
+  "ft": 418,
+  "findings": []
+ },
+ "record": {
+  "execs": 292022,
+  "execs_per_sec": 1613,
+  "peak_rss_mb": 67,
+  "cov": 76,
+  "ft": 306,
+  "findings": []
+ },
+ "rim": {
+  "execs": 170634,
+  "execs_per_sec": 1376,
+  "peak_rss_mb": 77,
+  "cov": 94,
+  "ft": 359,
+  "findings": [
+   "crash-c6d6d2f38e423f47be05233bba0f9bc46a843edf"
+  ]
+ },
+ "rim_payload": {
+  "execs": 491515,
+  "execs_per_sec": 2715,
+  "peak_rss_mb": 76,
+  "cov": 19,
+  "ft": 56,
+  "findings": []
+ },
+ "snp_report": {
+  "execs": 3180138,
+  "execs_per_sec": 17569,
+  "peak_rss_mb": 66,
+  "cov": 20,
+  "ft": 21,
+  "findings": []
+ },
+ "statement": {
+  "execs": 355309,
+  "execs_per_sec": 1963,
+  "peak_rss_mb": 67,
+  "cov": 89,
+  "ft": 314,
+  "findings": []
+ },
+ "systemd_log": {
+  "execs": 1566301,
+  "execs_per_sec": 8653,
+  "peak_rss_mb": 66,
+  "cov": 69,
+  "ft": 222,
+  "findings": []
+ },
+ "timestamp": {
+  "execs": 410388,
+  "execs_per_sec": 2267,
+  "peak_rss_mb": 66,
+  "cov": 90,
+  "ft": 423,
+  "findings": []
+ },
+ "timestamp_reply": {
+  "execs": 2521484,
+  "execs_per_sec": 13930,
+  "peak_rss_mb": 66,
+  "cov": 42,
+  "ft": 104,
+  "findings": []
+ },
+ "token": {
+  "execs": 360936,
+  "execs_per_sec": 1994,
+  "peak_rss_mb": 67,
+  "cov": 75,
+  "ft": 290,
+  "findings": []
+ },
+ "tpm_quote": {
+  "execs": 637130,
+  "execs_per_sec": 3520,
+  "peak_rss_mb": 65,
+  "cov": 39,
+  "ft": 118,
+  "findings": []
+ },
+ "tpm_signature": {
+  "execs": 5835933,
+  "execs_per_sec": 32242,
+  "peak_rss_mb": 66,
+  "cov": 17,
+  "ft": 25,
+  "findings": []
+ }
+}

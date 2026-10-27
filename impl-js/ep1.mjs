@@ -1,9 +1,8 @@
 // Entropy Protocol ep1 — second implementation of the model-free parts, written from spec/ep1.cddl and
-// ARCHITECTURE.md in JavaScript (Node.js >= 20, no dependencies): deterministic CBOR, canonical form v3,
+// ARCHITECTURE.md in JavaScript (Node.js >= 20, no dependencies): deterministic CBOR, canonical forms v3 to v5,
 // segmentation, key derivation, keyed selection, record token, commitment, COSE_Sign1 (Ed25519),
 // RFC 9162 inclusion proofs and RFC 9942 receipts, exact binomial tail, HPKE (RFC 9180, base mode) and a record
 // delivered by public key (COSE-HPKE integrated encryption, draft-ietf-cose-hpke-27).
-// PRIVATE until the covering provisional application is filed.
 import crypto from "node:crypto";
 import { assigned14 } from "./unicode14.mjs";
 

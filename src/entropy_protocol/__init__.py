@@ -4,8 +4,8 @@ Seal AI-generated text at the moment of generation; verify it anywhere, without 
 Verdicts are determinations, not probabilities: VERIFIED, MODIFIED (with character ranges),
 INDETERMINATE, or NOT_VERIFIABLE.
 
-PRIVATE until the covering provisional application is filed. Apache-2.0 at publication.
+Apache-2.0; see LICENSE, NOTICE and PATENTS.md.
 """
 
-__version__ = "0.1.0.dev0"
+__version__ = "0.1.0rc1"
 ENGINE = f"entropy-protocol/{__version__}"

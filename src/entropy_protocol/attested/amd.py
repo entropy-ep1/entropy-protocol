@@ -17,10 +17,12 @@ import hashlib
 from dataclasses import dataclass
 
 from cryptography import x509
-from cryptography.exceptions import InvalidSignature, UnsupportedAlgorithm
+from cryptography.exceptions import InvalidSignature
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.asymmetric import ec
 from cryptography.hazmat.primitives.asymmetric.utils import encode_dss_signature
+
+from .pki import UNREADABLE
 
 ARK_SHA256 = {
     "Milan": "69d063b45344d26a2e94e1f4210de49ef555308287d4c174445c95639a540bcd",
@@ -48,14 +50,14 @@ def verify_chain(leaf_der: bytes, ask_der: bytes, ark_der: bytes, product: str, 
         raise SNPError(f"ARK is not AMD's pinned ARK-{product}")
     try:
         leaf, ask, ark = (x509.load_der_x509_certificate(x) for x in (leaf_der, ask_der, ark_der))
-    except (ValueError, TypeError) as exc:
+    except UNREADABLE as exc:
         raise SNPError(f"not a DER certificate: {exc}") from exc
     for child, parent in ((ark, ark), (ask, ark), (leaf, ask)):
         if child.signature_algorithm_oid.dotted_string != OID_RSASSA_PSS:
             raise SNPError(f"unexpected signature algorithm {child.signature_algorithm_oid.dotted_string}")
         try:
             child.verify_directly_issued_by(parent)
-        except (ValueError, TypeError, InvalidSignature, UnsupportedAlgorithm) as exc:   # an unreadable key included
+        except (*UNREADABLE, InvalidSignature) as exc:                     # an unreadable key included
             raise SNPError(f"{child.subject.rfc4514_string()} is not signed by its issuer") from exc
     for c in (leaf, ask, ark):
         if not c.not_valid_before_utc <= at <= c.not_valid_after_utc:
@@ -165,7 +167,7 @@ def verify_report(rep: Report, leaf_der: bytes) -> None:
         raise SNPError(f"signature algorithm {rep.signature_algo}, expected 1 (ECDSA P-384 with SHA-384)")
     try:
         key = x509.load_der_x509_certificate(leaf_der).public_key()
-    except (ValueError, UnsupportedAlgorithm) as exc:
+    except UNREADABLE as exc:
         raise SNPError(f"the report key cannot be read: {exc}") from exc
     if not isinstance(key, ec.EllipticCurvePublicKey) or key.curve.name != "secp384r1":
         raise SNPError("the report key is not ECDSA P-384")
@@ -209,7 +211,7 @@ def check_crl(crl_der: bytes, ask_der: bytes, ark_der: bytes, at: dt.datetime,
         crl = x509.load_der_x509_crl(crl_der)
         ask, ark = x509.load_der_x509_certificate(ask_der), x509.load_der_x509_certificate(ark_der)
         signed = crl.issuer == ark.subject and crl.is_signature_valid(ark.public_key())
-    except (ValueError, TypeError, UnsupportedAlgorithm) as exc:
+    except UNREADABLE as exc:
         raise SNPError(f"CRL or certificates cannot be read: {exc}") from exc
     if not signed:
         raise SNPError("CRL not signed by the ARK")

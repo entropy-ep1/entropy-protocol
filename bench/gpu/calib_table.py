@@ -4,7 +4,7 @@
 For each configuration dump (calib_dump.py) against the reference configuration:
   delta        max |margin_config - margin_reference| over the positions that can hold a checkpoint (index >=
                --from-position, default 4 = seal.first_checkpoint of the default parameters) and both predicates
-               (spec [0117]; 15.09.2026: over all positions, one position-3 outlier made the fp16 class 14x wider)
+               (ARCHITECTURE §6a: over all positions, one position-3 outlier made the fp16 class 14x wider)
   p99.9/p99.99 the same distribution's upper quantiles (how much the max is carried by rare positions)
   flips        positions where the predicate's truth differs from the reference (k = 1: the sign of the margin,
                the same for LOW and HIGH): at all positions, and at positions a record would keep

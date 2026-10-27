@@ -45,7 +45,7 @@ def check(st: dict, att: dict, note) -> dict:
     keys, ids = {}, {}
     try:
         root = x509.load_der_x509_certificate(att["root"])
-    except (KeyError, ValueError) as exc:
+    except (KeyError, *pki.UNREADABLE) as exc:
         note("attestation: authority root", False, f"{type(exc).__name__}: {exc}")
         return {"keys": keys, "identities": ids}
     note("attestation: authority root", None, f"{att.get('authority', {}).get('name', '?')}, SHA-256 "
