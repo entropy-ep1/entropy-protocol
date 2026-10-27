@@ -297,6 +297,81 @@ loaded lazily on the first call. A failed check is a tool error, not a dead serv
   names each part and gives the exact commands. Trust stays with the reader: the package carries its own keys, so
   the reader compares them with the issuer's published key.
 
+## 7d. Attested sealing and attested detection (`attested/`) — spec [0100]–[0109]; design, being built
+The record binds a text to a model's choices, but whoever holds `K` can seal any text (§8, last row). Here the keys,
+the model and the sealing code run inside a confidential VM with a confidential GPU, and every statement carries
+evidence of that, appraised by a credential authority before it certifies the statement key.
+
+**First platform: Azure `Standard_NCC40ads_H100_v5`** — an AMD SEV-SNP guest (Genoa) under Microsoft's paravisor,
+with an H100 NVL in confidential-computing mode. The paravisor owns REPORT_DATA; a guest binds its own 64 octets
+through the vTPM: it writes them to NV index 0x01400002 (guest attestation input, 64 octets), and the paravisor
+writes a fresh report to NV 0x01400001 whose runtime claims (JSON) carry them as `user-data` (hex), together with
+the vTPM attestation key `HCLAkPub` and the VM configuration; REPORT_DATA holds the hash of those runtime claims
+(type in the report's request data). Layout: header 32 octets (`HCLA`, version 2, report size, request type,
+status), the SNP report (1184 octets, slot 0x4a0), request data (data size, version, report type, hash type,
+variable size), runtime claims. Source: microsoft/openvmm `vm/devices/tpm/tpm_guest_tests/src/report.rs`,
+`openhcl/openhcl_attestation_protocol/src/igvm_attest/get.rs`, `vm/devices/tpm/tpm_protocol/src/lib.rs`.
+Other platforms put the binding straight into the processor's guest field (SEV-SNP REPORT_DATA at 0x50; TDX
+REPORTDATA).
+
+**Binding value** (64 octets): SHA-512 over length-prefixed fields (4-octet big-endian length, then the octets):
+`"ep1/attested-binding/v1"`, the freshness handle (the authority's nonce), `rrp_id` (the authority's identity, held
+in the sealer's configuration, never taken from the wire), `target` (the sealing service's identity), SHA-256 of
+the certificate signing request (DER), the statement public key (SubjectPublicKeyInfo DER), the weights digest, the
+tokenizer digest, the code identity (SHA-256 of the sorted list of [path, SHA-256(file)] of the installed package),
+the sealing class, and SHA-256 of the sealing parameters (canonical CBOR). The GPU report is taken over the same
+handle (32 octets); the vTPM quote's qualifying data is SHA-256 of the binding value.
+
+**Enrollment** (attestation-based, after the message shapes of draft-novak-rats-tacra): the authority returns
+`{freshness_kind: "present-nonce", handle, rrp_id, mode: "enroll", expires_in}`; the sealer answers with
+`{freshness_kind, target, credential_type: "ep1-statement-key", handle, evidence, profile: "ep1/azure-cgpu/v1",
+binding: {method: "binding-input", hash: "sha512"}, csr}`. The conduit between them is untrusted.
+
+**Appraisal** — each check is named in the result:
+- `cpu`: VCEK → ASK → ARK to the pinned ARK-Genoa (AMD's RSASSA-PSS certificates encode the default trailer field,
+  which strict DER parsers refuse — read with our own DER walker); the report's ECDSA P-384 signature under the VCEK;
+  the VCEK's TCB extensions equal the reported TCB; TCB at or above the policy's minimum; DEBUG off; the launch
+  measurement (the paravisor) in the reference set; REPORT_DATA = hash of the runtime claims, the rest zero.
+- `vtpm`: `user-data` = the binding value; `HCLAkPub` present; secure boot and the vTPM on; the quote (TPMS_ATTEST)
+  signed by that AK, its qualifying data = SHA-256(binding), its PCR digest = the quoted PCRs; the TCG event log
+  replays to them; the boot chain (PCR 4, 7) in the reference set.
+- `gpu0`: the certificate chain to NVIDIA's pinned device identity root; the SPDM measurement response signed by the
+  device's attestation key over the handle; the measurements against NVIDIA's reference integrity manifests (driver
+  and VBIOS, XML signature to NVIDIA's pinned RIM root); revocation by OCSP, the responses kept.
+- binding: recomputed from the request's fields equals `user-data`; the handle was issued by this authority and has
+  not expired or been used; the CSR's signature verifies under its own key, which is the key in the binding.
+
+**Attestation result** — EAR (draft-ietf-rats-ear-04) as a CWT, COSE_Sign1 under the authority's result-signing
+key: profile `tag:ietf.org,2026:rats/ear#04`, `iat`/`exp`, verifier identity, `eat_nonce` = handle, `ear_status`,
+submods `cpu`, `vtpm`, `gpu0` (each with status, trustworthiness vector, policy identifiers, attester claims), and
+`ear_device_topology` `{"cpu": ["vtpm", "gpu0"]}` — which GPU is bound to which guest. The appraised identities
+(statement key, model digests, code identity, class, parameters, binding value) travel as an ep1 extension.
+
+**Certificate**: X.509 for the Ed25519 statement key, issued by the authority's root; subject = `target`;
+validity = the result's lifetime. Statements signed in the environment carry `x5chain` (RFC 9360, label 33) and
+SHA-256 of the attestation result in the protected header, so both reach the log with the statement.
+
+**Attested detection**: the same enrollment with `credential_type: "ep1-detection-key"`; `K_wm` is generated inside
+the environment and never leaves it; detection is a service that returns detection statements signed under the
+certified key. Whoever runs the service can no longer imitate the mark with `K_wm` (§8), and the exact null is
+unchanged.
+
+**Evidence package `ep1-pack/v2`** adds `att`: the result, the enrollment request (evidence + CSR), the collateral
+used (AMD chain and CRL, GPU chain, RIMs, OCSP responses) and the policy (reference values). The offline check
+appraises the evidence again with the same code at the result's issue time, verifies the result's signature to the
+authority's root (pinned by the reader), the certificate, the statement key = the key in the binding, and then the
+existing chain (text → statements → log → time stamp). It names every root, reference value or revocation status it
+was not given.
+
+**What it proves, what it does not.** Hardware-signed: a genuine AMD SEV-SNP processor at the reported TCB, the
+paravisor's measurement, debug off, the vTPM key bound to that report, the boot chain in the quoted PCRs, a genuine
+H100 whose firmware and driver match NVIDIA's manifests; the statement key was generated by software in this guest,
+the only party that can write the guest input. Reported by that software: the model digests, the code identity, the
+class and the parameters inside the binding — trustworthy as far as the guest's software is (boot chain appraised;
+user space measured when the image measures it). Excluding the operator needs a locked image — no interactive
+access, measured root file system — whose measurements become the reference values. Time comes from outside the
+environment (RFC 3161 over the logged form, the log's registration), never from the guest's clock.
+
 ## 8. What is proven, against whom (threat model)
 | Adversary | Outcome |
 |---|---|
@@ -325,7 +400,7 @@ loaded lazily on the first call. A failed check is a tool error, not a dead serv
 | Second implementation (JavaScript, model-free parts) | 72/72 test-vector checks; CI regenerates the vectors with Python and runs both |
 | Record delivered by public key: HPKE (RFC 9180, vectors A.1.1/A.2.1) + COSE-HPKE integrated encryption (draft-27) | implemented, tested; second implementation opens it |
 | RFC 3161 time stamps over statements (`entropy timestamp`; imprint checked, the authority's chain is the reader's trust decision) | implemented, tested |
-| TEE-attested generation | not implemented |
+| TEE-attested sealing and detection (§7d) | being built: design written; Azure confidential H100 first |
 | Backends: HF transformers, single and batched | implemented, tested · vLLM / llama.cpp — pending |
 | Model identity: weights digest over exactly the files the loader reads (index of shards) | implemented, tested |
 | GPU evaluation program (`bench/gpu/`): phase A (15.09, L40S, Qwen2.5-7B), phases B and C (26.09: L40S, L4, A10G, H100; Qwen2.5-7B and 14B, Mistral-7B-v0.3, OLMo-2-7B; a two-million-pair null; KGW and SynthID-Text) | run; results in `runs_gpu/`, reports in `bench/results/phase_{b,c}/REPORT.md` |
