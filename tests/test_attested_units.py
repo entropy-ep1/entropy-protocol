@@ -137,6 +137,22 @@ def test_quote_values_and_systemd_records_refused_when_malformed():
             tpm.parse_systemd_log(bad)
 
 
+def test_jwk_reader_takes_base64url_rsa_keys_only():
+    from cryptography.hazmat.primitives.asymmetric import rsa
+
+    from entropy_protocol.attested import hcl
+    pub = rsa.generate_private_key(public_exponent=65537, key_size=2048).public_key().public_numbers()
+
+    def b64u(v: int) -> str:
+        return __import__("base64").urlsafe_b64encode(v.to_bytes((v.bit_length() + 7) // 8, "big")).decode().rstrip("=")
+    good = {"kty": "RSA", "e": b64u(pub.e), "n": b64u(pub.n)}
+    assert hcl.rsa_from_jwk(good).public_numbers() == pub
+    for bad in ({**good, "kty": "EC"}, {**good, "n": good["n"] + "AAA"}, {**good, "n": "+" + good["n"][1:]},
+                {**good, "e": 3.0}, {"kty": "RSA", "n": good["n"]}, {**good, "e": b64u(2)}, "RSA"):
+        with pytest.raises(hcl.HCLError):
+            hcl.rsa_from_jwk(bad)
+
+
 def test_rim_golden_refuses_malformed_measurements():
     etree = pytest.importorskip("lxml.etree")
 

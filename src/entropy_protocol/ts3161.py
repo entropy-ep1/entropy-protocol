@@ -47,18 +47,30 @@ def request(digest: bytes, *, nonce: bytes | None = None, cert_req: bool = True)
     return _tlv(0x30, body)
 
 
+MAX_DEPTH = 32
+
+
 def _elements(der: bytes, start: int = 0, end: int | None = None):
-    """(tag, element_start, body_start, body_end) of every element at this level."""
+    """(tag, element_start, body_start, body_end) of every element at this level. DER only: one-octet tags, definite
+    lengths of at most four octets, every element inside its parent - so a search of the whole structure visits each
+    octet a bounded number of times. ValueError otherwise."""
     end = len(der) if end is None else end
     i = start
     while i < end:
-        head, tag = i, der[i]
-        n = der[i + 1]
+        if i + 2 > end:
+            raise ValueError("DER element truncated")
+        head, tag, n = i, der[i], der[i + 1]
+        if tag & 0x1F == 0x1F:
+            raise ValueError("multi-octet DER tag")
         i += 2
         if n & 0x80:
             k = n & 0x7F
+            if not 1 <= k <= 4 or i + k > end:
+                raise ValueError("DER length is not definite in one to four octets")
             n = int.from_bytes(der[i:i + k], "big")
             i += k
+        if i + n > end:
+            raise ValueError("DER element runs past its parent")
         yield tag, head, i, i + n
         i += n
 
@@ -102,25 +114,29 @@ def _token_from_response(reply: bytes) -> bytes:
     return reply[parts[1][1]:parts[1][3]]
 
 
-def _find(der: bytes, oid: bytes, start: int = 0, end: int | None = None) -> int | None:
+def _find(der: bytes, oid: bytes, start: int = 0, end: int | None = None, depth: int = 0) -> int | None:
     """Offset just after the OBJECT IDENTIFIER with this value, anywhere in the structure."""
+    if depth > MAX_DEPTH:
+        raise ValueError("DER nested too deep")
     end = len(der) if end is None else end
     for tag, s, e in _walk(der, start, end):
         if tag == 0x06 and der[s:e] == oid:
             return e
-        if tag & 0x20 or tag in (0x30, 0x31):                                  # constructed: look inside
-            hit = _find(der, oid, s, e)
+        if tag & 0x20:                                                         # constructed: look inside
+            hit = _find(der, oid, s, e, depth + 1)
             if hit is not None:
                 return hit
     return None
 
 
-def _first(der: bytes, tag_wanted: int, start: int, end: int) -> tuple[int, int] | None:
+def _first(der: bytes, tag_wanted: int, start: int, end: int, depth: int = 0) -> tuple[int, int] | None:
+    if depth > MAX_DEPTH:
+        raise ValueError("DER nested too deep")
     for tag, s, e in _walk(der, start, end):
         if tag == tag_wanted:
             return s, e
-        if tag & 0x20 or tag in (0x30, 0x31):
-            hit = _first(der, tag_wanted, s, e)
+        if tag & 0x20:
+            hit = _first(der, tag_wanted, s, e, depth + 1)
             if hit is not None:
                 return hit
     return None

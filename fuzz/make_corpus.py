@@ -1,6 +1,6 @@
 """Seed corpora for the fuzz targets, from real data: the test vectors, the live capture on a confidential H100 and
 the attested run (records, tokens, statements, receipts, time stamps, packages, hardware reports, manifests,
-enrollment messages, attestation results). A fuzzer that starts from real structures reaches the checks behind
+enrollment messages, attestation results) and an authority's real time-stamp replies. A fuzzer that starts from real structures reaches the checks behind
 the first length test.
 
     python fuzz/make_corpus.py            # writes fuzz/corpus/<target>/seed-*
@@ -91,6 +91,9 @@ def main() -> int:
             put("receipt", rc)
         for part, ts in p.get("ts", {}).items():
             put("timestamp", ts)
+    for f in sorted(ROOT.glob("bench/results/fuzz/tsa-replies-*/reply-*.tsr")):   # fuzz/fetch_tsa_replies.py
+        if f.stat().st_size:
+            put("timestamp_reply", f.read_bytes())
     print({d.name: len(list(d.iterdir())) for d in sorted(OUT.iterdir())})
     return 0
 

@@ -12,6 +12,7 @@ from __future__ import annotations
 import base64
 import hashlib
 import json
+import re
 from dataclasses import dataclass
 
 from . import amd
@@ -21,6 +22,7 @@ HEADER = 32
 SLOT = 0x4A0
 REQUEST_DATA = 20
 HASHES = {1: hashlib.sha256, 2: hashlib.sha384, 3: hashlib.sha512}
+B64URL = re.compile(r"[A-Za-z0-9_-]+")
 SNP_VM_REPORT = 2
 
 
@@ -82,10 +84,18 @@ def report_data_binds_claims(h: HCLReport) -> bool:
 
 
 def rsa_from_jwk(jwk: dict):
+    """The RSA public key of a JWK (RFC 7518 §6.3.1: n and e in base64url without padding); HCLError otherwise."""
     from cryptography.hazmat.primitives.asymmetric.rsa import RSAPublicNumbers
 
-    def b64(s: str) -> int:
+    def b64(s) -> int:
+        if not (isinstance(s, str) and B64URL.fullmatch(s) and len(s) % 4 != 1):
+            raise HCLError("JWK member is not base64url")
         return int.from_bytes(base64.urlsafe_b64decode(s + "=" * (-len(s) % 4)), "big")
-    if jwk.get("kty") != "RSA":
+    if not isinstance(jwk, dict) or jwk.get("kty") != "RSA":
         raise HCLError("not an RSA JWK")
-    return RSAPublicNumbers(b64(jwk["e"]), b64(jwk["n"])).public_key()
+    try:
+        return RSAPublicNumbers(b64(jwk.get("e")), b64(jwk.get("n"))).public_key()
+    except HCLError:
+        raise
+    except ValueError as exc:                          # e or n that is not an RSA public key
+        raise HCLError(f"not an RSA public key: {exc}") from exc
