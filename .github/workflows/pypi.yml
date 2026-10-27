@@ -1,0 +1,47 @@
+name: pypi
+# Publish a release to PyPI: the very files of the GitHub release, after checking SHA256SUMS and each file's Sigstore
+# bundle against the release workflow at that tag - no rebuild, so PyPI carries the bytes the release signed. Trusted
+# publishing (OIDC, environment "pypi", which only main may use): no token or password exists anywhere.
+#   gh workflow run pypi.yml -f tag=v0.1.0
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "release tag to publish (vX.Y.Z)"
+        required: true
+permissions:
+  contents: read
+jobs:
+  pypi:
+    runs-on: ubuntu-24.04
+    environment: pypi
+    permissions:
+      contents: read
+      id-token: write        # trusted publishing
+    steps:
+      - name: the tag is a final release
+        env:
+          TAG: ${{ inputs.tag }}
+        run: |
+          [[ "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] || { echo "not a final release tag: $TAG"; exit 1; }
+      - uses: sigstore/cosign-installer@v4.1.2
+        with:
+          cosign-release: "v3.1.3"
+      - name: the release's own files, checked
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.tag }}
+        run: |
+          set -euo pipefail
+          mkdir -p assets dist
+          gh release download "$TAG" --repo "$GITHUB_REPOSITORY" --dir assets
+          cd assets
+          sha256sum -c SHA256SUMS
+          id="https://github.com/${GITHUB_REPOSITORY}/.github/workflows/release.yml@refs/tags/${TAG}"
+          for f in *.whl *.tar.gz SHA256SUMS; do
+            cosign verify-blob --bundle "$f.sigstore.json" --certificate-identity "$id" \
+              --certificate-oidc-issuer https://token.actions.githubusercontent.com "$f"
+          done
+          cp -- *.whl *.tar.gz ../dist/
+          ls -la ../dist
+      - uses: pypa/gh-action-pypi-publish@v1.14.2
