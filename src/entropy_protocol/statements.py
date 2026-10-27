@@ -21,7 +21,6 @@ from __future__ import annotations
 import hashlib
 import time
 
-import cbor2
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey, Ed25519PublicKey
 
 from . import ENGINE, cose, crypto
@@ -146,4 +145,4 @@ def read_statement(statement: bytes, issuer_key: Ed25519PublicKey, body: dict | 
         if sha256(cose.dumps(body)) != payload:
             raise cose.COSEError("payload map does not match the envelope")
         return {"claims": prot[cose.CWT_CLAIMS], "typ": prot.get(cose.TYP), "payload": body}
-    return {"claims": prot[cose.CWT_CLAIMS], "typ": prot.get(cose.TYP), "payload": cbor2.loads(payload)}
+    return {"claims": prot[cose.CWT_CLAIMS], "typ": prot.get(cose.TYP), "payload": cose.loads(payload)}

@@ -5,6 +5,7 @@
 // delivered by public key (COSE-HPKE integrated encryption, draft-ietf-cose-hpke-27).
 // PRIVATE until the covering provisional application is filed.
 import crypto from "node:crypto";
+import { assigned14 } from "./unicode14.mjs";
 
 // ------------------------------------------------------------------ CBOR (RFC 8949), deterministic encoding
 export class Tag { constructor(tag, value) { this.tag = tag; this.value = value; } }
@@ -77,27 +78,31 @@ const UTF8 = new TextDecoder("utf-8", { fatal: true });
 export function decode(buf) {
   let i = 0;
   const need = (k) => { if (i + k > buf.length) throw new Error("truncated CBOR"); };
+  const short = () => { throw new Error("integer or length not in its shortest form"); };
   const readN = (ai) => {
     if (ai < 24) return ai;
-    if (ai === 24) { need(1); return buf[i++]; }
-    if (ai === 25) { need(2); const n = buf.readUInt16BE(i); i += 2; return n; }
-    if (ai === 26) { need(4); const n = buf.readUInt32BE(i); i += 4; return n; }
-    if (ai === 27) { need(8); const n = buf.readBigUInt64BE(i); i += 8; return n <= BigInt(Number.MAX_SAFE_INTEGER) ? Number(n) : n; }
+    if (ai === 24) { need(1); const n = buf[i++]; if (n < 24) short(); return n; }
+    if (ai === 25) { need(2); const n = buf.readUInt16BE(i); i += 2; if (n < 0x100) short(); return n; }
+    if (ai === 26) { need(4); const n = buf.readUInt32BE(i); i += 4; if (n < 0x10000) short(); return n; }
+    if (ai === 27) {
+      need(8); const n = buf.readBigUInt64BE(i); i += 8; if (n < 0x100000000n) short();
+      return n <= BigInt(Number.MAX_SAFE_INTEGER) ? Number(n) : n;
+    }
     throw new Error("indefinite lengths are not deterministic CBOR");
   };
   const count = (n) => {                                        // a declared length checked against what is left
     if (typeof n === "bigint" || n > buf.length - i) throw new Error("CBOR length beyond the input");
     return n;
   };
-  const item = () => {
+  // the ep1 CBOR profile (cose.py check_profile): tags 16 and 18 only, false/true/null only, no floating point,
+  // at most 64 levels of nesting
+  const item = (depth) => {
+    if (depth > 64) throw new Error("CBOR nested too deeply");
     need(1);
     const ib = buf[i++], major = ib >> 5, ai = ib & 31;
     if (major === 7) {
-      if (ai === 20) return false; if (ai === 21) return true; if (ai === 22) return null; if (ai === 23) return undefined;
-      if (ai === 25) { need(2); const h = buf.readUInt16BE(i); i += 2; return half(h); }
-      if (ai === 26) { need(4); const f = buf.readFloatBE(i); i += 4; return f; }
-      if (ai === 27) { need(8); const f = buf.readDoubleBE(i); i += 8; return f; }
-      throw new Error("unsupported simple value");
+      if (ai === 20) return false; if (ai === 21) return true; if (ai === 22) return null;
+      throw new Error("simple value or floating point outside the ep1 profile");
     }
     const n = readN(ai);
     switch (major) {
@@ -105,29 +110,32 @@ export function decode(buf) {
       case 1: return typeof n === "bigint" ? -1n - n : -1 - n;
       case 2: { count(n); const b = buf.subarray(i, i + n); i += n; return Buffer.from(b); }
       case 3: { count(n); const s = UTF8.decode(buf.subarray(i, i + n)); i += n; return s; }
-      case 4: { count(n); const a = []; for (let k = 0; k < n; k++) a.push(item()); return a; }
-      case 5: { count(n); const m = new Map(); for (let k = 0; k < n; k++) { const key = item(); m.set(key, item()); } return m; }
-      case 6: return new Tag(n, item());
+      case 4: { count(n); const a = []; for (let k = 0; k < n; k++) a.push(item(depth + 1)); return a; }
+      case 5: {
+        count(n); const m = new Map(), seen = new Set();
+        for (let k = 0; k < n; k++) {
+          if (i >= buf.length || buf[i] >> 5 > 3) throw new Error("map key that is not an integer, text or byte string");
+          const a = i, key = item(depth + 1), raw = buf.toString("hex", a, i);
+          if (seen.has(raw)) throw new Error("duplicate map key");
+          seen.add(raw); m.set(key, item(depth + 1));
+        }
+        return m;
+      }
+      case 6: if (n !== 16 && n !== 18) throw new Error(`tag ${n} outside the ep1 profile`); return new Tag(n, item(depth + 1));
     }
     throw new Error("bad CBOR");
   };
-  const out = item();
+  const out = item(0);
   if (i !== buf.length) throw new Error("trailing bytes");
   return out;
 }
 
-function half(h) {
-  const s = h & 0x8000 ? -1 : 1, e = (h >> 10) & 0x1f, m = h & 0x3ff;
-  if (e === 0) return s * m * 2 ** -24;
-  if (e === 31) return m ? NaN : s * Infinity;
-  return s * (1 + m / 1024) * 2 ** (e - 15);
-}
 
 // ------------------------------------------------------------------ canonical form v3
 export const CANON_V3 = "ep1-canon/v3:nfc+del-cr-bom-zw-shy+del-vs-runs+nbsp+rstrip-lines+strip";
 export const CANON_V4 = "ep1-canon/v4:nfc+del-cr-bom-zw-shy+del-vs-runs+nbsp+typo+rstrip-lines+strip;seg2";
 // v5: the deletions before NFC, so the form is idempotent (see canon.py)
-export const CANON_V5 = "ep1-canon/v5:del-cr-bom-zw-shy+del-vs-runs+nfc+nbsp+typo+rstrip-lines+strip;seg2";
+export const CANON_V5 = "ep1-canon/v5:del-cr-bom-zw-shy+del-vs-runs+nfc-u14+nbsp+typo+rstrip-lines+strip;seg2";
 export const CANON_ID = CANON_V5;                              // new records; records name their version
 const FOLD = new Map([[0x201c, 0x22], [0x201d, 0x22], [0x201e, 0x22], [0x201f, 0x22], [0xab, 0x22], [0xbb, 0x22],
   [0x2018, 0x27], [0x2019, 0x27], [0x201a, 0x27], [0x201b, 0x27], [0x2bc, 0x27],
@@ -186,9 +194,22 @@ function finish(cps) {                                        // trailing spaces
   return fromCodePoints(res.slice(a, b));
 }
 
+// NFC as Unicode 14.0 defines it: cut at every code point not assigned in 14.0, normalize the pieces (see canon.py)
+function nfc14(cps) {
+  const out = [];
+  let piece = [];
+  const flush = () => { if (piece.length) { for (const ch of fromCodePoints(piece).normalize("NFC")) out.push(ch.codePointAt(0)); piece = []; } };
+  for (const c of cps) {
+    if (assigned14(c)) piece.push(c);
+    else { flush(); out.push(c); }
+  }
+  flush();
+  return out;
+}
+
 function canonicalizeV5(text) {
   const raw = Array.from(text, (ch) => ch.codePointAt(0));
-  const nfc = Array.from(fromCodePoints(deletions(raw)).normalize("NFC"), (ch) => ch.codePointAt(0));
+  const nfc = nfc14(deletions(raw));
   const out = [];
   for (const c of nfc) {
     if (FOLD_MULTI.has(c)) out.push(...FOLD_MULTI.get(c));

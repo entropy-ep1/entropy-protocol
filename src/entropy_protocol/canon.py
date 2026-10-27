@@ -38,7 +38,12 @@ CANON_V4 = "ep1-canon/v4:nfc+del-cr-bom-zw-shy+del-vs-runs+nbsp+typo+rstrip-line
 # zero-width character inserted between such marks broke verification after transport (found by fuzzing, 27.10.2026:
 # U+0E48 U+0301 ZWJ U+0E48 U+0301). With NFC after every deletion, and only starters replaced or removed afterwards,
 # the form is idempotent by construction (tests/test_fuzz.py checks it).
-CANON_V5 = "ep1-canon/v5:del-cr-bom-zw-shy+del-vs-runs+nfc+nbsp+typo+rstrip-lines+strip;seg2"
+# NFC is that of Unicode 14.0 (the oldest Python the package supports): the text is cut at every code point not
+# assigned in 14.0 - to 14.0 a starter nothing composes or reorders across - and the pieces normalized; by Unicode's
+# normalization stability policy every later version normalizes them the same way. Without the pin a combining mark
+# assigned later reorders under a newer library only (fuzzing, 27.10.2026: U+1AE8 U+0E48 - Node 26 with Unicode 17
+# swapped them, Python 3.12 with Unicode 15.0 did not).
+CANON_V5 = "ep1-canon/v5:del-cr-bom-zw-shy+del-vs-runs+nfc-u14+nbsp+typo+rstrip-lines+strip;seg2"
 CANON_ID = CANON_V5                     # new records
 SUPPORTED = (CANON_V3, CANON_V4, CANON_V5)
 _TRAILING = " \t"
@@ -230,15 +235,33 @@ def _composing_seconds() -> frozenset:
     return _SECONDS
 
 
+def nfc14(s: str) -> str:
+    """NFC as Unicode 14.0 defines it, under any later Unicode version of the library."""
+    from ._unicode14 import assigned
+    out, start = [], 0
+    for i, ch in enumerate(s):
+        if not assigned(ord(ch)):
+            out.append(unicodedata.normalize("NFC", s[start:i]))
+            out.append(ch)
+            start = i + 1
+    out.append(unicodedata.normalize("NFC", s[start:]))
+    return "".join(out)
+
+
 def _nfc_with_map(chars: list[tuple[str, int]]) -> list[tuple[str, int]]:
-    """NFC of the characters, each result character carrying the source index of the first character of its
-    normalization segment (a segment starts at a starter that nothing before it can compose or reorder with)."""
+    """NFC (Unicode 14.0) of the characters, each result character carrying the source index of the first character
+    of its normalization segment (a segment starts at a starter that nothing before it can compose or reorder with;
+    a code point not assigned in 14.0 is always one)."""
+    from ._unicode14 import assigned
     s = "".join(c for c, _ in chars)
-    if unicodedata.is_normalized("NFC", s):
+    target = nfc14(s)
+    if target == s:
         return chars
     seconds = _composing_seconds()
 
     def boundary(ch: str) -> bool:
+        if not assigned(ord(ch)):
+            return True
         if unicodedata.combining(ch) or ord(ch) in seconds:
             return False
         first = unicodedata.normalize("NFD", ch)[0]
@@ -251,13 +274,13 @@ def _nfc_with_map(chars: list[tuple[str, int]]) -> list[tuple[str, int]]:
         while b < n and not boundary(chars[b][0]):
             b += 1
         seg = "".join(c for c, _ in chars[a:b])
-        norm = unicodedata.normalize("NFC", seg)
+        norm = nfc14(seg)
         if norm == seg:
             out.extend(chars[a:b])
         else:
             out.extend((c, chars[a][1]) for c in norm)
         a = b
-    if "".join(c for c, _ in out) != unicodedata.normalize("NFC", s):
+    if "".join(c for c, _ in out) != target:
         raise AssertionError("normalization segments do not compose to the NFC of the whole")
     return out
 

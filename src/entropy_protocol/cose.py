@@ -40,6 +40,91 @@ def dumps(obj) -> bytes:
     return cbor2.dumps(obj, canonical=True)
 
 
+# The ep1 CBOR profile, enforced before decoding untrusted bytes, the same in both implementations (impl-js decode):
+# definite lengths only, each within the bytes that are left; integers and lengths in their shortest form; tags 16
+# (COSE_Encrypt0) and 18 (COSE_Sign1) only; false, true and null as the only simple values; no floating point (ep1
+# writes none); map keys integers, text or byte strings, never twice in one map; at most 64 levels of nesting.
+# Without it the two decoders read different things into the same bytes (differential fuzzing, 27.10.2026: tags 3
+# and 5 - cbor2 interprets them, the second implementation accepted any tag), and nesting limits differed (cbor2 400,
+# the JavaScript stack about 10^5).
+PROFILE_TAGS = frozenset({16, 18})
+MAX_DEPTH = 64
+
+
+class ProfileError(COSEError, ValueError):
+    """Bytes outside the ep1 CBOR profile: a COSEError where COSE is parsed, a ValueError where a record is."""
+
+
+def check_profile(data: bytes) -> None:
+    n = len(data)
+
+    def arg(i: int, ai: int) -> tuple[int, int]:
+        if ai < 24:
+            return ai, i
+        size = {24: 1, 25: 2, 26: 4, 27: 8}.get(ai)
+        if size is None:
+            raise ProfileError("indefinite length or reserved additional information")
+        if i + size > n:
+            raise ProfileError("truncated")
+        v = int.from_bytes(data[i:i + size], "big")
+        if v < {24: 24, 25: 0x100, 26: 0x10000, 27: 0x100000000}[ai]:
+            raise ProfileError("integer or length not in its shortest form")
+        return v, i + size
+
+    def item(i: int, depth: int) -> int:
+        if depth > MAX_DEPTH:
+            raise ProfileError("nested too deeply")
+        if i >= n:
+            raise ProfileError("truncated")
+        major, ai = data[i] >> 5, data[i] & 31
+        i += 1
+        if major == 7:
+            if ai in (20, 21, 22):
+                return i
+            raise ProfileError("simple value or floating point outside the profile")
+        v, i = arg(i, ai)
+        if major in (0, 1):
+            return i
+        if major in (2, 3):
+            if v > n - i:
+                raise ProfileError("length beyond the input")
+            return i + v
+        if major == 4:
+            if v > n - i:
+                raise ProfileError("length beyond the input")
+            for _ in range(v):
+                i = item(i, depth + 1)
+            return i
+        if major == 5:
+            if v > n - i:
+                raise ProfileError("length beyond the input")
+            seen = set()
+            for _ in range(v):
+                if i >= n or data[i] >> 5 > 3:
+                    raise ProfileError("map key that is not an integer, text or byte string")
+                j = item(i, depth + 1)
+                if data[i:j] in seen:
+                    raise ProfileError("duplicate map key")
+                seen.add(data[i:j])
+                i = item(j, depth + 1)
+            return i
+        if v not in PROFILE_TAGS:
+            raise ProfileError(f"tag {v} outside the profile")
+        return item(i, depth + 1)
+
+    if item(0, 0) != n:
+        raise ProfileError("trailing bytes")
+
+
+def loads(data: bytes):
+    """Decode untrusted CBOR within the ep1 profile; ProfileError (a COSEError) for anything else."""
+    check_profile(data)
+    try:
+        return cbor2.loads(data)
+    except Exception as exc:  # noqa: BLE001 - e.g. ill-formed UTF-8, which the scan does not judge
+        raise ProfileError(f"not decodable: {exc}") from exc
+
+
 def kid_of(public_key: Ed25519PublicKey) -> bytes:
     """Key identifier: SHA-256 of the raw public key, first 16 bytes."""
     raw = public_key.public_bytes(serialization.Encoding.Raw, serialization.PublicFormat.Raw)
@@ -62,10 +147,7 @@ def sign1(protected: dict, payload: bytes | None, key: Ed25519PrivateKey, *, unp
 
 def decode1(data: bytes) -> tuple[dict, bytes, dict, bytes | None, bytes]:
     """(protected map, protected bytes, unprotected map, payload or None, signature)."""
-    try:
-        obj = cbor2.loads(data)
-    except Exception as exc:  # noqa: BLE001
-        raise COSEError("not CBOR") from exc
+    obj = loads(data)
     if isinstance(obj, cbor2.CBORTag):
         if obj.tag != COSE_SIGN1_TAG:
             raise COSEError(f"unexpected CBOR tag {obj.tag}")
@@ -75,7 +157,7 @@ def decode1(data: bytes) -> tuple[dict, bytes, dict, bytes | None, bytes]:
             and isinstance(obj[1], Mapping) and (obj[2] is None or isinstance(obj[2], bytes))
             and isinstance(obj[3], bytes)):
         raise COSEError("not a COSE_Sign1 structure")
-    prot = cbor2.loads(obj[0]) if obj[0] else {}
+    prot = loads(obj[0]) if obj[0] else {}
     if not isinstance(prot, Mapping):
         raise COSEError("protected header is not a map")
     return _thaw(prot), obj[0], _thaw(obj[1]), obj[2], obj[3]
@@ -119,7 +201,7 @@ def x25519_cose_key(public: bytes, private: bytes | None = None) -> bytes:
 
 
 def x25519_from_cose_key(data: bytes) -> tuple[bytes, bytes | None]:
-    key = cbor2.loads(data)
+    key = loads(data)
     if not isinstance(key, Mapping) or key.get(KTY) != KTY_OKP or key.get(CRV) != CRV_X25519:
         raise COSEError("not an X25519 COSE_Key")
     return key[OKP_X], key.get(OKP_D)
@@ -141,10 +223,7 @@ def decrypt0_hpke(data: bytes, recipient_private: bytes, *, external_aad: bytes 
     from cryptography.exceptions import InvalidTag
 
     from . import hpke
-    try:
-        obj = cbor2.loads(data)
-    except Exception as exc:  # noqa: BLE001
-        raise COSEError("not CBOR") from exc
+    obj = loads(data)
     if isinstance(obj, cbor2.CBORTag):
         if obj.tag != COSE_ENCRYPT0_TAG:
             raise COSEError(f"unexpected CBOR tag {obj.tag}")
@@ -152,8 +231,8 @@ def decrypt0_hpke(data: bytes, recipient_private: bytes, *, external_aad: bytes 
     if not (isinstance(obj, (list, tuple)) and len(obj) == 3 and isinstance(obj[0], bytes)
             and isinstance(obj[1], Mapping) and isinstance(obj[2], bytes)):
         raise COSEError("not a COSE_Encrypt0 structure")
-    prot = _thaw(cbor2.loads(obj[0])) if obj[0] else {}
-    if prot.get(ALG) not in (HPKE_3, HPKE_4) or not isinstance(obj[1].get(EK), bytes):
+    prot = _thaw(loads(obj[0])) if obj[0] else {}
+    if not isinstance(prot, dict) or prot.get(ALG) not in (HPKE_3, HPKE_4) or not isinstance(obj[1].get(EK), bytes):
         raise COSEError("not COSE-HPKE integrated encryption")
     try:
         plaintext = hpke.open_(obj[1][EK], recipient_private, b"", _enc_structure(obj[0], external_aad), obj[2],

@@ -100,7 +100,8 @@ def loads(data: bytes) -> Record:
 
 
 def _loads(data: bytes) -> Record:
-    body = cbor2.loads(data)
+    from .cose import loads as _strict
+    body = _strict(data)
     header = _header_from_wire(body["h"])
     entries = tuple((int(c), int(p)) for c, p in body["e"])
     blocks = tuple((int(s), int(e), str(d)) for s, e, d in body.get("b", []))

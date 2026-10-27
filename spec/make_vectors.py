@@ -86,6 +86,8 @@ CANON_V5_CASES = CANON_V4_CASES + [
     "bom between a\ufeff\u0308 and o\u0308",
     "crlf\r\n\u0301 at a line start",
     "manifest x\ufeff" + "\ufe0f" * 9 + "y",
+    "pin: \u1ae8\u0e48 a mark assigned after Unicode 14.0 stays where it is",
+    "pin: e\u1ae8\u0301 and o\u0301\u1ae8",
 ]
 
 
@@ -107,8 +109,11 @@ def build() -> dict:
     # canonical form v5 (the reference): v4's steps with the deletions before NFC - idempotent
     v5_text = canonicalize(SEGMENT_TEXT_V4, CANON_V5)
     v["canonicalization_v5"] = {"canon_id": CANON_V5,
+                                # v4 is not version-pinned: its output for a code point assigned after the
+                                # library's Unicode version depends on the library, so those cases carry none
                                 "cases": [{"input": c, "output": canonicalize(c, CANON_V5),
-                                           "v4": canonicalize(c, CANON_V4)} for c in CANON_V5_CASES],
+                                           "v4": None if c.startswith("pin:") else canonicalize(c, CANON_V4)}
+                                          for c in CANON_V5_CASES],
                                 "segmentation": {"text": SEGMENT_TEXT_V4, "canonical": v5_text,
                                                  "blocks": [[a, b, block_digest(v5_text[a:b])]
                                                             for a, b in segment(v5_text, CANON_V5)]}}

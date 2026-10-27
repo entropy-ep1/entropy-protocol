@@ -18,7 +18,6 @@ import datetime as dt
 import hashlib
 import json
 
-import cbor2
 from cryptography import x509
 
 from .. import cose
@@ -88,7 +87,7 @@ def check(st: dict, att: dict, note) -> dict:
             req = enroll.read_request(a["request"])
             note(f"attestation ({t}): result's nonce is the request's handle", c.get(ear.NONCE) == req["handle"])
             again = appraise.appraise(req, rrp_id=att["authority"]["rrp_id"], policy=json.loads(a["policy"]), at=iat,
-                                      collateral=cose._thaw(cbor2.loads(a["collateral"])))
+                                      collateral=cose._thaw(cose.loads(a["collateral"])))
             failed = [f"{x.name}: {x.detail}" for x in again.failed()]
             note(f"attestation ({t}): evidence appraised again offline", not failed and again.ok,
                  f"{len(again.checks)} checks, failed: {failed or 'none'}; not performed: "

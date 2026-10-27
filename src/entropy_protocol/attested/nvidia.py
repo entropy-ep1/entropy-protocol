@@ -50,6 +50,15 @@ class GPUReport:
 
 
 def parse(report: bytes) -> GPUReport:
+    """GPUError for anything that is not a well-formed GET_MEASUREMENTS exchange (every length is checked against the
+    bytes there are)."""
+    try:
+        return _parse(report)
+    except IndexError as exc:
+        raise GPUError("GPU report truncated inside a field") from exc
+
+
+def _parse(report: bytes) -> GPUReport:
     if len(report) <= REQUEST_LEN + SIG_LEN:
         raise GPUError("report too short")
     req, resp = report[:REQUEST_LEN], report[REQUEST_LEN:]
@@ -57,18 +66,28 @@ def parse(report: bytes) -> GPUReport:
         raise GPUError("not a GET_MEASUREMENTS exchange")
     nblocks = resp[4]
     rec_len = int.from_bytes(resp[5:8], "little")
+    if 8 + rec_len > len(resp):
+        raise GPUError("measurement record longer than the response")
     rec, off, meas = resp[8:8 + rec_len], 0, {}
     for _ in range(nblocks):
+        if off + 4 > rec_len:
+            raise GPUError("measurement block header beyond the record")
         idx, spec, size = rec[off], rec[off + 1], int.from_bytes(rec[off + 2:off + 4], "little")
+        if off + 4 + size > rec_len or size < 3:
+            raise GPUError("measurement block beyond the record")
         body = rec[off + 4:off + 4 + size]
         if spec != 1:
             raise GPUError("measurement block not in DMTF format")
         vsize = int.from_bytes(body[1:3], "little")
+        if 3 + vsize > size:
+            raise GPUError("measurement value beyond its block")
         meas[idx] = body[3:3 + vsize]
         off += 4 + size
     if off != rec_len:
         raise GPUError("measurement record length does not match its blocks")
     p = 8 + rec_len
+    if p + 34 > len(resp):
+        raise GPUError("response ends before its nonce and opaque length")
     rnonce = resp[p:p + 32]
     olen = int.from_bytes(resp[p + 32:p + 34], "little")
     odata = resp[p + 34:p + 34 + olen]

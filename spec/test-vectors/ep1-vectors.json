@@ -302,7 +302,7 @@
   ]
  },
  "canonicalization_v5": {
-  "canon_id": "ep1-canon/v5:del-cr-bom-zw-shy+del-vs-runs+nfc+nbsp+typo+rstrip-lines+strip;seg2",
+  "canon_id": "ep1-canon/v5:del-cr-bom-zw-shy+del-vs-runs+nfc-u14+nbsp+typo+rstrip-lines+strip;seg2",
   "cases": [
    {
     "input": "Word paste: “don’t” — ok…",
@@ -358,6 +358,16 @@
     "input": "manifest x﻿️️️️️️️️️y",
     "output": "manifest xy",
     "v4": "manifest xy"
+   },
+   {
+    "input": "pin: ᫨่ a mark assigned after Unicode 14.0 stays where it is",
+    "output": "pin: ᫨่ a mark assigned after Unicode 14.0 stays where it is",
+    "v4": null
+   },
+   {
+    "input": "pin: e᫨́ and ó᫨",
+    "output": "pin: e᫨́ and ó᫨",
+    "v4": null
    }
   ],
   "segmentation": {

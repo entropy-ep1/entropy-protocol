@@ -30,7 +30,7 @@ eq("canon id v5", ep1.CANON_V5, c5.canon_id);
 for (const [i, c] of c5.cases.entries()) {
   eq(`canonicalization v5[${i}]`, ep1.canonicalize(c.input, ep1.CANON_V5), c.output);
   eq(`canonicalization v5[${i}] idempotent`, ep1.canonicalize(c.output, ep1.CANON_V5), c.output);
-  eq(`canonicalization v5[${i}] as v4`, ep1.canonicalize(c.input, ep1.CANON_V4), c.v4);
+  if (c.v4 !== null) eq(`canonicalization v5[${i}] as v4`, ep1.canonicalize(c.input, ep1.CANON_V4), c.v4);
 }
 eq("canonical v5 segmentation text", ep1.canonicalize(c5.segmentation.text, ep1.CANON_V5), c5.segmentation.canonical);
 eq("segmentation v5", ep1.segment(c5.segmentation.canonical, ep1.CANON_V5).map((s) => [...s, ep1.blockDigest(c5.segmentation.canonical, s)]),

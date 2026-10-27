@@ -17,7 +17,6 @@ from __future__ import annotations
 import hashlib
 from pathlib import Path
 
-import cbor2
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
 
 from . import cose, ts3161
@@ -70,7 +69,7 @@ def check(pack: bytes) -> dict:
 
 
 def _check(pack: bytes) -> dict:
-    p = cbor2.loads(pack)
+    p = cose.loads(pack)
     if not isinstance(p, dict):
         raise ValueError("not an evidence package (a CBOR map is expected)")
     checks: list[dict] = []
@@ -165,7 +164,7 @@ def _check(pack: bytes) -> dict:
 
 def explode(pack: bytes, out_dir: str | Path) -> list[str]:
     """Write the parts as files with a README that says what each one is and how to check it."""
-    p = cbor2.loads(pack)
+    p = cose.loads(pack)
     d = Path(out_dir)
     d.mkdir(parents=True, exist_ok=True)
     written: list[str] = []

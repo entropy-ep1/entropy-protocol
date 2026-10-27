@@ -155,7 +155,7 @@ def _request(url: str, data: bytes | None = None, ctype: str | None = None, acce
     except urllib.error.HTTPError as exc:
         body = exc.read()
         try:
-            prob = cbor2.loads(body)
+            prob = cose.loads(body)
             raise SCRAPIError(exc.code, prob.get(-1, ""), prob.get(-2, "")) from None
         except (ValueError, AttributeError, cbor2.CBORDecodeError):
             raise SCRAPIError(exc.code, exc.reason, body[:200].decode(errors="replace")) from None
@@ -179,7 +179,7 @@ def register(base_url: str, statement: bytes) -> tuple[str, bytes]:
 
 def service_keys(base_url: str) -> list[Ed25519PublicKey]:
     _, _, body = _request(base_url.rstrip("/") + "/.well-known/scitt-keys", accept=CT_CBOR)
-    return [public_key_from_cose(dict(k)) for k in cbor2.loads(body)]
+    return [public_key_from_cose(dict(k)) for k in cose.loads(body)]
 
 
 def verify_receipt_online(base_url: str, receipt: bytes, statement: bytes) -> dict:

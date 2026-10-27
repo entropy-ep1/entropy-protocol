@@ -17,7 +17,6 @@ import datetime as dt
 import hashlib
 from dataclasses import dataclass, field
 
-import cbor2
 from cryptography import x509
 
 from .. import cose
@@ -73,7 +72,7 @@ def _appraise(req: dict, *, rrp_id: str, policy: dict, at: dt.datetime, collater
     """``req`` is a read enrollment request (enroll.read_request); ``collateral`` = {"rims": {id: xml},
     "ocsp": [{"serial": hex, "nonce": bytes, "response": bytes, ...}], "amd_crl": der}."""
     a = Appraisal(target=req["target"])
-    ev = cose._thaw(cbor2.loads(req["evidence"]))
+    ev = cose._thaw(cose.loads(req["evidence"]))
     add = lambda name, ok, detail="": a.checks.append(Check(name, ok, detail))  # noqa: E731
     pol_amd, pol_vtpm, pol_gpu = policy.get("amd", {}), policy.get("vtpm", {}), policy.get("gpu", {})
     claims = ev.get("claims", {})

@@ -23,7 +23,6 @@ import sys
 from dataclasses import dataclass
 from pathlib import Path
 
-import cbor2
 from cryptography import x509
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
@@ -133,7 +132,7 @@ def _write_appraisal(out: Path, a: appraise.Appraisal, status: int, now: dt.date
 def fetch_collateral(req: dict, policy: dict) -> dict:
     """AMD's CRL, NVIDIA's manifests for every GPU in the evidence, and OCSP answers for the GPU and manifest chains.
     What cannot be fetched is left out: the appraisal then fails the check that needed it, by name."""
-    ev = cose._thaw(cbor2.loads(req["evidence"]))
+    ev = cose._thaw(cose.loads(req["evidence"]))
     out: dict = {"rims": {}, "ocsp": []}
     product = policy.get("amd", {}).get("product", "Genoa")
     if policy.get("amd", {}).get("crl", "required") != "off":

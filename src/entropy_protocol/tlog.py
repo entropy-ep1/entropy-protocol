@@ -136,7 +136,7 @@ def verify_receipt(receipt: bytes, statement: bytes, log_public_key: Ed25519Publ
     proofs = unprot.get(cose.VDP, {}).get(INCLUSION)
     if not proofs:
         raise cose.COSEError("receipt carries no inclusion proof")
-    size, index, path = cbor2.loads(proofs[0])
+    size, index, path = cose.loads(proofs[0])
     root = root_from_inclusion(leaf_hash(entry_of(statement)), index, size, list(path))
     cose.verify1(receipt, log_public_key, payload=root)
     return {"tree_size": size, "leaf_index": index, "root": root.hex()}

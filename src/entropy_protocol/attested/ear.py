@@ -14,7 +14,6 @@ from __future__ import annotations
 
 import time
 
-import cbor2
 
 from .. import cose
 
@@ -82,7 +81,7 @@ def read(ear: bytes, public_key) -> dict:
     prot, _, payload = cose.verify1(ear, public_key)
     if prot.get(cose.TYP) != TYP:
         raise cose.COSEError("not an attestation result")
-    c = cose._thaw(cbor2.loads(payload))
+    c = cose._thaw(cose.loads(payload))
     if c.get(EAT_PROFILE) != PROFILE:
         raise cose.COSEError("not an EAR of this profile")
     return c

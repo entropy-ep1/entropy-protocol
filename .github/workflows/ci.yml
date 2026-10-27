@@ -39,7 +39,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install "torch==2.7.1" --index-url https://download.pytorch.org/whl/cpu
           pip install "transformers==4.53.2" "cryptography>=43.0.3" "cbor2>=5.6" "markdown-it-py>=3" "pytest>=8" huggingface_hub \
-            "signxml>=4" "lxml>=4.9"
+            "signxml>=4" "lxml>=4.9" "hypothesis>=6.100"
           pip install -e .
       - name: the two test models into the cache
         # the backend never downloads (local_files_only): a test whose model is not cached skips itself, so without

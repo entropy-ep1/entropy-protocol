@@ -19,7 +19,6 @@ import os
 import time
 from pathlib import Path
 
-import cbor2
 
 from .. import cose
 from .binding import HANDLE_LEN
@@ -42,7 +41,7 @@ def initiation(handle: bytes, rrp_id: str, expires_in: int) -> bytes:
 
 def _map(data: bytes) -> dict:
     try:
-        m = cose._thaw(cbor2.loads(data))
+        m = cose._thaw(cose.loads(data))
     except Exception as exc:  # noqa: BLE001 - every decoding failure of untrusted input is the same refusal
         raise EnrollError(f"not CBOR ({type(exc).__name__})") from exc
     if not isinstance(m, dict):

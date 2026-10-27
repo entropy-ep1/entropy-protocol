@@ -20,7 +20,7 @@ Issues = "https://github.com/entropy-ep1/entropy-protocol/issues"
 Changelog = "https://github.com/entropy-ep1/entropy-protocol/blob/main/CHANGELOG.md"
 
 [project.optional-dependencies]
-dev = ["pytest>=8"]
+dev = ["pytest>=8", "hypothesis>=6.100"]
 markdown = ["markdown-it-py>=3"]    # the visible-text layer (plain.py) when sealing
 attested = ["signxml>=4", "lxml>=4.9"]    # appraising NVIDIA's signed reference manifests (attested/rim.py)
 guest = ["nvidia-ml-py>=12.550.52"]       # collecting GPU evidence inside a confidential VM (attested/azure_cgpu.py)
