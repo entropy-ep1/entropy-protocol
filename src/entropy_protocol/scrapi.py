@@ -110,7 +110,7 @@ def _handler(ts: TransparencyService):
                 r = ts.receipt(path.rsplit("/", 1)[1])
                 if r is None:
                     return self._problem(404, "Not Found", "no entry with this identifier")
-                return self._send(200, r, CT_COSE, {"Location": f"/entries/{path.rsplit('/', 1)[1]}"})
+                return self._send(200, r, CT_COSE)          # no header echoes the request (Location: on POST only)
             return self._problem(404, "Not Found", "unknown resource")
 
         def do_POST(self):  # noqa: N802
