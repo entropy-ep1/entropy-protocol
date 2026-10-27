@@ -144,11 +144,17 @@ def appraise(req: dict, *, rrp_id: str, policy: dict, at: dt.datetime, collatera
         if bits:
             add("cpu.report.mitigation_vector", all(h.snp.current_mit_vector >> b & 1 for b in bits),
                 f"current 0x{h.snp.current_mit_vector:x}, required bits {bits}")
-        refs = pol_amd.get("measurements", [])
-        m = h.snp.measurement.hex()
-        add("cpu.report.measurement_in_reference_set", (m in refs) if refs else None,
-            f"measurement {m}" + ("" if refs else "; no reference values"))
-        cpu_ok["config"] = not h.snp.debug and (m in refs if refs else True) and \
+        refs, id_keys = pol_amd.get("measurements", []), pol_amd.get("id_key_digests", [])
+        m, idk = h.snp.measurement.hex(), h.snp.id_key_digest.hex()
+        by_measurement, by_key = m in refs, h.snp.id_block and idk in id_keys
+        endorsed = (by_measurement or by_key) if (refs or id_keys) else None
+        add("cpu.report.launch_endorsed", endorsed,
+            ("measurement in the reference set" if by_measurement else
+             f"ID block signed by pinned ID key {idk[:16]}… (family {h.snp.family_id.hex()[:8]}, image "
+             f"{h.snp.image_id.hex()[:8]}, guest SVN {h.snp.guest_svn})" if by_key else
+             f"measurement {m}, ID key {idk if h.snp.id_block else 'none'}: neither in the policy")
+            + ("" if (refs or id_keys) else "; no reference values"))
+        cpu_ok["config"] = not h.snp.debug and (endorsed is not False) and \
             (h.snp.alias_check_complete or not pol_amd.get("alias_check_complete", True)) and \
             all(h.snp.current_mit_vector >> b & 1 for b in bits)
         rd = hcl.report_data_binds_claims(h)
@@ -159,7 +165,9 @@ def appraise(req: dict, *, rrp_id: str, policy: dict, at: dt.datetime, collatera
          ear.RUNTIME_OPAQUE: 2 if cpu_ok["hardware"] else 96, ear.INSTANCE_IDENTITY: 2 if cpu_ok["identity"] else 96},
         [policy.get("id", "")],
         attester={"measurement": h.snp.measurement, "reported_tcb": h.snp.reported_tcb, "policy": h.snp.policy,
-                  "chip_id": h.snp.chip_id, "vmpl": h.snp.vmpl} if h else None)
+                  "chip_id": h.snp.chip_id, "vmpl": h.snp.vmpl, "id_key_digest": h.snp.id_key_digest,
+                  "family_id": h.snp.family_id, "image_id": h.snp.image_id, "guest_svn": h.snp.guest_svn}
+        if h else None)
 
     # ---- vtpm: user data, the attestation key, the quote and the boot chain
     vt: dict = {"identity": False, "exec": False, "config": False}

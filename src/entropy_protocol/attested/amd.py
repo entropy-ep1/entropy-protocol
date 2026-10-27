@@ -108,10 +108,20 @@ class Report:
     chip_id: bytes
     committed_tcb: int
     launch_tcb: int
+    family_id: bytes           # from the ID block, when one was given at launch
+    image_id: bytes
+    author_key_digest: bytes
     launch_mit_vector: int     # report version 5: 0x1F8
     current_mit_vector: int    # report version 5: 0x200
     r: int
     s: int
+
+    @property
+    def id_block(self) -> bool:
+        """An ID block was given at launch: the firmware then refused to launch unless the block's expected launch
+        digest equalled the measurement and the block's signature verified under the ID key whose SHA-384 digest the
+        report carries (AMD 56860 rev. 1.59 §8.19.2, SNP_LAUNCH_FINISH)."""
+        return any(self.id_key_digest)
 
     @property
     def alias_check_complete(self) -> bool:
@@ -140,7 +150,8 @@ def parse_report(raw: bytes) -> Report:
                   flags=_u(raw, 0x48, 4), report_data=raw[0x50:0x90], measurement=raw[0x90:0xC0],
                   host_data=raw[0xC0:0xE0], id_key_digest=raw[0xE0:0x110], report_id=raw[0x140:0x160],
                   reported_tcb=_u(raw, 0x180, 8), chip_id=raw[0x1A0:0x1E0], committed_tcb=_u(raw, 0x1E0, 8),
-                  launch_tcb=_u(raw, 0x1F0, 8), launch_mit_vector=_u(raw, 0x1F8, 8) if _u(raw, 0, 4) >= 5 else 0,
+                  launch_tcb=_u(raw, 0x1F0, 8), family_id=raw[0x10:0x20], image_id=raw[0x20:0x30],
+                  author_key_digest=raw[0x110:0x140], launch_mit_vector=_u(raw, 0x1F8, 8) if _u(raw, 0, 4) >= 5 else 0,
                   current_mit_vector=_u(raw, 0x200, 8) if _u(raw, 0, 4) >= 5 else 0,
                   r=_u(raw, 0x2A0, 72), s=_u(raw, 0x2E8, 72))
 

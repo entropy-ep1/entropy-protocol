@@ -32,6 +32,7 @@ from .. import ENGINE, cose
 from . import amd, appraise, ear, enroll, nvidia, ocsp, pki, rim
 
 EAR_DEVELOPER = "https://github.com/entropy-ep1/entropy-protocol"
+SKEW = 300
 
 
 @dataclass
@@ -96,8 +97,9 @@ class Authority:
         (out / "ear.cose").write_bytes(signed)
         cert = None
         if status == ear.AFFIRMING and a.statement_key is not None:
-            cert = pki.der(pki.issue(self._key(), self.root, a.statement_key, req["target"], lifetime=lifetime,
-                                     eku=pki.STATEMENT_EKU, not_before=now))
+            # valid from a few minutes before issue: the sealer checks it against its own clock
+            cert = pki.der(pki.issue(self._key(), self.root, a.statement_key, req["target"], lifetime=lifetime + SKEW,
+                                     eku=pki.STATEMENT_EKU, not_before=now - dt.timedelta(seconds=SKEW)))
             (out / "cert.der").write_bytes(cert)
         _write_appraisal(out, a, status, now)
         return Outcome(a, signed, cert, out, status)

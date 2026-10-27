@@ -48,7 +48,7 @@ def main() -> int:
         "lifetime": 86400,
         "amd": {"product": "Genoa", "crl": "required", "min_tcb": {"snpSPL": 0x1B, "ucodeSPL": 0x56},
                 "alias_check_complete": True, "mitigation_vector_bits": [1],
-                "measurements": [h.snp.measurement.hex()]},
+                "measurements": [h.snp.measurement.hex()], "id_key_digests": [h.snp.id_key_digest.hex()]},
         "vtpm": {"pcrs": {"4": [values[(tpm.ALG_SHA256, 4)].hex()], "7": [values[(tpm.ALG_SHA256, 7)].hex()]},
                  "uki": {k: [uki[k].hex()] for k in (".linux", ".initrd", ".cmdline")}},
         "gpu": {"count": 1, "rim": "required", "ocsp": "required"},
@@ -58,7 +58,13 @@ def main() -> int:
         "provenance": {
             "amd": "AMD-SB-3020 (rev. 2026-02-23) TCB[SNP] >= 0x1B + mitigation vector bit 1; AMD-SB-3027 microcode "
                    ">= 0x56; AMD-SB-3015 ALIAS_CHECK_COMPLETE; read live 22.10.2026",
-            "amd.measurements": observed, "vtpm.pcrs": observed, "vtpm.uki": observed,
+            "amd.measurements": observed,
+            "amd.id_key_digests": "the ID key Azure launches its paravisor under, " + observed + "; on 27.10.2026 a "
+                                  "second host ran another paravisor build (measurement 63e15b3f…) under the same key. "
+                                  "The firmware launches a guest with an ID block only if the block's expected launch "
+                                  "digest equals the measurement and its signature verifies under that key (AMD 56860 "
+                                  "rev. 1.59 §8.19.2)",
+            "vtpm.pcrs": observed, "vtpm.uki": observed,
             "identities.weights": f"{cal['model']} (phase A calibration, {Path(a.cal).name})",
             "identities.tokenizer": "computed by the authority from the pinned revision a09a35458c702b33eeacc393d103063234e8bc28",
             "identities.code": "binding.code_identity() of the checkout that ships to the sealer",

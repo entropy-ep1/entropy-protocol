@@ -26,6 +26,7 @@ from .statements import read_statement, sha256, statement_ref
 from .tlog import entry_of, verify_receipt
 
 PACK_V = "ep1-pack/v1"
+PACK_V2 = "ep1-pack/v2"     # + "att": attestation of the keys that signed (attested/evidence.py, ARCHITECTURE §7d)
 PARTS = ("gen", "ver", "det")
 _TITLE = {"gen": "generation", "ver": "verification", "det": "detection"}
 _KEY_OF = {"gen": "issuer", "ver": "verifier", "det": "detector"}
@@ -33,15 +34,19 @@ _KEY_OF = {"gen": "issuer", "ver": "verifier", "det": "detector"}
 
 def build(*, doc: str, text: str | None = None, token: str = "", statements: dict | None = None,
           receipts: dict | None = None, timestamps: dict | None = None, keys: dict | None = None,
-          note: str = "") -> bytes:
+          note: str = "", att: dict | None = None) -> bytes:
     """CBOR package. ``statements``/``receipts``/``timestamps`` are keyed "gen" / "ver" / "det"; ``keys`` holds raw
-    32-byte Ed25519 public keys under "issuer" / "verifier" / "detector" / "log"."""
-    pack = {"v": PACK_V, "doc": doc, "token": token, "st": {k: v for k, v in (statements or {}).items() if v},
+    32-byte Ed25519 public keys under "issuer" / "verifier" / "detector" / "log". With ``att`` (attested/evidence.py)
+    the issuer's and the detector's keys come from certificates the attestation establishes."""
+    pack = {"v": PACK_V2 if att else PACK_V, "doc": doc, "token": token,
+            "st": {k: v for k, v in (statements or {}).items() if v},
             "rc": {k: v for k, v in (receipts or {}).items() if v},
             "ts": {k: v for k, v in (timestamps or {}).items() if v},
             "keys": {k: v for k, v in (keys or {}).items() if v}, "note": note}
     if text is not None:
         pack["text"] = text
+    if att:
+        pack["att"] = att
     return cose.dumps(pack)
 
 
@@ -62,26 +67,33 @@ def check(pack: bytes) -> dict:
     def note(name: str, ok: bool | None, detail: str = "") -> None:
         checks.append({"name": name, "ok": ok, "detail": detail})
 
-    if p.get("v") != PACK_V:
+    if p.get("v") not in (PACK_V, PACK_V2):
         return {"ok": False, "checks": [{"name": "version", "ok": False, "detail": str(p.get("v"))}], "summary": {}}
     st, rc, ts, keys = p.get("st", {}), p.get("rc", {}), p.get("ts", {}), p.get("keys", {})
     if not st:
         note("statements present", False, "a package without a statement proves nothing")
+    attested = {"keys": {}, "identities": {}}
+    if p.get("att"):
+        from .attested import evidence
+        attested = evidence.check(st, p["att"], note)
+    signer = {part: attested["keys"].get(part) or (_pub(keys[_KEY_OF[part]]) if keys.get(_KEY_OF[part]) else None)
+              for part in PARTS}
     bodies: dict[str, dict] = {}
     for part in PARTS:
         if part not in st:
             continue
-        raw = keys.get(_KEY_OF[part])
-        if not raw:
+        key = signer[part]
+        if key is None:
             note(f"{_TITLE[part]} statement signature", False, f"no {_KEY_OF[part]} key in the package")
             continue
         try:
-            read = read_statement(st[part], _pub(raw))
+            read = read_statement(st[part], key)
             bodies[part] = read.get("payload") or {}
             claims = read.get("claims") or {}
             note(f"{_TITLE[part]} statement signature", True,
                  f"issuer {claims.get(cose.ISS)!r}, subject {claims.get(cose.SUB)!r}, "
-                 f"key {_pub(raw).public_bytes_raw().hex()[:16]}…")
+                 f"key {key.public_bytes_raw().hex()[:16]}…"
+                 + (" (certified on attested hardware)" if part in attested["keys"] else ""))
         except Exception as exc:  # noqa: BLE001 - a failed check is a result, not a crash
             note(f"{_TITLE[part]} statement signature", False, f"{type(exc).__name__}: {exc}")
     text = p.get("text")
@@ -99,8 +111,14 @@ def check(pack: bytes) -> dict:
         note("the verdict names this generation statement", ver.get("gen") == statement_ref(st["gen"]),
              "reference = SHA-256 of the logged statement")
     if "gen" in bodies and ver:
-        doc_claim = ((read_statement(st["gen"], _pub(keys["issuer"])).get("claims")) or {}).get(cose.SUB)
+        doc_claim = ((read_statement(st["gen"], signer["gen"]).get("claims")) or {}).get(cose.SUB)
         note("both statements speak about the same document", doc_claim == ver.get("doc"), str(doc_claim))
+    for part, body in (("gen", ver), ("det", bodies.get("det") or {})):
+        ids = attested["identities"].get(part)
+        if ids and body:
+            note(f"the {'verifier' if part == 'gen' else 'detector'} read with the attested model",
+                 body.get("wts") == ids.get("weights") and body.get("tok") == ids.get("tokenizer"),
+                 f"weights {body.get('wts', b'').hex()[:16]}…, tokenizer {body.get('tok', b'').hex()[:16]}…")
     log_key = keys.get("log")
     for part in PARTS:
         if part not in rc:

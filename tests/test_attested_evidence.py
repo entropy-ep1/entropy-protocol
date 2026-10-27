@@ -171,3 +171,27 @@ def test_kept_ocsp_answers_verify_offline():
     with pytest.raises(nvidia.GPUError):                                      # an answer about another certificate
         ocsp.check(gpu[0]["response"], chain[2], chain[3], gpu[0]["nonce"], nvidia.DEVICE_ROOT_SHA256,
                    dt.datetime.fromisoformat(gpu[0]["asked_at"]), chain)
+
+
+REFUSED = CAP.parent / "run-20261027T170502Z-refused-launch-measurement"
+
+
+def test_another_paravisor_build_is_endorsed_by_the_same_id_key():
+    """Two hosts an hour apart ran two builds of Azure's paravisor. A policy pinning the first build's measurement
+    refused the second (the authority did, live); pinning the ID key that signed both builds' ID blocks affirms it,
+    because the firmware launches only a measurement that ID key signed (AMD 56860 rev. 1.59 §8.19.2)."""
+    from entropy_protocol import cose
+    from entropy_protocol.attested import appraise, enroll
+    d = REFUSED / "authority/issued/0001"
+    policy = json.loads((REFUSED / "policy.json").read_text())
+    at = dt.datetime.fromisoformat(json.loads((d / "appraisal.json").read_text())["time"])
+    req = enroll.read_request((d / "request.cbor").read_bytes())
+    collateral = cose._thaw(cbor2.loads((d / "collateral.cbor").read_bytes()))
+    rrp_id = json.loads((REFUSED / "authority/authority.json").read_text())["rrp_id"]
+    a = appraise.appraise(req, rrp_id=rrp_id, policy=policy, at=at, collateral=collateral)
+    assert [c.name for c in a.failed()] == ["cpu.report.launch_endorsed"]
+    first, second = hcl.parse(b("r0_hcl_report.bin")).snp, hcl.parse(cose._thaw(cbor2.loads(req["evidence"]))["hcl"]).snp
+    assert first.measurement != second.measurement and first.id_key_digest == second.id_key_digest and first.id_block
+    pinned = {**policy, "amd": {**policy["amd"], "id_key_digests": [first.id_key_digest.hex()]}}
+    a = appraise.appraise(req, rrp_id=rrp_id, policy=pinned, at=at, collateral=collateral)
+    assert a.ok and not a.failed()
