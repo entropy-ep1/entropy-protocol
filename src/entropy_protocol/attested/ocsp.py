@@ -12,7 +12,7 @@ import os
 import urllib.request
 
 from cryptography import x509
-from cryptography.exceptions import InvalidSignature
+from cryptography.exceptions import InvalidSignature, UnsupportedAlgorithm
 from cryptography.hazmat.primitives import hashes, serialization
 from cryptography.hazmat.primitives.asymmetric import ec
 from cryptography.x509 import ocsp
@@ -57,9 +57,14 @@ def check(resp_der: bytes, cert: x509.Certificate, issuer: x509.Certificate, non
     responder = r.certificates[0]
     verify_chain(_responder_chain(list(r.certificates), known), root_sha256, at)
     try:
-        responder.public_key().verify(r.signature, r.tbs_response_bytes, ec.ECDSA(r.signature_hash_algorithm))
-    except InvalidSignature as exc:
-        raise GPUError("OCSP response signature does not verify") from exc
+        key = responder.public_key()
+        if not isinstance(key, ec.EllipticCurvePublicKey):
+            raise GPUError("the OCSP responder's key is not ECDSA")
+        key.verify(r.signature, r.tbs_response_bytes, ec.ECDSA(r.signature_hash_algorithm))
+    except (InvalidSignature, ValueError, TypeError, UnsupportedAlgorithm) as exc:
+        if isinstance(exc, GPUError):
+            raise
+        raise GPUError(f"OCSP response signature does not verify: {exc}") from exc
     try:
         echoed = r.extensions.get_extension_for_class(x509.OCSPNonce).value.nonce
     except x509.ExtensionNotFound as exc:

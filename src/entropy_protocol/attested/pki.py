@@ -11,7 +11,7 @@ from __future__ import annotations
 import datetime as dt
 
 from cryptography import x509
-from cryptography.exceptions import InvalidSignature
+from cryptography.exceptions import InvalidSignature, UnsupportedAlgorithm
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey, Ed25519PublicKey
 from cryptography.x509.oid import NameOID
@@ -62,21 +62,28 @@ def issue(root_key: Ed25519PrivateKey, root: x509.Certificate, public_key: Ed255
 
 def check_leaf(leaf_der: bytes, root: x509.Certificate, at: dt.datetime, eku: x509.ObjectIdentifier) -> Ed25519PublicKey:
     """The leaf is signed by the root, valid at ``at``, an end entity with ``eku``; returns its Ed25519 key."""
-    leaf = x509.load_der_x509_certificate(leaf_der)
+    try:
+        leaf = x509.load_der_x509_certificate(leaf_der)
+    except (ValueError, TypeError) as exc:
+        raise PKIError(f"leaf is not a certificate: {exc}") from exc
     if leaf.issuer != root.subject:
         raise PKIError("leaf not issued by this root")
     try:
         leaf.verify_directly_issued_by(root)
-    except (ValueError, TypeError, InvalidSignature) as exc:
+    except (ValueError, TypeError, InvalidSignature, UnsupportedAlgorithm) as exc:
         raise PKIError("leaf signature does not verify under the root") from exc
     if not leaf.not_valid_before_utc <= at <= leaf.not_valid_after_utc:
         raise PKIError(f"leaf not valid at {at.isoformat()}")
-    bc = leaf.extensions.get_extension_for_class(x509.BasicConstraints).value
+    try:
+        bc = leaf.extensions.get_extension_for_class(x509.BasicConstraints).value
+        ekus = leaf.extensions.get_extension_for_class(x509.ExtendedKeyUsage).value
+        key = leaf.public_key()
+    except (ValueError, x509.ExtensionNotFound, UnsupportedAlgorithm) as exc:
+        raise PKIError(f"leaf lacks what an end-entity certificate of this authority carries: {exc}") from exc
     if bc.ca:
         raise PKIError("leaf is a CA certificate")
-    if eku not in leaf.extensions.get_extension_for_class(x509.ExtendedKeyUsage).value:
+    if eku not in ekus:
         raise PKIError("leaf not issued for this use")
-    key = leaf.public_key()
     if not isinstance(key, Ed25519PublicKey):
         raise PKIError("leaf key is not Ed25519")
     return key
@@ -92,10 +99,14 @@ def der_csr(csr: x509.CertificateSigningRequest) -> bytes:
 
 def read_csr(csr_der: bytes) -> tuple[Ed25519PublicKey, str]:
     """(key, subject CN) of a CSR whose self-signature verifies (proof of possession)."""
-    csr = x509.load_der_x509_csr(csr_der)
-    if not csr.is_signature_valid:
+    try:
+        csr = x509.load_der_x509_csr(csr_der)
+        valid = csr.is_signature_valid
+        key = csr.public_key()
+    except (ValueError, TypeError, UnsupportedAlgorithm) as exc:
+        raise PKIError(f"not a readable CSR: {exc}") from exc
+    if not valid:
         raise PKIError("CSR signature does not verify (no proof of possession)")
-    key = csr.public_key()
     if not isinstance(key, Ed25519PublicKey):
         raise PKIError("CSR key is not Ed25519")
     cn = csr.subject.get_attributes_for_oid(NameOID.COMMON_NAME)

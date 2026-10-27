@@ -153,6 +153,40 @@ def test_jwk_reader_takes_base64url_rsa_keys_only():
             hcl.rsa_from_jwk(bad)
 
 
+def test_unreadable_certificates_and_keys_are_refusals():
+    from pathlib import Path
+
+    from cryptography import x509
+    from cryptography.hazmat.primitives import serialization
+
+    from entropy_protocol.attested import amd, nvidia
+    run = Path(__file__).resolve().parents[1] / "bench/results/attested/run-20261027T172258Z"
+    thim = cose._thaw(cose.loads(enroll.read_request((run / "conduit/request-seal.cbor").read_bytes())["evidence"]))["thim"]
+    vcek = x509.load_pem_x509_certificate(thim["vcekCert"].encode())
+    ask, ark = x509.load_pem_x509_certificates(thim["certificateChain"].encode())[:2]
+    der = lambda c: c.public_bytes(serialization.Encoding.DER)  # noqa: E731
+    at = dt.datetime(2026, 10, 27, 17, 0, tzinfo=dt.timezone.utc)
+    assert amd.verify_chain(der(vcek), der(ask), der(ark), "Genoa", at)
+    with pytest.raises(amd.SNPError, match="not a DER certificate"):               # was a bare ValueError
+        amd.verify_chain(der(vcek), der(ask)[:-7], der(ark), "Genoa", at)
+    from entropy_protocol.attested import hcl
+    report = hcl.parse((run.parent / "capture-20261027T162455Z/r0_hcl_report.bin").read_bytes()).snp
+    with pytest.raises(amd.SNPError, match="cannot be read"):                      # a real report, no VCEK
+        amd.verify_report(report, b"not a certificate")
+    # a GPU chain whose parent's key type is unknown (1.2.844.10045.2.1, ClusterFuzzLite's mutation): read leaf first
+    root_key = Ed25519PrivateKey.generate()
+    root = pki.make_root(root_key, "test authority", "test")
+    with pytest.raises(pki.PKIError):
+        pki.check_leaf(b"\x30\x03\x02\x01\x00", root, at, pki.STATEMENT_EKU)
+    with pytest.raises(pki.PKIError):
+        pki.read_csr(b"\x30\x03\x02\x01\x00")
+    leaf = x509.load_der_x509_certificate(der(vcek))
+    odd = x509.load_der_x509_certificate(der(ask).replace(bytes.fromhex("06092a864886f70d010101"),
+                                                          bytes.fromhex("06092a864886f70d01017f")))
+    with pytest.raises(nvidia.GPUError, match="not signed by its issuer"):
+        nvidia.verify_chain([leaf, odd], hashlib.sha256(der(odd)).hexdigest(), at)
+
+
 def test_paravisor_report_claims_refused_when_malformed():
     from pathlib import Path
 
