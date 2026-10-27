@@ -297,7 +297,7 @@ loaded lazily on the first call. A failed check is a tool error, not a dead serv
   names each part and gives the exact commands. Trust stays with the reader: the package carries its own keys, so
   the reader compares them with the issuer's published key.
 
-## 7d. Attested sealing and attested detection (`attested/`) — spec [0100]–[0109]; design, being built
+## 7d. Attested sealing and attested detection (`attested/`) — spec [0100]–[0109]
 The record binds a text to a model's choices, but whoever holds `K` can seal any text (§8, last row). Here the keys,
 the model and the sealing code run inside a confidential VM with a confidential GPU, and every statement carries
 evidence of that, appraised by a credential authority before it certifies the statement key.
@@ -330,15 +330,22 @@ binding: {method: "binding-input", hash: "sha512"}, csr}`. The conduit between t
 **Appraisal** — each check is named in the result:
 - `cpu`: VCEK → ASK → ARK to the pinned ARK-Genoa (AMD's RSASSA-PSS certificates encode the PSS trailer field at its
   default, which DER forbids: cryptography 42.0.8 refuses them, 43.0.3 and later read and verify them — hence the
-  dependency floor); the report's ECDSA P-384 signature under the VCEK;
-  the VCEK's TCB extensions equal the reported TCB; TCB at or above the policy's minimum; DEBUG off; the launch
-  measurement (the paravisor) in the reference set; REPORT_DATA = hash of the runtime claims, the rest zero.
+  dependency floor), the ASK not on AMD's CRL; the report's ECDSA P-384 signature under the VCEK; the VCEK's TCB
+  extensions equal the reported TCB; TCB at or above the floors of AMD's bulletins (SNP 0x1B, microcode 0x56 on Genoa);
+  ALIAS_CHECK_COMPLETE (BadRAM) and mitigation vector bit 1 (RMPocalypse); DEBUG off; the launch endorsed — its
+  measurement in the reference set, or an ID block signed by a pinned ID key (the firmware launches only a measurement
+  the ID key signed, AMD 56860 rev. 1.59 §8.19.2; Azure runs several paravisor builds at once under one key);
+  REPORT_DATA = hash of the runtime claims, the rest zero.
 - `vtpm`: `user-data` = the binding value; `HCLAkPub` present; secure boot and the vTPM on; the quote (TPMS_ATTEST)
-  signed by that AK, its qualifying data = SHA-256(binding), its PCR digest = the quoted PCRs; the TCG event log
-  replays to them; the boot chain (PCR 4, 7) in the reference set.
+  signed by that AK, its qualifying data = SHA-256(binding), its PCR digest = the quoted PCRs; the TCG event log, with
+  systemd's after-boot measurements (PCR 11), replays to them; the boot chain (PCR 4, 7) and the kernel image's
+  sections (`.linux`, `.initrd`, `.cmdline`, measured by systemd-stub) in the reference set. The paravisor renews its
+  report on read, at most every 2 s: the attester reads until the report carries what it wrote.
 - `gpu0`: the certificate chain to NVIDIA's pinned device identity root; the SPDM measurement response signed by the
-  device's attestation key over the handle; the measurements against NVIDIA's reference integrity manifests (driver
-  and VBIOS, XML signature to NVIDIA's pinned RIM root); revocation by OCSP, the responses kept.
+  device's attestation key over the handle; the firmware ID in the device certificate = the one in the report; the
+  measurements against NVIDIA's reference integrity manifests (driver and VBIOS; RIM index i is SPDM block i + 1; the
+  manifests' chain checked here to NVIDIA's pinned RIM root, because signxml 5 refuses it under RFC 5280); revocation
+  of the GPU chain and both manifest chains by OCSP, the responses kept.
 - binding: recomputed from the request's fields equals `user-data`; the handle was issued by this authority and has
   not expired or been used; the CSR's signature verifies under its own key, which is the key in the binding.
 
@@ -349,8 +356,9 @@ submods `cpu`, `vtpm`, `gpu0` (each with status, trustworthiness vector, policy 
 `ear_device_topology` `{"cpu": ["vtpm", "gpu0"]}` — which GPU is bound to which guest. The appraised identities
 (statement key, model digests, code identity, class, parameters, binding value) travel as an ep1 extension.
 
-**Certificate**: X.509 for the Ed25519 statement key, issued by the authority's root; subject = `target`;
-validity = the result's lifetime. Statements signed in the environment carry `x5chain` (RFC 9360, label 33) and
+**Certificate**: X.509 for the Ed25519 statement key, issued by the authority's root; subject = `target`; extended
+key usage id-kp-documentSigning; valid from five minutes before issue (the sealer checks it against its own clock)
+for the result's lifetime. The sealer pins the authority's root and `rrp_id` in its own configuration. Statements signed in the environment carry `x5chain` (RFC 9360, label 33) and
 SHA-256 of the attestation result in the protected header, so both reach the log with the statement.
 
 **Attested detection**: the same enrollment with `credential_type: "ep1-detection-key"`; `K_wm` is generated inside
@@ -402,7 +410,7 @@ environment (RFC 3161 over the logged form, the log's registration), never from 
 | Second implementation (JavaScript, model-free parts) | 72/72 test-vector checks; CI regenerates the vectors with Python and runs both |
 | Record delivered by public key: HPKE (RFC 9180, vectors A.1.1/A.2.1) + COSE-HPKE integrated encryption (draft-27) | implemented, tested; second implementation opens it |
 | RFC 3161 time stamps over statements (`entropy timestamp`; imprint checked, the authority's chain is the reader's trust decision) | implemented, tested |
-| TEE-attested sealing and detection (§7d) | being built: design written; Azure confidential H100 first |
+| TEE-attested sealing and detection (§7d) | implemented; run end to end on an Azure confidential H100 (`bench/results/attested/`): two keys certified after 47 checks each, 20 texts, 20 packages checking offline |
 | Backends: HF transformers, single and batched | implemented, tested · vLLM / llama.cpp — pending |
 | Model identity: weights digest over exactly the files the loader reads (index of shards) | implemented, tested |
 | GPU evaluation program (`bench/gpu/`): phase A (15.09, L40S, Qwen2.5-7B), phases B and C (26.09: L40S, L4, A10G, H100; Qwen2.5-7B and 14B, Mistral-7B-v0.3, OLMo-2-7B; a two-million-pair null; KGW and SynthID-Text) | run; results in `runs_gpu/`, reports in `bench/results/phase_{b,c}/REPORT.md` |

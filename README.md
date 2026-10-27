@@ -54,7 +54,7 @@ probability.
 | Rewriting | paraphrase and translation are modifications and are reported as such; after a rewrite of about a quarter of the words the record-free signal is gone |
 | Short text | below about 50 tokens record-free detection has too few checkpoints |
 | The model | record-free detection is as strong as the model is numerically steady: OLMo-2-7B in fp16 leaves too few checkpoints at the quality operating point (52 % at p ≤ 0.01 on 400 tokens), while its records verify as every model's do — measure detection on your own model before relying on it |
-| The issuer | whoever holds the master key can seal a text its model did not write; proof against the issuer needs attested generation (not in this release) |
+| The issuer | whoever holds the master key can seal a text its model did not write — unless sealing runs attested (below): the signing key is then certified only for a confidential VM running the declared model and code; excluding the operator of that VM also needs a locked, measured image |
 | Same model | the verifier needs the same weights and tokenizer, in a certified numerical class; outside it the answer is `INDETERMINATE`, never a false verdict |
 | The key | a holder of the detection key can imitate the mark — hand it only to trusted detectors, or run detection as a service |
 | Measured range | the exact null is measured down to 1e-6, on 2.1 million (text, key) pairs across four models; smaller p-values rest on the construction, not on a measurement |
@@ -102,6 +102,34 @@ disagree at all — at most 1 position in 144,871 for fp16 and fp32, about 2 in 
 | Mistral-7B-v0.3, OLMo-2-7B, Qwen2.5-14B: records of unchanged text, fp16 and bf16 | 100 % `VERIFIED` (768 records, 1,152 verifications), 0 false `MODIFIED` |
 | Record-free detection at 1e-6, 400 tokens, strong · quality | Mistral 99.2 · 83.6 %; OLMo-2 98.4 · 0.8 %; Qwen2.5-14B 100 · 82.8 % |
 | GSM8K accuracy, quality operating point against unsealed, four models | no measurable cost (McNemar p = 0.51–0.71); *strong* breaks arithmetic on all four |
+
+## Attested sealing on a confidential H100
+
+The keys, the model and the sealing code run in a confidential VM (AMD SEV-SNP) with an H100 in confidential-computing
+mode. An authority appraises the hardware evidence — the processor's report, the vTPM quote and boot log, the GPU's
+SPDM report — and certifies a key only if every check holds; each statement then carries the certificate and the digest
+of the attestation result (EAR). Design: [ARCHITECTURE §7d](ARCHITECTURE.md). One run
+([files](bench/results/attested/run-20261027T172258Z): Azure `Standard_NCC40ads_H100_v5`, Qwen2.5-7B-Instruct, fp16):
+
+| | Result |
+|---|---|
+| Enrollment of a statement key and a detection key, each generated inside the guest | certified after 47 checks each, none failed or skipped: AMD chain to the pinned ARK and AMD's CRL; the TCB floors of AMD's bulletins; the BadRAM and RMPocalypse fixes in the report; the paravisor's launch endorsed by its ID key; the binding (key, model, code, parameters) in the runtime claims and in the vTPM quote; the boot chain and the kernel image in the event log; the H100's report over the authority's nonce; NVIDIA's signed manifests; OCSP for nine certificates |
+| 20 prose texts sealed in the VM, read by a separate verifier | as sealed 20/20 `VERIFIED`; one word changed 20/20 `MODIFIED`, with the range; after transport 20/20 `VERIFIED` |
+| Record-free detection in the VM, 200 tokens, quality, 1e-6 | 14 of 20 sealed texts; 0 of 10 unsealed texts of the same model |
+| Evidence packages | 20 of 20 check offline, 40 checks each: the appraisal repeated from AMD's and NVIDIA's roots at the result's issue time, the certificates, the statements, log receipts, RFC 3161 time stamps |
+
+Refusals are tested on the run's own data ([`tests/test_attested_run.py`](tests/test_attested_run.py)): a request
+bound to another key, evidence moved from another enrollment, a changed model digest, a spent handle, a changed text,
+a result signed by another authority. A live refusal is kept as well: a host whose paravisor build had a launch
+measurement the policy did not list ([files](bench/results/attested/run-20261027T170502Z-refused-launch-measurement));
+the policy pins the key that signs the paravisor's launch instead. Not shown by this run: the operator had SSH access
+to the guest. Excluding the operator needs a locked image — no interactive access, a measured root file system — whose
+measurements become the reference values.
+
+```bash
+pip install -e ".[attested]"
+entropy evidence --check bench/results/attested/run-20261027T172258Z/packs/5aWyrqFNxAxJwkXE.cbor
+```
 
 ## Quick start
 
@@ -153,7 +181,7 @@ Each has a CPU dry run (`smoke_phase_*.sh`) that exercises every call on a small
   point on the wire: tolerances in integer micro-units, p-values from counts.
 - Test vectors: [`spec/test-vectors/ep1-vectors.json`](spec/test-vectors/ep1-vectors.json), regenerated by
   [`spec/make_vectors.py`](spec/make_vectors.py).
-- An independent JavaScript implementation of every model-free part: [`impl-js/`](impl-js) — 72/72 vectors. CI
+- An independent JavaScript implementation of every model-free part: [`impl-js/`](impl-js) — 83/83 vectors. CI
   regenerates the vectors with the Python reference, requires them to be byte-identical to the committed file, and
   runs the JavaScript implementation against them.
 - Design and rationale: [`ARCHITECTURE.md`](ARCHITECTURE.md).
