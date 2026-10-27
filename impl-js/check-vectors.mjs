@@ -118,6 +118,14 @@ eq("inclusion size 7 index 3", hex(ep1.rootFromInclusion(leaves[3], 3, 7, m.incl
 const r = ep1.verifyReceipt(Buffer.from(m.receipt_index6, "hex"), Buffer.from(m.entries[6], "hex"),
                             ep1.publicKeyFromSeed(Buffer.from(m.log_seed, "hex")));
 eq("receipt root", r.root, m.roots[6]);
+{ // the unprotected header is not signed: an integer where the inclusion proof belongs must be refused, as in Python
+  const rc = ep1.decode(Buffer.from(m.receipt_index6, "hex")), p = rc instanceof ep1.Tag ? rc.value : rc;
+  const bad = ep1.encode(new ep1.Tag(18, [p[0], new Map([[396, new Map([[-1, [ep1.encode(5)]]])]]), p[2], p[3]]));
+  let refused = "";
+  try { ep1.verifyReceipt(bad, Buffer.from(m.entries[6], "hex"), ep1.publicKeyFromSeed(Buffer.from(m.log_seed, "hex"))); }
+  catch (e) { refused = e.message; }
+  eq("receipt with a malformed inclusion proof refused", refused, "malformed inclusion proof");
+}
 
 for (const b of v.binomial_tail) eq(`binomial tail ${b.n},${b.m}`, ep1.binomialTail(b.n, b.m), b.p);
 

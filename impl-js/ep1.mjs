@@ -402,9 +402,17 @@ export function rootFromInclusion(leaf, index, size, path) {
 }
 export function verifyReceipt(receipt, statement, logPub) {
   let obj = decode(receipt); if (obj instanceof Tag) obj = obj.value;
+  if (!(Array.isArray(obj) && obj.length === 4 && Buffer.isBuffer(obj[0]) && obj[1] instanceof Map)) throw new Error("not a COSE_Sign1");
   const prot = decode(obj[0]);
-  if (prot.get(395) !== 1) throw new Error("unsupported VDS");
-  const [size, index, path] = decode(obj[1].get(396).get(-1)[0]);
+  if (!(prot instanceof Map) || prot.get(395) !== 1) throw new Error("unsupported VDS");
+  const vdp = obj[1].get(396), proofs = vdp instanceof Map ? vdp.get(-1) : undefined;
+  if (!(Array.isArray(proofs) && proofs.length && Buffer.isBuffer(proofs[0]))) throw new Error("no inclusion proof");
+  const proof = decode(proofs[0]);                  // [tree size, leaf index, [sibling hash, ...]], as tlog.py
+  if (!(Array.isArray(proof) && proof.length === 3 && proof.slice(0, 2).every((v) => Number.isSafeInteger(v) && v >= 0)
+        && Array.isArray(proof[2]) && proof[2].every((h) => Buffer.isBuffer(h) && h.length === 32))) {
+    throw new Error("malformed inclusion proof");
+  }
+  const [size, index, path] = proof;
   const root = rootFromInclusion(leafHash(entryOf(statement)), index, size, path);
   verify1(receipt, logPub, root);
   return { size, index, root: root.toString("hex") };

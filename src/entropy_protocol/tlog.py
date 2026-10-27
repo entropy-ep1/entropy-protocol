@@ -133,10 +133,15 @@ def verify_receipt(receipt: bytes, statement: bytes, log_public_key: Ed25519Publ
     prot, _, unprot, _, _ = cose.decode1(receipt)
     if prot.get(cose.VDS) != RFC9162_SHA256:
         raise cose.COSEError("unsupported verifiable data structure")
-    proofs = unprot.get(cose.VDP, {}).get(INCLUSION)
-    if not proofs:
+    vdp = unprot.get(cose.VDP)
+    proofs = vdp.get(INCLUSION) if isinstance(vdp, dict) else None
+    if not (isinstance(proofs, list) and proofs and isinstance(proofs[0], bytes)):
         raise cose.COSEError("receipt carries no inclusion proof")
-    size, index, path = cose.loads(proofs[0])
+    proof = cose.loads(proofs[0])      # [tree size, leaf index, [sibling hash, ...]]; integers up to 2^53 - 1, as impl-js
+    if not (isinstance(proof, (list, tuple)) and len(proof) == 3 and all(type(v) is int and 0 <= v < 2 ** 53 for v in proof[:2])
+            and isinstance(proof[2], (list, tuple)) and all(isinstance(h, bytes) and len(h) == 32 for h in proof[2])):
+        raise cose.COSEError("malformed inclusion proof")
+    size, index, path = proof
     root = root_from_inclusion(leaf_hash(entry_of(statement)), index, size, list(path))
     cose.verify1(receipt, log_public_key, payload=root)
     return {"tree_size": size, "leaf_index": index, "root": root.hex()}
