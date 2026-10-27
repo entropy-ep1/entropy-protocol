@@ -23,6 +23,7 @@ SLOT = 0x4A0
 REQUEST_DATA = 20
 HASHES = {1: hashlib.sha256, 2: hashlib.sha384, 3: hashlib.sha512}
 B64URL = re.compile(r"[A-Za-z0-9_-]+")
+HEX = re.compile(r"[0-9A-Fa-f]*")
 SNP_VM_REPORT = 2
 
 
@@ -44,11 +45,16 @@ class HCLReport:
     claims: dict
 
     def jwk(self, kid: str) -> dict | None:
-        return next((k for k in self.claims.get("keys", []) if k.get("kid") == kid), None)
+        keys = self.claims.get("keys")
+        return next((k for k in keys if isinstance(k, dict) and k.get("kid") == kid), None) if isinstance(keys, list) \
+            else None
 
     @property
     def user_data(self) -> bytes:
-        return bytes.fromhex(self.claims.get("user-data", ""))
+        v = self.claims.get("user-data", "")
+        if not (isinstance(v, str) and HEX.fullmatch(v) and len(v) % 2 == 0):
+            raise HCLError("user-data is not an even run of hex digits")
+        return bytes.fromhex(v)
 
 
 def _u32(b: bytes, off: int) -> int:
@@ -67,8 +73,10 @@ def parse(raw: bytes) -> HCLReport:
     claims_raw = raw[start:start + var_size]
     try:
         claims = json.loads(claims_raw)
-    except ValueError as exc:
+    except (ValueError, RecursionError) as exc:
         raise HCLError("runtime claims are not JSON") from exc
+    if not isinstance(claims, dict):
+        raise HCLError("runtime claims are not a JSON object")
     return HCLReport(raw=raw[:size], version=version, report_size=size, request_type=rtype, status=status,
                      snp=amd.parse_report(raw[HEADER:HEADER + SLOT]), report_type=report_type, hash_type=hash_type,
                      claims_raw=claims_raw, claims=claims)

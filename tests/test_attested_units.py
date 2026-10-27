@@ -153,6 +153,34 @@ def test_jwk_reader_takes_base64url_rsa_keys_only():
             hcl.rsa_from_jwk(bad)
 
 
+def test_paravisor_report_claims_refused_when_malformed():
+    from pathlib import Path
+
+    from entropy_protocol.attested import hcl
+    raw = (Path(__file__).resolve().parents[1] / "bench/results/attested/capture-20261027T162455Z/r0_hcl_report.bin"
+           ).read_bytes()
+    real = hcl.parse(raw)
+    assert len(real.user_data) == 64 and real.jwk("HCLAkPub")["kty"] == "RSA"
+
+    def with_claims(claims: bytes) -> bytes:                  # the same report with other runtime claims, sizes kept true
+        rd = hcl.HEADER + hcl.SLOT
+        start = rd + hcl.REQUEST_DATA
+        out = bytearray(raw[:start] + claims)
+        out[8:12] = len(out).to_bytes(4, "little")
+        out[rd:rd + 4] = (hcl.REQUEST_DATA + len(claims)).to_bytes(4, "little")
+        out[rd + 16:rd + 20] = len(claims).to_bytes(4, "little")
+        return bytes(out)
+    assert hcl.parse(with_claims(real.claims_raw)).user_data == real.user_data
+    for claims in (b"[]", b"7", b"[" * 5000 + b"]" * 5000):
+        with pytest.raises(hcl.HCLError, match="JSON"):
+            hcl.parse(with_claims(claims))
+    for user_data in ('"' + "ab" * 31 + 'gg"', '"abc"', "12", '"ab cd"'):
+        with pytest.raises(hcl.HCLError, match="user-data"):
+            _ = hcl.parse(with_claims(b'{"user-data": ' + user_data.encode() + b"}")).user_data
+    assert hcl.parse(with_claims(b'{"keys": 5}')).jwk("HCLAkPub") is None
+    assert hcl.parse(with_claims(b'{"keys": [5, {"kid": "HCLAkPub", "kty": "RSA"}]}')).jwk("HCLAkPub")["kty"] == "RSA"
+
+
 def test_rim_golden_refuses_malformed_measurements():
     etree = pytest.importorskip("lxml.etree")
 
