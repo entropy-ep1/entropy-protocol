@@ -437,7 +437,7 @@ Hypothesis (`tests/test_fuzz.py`); coverage-guided campaigns run with atheris (`
 | Second implementation (JavaScript, model-free parts) | 72/72 test-vector checks; CI regenerates the vectors with Python and runs both |
 | Record delivered by public key: HPKE (RFC 9180, vectors A.1.1/A.2.1) + COSE-HPKE integrated encryption (draft-27) | implemented, tested; second implementation opens it |
 | RFC 3161 time stamps over statements (`entropy timestamp`; imprint checked, the authority's chain is the reader's trust decision) | implemented, tested |
-| TEE-attested sealing and detection (§7d) | implemented; run end to end on an Azure confidential H100 (`bench/results/attested/`): two keys certified after 47 checks each, 20 texts, 20 packages checking offline |
+| TEE-attested sealing and detection (§7d) | implemented; run end to end on an Azure confidential H100 (`bench/results/attested/`): two keys certified after 48 checks each, 20 texts, 20 packages checking offline |
 | Backends: HF transformers, single and batched | implemented, tested · vLLM / llama.cpp — pending |
 | Model identity: weights digest over exactly the files the loader reads (index of shards) | implemented, tested |
 | GPU evaluation program (`bench/gpu/`): phase A (15.09, L40S, Qwen2.5-7B), phases B and C (26.09: L40S, L4, A10G, H100; Qwen2.5-7B and 14B, Mistral-7B-v0.3, OLMo-2-7B; a two-million-pair null; KGW and SynthID-Text) | run; results in `runs_gpu/`, reports in `bench/results/phase_{b,c}/REPORT.md` |

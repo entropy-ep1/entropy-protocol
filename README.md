@@ -113,10 +113,10 @@ of the attestation result (EAR). Design: [ARCHITECTURE §7d](ARCHITECTURE.md). O
 
 | | Result |
 |---|---|
-| Enrollment of a statement key and a detection key, each generated inside the guest | certified after 47 checks each, none failed or skipped: AMD chain to the pinned ARK and AMD's CRL; the TCB floors of AMD's bulletins; the BadRAM and RMPocalypse fixes in the report; the paravisor's launch endorsed by its ID key; the binding (key, model, code, parameters) in the runtime claims and in the vTPM quote; the boot chain and the kernel image in the event log; the H100's report over the authority's nonce; NVIDIA's signed manifests; OCSP for nine certificates |
+| Enrollment of a statement key and a detection key, each generated inside the guest | certified after 48 checks each — 47 on the evidence and the handle's single use — none failed or skipped: AMD chain to the pinned ARK and AMD's CRL; the TCB floors of AMD's bulletins; the BadRAM and RMPocalypse fixes in the report; the paravisor's launch endorsed by its ID key; the binding (key, model, code, parameters) in the runtime claims and in the vTPM quote; the boot chain and the kernel image in the event log; the H100's report over the authority's nonce; NVIDIA's signed manifests; OCSP for seven certificates (nine checks: the two manifests share two) |
 | 20 prose texts sealed in the VM, read by a separate verifier | as sealed 20/20 `VERIFIED`; one word changed 20/20 `MODIFIED`, with the range; after transport 20/20 `VERIFIED` |
 | Record-free detection in the VM, 200 tokens, quality, 1e-6 | 14 of 20 sealed texts; 0 of 10 unsealed texts of the same model |
-| Evidence packages | 20 of 20 check offline, 40 checks each: the appraisal repeated from AMD's and NVIDIA's roots at the result's issue time, the certificates, the statements, log receipts, RFC 3161 time stamps |
+| Evidence packages | 20 of 20 check offline, 35 checks each, none failed: the appraisal repeated from AMD's and NVIDIA's roots at the result's issue time (47 checks per key), the certificates, the statements, log receipts, RFC 3161 time-stamp imprints; 5 more are the reader's: the authority's fingerprint, the time-stamp authority's signatures, the re-read with the model |
 
 Refusals are tested on the run's own data ([`tests/test_attested_run.py`](tests/test_attested_run.py)): a request
 bound to another key, evidence moved from another enrollment, a changed model digest, a spent handle, a changed text,
