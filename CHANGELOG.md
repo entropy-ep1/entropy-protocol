@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0 — unreleased
+## 0.1.0 — 2026-10-27
 
 First public release of the reference implementation.
 
@@ -24,7 +24,12 @@ First public release of the reference implementation.
 - Canonical form v5: the deletions before NFC (idempotent), NFC pinned to Unicode 14.0; visible-text form v2 on it;
   detection statements name their canonical form.
 - One CBOR profile for untrusted input in both implementations; fuzzing (`fuzz/`): 26 targets with seed corpora from
-  real data, differential targets across the two implementations, Hypothesis in every test run, atheris campaigns.
+  real data, differential targets across the two implementations, Hypothesis in every test run, ClusterFuzzLite on
+  every pull request, coverage-guided atheris campaigns.
+- Packaging: the model stack (torch, transformers) is the `model` extra; checking statements, receipts and evidence
+  packages needs `cryptography` and `cbor2` only (`attested` adds NVIDIA's signed manifests).
+- Releases signed with Sigstore, one bundle per file, with GitHub build-provenance attestations; README: how to
+  verify them.
 - The GPU evaluation program (`bench/gpu/`) and its results: phase A (Qwen2.5-7B-Instruct, NVIDIA L40S), phase B
   (the same records verified on four GPU architectures), phase C (a two-million-pair null, KGW and SynthID-Text,
   Mistral-7B-v0.3, OLMo-2-7B and Qwen2.5-14B).
