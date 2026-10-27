@@ -1,0 +1,76 @@
+{
+ "id": "ep1/azure-cgpu/qwen2.5-7b-instruct",
+ "lifetime": 86400,
+ "amd": {
+  "product": "Genoa",
+  "crl": "required",
+  "min_tcb": {
+   "snpSPL": 27,
+   "ucodeSPL": 86
+  },
+  "alias_check_complete": true,
+  "mitigation_vector_bits": [
+   1
+  ],
+  "measurements": [
+   "6587d41e46995d71808f7d92d859e0ed093bea3c55a342c866a20cd1a213ae4e20241bdbc44d5255222da65cce1c7f48"
+  ],
+  "id_key_digests": [
+   "942fd93ebde6ea7a96efadeafc60f1c6b3d10e703b1dafd7555b92f7f3d32d0e006767648cba5b102af3d65756af4177"
+  ]
+ },
+ "vtpm": {
+  "pcrs": {
+   "4": [
+    "b863cc12451d109d0339c3ece3cbf4ba06d52eb04f5a0939f9a85455c13478a5"
+   ],
+   "7": [
+    "f014e5cbfa297ee787a976abc51bc1d67e23e1b9e4a60128a1106dd0adef0c5b"
+   ]
+  },
+  "uki": {
+   ".linux": [
+    "e4f1503a798bac0bfe35114047273532fe1cf34c7752f45a291287894ddd68a5"
+   ],
+   ".initrd": [
+    "2b41e43f90e3ce594c5363d093c755e2d26fa20e3a7a8b6b5d277e8f14373c2e"
+   ],
+   ".cmdline": [
+    "14ff041d2a46bdd844691b606a372976e6007bec02586a62951ebc500b810064"
+   ]
+  }
+ },
+ "gpu": {
+  "count": 1,
+  "rim": "required",
+  "ocsp": "required"
+ },
+ "identities": {
+  "weights": [
+   "fd024e4fed1dfb65cc679af8aa2d7b542971a1b74ab8cb4d703ac082afc3922c"
+  ],
+  "tokenizer": [
+   "f884026e05f6dfffe68b72d580b588006d98b3bc0a128bb1ac425c76f7fc438c"
+  ],
+  "code": [
+   "17e2ea6481dfc5f4d1a215c926de73a6a01e72963ec43291a1ef876a2d26b508"
+  ],
+  "class": [
+   "fp16"
+  ],
+  "params": [
+   "67ab2aac03353942d2f1631cf59a15124ff39b45a98bbbbc2047f3b4cddeae04"
+  ]
+ },
+ "provenance": {
+  "amd": "AMD-SB-3020 (rev. 2026-02-23) TCB[SNP] >= 0x1B + mitigation vector bit 1; AMD-SB-3027 microcode >= 0x56; AMD-SB-3015 ALIAS_CHECK_COMPLETE; read live 22.10.2026",
+  "amd.measurements": "first observed in capture-20261027T162455Z (Azure Standard_NCC40ads_H100_v5, Ubuntu 24.04 CVM image 24.04.202607310, Microsoft onboarding V4.4.1)",
+  "amd.id_key_digests": "the ID key Azure launches its paravisor under, first observed in capture-20261027T162455Z (Azure Standard_NCC40ads_H100_v5, Ubuntu 24.04 CVM image 24.04.202607310, Microsoft onboarding V4.4.1); on 27.10.2026 a second host ran another paravisor build (measurement 63e15b3f\u2026) under the same key. The firmware launches a guest with an ID block only if the block's expected launch digest equals the measurement and its signature verifies under that key (AMD 56860 rev. 1.59 \u00a78.19.2)",
+  "vtpm.pcrs": "first observed in capture-20261027T162455Z (Azure Standard_NCC40ads_H100_v5, Ubuntu 24.04 CVM image 24.04.202607310, Microsoft onboarding V4.4.1)",
+  "vtpm.uki": "first observed in capture-20261027T162455Z (Azure Standard_NCC40ads_H100_v5, Ubuntu 24.04 CVM image 24.04.202607310, Microsoft onboarding V4.4.1)",
+  "identities.weights": "Qwen/Qwen2.5-7B-Instruct@a09a35458c702b33eeacc393d103063234e8bc28 (phase A calibration, calibration_A_cal_fp16only.json)",
+  "identities.tokenizer": "computed by the authority from the pinned revision a09a35458c702b33eeacc393d103063234e8bc28",
+  "identities.code": "binding.code_identity() of the checkout that ships to the sealer",
+  "identities.params": "service.params_map(profile quality, calibration_A_cal_fp16only.json, max_new_tokens 200)"
+ }
+}

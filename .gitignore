@@ -18,3 +18,4 @@ node_modules/
 # of a run (root certificate, results, certificates, requests, statements) is evidence and tracked
 bench/results/attested/**/root.key
 bench/results/attested/**/verifier/
+bench/results/attested/**/log.key
