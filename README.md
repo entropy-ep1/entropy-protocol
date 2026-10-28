@@ -127,15 +127,26 @@ to the guest. Excluding the operator needs a locked image — no interactive acc
 measurements become the reference values.
 
 ```bash
-pip install -e ".[attested]"
-entropy evidence --check bench/results/attested/run-20261027T172258Z/packs/5aWyrqFNxAxJwkXE.cbor
+pip install "entropy-protocol[attested]"
+curl -LO https://github.com/entropy-ep1/entropy-protocol/raw/main/bench/results/attested/run-20261027T172258Z/packs/5aWyrqFNxAxJwkXE.cbor
+entropy evidence --check 5aWyrqFNxAxJwkXE.cbor
 ```
+
+## Install
+
+```bash
+pip install entropy-protocol                     # statements, receipts, time stamps, evidence packages: no model
+pip install "entropy-protocol[attested]"         # and the hardware evidence of attested sealing
+pip install "entropy-protocol[model,markdown]"   # sealing, verification and detection with a language model
+```
+
+Python 3.10 or later. The files on [PyPI](https://pypi.org/project/entropy-protocol/) are those of the signed GitHub
+release, published with PyPI's attestation of where they were built ([Verify a release](#verify-a-release)).
 
 ## Quick start
 
 ```bash
-git clone https://github.com/entropy-ep1/entropy-protocol.git && cd entropy-protocol
-pip install -e ".[model,markdown]"   # Python >= 3.10; the model stack: torch and transformers
+pip install "entropy-protocol[model,markdown]"
 M=Qwen/Qwen2.5-0.5B-Instruct
 entropy keygen --out master.key
 entropy seal --model $M --key master.key --max-new-tokens 400 \
@@ -152,7 +163,8 @@ p = 5.6 × 10⁻¹¹. Change one word in `candidate.txt` and
 verify again: `MODIFIED`, with the character range of the sentence that changed. Short or formulaic answers carry few checkpoints — detection needs
 about 50 tokens or more, and is strongest on open-ended text.
 
-The whole product in one command, on a CPU, nothing leaving the machine: [`bench/demo_review.sh`](bench/demo_review.sh)
+The whole product in one command, in a clone of this repository, on a CPU, nothing leaving the machine:
+[`bench/demo_review.sh`](bench/demo_review.sh)
 (keys → an OpenAI-compatible sealing gateway on `127.0.0.1` → a sealed answer → three candidates checked: as
 delivered, as a rendered copy, with one word changed → record-free detection with its exact p-value → the same
 verdict through an MCP tool → signed statements, a transparency log and an evidence package checked offline).
@@ -212,6 +224,8 @@ cosign verify-blob --bundle "$f.sigstore.json" --certificate-oidc-issuer https:/
   --certificate-identity https://github.com/entropy-ep1/entropy-protocol/.github/workflows/release.yml@refs/tags/v0.1.0 "$f"
 gh attestation verify "$f" --repo entropy-ep1/entropy-protocol      # GitHub's build-provenance attestation
 ```
+
+On PyPI the same files carry PyPI's own attestation (PEP 740) naming this repository's `pypi.yml` as their publisher.
 
 ## License and patents
 
