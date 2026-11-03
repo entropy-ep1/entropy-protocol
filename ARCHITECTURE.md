@@ -361,11 +361,14 @@ binding: {method: "binding-input", hash: "sha512"}, csr}`. The conduit between t
   the ID key signed, AMD 56860 rev. 1.59 §8.19.2; Azure runs several paravisor builds at once under one key);
   REPORT_DATA = hash of the runtime claims, the rest zero.
 - `vtpm`: `user-data` = the binding value; `HCLAkPub` present; secure boot and the vTPM on; the quote (TPMS_ATTEST)
-  signed by that AK, its qualifying data = SHA-256(binding), its PCR digest = the quoted PCRs; the TCG event log (each
-  event carrying exactly one digest of every bank the Spec ID event announces, at that bank's size), with systemd's
-  after-boot measurements (PCR 11), replays to them; the boot chain (PCR 4, 7) and the kernel image's
-  sections (`.linux`, `.initrd`, `.cmdline`, measured by systemd-stub) in the reference set. The paravisor renews its
-  report on read, at most every 2 s: the attester reads until the report carries what it wrote.
+  signed by that AK, over the SHA-256 bank alone, its qualifying data = SHA-256(binding), its PCR digest = the quoted
+  PCRs; the TCG event log (each event carrying exactly one digest of every bank the Spec ID event announces, at that
+  bank's size), with systemd's after-boot measurements (PCR 11), replays to them: every PCR the logs reach is quoted
+  and equal (the guest chooses the selection, so a PCR left out of the quote fails the check; without systemd's log a
+  PCR 11 that does not replay is reported as not covered); the boot chain (PCR 4, 7) and the kernel image's sections
+  (`.linux`, `.initrd`, `.cmdline`, measured by systemd-stub) in the reference set, the sections read only when PCR 11
+  replays to its quoted value. The paravisor renews its report on read, at most every 2 s: the attester reads until
+  the report carries what it wrote.
 - `gpu0`: the certificate chain to NVIDIA's pinned device identity root; the SPDM measurement response signed by the
   device's attestation key over the handle; the firmware ID in the device certificate = the one in the report; the
   measurements against NVIDIA's reference integrity manifests (driver and VBIOS; RIM index i is SPDM block i + 1; the
