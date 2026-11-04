@@ -231,3 +231,58 @@ def test_rim_golden_refuses_malformed_measurements():
                   'index="1" size="48" alternatives="2" h:Hash0="ab"'):
         with pytest.raises(rim.RIMError, match="malformed"):
             rim.golden(tree(attrs))
+
+
+def test_a_statement_signed_outside_its_key_certificate_is_refused(monkeypatch):
+    """A certificate and an attestation result that ran out 30 days ago, and a statement signed today with that key
+    (found 01.11.2026: the appraisal is repeated at the result's issue time, so nothing compared the statement's)."""
+    from cryptography import x509
+    from entropy_protocol import pack, statements
+    from entropy_protocol.attested import appraise, evidence
+    then = dt.datetime(2026, 9, 1, tzinfo=dt.timezone.utc)
+    rk, sk = Ed25519PrivateKey.generate(), Ed25519PrivateKey.generate()
+    name = pki.make_root(rk, "test root", "test").subject
+    root = (x509.CertificateBuilder().subject_name(name).issuer_name(name).public_key(rk.public_key())
+            .serial_number(x509.random_serial_number()).not_valid_before(then - dt.timedelta(days=1))
+            .not_valid_after(then + dt.timedelta(days=3650))
+            .add_extension(x509.BasicConstraints(ca=True, path_length=0), critical=True).sign(rk, None))
+    target = "urn:test/seal"
+    leaf = pki.der(pki.issue(rk, root, sk.public_key(), target, lifetime=86400, eku=pki.STATEMENT_EKU,
+                             not_before=then))
+    handle = b"\x07" * 32
+    req = enroll.request(target=target, credential_type=enroll.CRED_STATEMENT, handle=handle,
+                         evidence=cose.dumps({}), csr=pki.make_csr(sk, target))
+    ids = {"weights": b"\x01" * 32, "tokenizer": b"\x02" * 32, "code": b"\x03" * 32, "class": "fp16",
+           "params": b"\x04" * 32, "binding": b"\x05" * 64, "key": hashlib.sha256(pki.spki(sk.public_key())).digest()}
+    result = ear.sign(ear.claims({"cpu": ear.appraisal({ear.HARDWARE: 2}, ["p"])}, ("d", "b"), nonce=handle,
+                                 lifetime=86400, iat=int(then.timestamp()) + 60,
+                                 ep1={"target": target, "credential_type": enroll.CRED_STATEMENT, "failed": [],
+                                      **ids}), rk, [pki.der(root)])
+
+    def the_hardware_as_found(req_, *, rrp_id, policy, at, collateral):   # not what is under test here
+        a = appraise.Appraisal(target=target)
+        a.checks.append(appraise.Check("hardware appraisal (stand-in)", True))
+        a.identities, a.statement_key = dict(ids), sk.public_key()
+        return a
+
+    monkeypatch.setattr(appraise, "appraise", the_hardware_as_found)
+    att = {"root": pki.der(root), "authority": {"rrp_id": "r", "name": "n"},
+           "gen": {"ear": result, "request": req, "collateral": cose.dumps({}), "policy": "{}"}}
+
+    def signed_at(when: dt.datetime) -> dict:
+        gen = cose.sign1({cose.ALG: cose.ED25519, cose.KID: cose.kid_of(sk.public_key()),
+                          cose.CWT_CLAIMS: {cose.ISS: target, cose.SUB: "doc", cose.IAT: int(when.timestamp())},
+                          cose.TYP: statements.TYP_GENERATION, cose.PAYLOAD_HASH_ALG: cose.SHA256,
+                          cose.PREIMAGE_CONTENT_TYPE: statements.CT_COMMITMENT, evidence.X5CHAIN: leaf,
+                          evidence.EAR_REF: hashlib.sha256(result).digest()}, hashlib.sha256(b"x").digest(), sk)
+        return pack.check(pack.build(doc="doc", statements={"gen": gen}, att=att))
+
+    def window(r):
+        return next(c for c in r["checks"] if c["name"].endswith("statement signed while its key was certified"))
+
+    inside = signed_at(then + dt.timedelta(hours=1))
+    assert window(inside)["ok"] and inside["level"] == pack.INTACT          # this root is on no trust list
+    late = signed_at(then + dt.timedelta(days=30))
+    assert window(late)["ok"] is False and late["level"] == pack.FAILED
+    early = signed_at(then - dt.timedelta(hours=1))
+    assert window(early)["ok"] is False and early["level"] == pack.FAILED

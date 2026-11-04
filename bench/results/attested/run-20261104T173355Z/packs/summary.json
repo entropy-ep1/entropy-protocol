@@ -1,0 +1,162 @@
+[
+ {
+  "doc": "09pztT60bsHVWpZX",
+  "level": "TRUSTED",
+  "checks": 45,
+  "failed": [],
+  "verdict": "VERIFIED",
+  "detected": true
+ },
+ {
+  "doc": "4xMUwRJFhDMa02Io",
+  "level": "TRUSTED",
+  "checks": 45,
+  "failed": [],
+  "verdict": "VERIFIED",
+  "detected": false
+ },
+ {
+  "doc": "5NjVfgsiwvllwDV0",
+  "level": "TRUSTED",
+  "checks": 45,
+  "failed": [],
+  "verdict": "VERIFIED",
+  "detected": true
+ },
+ {
+  "doc": "JW9EVmGSbo3WZ5hr",
+  "level": "TRUSTED",
+  "checks": 45,
+  "failed": [],
+  "verdict": "VERIFIED",
+  "detected": true
+ },
+ {
+  "doc": "Lgfmgo1JuJIG8npj",
+  "level": "TRUSTED",
+  "checks": 45,
+  "failed": [],
+  "verdict": "VERIFIED",
+  "detected": true
+ },
+ {
+  "doc": "M_7KW7y8HshDFiwK",
+  "level": "TRUSTED",
+  "checks": 45,
+  "failed": [],
+  "verdict": "VERIFIED",
+  "detected": false
+ },
+ {
+  "doc": "MmUNWOWZisJBaVqf",
+  "level": "TRUSTED",
+  "checks": 45,
+  "failed": [],
+  "verdict": "VERIFIED",
+  "detected": true
+ },
+ {
+  "doc": "N1LEEsvuKE6MfwrR",
+  "level": "TRUSTED",
+  "checks": 45,
+  "failed": [],
+  "verdict": "VERIFIED",
+  "detected": true
+ },
+ {
+  "doc": "NzqZtOfTPVpCVssA",
+  "level": "TRUSTED",
+  "checks": 45,
+  "failed": [],
+  "verdict": "VERIFIED",
+  "detected": true
+ },
+ {
+  "doc": "RGEsnjvfodaodRik",
+  "level": "TRUSTED",
+  "checks": 45,
+  "failed": [],
+  "verdict": "VERIFIED",
+  "detected": true
+ },
+ {
+  "doc": "UELlWS0TE3EYaZ0a",
+  "level": "TRUSTED",
+  "checks": 45,
+  "failed": [],
+  "verdict": "VERIFIED",
+  "detected": true
+ },
+ {
+  "doc": "VzV93xVgXm90bt_y",
+  "level": "TRUSTED",
+  "checks": 45,
+  "failed": [],
+  "verdict": "VERIFIED",
+  "detected": true
+ },
+ {
+  "doc": "X2bbgkHprkEh-heO",
+  "level": "TRUSTED",
+  "checks": 45,
+  "failed": [],
+  "verdict": "VERIFIED",
+  "detected": true
+ },
+ {
+  "doc": "XOdBaBw9alboPSom",
+  "level": "TRUSTED",
+  "checks": 45,
+  "failed": [],
+  "verdict": "VERIFIED",
+  "detected": false
+ },
+ {
+  "doc": "ceM-EMgmDKijn9FO",
+  "level": "TRUSTED",
+  "checks": 45,
+  "failed": [],
+  "verdict": "VERIFIED",
+  "detected": true
+ },
+ {
+  "doc": "cnOLCJ6OSZLSM0BF",
+  "level": "TRUSTED",
+  "checks": 45,
+  "failed": [],
+  "verdict": "VERIFIED",
+  "detected": true
+ },
+ {
+  "doc": "p5qozPnPq0BF76M2",
+  "level": "TRUSTED",
+  "checks": 45,
+  "failed": [],
+  "verdict": "VERIFIED",
+  "detected": true
+ },
+ {
+  "doc": "qQhKNVsTZosm_kxA",
+  "level": "TRUSTED",
+  "checks": 45,
+  "failed": [],
+  "verdict": "VERIFIED",
+  "detected": true
+ },
+ {
+  "doc": "v3K6UliH3y_GSyBL",
+  "level": "TRUSTED",
+  "checks": 45,
+  "failed": [],
+  "verdict": "VERIFIED",
+  "detected": true
+ },
+ {
+  "doc": "wKHE3e0pSIrE-3d2",
+  "level": "TRUSTED",
+  "checks": 45,
+  "failed": [],
+  "verdict": "VERIFIED",
+  "detected": true
+ }
+]

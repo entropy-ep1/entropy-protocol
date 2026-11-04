@@ -1,0 +1,431 @@
+{
+ "engine": "entropy-protocol/0.1.1",
+ "model": "Qwen/Qwen2.5-7B-Instruct@a09a35458c702b33eeacc393d103063234e8bc28",
+ "weights": "fd024e4fed1dfb65cc679af8aa2d7b542971a1b74ab8cb4d703ac082afc3922c",
+ "tokenizer": "f884026e05f6dfffe68b72d580b588006d98b3bc0a128bb1ac425c76f7fc438c",
+ "class": "fp16",
+ "profile": "quality",
+ "params": {
+  "align": "free",
+  "cal": {
+   "fp16": 421875
+  },
+  "canon_gen": true,
+  "context": 4,
+  "free_after": 0,
+  "gate_u": 0,
+  "guard_u": 900000,
+  "high_margin_u": 0,
+  "high_window": 3,
+  "indet_frac_u": 200000,
+  "interval": 5,
+  "k": 1,
+  "low_share_u": 500000,
+  "max_new_tokens": 200,
+  "min_entries": 8,
+  "min_new_tokens": 0,
+  "plain_layer": true,
+  "seal_margin_factor_u": 2000000,
+  "selection": "content",
+  "temperature_u": 800000,
+  "tol_u": 0,
+  "tol_space": "logit",
+  "top_p_u": 900000
+ },
+ "enrollment": {
+  "seal": {
+   "evidence_seconds": 0.321,
+   "binding": "6bceeff5828f4522614928fa0f3d66308d9fe78d211f1c158f02bebdbfaafe2b1aaf0b374246be2780cc070fcb94cab7633da92214671abd261ef001737041af"
+  },
+  "detect": {
+   "evidence_seconds": 0.224,
+   "binding": "e26d975198825cabde07356f05ffb417aabd830fde76e144fbdbfcd17160e32012800e00523a162cac6df4e0af7e9d167fdb6c6c3b14d73e62066d8db1fe5be4"
+  }
+ },
+ "sealed": [
+  {
+   "doc": "ceM-EMgmDKijn9FO",
+   "prompt_id": "prose-000",
+   "tokens": 200,
+   "entries": 23,
+   "seconds": 27.93
+  },
+  {
+   "doc": "MmUNWOWZisJBaVqf",
+   "prompt_id": "prose-001",
+   "tokens": 200,
+   "entries": 21,
+   "seconds": 14.67
+  },
+  {
+   "doc": "VzV93xVgXm90bt_y",
+   "prompt_id": "prose-002",
+   "tokens": 200,
+   "entries": 24,
+   "seconds": 14.64
+  },
+  {
+   "doc": "M_7KW7y8HshDFiwK",
+   "prompt_id": "prose-003",
+   "tokens": 200,
+   "entries": 13,
+   "seconds": 14.96
+  },
+  {
+   "doc": "N1LEEsvuKE6MfwrR",
+   "prompt_id": "prose-004",
+   "tokens": 200,
+   "entries": 29,
+   "seconds": 14.41
+  },
+  {
+   "doc": "UELlWS0TE3EYaZ0a",
+   "prompt_id": "prose-005",
+   "tokens": 200,
+   "entries": 13,
+   "seconds": 14.63
+  },
+  {
+   "doc": "v3K6UliH3y_GSyBL",
+   "prompt_id": "prose-006",
+   "tokens": 200,
+   "entries": 20,
+   "seconds": 14.52
+  },
+  {
+   "doc": "RGEsnjvfodaodRik",
+   "prompt_id": "prose-007",
+   "tokens": 200,
+   "entries": 23,
+   "seconds": 14.84
+  },
+  {
+   "doc": "XOdBaBw9alboPSom",
+   "prompt_id": "prose-008",
+   "tokens": 200,
+   "entries": 13,
+   "seconds": 14.75
+  },
+  {
+   "doc": "wKHE3e0pSIrE-3d2",
+   "prompt_id": "prose-009",
+   "tokens": 200,
+   "entries": 15,
+   "seconds": 15.31
+  },
+  {
+   "doc": "4xMUwRJFhDMa02Io",
+   "prompt_id": "prose-010",
+   "tokens": 200,
+   "entries": 12,
+   "seconds": 14.61
+  },
+  {
+   "doc": "cnOLCJ6OSZLSM0BF",
+   "prompt_id": "prose-011",
+   "tokens": 200,
+   "entries": 17,
+   "seconds": 15.06
+  },
+  {
+   "doc": "qQhKNVsTZosm_kxA",
+   "prompt_id": "prose-012",
+   "tokens": 200,
+   "entries": 17,
+   "seconds": 14.47
+  },
+  {
+   "doc": "X2bbgkHprkEh-heO",
+   "prompt_id": "prose-013",
+   "tokens": 200,
+   "entries": 18,
+   "seconds": 14.54
+  },
+  {
+   "doc": "JW9EVmGSbo3WZ5hr",
+   "prompt_id": "prose-014",
+   "tokens": 200,
+   "entries": 20,
+   "seconds": 14.63
+  },
+  {
+   "doc": "p5qozPnPq0BF76M2",
+   "prompt_id": "prose-015",
+   "tokens": 200,
+   "entries": 25,
+   "seconds": 14.66
+  },
+  {
+   "doc": "Lgfmgo1JuJIG8npj",
+   "prompt_id": "prose-016",
+   "tokens": 200,
+   "entries": 18,
+   "seconds": 14.68
+  },
+  {
+   "doc": "NzqZtOfTPVpCVssA",
+   "prompt_id": "prose-017",
+   "tokens": 200,
+   "entries": 18,
+   "seconds": 14.98
+  },
+  {
+   "doc": "5NjVfgsiwvllwDV0",
+   "prompt_id": "prose-018",
+   "tokens": 200,
+   "entries": 17,
+   "seconds": 14.5
+  },
+  {
+   "doc": "09pztT60bsHVWpZX",
+   "prompt_id": "prose-019",
+   "tokens": 200,
+   "entries": 15,
+   "seconds": 14.65
+  }
+ ],
+ "detections": [
+  {
+   "doc": "ceM-EMgmDKijn9FO",
+   "kind": "sealed",
+   "detected": true,
+   "matched": 30,
+   "checkpoints": 30,
+   "p": 9.313225746154785e-10
+  },
+  {
+   "doc": "MmUNWOWZisJBaVqf",
+   "kind": "sealed",
+   "detected": true,
+   "matched": 26,
+   "checkpoints": 26,
+   "p": 1.4901161193847656e-08
+  },
+  {
+   "doc": "VzV93xVgXm90bt_y",
+   "kind": "sealed",
+   "detected": true,
+   "matched": 26,
+   "checkpoints": 26,
+   "p": 1.4901161193847656e-08
+  },
+  {
+   "doc": "M_7KW7y8HshDFiwK",
+   "kind": "sealed",
+   "detected": false,
+   "matched": 20,
+   "checkpoints": 21,
+   "p": 1.049041748046875e-05
+  },
+  {
+   "doc": "N1LEEsvuKE6MfwrR",
+   "kind": "sealed",
+   "detected": true,
+   "matched": 38,
+   "checkpoints": 38,
+   "p": 3.637978807091713e-12
+  },
+  {
+   "doc": "UELlWS0TE3EYaZ0a",
+   "kind": "sealed",
+   "detected": true,
+   "matched": 21,
+   "checkpoints": 21,
+   "p": 4.76837158203125e-07
+  },
+  {
+   "doc": "v3K6UliH3y_GSyBL",
+   "kind": "sealed",
+   "detected": true,
+   "matched": 30,
+   "checkpoints": 30,
+   "p": 9.313225746154785e-10
+  },
+  {
+   "doc": "RGEsnjvfodaodRik",
+   "kind": "sealed",
+   "detected": true,
+   "matched": 30,
+   "checkpoints": 30,
+   "p": 9.313225746154785e-10
+  },
+  {
+   "doc": "XOdBaBw9alboPSom",
+   "kind": "sealed",
+   "detected": false,
+   "matched": 17,
+   "checkpoints": 18,
+   "p": 7.2479248046875e-05
+  },
+  {
+   "doc": "wKHE3e0pSIrE-3d2",
+   "kind": "sealed",
+   "detected": true,
+   "matched": 20,
+   "checkpoints": 20,
+   "p": 9.5367431640625e-07
+  },
+  {
+   "doc": "4xMUwRJFhDMa02Io",
+   "kind": "sealed",
+   "detected": false,
+   "matched": 14,
+   "checkpoints": 14,
+   "p": 6.103515625e-05
+  },
+  {
+   "doc": "cnOLCJ6OSZLSM0BF",
+   "kind": "sealed",
+   "detected": true,
+   "matched": 29,
+   "checkpoints": 31,
+   "p": 2.314336597919464e-07
+  },
+  {
+   "doc": "qQhKNVsTZosm_kxA",
+   "kind": "sealed",
+   "detected": true,
+   "matched": 29,
+   "checkpoints": 29,
+   "p": 1.862645149230957e-09
+  },
+  {
+   "doc": "X2bbgkHprkEh-heO",
+   "kind": "sealed",
+   "detected": true,
+   "matched": 28,
+   "checkpoints": 28,
+   "p": 3.725290298461914e-09
+  },
+  {
+   "doc": "JW9EVmGSbo3WZ5hr",
+   "kind": "sealed",
+   "detected": true,
+   "matched": 29,
+   "checkpoints": 30,
+   "p": 2.8870999813079834e-08
+  },
+  {
+   "doc": "p5qozPnPq0BF76M2",
+   "kind": "sealed",
+   "detected": true,
+   "matched": 31,
+   "checkpoints": 32,
+   "p": 7.683411240577698e-09
+  },
+  {
+   "doc": "Lgfmgo1JuJIG8npj",
+   "kind": "sealed",
+   "detected": true,
+   "matched": 31,
+   "checkpoints": 33,
+   "p": 6.542541086673737e-08
+  },
+  {
+   "doc": "NzqZtOfTPVpCVssA",
+   "kind": "sealed",
+   "detected": true,
+   "matched": 31,
+   "checkpoints": 33,
+   "p": 6.542541086673737e-08
+  },
+  {
+   "doc": "5NjVfgsiwvllwDV0",
+   "kind": "sealed",
+   "detected": true,
+   "matched": 24,
+   "checkpoints": 25,
+   "p": 7.748603820800781e-07
+  },
+  {
+   "doc": "09pztT60bsHVWpZX",
+   "kind": "sealed",
+   "detected": true,
+   "matched": 37,
+   "checkpoints": 37,
+   "p": 7.275957614183426e-12
+  },
+  {
+   "doc": "control-c4-v000000",
+   "kind": "control",
+   "detected": false,
+   "matched": 29,
+   "checkpoints": 62,
+   "p": 0.737113319912175
+  },
+  {
+   "doc": "control-c4-v000004",
+   "kind": "control",
+   "detected": false,
+   "matched": 27,
+   "checkpoints": 60,
+   "p": 0.8168529966483544
+  },
+  {
+   "doc": "control-c4-v000006",
+   "kind": "control",
+   "detected": false,
+   "matched": 38,
+   "checkpoints": 63,
+   "p": 0.06495896151127625
+  },
+  {
+   "doc": "control-c4-v000008",
+   "kind": "control",
+   "detected": false,
+   "matched": 40,
+   "checkpoints": 73,
+   "p": 0.24139427842201064
+  },
+  {
+   "doc": "control-c4-v000009",
+   "kind": "control",
+   "detected": false,
+   "matched": 33,
+   "checkpoints": 56,
+   "p": 0.11440277061717809
+  },
+  {
+   "doc": "control-c4-v000011",
+   "kind": "control",
+   "detected": false,
+   "matched": 24,
+   "checkpoints": 56,
+   "p": 0.8855972293828219
+  },
+  {
+   "doc": "control-c4-v000012",
+   "kind": "control",
+   "detected": false,
+   "matched": 42,
+   "checkpoints": 67,
+   "p": 0.024900057147364332
+  },
+  {
+   "doc": "control-c4-v000013",
+   "kind": "control",
+   "detected": false,
+   "matched": 21,
+   "checkpoints": 43,
+   "p": 0.619604178719328
+  },
+  {
+   "doc": "control-c4-v000015",
+   "kind": "control",
+   "detected": false,
+   "matched": 22,
+   "checkpoints": 49,
+   "p": 0.8041985447262547
+  },
+  {
+   "doc": "control-c4-v000016",
+   "kind": "control",
+   "detected": false,
+   "matched": 27,
+   "checkpoints": 62,
+   "p": 0.8735728029059446
+  }
+ ],
+ "detect_gate": 0.9,
+ "alpha": 1e-06
+}

@@ -1,4 +1,4 @@
-"""Evidence packages (`ep1-pack/v2`) for every text of an attested run, and their offline checks.
+"""Evidence packages (`ep1-pack/v3`) for every text of an attested run, the run's trust list, and the checks.
 
     python bench/attested/build_packs.py bench/results/attested/run-<stamp> [--tsa URL]
 
@@ -7,12 +7,16 @@ key), the verifier's statement on the text as sealed, the detection statement (s
 certified detection key); RFC 3161 time stamps from an outside authority over each statement's logged form;
 receipts of a transparency log (RFC 9162 tree, RFC 9942 receipts) kept for this run; and the attestation section:
 the authority's root, the attestation results, the enrollment requests with their evidence, the collateral the
-authority fetched and the policy it applied. Every package is then checked offline (`pack.check`) and the reports
-written beside it. The log's private key stays with the operator (packs/log.key, ignored by git).
+authority fetched and the policy it applied; and the opening of the generation statement's commitment (record digest
+and salt, read from the record delivered to the verifier), so a checker ties the text to the attested generation.
+The run's trust list (packs/trust.json: the authority's root, the policy, the verifier's and the log's keys) is
+written beside them, and every package is checked offline against it (`pack.check`), the reports beside each.
+The log's private key and the verifier's key stay with the operator (packs/log.key, verifier/verifier.key: ignored).
 """
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import urllib.request
 from pathlib import Path
@@ -20,8 +24,9 @@ from pathlib import Path
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 
-from entropy_protocol import pack, ts3161
+from entropy_protocol import pack, statements, ts3161
 from entropy_protocol.attested import enroll, evidence
+from entropy_protocol.delivery import open_delivered
 from entropy_protocol.tlog import TransparencyLog
 
 TSA = "http://timestamp.digicert.com"
@@ -61,6 +66,13 @@ def main() -> int:
         key_file.chmod(0o600)
     log = TransparencyLog(log_key, packs / "log.json")
     verifier_pub = bytes.fromhex((out / "verifier.pub").read_text().strip())
+    verifier_key = bytes.fromhex((run / "verifier/verifier.key").read_text().strip())
+    trust = {"v": 1, "name": f"ep1 attested run {run.name}",
+             "keys": {"verifier": [verifier_pub.hex()], "log": [log_key.public_key().public_bytes_raw().hex()]},
+             "roots": [hashlib.sha256((auth / "root.der").read_bytes()).hexdigest()],
+             "policies": [hashlib.sha256(policy.encode()).hexdigest()]}
+    (packs / "trust.json").write_text(json.dumps(trust, indent=1) + "\n")
+    loaded = pack.load_trust(trust)
     summary = []
     for d in sorted(p for p in out.iterdir() if (p / "generation.cose").exists()):
         st = {"gen": (d / "generation.cose").read_bytes(), "ver": (d / "verification.as-sealed.cose").read_bytes(),
@@ -70,20 +82,26 @@ def main() -> int:
             idx, _ = log.register(s)
             rc[part] = log.receipt(idx)
             ts[part] = stamp(s, a.tsa)
+        doc, plaintext = open_delivered((d / "record.delivered.cose").read_bytes(), verifier_key)
+        if doc != d.name:
+            raise SystemExit(f"{d}: the delivered record is of {doc}")
         data = pack.build(doc=d.name, text=(d / "text.txt").read_text(), statements=st, receipts=rc, timestamps=ts,
                           keys={"verifier": verifier_pub,
                                 "log": log_key.public_key().public_bytes_raw()},
-                          note="sealed in an Azure confidential VM with a confidential H100; see att", att=att)
+                          note="sealed in an Azure confidential VM with a confidential H100; see att", att=att,
+                          opening=statements.opening(plaintext))
         (packs / f"{d.name}.cbor").write_bytes(data)
-        report = pack.check(data)
+        report = pack.check(data, loaded)
         (packs / f"{d.name}.check.json").write_text(json.dumps(report, ensure_ascii=False, indent=1))
         failed = [c["name"] for c in report["checks"] if c["ok"] is False]
-        summary.append({"doc": d.name, "ok": report["ok"], "checks": len(report["checks"]), "failed": failed,
+        summary.append({"doc": d.name, "level": report["level"], "checks": len(report["checks"]), "failed": failed,
                         "verdict": report["summary"].get("verdict"), "detected": report["summary"].get("detected")})
-        print(d.name, "ok" if report["ok"] else f"FAILED {failed}", flush=True)
+        print(d.name, report["level"], failed or "", flush=True)
     (packs / "summary.json").write_text(json.dumps(summary, indent=1))
-    print(json.dumps({"packages": len(summary), "all_ok": all(s["ok"] for s in summary)}, indent=1))
-    return 0 if summary and all(s["ok"] for s in summary) else 1
+    vouched = sum(s["level"] == pack.VOUCHED for s in summary)
+    print(json.dumps({"packages": len(summary), "levels": {lv: sum(s["level"] == lv for s in summary)
+                                                         for lv in {s["level"] for s in summary}}}, indent=1))
+    return 0 if summary and vouched == len(summary) else 1
 
 
 if __name__ == "__main__":

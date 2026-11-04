@@ -16,10 +16,12 @@ import pytest
 pytest.importorskip("signxml")
 
 from cryptography import x509  # noqa: E402
+from cryptography.hazmat.primitives import hashes  # noqa: E402
+from cryptography.hazmat.primitives.asymmetric import padding, rsa  # noqa: E402
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey  # noqa: E402
 
 from entropy_protocol import cose, pack, statements  # noqa: E402
-from entropy_protocol.attested import appraise, authority, ear, enroll, evidence, pki  # noqa: E402
+from entropy_protocol.attested import appraise, authority, ear, enroll, evidence, hcl, pki, tpm  # noqa: E402
 
 RUNS = sorted(p for p in (Path(__file__).resolve().parents[1] / "bench/results/attested").glob("run-*")
               if (p / "guest/out/manifest.json").exists())
@@ -179,3 +181,113 @@ def test_a_package_with_a_changed_text_or_a_foreign_result_fails():
     r = pack.check(cose.dumps(foreign))
     assert not r["ok"] and any(c["name"].endswith("result signed by the authority") and c["ok"] is False
                                for c in r["checks"])
+
+
+# ------------------------------------------------------------------ the quote's selection is the guest's to choose
+@pytest.fixture(scope="module")
+def stand_in_ak():
+    return rsa.generate_private_key(public_exponent=65537, key_size=2048)
+
+
+@pytest.fixture(scope="module")
+def uki_only(policy):
+    """No PCR reference values: the kernel image's sections alone stand for the boot chain."""
+    p = copy.deepcopy(policy)
+    p["vtpm"].pop("pcrs")
+    return p
+
+
+def evidence_of(d: Path) -> tuple[dict, dict]:
+    req = enroll.read_request((d / "request.cbor").read_bytes())
+    return req, cose._thaw(cbor2.loads(req["evidence"]))
+
+
+def with_evidence(req: dict, ev: dict) -> bytes:
+    return enroll.request(target=req["target"], credential_type=req["credential_type"], handle=req["handle"],
+                          evidence=cose.dumps(ev), csr=req["csr"])
+
+
+def quoted_values(d: Path) -> dict:
+    q = evidence_of(d)[1]["quote"]
+    return tpm.split_values(q["pcrs"], tpm.parse_attest(q["msg"]))
+
+
+def requoted(d: Path, selection: list, values: dict, sign_hash, key, monkeypatch) -> bytes:
+    """The run's request with its quote taken again over a selection of the guest's choosing: the same qualifying data
+    and clock, the PCR digest under the signing scheme's hash, as a TPM computes it. The run cannot lend the
+    attestation key - which signs any selection the guest asks for - so a key of our own stands in for it."""
+    req, ev = evidence_of(d)
+    q = tpm.parse_attest(ev["quote"]["msg"])
+    be = lambda v, n: v.to_bytes(n, "big")  # noqa: E731
+    blob = b"".join(values[(alg, i)] for alg, idx in selection for i in idx)
+    msg = (be(tpm.TPM_GENERATED, 4) + be(tpm.ST_ATTEST_QUOTE, 2) + be(len(q.signer), 2) + q.signer + be(len(q.extra), 2)
+           + q.extra + be(q.clock, 8) + be(q.reset_count, 4) + be(q.restart_count, 4) + be(q.safe, 1)
+           + be(q.firmware, 8) + be(len(selection), 4))
+    for alg, idx in selection:
+        bits = bytearray(3)
+        for i in idx:
+            bits[i // 8] |= 1 << i % 8
+        msg += be(alg, 2) + be(len(bits), 1) + bytes(bits)
+    h = hashes.Hash(sign_hash())
+    h.update(blob)
+    digest = h.finalize()
+    msg += be(len(digest), 2) + digest
+    s = key.sign(msg, padding.PKCS1v15(), sign_hash())
+    alg_id = {hashes.SHA256: tpm.ALG_SHA256, hashes.SHA384: tpm.ALG_SHA384}[sign_hash]
+    ev["quote"] = {**ev["quote"], "msg": msg, "sig": be(tpm.ALG_RSASSA, 2) + be(alg_id, 2) + be(len(s), 2) + s,
+                   "pcrs": blob, "sel": [i for _, idx in selection for i in idx]}
+    monkeypatch.setattr(hcl, "rsa_from_jwk", lambda jwk: key.public_key())   # the stand-in, bound in the AK's place
+    return with_evidence(req, ev)
+
+
+def vtpm_failed(a) -> set:
+    return {x.name for x in a.failed() if x.name.startswith("vtpm")}
+
+
+def test_requoted_over_the_same_pcrs_nothing_changes(rrp_id, policy, stand_in_ak, monkeypatch):
+    d = issued(enroll.CRED_STATEMENT)
+    values = quoted_values(d)
+    sel = [(tpm.ALG_SHA256, [i for _, i in sorted(values)])]
+    a, _ = reappraise(d, rrp_id, policy, requoted(d, sel, values, hashes.SHA256, stand_in_ak, monkeypatch))
+    assert a.ok and not a.failed(), [f"{x.name}: {x.detail}" for x in a.failed()]
+
+
+def test_a_quote_that_leaves_out_pcr_11_is_refused(rrp_id, uki_only, stand_in_ak, monkeypatch):
+    d = issued(enroll.CRED_STATEMENT)
+    values = quoted_values(d)
+    sel = [(tpm.ALG_SHA256, [i for _, i in sorted(values) if i != 11])]
+    a, _ = reappraise(d, rrp_id, uki_only, requoted(d, sel, values, hashes.SHA256, stand_in_ak, monkeypatch))
+    by = {x.name: x for x in a.checks}
+    assert vtpm_failed(a) == {"vtpm.eventlog.replays_to_quoted_pcrs", "vtpm.uki_sections.bound_to_quote"}
+    assert "not in the quote [11]" in by["vtpm.eventlog.replays_to_quoted_pcrs"].detail
+    # everything else holds: the sections would have been read, unbound, from the log
+    assert by["vtpm.quote.pcr_digest"].ok and by["vtpm.uki_sections.in_reference_set"].ok
+
+
+@pytest.mark.parametrize("bank, sign_hash", [(tpm.ALG_SHA384, hashes.SHA384), (tpm.ALG_SHA384, hashes.SHA256),
+                                             (tpm.ALG_SHA1, hashes.SHA256)])
+def test_a_quote_over_another_bank_is_refused(bank, sign_hash, rrp_id, uki_only, stand_in_ak, monkeypatch):
+    """Azure's vTPM keeps SHA-1, SHA-256 and SHA-384 banks; its AK signs RSASSA-SHA256 only (capture platform.txt,
+    ak_public.tss). A TPM puts the PCR digest under the signing hash, so the digest check alone refuses Azure's
+    other banks - by accident of the hash it recomputes with; an AK that may sign SHA-384 passes it."""
+    d = issued(enroll.CRED_STATEMENT)
+    values = {(bank, i): tpm.HASH[bank](v).digest() for (_, i), v in quoted_values(d).items()}
+    sel = [(bank, [i for _, i in sorted(values)])]
+    a, _ = reappraise(d, rrp_id, uki_only, requoted(d, sel, values, sign_hash, stand_in_ak, monkeypatch))
+    by = {x.name: x for x in a.checks}
+    assert {"vtpm.quote.bank_is_sha256", "vtpm.eventlog.replays_to_quoted_pcrs", "vtpm.uki_sections.bound_to_quote"} \
+        <= vtpm_failed(a)
+    assert by["vtpm.quote.pcr_digest"].ok is (tpm.CRYPTO_HASH.get(bank) is sign_hash)
+
+
+def test_without_systemds_log_the_kernel_sections_are_not_read(rrp_id, uki_only):
+    """The run's own evidence, nothing signed again: withheld, systemd's log leaves PCR 11 unreplayable, so the
+    sections the firmware log names are no longer bound to the quote."""
+    d = issued(enroll.CRED_STATEMENT)
+    req, ev = evidence_of(d)
+    assert ev.pop("systemd_tpm_log")
+    a, _ = reappraise(d, rrp_id, uki_only, with_evidence(req, ev))
+    by = {x.name: x for x in a.checks}
+    assert by["vtpm.eventlog.replays_to_quoted_pcrs"].ok
+    assert "not covered without systemd's log: [11]" in by["vtpm.eventlog.replays_to_quoted_pcrs"].detail
+    assert vtpm_failed(a) == {"vtpm.uki_sections.bound_to_quote"}

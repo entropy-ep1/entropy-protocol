@@ -116,7 +116,14 @@ of the attestation result (EAR). Design: [ARCHITECTURE §7d](ARCHITECTURE.md). O
 | Enrollment of a statement key and a detection key, each generated inside the guest | certified after 48 checks each — 47 on the evidence and the handle's single use — none failed or skipped: AMD chain to the pinned ARK and AMD's CRL; the TCB floors of AMD's bulletins; the BadRAM and RMPocalypse fixes in the report; the paravisor's launch endorsed by its ID key; the binding (key, model, code, parameters) in the runtime claims and in the vTPM quote; the boot chain and the kernel image in the event log; the H100's report over the authority's nonce; NVIDIA's signed manifests; OCSP for seven certificates (nine checks: the two manifests share two) |
 | 20 prose texts sealed in the VM, read by a separate verifier | as sealed 20/20 `VERIFIED`; one word changed 20/20 `MODIFIED`, with the range; after transport 20/20 `VERIFIED` |
 | Record-free detection in the VM, 200 tokens, quality, 1e-6 | 14 of 20 sealed texts; 0 of 10 unsealed texts of the same model |
-| Evidence packages | 20 of 20 check offline, 35 checks each, none failed: the appraisal repeated from AMD's and NVIDIA's roots at the result's issue time (47 checks per key), the certificates, the statements, log receipts, RFC 3161 time-stamp imprints; 5 more are the reader's: the authority's fingerprint, the time-stamp authority's signatures, the re-read with the model |
+| Evidence packages, re-issued as `ep1-pack/v3` in 0.1.1 ([files](bench/results/attested/run-20261027T172258Z/packs-v3)) | 20 of 20 `TRUSTED` against the run's [trust list](bench/results/attested/run-20261027T172258Z/packs-v3/trust.json), 45 checks each, none failed: the appraisal repeated from AMD's and NVIDIA's roots at the result's issue time (49 checks per key), the certificates, each statement signed while its key was certified, the text recomputed into the commitment the attested generation statement signs, the statements, log receipts, RFC 3161 time-stamp imprints; 5 are the reader's: the authority's fingerprint, the time-stamp authority's signatures, the re-read with the model. Without a trust list the answer is `INTACT`: a package cannot vouch for its own keys |
+| Forgeries on those 20 packages ([result](bench/results/attested/run-20261027T172258Z/packs-v3/forgeries.json)) | a foreign text with a verdict and a log of the forger's: 20/20 `FAILED`; the same with the opening stripped: 20/20 `INTACT`; the text alone changed: 20/20 `FAILED`; a weakened appraisal policy: 20/20 `INTACT`; a package made from nothing: 20/20 `INTACT`. The 0.1.0 packages ([files](bench/results/attested/run-20261027T172258Z/packs)) carried no opening, and 0.1.0 accepted the first of these forgeries ([CHANGELOG](CHANGELOG.md)) |
+
+Run again with 0.1.1 on the same machine type ([files](bench/results/attested/run-20261104T173355Z)): both keys
+certified after 50 checks each, none failed or skipped; as sealed 20/20 `VERIFIED`, one word changed 20/20 `MODIFIED`,
+after transport 20/20 `VERIFIED`; detection 17 of 20 sealed texts, 0 of 10 unsealed; its packages issued as v3,
+20/20 `TRUSTED` against [its trust list](bench/results/attested/run-20261104T173355Z/packs/trust.json), and the
+same five forgeries refused on all 20 ([result](bench/results/attested/run-20261104T173355Z/packs/forgeries.json)).
 
 Refusals are tested on the run's own data ([`tests/test_attested_run.py`](tests/test_attested_run.py)): a request
 bound to another key, evidence moved from another enrollment, a changed model digest, a spent handle, a changed text,
@@ -128,9 +135,13 @@ measurements become the reference values.
 
 ```bash
 pip install "entropy-protocol[attested]"
-curl -LO https://github.com/entropy-ep1/entropy-protocol/raw/main/bench/results/attested/run-20261027T172258Z/packs/5aWyrqFNxAxJwkXE.cbor
-entropy evidence --check 5aWyrqFNxAxJwkXE.cbor
+base=https://github.com/entropy-ep1/entropy-protocol/raw/main/bench/results/attested/run-20261027T172258Z/packs-v3
+curl -LO $base/5aWyrqFNxAxJwkXE.cbor -LO $base/trust.json
+entropy evidence --check 5aWyrqFNxAxJwkXE.cbor --trust trust.json   # TRUSTED (exit 0); without --trust: INTACT (exit 3)
 ```
+
+The trust list names the authority's root, the policy it applied and the verifier's and log's keys. Take it from where
+the operator publishes it, never from a package: a package that brings its own keys can only ever be `INTACT`.
 
 ## Install
 
@@ -210,7 +221,7 @@ v2 Merkle trees (RFC 9162), COSE Hash Envelope (RFC 9995), CWT claims in COSE (R
 
 ## Status
 
-0.1.0 — a reference implementation ahead of standardization. Formats may change before a specification is adopted
+0.1.1 — a reference implementation ahead of standardization. Formats may change before a specification is adopted
 by a standards body; records name their canonical form and version, and older records keep verifying.
 
 ## Verify a release
@@ -219,9 +230,9 @@ Every file of a release is signed with Sigstore by this repository's release wor
 `<file>.sigstore.json`, per file), and `SHA256SUMS` lists them all. With cosign 3:
 
 ```bash
-f=entropy_protocol-0.1.0-py3-none-any.whl
+f=entropy_protocol-0.1.1-py3-none-any.whl
 cosign verify-blob --bundle "$f.sigstore.json" --certificate-oidc-issuer https://token.actions.githubusercontent.com \
-  --certificate-identity https://github.com/entropy-ep1/entropy-protocol/.github/workflows/release.yml@refs/tags/v0.1.0 "$f"
+  --certificate-identity https://github.com/entropy-ep1/entropy-protocol/.github/workflows/release.yml@refs/tags/v0.1.1 "$f"
 gh attestation verify "$f" --repo entropy-ep1/entropy-protocol      # GitHub's build-provenance attestation
 ```
 

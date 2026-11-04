@@ -197,32 +197,42 @@ def _appraise(req: dict, *, rrp_id: str, policy: dict, at: dt.datetime, collater
             quote = tpm.parse_attest(q["msg"])
             qd = bool(expected) and quote.extra == hashlib.sha256(expected).digest()
             add("vtpm.quote.qualifying_data_is_binding_digest", qd)
+            # the guest chooses the selection: the log is replayed, and the policy written, in the SHA-256 bank
+            sha256 = [alg for alg, _ in quote.selection] == [tpm.ALG_SHA256]
+            add("vtpm.quote.bank_is_sha256", sha256,
+                "banks " + ", ".join(f"0x{alg:04x}" for alg, _ in quote.selection))
             values = tpm.split_values(q["pcrs"], quote)
             add("vtpm.quote.pcr_digest", tpm.pcr_digest(quote, values) == quote.pcr_digest)
+            quoted = {i: v for (alg, i), v in values.items() if alg == tpm.ALG_SHA256}
             log = tpm.parse_event_log(ev["eventlog"])
             later = tpm.parse_systemd_log(ev["systemd_tpm_log"]) if ev.get("systemd_tpm_log") else []
             replayed = tpm.replay_with(log, later)
-            # PCR 11 is extended again after boot (systemd-pcrphase): without systemd's log it cannot be replayed
-            uncovered = {11} if not later and any(e.pcr == 11 for e in log.events) else set()
+            # PCR 11 is extended again after boot (systemd-pcrphase): without systemd's log a quoted PCR 11 the log
+            # does not reach is expected, not a finding - but then nothing read from PCR 11 is bound to the quote
+            uncovered = {11} if not later and 11 in quoted and replayed.get(11, quoted[11]) != quoted[11] else set()
             judged = {i: v for i, v in replayed.items() if i not in uncovered}
-            mism = [i for i, v in judged.items() if values.get((tpm.ALG_SHA256, i)) not in (None, v)]
-            add("vtpm.eventlog.replays_to_quoted_pcrs", not mism, f"PCRs replayed {sorted(judged)}; mismatched "
-                f"{mism}" if mism else f"PCRs replayed {sorted(judged)}"
+            unquoted = sorted(i for i in judged if i not in quoted)        # replayed, with nothing to compare it to
+            mism = sorted(i for i, v in judged.items() if i in quoted and quoted[i] != v)
+            add("vtpm.eventlog.replays_to_quoted_pcrs", not mism and not unquoted, f"PCRs replayed {sorted(judged)}"
+                + (f"; mismatched {mism}" if mism else "") + (f"; not in the quote {unquoted}" if unquoted else "")
                 + (f"; not covered without systemd's log: {sorted(uncovered)}" if uncovered else ""))
             uki = tpm.uki_sections(log)
+            uki_bound = 11 in judged and quoted.get(11) == judged[11]
             ref_uki = pol_vtpm.get("uki", {})
             bad_uki = [k for k, allowed in ref_uki.items() if uki.get(k, b"").hex() not in allowed]
             if ref_uki:
+                add("vtpm.uki_sections.bound_to_quote", uki_bound, "PCR 11 replays to its quoted value" if uki_bound
+                    else "PCR 11 does not replay to a quoted value: the sections would be read from an unbound log")
                 add("vtpm.uki_sections.in_reference_set", not bad_uki,
                     f"outside the reference set: {bad_uki}" if bad_uki else ", ".join(sorted(ref_uki)))
-            vt["claims"] = {"pcr4": values.get((tpm.ALG_SHA256, 4), b""), "pcr7": values.get((tpm.ALG_SHA256, 7), b""),
-                            "uki": uki}
+            vt["claims"] = {"pcr4": quoted.get(4, b""), "pcr7": quoted.get(7, b""), "uki": uki if uki_bound else {}}
             refs = pol_vtpm.get("pcrs", {})
-            bad = [i for i, allowed in refs.items() if values.get((tpm.ALG_SHA256, int(i)), b"").hex() not in allowed]
+            bad = [i for i, allowed in refs.items() if quoted.get(int(i), b"").hex() not in allowed]
             add("vtpm.pcrs.in_reference_set", (not bad) if refs else None,
                 f"outside the reference set: {bad}" if bad else ("" if refs else "no reference values"))
             vt["identity"] = ud_ok and qd
-            vt["exec"] = (not mism) and (not bad if refs else True) and not bad_uki
+            vt["exec"] = sha256 and not mism and not unquoted and (not bad if refs else True) \
+                and (not ref_uki or (uki_bound and not bad_uki))
         except (hcl.HCLError, tpm.TPMError, KeyError) as exc:
             add("vtpm.quote.signature_by_bound_ak", False, str(exc))
     a.submods["vtpm"] = ear.appraisal(

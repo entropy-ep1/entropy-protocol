@@ -1,0 +1,75 @@
+{
+ "packages": 20,
+ "trust_list": "ep1 attested run run-20261104T173355Z",
+ "forgeries": {
+  "foreign-text": {
+   "levels": {
+    "FAILED": 20
+   },
+   "expected": [
+    "FAILED"
+   ],
+   "held": true,
+   "why": {
+    "the text is the one the generation statement seals": 20
+   }
+  },
+  "foreign-text-v2": {
+   "levels": {
+    "INTACT": 20
+   },
+   "expected": [
+    "FAILED",
+    "INTACT"
+   ],
+   "held": true,
+   "why": {
+    "not on the trust list: verification": 20,
+    "not on the trust list: log key": 20
+   }
+  },
+  "text-only": {
+   "levels": {
+    "FAILED": 20
+   },
+   "expected": [
+    "FAILED"
+   ],
+   "held": true,
+   "why": {
+    "the text is the one the generation statement seals": 20,
+    "the verdict is about this text": 20,
+    "the detection is about this text": 20
+   }
+  },
+  "weak-policy": {
+   "levels": {
+    "INTACT": 20
+   },
+   "expected": [
+    "FAILED",
+    "INTACT"
+   ],
+   "held": true,
+   "why": {
+    "not on the trust list: generation": 20,
+    "not on the trust list: detection": 20
+   }
+  },
+  "from-nothing": {
+   "levels": {
+    "INTACT": 20
+   },
+   "expected": [
+    "FAILED",
+    "INTACT"
+   ],
+   "held": true,
+   "why": {
+    "not on the trust list: generation": 20,
+    "not on the trust list: verification": 20,
+    "not on the trust list: log key": 20
+   }
+  }
+ }
+}
