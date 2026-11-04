@@ -61,9 +61,10 @@ def main() -> int:
                         "verdict": report["summary"].get("verdict")})
         print(p["doc"], report["level"], failed or "", flush=True)
     (out / "summary.json").write_text(json.dumps(summary, indent=1) + "\n")
-    trusted = sum(s["level"] == pack.TRUSTED for s in summary)
-    print(json.dumps({"packages": len(summary), "trusted": trusted}, indent=1))
-    return 0 if summary and trusted == len(summary) else 1
+    vouched = sum(s["level"] == pack.VOUCHED for s in summary)
+    print(json.dumps({"packages": len(summary), "levels": {lv: sum(s["level"] == lv for s in summary)
+                                                         for lv in {s["level"] for s in summary}}}, indent=1))
+    return 0 if summary and vouched == len(summary) else 1
 
 
 if __name__ == "__main__":

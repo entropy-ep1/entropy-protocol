@@ -38,11 +38,12 @@ _TITLE = {"gen": "generation", "ver": "verification", "det": "detection"}
 _KEY_OF = {"gen": "issuer", "ver": "verifier", "det": "detector"}
 _OPEN = {"rec": bytes, "salt": bytes, "canon": str, "wts": bytes, "tok": bytes}
 
-TRUSTED, INTACT, FAILED = "TRUSTED", "INTACT", "FAILED"
-MESSAGES = {TRUSTED: "Intact, and signed under keys on your trust list.",
+# the levels; VOUCHED is the one a reader sees as TRUSTED: every key is on the trust list the reader holds
+VOUCHED, INTACT, FAILED = "TRUSTED", "INTACT", "FAILED"
+MESSAGES = {VOUCHED: "Intact, and signed under keys on your trust list.",
             INTACT: "Bytes match, but no one vouches for these keys. Treat as unsigned.",
             FAILED: "A check failed. Do not rely on this package."}
-EXIT_CODES = {TRUSTED: 0, FAILED: 1, INTACT: 3}     # 2 stays the usage error of the command line
+EXIT_CODES = {VOUCHED: 0, FAILED: 1, INTACT: 3}     # 2 stays the usage error of the command line
 
 
 def build(*, doc: str, text: str | None = None, token: str = "", statements: dict | None = None,
@@ -112,8 +113,8 @@ def _report(checks: list[dict], summary: dict, trust: dict | None, unvouched: li
     elif trust is None or unvouched:
         level = INTACT
     else:
-        level = TRUSTED
-    report = {"ok": level == TRUSTED, "level": level, "message": MESSAGES[level], "checks": checks,
+        level = VOUCHED
+    report = {"ok": level == VOUCHED, "level": level, "message": MESSAGES[level], "checks": checks,
               "summary": summary}
     if level == INTACT:
         report["unvouched"] = unvouched

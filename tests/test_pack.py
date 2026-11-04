@@ -72,7 +72,7 @@ def named(report, needle):
 
 def test_a_whole_package_checks_offline(parts):
     r = pack.check(_built(parts), parts["trust"])
-    assert r["ok"] and r["level"] == pack.TRUSTED and r["trust_list"] == "acme"
+    assert r["ok"] and r["level"] == pack.VOUCHED and r["trust_list"] == "acme"
     assert r["summary"]["verdict"] == VERIFIED and r["summary"]["text_chars"] == len(TEXT)
     assert r["summary"]["text_tied_to"] == ["generation", "verification"]
     assert named(r, "generation statement signature")["ok"]
@@ -293,7 +293,7 @@ def test_the_whole_chain_from_sealing_to_the_package(tmp_path):
                       receipts={"gen": gen_rc, "ver": ver_rc},
                       timestamps={"ver": _tstinfo(pack.stamped_digest(ver))}, keys=keys, opening=opened)
     report = pack.check(data, pack.load_trust({"v": 1, "keys": {k: [v.hex()] for k, v in keys.items()}}))
-    assert report["ok"] and report["level"] == pack.TRUSTED
+    assert report["ok"] and report["level"] == pack.VOUCHED
     assert report["summary"]["verdict"] == r.verdict == VERIFIED
     assert report["summary"]["text_tied_to"] == ["generation", "verification"]
     assert s.text.encode() not in gen and s.text.encode() not in ver      # statements carry digests, not text
