@@ -44,4 +44,4 @@ jobs:
           done
           cp -- *.whl *.tar.gz ../dist/
           ls -la ../dist
-      - uses: pypa/gh-action-pypi-publish@v1.14.2
+      - uses: pypa/gh-action-pypi-publish@v1.14.3
