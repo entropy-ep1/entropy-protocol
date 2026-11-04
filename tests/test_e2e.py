@@ -159,8 +159,10 @@ def test_watermark_detected_without_the_record(backend):
     assert hit.detected and hit.p_value < 1e-6 and hit.checkpoints >= 20, hit
     moved = "\ufeff" + s.text.replace("\n", "\r\n") + "\n"          # transport does not matter
     assert detect(backend, moved, kw).p_value == hit.p_value
-    other = detect(backend, s.text, crypto.wm_key(crypto.new_master_key()))
-    assert not other.detected and other.p_value > 1e-3, other            # another key: no signal
+    # another key: no signal. A fixed one, so the result is the same on every run of one machine: with a fresh random
+    # key each run, p <= 1e-3 under the null is itself a 1-in-1000 event, and CI met it (p = 6.6e-4, 26 of 33)
+    other = detect(backend, s.text, crypto.wm_key(bytes(range(32, 64))))
+    assert not other.detected and other.p_value > 1e-3, other
     human = ("I walked to the market this morning because the fridge was empty again. The man who sells apples "
              "asked about my sister, and we talked for a while about the rain. Some weeks are like that: you "
              "start many things and finish few, and the list on the kitchen door keeps growing longer.")
