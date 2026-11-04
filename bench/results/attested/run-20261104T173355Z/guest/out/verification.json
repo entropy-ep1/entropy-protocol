@@ -1,0 +1,702 @@
+[
+ {
+  "doc": "09pztT60bsHVWpZX",
+  "kind": "as-sealed",
+  "verdict": "VERIFIED",
+  "matched": 15,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 15,
+  "changed": []
+ },
+ {
+  "doc": "09pztT60bsHVWpZX",
+  "kind": "one-word-changed",
+  "verdict": "MODIFIED",
+  "matched": 12,
+  "divergent": 3,
+  "indeterminate": 0,
+  "entries": 15,
+  "changed": [
+   [
+    498,
+    646
+   ]
+  ]
+ },
+ {
+  "doc": "09pztT60bsHVWpZX",
+  "kind": "transported",
+  "verdict": "VERIFIED",
+  "matched": 15,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 15,
+  "changed": []
+ },
+ {
+  "doc": "4xMUwRJFhDMa02Io",
+  "kind": "as-sealed",
+  "verdict": "VERIFIED",
+  "matched": 12,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 12,
+  "changed": []
+ },
+ {
+  "doc": "4xMUwRJFhDMa02Io",
+  "kind": "one-word-changed",
+  "verdict": "MODIFIED",
+  "matched": 8,
+  "divergent": 3,
+  "indeterminate": 1,
+  "entries": 12,
+  "changed": [
+   [
+    401,
+    520
+   ]
+  ]
+ },
+ {
+  "doc": "4xMUwRJFhDMa02Io",
+  "kind": "transported",
+  "verdict": "VERIFIED",
+  "matched": 12,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 12,
+  "changed": []
+ },
+ {
+  "doc": "5NjVfgsiwvllwDV0",
+  "kind": "as-sealed",
+  "verdict": "VERIFIED",
+  "matched": 17,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 17,
+  "changed": []
+ },
+ {
+  "doc": "5NjVfgsiwvllwDV0",
+  "kind": "one-word-changed",
+  "verdict": "MODIFIED",
+  "matched": 11,
+  "divergent": 4,
+  "indeterminate": 2,
+  "entries": 17,
+  "changed": [
+   [
+    465,
+    734
+   ]
+  ]
+ },
+ {
+  "doc": "5NjVfgsiwvllwDV0",
+  "kind": "transported",
+  "verdict": "VERIFIED",
+  "matched": 17,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 17,
+  "changed": []
+ },
+ {
+  "doc": "JW9EVmGSbo3WZ5hr",
+  "kind": "as-sealed",
+  "verdict": "VERIFIED",
+  "matched": 20,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 20,
+  "changed": []
+ },
+ {
+  "doc": "JW9EVmGSbo3WZ5hr",
+  "kind": "one-word-changed",
+  "verdict": "MODIFIED",
+  "matched": 14,
+  "divergent": 4,
+  "indeterminate": 2,
+  "entries": 20,
+  "changed": [
+   [
+    413,
+    597
+   ]
+  ]
+ },
+ {
+  "doc": "JW9EVmGSbo3WZ5hr",
+  "kind": "transported",
+  "verdict": "VERIFIED",
+  "matched": 20,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 20,
+  "changed": []
+ },
+ {
+  "doc": "Lgfmgo1JuJIG8npj",
+  "kind": "as-sealed",
+  "verdict": "VERIFIED",
+  "matched": 18,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 18,
+  "changed": []
+ },
+ {
+  "doc": "Lgfmgo1JuJIG8npj",
+  "kind": "one-word-changed",
+  "verdict": "MODIFIED",
+  "matched": 17,
+  "divergent": 1,
+  "indeterminate": 0,
+  "entries": 18,
+  "changed": [
+   [
+    527,
+    722
+   ]
+  ]
+ },
+ {
+  "doc": "Lgfmgo1JuJIG8npj",
+  "kind": "transported",
+  "verdict": "VERIFIED",
+  "matched": 18,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 18,
+  "changed": []
+ },
+ {
+  "doc": "M_7KW7y8HshDFiwK",
+  "kind": "as-sealed",
+  "verdict": "VERIFIED",
+  "matched": 13,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 13,
+  "changed": []
+ },
+ {
+  "doc": "M_7KW7y8HshDFiwK",
+  "kind": "one-word-changed",
+  "verdict": "MODIFIED",
+  "matched": 7,
+  "divergent": 4,
+  "indeterminate": 2,
+  "entries": 13,
+  "changed": [
+   [
+    503,
+    656
+   ]
+  ]
+ },
+ {
+  "doc": "M_7KW7y8HshDFiwK",
+  "kind": "transported",
+  "verdict": "VERIFIED",
+  "matched": 13,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 13,
+  "changed": []
+ },
+ {
+  "doc": "MmUNWOWZisJBaVqf",
+  "kind": "as-sealed",
+  "verdict": "VERIFIED",
+  "matched": 21,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 21,
+  "changed": []
+ },
+ {
+  "doc": "MmUNWOWZisJBaVqf",
+  "kind": "one-word-changed",
+  "verdict": "MODIFIED",
+  "matched": 16,
+  "divergent": 3,
+  "indeterminate": 2,
+  "entries": 21,
+  "changed": [
+   [
+    481,
+    645
+   ]
+  ]
+ },
+ {
+  "doc": "MmUNWOWZisJBaVqf",
+  "kind": "transported",
+  "verdict": "VERIFIED",
+  "matched": 21,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 21,
+  "changed": []
+ },
+ {
+  "doc": "N1LEEsvuKE6MfwrR",
+  "kind": "as-sealed",
+  "verdict": "VERIFIED",
+  "matched": 29,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 29,
+  "changed": []
+ },
+ {
+  "doc": "N1LEEsvuKE6MfwrR",
+  "kind": "one-word-changed",
+  "verdict": "MODIFIED",
+  "matched": 18,
+  "divergent": 11,
+  "indeterminate": 0,
+  "entries": 29,
+  "changed": [
+   [
+    466,
+    627
+   ]
+  ]
+ },
+ {
+  "doc": "N1LEEsvuKE6MfwrR",
+  "kind": "transported",
+  "verdict": "VERIFIED",
+  "matched": 29,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 29,
+  "changed": []
+ },
+ {
+  "doc": "NzqZtOfTPVpCVssA",
+  "kind": "as-sealed",
+  "verdict": "VERIFIED",
+  "matched": 18,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 18,
+  "changed": []
+ },
+ {
+  "doc": "NzqZtOfTPVpCVssA",
+  "kind": "one-word-changed",
+  "verdict": "MODIFIED",
+  "matched": 15,
+  "divergent": 3,
+  "indeterminate": 0,
+  "entries": 18,
+  "changed": [
+   [
+    363,
+    587
+   ]
+  ]
+ },
+ {
+  "doc": "NzqZtOfTPVpCVssA",
+  "kind": "transported",
+  "verdict": "VERIFIED",
+  "matched": 18,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 18,
+  "changed": []
+ },
+ {
+  "doc": "RGEsnjvfodaodRik",
+  "kind": "as-sealed",
+  "verdict": "VERIFIED",
+  "matched": 23,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 23,
+  "changed": []
+ },
+ {
+  "doc": "RGEsnjvfodaodRik",
+  "kind": "one-word-changed",
+  "verdict": "MODIFIED",
+  "matched": 15,
+  "divergent": 5,
+  "indeterminate": 3,
+  "entries": 23,
+  "changed": [
+   [
+    338,
+    600
+   ]
+  ]
+ },
+ {
+  "doc": "RGEsnjvfodaodRik",
+  "kind": "transported",
+  "verdict": "VERIFIED",
+  "matched": 23,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 23,
+  "changed": []
+ },
+ {
+  "doc": "UELlWS0TE3EYaZ0a",
+  "kind": "as-sealed",
+  "verdict": "VERIFIED",
+  "matched": 13,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 13,
+  "changed": []
+ },
+ {
+  "doc": "UELlWS0TE3EYaZ0a",
+  "kind": "one-word-changed",
+  "verdict": "MODIFIED",
+  "matched": 11,
+  "divergent": 2,
+  "indeterminate": 0,
+  "entries": 13,
+  "changed": [
+   [
+    542,
+    674
+   ]
+  ]
+ },
+ {
+  "doc": "UELlWS0TE3EYaZ0a",
+  "kind": "transported",
+  "verdict": "VERIFIED",
+  "matched": 13,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 13,
+  "changed": []
+ },
+ {
+  "doc": "VzV93xVgXm90bt_y",
+  "kind": "as-sealed",
+  "verdict": "VERIFIED",
+  "matched": 24,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 24,
+  "changed": []
+ },
+ {
+  "doc": "VzV93xVgXm90bt_y",
+  "kind": "one-word-changed",
+  "verdict": "MODIFIED",
+  "matched": 15,
+  "divergent": 7,
+  "indeterminate": 2,
+  "entries": 24,
+  "changed": [
+   [
+    373,
+    589
+   ]
+  ]
+ },
+ {
+  "doc": "VzV93xVgXm90bt_y",
+  "kind": "transported",
+  "verdict": "VERIFIED",
+  "matched": 24,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 24,
+  "changed": []
+ },
+ {
+  "doc": "X2bbgkHprkEh-heO",
+  "kind": "as-sealed",
+  "verdict": "VERIFIED",
+  "matched": 18,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 18,
+  "changed": []
+ },
+ {
+  "doc": "X2bbgkHprkEh-heO",
+  "kind": "one-word-changed",
+  "verdict": "MODIFIED",
+  "matched": 12,
+  "divergent": 3,
+  "indeterminate": 3,
+  "entries": 18,
+  "changed": [
+   [
+    363,
+    601
+   ]
+  ]
+ },
+ {
+  "doc": "X2bbgkHprkEh-heO",
+  "kind": "transported",
+  "verdict": "VERIFIED",
+  "matched": 18,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 18,
+  "changed": []
+ },
+ {
+  "doc": "XOdBaBw9alboPSom",
+  "kind": "as-sealed",
+  "verdict": "VERIFIED",
+  "matched": 13,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 13,
+  "changed": []
+ },
+ {
+  "doc": "XOdBaBw9alboPSom",
+  "kind": "one-word-changed",
+  "verdict": "MODIFIED",
+  "matched": 9,
+  "divergent": 4,
+  "indeterminate": 0,
+  "entries": 13,
+  "changed": [
+   [
+    408,
+    518
+   ]
+  ]
+ },
+ {
+  "doc": "XOdBaBw9alboPSom",
+  "kind": "transported",
+  "verdict": "VERIFIED",
+  "matched": 13,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 13,
+  "changed": []
+ },
+ {
+  "doc": "ceM-EMgmDKijn9FO",
+  "kind": "as-sealed",
+  "verdict": "VERIFIED",
+  "matched": 23,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 23,
+  "changed": []
+ },
+ {
+  "doc": "ceM-EMgmDKijn9FO",
+  "kind": "one-word-changed",
+  "verdict": "MODIFIED",
+  "matched": 15,
+  "divergent": 4,
+  "indeterminate": 4,
+  "entries": 23,
+  "changed": [
+   [
+    508,
+    676
+   ]
+  ]
+ },
+ {
+  "doc": "ceM-EMgmDKijn9FO",
+  "kind": "transported",
+  "verdict": "VERIFIED",
+  "matched": 23,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 23,
+  "changed": []
+ },
+ {
+  "doc": "cnOLCJ6OSZLSM0BF",
+  "kind": "as-sealed",
+  "verdict": "VERIFIED",
+  "matched": 17,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 17,
+  "changed": []
+ },
+ {
+  "doc": "cnOLCJ6OSZLSM0BF",
+  "kind": "one-word-changed",
+  "verdict": "MODIFIED",
+  "matched": 13,
+  "divergent": 3,
+  "indeterminate": 1,
+  "entries": 17,
+  "changed": [
+   [
+    509,
+    615
+   ]
+  ]
+ },
+ {
+  "doc": "cnOLCJ6OSZLSM0BF",
+  "kind": "transported",
+  "verdict": "VERIFIED",
+  "matched": 17,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 17,
+  "changed": []
+ },
+ {
+  "doc": "p5qozPnPq0BF76M2",
+  "kind": "as-sealed",
+  "verdict": "VERIFIED",
+  "matched": 25,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 25,
+  "changed": []
+ },
+ {
+  "doc": "p5qozPnPq0BF76M2",
+  "kind": "one-word-changed",
+  "verdict": "MODIFIED",
+  "matched": 19,
+  "divergent": 6,
+  "indeterminate": 0,
+  "entries": 25,
+  "changed": [
+   [
+    466,
+    672
+   ]
+  ]
+ },
+ {
+  "doc": "p5qozPnPq0BF76M2",
+  "kind": "transported",
+  "verdict": "VERIFIED",
+  "matched": 25,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 25,
+  "changed": []
+ },
+ {
+  "doc": "qQhKNVsTZosm_kxA",
+  "kind": "as-sealed",
+  "verdict": "VERIFIED",
+  "matched": 17,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 17,
+  "changed": []
+ },
+ {
+  "doc": "qQhKNVsTZosm_kxA",
+  "kind": "one-word-changed",
+  "verdict": "MODIFIED",
+  "matched": 11,
+  "divergent": 4,
+  "indeterminate": 2,
+  "entries": 17,
+  "changed": [
+   [
+    381,
+    601
+   ]
+  ]
+ },
+ {
+  "doc": "qQhKNVsTZosm_kxA",
+  "kind": "transported",
+  "verdict": "VERIFIED",
+  "matched": 17,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 17,
+  "changed": []
+ },
+ {
+  "doc": "v3K6UliH3y_GSyBL",
+  "kind": "as-sealed",
+  "verdict": "VERIFIED",
+  "matched": 20,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 20,
+  "changed": []
+ },
+ {
+  "doc": "v3K6UliH3y_GSyBL",
+  "kind": "one-word-changed",
+  "verdict": "MODIFIED",
+  "matched": 16,
+  "divergent": 4,
+  "indeterminate": 0,
+  "entries": 20,
+  "changed": [
+   [
+    361,
+    524
+   ]
+  ]
+ },
+ {
+  "doc": "v3K6UliH3y_GSyBL",
+  "kind": "transported",
+  "verdict": "VERIFIED",
+  "matched": 20,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 20,
+  "changed": []
+ },
+ {
+  "doc": "wKHE3e0pSIrE-3d2",
+  "kind": "as-sealed",
+  "verdict": "VERIFIED",
+  "matched": 15,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 15,
+  "changed": []
+ },
+ {
+  "doc": "wKHE3e0pSIrE-3d2",
+  "kind": "one-word-changed",
+  "verdict": "MODIFIED",
+  "matched": 14,
+  "divergent": 0,
+  "indeterminate": 1,
+  "entries": 15,
+  "changed": [
+   [
+    503,
+    721
+   ]
+  ]
+ },
+ {
+  "doc": "wKHE3e0pSIrE-3d2",
+  "kind": "transported",
+  "verdict": "VERIFIED",
+  "matched": 15,
+  "divergent": 0,
+  "indeterminate": 0,
+  "entries": 15,
+  "changed": []
+ }
+]

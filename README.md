@@ -119,6 +119,12 @@ of the attestation result (EAR). Design: [ARCHITECTURE §7d](ARCHITECTURE.md). O
 | Evidence packages, re-issued as `ep1-pack/v3` in 0.1.1 ([files](bench/results/attested/run-20261027T172258Z/packs-v3)) | 20 of 20 `TRUSTED` against the run's [trust list](bench/results/attested/run-20261027T172258Z/packs-v3/trust.json), 45 checks each, none failed: the appraisal repeated from AMD's and NVIDIA's roots at the result's issue time (49 checks per key), the certificates, each statement signed while its key was certified, the text recomputed into the commitment the attested generation statement signs, the statements, log receipts, RFC 3161 time-stamp imprints; 5 are the reader's: the authority's fingerprint, the time-stamp authority's signatures, the re-read with the model. Without a trust list the answer is `INTACT`: a package cannot vouch for its own keys |
 | Forgeries on those 20 packages ([result](bench/results/attested/run-20261027T172258Z/packs-v3/forgeries.json)) | a foreign text with a verdict and a log of the forger's: 20/20 `FAILED`; the same with the opening stripped: 20/20 `INTACT`; the text alone changed: 20/20 `FAILED`; a weakened appraisal policy: 20/20 `INTACT`; a package made from nothing: 20/20 `INTACT`. The 0.1.0 packages ([files](bench/results/attested/run-20261027T172258Z/packs)) carried no opening, and 0.1.0 accepted the first of these forgeries ([CHANGELOG](CHANGELOG.md)) |
 
+Run again with 0.1.1 on the same machine type ([files](bench/results/attested/run-20261104T173355Z)): both keys
+certified after 50 checks each, none failed or skipped; as sealed 20/20 `VERIFIED`, one word changed 20/20 `MODIFIED`,
+after transport 20/20 `VERIFIED`; detection 17 of 20 sealed texts, 0 of 10 unsealed; its packages issued as v3,
+20/20 `TRUSTED` against [its trust list](bench/results/attested/run-20261104T173355Z/packs/trust.json), and the
+same five forgeries refused on all 20 ([result](bench/results/attested/run-20261104T173355Z/packs/forgeries.json)).
+
 Refusals are tested on the run's own data ([`tests/test_attested_run.py`](tests/test_attested_run.py)): a request
 bound to another key, evidence moved from another enrollment, a changed model digest, a spent handle, a changed text,
 a result signed by another authority. A live refusal is kept as well: a host whose paravisor build had a launch

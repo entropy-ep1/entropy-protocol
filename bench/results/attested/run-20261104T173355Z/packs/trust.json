@@ -1,0 +1,18 @@
+{
+ "v": 1,
+ "name": "ep1 attested run run-20261104T173355Z",
+ "keys": {
+  "verifier": [
+   "2b4b00a4d535b50dbaa16f1580687685c326b0bf810daf3ed68509d95d166caf"
+  ],
+  "log": [
+   "ee29231f0fd93c686dee91bd66cbe4adc76f9a7ca8891927fe4fd4daf6796061"
+  ]
+ },
+ "roots": [
+  "8bae3db552778306cb929654030fa4e0bf377436d1ed38c598fbc0fcfe314347"
+ ],
+ "policies": [
+  "292542d04bfb44a5d4baf9d03df84522061ddc67d7b44aead90cc360bc42c3c4"
+ ]
+}
