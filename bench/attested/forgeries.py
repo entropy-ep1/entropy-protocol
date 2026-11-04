@@ -2,7 +2,8 @@
 
     python bench/attested/forgeries.py bench/results/attested/run-<stamp>
 
-Each package of <run>/packs-v3 is checked against the run's trust list (<run>/packs-v3/trust.json) after one change:
+Each v3 package of the run (<run>/packs-v3 for a re-issued run, else <run>/packs) is checked against the run's trust
+list (trust.json beside them) after one change:
 
   foreign-text          a foreign text, a verdict about it signed by a key the forger brings, and a log of the
                         forger's that registers both statements (the swap found on 01.11.2026; v0.1.0 accepted it)
@@ -12,7 +13,7 @@ Each package of <run>/packs-v3 is checked against the run's trust list (<run>/pa
   from-nothing          a package with the same text whose keys, log and commitment are all the forger's own
 
 Expected: foreign-text and text-only FAILED; foreign-text-v2, weak-policy and from-nothing no better than INTACT.
-The result is written to <run>/packs-v3/forgeries.json.
+The result is written beside them, forgeries.json.
 """
 from __future__ import annotations
 
@@ -99,8 +100,10 @@ def from_nothing(p: dict) -> bytes:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("run")
+    ap.add_argument("--dir", help="the packages' folder in the run (default: packs-v3 if present, else packs)")
     a = ap.parse_args()
-    out = Path(a.run) / "packs-v3"
+    run = Path(a.run)
+    out = run / (a.dir or ("packs-v3" if (run / "packs-v3").exists() else "packs"))
     trust = pack.load_trust(out / "trust.json")
     makers = {"foreign-text": lambda p: foreign_text(p, True), "foreign-text-v2": lambda p: foreign_text(p, False),
               "text-only": text_only, "weak-policy": weak_policy, "from-nothing": from_nothing}
