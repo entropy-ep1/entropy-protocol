@@ -141,9 +141,14 @@ ep1-detection = {
 ; ------------------------------------------------------------------ evidence package (`entropy evidence`)
 ; One file a third party checks without any secret: the disclosed text, the statements about it, their receipts,
 ; the public keys they verify under, RFC 3161 tokens over the statements' logged forms, and a provenance note.
-; The record is never inside: the statements speak about it in digests.
+; The record is never inside: the statements speak about it in digests. From v3 the package opens the generation
+; statement's commitment (record digest, salt, canonical form, model identities - not the record), so a checker
+; recomputes the commitment from the disclosed text: a foreign text fails whoever signed a verdict about it.
+; A package carries the keys it was signed under and cannot vouch for them: a checker answers TRUSTED only against
+; a trust list the reader holds (JSON: {"v": 1, "name", "keys": {issuer|verifier|detector|log: [hex]},
+; "roots": [SHA-256 hex of an authority root, DER], "policies": [SHA-256 hex of a policy text]}), else INTACT.
 ep1-pack = {
-  "v": "ep1-pack/v1",
+  "v": "ep1-pack/v1" / "ep1-pack/v2" / "ep1-pack/v3",
   "doc": tstr,                         ; document id (same as the statements' CWT sub)
   "token": tstr,                       ; custody token, so a key holder can re-verify from scratch ("" if withheld)
   "st": { * part => bstr },            ; signed statements (COSE_Sign1)
@@ -152,5 +157,16 @@ ep1-pack = {
   "keys": { * ("issuer" / "verifier" / "detector" / "log") => bstr .size 32 },   ; raw Ed25519 public keys
   "note": tstr,                        ; one line on how the text was obtained
   ? "text": tstr,                      ; the text this package is about (absent when only digests are disclosed)
+  ? "att": any,                        ; v2 and v3: attestation of the keys that signed (ARCHITECTURE §7d)
+  ? "open": commitment-opening,        ; v3 (required in v3): opens the generation statement's commitment
 }
 part = "gen" / "ver" / "det"
+; commitment = {v: 1, doc, rec, txt: SHA-256(salt || SHA-256(canonical text)), canon, wts, tok}: with the text,
+; the opening gives it back exactly, and its SHA-256 is what the generation statement signs.
+commitment-opening = {
+  "rec": bstr .size 32,                ; SHA-256 of the record's plaintext
+  "salt": bstr,                        ; the commitment's salt (16 bytes in records made so far)
+  "canon": tstr,                       ; canonical form the record's text digest was taken in
+  "wts": bstr .size 32,                ; model weights digest
+  "tok": bstr .size 32,                ; tokenizer digest
+}

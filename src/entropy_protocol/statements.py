@@ -49,6 +49,27 @@ def commitment(plaintext: bytes, doc_id: str) -> dict:
             "canon": h.canon, "wts": bytes.fromhex(h.weights_digest), "tok": bytes.fromhex(h.tokenizer_digest)}
 
 
+def opening(plaintext: bytes) -> dict:
+    """What an evidence package carries so that anyone can tie a disclosed text to its generation statement without
+    the record: the record's digest, the commitment's salt, the canonical form and the model identities. With the
+    text it recomputes the commitment (``commitment_of_text``). It reveals nothing the disclosed text does not: the
+    salt only keeps an undisclosed text from being confirmed by guessing."""
+    h = loads(plaintext).header
+    if not h.salt:
+        raise ValueError("record has no commitment salt")
+    return {"rec": sha256(plaintext), "salt": bytes.fromhex(h.salt), "canon": h.canon,
+            "wts": bytes.fromhex(h.weights_digest), "tok": bytes.fromhex(h.tokenizer_digest)}
+
+
+def commitment_of_text(opened: dict, doc_id: str, text: str) -> dict:
+    """The commitment a generation statement signs, recomputed from a disclosed text and an ``opening``: equal to
+    ``commitment(record, doc_id)`` exactly when the text is, in canonical form, the text the record was sealed with."""
+    canon = opened["canon"]
+    return {"v": 1, "doc": doc_id, "rec": opened["rec"],
+            "txt": sha256(opened["salt"] + sha256(canonicalize(text, canon).encode())),
+            "canon": canon, "wts": opened["wts"], "tok": opened["tok"]}
+
+
 def _claims(iss: str, sub: str, iat: int | None) -> dict:
     return {cose.ISS: iss, cose.SUB: sub, cose.IAT: int(time.time()) if iat is None else int(iat)}
 

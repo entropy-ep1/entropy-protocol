@@ -39,17 +39,23 @@ def section(root_der: bytes, authority: dict, roles: dict) -> dict:
     return out
 
 
+def _when(t) -> str:
+    return dt.datetime.fromtimestamp(t, dt.timezone.utc).isoformat() if isinstance(t, (int, float)) else repr(t)
+
+
 def check(st: dict, att: dict, note) -> dict:
     """Run every attestation check, reporting through ``note(name, ok, detail)``. Returns {role: Ed25519 key} for the
-    statements whose key the attestation established, and the attested identities per role."""
-    keys, ids = {}, {}
+    statements whose key the attestation established, the attested identities per role, the SHA-256 of the root
+    (hex) and of each role's policy text (hex) - what a reader's trust list names."""
+    keys, ids, policies = {}, {}, {}
     try:
         root = x509.load_der_x509_certificate(att["root"])
     except (KeyError, *pki.UNREADABLE) as exc:
         note("attestation: authority root", False, f"{type(exc).__name__}: {exc}")
-        return {"keys": keys, "identities": ids}
+        return {"keys": keys, "identities": ids, "root": None, "policies": policies}
+    root_fp = hashlib.sha256(att["root"]).hexdigest()
     note("attestation: authority root", None, f"{att.get('authority', {}).get('name', '?')}, SHA-256 "
-         f"{hashlib.sha256(att['root']).hexdigest()} - compare with the fingerprint the authority publishes")
+         f"{root_fp} - compare with the fingerprint the authority publishes")
     for role in ("gen", "det"):
         if role not in st or role not in att:
             continue
@@ -83,6 +89,17 @@ def check(st: dict, att: dict, note) -> dict:
             continue
         note(f"attestation ({t}): result affirms this key", ext.get("key") == hashlib.sha256(pki.spki(key)).digest(),
              "ep1 key = SHA-256 of the certified key")
+        # a statement signed outside the certificate's validity, or after the result expired, is not vouched for
+        # by either: the appraisal above is repeated at the result's issue time, not at the statement's
+        cert = x509.load_der_x509_certificate(leaf)
+        signed = (prot.get(cose.CWT_CLAIMS) or {}).get(cose.IAT)
+        expires = c.get(ear.EXP)
+        within = (isinstance(signed, int) and not isinstance(signed, bool)
+                  and cert.not_valid_before_utc.timestamp() <= signed <= cert.not_valid_after_utc.timestamp()
+                  and (expires is None or signed <= expires))
+        note(f"attestation ({t}): statement signed while its key was certified", within,
+             f"signed {_when(signed)}; certificate {cert.not_valid_before_utc.isoformat()} to "
+             f"{cert.not_valid_after_utc.isoformat()}; result expires {_when(expires)}")
         try:
             req = enroll.read_request(a["request"])
             note(f"attestation ({t}): result's nonce is the request's handle", c.get(ear.NONCE) == req["handle"])
@@ -103,4 +120,6 @@ def check(st: dict, att: dict, note) -> dict:
             continue
         keys[role] = key
         ids[role] = ext
-    return {"keys": keys, "identities": ids}
+        text = a["policy"]
+        policies[role] = hashlib.sha256(text.encode() if isinstance(text, str) else bytes(text)).hexdigest()
+    return {"keys": keys, "identities": ids, "root": root_fp, "policies": policies}

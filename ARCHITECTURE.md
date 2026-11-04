@@ -293,7 +293,8 @@ loaded lazily on the first call. A failed check is a tool error, not a dead serv
   imprint against the digest we asked to stamp; **we do not validate the authority's CMS signature or its
   certificate chain** — that needs a trust list, which belongs to the reader. The package says so and prints the
   `openssl ts -verify` command.
-- **Evidence package** (`entropy evidence`): one CBOR file (`ep1-pack/v1`) holding the disclosed text, the signed
+- **Evidence package** (`entropy evidence`): one CBOR file (`ep1-pack/v1`; `v2` adds attestation, `v3` the
+  commitment opening) holding the disclosed text, the signed
   statements about it, their receipts, the public keys those signatures verify under, any time-stamp token and a
   one-line note on provenance. The record never goes in: it stays the issuer's secret, and the statements speak
   about it in digests. `--check` re-runs offline every check that needs no model — each signature, the digest that
@@ -302,6 +303,23 @@ loaded lazily on the first call. A failed check is a tool error, not a dead serv
   model; validate the authority's chain). `--out-dir` explodes the package into files with a `README.md` that
   names each part and gives the exact commands. Trust stays with the reader: the package carries its own keys, so
   the reader compares them with the issuer's published key.
+- **The text tied to the generation, from `ep1-pack/v3` (0.1.1).** A verdict ties a text to a generation statement
+  only through the key that signed the verdict, and a package brings that key along: until 0.1.1 a genuine package
+  with a foreign text, a verdict about it under a key of the forger's and a log of the forger's checked as complete.
+  A v3 package therefore opens the commitment: `open` = {record digest, salt, canonical form, model identities} —
+  not the record. The check recomputes `{v, doc, rec, txt: SHA-256(salt ‖ SHA-256(canonical text)), canon, wts, tok}`
+  from the disclosed text and compares its SHA-256 with what the generation statement signs: a foreign text fails,
+  whoever vouches for it. The opening reveals nothing the disclosed text does not; the salt only keeps an
+  undisclosed text from being confirmed by guessing. With an attested statement key, the opening's model identities
+  must also be the attested ones.
+- **Three levels, and the reader's trust list.** `--check` answers **FAILED** (a check failed), **INTACT** (every
+  check passes under the keys the package brings: bytes match, but no one vouches for those keys — treat it as
+  unsigned) or **TRUSTED** (also, every signing key is on the trust list the reader passes with `--trust`: raw keys
+  for the issuer, verifier, detector and log; for an attested key, the authority's root and the policy it applied).
+  An issuer publishes its trust list (JSON, `pack.load_trust`); a package never supplies one. Exit codes: 0 TRUSTED,
+  3 INTACT, 1 FAILED. A changed policy, a package made from nothing, a verdict by a key not on the list: never
+  TRUSTED. For an attested key, a statement must also be signed inside its certificate's validity and before the
+  attestation result expires: the appraisal is repeated at the result's issue time, not at the statement's.
 
 ## 7d. Attested sealing and attested detection (`attested/`)
 The record binds a text to a model's choices, but whoever holds `K` can seal any text (§8, last row). Here the keys,
@@ -378,7 +396,8 @@ used (AMD chain and CRL, GPU chain, RIMs, OCSP responses) and the policy (refere
 appraises the evidence again with the same code at the result's issue time, verifies the result's signature to the
 authority's root (pinned by the reader), the certificate, the statement key = the key in the binding, and then the
 existing chain (text → statements → log → time stamp). It names every root, reference value or revocation status it
-was not given.
+was not given. `ep1-pack/v3` adds the commitment opening (§7c). The reader pins the root and the policy by their
+SHA-256 in the trust list; another root or a weakened policy is at best INTACT.
 
 **What it proves, what it does not.** Hardware-signed: a genuine AMD SEV-SNP processor at the reported TCB, the
 paravisor's measurement, debug off, the vTPM key bound to that report, the boot chain in the quoted PCRs, a genuine

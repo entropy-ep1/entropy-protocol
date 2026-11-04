@@ -161,8 +161,13 @@ def build_parser() -> argparse.ArgumentParser:
     tsp.add_argument("--check", help="check this token against the statement instead of asking for one")
     tsp.add_argument("--timeout", type=float, default=20.0)
     ev = sub.add_parser("evidence", help="evidence package: build one, or check one offline")
-    ev.add_argument("--check", help="package to check offline instead of building one")
+    ev.add_argument("--check", help="package to check offline instead of building one (exit 0 TRUSTED, 3 INTACT, "
+                                    "1 FAILED)")
+    ev.add_argument("--trust", help="with --check: the issuer's published trust list (JSON); without it the best "
+                                    "answer is INTACT, because a package cannot vouch for its own keys")
     ev.add_argument("--out-dir", help="with --check: write the parts and a README.md here")
+    ev.add_argument("--key", help="master key file: opens the token's record so the package carries the opening "
+                                  "that ties the text to the generation statement")
     ev.add_argument("--out", help="package to write")
     ev.add_argument("--doc", default="", help="document id (default: read from the verification statement)")
     ev.add_argument("--token", default="", help="custody token, so a key holder can re-verify from scratch")
@@ -439,14 +444,22 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps({"token": a.out, "bytes": len(token), **ts3161.check(token, digest)}, indent=1))
         return 0
     if a.cmd == "evidence":
-        from .pack import build, check as check_pack, explode
+        from .pack import EXIT_CODES, build, check as check_pack, explode, load_trust
         if a.check:
             data = Path(a.check).read_bytes()
-            report = check_pack(data)
+            try:
+                trust = load_trust(a.trust) if a.trust else None
+            except (OSError, ValueError) as exc:
+                print(f"trust list {a.trust}: {exc}", file=sys.stderr)
+                return 2
+            report = check_pack(data, trust)
             if a.out_dir:
-                report["written"] = explode(data, a.out_dir)
+                report["written"] = explode(data, a.out_dir, trust)
             print(json.dumps(report, ensure_ascii=False, indent=1))
-            return 0 if report["ok"] else 1
+            print(f"{report['level']}: {report['message']}", file=sys.stderr)
+            for reason in report.get("unvouched", []):
+                print(f"  - {reason}", file=sys.stderr)
+            return EXIT_CODES[report["level"]]
         if not a.out:
             print("give --out to build a package or --check to read one", file=sys.stderr)
             return 2
@@ -464,11 +477,19 @@ def main(argv: list[str] | None = None) -> int:
             import cbor2 as _cbor2
             doc = (_cbor2.loads(_cose.decode1(st["ver"])[3]) or {}).get("doc", "")   # (prot, prot_bytes, unprot, payload, sig)
         text = Path(a.text_file).read_text(encoding="utf-8") if a.text_file else None
+        opened = None
+        if a.key:
+            if not a.token:
+                print("--key opens the record of --token: give both", file=sys.stderr)
+                return 2
+            from .statements import opening
+            doc_of_token = crypto.token_doc_id(a.token)
+            opened = opening(crypto.decrypt_token(crypto.log_key(Path(a.key).read_bytes(), doc_of_token), a.token))
         pack = build(doc=doc, text=text, token=a.token, statements=st, receipts=rc, timestamps=ts, keys=keys,
-                     note=a.note)
+                     note=a.note, opening=opened)
         Path(a.out).write_bytes(pack)
         report = check_pack(pack)
-        print(json.dumps({"package": a.out, "bytes": len(pack), "ok": report["ok"],
+        print(json.dumps({"package": a.out, "bytes": len(pack), "level": report["level"],
                           "summary": report["summary"]}, ensure_ascii=False, indent=1))
         return 0
     if a.cmd == "detect":
