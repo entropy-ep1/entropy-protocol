@@ -51,7 +51,7 @@
   {
    "name": "attestation (generation): evidence appraised again offline",
    "ok": true,
-   "detail": "47 checks, failed: none; not performed: none"
+   "detail": "49 checks, failed: none; not performed: none"
   },
   {
    "name": "attestation (generation): the result's identities are the evidence's",
@@ -106,7 +106,7 @@
   {
    "name": "attestation (detection): evidence appraised again offline",
    "ok": true,
-   "detail": "47 checks, failed: none; not performed: none"
+   "detail": "49 checks, failed: none; not performed: none"
   },
   {
    "name": "attestation (detection): the result's identities are the evidence's",
